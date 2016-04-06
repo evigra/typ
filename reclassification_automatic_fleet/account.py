@@ -318,7 +318,6 @@ class product_category(osv.osv):
             type='many2one',
             relation='account.account',
             string="Cuenta de Reclasificacion de Gasto",
-            view_load=True,
             help="Esta Cuenta sera utilizada para Poder distirbuir los Gastos de Flete para las Compañias que realicen una Compra."),
     }
 product_category()
@@ -331,7 +330,6 @@ class product_product(osv.osv):
             type='many2one',
             relation='account.account',
             string="Cuenta de Reclasificacion de Gasto",
-            view_load=True,
             help="Esta Cuenta sera utilizada para Poder distirbuir los Gastos de Flete para las Compañias que realicen una Compra."),
         }
 
