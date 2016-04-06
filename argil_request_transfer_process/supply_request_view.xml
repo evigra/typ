@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+	<data>
+		
+         <record id="view_supply_request_form_inherit" model="ir.ui.view">
+            <field name="name">supply.request.form</field>
+            <field name="model">stock.supply_request</field>
+            <field name="inherit_id" ref="argil_supply_request.view_supply_request_form"/>
+            <field name="arch" type="xml">
+                	<header>
+                        <button name="done_supply_request" type="object" string="Done" states="done"/>
+                   	</header>
+            </field>
+       	 </record>
+       	 
+	</data>
+</openerp>

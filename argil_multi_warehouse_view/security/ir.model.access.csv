@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_stock_warehouse_viewin,stock.warehouse_view,model_stock_warehouse_view,,1,0,0,0
+access_stock_warehouse_viewout,stock.warehouse_view,model_stock_warehouse_view,,1,0,0,0

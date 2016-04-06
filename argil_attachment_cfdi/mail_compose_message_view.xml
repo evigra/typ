@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record model="ir.ui.view" id="inhrt_email_compose_message_wizard_form">
+            <field name="name">mail.compose.message.form.inherit</field>
+            <field name="model">mail.compose.message</field>
+            <field name="type">form</field>
+            <field name="inherit_id" ref="mail.email_compose_message_wizard_form"/>
+            <field name="arch" type="xml">
+                
+                <field name="subject" position="before">
+                    <field name="model" invisible="1"/>
+                    <field name="res_id" invisible="1"/>
+                </field>
+                <field name="attachment_ids"  position="replace">
+                    <field name="attachment_ids" widget="many2many_binary" on_change="onchange_attachments(attachment_ids,model,res_id)"/>
+                </field>
+
+            </field>
+        </record>
+
+    </data>
+</openerp>

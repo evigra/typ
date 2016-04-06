@@ -1,0 +1,30 @@
+<openerp>
+    
+    <data>
+        
+        <record id="account_journaltree_fit" model="ir.ui.view">
+            <field name="name">account.journal.fit</field>
+            <field name="model">account.journal</field>
+            <field name="inherit_id" ref="account.view_account_journal_tree"/>
+            <field name="arch" type="xml">
+                <field name="name" position="after">
+                    <field name="journal_type"/>
+                </field>
+            </field>
+        </record>
+        
+        <record id="account_journalform_fit" model="ir.ui.view">
+            <field name="name">account.journal.fit</field>
+            <field name="model">account.journal</field>
+            <field name="type">form</field>
+            <field name="inherit_id" ref="account.view_account_journal_form"/>
+            <field name="arch" type="xml">
+                <field name="code" position="after">
+                    <field name="journal_type" widget="selection"/>
+                </field>
+            </field>
+        </record>
+        
+    </data>
+    
+</openerp>

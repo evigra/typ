@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+update_date_stock_user,update_date_stock,model_update_date_stock,stock.group_stock_user,1,1,1,1
+update_date_stock_full_manager,update_date_stock,model_update_date_stock,stock.group_stock_manager,1,1,1,1
+update_shipment_purchase_full_manager,update_shipment_purchase,model_update_shipment_purchase,stock.group_stock_manager,1,1,1,1
+update_shipment_purchase_line_full_manager,update_shipment_purchase_line,model_update_shipment_purchase_line,stock.group_stock_manager,1,1,1,1

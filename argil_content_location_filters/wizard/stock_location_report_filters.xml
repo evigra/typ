@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="view_stock_location_report_filter" model="ir.ui.view">
+            <field name="name">Filtros para Contenido de Ubicación</field>
+            <field name="model">stock.location.report_filter</field>
+            <field name="arch" type="xml">
+               <form string="Products by Location Filters" version="7.0">
+                    <group col="4" colspan="4">
+                        <separator string="Indicaciones" colspan="4" />
+                        <div colspan="4">
+                        El reporte funciona de la siguiente manera:<BR/>
+                        1. Debe seleccionar por lo menos una ubicación<BR/>
+                        2. Puede definir que el reporte "traiga" todos los productos "parecidos a"<BR/>
+                        3. Puede especificar varios productos<BR/>
+                        4. Puede especificar que traiga todos los productos de una categoría en particular<BR/>
+                        Nota: Se ignoran las opciones si tiene una previamente especificada, o sea, si tiene capturado un valor en "Producto parecido a", entonces se ignorarán los valores de<BR />
+                            Productos y/o Categorías de Productos. Si deja vacío el espacio para "Producto parecido a" y especifica algunos Productos pero además captura <BR/>
+                            algunas Categorías de Productos entonces estas últimas serán ignoradas.
+                        </div>
+                        <separator string="Tipo de Reporte" colspan="4" />
+                        <field name="report_type" attrs="{'invisible': [('reporte_bool','!=',False)]}" colspan="2"/>
+                        <separator string="Ubicaciones de Inventario" colspan="4" />
+                        <field name="location_ids" colspan="4" required="1" nolabel="1" domain="[('usage','=','internal')]"/>
+                        <separator string="Productos" colspan="4" />
+                        <field name="product_name" colspan="4"/>
+                        <field name="product_ids" colspan="4" nolabel="1"/>
+                        <separator string="Categorías de Productos" colspan="4" />
+                        <field name="product_categ_ids" colspan="4" nolabel="1"/>
+                    </group>
+                    <footer>
+                        <button name="do_report" string="Imprimir" type="object" class="oe_highlight"/>
+                        or
+                        <button string="Cancel" class="oe_link" special="cancel" />
+                    </footer>
+                </form>
+            </field>
+        </record>
+        <!-- Remplazo del campo del reporte segun el grupo perteneciente -->
+        <record id="group_argil_content_location_filters_refacciones" model="res.groups">
+            <field name="name">Almacen / Existencias Ubicacion / Refacciones</field>
+        </record>
+        <!-- Se agrega una vista que hereda de los filtros de ubicacion -->
+        <record id="view_stock_location_report_refacciones" model="ir.ui.view">
+          <field name="name">Refacciones Soporte</field>
+          <field name="model">stock.location.report_filter</field>
+          <field name="inherit_id" ref="view_stock_location_report_filter" />
+          <field name="arch" type="xml">
+            <field name="report_type" position="after">
+                <field name="reporte_bool"/>
+            </field>
+          </field>
+        </record>
+        <!-- Se agrega una vista que afectara la vista heredada para ocultara la lista con los reportes -->
+        <record id="group_argil_content_location_filters_inh" model="ir.ui.view">
+          <field name="name">stock.location.report_filter.report_type</field>
+          <field name="model">stock.location.report_filter</field>
+          <field name="inherit_id" ref="view_stock_location_report_filter" />
+          <field name="arch" type="xml">
+            <field name="report_type" position="replace">
+              <field name="report_type" groups="argil_content_location_filters.group_argil_content_location_filters_refacciones" attrs="{'invisible': [('report_type','!=','selection_key')]}" />
+            </field>
+          </field>
+        </record>
+       <!-- Acción para el Wizard -->
+       <record id="action_stock_location_report_filter" model="ir.actions.act_window">
+          <field name="name">Filtros para Contenido de Ubicación</field>
+          <field name="type">ir.actions.act_window</field>
+          <field name="res_model">stock.location.report_filter</field>
+          <field name="view_type">form</field>
+          <field name="view_mode">form</field>
+          <field name="target">new</field>
+       </record>
+                
+        
+        <menuitem name="Existencias por Ubicación" 
+                id="menu_stock_location_report_filter" action="action_stock_location_report_filter"
+                parent="stock.menu_stock_product" sequence="20"/>
+
+    </data>
+</openerp>

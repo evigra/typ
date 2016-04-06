@@ -1,0 +1,8 @@
+name,nominal_lines/name,nominal_lines/final,nominal_lines/initial,nominal_lines/percentage,liters_parts_lines/name,liters_parts_lines/final,liters_parts_lines/initial,liters_parts_lines/percentage
+Parameters,Factura de Contado,,,3.5,Mas de 20000 Piezas,,20000,1
+,Factura Pagada a los 30 Dias,30,1,3,,,,
+,Factura Pagada de 31 a 45 Dias,45,31,2.5,,,,
+,Factura Pagada 46 a 60 Dias,60,46,2,,,,
+,Factura Pagada de 61 a 180 Dias,180,61,1.5,,,,
+,,,,,"De 10,001 Piezas a 19999",19999,10001,
+,,,,,Menos de 10000 Piezas,10000,1,-0.5

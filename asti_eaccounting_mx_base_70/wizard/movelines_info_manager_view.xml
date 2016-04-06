@@ -1,0 +1,26 @@
+<openerp>
+    
+    <data>
+        
+        <record id="moveline_info_manager_form" model="ir.ui.view">
+            <field name="name">moveline.info.manager.form</field>
+            <field name="model">moveline.info.manager</field>
+            <field name="arch" type="xml">
+                <form string="Información para contabilidad electrónica" version="7.0">
+                    <separator colspan="4" string="Asiento relacionado"/>
+                    <group col="8">
+                        <field name="line_name"/>
+                        <field name="line_account"/>
+                   		<field name="debit" attrs="{'invisible' : [('credit', '!=', 0.0)]}"/>
+                        <field name="credit" attrs="{'invisible' : [('debit', '!=', 0.0)]}"/>
+                    </group>
+                    <footer>
+                        <button type="object" name="save_changes" string="Guardar" icon="gtk-save" class="oe_highlight"/> 
+                    </footer>
+                </form>
+            </field>
+        </record>
+        
+    </data>
+    
+</openerp>

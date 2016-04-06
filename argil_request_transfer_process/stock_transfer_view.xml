@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+         <record id="view_stock_transfer_out_form2" model="ir.ui.view"> 
+             <field name="name">stock.transfer.out.form2</field> 
+             <field name="model">stock.transfer</field> 
+             <field name="inherit_id" ref="argil_stock_transfer.view_stock_transfer_out_form" /> 
+             <field name="arch" type="xml">
+                  <field name="product_id"  position="before"> 
+                     <field name='name' /> 
+                 </field> 
+             </field> 
+         </record> 
+
+         <record id="view_stock_transfer_in_form2" model="ir.ui.view"> 
+             <field name="name">stock.transfer.in.form2</field> 
+             <field name="model">stock.transfer</field> 
+             <field name="inherit_id" ref="argil_stock_transfer.view_stock_transfer_in_form" /> 
+             <field name="arch" type="xml">
+                  <field name="product_id"  position="before"> 
+                     <field name='name' /> 
+                 </field> 
+             </field> 
+         </record> 
+        
+    </data>
+</openerp>

@@ -1,0 +1,6 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+account_invoice_attachment_manager,account.invoice.attachment,model_account_invoice_attachment,account.group_account_manager,1,1,1,1
+invoice_update_cfdi_fields_manager,invoice.update.cfdi.fields,model_invoice_update_cfdi_fields,account.group_account_manager,1,1,1,1
+send_massive_invoice_manager,send.massive.invoice,model_send_massive_invoice,account.group_account_manager,1,1,1,1
+
+

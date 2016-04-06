@@ -1,0 +1,401 @@
+<openerp>
+<data>
+
+<!-- 
+##############################
+purchase.order
+##############################
+-->
+        <record id="view_purchase_order_form_stock_transfer" model="ir.ui.view">
+            <field name="name">purchase.order.stock.transfer</field>
+            <field name="model">purchase.order</field>
+            <field name="inherit_id" ref="purchase.purchase_order_form"/>
+            <field eval="1" name="priority"/>
+            <field name="arch" type="xml">
+                <notebook position="inside">
+                    <page string="Stock Transfer Related">
+                        <group col="4">
+                            <field name="transfer_expense_line_ids" colspan="4" nolabel="1">
+                                <tree string="Stock Transfer Related" version="7.0" >
+                                    <field name="transfer_id" />
+                                    <field name="amount" />
+                                    <field name="notes" />
+                                </tree>
+                            </field>
+                            <field name="usable_for_transfer" />
+                            <field name="usable_amount_for_transfer" />
+                        </group>
+                    </page>
+                </notebook>
+            </field>
+        </record>
+
+
+<!-- 
+##############################
+stock.location
+##############################
+-->
+        <record id="view_location_form_stock_transfer" model="ir.ui.view">
+            <field name="name">stock.location.stock.transfer</field>
+            <field name="model">stock.location</field>
+            <field name="inherit_id" ref="stock.view_location_form"/>
+            <field eval="1" name="priority"/>
+            <field name="arch" type="xml">
+                <field name="active" position="after">
+                    <field name="transfer_location_type" attrs="{'invisible': [('usage', 'not in', ('inventory','transit'))]}"/>
+                </field>
+                <group string="Accounting Information" position="attributes">
+                    <attribute name="attrs">{'invisible':[('usage','not in',('inventory','production','transit'))]}</attribute>
+                </group>
+            </field>
+        </record>
+    
+    
+<!-- 
+##############################
+stock.move
+##############################
+-->
+        <record id="view_move_form_stock_transfer" model="ir.ui.view">
+            <field name="name">stock.move.form</field>
+            <field name="model">stock.move</field>
+            <field name="inherit_id" ref="stock.view_move_form"/>
+            <field eval="1" name="priority"/>
+            <field name="arch" type="xml">
+                <field name="name" position="after">
+                    <field name="stock_transfer_id" />
+                    <!--<field name="stock_transfer_line_id" />                    -->
+                </field>
+                <group name="destination_grp" position="after">
+                    <group colspan="4" col="4">
+                        <separator string="move_history_ids" colspan="4" />
+                        <field name="move_history_ids" colspan="4" nolabel="1"/>
+                        <separator string="move_history_ids2" colspan="4" />
+                        <field name="move_history_ids2" colspan="4" nolabel="1"/>
+                    </group>
+                </group>
+            </field>
+        </record>
+
+
+
+<!-- 
+##############################
+stock.transfer
+##############################
+-->
+<!-- SEARCH View for stock.transfer  --> 
+    <record id="view_stock_transfer_list_search" model="ir.ui.view">
+        <field name="name">stock.transfer.search</field>
+        <field name="model">stock.transfer</field>
+        <field name="type">search</field>
+        <field name="arch" type="xml">
+            <search string="Stock Transfer">
+                <filter string="Incoming Stock Transfer" icon="terp-check" domain="[('type','=','in')]"/>
+                <filter string="Outgoing Stock Transfer" icon="terp-check" domain="[('type','=','out')]"/>
+                <separator orientation="vertical"/>
+                <filter string="Draft" icon="terp-gtk-media-pause" domain="[('state','=','draft')]"/>
+                <separator orientation="vertical"/>
+                <filter string="Process" icon="terp-gtk-jump-to-ltr" domain="[('state','=','process')]"/>
+                <separator orientation="vertical"/>
+                <filter string="Done" icon="terp-check" domain="[('state','=','done')]"/>
+                <separator orientation="vertical"/>
+                <filter string="Cancelled" icon="terp-dialog-close" domain="[('state','=','cancel')]"/>
+                <filter string="This month" icon="terp-check" domain="[('date','&gt;=', time.strftime('%%Y-%%m-01'))]" name="this_month" />
+                <newline/>
+                <field name="name"/>
+                <field name="warehouse_id" />
+                <field name="warehouse_subsidiary_id" widget="selection"/>
+                <field name="date"/>
+                <newline/>
+                <group  expand='0' string='Group by...'>
+                    <filter string='State' icon="terp-stock_symbol-selection" domain="[]" context="{'group_by' : 'state'}" />
+                    <separator orientation="vertical"/>
+                    <filter string='Date' icon="terp-stock_symbol-selection" domain="[]" context="{'group_by' : 'date'}" />
+                    <separator orientation="vertical"/>
+                    <filter string='Warehouse' icon="terp-stock_symbol-selection" domain="[]" context="{'group_by' : 'warehouse_id'}" />
+                    <filter string='Warehouse Subsidiary' icon="terp-stock_symbol-selection" domain="[]" context="{'group_by' : 'warehouse_subsidiary_id'}" />
+                </group>
+        </search>
+      </field>
+    </record>
+
+<!-- TREE View for stock.transfer Out  -->
+    <record model="ir.ui.view" id="view_stock_transfer_out_tree">
+      <field name="name">stock.transfer.out.tree</field>
+      <field name="model">stock.transfer</field>
+      <field name="type">tree</field>
+      <field name="arch" type="xml">
+        <tree string="Outgoing Stock Transfer" colors="gray:state=='cancel';red:state=='draft';blue:state=='process';">
+            <field name="name" />
+            <field name="date" />
+            <field name="eta" />
+            <field name="warehouse_id" />
+            <field name="warehouse_subsidiary_id" string="Stock Transfer To"/>
+            <field name="company_id" groups="base.group_multi_company" />
+            <field name="state" />
+	   </tree>
+      </field>
+    </record>
+
+
+<!-- TREE View for stock.transfer In  -->
+    <record model="ir.ui.view" id="view_stock_transfer_in_tree">
+      <field name="name">stock.transfer.in.tree</field>
+      <field name="model">stock.transfer</field>
+      <field name="type">tree</field>
+      <field name="arch" type="xml">
+        <tree string="Incoming Stock Transfer" colors="gray:state=='cancel';red:state=='draft';blue:state=='process';">
+            <field name="name" />
+            <field name="date" />
+            <field name="warehouse_subsidiary_id" string="Stock Transfer From"/>
+            <field name="warehouse_id" />
+            <field name="company_id" groups="base.group_multi_company" />
+            <field name="state" />
+	   </tree>
+      </field>
+    </record>
+
+
+<!-- FORM View for stock.transfer Out -->
+    <record id="view_stock_transfer_out_form" model="ir.ui.view">
+      <field name="name">stock.transfer.out.form</field>
+      <field name="model">stock.transfer</field>
+      <field name="type">form</field>
+      <field name="arch" type="xml">
+        <form string="Outgoing Stock Transfer" version="7.0">
+          <header>
+            <button name="action_cancel" states="draft,done" string="Cancel"  type='object'
+                    confirm="Are you sure you want to Cancel this Stock Transfer ?" /> <!--groups="purchase.group_purchase_manager"/> -->
+            <button name="action_confirm_transfer" states="draft" type='object' string="Send" class="oe_highlight" /> <!--groups="purchase.group_purchase_manager"/> -->
+            <field name="state" widget="statusbar" statusbar_visible="draft,done"/>
+          </header>
+          <sheet>
+            <h1>
+              <label string="Stock Transfer"/>
+              <field name="name" class="oe_inline" readonly="1"/>
+            </h1>
+            <field name="type" invisible="1"/>
+            <field name="company_id" invisible="1"/>
+            <group colspan="4" col="4">
+                <field name="date" />
+                <field name="eta" attrs="{'required': [('type', '=', 'out')]}"/>
+                <field name="warehouse_id" on_change="on_change_warehouse_id(warehouse_id)" string="Warehouse Departure"/>
+                <field name="location_id" domain="[('usage', '=', 'internal')]" string="Location Departure"/> 
+                <field name="warehouse_subsidiary_id" domain="[('id', '!=', warehouse_id)]" string="Send to Warehouse"/>
+                <notebook colspan="4">
+                    <page string="Outgoing Products">
+                        <group colspan="4" col="4">
+                            <separator string="Related Expenses" colspan="4"/>
+                            <field name="expense_line" nolabel="1" colspan="4">
+                                <tree string="Stock Transfer Expenses" version="7.0" editable="bottom">
+                                    <field name="purchase_order_id" on_change="on_change_purchase_order_id(purchase_order_id)"
+                                           domain="[('state','in',('approved','done')),('usable_for_transfer','=',1)]"/>
+                                    <field name="purchase_order_amount"/>
+                                    <field name="assigned_amount" on_change="on_change_assigned_amount(assigned_amount, purchase_order_id)" />
+                                    <field name="assigned_percent" on_change="on_change_assigned_percent(assigned_percent)"/>
+                                    <field name="amount" sum="Expense Amount"/>
+                                </tree>
+                            </field>
+                            <field name="expense_amount" />
+                            <button name="button_dummy" states="draft" string="Compute Expenses" 
+                                    type="object" icon="terp-stock_format-scientific" 
+                                    attrs="{'invisible': [('state', '!=', 'draft')]}"/>
+                            <separator string="Outgoing Products" colspan="4"/>
+                            <field name="transfer_line" nolabel="1" colspan="4">
+                                <tree string="Outgoing Products" version="7.0" editable="bottom">
+                                    <field name="product_id" on_change="on_change_product_id(product_id)"
+                                            domain="[('type','=','product')]"/>
+                                    <field name="qty" on_change="on_change_qty(qty, standard_price)"/>
+                                    <field name="product_uom" on_change="on_change_product_uom(product_id, product_uom, qty, standard_price)"/>
+                                    <field name="standard_price" invisible="1"/>
+                                    <field name="standard_price_dummy" />
+                                    <field name="amount_product_cost" sum="Before Expenses"/>
+                                    <field name="amount_expenses" sum="Expenses" />
+                                    <field name="amount" sum="Amount Product Cost"/>
+                                </tree>
+                            </field>
+                            <field name="product_cost_wo_expenses" />
+                            <field name="product_cost_amount" />
+                        </group>
+                    </page>
+                    <page string="Other Information">
+                        <group col="4" colspan="4">
+                            <field name="expense_account_move_id" />
+                            <newline />
+                            <field name="transfer_id_to_receive" />
+                            <field name="received" />
+                        </group>
+                    </page>
+                </notebook>
+                <field name="notes" nolabel="1" placeholder="Notes..." colspan="4"/>
+            </group>
+          </sheet>
+          <div class="oe_chatter">
+            <field name="message_follower_ids" widget="mail_followers"/>
+            <field name="message_ids" widget="mail_thread" placeholder="Share a message..."/>
+          </div>
+        </form>
+      </field>
+    </record>
+    
+    
+<!-- FORM View for stock.transfer In -->
+    <record id="view_stock_transfer_in_form" model="ir.ui.view">
+      <field name="name">stock.transfer.in.form</field>
+      <field name="model">stock.transfer</field>
+      <field name="type">form</field>
+      <field name="arch" type="xml">
+        <form string="Incoming Stock Transfer" version="7.0">
+          <header>            
+            <button name="action_cancel" states="draft,done" string="Cancel"  type='object'
+                    confirm="Are you sure you want to Cancel this Stock Transfer ?" /> <!--groups="purchase.group_purchase_manager"/> -->
+            <button name="action_confirm_transfer" states="draft" type='object' string="Receive" class="oe_highlight" /> <!--groups="purchase.group_purchase_manager"/> -->
+            <field name="state" widget="statusbar" statusbar_visible="draft,done"/>
+          </header>
+          <sheet>
+            <h1>
+              <label string="Stock Transfer"/>
+              <field name="name" class="oe_inline" readonly="1"/>
+            </h1>
+            <field name="type" invisible="1"/>
+            <field name="company_id" invisible="1"/>
+            <group colspan="4" col="4">
+                <field name="date" />
+                <field name="eta" attrs="{'required': [('type', '=', 'out')]}"/>
+                <field name="warehouse_id" on_change="on_change_warehouse_id(warehouse_id)" string="Arrival to Warehouse" readonly="1"/>
+                <field name="location_id" domain="[('usage', '=', 'internal')]" string="Arrival to Location"/>
+                <field name="warehouse_subsidiary_id" domain="[('id', '!=', warehouse_id)]" string="Departure from Warehouse" readonly="1"/>
+                <field name="origin" />
+                <notebook colspan="4">
+                    <page string="Incoming Products">
+                        <group colspan="4" col="4">
+                            <separator string="Related Expenses" colspan="4"/>
+                            <field name="expense_line" nolabel="1" colspan="4">
+                                <tree string="Stock Transfer Expenses" version="7.0" editable="bottom">
+                                    <field name="purchase_order_id" domain="[('state','in',('approved','done')),('usable_for_transfer','=',1)]"/>
+                                    <field name="purchase_order_amount"/>
+                                    <field name="assigned_amount" on_change="on_change_assigned_amount(assigned_amount,purchase_order_id)" />
+                                    <field name="assigned_percent" on_change="on_change_assigned_percent(assigned_percent)"/>
+                                    <field name="amount" sum="Expense Amount"/>
+                                </tree>
+                            </field>
+                            <field name="expense_amount" />
+                            <button name="button_dummy" states="draft" string="Compute Expenses" 
+                                    type="object" icon="terp-stock_format-scientific" 
+                                    attrs="{'invisible': [('state', '!=', 'draft')]}"/>
+                            <separator string="Incoming Products" colspan="4"/>
+                            <field name="transfer_line" nolabel="1" colspan="4" readonly="1">
+                                <tree string="Incoming Products" version="7.0" >
+                                    <field name="product_id" on_change="on_change_product_id(product_id)"
+                                            domain="[('type','=','product')]"/>
+                                    <field name="qty" on_change="on_change_qty(qty, standard_price)"/>
+                                    <field name="product_uom" on_change="on_change_product_uom(product_id, product_uom, qty, standard_price)"/>
+                                    <field name="standard_price" invisible="1"/>
+                                    <field name="standard_price_dummy" />
+                                    <field name="amount_product_cost" sum="Before Expenses"/>
+                                    <field name="amount_expenses" sum="Expenses" />
+                                    <field name="amount" sum="Amount Product Cost"/>
+                                </tree>
+                            </field>
+                            <field name="product_cost_wo_expenses" />
+                            <field name="product_cost_amount" />
+                        </group>
+                    </page>
+                    <page string="Other Information">
+                        <group col="4" colspan="4">
+                            <field name="expense_account_move_id" />
+                            <newline />
+                            <field name="transfer_id_to_receive" />
+                            <field name="received" />
+                        </group>
+                    </page>
+                </notebook>
+                <field name="notes" nolabel="1" placeholder="Notes..." colspan="4"/>
+            </group>
+          </sheet>
+          <div class="oe_chatter">
+            <field name="message_follower_ids" widget="mail_followers"/>
+            <field name="message_ids" widget="mail_thread" placeholder="Share a message..."/>
+          </div>
+        </form>
+      </field>
+    </record>
+        
+        
+<!-- Action for Suppliers stock.transfer -->
+    <record model="ir.actions.act_window" id="action_stock_transfer_out">
+        <field name="name">Outgoing Stock Transfer</field>
+        <field name="res_model">stock.transfer</field>
+        <field name="context">{'search_default_this_month': 1,'default_type':'out'}</field>
+        <field name="domain">[('type','=','out')]</field>
+        <field name="view_id" ref="view_stock_transfer_out_tree"/>
+        <field name="search_view_id" ref="view_stock_transfer_list_search"/>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+        
+    <record id="action_stock_transfer_out_view1" model="ir.actions.act_window.view">
+        <field eval="1" name="sequence"/>
+        <field name="view_mode">tree</field>
+        <field name="act_window_id" ref="action_stock_transfer_out"/>
+    </record>
+
+    <record id="action_stock_transfer_out_view2" model="ir.actions.act_window.view">
+        <field eval="2" name="sequence"/>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="view_stock_transfer_out_form"/>
+        <field name="act_window_id" ref="action_stock_transfer_out"/>
+    </record>
+        
+
+<!-- Action for Customer stock.transfer -->
+    <record model="ir.actions.act_window" id="action_stock_transfer_in">
+        <field name="name">Incoming Stock Transfer</field>
+        <field name="res_model">stock.transfer</field>
+        <field name="context">{'search_default_this_month': 1,'default_type':'in'}</field>
+        <field name="domain">[('type','=','in')]</field>
+        <field name="view_id" ref="view_stock_transfer_in_tree"/>
+        <field name="search_view_id" ref="view_stock_transfer_list_search"/>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+        
+    <record id="action_stock_transfer_in_view1" model="ir.actions.act_window.view">
+        <field eval="1" name="sequence"/>
+        <field name="view_mode">tree</field>
+        <field name="act_window_id" ref="action_stock_transfer_in"/>
+    </record>
+
+    <record id="action_stock_transfer_in_view2" model="ir.actions.act_window.view">
+        <field eval="2" name="sequence"/>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="view_stock_transfer_in_form"/>
+        <field name="act_window_id" ref="action_stock_transfer_in"/>
+    </record>
+
+    
+    <menuitem id="menu_stock_transfer_warehouse_mgmt" 
+              name="Stock Transfers" 
+              parent="stock.menu_stock_root" 
+              sequence="2" 
+              groups="group_stock_transfer_in,group_stock_transfer_out"/>
+        
+<!-- Menu for stock.transfer IN -->
+    <menuitem name="Incoming Transfer" sequence="10"
+              parent="menu_stock_transfer_warehouse_mgmt"
+              id="menu_stock_transfer_in_form" 
+              action="action_stock_transfer_in"
+              groups="group_stock_transfer_in"/>
+
+<!-- Menu for stock.transfer OUT -->
+    <menuitem name="Outgoing Transfer" sequence="11"
+              parent="menu_stock_transfer_warehouse_mgmt"
+              id="menu_stock_transfer_out_form" 
+              action="action_stock_transfer_out"
+              groups="group_stock_transfer_out"/>
+</data>
+</openerp>
+
+

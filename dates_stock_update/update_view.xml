@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <!--======================FORM VIEW =======================-->
+        <record id="update_date_stock_form_id" model="ir.ui.view">
+            <field name="name">update.date.stock</field>
+            <field name="model">update.date.stock</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Actualización de Fechas de Recepción" version="7.0">
+                    <separator colspan="4" string="Selecciona la Nueva Fecha y Pulsa Actualizar"/>
+                    <group colspan="4">
+                      <field name="datetime" />
+                    </group>
+                    
+                    <center>
+                        <group col="4" colspan="2">
+                            <button special="cancel" string="_Cancelar" type="object" icon="gtk-cancel"/>
+                            <button name="update_fields_date" string="_Actualizar" type="object" icon='gtk-execute'/>
+                        </group>
+                    </center>
+                </form>
+
+                </field>
+            </record>
+
+        <!--============================================ACTION========================================-->
+
+        <act_window
+            name="Actualización de Fechas/Recepción"
+            res_model="update.date.stock"
+            src_model="stock.picking.in"
+            view_mode="form" target="new"
+            key2="client_action_multi"
+            id="update_fiels_date_picking_action"/>
+
+        <act_window
+            name="Actualización de Fechas/Recepción"
+            res_model="update.date.stock"
+            src_model="stock.move"
+            view_mode="form" target="new"
+            key2="client_action_multi"
+            id="update_fiels_date_move_action"/>
+
+        <act_window
+            name="Actualización de Fechas/Recepción"
+            res_model="update.date.stock"
+            src_model="purchase.order"
+            view_mode="form" target="new"
+            key2="client_action_multi"
+            id="update_fiels_date_move_action"/>
+
+    </data>
+</openerp>

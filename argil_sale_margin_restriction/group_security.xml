@@ -1,0 +1,9 @@
+<openerp>
+    <data>
+        
+        <record model="res.groups" id="group_minimal_sale_margin">
+            <field name="name">Puede vender debajo del margen minimo</field>
+        </record>
+                
+    </data>
+</openerp>

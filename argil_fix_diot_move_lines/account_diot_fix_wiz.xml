@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>        
+        
+        <record id="view_account_move_line_fix_diot" model="ir.ui.view">
+          <field name="name">Corregir Partidas DIOT</field>
+          <field name="model">account.move.line.diot_fix</field>
+          <field name="type">form</field>
+          <field name="arch" type="xml">
+	        <form string="Corregir Partidas DIOT" version="7.0">
+                <separator colspan="4" string="Intentar Corregir Partidas ?" />
+                <footer>
+                    <button name="fix_diot_move_lines" string="Corregir" colspan="1" default_focus="1" type="object" icon="gtk-ok"/>
+                    or
+                    <button special="cancel" string="Cancel" class="oe_link"/>
+                
+                </footer>
+	        </form>
+          </field>
+        </record>
+        
+        
+        <record id="action_account_move_line_fix_diot" model="ir.actions.act_window">
+          <field name="name">Corregir Partidas DIOT</field>
+          <field name="type">ir.actions.act_window</field>
+          <field name="res_model">account.move.line.diot_fix</field>
+          <!--<field name="src_model">account.move.line</field>-->
+          <field name="view_type">form</field>
+          <field name="view_mode">form</field>
+          <field name="view_id" ref="view_account_move_line_fix_diot"/>
+            <field name="context">{}</field>
+            <field name="target">new</field>
+        </record>
+
+        <record model="ir.values" id="validate_account_move_line_fix_diot">
+            <field name="model_id" ref="account.model_account_move_line" />
+            <field name="name">Corregir Partidas DIOT</field>
+            <field name="key2">client_action_multi</field>
+            <field name="value" eval="'ir.actions.act_window,' + str(ref('action_account_move_line_fix_diot'))" />
+            <field name="key">action</field>
+            <field name="model">account.move.line</field>
+        </record>
+        
+    
+    </data>
+</openerp>

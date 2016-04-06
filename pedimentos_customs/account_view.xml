@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+<data>
+
+        <!-- Creando la Vista Asistente -->
+
+         <record id="wizard_pedimento_manual_form" model="ir.ui.view">
+            <field name="name">Asistente Asignacion Pedimentos</field>
+            <field name="model">wizard.pedimento.manual</field>
+            <field name="arch" type="xml">
+              <form string="Asistente para Asignar Pedimentos" version="7.0">
+                    <sheet>
+                       <group col="4" >
+                            <field name="active_id" invisible="1"/>
+                            <field name="load_automatic" on_change="on_change_lines(active_id)" invisible="1"/>
+                       </group>
+                        <separator string="Inserta los Pedimentos para la Linea" />
+                       
+                        <field name="wizard_pedimentos_ids" >
+                            <tree string="Productos/Pedimentos" editable="bottom" >
+                                <field name="aduana" />
+                                <field name="fecha" />
+                                <field name="numero" />
+                            </tree>
+                        </field>
+                       
+                    </sheet>
+                  <footer>
+                    <center>
+                      <button name="assign_pedimentos" string="Asignar" icon="gtk-execute" type="object" class="oe_highlight"/>
+                      ó
+                      <button string="Cancelar" class="oe_link" special="cancel"/>
+                    </center>
+                  </footer>
+             </form>
+            </field>
+        </record>
+
+
+        <act_window name="Asignar Pedimentos"
+            res_model="wizard.pedimento.manual"
+            src_model="account.invoice.line"
+            key2="client_action_multi"
+            multi="True"
+            view_mode="form"
+            view_type="form"
+            target="new"
+            id="action_wizard_pedimentos_manuales"/>
+
+    <!-- HERENCIA AL METODO RECIBIR PRODUCTOS EN COMPRAS -->
+    <record id="invoice_custom_inhrt_lot_invoice" model="ir.ui.view">
+            <field name="name">account.invoice.pedimentos</field>
+            <field name="model">account.invoice</field>
+            <field name="type">form</field>
+            <field name="inherit_id" ref="account.invoice_form"/>
+            <field name="arch" type="xml">
+                <field name="origin" position="after">
+                    <field name="asign_automatic_lot_ped" />
+                    <field name="ignored_lot_ped" />
+                </field>
+                <xpath expr="//field[@name='invoice_line']/tree/field[@name='price_subtotal']" position="after">
+                    <button name="%(action_wizard_pedimentos_manuales)d" string="Asignar Pedimentos" icon="gtk-execute" type="action" attrs="{'invisible':[('product_id','!=',False)]}"/>
+                </xpath>
+
+            </field>
+        </record>
+
+</data>
+</openerp>

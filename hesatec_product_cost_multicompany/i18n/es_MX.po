@@ -1,0 +1,63 @@
+# Translation of OpenERP Server.
+# This file contains the translation of the following modules:
+# 	* hesatec_product_cost_multicompany
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: OpenERP Server 7.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-11-07 01:08+0000\n"
+"PO-Revision-Date: 2013-11-06 19:10-0600\n"
+"Last-Translator: Israel CA <israel.cruz@hesatecnica.com>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: \n"
+"X-Generator: Poedit 1.5.7\n"
+
+#. module: hesatec_product_cost_multicompany
+#: model:ir.model,name:hesatec_product_cost_multicompany.model_product_product
+#: field:product.cost_multicompany,product_id:0
+msgid "Product"
+msgstr "Producto"
+
+#. module: hesatec_product_cost_multicompany
+#: help:product.product,standard_price:0
+msgid ""
+"Cost price of the product used for standard stock valuation in accounting "
+"and used as a base price on purchase orders."
+msgstr ""
+"Costo del Producto usado para la valorización estándar en contabilidad, y es "
+"usado como base para las órdenes de compra."
+
+#. module: hesatec_product_cost_multicompany
+#: field:product.cost_multicompany,company_id:0
+msgid "Company"
+msgstr "Compañía"
+
+#. module: hesatec_product_cost_multicompany
+#: sql_constraint:product.cost_multicompany:0
+msgid "The product cost must be unique per company!"
+msgstr "El Costo del Producto debe ser único por Compañía !"
+
+#. module: hesatec_product_cost_multicompany
+#: model:ir.model,name:hesatec_product_cost_multicompany.model_product_cost_multicompany
+msgid "Product Cost Multicompany"
+msgstr "Costo de Producto Multicompañía"
+
+#. module: hesatec_product_cost_multicompany
+#: field:product.cost_multicompany,standard_price:0
+#: field:product.product,standard_price:0
+msgid "Cost"
+msgstr "Costo"
+
+#. module: hesatec_product_cost_multicompany
+#: field:product.product,standard_prices:0
+msgid "Standard Price"
+msgstr "Costo"
+
+#. module: hesatec_product_cost_multicompany
+#: help:product.cost_multicompany,standard_price:0
+msgid "Cost price of the product"
+msgstr "Costo del Producto"

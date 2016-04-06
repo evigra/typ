@@ -1,0 +1,46 @@
+<openerp>
+    
+    <data>
+        
+        <record id="company_form_fit" model="ir.ui.view">
+            <field name="name">company.form.fit</field>
+            <field name="model">res.company</field>
+            <field name="type">form</field>
+            <field name="inherit_id" ref="base.view_company_form"/>
+            <field name="arch" type="xml">
+                <field name="zip" position="replace"/>
+                <field name="city" position="replace"/>
+                <field name="state_id" position="replace"/>
+                <!-- customization now -->
+                <label for="street" position="before">
+                    <field name="regname"/>
+                    <field name="rfc"/>
+                </label>
+                <field name="street2" position="after">
+                    <field name="block" placeholder="Colonia" style="width: 64%%"/>
+                    <field name="zip" placeholder="ZIP" style="width: 34%%"/>
+                    <field name="city" placeholder="Municipio"/>
+                    <field name="state_id" placeholder="State"/>
+                </field>
+                <field name="phone" position="after">
+               		<field name="mobile_number"/>
+                </field>
+                <field name="phone" position="before"> 
+                    <field name="license_key" />
+                </field>
+                <xpath expr="/form/sheet/notebook/page[@string='Configuration']/group/group" position="after">
+                    <group colspan="2" col="4" string="Contabilidad electrónica - aplicar moneda en">
+                        <field name="apply_in_check"/>
+                        <field name="apply_in_cfdi"/>
+                        <field name="apply_in_trans"/>
+                        <field name="apply_in_other"/>
+                        <field name="apply_in_paymth"/>
+                        <field name="apply_in_forgn"/>
+                    </group>
+                </xpath>
+            </field>
+        </record>
+        
+    </data>
+    
+</openerp>

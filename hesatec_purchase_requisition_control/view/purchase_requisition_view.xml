@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+        
+        <record model="ir.ui.view" id="view_purchase_requisition_form_ht">
+            <field name="name">purchase.requisition.form.ht</field>
+            <field name="model">purchase.requisition</field>
+            <field name="inherit_id" ref="purchase_requisition.view_purchase_requisition_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='line_ids']/tree/field[@name='product_uom_id']" position="after">
+                    <field name="qty_ordered" />
+                    <field name="qty_remaining" />
+                    <field name="state" />
+                </xpath>
+                <xpath expr="//field[@name='line_ids']/form/group/field[@name='product_uom_id']" position="after">
+                    <field name="qty_ordered" />
+                    <field name="qty_remaining" />
+                    <field name="state" />
+                </xpath>
+                <field name="company_id" position="after">
+                    <field name="incomplete" />
+                </field>
+            </field>
+        </record>
+        
+        
+        <record id="view_purchase_requisition_filter_ht" model="ir.ui.view">
+            <field name="name">purchase.requisition.list.select.ht</field>
+            <field name="model">purchase.requisition</field>
+            <field name="inherit_id" ref="purchase_requisition.view_purchase_requisition_filter" />
+            <field name="arch" type="xml">
+                <filter name="draft" position="after">
+                    <filter icon="terp-document-new" name="incomplete" string="Incomplete" domain="[('incomplete','=',True)]"/>
+                </filter>
+            </field>
+        </record>
+        
+    </data>
+</openerp>

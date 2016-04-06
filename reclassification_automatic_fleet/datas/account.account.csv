@@ -1,0 +1,30 @@
+id,shortcut,active,currency_revaluation,exchange_rate,company_id/id,code,debit,partner_breakdown,currency_id/id,credit,child_parent_ids/id,child_consol_ids/id,tax_ids/id,financial_report_ids/id,name,note,parent_id/id,parent_right,parent_left,reconcile,currency_mode,user_type/id,type
+__export__.account_account_9458,,True,False,,__export__.res_company_3,2-91-1,,False,,,,,,,Fletes Reclasificacion Hermosillo,,__export__.account_account_1477,631,630,False,At Date,account.data_account_type_expense,Regular
+__export__.account_account_9460,,True,False,,__export__.res_company_4,3-91-1,,False,,,,,,,Fletes Reclasificacion Culiacan,,__export__.account_account_2215,1211,1210,False,At Date,__export__.account_account_type_37,Regular
+__export__.account_account_9474,,True,False,,__export__.res_company_5,8-91-1,,False,,,,,,,Fletes Reclasificacion La Paz,,__export__.account_account_2953,1793,1792,False,At Date,__export__.account_account_type_37,Regular
+__export__.account_account_9476,,True,False,,__export__.res_company_6,9-91-1,,False,,,,,,,Fletes Reclasificacion Los Mochis,,__export__.account_account_3445,2367,2366,False,At Date,__export__.account_account_type_37,Regular
+__export__.account_account_9469,,True,False,,__export__.res_company_9,6-91-1,,False,,,,,,,Fletes Reclasificacion Obregon,,__export__.account_account_4429,2955,2954,False,At Date,__export__.account_account_type_37,Regular
+__export__.account_account_9467,,True,False,,__export__.res_company_10,5-91-1,,False,,,,,,,Fletes Reclasificacion Tijuana,,__export__.account_account_5167,3563,3562,False,At Date,__export__.account_account_type_37,Regular
+__export__.account_account_9472,,True,False,,__export__.res_company_11,7-91-1,,False,,,,,,,Fletes Reclasificacion Mexicali,,__export__.account_account_5659,4167,4166,False,At Date,__export__.account_account_type_37,Regular
+__export__.account_account_9478,,True,False,,__export__.res_company_8,10-91-1,,False,,,,,,,Fletes Reclasificacion Guadalajara,,__export__.account_account_6151,4791,4790,False,At Date,__export__.account_account_type_37,Regular
+__export__.account_account_9465,,True,False,,__export__.res_company_7,4-91-1,,False,,,,,,,Fletes Reclasificacion Nogales,,__export__.account_account_6643,5371,5370,False,At Date,__export__.account_account_type_37,Regular
+__export__.account_account_9491,,True,False,,base.main_company,1-92,,False,,,__export__.account_account_9501,,,,Fletes Reclasificacion,,__export__.account_account_8501,6509,6488,False,At Date,account.account_type_expense_view1,View
+,,,,,,,,,,,__export__.account_account_9500,,,,,,,,,,,,
+,,,,,,,,,,,__export__.account_account_9492,,,,,,,,,,,,
+,,,,,,,,,,,__export__.account_account_9493,,,,,,,,,,,,
+,,,,,,,,,,,__export__.account_account_9494,,,,,,,,,,,,
+,,,,,,,,,,,__export__.account_account_9495,,,,,,,,,,,,
+,,,,,,,,,,,__export__.account_account_9496,,,,,,,,,,,,
+,,,,,,,,,,,__export__.account_account_9497,,,,,,,,,,,,
+,,,,,,,,,,,__export__.account_account_9498,,,,,,,,,,,,
+,,,,,,,,,,,__export__.account_account_9499,,,,,,,,,,,,
+__export__.account_account_9501,,True,False,,base.main_company,1-92-1,,False,,,,,,,Fletes Reclasificacion TyP Refrigeracion,,__export__.account_account_9491,6490,6489,False,At Date,account.data_account_type_expense,Regular
+__export__.account_account_9492,,True,False,,base.main_company,1-92-2,,False,,,,,,,Fletes Reclasificacion Hermosillo,,__export__.account_account_9491,6492,6491,False,At Date,account.data_account_type_expense,Regular
+__export__.account_account_9493,,True,False,,base.main_company,1-92-3,,False,,,,,,,Fletes Reclasificacion Culiacan,,__export__.account_account_9491,6494,6493,False,At Date,account.data_account_type_expense,Regular
+__export__.account_account_9494,,True,False,,base.main_company,1-92-4,,False,,,,,,,Fletes Reclasificacion Nogales,,__export__.account_account_9491,6496,6495,False,At Date,account.data_account_type_expense,Regular
+__export__.account_account_9495,,True,False,,base.main_company,1-92-5,,False,,,,,,,Fletes Reclasificacion Tijuana,,__export__.account_account_9491,6498,6497,False,At Date,account.data_account_type_expense,Regular
+__export__.account_account_9496,,True,False,,base.main_company,1-92-6,,False,,,,,,,Fletes Reclasificacion Obregon,,__export__.account_account_9491,6500,6499,False,At Date,account.data_account_type_expense,Regular
+__export__.account_account_9497,,True,False,,base.main_company,1-92-7,,False,,,,,,,Fletes Reclasificacion Mexicalli,,__export__.account_account_9491,6502,6501,False,At Date,account.data_account_type_expense,Regular
+__export__.account_account_9498,,True,False,,base.main_company,1-92-8,,False,,,,,,,Fletes Reclasificacion La Paz,,__export__.account_account_9491,6504,6503,False,At Date,account.data_account_type_expense,Regular
+__export__.account_account_9499,,True,False,,base.main_company,1-92-9,,False,,,,,,,Fletes Reclasificacion Los Mochis,,__export__.account_account_9491,6506,6505,False,At Date,account.data_account_type_expense,Regular
+__export__.account_account_9500,,True,False,,base.main_company,1-92-10,,False,,,,,,,Fletes Reclasificacion Guadalajara,,__export__.account_account_9491,6508,6507,False,At Date,account.data_account_type_expense,Regular

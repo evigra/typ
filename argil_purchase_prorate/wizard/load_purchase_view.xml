@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<openerp>
+    <data>
+        <!-- load purchase -->
+        <record model="ir.ui.view" id="load_purchase_wizard_form">
+            <field name="name">purchase.prorate.load</field>
+            <field name="model">purchase.prorate.load</field>
+            <field name="arch" type="xml">
+                <form string="Load Purchase Order" version="7.0">
+                    <separator string="Purchase Orders"/>
+                    <field name="prorate_id" invisible="1"/>
+                    <field name="company_id" invisible="1"/>
+                    <field name="purchase_ids" nolabel="1" on_change="onchange_purchase_ids(prorate_id,company_id,purchase_ids)"/>
+                    <footer>
+                        <button type="object" name="load_purchase_orders"
+                            class="oe_highlight" string="Load Purchase Order(s)" />
+                        or
+                        <button string="Cancel" class="oe_link" special="cancel" />
+                    </footer>
+                </form>
+                </field>
+                </record>
+    </data>
+    </openerp>

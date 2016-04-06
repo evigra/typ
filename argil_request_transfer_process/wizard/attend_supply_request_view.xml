@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<openerp>
+    <data>
+        <!-- load purchase -->
+        <record model="ir.ui.view" id="attend_supply_request_wizard_form">
+            <field name="name">attend.supply.request.inherit</field>
+            <field name="model">attend.supply.request</field>
+            <field name="inherit_id" ref="argil_supply_request.attend_supply_request_wizard_form"/>
+            <field name="arch" type="xml">
+                <group states="phase2">
+                    <separator string="Request Purchase Orders" colspan="4"/>
+                    <field name="supply_request_pur_line_ids" colspan="4" nolabel="1" create="false">
+                        <tree string="" editable="top" create="false">
+                            <field name="supply_req_id" invisible="0" readonly="1"/>
+                            <field name="product_id" readonly="1" />
+                            <field name="required_date" readonly="1"/>
+                            <field name="from_warehouse_id" invisible="1"/>
+                            <field name="product_uom_id" readonly="1"/>
+                            <field name="qty_request" readonly="1"/>
+                            <field name="process_type" required="1"/>
+                        </tree>
+                        </field>
+                    </group>
+                </field>
+                </record>
+    </data>
+    </openerp>

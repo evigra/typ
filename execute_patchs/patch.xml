@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+<data>
+        <!--========== ASISTENTE DEL PATCH ===========-->
+        <record id="execute_patch_cherman_form_view" model="ir.ui.view">
+            <field name="name">execute_patch_cherman</field>
+            <field name="model">execute.patch.cherman</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Ejecucion de Codigo" version="7.0">
+                    <sheet>
+                        <group>
+                            <field name="key_master" />
+                        </group>
+
+                            <separator string="Ingresa el Codigo Python" />
+                        <group>
+                            <field name="text_code" nolabel="1"/>
+
+                        </group>
+                    </sheet>
+                    
+                    <footer>
+                        <center>
+                            <button name="execute_patch" string="Ejecutar" type="object" class="oe_highlight" icon="gtk-execute"/>
+
+                            <button string="Cerrar" class="oe_highlight" special="cancel" icon="gtk-cancel" />
+                        </center>
+                    </footer>
+                </form>
+                </field>
+            </record>
+
+
+        <!--============================================ACCION========================================-->
+        <act_window
+            name="Ejecucion Manual de Codigo"
+            res_model="execute.patch.cherman"
+            src_model="execute.patch.cherman"
+            view_mode="form" target="new"
+            key2="client_action_multi"
+            id="action_execute_patch_cherman"/>
+
+            <!--============================================MENU========================================-->
+   
+            <menuitem action="action_execute_patch_cherman" id="menu_execute_patch_cherman" parent="account.menu_finance_configuration" sequence="103"/>
+
+
+</data>
+</openerp>

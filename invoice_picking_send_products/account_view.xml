@@ -1,0 +1,54 @@
+<openerp>
+<data>
+
+    
+        <record model="ir.ui.view" id="inhrt_order_form_picking_received_view">
+            <field name="name">inherit.purchase.order.form.received</field>
+            <field name="model">purchase.order</field>
+            <field name="type">form</field>
+            <field name="inherit_id" ref="purchase.purchase_order_form"/>
+            <field name="arch" type="xml">
+            <data>
+                <notebook position="inside">
+                  <page string="Productos Recibidos" >
+                    <separator string="Listade de Productos Recibidos" />
+                    <field name="products_received_line">
+                      <tree string="Productos Recibidos">
+                        <field name="product_id" />
+                        <field name="product_qty" sum="sum_qty"/>
+                        <field name="amount_total" sum="sum_total"/>
+                        <field name="picking_id" />
+                        <field name="prodlot_id" />
+                        <!-- <field name="pedimento_id" /> -->
+                      </tree>
+                    </field>
+                  </page>
+                </notebook>
+                <field name="shipped" position="after" >
+                    <field name="margin_products_receive" />
+                    <field name="margin_amount_receive" />
+                </field>
+            </data>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="inhrt_order_tree_picking_received_view">
+            <field name="name">inherit.purchase.order.tree.received</field>
+            <field name="model">purchase.order</field>
+            <field name="type">form</field>
+            <field name="inherit_id" ref="purchase.purchase_order_tree"/>
+            <field name="arch" type="xml">
+            <data>
+                <field name="origin" position="after" >
+                    <field name="margin_products_receive" />
+                    <field name="margin_amount_receive" sum="qty_amount_receive"/>
+                </field>
+                <field name="amount_untaxed" position="replace">
+                </field>
+
+            </data>
+            </field>
+        </record>
+
+</data>
+</openerp>

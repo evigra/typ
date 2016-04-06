@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+<data>
+        <!-- Creando la Vista Asistente -->
+
+         <record id="asistente_codigos_productos_form" model="ir.ui.view">
+            <field name="name">Asistente Asignacion Codigos</field>
+            <field name="model">asistente.codigos.productos</field>
+            <field name="arch" type="xml">
+              <form string="Asistente para Asignar Codigos Soriana" version="7.0">
+                    <sheet>
+                       <group col="4" >
+                            <field name="active_id" invisible="1"/>
+                            <field name="load_automatic" on_change="on_change_lines(active_id)" invisible="1"/>
+                       </group>
+                        <separator string="Inserta los Codigos para cada Linea" />
+                       
+                        <field name="wizard_lines_ids" >
+                            <tree string="Productos/Codigos" editable="bottom" >
+                                <field name="invoice_line" />
+                                <field name="codigo_soriana" />
+                            </tree>
+                        </field>
+                       
+                    </sheet>
+                  <footer>
+                    <center>
+                      <button name="assign_codigos" string="Asignar" icon="gtk-execute" type="object" class="oe_highlight"/>
+                      ó
+                      <button string="Cancelar" class="oe_link" special="cancel"/>
+                    </center>
+                  </footer>
+             </form>
+            </field>
+        </record>
+
+
+        <act_window name="Asignar Codigos"
+            res_model="asistente.codigos.productos"
+            src_model="asistente.codigos.productos"
+            key2="client_action_multi"
+            multi="True"
+            view_mode="form"
+            view_type="form"
+            target="new"
+            id="action_asistente_codigos_productos"/>
+
+        <!--======================INVOICE=======================-->
+        <record id="view_invoice_form_inherit_attachment_femsa" model="ir.ui.view">
+            <field name="name">account.invoice.form.femsa.attachment</field>
+            <field name="model">account.invoice</field>
+            <field name="type">form</field>
+            <field name="inherit_id" ref="account.invoice_form"/>
+            <field name="arch" type="xml">
+               <field name="date_due" position="after">
+                <!-- ADENDA DE FEMSA -->
+                <field name="no_sociedad" attrs="{'required':[('customer_femsa','=',True)],'invisible':[('customer_femsa','=',False)]}"/>
+                <field name="no_pedido_femsa" attrs="{'required':[('customer_femsa','=',True)],'invisible':[('customer_femsa','=',False)]}"/>
+                <field name="no_entrada_femsa" attrs="{'required':[('customer_femsa','=',True)],'invisible':[('customer_femsa','=',False)]}"/>
+                <field name="no_remision_femsa" attrs="{'required':[('customer_femsa','=',True)],'invisible':[('customer_femsa','=',False)]}"/>
+                <field name="no_socio_femsa" attrs="{'invisible':[('customer_femsa','=',False)]}"/>
+
+                <field name="centro_costos" attrs="{'invisible':[('customer_femsa','=',False)]}"/>
+
+                <field name="inicio_liquidacion" attrs="{'invisible':[('customer_femsa','=',False)]}"/>
+
+                <field name="fin_liquidacion" attrs="{'invisible':[('customer_femsa','=',False)]}"/>
+
+                <field name="retencion1" attrs="{'invisible':[('customer_femsa','=',False)]}"/>
+
+                <field name="retencion2" attrs="{'invisible':[('customer_femsa','=',False)]}"/>
+
+                <field name="retencion3" attrs="{'invisible':[('customer_femsa','=',False)]}"/>
+                
+                <!--<field name="customer_femsa" invisible="1"/> -->
+                <field name="customer_femsa" attrs="{'invisible':[('customer_soriana','=',True)]}"/>
+
+                <!-- ADENDA DE SORIANA -->
+                <field name="no_pedido_soriana" attrs="{'invisible':[('customer_soriana','=',False)],'required':[('customer_soriana','=',True)]}"/>
+                
+                <!-- <field name="no_remision_soriana" attrs="{'invisible':[('customer_soriana','=',False)]}"/> -->
+
+                <!-- <field name="fecha_remision_soriana" attrs="{'invisible':[('customer_soriana','=',False)],'required':[('customer_soriana','=',True)]}"/> -->
+
+                <field name="tienda_entrega_soriana" attrs="{'invisible':[('customer_soriana','=',False)],'required':[('customer_soriana','=',True)]}"/>
+
+                <!-- <field name="tipo_bulto" attrs="{'invisible':[('customer_soriana','=',False)]}"/> -->
+
+                <!-- <field name="entrega_mercancia" attrs="{'invisible':[('customer_soriana','=',False)],'required':[('customer_soriana','=',True)]}"/>
+
+                <field name="entrega_mercancia_especifica" attrs="{'invisible':[('entrega_mercancia','!=','otro')],'required':[('entrega_mercancia','=','otro')]}"/> -->
+
+                <!-- <field name="cantidad_bultos" attrs="{'invisible':[('customer_soriana','=',False)]}"/> -->
+
+                <field name="cantidad_pedidos" attrs="{'invisible':[('customer_soriana','=',False)],'required':[('customer_soriana','=',True)]}"/>
+
+                <field name="fecha_entrega_soriana" attrs="{'invisible':[('customer_soriana','=',False)],'required':[('customer_soriana','=',True)]}"/>
+                <field name="folio_entrada_soriana" attrs="{'invisible':[('customer_soriana','=',False)]}"/>
+
+                <button name="%(action_asistente_codigos_productos)d" string="Asignar Codigos" icon="gtk-execute" type="action" attrs="{'invisible':[('customer_soriana','=',False)]}" class="oe_highlight"/>
+                <newline/>
+
+                <field name="customer_soriana" attrs="{'invisible':[('customer_femsa','=',True)]}"/>
+
+                <!-- ADENDA MANUAL -->
+                <field name="addenda_manual" attrs="{'invisible':['|',('customer_femsa','=',True),('customer_soriana','=',True)]}"/>
+
+               </field>
+                <field name="tax_line" position="before" >
+                    <separator string="Estructura XML" attrs="{'invisible':[('addenda_manual','=',False)],'required':[('addenda_manual','=',True)]}"/>
+                    <field name="addenda_xml" attrs="{'invisible':[('addenda_manual','=',False)],'required':[('addenda_manual','=',True)]}" />
+                </field>
+            </field>
+        </record>
+        <!--========== ADENDA FEMSA ===========-->
+        <record id="addenda_honda_wizard_form_view" model="ir.ui.view">
+            <field name="name">addenda_honda_wizard</field>
+            <field name="model">addenda.honda.wizard.femsa</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Generar Addenda" version="7.0">
+                    <header>
+                        <field name="datas_fname" invisible="1" />
+                        <field name="download_file" invisible="1" />
+                    </header>
+                    <sheet attrs="{'invisible':[('download_file','=',True)]}">
+                        <separator string="Ingresa los parametros para la Addenda" />
+                        <group col="4">
+                            <field name="date" />
+                            <!-- <field name="ref" /> -->
+                            <field name="invoice_id" domain="[('type','=','out_invoice')]" />
+                        </group>
+                    </sheet>
+                    <sheet attrs="{'invisible':[('download_file','=',False)]}">
+                        <div >
+                            <h2>Generacion Completa</h2>
+                            <p>Descarga el Documento: <field name="file" readonly="1" filename="datas_fname"/></p>
+                            <p>El XML Generado esta Codificado <strong>Unicode/UTF-8</strong> asi que puede contener algunos simbolos extraños dentro del Documento</p> 
+                        </div>
+                    </sheet>
+                    <footer>
+                        <center>
+                            <button name="get_info" string="Generar Addenda" type="object" class="oe_highlight" icon="gtk-execute" attrs="{'invisible':[('download_file','=',True)]}"/>
+                            
+                            <button string="Cancel" special="cancel" attrs="{'invisible':[('download_file','=',True)]}" icon="gtk-cancel"/>
+                            <button string="Cerrar" class="oe_highlight" special="cancel" icon="gtk-cancel" attrs="{'invisible':[('download_file','=',False)]}"/>
+                        </center>
+                    </footer>
+                </form>
+                </field>
+            </record>
+
+
+        <!--============================================ACCION========================================-->
+        <act_window
+            name="Generar Addenda Femsa"
+            res_model="addenda.honda.wizard.femsa"
+            src_model="addenda.honda.wizard.femsa"
+            view_mode="form" target="new"
+            key2="client_action_multi"
+            id="action_addenda_honda_wizard_femsa"/>
+
+            <!--============================================MENU========================================-->
+   
+            <menuitem action="action_addenda_honda_wizard_femsa" id="menu_generar_addenda" parent="account.menu_finance_configuration" sequence="100"/>
+
+        <!--========== ADENDA SORIANA ===========-->
+        <record id="addenda_soriana_wizard_form_view" model="ir.ui.view">
+            <field name="name">addenda_honda_wizard</field>
+            <field name="model">addenda.honda.wizard.soriana</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Generar Addenda" version="7.0">
+                    <header>
+                        <field name="datas_fname" invisible="1" />
+                        <field name="download_file" invisible="1" />
+                    </header>
+                    <sheet attrs="{'invisible':[('download_file','=',True)]}">
+                        <separator string="Ingresa los parametros para la Addenda" />
+                        <group col="4">
+                            <field name="date" />
+                            <!-- <field name="ref" /> -->
+                            <field name="invoice_id" domain="[('type','=','out_invoice')]" />
+                        </group>
+                    </sheet>
+                    <sheet attrs="{'invisible':[('download_file','=',False)]}">
+                        <div >
+                            <h2>Generacion Completa</h2>
+                            <p>Descarga el Documento: <field name="file" readonly="1" filename="datas_fname"/></p>
+                            <p>El XML Generado esta Codificado <strong>Unicode/UTF-8</strong> asi que puede contener algunos simbolos extraños dentro del Documento</p> 
+                        </div>
+                    </sheet>
+                    <footer>
+                        <center>
+                            <button name="get_info" string="Generar Addenda" type="object" class="oe_highlight" icon="gtk-execute" attrs="{'invisible':[('download_file','=',True)]}"/>
+                            
+                            <button string="Cancel" special="cancel" attrs="{'invisible':[('download_file','=',True)]}" icon="gtk-cancel"/>
+                            <button string="Cerrar" class="oe_highlight" special="cancel" icon="gtk-cancel" attrs="{'invisible':[('download_file','=',False)]}"/>
+                        </center>
+                    </footer>
+                </form>
+                </field>
+            </record>
+
+
+        <!--============================================ACCION========================================-->
+        <act_window
+            name="Generar Addenda Soriana"
+            res_model="addenda.honda.wizard.soriana"
+            src_model="addenda.honda.wizard.soriana"
+            view_mode="form" target="new"
+            key2="client_action_multi"
+            id="action_addenda_honda_wizard_soriana"/>
+
+            <!--============================================MENU========================================-->
+   
+            <menuitem action="action_addenda_honda_wizard_soriana" id="menu_generar_addenda_soriana" parent="account.menu_finance_configuration" sequence="101"/>
+</data>
+</openerp>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="dropshiping_sale_view_order_form" model="ir.ui.view">
+            <field name="name">dropshipping.sale.order.line.form</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="arch" type="xml">
+                <field name="type" position="after">
+                    <field name="dropshipping" attrs="{'invisible':[('type','!=','make_to_order')]}" />
+                </field>
+            </field>
+        </record>
+    </data>
+</openerp>

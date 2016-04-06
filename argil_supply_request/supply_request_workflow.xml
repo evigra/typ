@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+    <!-- supply request -->
+    <record id="stock_supply_request" model="workflow">
+            <field name="name">Stock Supply Request Basic Workflow</field>
+            <field name="osv">stock.supply_request</field>
+            <field name="on_create">True</field>
+        </record>
+        <record id="act_draft" model="workflow.activity">
+            <field name="wkf_id" ref="stock_supply_request"/>
+            <field name="flow_start">True</field>
+            <field name="name">draft</field>
+        </record>
+        
+        <record id="act_confirmed" model="workflow.activity">
+            <field name="wkf_id" ref="stock_supply_request"/>
+            <field name="name">confirmed</field>
+            <field name="split_mode">XOR</field>
+            <field name="kind">function</field>
+            <field name="action">check_confirm_request()</field>
+        </record>
+        
+        <record id="act_supply_done" model="workflow.activity">
+            <field name="wkf_id" ref="stock_supply_request"/>
+            <field name="name">done</field>
+            <field name="action">write({'state':'done'})</field>
+            <field name="kind">function</field>
+            <field name="flow_stop">True</field>
+            <field name="signal_send">subflow.supply_request_done</field>
+<!--             <field name="join_mode">AND</field> -->
+        </record>
+        
+        <record id="act_cancel" model="workflow.activity">
+            <field name="wkf_id" ref="stock_supply_request"/>
+            <field name="name">cancel</field>
+            <field name="kind">function</field>
+            <field name="flow_stop">True</field>
+            <field name="action">write({'state':'cancel'})</field>
+            <field name="signal_send">subflow.supply_request_cancel</field>
+        </record>
+<!--         <record id="trans_ship_ship_end" model="workflow.transition"> -->
+<!--             <field name="act_from" ref="act_ship"/> -->
+<!--             <field name="act_to" ref="act_ship_end"/> -->
+<!--             <field name="trigger_model">procurement.order</field> -->
+<!--             <field name="trigger_expr_id">procurement_lines_get()</field> -->
+<!--             <field name="condition">test_state('finished')</field> -->
+<!--         </record> -->
+        
+        
+        <!--  supply request transaction -->
+        
+        <record id="trans_draft_confirm" model="workflow.transition">
+            <field name="act_from" ref="act_draft"/>
+            <field name="act_to" ref="act_confirmed"/>
+            <field name="signal">supply_request_confirm</field>
+        </record>
+        
+        <record id="trans_confirm_done" model="workflow.transition">
+            <field name="act_from" ref="act_confirmed"/>
+            <field name="act_to" ref="act_supply_done"/>
+            <field name="signal">supply_request_done</field>
+        </record>
+        
+        <record id="trans_draft_cancelled" model="workflow.transition">
+            <field name="act_from" ref="act_draft"/>
+            <field name="act_to" ref="act_cancel"/>
+            <field name="signal">supply_cancel</field>
+        </record>
+        
+        <record id="trans_confirm_cancelled" model="workflow.transition">
+            <field name="act_from" ref="act_confirmed"/>
+            <field name="act_to" ref="act_cancel"/>
+            <field name="signal">supply_cancel</field>
+        </record>
+        
+    <!-- procurement order activity-->
+        <record id="act_confirm_mtsr" model="workflow.activity">
+            <field name="wkf_id" ref="procurement.wkf_procurement"/>
+            <field name="name">confirm_mtsr</field>
+        </record>
+        
+         <record id="act_make_to_supply_request_done" model="workflow.activity">
+            <field name="wkf_id" ref="procurement.wkf_procurement"/>
+            <field name="name">done_mtsr</field>
+        </record>
+        <record id="act_make_to_supply_request" model="workflow.activity">
+            <field name="wkf_id" ref="procurement.wkf_procurement"/>
+            <field name="name">make_to_supply_request</field>
+            <field name="kind">function</field>
+            <field name="action">action_supply_move_assigned()</field>
+        </record>
+        
+        <record id="act_make_to_supply_request" model="workflow.activity">
+            <field name="wkf_id" ref="procurement.wkf_procurement" />
+            <field name="name">supply_request</field>
+            <field name="kind">subflow</field>
+            <field name="subflow_id" search="[('osv','=','stock.supply_request')]" />
+            <field name="action">action_supply_req_assign()</field>
+        </record>
+ 
+        <!-- procurement order transaction -->
+        <record id="trans_confirm_wait_confirm_mtsr" model="workflow.transition">
+            <field name="act_from" ref="procurement.act_confirm_wait"/>
+            <field name="act_to" ref="act_confirm_mtsr"/>
+            <field name="condition">procure_method=='make_to_supply_request'</field>
+        </record>
+        
+        <record id="trans_confirm_mtsr_cancel" model="workflow.transition">
+            <field name="act_from" ref="act_make_to_supply_request"/>
+            <field name="act_to" ref="procurement.act_cancel"/>
+            <field name="signal">subflow.supply_request_cancel</field>
+        </record>
+        
+        <record id="trans_confirm_mtsr_confirm" model="workflow.transition">
+            <field name="act_from" ref="act_confirm_mtsr"/>
+            <field name="act_to" ref="procurement.act_confirm"/>
+            <field name="signal">button_restart</field>
+        </record>
+        
+        <record id="trans_confirm_mtsr_make_to_supply_request" model="workflow.transition">
+            <field name="act_from" ref="act_confirm_mtsr"/>
+            <field name="act_to" ref="act_make_to_supply_request"/>
+            <field name="condition">check_make_supply_request()</field>
+        </record>
+        
+        <record id="trans_make_to_supply_request_check_done" model="workflow.transition">
+            <field name="act_from" ref="act_make_to_supply_request"/>
+            <field name="act_to" ref="act_make_to_supply_request_done"/>
+            <field name="condition">check_make_supply_request_done()</field>
+        </record>
+        
+        <record id="trans_make_to_supply_request_make_done" model="workflow.transition">
+            <field name="act_from" ref="act_make_to_supply_request_done"/> <!-- TOFIX: If product is service product and procure method is 'make_to_stock' or ''make_to_supply_request, procurement is closed without generated service -->
+            <field name="act_to" ref="procurement.act_make_done"/>
+            <field name="signal">subflow.supply_request_done</field>
+        </record>
+        
+        
+        
+<!--         <record id="trans_supply_request_done" model="workflow.transition"> -->
+<!--             <field name="act_from" ref="act_make_to_request"/> -->
+<!--             <field name="act_to" ref="procurement.act_make_to_stock"/> -->
+<!--             <field name="condition">check_supply_request_done()</field> -->
+<!--         </record> -->
+    </data>
+    </openerp>

@@ -1,0 +1,48 @@
+<openerp>
+<data>
+
+    <!-- HERENCIA AL METODO RECIBIR PRODUCTOS EN COMPRAS -->
+    <record id="view_purchase_line_invoice_argil" model="ir.ui.view">
+            <field name="name">purchase.order.line_invoice.inherit</field>
+            <field name="model">purchase.order.line_invoice</field>
+            <field name="type">form</field>
+            <field name="inherit_id" ref="purchase.view_purchase_line_invoice"/>
+            <field name="arch" type="xml">
+                 <form position="inside">
+                    <group>
+                        <field name="reclasification" />
+                    </group>
+                 </form>
+            </field>
+        </record>
+
+    <!-- HERENCIA PRODUCTOS Y CATEGORIAS PARA CUENTA DE RECLASIFICACION -->
+
+    <record id="view_reclasific_account_product" model="ir.ui.view">
+        <field name="name">product.product.inherit</field>
+        <field name="model">product.product</field>
+        <field name="type">form</field>
+        <field name="inherit_id" ref="stock.view_normal_property_acc_form"/>
+        <field name="arch" type="xml">
+             <field name="valuation" position="after">
+                <separator  string="Cuentas Contables"/>
+                <br/>
+                <field name="reclasification_account" domain="[('type','&lt;&gt;','view'),('type','&lt;&gt;','consolidation')]"/>
+             </field>
+        </field>
+    </record>
+
+    <record id="view_reclasific_account_product_Category" model="ir.ui.view">
+        <field name="name">product.category.inherit</field>
+        <field name="model">product.category</field>
+        <field name="type">form</field>
+        <field name="inherit_id" ref="account.view_category_property_form"/>
+        <field name="arch" type="xml">
+             <field name="property_account_expense_categ" position="after">
+                <field name="reclasification_account" domain="[('type','&lt;&gt;','view'),('type','&lt;&gt;','consolidation')]"/>
+             </field>
+        </field>
+    </record>
+
+</data>
+</openerp>

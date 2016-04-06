@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+<data>
+
+        <record id="margins_line_form_typ_new" model="ir.ui.view">
+            <field name="name">margins.sale.order.line.form</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="arch" type="xml">
+                <field name="price_unit" position="replace" >
+                    <field name="price_unit" on_change="on_change_margin(product_id,product_uom_qty,price_unit,type,parent.pricelist_id)" />
+                </field>
+            </field>
+        </record>
+
+</data>
+</openerp>

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+<data>
+    
+        <record id="stock_consult_product_form" model="ir.ui.view">
+            <field name="name">stock_consult_product.form</field>
+            <field name="model">stock.consult.product</field>
+            <field name="arch" type="xml">
+                <form string="Revision de Productos y Existencias" version="7.0">
+                    
+                    <sheet>
+                       <group col="4">
+                        <h2>
+                            <field name="product_id"/>
+                        </h2>
+                        <newline />
+                        <field name="date" />
+                       </group>
+                       <field name="stock_products">
+                        <tree string="Existencias" editable="botton">
+                          <field name="sale_shop" />
+                          <field name="real" />
+                          <field name="entrantes" />
+                          <field name="salientes" />
+                          <field name="virtual" />
+                        </tree>
+                       </field>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers"/>
+                        <field name="message_ids" widget="mail_thread"/> 
+                    </div>   
+                </form>
+            </field>
+        </record>
+
+        <record id="stock_consult_product_action" model="ir.actions.act_window">
+            <field name="name">Revicion de Existencias</field>
+            <field name="res_model">stock.consult.product</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+
+    <!--  WIZARD DE EXISTENCIAS -->
+          <!--======================FORM VIEW =======================-->
+        <record id="consult_stock_product_form_id" model="ir.ui.view">
+            <field name="name">consult.stock.product.wizard</field>
+            <field name="model">consult.stock.product.wizard</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Consultar Existencias" version="7.0">
+                    <separator colspan="4" string="Selecciona el Producto y Pulsa Consultar"/>
+                    <group colspan="4">
+                      <field name="product_id" domain="[('type','!=','service')]"/>
+                    </group>
+                    
+                    <center>
+                        <group col="4" colspan="2">
+                            <button name="consult_stock" string="_Consultar" type="object" icon='gtk-execute'/>
+                            <button special="cancel" string="_Cancelar" type="object" icon="gtk-cancel"/>
+                        </group>
+                    </center>
+                </form>
+
+                </field>
+            </record>
+
+        <!--============================================ACTION========================================-->
+
+        <act_window
+            name="Consultar Existencias"
+            res_model="consult.stock.product.wizard"
+            src_model="consult.stock.product.wizard"
+            view_mode="form" target="new"
+            key2="client_action_multi"
+            id="revision_stock_product_action"/>
+
+    <menuitem id="revision_stock_product_action_menu" action="revision_stock_product_action" parent="base.menu_product" sequence="100" />
+
+
+</data>
+</openerp>

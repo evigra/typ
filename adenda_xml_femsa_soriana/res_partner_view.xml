@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+<data>
+
+<!-- HERENCIA A RES_COMPANY -->
+
+        <record model="ir.ui.view" id="form_res_partner_femsa">
+            <field name="name">res.partner.femsa</field>
+            <field name="model">res.partner</field>
+            <field name="type">form</field>
+            <field name="priority">50</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="arch" type="xml">
+                <field name="user_id" position="before" >
+                    <!-- Adenda Femsa -->
+                    <field name="addenda_femsa" attrs="{'invisible':[('addenda_soriana','=',True)]}"/>
+                    
+                    <!--  Adenda Soriana -->
+                    <field name="addenda_soriana" attrs="{'invisible':[('addenda_femsa','=',True)]}"/>
+                    <field name="no_proveedor_addenda" attrs="{'required':['|',('addenda_femsa','=',True),('addenda_soriana','=',True)]}" />
+                </field>
+            </field>
+        </record>
+
+
+</data>
+</openerp>

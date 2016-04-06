@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <!--Sale Order Generate-->
+        <!--======================FORM VIEW =======================-->
+        <record id="invoice_line_search_wizard_form_view_argil" model="ir.ui.view">
+            <field name="name">invoice.line.search.wizard.form</field>
+            <field name="model">invoice.line.search.wizard</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Filtros Avanzados Facturas" version="7.0">
+                       <h3>Periodo de Evaluacion</h3>
+                        <group col="4">
+                            <field name="date_start"/>
+                            <field name="date_end"/>
+                        </group>
+                        <h3>Datos para la Busqueda</h3>
+                        <group >
+                            <field name="user_id" domain="[('generates_commissions','=',True)]"/>
+                            <!-- <field name="domain" placeholder="[('invoice_id.state','=','paid')]"/> -->
+                        </group>
+
+                        <field name="category_product" >
+                            <tree string="Categorias de Productos" editable="bottom">
+                                <field name="category_id" />
+                            </tree>
+                        </field>
+                        <newline/>
+                       
+                        <group col="13" colspan="10">
+                            <button special="cancel" string="Cancelar" type="object" icon="gtk-cancel"/>
+                            <button name="search_invoice_line" string="Busqueda" type="object" icon="gtk-execute"/>
+                        </group>
+                    </form>
+                </field>
+            </record>
+
+
+        <!--============================================ACCION========================================-->
+        <act_window
+            name="Busqueda de Lineas de Facturas"
+            res_model="invoice.line.search.wizard"
+            src_model="invoice.line.search.wizard"
+            view_mode="form" target="new"
+            key2="client_action_multi"
+            id="action_search_invoice_lines"/>
+
+            <!--============================================MENU========================================-->
+            
+            <menuitem action="action_search_invoice_lines" id="menu_action_search_lines" parent="menu_comissions_analisis" sequence="0"/>
+
+    </data>
+</openerp>

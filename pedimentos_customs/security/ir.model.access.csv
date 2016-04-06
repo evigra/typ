@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+pedimento_manual_line_full,pedimento_manual_line,model_pedimento_manual_line,stock.group_stock_user,1,1,1,1
+wizard_pedimento_manual_full,wizard_pedimento_manual,model_wizard_pedimento_manual,stock.group_stock_user,1,1,1,1
+wizard_pedimento_manual_line_full,wizard_pedimento_manual_line,model_wizard_pedimento_manual_line,stock.group_stock_user,1,1,1,1

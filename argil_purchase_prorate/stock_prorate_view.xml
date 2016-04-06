@@ -1,0 +1,211 @@
+<?xml version="1.0"?>
+<openerp>
+    <data>
+	<record id="purchase_tree_prorate" model="ir.ui.view">
+		<field name="name">purchase.tree.prorate</field>
+		<field name="model">purchase.order</field>
+		<field name="type">tree</field>
+		<field name="inherit_id" ref="purchase.purchase_order_tree"/>
+		<field name="arch" type="xml">
+			<field name="state" position="before">
+				<field name="prorate_ids"/>
+			</field>
+		</field>
+	</record>
+
+
+        <!-- stock.prorate -->
+        <record model="ir.ui.view" id="stock_prorate_search">
+            <field name="name">stock.prorate</field>
+            <field name="model">stock.prorate</field>
+            <field name="arch" type="xml">
+                <search string="Purchase Prorate">
+                    <field name="name" />
+                    <field name="company_id" />
+                    <field name="state" />
+                    <field name="date" />
+                </search>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="stock_prorate_tree">
+            <field name="name">stock.prorate</field>
+            <field name="model">stock.prorate</field>
+            <field name="arch" type="xml">
+                <tree string="Purchase Prorate">
+                    <field name="name" />
+                    <field name="date" />
+                    <field name="company_id" />
+                    <field name="state" />
+                </tree>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="stock_prorate_form">
+            <field name="name">stock.prorate</field>
+            <field name="model">stock.prorate</field>
+            <field name="arch" type="xml">
+                <form string="Prorate" version="7.0">
+                    <header>
+                        <button type="object" string="Load Purchase Order(s)"
+                            class="oe_highlight" name="button_load_purchases" states="draft" />
+                        <button type="object" string="Re-Load Purchase Order(s)" context="{'reload_purchase':True}"
+                            class="oe_highlight" name="button_load_purchases" states="confirm" />
+                        <button type="object" name="receive_products"
+                            class="oe_highlight" string="Receive products"
+                            attrs="{'invisible':['|',('type','=','l10n'),('state','!=','confirm')]}"/>
+                        <button type="object" name="process_prorate"
+                            class="oe_highlight" string="Process Local Prorate"
+                            attrs="{'invisible':['|',('type','=','i18n'),('state','!=','confirm')]}"/>
+<!--                         <button type="object" name="cancel_local_prorate" string="Cancel Local Prorate"  -->
+<!--                             class="oe_highlight" attrs="{'invisible':['|',('type','=','i18n'),('state','!=','done')]}"/> -->
+                        <field name="state" widget="statusbar" statusbar_visible="draft,done,cancel"/>
+                    </header>
+                   
+                        <h1>
+                            <field name="name" class="oe_inline" readonly="1"
+                                attrs="{'invisible': [('name','=','/')]}"/>
+                        </h1>
+                        <group>
+                            <group>
+                                <field name="date" required="1" attrs="{'readonly':[('state','in',['done','cancel'])]}"/>
+                                <field name="company_id" />
+                                 <field name="currency_id" readonly="1" groups="base.group_multi_currency"/>
+                                 <field name="global_currency_rate" required="1" 
+                                        attrs="{'readonly':[('state','in',['done','cancel'])]}" 
+                                        groups="base.group_multi_currency" on_change="onchange_global_rate(global_currency_rate)"/>
+                                 <field name="update_currency_rate" invisible="1"/>
+                                 <field name="type" invisible="1"/>
+<!--                                 </div> -->
+<!--                                 <div> -->
+                                    <field name="purchase_ids" widget="many2many_tags" invisible="1"/>
+<!--                                         on_change="onchange_purchase_ids(purchase_ids)" /> -->
+                            </group>
+                            <group>
+                                <field name="total_expense" invisible="1" on_change="onchange_stockable_prorate_ids(stock_prorate_ids,total_expense,currency_id)"/><!-- needed for loading data stockable lines -->
+                                <field name="total_stockable_amount" invisible="1" />
+                            </group>
+                            <group attrs="{'invisible': [('update_needed','=',False)]}">
+                               
+                                
+                                <label for="update_needed"/>
+                                <div>
+                                    <field name="update_needed" readonly="1"/>
+                                    <button name="update_stockable_lines" type="object" string="Update Lines" class="oe_highlight" attrs="{'invisible':[('state','!=','confirm')]}"/>
+                                </div>
+<!--                                 <field name="update_needed"/> -->
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Service Lines">
+                                <field name="service_prorate_ids" options='{"reload_on_button": true}' attrs="{'readonly':[('state','in',['done','cancel'])]}" on_change="onchange_service_prorate_ids(service_prorate_ids)"/>
+                            </page>
+                            <page string="Stockable Lines">
+                                <field name="stock_prorate_ids" options='{"reload_on_button": true}' attrs="{'readonly':[('state','in',['done','cancel'])]}" on_change="onchange_stockable_prorate_ids(stock_prorate_ids,total_expense,currency_id)"/>
+                            </page>
+                            <page string="Other Information">
+                                <group>
+                                    <group>
+                                        <field name="valuation_account_id" readonly="1"/>
+                                        <field name="expense_account_move_id" readonly="1"/>
+                                    </group>
+                                    <group>
+                                    </group>
+                                </group>
+                            </page>
+                        </notebook>
+                    
+                </form>
+            </field>
+        </record>
+
+        <record id="action_stock_prorate_form" model="ir.actions.act_window">
+            <field name="name">Purchase Prorate</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">stock.prorate</field>
+            <field name="view_type">form</field>
+            <field name="domain">[('type','=','i18n')]</field>
+            <field name="context">{'default_purchase_ids':False,'type':'i18n','default_type':'i18n'}</field>
+            <field name="view_id" ref="stock_prorate_tree" />
+            <field name="search_view_id" ref="stock_prorate_search" />
+        </record>
+        <menuitem action="action_stock_prorate_form" id="menu_action_stock_prorate_form"
+            parent="purchase.menu_procurement_management" sequence="30" />
+
+    <record id="action_local_stock_prorate_form" model="ir.actions.act_window">
+            <field name="name">Local Purchase Prorate</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">stock.prorate</field>
+            <field name="view_type">form</field>
+            <field name="domain">[('type','=','l10n')]</field>
+            <field name="context">{'default_purchase_ids':False,'type':'l10n','default_type':'l10n'}</field>
+            <field name="view_id" ref="stock_prorate_tree" />
+            <field name="search_view_id" ref="stock_prorate_search" />
+        </record>
+        <menuitem action="action_local_stock_prorate_form" id="menu_action_local_stock_prorate_form"
+            parent="purchase.menu_procurement_management" sequence="20" />
+        <!-- stock.partial.prorate.service.line -->
+
+        <record model="ir.ui.view" id="stock_prorate_service_line_tree">
+            <field name="name">stock.prorate.service.line.tree</field>
+            <field name="model">stock.prorate.service.line</field>
+            <field name="arch" type="xml">
+                <tree string="Service Lines" editable="bottom" create="false" delete="false">
+                    <field name="purchase_id" readonly="1"/>
+                    <field name="name" readonly="1"/>
+                    <field name="purchase_line_id" invisible="1"/>
+                    <field name="product_id" invisible="1"/>
+                    <field name="qty" readonly="1"/>
+                    <field name="uom_id" groups="product.group_uom" readonly="1"/>
+                    <field name="price_unit" readonly="1"/>
+                    <field name="currency_id" groups="base.group_multi_currency" readonly="1"/>
+                    <field name="currency_rate" groups="base.group_multi_currency"  required="1"
+                            on_change="onchange_rate(currency_rate,total)"/>
+                    <field name="total" sum="Total" readonly="1"/>
+                    <field name="total_in_company_currency" sum="Total" readonly="1" groups="base.group_multi_currency"/>
+                </tree>
+
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="stock_prorate_stock_line_tree">
+            <field name="name">stock.prorate.stock.line.tree</field>
+            <field name="model">stock.prorate.stock.line</field>
+            <field name="arch" type="xml">
+                <tree string="Stockable Lines" editable="bottom" create="false">
+                    <field name="purchase_line_id" invisible="1" />
+                    <field name="purchase_id" readonly="1" />
+                    <field name="name" readonly="1" />
+                    <field name="date_planned" invisible="1"/>
+                    <field name="product_id" invisible="1" />
+                    <field name="move_id" invisible="1" />
+                    
+                    <field name="qty" readonly="1" />
+                    <field name="uom_id" groups="product.group_uom" readonly="1"/>
+                    <field name="price_unit" readonly="1" />
+                    <field name="currency_id" groups="base.group_multi_currency" readonly="1"/>
+                    <field name="currency_rate" groups="base.group_multi_currency" required="1"
+                            on_change="onchange_rate(currency_rate,price_unit,sent_qty,total)"/>
+                    <field name="total" sum="Total" readonly="1" />
+                    <field name="total_in_company_currency" sum="Total" readonly="1" groups="base.group_multi_currency"/>
+                    <field name="sent_qty" required="1"
+                        on_change="onchange_sent_qty(price_unit,sent_qty,currency_id,parent.currency_id,date_planned,currency_rate)" />
+                    <field name="sent_uom_id" groups="product.group_uom" />
+                    <field name="prodlot_id" groups="stock.group_production_lot" 
+                            context="{'default_product_id':product_id}" 
+                            domain="[('product_id','=',product_id)]"/>
+                    <button name="button_split_serialnumber" string="Split in Serial Numbers" type="object"
+                        icon="gtk-justify-fill"
+                        groups="stock.group_production_lot"/>
+                    <field name="sent_total" sum="Total" readonly="1" on_change="onchange_sent_total(sent_total,parent.total_stockable_amount)"/>
+                    <field name="representation_percent" readonly="1" sum="Total"
+                        on_change="onchange_representation(product_id,uom_id,sent_uom_id,sent_qty,price_unit,parent.total_expense,sent_total,representation_percent,currency_id,parent.currency_id)" />
+                    <field name="prorated_expense" sum="Total" readonly="1" />
+                    <field name="total_incl_prorate" sum="Total" readonly="1" />
+                    <field name="new_price_unit" readonly="1" />
+                </tree>
+
+            </field>
+        </record>
+
+    </data>
+</openerp>  
+        
