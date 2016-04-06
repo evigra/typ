@@ -25,7 +25,7 @@
 from openerp.osv import osv, fields
 import time
 from openerp import netsvc
-import tools
+from openerp import tools
 import openerp.addons.decimal_precision as dp
 from openerp import _
 

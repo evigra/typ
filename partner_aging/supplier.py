@@ -7,7 +7,7 @@
 ######################################################################
 
 from openerp.osv import fields, osv
-import tools
+from openerp import tools
 
 class partner_aging_supplier(osv.osv):
   

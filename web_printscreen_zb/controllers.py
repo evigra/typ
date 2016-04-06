@@ -25,9 +25,10 @@ try:
     import json
 except ImportError:
     import simplejson as json
-import web.http as openerpweb
-from web.controllers.main import ExcelExport
-from web.controllers.main import Export
+from openerp.http import request
+from openerp import http
+from openerp.addons.web.controllers.main import ExcelExport
+from openerp.addons.web.controllers.main import Export
 import re
 from cStringIO import StringIO
 from lxml  import etree
@@ -41,7 +42,6 @@ except ImportError:
     xlwt = None
 
 class ZbExcelExport(ExcelExport):
-    _cp_path = '/web/export/zb_excel_export'
 
     def from_data(self, fields, rows):
         workbook = xlwt.Workbook()
@@ -87,11 +87,11 @@ class ZbExcelExport(ExcelExport):
         data = fp.read()
         fp.close()
         return data
-    
-    @openerpweb.httprequest
-    def index(self, req, data, token):
+
+    @http.route('/web/export/zb_excel_export')
+    def index(self, data, token):
         data = json.loads(data)
-        return req.make_response(
+        return request.make_response(
             self.from_data(data.get('headers', []), data.get('rows', [])),
                            headers=[
                                     ('Content-Disposition', 'attachment; filename="%s"'
@@ -108,14 +108,14 @@ class ExportPdf(Export):
         'label': 'PDF',
         'error': None
     }
-    
+
     @property
     def content_type(self):
         return 'application/pdf'
-    
+
     def filename(self, base):
         return base + '.pdf'
-    
+
     def from_data(self, uid, fields, rows, company_name):
         pageSize=[210.0,297.0]
         new_doc = etree.Element("report")
@@ -169,13 +169,12 @@ class ExportPdf(Export):
         return self.obj
 
 class ZbPdfExport(ExportPdf):
-    _cp_path = '/web/export/zb_pdf_export'
-    
-    @openerpweb.httprequest
-    def index(self, req, data, token):
+
+    @http.route('/web/export/zb_pdf_export/')
+    def index(self, data, token):
         data = json.loads(data)
         uid = data.get('uid', False)
-        return req.make_response(self.from_data(uid, data.get('headers', []), data.get('rows', []),
+        return request.make_response(self.from_data(uid, data.get('headers', []), data.get('rows', []),
                                                 data.get('company_name','')),
                                  headers=[('Content-Disposition',
                                            'attachment; filename=PDF Export'),
