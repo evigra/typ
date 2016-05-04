@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+        
+        <data>
+                <!--Agregamos el campo comprador en el formulario base de res.partner-->
+                <record model='ir.ui.view' id='supplier_assignment_partner_inh'>
+                        <field name='name'>supplier_assignment_partner_inh</field>
+                        <field name='model'>res.partner</field>
+                        <field name='inherit_id' ref='base.view_partner_form'/>
+                        <field name='type'>form</field>
+                        <field name='arch' type='xml'>
+                                <field name="user_id" position="after">
+                                        <field name="comprador_id"/>
+                                </field>
+                        </field>
+ 
+                </record>
+                <!-- agregamos el campo comprador_id en el formulario de presupuestos y pedidos de compra -->               
+                <record model='ir.ui.view' id='supplier_assignment_presupuestos'>
+                        <field name='name'>supplier_assignment_presupuestos</field>
+                        <field name='model'>purchase.order</field>
+                        <field name='inherit_id' ref='purchase.purchase_order_form'/>
+                        <field name='type'>form</field>
+                        <field name='arch' type='xml'>
+                                <field name="partner_id" position="after">
+                                        <field name="comprador_id"/>
+                                </field>
+                                <field name="company_id" position="after">
+                                        <field name="estado"/>
+                                </field>
+                        </field>
+                </record>
+                <!-- Creamos un filtro de comprador y lo agregamos al grupo del filtro search base de purchase.order-->
+                <record id="view_purchase_order_filter_inh" model="ir.ui.view">
+                        <field name="name">purchase.order.list.select.inh2</field>
+                        <field name="model">purchase.order</field>
+                        <field name="inherit_id" ref="purchase.view_purchase_order_filter"/>
+                        <field name="arch" type="xml">
+                                <group>
+                                        <filter string="Comprador" icon="terp-partner" domain="[]" context="{'group_by': 'comprador_id'}" />
+                                        <filter string="Status" icon="terp-partner" domain="[]" context="{'group_by':'estado'}" />
+                                </group>
+                        </field>
+                </record>
+
+                <!-- Creamos un filtro de comprador y lo agregamos al grupo del filtro search base de res.partner-->
+                <record id="view_res_partner_filter_inh" model="ir.ui.view">
+                        <field name="name">res.partner.filtro.compradores</field>
+                        <field name="model">res.partner</field>
+                        <field name="inherit_id" ref="base.view_res_partner_filter"/>
+                        <field name="arch" type="xml">
+                                <group>
+                                        <filter string="Comprador" icon="terp-partner" domain="[]" context="{'group_by': 'comprador_id'}" />
+                                </group>
+                        </field>
+                </record>
+                <!-- Se agrega el status de enumeradores a la vista de tipo arbol -->
+                <record id="view_purchase_order_tree_inh" model="ir.ui.view">
+                        <field name="name">purchase.order.tree.status</field>
+                        <field name="model">purchase.order</field>
+                        <field name="inherit_id" ref="purchase.purchase_order_tree" />
+                        <field name="arch" type="xml">
+                                <tree>
+                                        <field name="estado" position="after">
+                                                <field name="state" />
+                                        </field>
+                                </tree>
+                        </field>
+                </record>
+        </data>
+</openerp>

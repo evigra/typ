@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+	<data noupdate="0">
+		<record id="default_1" model="product.state">
+			<field name="name">Borrador</field>
+		</record>
+		<record id="default_2" model="product.state">
+			<field name="name">Normal</field>
+		</record>
+		<record id="default_3" model="product.state">
+			<field name="name">Fin Ciclo de Vida</field>
+		</record>
+		<record id="default_4" model="product.state">
+			<field name="name">Obsoleto</field>
+		</record>
+ 		<record id="default_5" model="product.state">
+ 			<field name="name">En Desarrollo</field>
+ 		</record>
+	</data>
+</openerp>

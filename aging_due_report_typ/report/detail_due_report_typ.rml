@@ -1,0 +1,174 @@
+<?xml version="1.0"?>
+<document filename="test.pdf">
+  <template pageSize="(220.0mm,280.0mm)" title="Test" author="vauxoo/customized cmexia" allowSplitting="20" showBoundary="0">
+    <pageTemplate id="first">
+        <pageGraphics>
+            <place x="20.0mm"     y="115.0mm"    width="220.0mm"  height="150.0mm">  
+            <!--+-->
+                <spacer length="5mm"/>
+            </place>            
+            <setFont name="Helvetica-Oblique" size="8.0"/>
+	    <lines>1.3cm 244.0mm 20.6cm 244.0mm</lines><!--+-->
+            <drawString x="10mm" y="5mm">This report was printed in Odoo by TyP Refrigeracion S.A. de C.V.</drawString>
+	        <drawString x="16cm" y="245.0mm">www.typrefrigeracion.com.mx</drawString>
+	   <drawRightString x="200mm" y="5mm">Fecha de impresión:  [[formatLang(time.strftime('%Y-%m-%d'),date=True)]] [[time.strftime('%H:%m')]] / Page:<pageNumber/> </drawRightString>
+            <image x="20.0mm" y="245.0mm" width="89.994mm" height="24.342mm">[[company.logo and company.logo or removeParentNode('image')]]</image>
+	    <fill color="black"/> <stroke color="black"/>
+	    <!--+-->
+        </pageGraphics>
+      <frame id="first"     x1="20.0mm"     y1="20mm"    width="180mm"  height="225.0mm"/>
+    </pageTemplate>
+  </template>
+
+  <stylesheet>
+		<blockTableStyle id="TITLE">
+            <blockBackground colorName="black" start="1,0" stop="-1,-1"/>
+            <blockValign value="TOP"/>
+		</blockTableStyle>     
+
+		<blockTableStyle id="TERMS">
+            <blockBackground colorName="#71A5CC" start="0,0" stop="-1,0"/>
+            <blockValign value="TOP"/>
+			<lineStyle kind="GRID" colorName="white" start="0,0" stop="-1,0" thickness="0.5"/>
+			<lineStyle kind="GRID" colorName="black" start="0,1" stop="-1,-1" thickness="0.5"/>
+			<lineStyle kind="OUTLINE" colorName="black" thickness="0.5"/>
+		</blockTableStyle>
+        
+		<blockTableStyle id="TERMSTABLEGREY">
+            <blockBackground colorName="lightgrey" start="0,0" stop="-1,0"/>
+            <blockValign value="TOP"/>
+			<lineStyle kind="GRID" colorName="black" start="0,0" stop="-1,0" thickness="0.5"/>
+			<lineStyle kind="GRID" colorName="black" start="0,1" stop="-1,-1" thickness="0.5"/>
+			<lineStyle kind="OUTLINE" colorName="black" thickness="0.5"/>
+		</blockTableStyle>  
+
+		<blockTableStyle id="ITEMSTITLE">
+            <blockBackground colorName="black" start="0,0" stop="5,0"/>
+            <blockValign value="TOP"/>
+			<lineStyle kind="GRID" colorName="white" start="0,0" stop="5,0" thickness="0.5"/>
+			<lineStyle kind="OUTLINE" colorName="black" thickness="0.5"/>
+		</blockTableStyle>          
+
+		<blockTableStyle id="ITEMS">
+            <blockValign value="TOP"/>
+			<lineStyle kind="GRID" colorName="#4bacc6ff" start="0,0" stop="5,-1" thickness="0.5" />
+			<lineStyle kind="OUTLINE" colorName="black" thickness="0.5"/>
+		</blockTableStyle>           
+
+		<blockTableStyle id="TOTAL">
+            <blockValign value="TOP"/>
+            <blockBackground colorName="lightgrey" start="0,0" stop="-1,-1"/>
+			<lineStyle kind="GRID" colorName="#a41d35ff" start="0,0" stop="-1,-1" thickness="0.5" />
+            <lineStyle kind="OUTLINE" colorName="#a41d35ff" start="0,0" stop="-1,-1" thickness="0.5"/>
+		</blockTableStyle>
+
+        <blockTableStyle id="ACCOUNTSTABLE">
+            <blockValign value="TOP"/>
+            <lineStyle kind="GRID" colorName="black" start="0,0" stop="-1,-1" thickness="0.5"/>
+            <lineStyle kind="OUTLINE" colorName="black" thickness="0.5"/>      
+        </blockTableStyle>           
+
+    <initialize>
+      <paraStyle name="all" alignment="JUSTIFY" fontName="Helvetica" fontSize="6.0" leading="8" spaceBefore="3.0" textColor="blue"/>
+    </initialize>
+    
+    <paraStyle name="COMPANYNAME" alignment="LEFT" fontName="Helvetica-Bold" fontSize="9.0" leading="10" spaceBefore="3.0" textColor="black"/>    
+    <paraStyle name="TITLE" alignment="CENTER" fontName="Helvetica" fontSize="10.0" leading="8" spaceBefore="3.0" textColor="white"/>
+    <paraStyle name="CUSTOMERNAME" alignment="RIGHT" fontName="Helvetica-Oblique" fontSize="10.0" leading="12" spaceBefore="3.0" textColor="black"/>    
+    <paraStyle name="CUSTOMERCENTER" alignment="CENTER" fontName="Times-BoldItalic" fontSize="10.0" leading="12" spaceBefore="3.0" textColor="black"/>    
+    <paraStyle name="CUSTOMERTEXT" alignment="JUSTIFY" fontName="Times-BoldItalic" fontSize="10.0" leading="12" spaceBefore="3.0" textColor="black"/>    
+    <paraStyle name="NOTEANDNUMBER" alignment="JUSTIFY" fontName="Helvetica" fontSize="10.0" leading="12" spaceBefore="3.0" textColor="darkblue"/>    
+    <paraStyle name="BILLTO" alignment="LEFT" fontName="Helvetica-Bold" fontSize="8.0" leading="10" spaceBefore="3.0" textColor="white"/>    
+    <paraStyle name="TERMS" alignment="CENTER" fontName="Helvetica-Bold" fontSize="8.0" leading="12" spaceBefore="3.0" textColor="white"/>
+    <paraStyle name="ITEMSTITLELEFT" alignment="LEFT" fontName="Helvetica-Bold" fontSize="6.0" leading="8" spaceBefore="3.0" textColor="white"/>    
+    <paraStyle name="ITEMSTITLE" alignment="CENTER" fontName="Helvetica-Bold" fontSize="6.0" leading="8" spaceBefore="3.0" textColor="white"/>    
+    <paraStyle name="ITEMSTITLERIGHT" alignment="RIGHT" fontName="Helvetica-Bold" fontSize="6.0" leading="8" spaceBefore="3.0" textColor="white"/>    
+    <paraStyle name="ITEMSLEFT" alignment="LEFT" fontName="Helvetica-Bold" fontSize="8.5" leading="10" spaceBefore="0.5" textColor="black"/>    
+    <paraStyle name="ITEMSLEFTCUSTOM" alignment="LEFT" fontName="Helvetica" fontSize="8.5" leading="10" spaceBefore="0.5" textColor="black"/>
+    <paraStyle name="ITEMSCENTER" alignment="CENTER" fontName="Helvetica-Bold" fontSize="6.0" leading="8" spaceBefore="3.0" textColor="black"/>    
+    <paraStyle name="ITEMSRIGHT" alignment="RIGHT" fontName="Helvetica-Bold" fontSize="8.5" leading="11" spaceBefore="2.0" textColor="black"/>
+    <paraStyle name="ITEMSRIGHTABLE" alignment="RIGHT" fontName="Helvetica-Bold" fontSize="6.0" leading="8" spaceBefore="2.0" textColor="black"/>
+    <paraStyle name="ITEMSDAYSDUE" alignment="LEFT" fontName="Helvetica-Bold" fontSize="7.0" leading="8" spaceBefore="2.0" textColor="black"/>    
+    <paraStyle name="TABLEACCOUNTS" alignment="CENTER" fontName="Helvetica-Bold" fontSize="6.0" leading="7" spaceBefore="2.0" textColor="black"/>
+
+
+
+  </stylesheet>
+
+  <images/>
+  <story>
+<!--TABLA DE ITEMS-->   
+<section>
+        <para style="ITEMSLEFT">[[company.partner_id.name or '' ]]</para>
+        <para style="ITEMSLEFTCUSTOM">[[display_address(company.partner_id) or '' ]]</para>
+</section>
+<section>
+    <para>[[repeatIn(get_invoice_by_partner(objects),'o')]]</para>
+    <para>[[ setLang(user.lang) ]]</para>
+                <!--<spacer length="4mm"/>-->
+                <para style="ITEMSRIGHT">[[(o.get('rp_brw').vat and '%s-%s-%s'%( o.get('rp_brw').vat [2], o.get('rp_brw').vat[3:-1], o.get('rp_brw').vat[-1]) or '')]]</para>
+                <para style="ITEMSRIGHT">[[o.get('rp_brw').name]] ([[ o.get('cur_brw').name ]]) [[o.get('rp_brw').ref]]</para>
+                <para style="ITEMSRIGHT">[[o.get('rp_brw').user_id.name]]</para>
+                <para style="ITEMSRIGHT">AMOUNTS EXPRESSED IN[[' {}'.format(o.get('cur_brw').name)]]</para>
+                <!--<para style="ITEMSLEFT">[['AMOUNTS EXPRESSED IN {}'.format(o.get('cur_brw').name)]]</para>-->
+                
+        <blockTable colWidths="35mm,30mm,25mm,16mm,22mm,22mm,22mm" repeatRows="1" style="TERMS">
+            <tr noRowsplits="1">
+                <td><para style="ITEMSTITLELEFT">INVOICE</para></td>
+                <td><para style="ITEMSTITLELEFT">EMIS DATE</para></td>
+                <td><para style="ITEMSTITLELEFT">DUE DATE</para></td>
+                <td><para style="ITEMSTITLERIGHT">DUE DAYS</para></td>
+                <td><para style="ITEMSTITLERIGHT">TOT/INV.</para></td>
+                <td><para style="ITEMSTITLERIGHT">COLLECTS</para></td>
+                <td><para style="ITEMSTITLERIGHT">BALANCE</para></td>
+            </tr>
+        
+            <tr>
+                <td>
+                    <para style="ITEMSLEFT">[[repeatIn(o['inv_ids'],'inv')]][[inv['inv_brw'].number]]</para>
+                </td>
+                <td><para style="ITEMSLEFT">[[ formatLang(inv['inv_brw'].date_invoice,date=True) ]]</para></td>
+                <td><para style="ITEMSLEFT">[[ formatLang(inv['inv_brw'].date_due,date=True) ]]</para></td>
+                <td><para style="ITEMSDAYSDUE">[[ inv.get('due_days') and '%s DIAS'%inv.get('due_days') or '0 DIAS' ]]</para></td>
+                <td><para style="ITEMSRIGHTABLE">[[ formatLang(inv['inv_brw'].amount_untaxed) or '0.00']]</para></td>
+                <td><para style="ITEMSRIGHTABLE">[[ formatLang(inv.get('payment_left')) or '0.00']]</para></td>
+                <td><para style="ITEMSRIGHTABLE">[[ formatLang(inv.get('residual')) or '0.00']]</para></td>
+            </tr>
+        </blockTable>
+<!--TABLA DE TOTALES-->       
+        <blockTable colWidths="106mm,22mm,22mm,22mm"  style="TERMSTABLEGREY">
+                <tr>
+                    <td><para style="ITEMSRIGHT">TOTAL</para></td>
+                    <td><para style="ITEMSRIGHTABLE">[[ formatLang(o.get('inv_total')) or '0.00']]</para></td>
+                    <td><para style="ITEMSRIGHTABLE">[[ formatLang(o.get('pay_left_total')) or '0.00']]</para></td>
+                    <td><para style="ITEMSRIGHTABLE">[[ formatLang(o.get('due_total')) or '0.00']]</para></td>
+                </tr>
+        </blockTable>
+    <spacer length="5mm"/>
+</section>
+    <section>
+        <para>[[repeatIn(get_total_by_comercial(objects),'p')]]</para>
+        <blockTable colWidths="150mm,22mm" style="TOTAL">
+            <tr noRowsplits="1">
+                <td><para style="ITEMSRIGHT">TOTAL IN [[ p['currency'] ]] </para></td>
+                <td><para style="ITEMSRIGHTABLE">[[ formatLang(p['total']) or '0.00']]</para></td>
+            </tr>
+        </blockTable>
+        <blockTable colWidths="38mm,38mm,38mm,38mm" style="ACCOUNTSTABLE"><!--+-->
+        <tr>
+            <td><para style="TABLEACCOUNTS">BBVA BANCOMER, S.A. (PESOS) CUENTA: 0450750085 CLABE:012760004507500858</para></td>
+            <td><para style="TABLEACCOUNTS">BBVA BANCOMER, S.A. (DOLARES) CUENTA:0155213479 CLABE:012760001552134793</para></td>
+            <td><para style="TABLEACCOUNTS">BANORTE (PESOS) CUENTA: 0532645269 CLABE:072760005326452692</para></td>
+            <td><para style="TABLEACCOUNTS">BANORTE (DOLARES) CUENTA: 0179699201 CLABE:072760001796992016</para></td>
+        </tr>
+        </blockTable>
+        <blockTable colWidths="252mm,20mm" style="TERMSTABLEGREY">
+            <tr>
+                <td><para style="ITEMSRIGHT">[[repeatIn(p.get('vendor'),'vnd')]][[ vnd.get('usr_brw') and vnd.get('usr_brw').name or 'SIN ASESOR' ]]</para></td>
+                <td><para style="ITEMSRIGHT">[[ formatLang(vnd.get('total')) or '0.00' ]]</para></td>
+            </tr>
+        </blockTable>
+
+    </section>
+  </story>
+</document>

@@ -1,0 +1,103 @@
+# Translation of OpenERP Server.
+# This file contains the translation of the following modules:
+# 	* campo_importancia
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: OpenERP Server 7.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2016-02-16 18:24+0000\n"
+"PO-Revision-Date: 2016-02-16 11:53-0800\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: \n"
+"X-Generator: Poedit 1.5.4\n"
+
+#. module: campo_importancia
+#: field:product.product,importancia:0
+msgid "Importancia"
+msgstr "Importancia"
+
+#. module: campo_importancia
+#: view:purchase.order:0 field:purchase.order,estado:0
+msgid "Status"
+msgstr "Estado"
+
+#. module: campo_importancia
+#: model:ir.model,name:campo_importancia.model_res_partner
+msgid "Partner"
+msgstr "Empresa"
+
+#. module: campo_importancia
+#: view:purchase.order:0 field:purchase.order,comprador_id:0
+#: view:res.partner:0 field:res.partner,comprador_id:0
+msgid "Comprador"
+msgstr "Comprador"
+
+#. module: campo_importancia
+#: selection:purchase.order,estado:0
+msgid "Revision"
+msgstr "Revision"
+
+#. module: campo_importancia
+#: selection:purchase.order,estado:0
+msgid "En agencia Aduanal"
+msgstr "En agencia Aduanal"
+
+#. module: campo_importancia
+#: selection:purchase.order,estado:0
+msgid "Cerrado"
+msgstr "Cerrado"
+
+#. module: campo_importancia
+#: model:ir.model,name:campo_importancia.model_product_product
+msgid "Product"
+msgstr "Producto"
+
+#. module: campo_importancia
+#: model:ir.model,name:campo_importancia.model_product_state
+msgid "product.state"
+msgstr "product.state"
+
+#. module: campo_importancia
+#: selection:purchase.order,estado:0
+msgid "Facturado"
+msgstr "Facturado"
+
+#. module: campo_importancia
+#: help:product.product,state_property:0
+msgid "This field tells the product's state per company"
+msgstr "Este campo indica el estado del producto por compañia"
+
+#. module: campo_importancia
+#: selection:purchase.order,estado:0
+msgid "Backorder"
+msgstr "Backorder"
+
+#. module: campo_importancia
+#: selection:purchase.order,estado:0
+msgid "Aclaracion"
+msgstr "Aclaracion"
+
+#. module: campo_importancia
+#: field:product.state,name:0
+msgid "Nombre"
+msgstr "Nombre"
+
+#. module: campo_importancia
+#: model:ir.model,name:campo_importancia.model_purchase_order
+msgid "Purchase Order"
+msgstr "Pedido de compra"
+
+#. module: campo_importancia
+#: field:product.product,state_property:0
+msgid "Estado"
+msgstr "Estado"
+
+#. module: campo_importancia
+#: field:purchase.order,create_date:0
+msgid "Fecha Elaboracion"
+msgstr "Fecha Elaboracion"

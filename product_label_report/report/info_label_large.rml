@@ -1,0 +1,55 @@
+<?xml version="1.0"?>
+<document filename="info_label.pdf">
+  <template pageSize="(101.6mm,155.6mm)" title="Etiqueta informativa" author="cmexia" allowSplitting="20" showBoundary="0">
+    <pageTemplate id="first">
+        <pageGraphics>
+        </pageGraphics>
+        <frame id="first"     x1="0.5mm"     y1="15mm"    width="100mm"  height="140.0mm"/>
+    </pageTemplate>
+  </template>
+
+  <stylesheet>
+
+    <blockTableStyle id="TERMSTABLEGREY">
+            <blockValign value="TOP"/>
+      <lineStyle kind="GRID" start="0,0" stop="-1,0" thickness="0.7"/>
+      <lineStyle kind="GRID" colorName="black" start="0,1" stop="-1,-1" thickness="0.7"/>
+      <lineStyle kind="OUTLINE" colorName="black" thickness="0.7"/>
+    </blockTableStyle>  
+
+  <paraStyle name="ITEMSRIGHT" alignment="RIGHT" fontName="Helvetica-Bold" fontSize="6.0" leading="8" spaceBefore="2.0" textColor="black"/>
+  <paraStyle name="ITEMSLEFT"  alignment="LEFT"  fontName="Helvetica" fontSize="12.0" leading="10" spaceBefore="2.0" textColor="black"/>
+  <paraStyle name="BARCODE" alignment="RIGHT" lenght="5" fontSize="2" spaceBefore="2.0"/>
+    </stylesheet>
+
+  <images/>
+  <story>
+<!--TABLA DE ITEMS-->   
+
+    <para>[[repeatIn(objects,'o')]]</para>
+    <para>[[ setLang(user.lang) ]]</para>
+    <para style="ITEMSLEFT">hola</para>
+                <!--codigo-->
+    <para style="ITEMSLEFT">[[o.default_code]]</para>
+    <para style="ITEMSLEFT">[[o.generic_name]]</para>
+    <spacer lenght="10mm"/>
+    <para style="ITEMSLEFT"><b>Importado Por:</b> TYP REFRIGERACION SA DE CV</para>
+    <para style="ITEMSLEFT">NAYARIT 291, COL. SAN BENITO, HERMOSILLO SON.</para>
+    <para style="ITEMSLEFT">C.P.80190, RFC: TPR920625G68</para>
+    <spacer lenght="10mm"/>
+    <para style="ITEMSLEFT"><b>Pais de origen</b> [[o.product_country.name]]</para>
+    <para style="ITEMSLEFT"><b>Cantidad:</b> [[o.sale_qty_multiple]] [[o.sale_unit.name]]</para>
+    <spacer lenght="10mm"/>
+    <para style="ITEMSLEFT"><b>Instrucciones de uso:</b> [[o.handle]]</para>
+    <spacer lenght="10"/>
+    <para style="ITEMSLEFT"><b>Datos electricos:</b> [[o.electric_info]]</para>
+    <para style="ITEMSLEFT"><b>Riesgos:</b>[[o.risk_advices]]</para>
+    <!-- <barCode code="EAN13" alignment="RIGHT" quiet="0" barWidth="1" barHeight="20">[[o.ean13]]</barCode> -->
+<!-- <barCode code="ean13" code128  style="my estilo personalizado" quiet="0"zona quieta para scarcode barWidth="1" height="10"barHeight="45">[[o.ean13]]</barCode> -->
+       <!--    Currently we support these attributes for the 'code' attribute in both tags: ( I2of5 | Code128 |
+Standard93 | Extended93 | Standard39 | Extended39 | MSI | Codabar | Code11 | FIM | POSTNET |
+USPS_4State | EAN8 | EAN13 | QR) -->
+        <!-- on story <barCodeFlowable code="Standard39" value="PFWZF" barWidth="0.01in" quiet="no"/> -->
+<!--TABLA PEGADA-->       
+  </story>
+</document>

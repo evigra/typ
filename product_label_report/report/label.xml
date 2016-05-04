@@ -1,0 +1,11 @@
+<?xml version='1.0' encoding='utf-8'?>
+<openerp>
+    <data>
+        <report id="label_report_large" model="product.product" name="label_report_large" rml="addons/product_label_report/report/label_report_large.rml" string="Product Label Report large" auto="False" header="False" menu="True"/>
+        <report id="label_report_small" model="product.product" name="label_report_small" rml="addons/product_label_report/report/label_report_small.rml" string="Product Label Report Small" auto="False" header="False" menu="True"/>
+        <report id="label_report_medium" model="product.product" name="label_report_medium" rml="addons/product_label_report/report/label_report_medium.rml" string="Product Label Report Medium" auto="False" header="False" menu="True"/>
+        <report id="info_label_small" model="product.product" name="info_label_small" rml="addons/product_label_report/report/info_label_small.rml" string="Info Label small" auto="False" header="False" menu="True"/>
+        <report id="info_label_medium" model="product.product" name="info_label_medium" rml="addons/product_label_report/report/info_label_medium.rml" string="Info Label Medium" auto="False" header="False" menu="True"/>
+        <report id="info_label_large" model="product.product" name="info_label_large" rml="addons/product_label_report/report/info_label_large.rml" string="Info Label large" auto="False" header="False" menu="True"/>
+    </data>
+</openerp>

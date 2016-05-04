@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+        <record model="ir.ui.view" id="partner_clients_typ">
+            <field name='name'>partner_clients_importance_typ</field>
+            <field name='model'>res.partner</field>
+            <field name='inherit_id' ref='base.view_partner_form'/>
+            <field name='arch' type='xml'>
+                <xpath expr="//field[@name='supplier']" position="after">
+                        <field name="importancia" />
+                        <field name="giro" />
+                        <field name="tipo" />
+                        <field name="dealer" />
+                        <field name="region" />
+                </xpath>
+            </field>
+        </record>
+    </data>
+</openerp>

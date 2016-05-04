@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<document filename="Label.pdf">
+  <template pageSize="(37.0mm,25.0mm)" title="Test" author="cmexia" allowSplitting="20" showBoundary="0">
+    <pageTemplate id="first">
+        <pageGraphics>
+        </pageGraphics>
+        <frame id="first"     x1="0.5mm"     y1="5mm"    width="19mm"  height="13.0mm"/>
+    </pageTemplate>
+  </template>
+
+  <stylesheet>
+
+    <blockTableStyle id="TERMSTABLEGREY">
+            <blockValign value="TOP"/>
+     <!--  <lineStyle kind="GRID" start="0,0" stop="-1,0" thickness="0.7"/> -->
+      <!-- <lineStyle kind="GRID" colorName="black" start="0,1" stop="-1,-1" thickness="0.7"/> -->
+      <!-- <lineStyle kind="OUTLINE" colorName="black" thickness="0.7"/> -->
+    </blockTableStyle>  
+
+  <paraStyle name="ITEMSRIGHT" alignment="RIGHT" fontName="Helvetica-Bold" fontSize="6.0" leading="8" spaceBefore="2.0" textColor="black"/>
+  <paraStyle name="ITEMSLEFT"  alignment="LEFT"  fontName="Helvetica-Bold" fontSize="5.0" leading="4" spaceBefore="2.0" textColor="black"/>
+  <paraStyle name="BARCODE" alignment="RIGHT" lenght="5" fontSize="2" spaceBefore="2.0"/>
+    </stylesheet>
+
+  <images/>
+  <story>
+<!--TABLA DE ITEMS-->   
+<section>
+    <para>[[repeatIn(objects,'o')]]</para>
+    <para>[[ setLang(user.lang) ]]</para>
+                <!--codigo-->
+<blockTable colWidths="50.0" style="TERMSTABLEGREY">
+    <tr><td><para style="ITEMSLEFT">[[o.default_code]]</para></td></tr>
+  </blockTable>
+  <section>
+    <barCode code="Code128" style="BARCODE" quiet="0" barWidth="0.6" barHeight="13">[[o.ean13]]</barCode>
+<!-- <barCode code="ean13" code128  style="my estilo personalizado" quiet="0"zona quieta para scarcode barWidth="1" height="10"barHeight="45">[[o.ean13]]</barCode> -->
+       <!--    Currently we support these attributes for the 'code' attribute in both tags: ( I2of5 | Code128 |
+Standard93 | Extended93 | Standard39 | Extended39 | MSI | Codabar | Code11 | FIM | POSTNET |
+USPS_4State | EAN8 | EAN13 | QR) -->
+        <!-- on story <barCodeFlowable code="Standard39" value="PFWZF" barWidth="0.01in" quiet="no"/> -->
+<!--TABLA PEGADA-->     
+</section>  
+</section>
+  </story>
+</document>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+<data>
+ <record id="product_info_form_view" model="ir.ui.view">
+            <field name="name">product.product.info.form</field>
+            <field name="model">product.product</field>
+            <field name="type">form</field>
+            <field name="inherit_id" ref="product.product_normal_form_view" />
+            <field name="arch" type="xml">
+              <notebook position="inside">
+                <page string="Etiquetado">
+                  <group col="4" colspan="4">
+                    <separator string="Información Etiquetas" colspan="4"/>
+                                    <label string="Campos informativos que contendra la etiqueta del producto" colspan="2"/>
+                   <field name="label_size"/>
+                   <field name="generic_name"/>
+                   <field name="product_country"/> 
+                   <field name="risk_advices"/>
+                   <field name="handle"/>
+                   <field name="electric_info"/>
+                 </group>
+                 <group col="4" colspan="4">
+                  <separator string="Unidad de Medida venta" colspan="4"/>
+                    <field name="sale_unit"/>
+                    <field name="sale_qty_multiple"/>
+                 </group>
+                </page>
+              </notebook>
+
+            </field>
+        </record>
+  </data>
+</openerp>

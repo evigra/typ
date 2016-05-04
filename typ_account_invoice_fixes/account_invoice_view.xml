@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <!-- Vista que hereda del modulo de argil_typ_comissions-->
+        <record id="view_invoice_refund_form_inh_typ" model="ir.ui.view">
+            <field name="name">account.invoice.form.dm3.refund.inh</field>
+            <field name="model">account.invoice</field>
+            <field name="type">form</field>
+            <field name="inherit_id" ref="argil_typ_comissions.view_invoice_refund_form_inhrt_typ_" />
+            <field name="arch" type="xml">
+                <field name="rel_invoice" position="attributes">
+                    <attribute name="readonly">True</attribute>
+                </field>
+            </field>
+        </record>
+    </data>
+</openerp>

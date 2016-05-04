@@ -1,0 +1,6 @@
+<?xml version='1.0' encoding='utf-8'?>
+<openerp>
+    <data>
+        <report id="stock_moves_report" model="stock.move" name="stock_moves_report" rml="addons/stock_moves_report/report/stock_moves.rml" string="Stock Moves Report" auto="False" header="True" menu="True"/>
+    </data>
+</openerp>
