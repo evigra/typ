@@ -38,10 +38,8 @@
     """,
     "website" : "http://www.argil.mx/",
     "license" : "AGPL-3",
-    "depends" : ["account","l10n_mx_facturae","l10n_mx_ir_attachment_facturae","hr_payroll","l10n_mx_facturae_report"],
-    "init_xml" : [],
-    "demo_xml" : [],
-    "update_xml" : [
+    "depends" : ["account","l10n_mx_facturae_base","l10n_mx_ir_attachment_facturae","hr_payroll","l10n_mx_facturae_report"],
+    "data" : [
                     "account_invoice_view.xml",
                     "massive_view.xml",
                     "mail_compose_message_view.xml",
