@@ -1,6 +1,6 @@
 # -*- encoding: utf-8 -*-
 ##############################################################################
-#    
+#
 #    OpenERP, Open Source Management Solution
 #    Copyright (C) 2004-2009 Tiny SPRL (<http://tiny.be>).
 #
@@ -15,7 +15,7 @@
 #    GNU Affero General Public License for more details.
 #
 #    You should have received a copy of the GNU Affero General Public License
-#    along with this program.  If not, see <http://www.gnu.org/licenses/>.     
+#    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 ##############################################################################
 
@@ -47,7 +47,7 @@ class res_partner(osv.osv):
         }
 res_partner()
 
-# Agregamos manejar una secuencia por cada tienda para controlar viajes 
+# Agregamos manejar una secuencia por cada tienda para controlar viajes
 class account_invoice(osv.osv):
     _name = "account.invoice"
     _inherit = "account.invoice"
@@ -60,7 +60,7 @@ class account_invoice(osv.osv):
 
     }
 
-    _defaults = {  
+    _defaults = {
         'tipo_venta': 'cash',
         }
      #### ON CHANGE CREDITO ####
@@ -127,7 +127,7 @@ class account_invoice(osv.osv):
                 'title': title,
                 'message': message,
         }
-        
+
         credit_exc = 0.0
         if partner.credit == 0:
             credit_exc == 0.0
@@ -175,7 +175,7 @@ class account_invoice(osv.osv):
                 value_d['tipo_venta']= 'credit'
                 return {'value': value_d}
         return {'value': result.get('value',{})}
-        
+
 
 
     def invoice_validate(self, cr, uid, ids, context=None):
@@ -216,7 +216,7 @@ class account_invoice(osv.osv):
                     date_act = datetime.now().strftime('%Y-%m-%d')
                     invoice_overdue_ids = invoice_obj.search(cr, uid, [('date_due','<',date_act),('state','=','open'),('residual','>',0.0),('partner_id','=',partner_br.id),('type','=','out_invoice'),('id','!=',ids[0])])
                     invoice_ids = invoice_obj.search(cr, uid, [('date_invoice','<=',date_act),('state','=','open'),('residual','>',0.0),('partner_id','=',partner_br.id),('type','=','out_invoice'),('id','!=',ids[0])])
-                    
+
                     if partner_br.credit_limit == 0.0:
                         if contado == False:
                             raise osv.except_osv(
@@ -355,15 +355,15 @@ sale_order_extend_credit()
 
 
 ######### HERENCIA DE FACTURACION DESDE ALBARANES ##############
-class stock_partial_picking(osv.osv):
-    _name = 'stock.partial.picking'
-    _inherit ='stock.partial.picking'
-    _columns = {
-        }
+# class stock_partial_picking(osv.osv):
+#     _name = 'stock.partial.picking'
+#     _inherit ='stock.partial.picking'
+#     _columns = {
+#         }
 
-    def do_partial(self, cr, uid, ids, context=None):
-        res = super(stock_partial_picking, self).do_partial(cr, uid, ids, context)
-        
-        return res
+#     def do_partial(self, cr, uid, ids, context=None):
+#         res = super(stock_partial_picking, self).do_partial(cr, uid, ids, context)
 
-stock_partial_picking()
+#         return res
+
+# stock_partial_picking()
