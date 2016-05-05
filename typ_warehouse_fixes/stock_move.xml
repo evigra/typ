@@ -18,13 +18,13 @@
         </record>
         <record id="stock_picking_out_search_inh" model="ir.ui.view">
             <field name="name">stock.picking.out_tree_inh</field>
-            <field name="model">stock.picking.out</field>
-            <field name="inherit_id" ref="stock.view_picking_out_search" />
+            <field name="model">stock.picking</field>
+            <field name="inherit_id" ref="stock.view_picking_internal_search" />
             <field name="arch" type="xml">
-                <search>
+                <xpath expr="//filter[@name='waiting']" position='after'>
                     <filter string="Esperando Disponibilidad - Partidas" name="availability_filter" domain="[('state','=','assigned')]" context="{'group_by':'availability_filter'}"/>
-                </search>                
+                </xpath>
             </field>
-        </record> 
+        </record>
     </data>
 </openerp>

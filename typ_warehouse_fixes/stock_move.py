@@ -17,25 +17,25 @@ class stock_move(osv.osv):
         'consulta': comparate_stock_location
     }
 
-class stock_picking_out(osv.osv):
-    _inherit = 'stock.picking.out'
-    def new_state_filter(self, cr, uid, ids, state, arg, context=None):
-        res = {}
-        for obj in self.browse(cr,uid,ids, context=context):
-            if obj.state=='assigned':
-                for line in obj.move_lines:
-                    if line.state=='confirmed':
-                        res[obj.id]=True
-            else:
-                res[obj.id]=False
-        return res
+# class stock_picking_out(osv.osv):
+#     _inherit = 'stock.picking.out'
+#     def new_state_filter(self, cr, uid, ids, state, arg, context=None):
+#         res = {}
+#         for obj in self.browse(cr,uid,ids, context=context):
+#             if obj.state=='assigned':
+#                 for line in obj.move_lines:
+#                     if line.state=='confirmed':
+#                         res[obj.id]=True
+#             else:
+#                 res[obj.id]=False
+#         return res
 
-    _columns = {
-        'availability_filter': fields.function(new_state_filter, type='boolean', string="Esperando Disponibilidad - Partidas", store=True)
-    }
-    _default = {
-        'availability_filter': new_state_filter
-    }
+#     _columns = {
+#         'availability_filter': fields.function(new_state_filter, type='boolean', string="Esperando Disponibilidad - Partidas", store=True)
+#     }
+#     _default = {
+#         'availability_filter': new_state_filter
+#     }
 class stock_picking(osv.osv):
     _inherit = 'stock.picking'
     def new_state_filter(self, cr, uid, ids, state, arg, context=None):
