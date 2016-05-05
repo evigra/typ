@@ -23,7 +23,7 @@
 #
 ##############################################################################
 
-import res_partner
-# from . import addenda
-# import sale
-# import picking
+from . import res_partner
+from . import addenda
+from . import sale
+from . import picking

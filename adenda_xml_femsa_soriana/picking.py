@@ -36,11 +36,11 @@ stock_picking()
 
 
 # STOCK PICKING OUT
-class stock_picking_out(osv.osv):
-    _inherit = "stock.picking.out"
-    _columns = {
-        'asn': fields.char('ASN', size=128, help='Numero de Embarque para Informacion de Honda'),
-        }
-stock_picking_out()
+# class stock_picking_out(osv.osv):
+#     _inherit = "stock.picking.out"
+#     _columns = {
+#         'asn': fields.char('ASN', size=128, help='Numero de Embarque para Informacion de Honda'),
+#         }
+# stock_picking_out()
 
-# vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
+# # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:

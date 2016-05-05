@@ -4,7 +4,7 @@
 
         <record model="ir.ui.view" id="view_picking_out_form_inherit_addn" >
         <field name="name">stock.picking.out.form.inherit</field>
-        <field name="model">stock.picking.out</field>
+        <field name="model">stock.picking</field>
         <field name="inherit_id" ref="stock.view_picking_out_form" />
         <field name="arch" type="xml">
             <field name="origin" position="after">
