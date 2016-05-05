@@ -6,9 +6,9 @@
             <field name="model">sale.order</field>
             <field name="inherit_id" ref="sale.view_order_form"/>
             <field name="arch" type="xml">
-                <field name="type" position="after">
+                <xpath expr="//field[@name='address_allotment_id']" position="after">
                     <field name="dropshipping" attrs="{'invisible':[('type','!=','make_to_order')]}" />
-                </field>
+                </xpath>
             </field>
         </record>
     </data>
