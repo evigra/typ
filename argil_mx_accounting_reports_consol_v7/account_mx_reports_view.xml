@@ -14,8 +14,8 @@
             </field>
         </record>
 
-    
-    
+
+
     <record id="view_account_type_form_mx_reporting" model="ir.ui.view">
             <field name="name">account.account.type.form.mx_reporting</field>
             <field name="model">account.account.type</field>
@@ -27,13 +27,13 @@
                 </field>
             </field>
         </record>
-    
-    
+
+
     <menuitem id="menu_mx_reports" name="Reportes MX" parent="account.menu_finance" sequence="12"/>
     <menuitem id="menu_mx_customizable_reports" name="Reportes Configurables" parent="menu_mx_reports" sequence="90"/>
 
 
-<!-- 
+<!--
 ****************************
 wizard_account_account_lines
 ****************************
@@ -82,9 +82,9 @@ wizard_account_account_lines
 
 <!-- Definimos la opcion del menu para lanzar el Wizard para obtener los Auxiliares Contables-->
 
-    <menuitem 	name="Auxiliares Contables" 
-		        parent="menu_mx_reports" 
-		        id="menu_account_account_lines_wizard_form" 
+    <menuitem 	name="Auxiliares Contables"
+		        parent="menu_mx_reports"
+		        id="menu_account_account_lines_wizard_form"
                	action="action_open_account_account_lines_wizard"
                 sequence="30"
                 />
@@ -100,7 +100,7 @@ wizard_account_account_lines
 
 
 
-<!-- 
+<!--
 ****************************
 account_account_lines
 ****************************
@@ -174,7 +174,7 @@ account_account_lines
 		<field name="type">tree</field>
 		<field name="arch" type="xml">
 		    <tree string="Auxiliares Contables" >
-                        <field name="journal_id" />                
+                        <field name="journal_id" />
                         <field name="period_id" />
                         <field name="move_date" />
                         <field name="move_id" />
@@ -207,7 +207,7 @@ account_account_lines
     </record>
 
 
-<!-- 
+<!--
 ****************************
 account_annual_balance
 ****************************
@@ -242,7 +242,7 @@ account_annual_balance
                     <field name="moves11"/>
                     <field name="moves12"/>
                     <field name="moves13"/>
-               </group>   
+               </group>
             </search>
         </field>
         </record>
@@ -313,8 +313,8 @@ account_annual_balance
 		<field name="type">tree</field>
 		<field name="arch" type="xml">
 		    <tree string="Balanza Anual" >
-			<button name="%(action_open_account_account_lines_wizard)d" string="Auxiliar de la cuenta..." 
-				type="action" icon="gtk-go-forward" 
+			<button name="%(action_open_account_account_lines_wizard)d" string="Auxiliar de la cuenta..."
+				type="action" icon="gtk-go-forward"
 				context="{'default_fiscalyear_id': fiscalyear_id, 'default_period_id_start': period_id_start,'default_period_id_stop': period_id_stop,'default_account_id':account_id}" />
 
 		        <field name="fiscalyear_id" />
@@ -331,7 +331,7 @@ account_annual_balance
 		        <field name="initial_balance" />
 		        <field name="debit1"/>
 		        <field name="credit1"/>
-		        <field name="balance1"/>                                
+		        <field name="balance1"/>
 		        <field name="debit2"/>
 		        <field name="credit2"/>
 		        <field name="balance2"/>
@@ -382,17 +382,17 @@ account_annual_balance
     </record>
 
 <!-- Definimos la opcion del menu para Balanza de Comprobacion Anual-->
-    
-    <menuitem   name="Balanza Anual" 
-                parent="menu_mx_reports" 
-                id="menu_account_annual_balance_open_view_tree" 
+
+    <menuitem   name="Balanza Anual"
+                parent="menu_mx_reports"
+                id="menu_account_annual_balance_open_view_tree"
                 action="open_view_account_annual_balance_tree"
                 sequence="10"
             />
 
 
 
-<!-- 
+<!--
 ****************************
 account_monthly_balance
 ****************************
@@ -430,8 +430,8 @@ account_monthly_balance
             <field name="arch" type="xml">
                 <form string="Linea de Balanza Comprobacion" version="7.0">
                     <header>
-                        <button name="%(action_open_account_account_lines_wizard)d" string="Auxiliar de la cuenta..." 
-                                type="action" icon="gtk-go-forward" 
+                        <button name="%(action_open_account_account_lines_wizard)d" string="Auxiliar de la cuenta..."
+                                type="action" icon="gtk-go-forward"
                                 context="{'search_default_period_id': period_id, 'default_period_id_start': period_id,'default_period_id_stop': period_id,'default_account_id':account_id,'default_partner_id':partner_id}" />
                     </header>
                     <sheet>
@@ -450,7 +450,7 @@ account_monthly_balance
                         <field name="credit"  readonly="1"/>
                         <field name="balance" readonly="1"/>
                         <field name="ending_balance" readonly="1"/>
-                        
+
                     </group>
                     </sheet>
                 </form>
@@ -465,8 +465,8 @@ account_monthly_balance
 		<field name="arch" type="xml">
 		    <tree string="Balanza Mensual" >
 
-			<button name="%(action_open_account_account_lines_wizard)d" string="Auxiliar de la cuenta..." 
-				type="action" icon="gtk-go-forward" 
+			<button name="%(action_open_account_account_lines_wizard)d" string="Auxiliar de la cuenta..."
+				type="action" icon="gtk-go-forward"
 				context="{'search_default_period_id': period_id, 'default_period_id_start': period_id,'default_period_id_stop': period_id,'default_account_id':account_id,'default_partner_id':partner_id}" />
 
 		        <!--<field name="fiscalyear_id" invisible="1"/> -->
@@ -488,12 +488,12 @@ account_monthly_balance
 		        <field name="ending_balance"/>
                 <field name="company_name" />
                 <field name="order_code" invisible="1"/>
-                                
+
 		    </tree>
 		</field>
 	</record>
 
-<!-- Definimos una accion para disparar la Balanza de Comprobacion Mensual 
+<!-- Definimos una accion para disparar la Balanza de Comprobacion Mensual
     <record model="ir.actions.act_window" id="open_view_account_monthly_balance_tree">
         <field name="name">Balanza Mensual</field>
         <field name="res_model">account.monthly_balance</field>
@@ -502,19 +502,19 @@ account_monthly_balance
         <field name="context">{'search_default_period_id': 1,'search_default_moves':'Yes'}</field>
     </record>
 -->
-<!-- Definimos la opcion del menu para Balanza de Comprobacion Mensual 
-    
-    <menuitem name="Balanza de Comprobacion Mensual" parent="menu_mx_reports" id="menu_account_monthly_balance_open_view_tree" 
+<!-- Definimos la opcion del menu para Balanza de Comprobacion Mensual
+
+    <menuitem name="Balanza de Comprobacion Mensual" parent="menu_mx_reports" id="menu_account_monthly_balance_open_view_tree"
         action="open_view_account_monthly_balance_tree"/>
 
 -->
 
 <!-- Definimos la opcion del menu para Balanza de Comprobacion Anual
 
-    <menuitem name="Auxiliares Contables Temporal" parent="menu_mx_reports" id="menu_account_account_lines_open_view_tree" 
+    <menuitem name="Auxiliares Contables Temporal" parent="menu_mx_reports" id="menu_account_account_lines_open_view_tree"
         action="open_view_account_account_lines_tree"/> -->
 
-<!-- 
+<!--
 ****************************
 account_monthly_balance_wizard
 ****************************
@@ -530,7 +530,7 @@ account_monthly_balance_wizard
                 <separator string="Indique los parametros" colspan="4" />
                 <group colspan="4" col="4">
                     <field name="company_id" required="1" colspan="4" />
-                    <field name="chart_account_id" required="1" colspan="4" 
+                    <field name="chart_account_id" required="1" colspan="4"
                            domain="[('company_id','=',company_id), ('parent_id','=', False)]"/>
                     <field name="period_id" required="1"  domain="[('company_id','=',company_id)]"/>
                     <field name="partner_breakdown" />
@@ -559,10 +559,10 @@ account_monthly_balance_wizard
 
 <!-- Definimos la opcion del menu para lanzar el Wizard para obtener los Reportes Contables-->
 
-    <menuitem   name="Balanza Mensual" 
-		        parent="menu_mx_reports" 
-		        id="menu_account_monthly_balance_wizard" 
-        	    action="action_open_account_monthly_balance_wizard" 
+    <menuitem   name="Balanza Mensual"
+		        parent="menu_mx_reports"
+		        id="menu_account_monthly_balance_wizard"
+        	    action="action_open_account_monthly_balance_wizard"
                 sequence="20"/>
 
 <!-- Agregamos el reporte de la Balanza de Comprobacion para salida en formato PDF -->
@@ -576,11 +576,11 @@ account_monthly_balance_wizard
         <field name="report_rml">hesatec_mx_accounting_reports_v7/report/account_monthly_balance.jrxml</field>
         <field name="report_type">pdf</field>
         <field name="jasper_report">1</field>
-        <field name="jasper_output">pdf</field> 
+        <field name="jasper_output">pdf</field>
     </record>
 
 
-<!-- 
+<!--
 ****************************
 account.mx_report_definition
 ****************************
@@ -593,7 +593,7 @@ account.mx_report_definition
             <search string="Search Reportes">
                 <group>
                     <field name="name"/>
-                    <field name="complete_name"/>		
+                    <field name="complete_name"/>
                </group>
                 <newline />
             </search>
@@ -618,7 +618,7 @@ account.mx_report_definition
                     <field name="sign" />
                     <field name="print_report_sum" attrs="{'invisible':[('type','=','detail')]}"/>
                     <field name="print_group_sum" attrs="{'invisible':[('type','=','detail')]}"/>
-                    <field name="parent_id" invisible="1"/>		
+                    <field name="parent_id" invisible="1"/>
 <!--                    <group colspan="4" attrs="{'invisible':[('type','=','detail')]}">
                         <separator string="Marque la casilla de las columnas a mostrar en el reporte..." colspan="4" />
                         <field name="initial_balance" />
@@ -669,14 +669,14 @@ account.mx_report_definition
     </record>
 
 <!-- Definimos la opcion del menu para account.mx_report_definition -->
-    
-    <menuitem name="Definicion Reportes" 
-        id="menu_account_mx_report_definition_open_view_tree" 
-        parent="menu_mx_customizable_reports" 
+
+    <menuitem name="Definicion Reportes"
+        id="menu_account_mx_report_definition_open_view_tree"
+        parent="menu_mx_customizable_reports"
         action="open_view_account_mx_report_definition_tree" sequence="10"/>
 
 
-<!-- 
+<!--
 ****************************
 account.mx_report_data
 ****************************
@@ -715,7 +715,7 @@ account.mx_report_data
                     <field name="report_section" />
                     <field name="account_code"  />
                     <field name="account_name"  />
-                    <field name="report_sign" />                   
+                    <field name="report_sign" />
                     <field name="initial_balance" />
                     <newline />
                     <field name="debit" />
@@ -743,8 +743,8 @@ account.mx_report_data
                     <field name="sequence"  />
                     <field name="account_code"  />
                     <field name="account_name"  />
-                    <field name="report_sign" /> 
-                    <field name="account_sign" />                   
+                    <field name="report_sign" />
+                    <field name="account_sign" />
                     <field name="initial_balance" />
                     <field name="debit" />
                     <field name="credit" />
@@ -754,7 +754,7 @@ account.mx_report_data
 		</field>
 	</record>
 
-<!-- 
+<!--
 ****************************
 account_mx_report_data_wizard
 ****************************
@@ -798,9 +798,9 @@ account_mx_report_data_wizard
 
 <!-- Definimos la opcion del menu para lanzar el Wizard para obtener los Reportes Contables-->
 
-    <menuitem name="Generar Reporte Contable" 
-        parent="menu_mx_customizable_reports" 
-		id="menu_account_mx_report_data_wizard_form" 
+    <menuitem name="Generar Reporte Contable"
+        parent="menu_mx_customizable_reports"
+		id="menu_account_mx_report_data_wizard_form"
     	action="action_open_account_mx_report_data_wizard" sequence="20"/>
 
         <!-- ========= REPORTES CON DETALLE ======== -->
@@ -815,7 +815,7 @@ account_mx_report_data_wizard
         <field name="report_rml">hesatec_mx_accounting_reports_v7/report/reporte_contable_v2.jrxml</field>
         <field name="report_type">pdf</field>
         <field name="jasper_report">1</field>
-        <field name="jasper_output">pdf</field> 
+        <field name="jasper_output">pdf</field>
     </record>
 
 <!-- Agregamos el reporte para salida en formato XLS para lanzarlo desde el Wizard para obtener los Reportes Contables-->
@@ -826,9 +826,9 @@ account_mx_report_data_wizard
         <field name="model">account.mx_report_data</field>
         <field name="report_name">ht_reportes_contables_xls</field>
         <field name="report_rml">hesatec_mx_accounting_reports_v7/report/reporte_contable_v2.jrxml</field>
-        <field name="report_type">xls</field>
+        <!-- <field name="report_type">xls</field> -->
         <field name="jasper_report">1</field>
-        <field name="jasper_output">xls</field> 
+        <!-- <field name="jasper_output">xls</field> -->
     </record>
 
 
@@ -841,7 +841,7 @@ account_mx_report_data_wizard
         <field name="report_rml">hesatec_mx_accounting_reports_v7/report/reporte_contable_v2_not_detail.jrxml</field>
         <field name="report_type">pdf</field>
         <field name="jasper_report">1</field>
-        <field name="jasper_output">pdf</field> 
+        <field name="jasper_output">pdf</field>
     </record>
 
 <!-- Agregamos el reporte para salida en formato XLS para lanzarlo desde el Wizard para obtener los Reportes Contables-->
@@ -852,9 +852,9 @@ account_mx_report_data_wizard
         <field name="model">account.mx_report_data</field>
         <field name="report_name">ht_reportes_contables_xls_not_detail</field>
         <field name="report_rml">hesatec_mx_accounting_reports_v7/report/reporte_contable_v2_not_detail.jrxml</field>
-        <field name="report_type">xls</field>
+        <!-- <field name="report_type">xls</field> -->
         <field name="jasper_report">1</field>
-        <field name="jasper_output">xls</field> 
+        <!-- <field name="jasper_output">xls</field> -->
     </record>
 
 
