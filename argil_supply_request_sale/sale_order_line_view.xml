@@ -6,9 +6,9 @@
             <field name="model">sale.order</field>
             <field name="inherit_id" ref="sale.view_order_form"/>
             <field name="arch" type="xml">
-                <field name="type" position="after">
-                    <field name="warehouse_subsidiary_id" 
-                           attrs="{'invisible':[('type','!=','make_to_supply_request')],'required':[('type','=','make_to_supply_request')]}" />
+                <field name="address_allotment_id" position="after">
+                    <field name="warehouse_subsidiary_id"
+                           />
                 </field>
             </field>
         </record>
