@@ -322,9 +322,8 @@ class product_category(osv.osv):
     }
 product_category()
 
-class product_product(osv.osv):
-    _name = 'product.product'
-    _inherit ='product.product'
+class product_template(osv.osv):
+    _inherit ='product.template'
     _columns = {
     'reclasification_account': fields.property(
             type='many2one',
@@ -336,7 +335,6 @@ class product_product(osv.osv):
     _defaults = {
         }
 
-product_product()
 
 class account_invoice(osv.osv):
     _name = 'account.invoice'

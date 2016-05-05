@@ -30,7 +30,7 @@
     'description': """
 
 Contexto:
-======================= 
+=======================
         * En TyP tienen 10 sucursales.
         * Tienen muchos envíos del CEDis a las sucursales. El gasto de cada sucursal debe quedar registrado en la sucursal y "cargado" (Gasto) en la Sucursal.
         * Sin embargo el Transportista hace una sola Factura por TODOS los envíos del CEDis hacia las sucursales. Lo que genera que el Gasto quede registrado actualmente en el CEDis y no en las sucursales.
@@ -39,7 +39,7 @@ Contexto:
         Esto acarrea el siguiente problema, cada línea seleccionada de "x" sucursal trae los impuestos de la sucursal, por consiguiente, cada línea de la sucursal "x" se tiene que editar para cambiar los impuestos por los que corresponden en el CEDis.
 
 Configuracion:
-======================= 
+=======================
         * Productos, pestaña Contabilidad, campo Cuenta de Reclasificacion de Gasto, aqui debemos agregar una Cuenta para Cada Compañia (Sucursal) con la cual podremos Crear los Asientos Contables de Reclasificacion.
         * Categoria de Productos, Tenemos el campo Cuenta de Reclasificacion de Gasto, es el mismo campo Anterior debemos Crear una cuenta para cada Compañia (Sucursal), en caso de que el Producto no tenga la cuenta se tomara esta en su lugar.
         * Contabilidad --> Proveedores --> Reclasificacion de Fletes. Aqui tenemos que definir las Cuentas que se tomaran para la Reclasificacion.
@@ -57,7 +57,7 @@ Configuracion:
     """,
     "website" : "http://www.argil.mx",
     "license" : "AGPL-3",
-    "depends" : ["account","purchase","stock"],
+    "depends" : ["account","purchase","stock_account"],
     "init_xml" : [],
     "demo_xml" : [],
     "update_xml" : [
