@@ -8,9 +8,9 @@
             <field name="type">form</field>
             <field name="inherit_id" ref="argil_typ_comissions.view_invoice_refund_form_inhrt_typ_" />
             <field name="arch" type="xml">
-                <field name="rel_invoice" position="attributes">
+                <xpath expr="//field[@name='rel_invoice']" position="attributes">
                     <attribute name="readonly">True</attribute>
-                </field>
+                </xpath>
             </field>
         </record>
     </data>

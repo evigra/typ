@@ -13,9 +13,10 @@
 	'website':'http://www.typrefrigeracion.com.mx',
 	'license': 'AGPL-3',
 	'depends': [
-		'account'
+		'account',
+        'argil_typ_comissions'
 	],
-	'update_xml' : [
+	'data' : [
 		'account_invoice_view.xml',
 	],
 	'installable': True,
