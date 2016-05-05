@@ -18,12 +18,9 @@
     "depends" : ["account",
                 "mail",
                 "argil_attachment_cfdi",
-                "l10n_mx_facturae",
                 "l10n_mx_facturae_base",
                 "l10n_mx_ir_attachment_facturae"],
-    "init_xml" : [],
-    "demo_xml" : [],
-    "update_xml" : [
+    "data" : [
 
                     ],
     "installable" : True, # Permite al usuario instalar el Modulo.
