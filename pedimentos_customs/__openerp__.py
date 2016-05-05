@@ -43,18 +43,18 @@
             Para el Manejo de Facturas que no vienen de Ningun pedido, se crearon 2 campos Booleanos en la Ficha Otra Informacion de la Factura los cuales son:\n
                 --> Asignacion Automatica Series: Esta Opcion Genera el Albaran de Salida de Forma Automatica y Asigna los Pedimentos y No. de Serie para ese Albaran y de Forma Automatica, los Asigna al XML.\n
                 --> Ignorar Series: Para el manejo de alguna Excepcion en donde no sea necesario la asignacion de Pedimentos, se activara esta casilla y el flujo seguira normal para la Facturacion.\n
-        
+
             Pedimentos Manuales: \n
                 --> Podemos Cargar los Pedimentos Dando Click al Final de la Linea de Factura a un icono gris en forma de engranes, para asignar los Pedimentos, manualmente.
                     Esto Solo Aplicara para las Lineas de Factura que no tengan Producto.
-        Notas: 
+        Notas:
                 - Si se crea una Factura y algun producto necesita Pedimento ó Serie se tiene que utilizar activa una de las opciones anteriores.
                 - Tambien tenemos que tomar en cuenta los Pedidos de Venta que se Facturan desde Movimientos de Salida.
     """,
     "website" : "http://www.argil.mx",
     "license" : "AGPL-3",
     #"depends" : ["purchase","account","l10n_mx_facturae","l10n_mx_facturae_pac_sf","l10n_mx_ir_attachment_facturae","argil_purchase_prorate"],
-    "depends" : ["purchase","account","l10n_mx_facturae_base","l10n_mx_facturae","l10n_mx_facturae_pac_sf","l10n_mx_facturae_report","argil_purchase_prorate"],
+    "depends" : ["purchase","account","l10n_mx_facturae_base","l10n_mx_facturae_pac_sf","l10n_mx_facturae_report","argil_purchase_prorate"],
     "init_xml" : [],
     "demo_xml" : [],
     "update_xml" : [

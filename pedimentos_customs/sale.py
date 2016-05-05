@@ -1,6 +1,6 @@
 # -*- encoding: utf-8 -*-
 ##############################################################################
-#    
+#
 #    OpenERP, Open Source Management Solution
 #    Copyright (C) 2004-2009 Tiny SPRL (<http://tiny.be>).
 #
@@ -15,7 +15,7 @@
 #    GNU Affero General Public License for more details.
 #
 #    You should have received a copy of the GNU Affero General Public License
-#    along with this program.  If not, see <http://www.gnu.org/licenses/>.     
+#    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 ##############################################################################
 
@@ -58,117 +58,117 @@ from openerp import SUPERUSER_ID
 # stock_production_lot()
 ## Herencia para Modificar un  metodo para Asignacion de Lotes ####
 
-class stock_move_split_lines(osv.osv_memory):
-    _name = "stock.move.split.lines"
-    _inherit = 'stock.move.split.lines' 
-    _columns = {
-    'pedimento_id': fields.many2one('stock.production.lot.pedimento','No. Pedimento')
+# class stock_move_split_lines(osv.osv_memory):
+#     _name = "stock.move.split.lines"
+#     _inherit = 'stock.move.split.lines'
+#     _columns = {
+#     'pedimento_id': fields.many2one('stock.production.lot.pedimento','No. Pedimento')
 
-     }
-stock_move_split_lines()
+#      }
+# stock_move_split_lines()
 
-class split_in_production_lot(osv.osv_memory):
-    _name = "stock.move.split"
-    _inherit = 'stock.move.split' 
-    _description = "Split in Serial Numbers"
-    _columns = {
-     }
+# class split_in_production_lot(osv.osv_memory):
+#     _name = "stock.move.split"
+#     _inherit = 'stock.move.split'
+#     _description = "Split in Serial Numbers"
+#     _columns = {
+#      }
 
-    def split_especial(self, cr, uid, ids, move_ids, context=None):
+#     def split_especial(self, cr, uid, ids, move_ids, context=None):
 
-        """ To split stock moves into serial numbers
+#         """ To split stock moves into serial numbers
 
-        :param move_ids: the ID or list of IDs of stock move we want to split
-        """
-        use_exist = True
-        inventory_id = context and context.get('active_model', False)
-        prodlot_obj = self.pool.get('stock.production.lot.pedimento')
-        inventory_obj = self.pool.get('stock.inventory')
-        move_obj = self.pool.get('stock.move')
-        new_move = []
-        for data in self.browse(cr, uid, ids, context=context):
-            for move in move_obj.browse(cr, uid, move_ids, context=context):
-                move_qty = move.product_qty
-                quantity_rest = move.product_qty
-                uos_qty_rest = move.product_uos_qty
-                new_move = []
-                if use_exist:
-                    lines = [l for l in data.line_exist_ids if l]
-                else:
-                    lines = [l for l in data.line_ids if l]
-                total_move_qty = 0.0
-                for line in lines:
-                    quantity = line.quantity
-                    total_move_qty += quantity
-                    if total_move_qty > move_qty:
-                        raise osv.except_osv(_('Error Procesamiento!'), _('La Cantidad de Pedimentos/Series %d de %s supera la Cantidad Disponible (%d)!') \
-                                % (total_move_qty, move.product_id.name, move_qty))
-                    if quantity <= 0 or move_qty == 0:
-                        continue
-                    quantity_rest -= quantity
-                    uos_qty = quantity / move_qty * move.product_uos_qty
-                    uos_qty_rest = quantity_rest / move_qty * move.product_uos_qty
-                    if quantity_rest < 0:
-                        quantity_rest = quantity
-                        self.pool.get('stock.move').log(cr, uid, move.id, _('Unable to assign all lots to this move!'))
-                        return False
-                    default_val = {
-                        'product_qty': quantity,
-                        'product_uos_qty': uos_qty,
-                        'state': move.state
-                    }
-                    if quantity_rest > 0:
-                        current_move = move_obj.copy(cr, uid, move.id, default_val, context=context)
-                        if inventory_id and current_move:
-                            inventory_obj.write(cr, uid, inventory_id, {'move_ids': [(4, current_move)]}, context=context)
-                        new_move.append(current_move)
+#         :param move_ids: the ID or list of IDs of stock move we want to split
+#         """
+#         use_exist = True
+#         inventory_id = context and context.get('active_model', False)
+#         prodlot_obj = self.pool.get('stock.production.lot.pedimento')
+#         inventory_obj = self.pool.get('stock.inventory')
+#         move_obj = self.pool.get('stock.move')
+#         new_move = []
+#         for data in self.browse(cr, uid, ids, context=context):
+#             for move in move_obj.browse(cr, uid, move_ids, context=context):
+#                 move_qty = move.product_qty
+#                 quantity_rest = move.product_qty
+#                 uos_qty_rest = move.product_uos_qty
+#                 new_move = []
+#                 if use_exist:
+#                     lines = [l for l in data.line_exist_ids if l]
+#                 else:
+#                     lines = [l for l in data.line_ids if l]
+#                 total_move_qty = 0.0
+#                 for line in lines:
+#                     quantity = line.quantity
+#                     total_move_qty += quantity
+#                     if total_move_qty > move_qty:
+#                         raise osv.except_osv(_('Error Procesamiento!'), _('La Cantidad de Pedimentos/Series %d de %s supera la Cantidad Disponible (%d)!') \
+#                                 % (total_move_qty, move.product_id.name, move_qty))
+#                     if quantity <= 0 or move_qty == 0:
+#                         continue
+#                     quantity_rest -= quantity
+#                     uos_qty = quantity / move_qty * move.product_uos_qty
+#                     uos_qty_rest = quantity_rest / move_qty * move.product_uos_qty
+#                     if quantity_rest < 0:
+#                         quantity_rest = quantity
+#                         self.pool.get('stock.move').log(cr, uid, move.id, _('Unable to assign all lots to this move!'))
+#                         return False
+#                     default_val = {
+#                         'product_qty': quantity,
+#                         'product_uos_qty': uos_qty,
+#                         'state': move.state
+#                     }
+#                     if quantity_rest > 0:
+#                         current_move = move_obj.copy(cr, uid, move.id, default_val, context=context)
+#                         if inventory_id and current_move:
+#                             inventory_obj.write(cr, uid, inventory_id, {'move_ids': [(4, current_move)]}, context=context)
+#                         new_move.append(current_move)
 
-                    if quantity_rest == 0:
-                        current_move = move.id
-                    prodlot_id = False
-                    if use_exist:
-                        prodlot_id = line.pedimento_id.id
-                    if not prodlot_id:
-                        prodlot_id = prodlot_obj.create(cr, uid, {
-                            'name': line.name,
-                            'product_id': move.product_id.id},
-                        context=context)
+#                     if quantity_rest == 0:
+#                         current_move = move.id
+#                     prodlot_id = False
+#                     if use_exist:
+#                         prodlot_id = line.pedimento_id.id
+#                     if not prodlot_id:
+#                         prodlot_id = prodlot_obj.create(cr, uid, {
+#                             'name': line.name,
+#                             'product_id': move.product_id.id},
+#                         context=context)
 
-                    move_obj.write(cr, uid, [current_move], {'pedimento_id': prodlot_id, 'state':move.state})
+#                     move_obj.write(cr, uid, [current_move], {'pedimento_id': prodlot_id, 'state':move.state})
 
-                    update_val = {}
-                    if quantity_rest > 0:
-                        update_val['product_qty'] = quantity_rest
-                        update_val['product_uos_qty'] = uos_qty_rest
-                        update_val['state'] = move.state
-                        move_obj.write(cr, uid, [move.id], update_val)
+#                     update_val = {}
+#                     if quantity_rest > 0:
+#                         update_val['product_qty'] = quantity_rest
+#                         update_val['product_uos_qty'] = uos_qty_rest
+#                         update_val['state'] = move.state
+#                         move_obj.write(cr, uid, [move.id], update_val)
 
-        return new_move
+#         return new_move
 
-    def split_lot(self, cr, uid, ids, context=None):
-        res = super(split_in_production_lot, self).split_lot(cr, uid, ids, context)
+#     def split_lot(self, cr, uid, ids, context=None):
+#         res = super(split_in_production_lot, self).split_lot(cr, uid, ids, context)
 
-        stockable_line_pool = self.pool.get("stock.prorate.stock.line")
-        active_ids = context.get('active_ids', False)
-        active_model = context and context.get('active_model', False)
-        stock_obj = self.pool.get('stock.move')
-        stock_prorate = self.pool.get('stock.prorate')
-        prorate_id = []
-        for stock in stock_obj.browse(cr, uid, active_ids, context=None):
-            stock_ids = stock_obj.search(cr, uid, [('prorate_id','=',stock.prorate_id.id),
-                                                    ('product_id','=',stock.product_id.id),('pedimento_id','=',False)])
-            if stock.pedimento_id:
-                if stock.prorate_id:
-                    prorate_id = [stock.prorate_id.id]
-                stock_obj.write(cr, uid, stock_ids, {'pedimento_id':stock.pedimento_id.id})
-                stockable_ids = stockable_line_pool.search(cr, uid, [('move_id','in',tuple(stock_ids))])
-                stockable_line_pool.write(cr, uid, stockable_ids, {'pedimento_id':stock.pedimento_id.id})
-        if prorate_id:
-            stock_prorate.refresh_lines(cr, uid, prorate_id, context=None)
-        return res
-split_in_production_lot()
+#         stockable_line_pool = self.pool.get("stock.prorate.stock.line")
+#         active_ids = context.get('active_ids', False)
+#         active_model = context and context.get('active_model', False)
+#         stock_obj = self.pool.get('stock.move')
+#         stock_prorate = self.pool.get('stock.prorate')
+#         prorate_id = []
+#         for stock in stock_obj.browse(cr, uid, active_ids, context=None):
+#             stock_ids = stock_obj.search(cr, uid, [('prorate_id','=',stock.prorate_id.id),
+#                                                     ('product_id','=',stock.product_id.id),('pedimento_id','=',False)])
+#             if stock.pedimento_id:
+#                 if stock.prorate_id:
+#                     prorate_id = [stock.prorate_id.id]
+#                 stock_obj.write(cr, uid, stock_ids, {'pedimento_id':stock.pedimento_id.id})
+#                 stockable_ids = stockable_line_pool.search(cr, uid, [('move_id','in',tuple(stock_ids))])
+#                 stockable_line_pool.write(cr, uid, stockable_ids, {'pedimento_id':stock.pedimento_id.id})
+#         if prorate_id:
+#             stock_prorate.refresh_lines(cr, uid, prorate_id, context=None)
+#         return res
+# split_in_production_lot()
 
-# Agregamos manejar una secuencia por cada tienda para controlar viajes 
+# Agregamos manejar una secuencia por cada tienda para controlar viajes
 class sale_order(osv.osv):
     _name = "sale.order"
     _inherit = "sale.order"
@@ -183,7 +183,7 @@ class sale_order(osv.osv):
             lot_obj = self.pool.get('stock.production.lot.pedimento')
             stock_id = stock_obj.search(cr, uid, [('origin','=',origin)])
             for stock in stock_obj.browse(cr, uid, stock_id, context=None):
-                stock_split_obj = self.pool.get('stock.move.split')
+                # stock_split_obj = self.pool.get('stock.move.split')
                 for line in stock.move_lines:
                     qty_lines = line.product_qty
                     lot_disp = lot_obj.search(cr, uid, [('product_id','=',line.product_id.id),('stock_available','>',0.0)])
@@ -226,7 +226,7 @@ class sale_order(osv.osv):
                                 'use_exist' : True,
                                 'location_id': line.location_id.id,
                                 }
-                        stock_split_id = stock_split_obj.create(cr, uid, wizard_split, context=None)
+                       # stock_split_id = stock_split_obj.create(cr, uid, wizard_split, context=None)
                         # for sp in stock_split_obj.browse(cr, uid, [stock_split_id], context=None):
                         #     print "############# CANTIDAD", sp.qty
                         #     print "############# producto", sp.product_id.id
@@ -234,8 +234,8 @@ class sale_order(osv.osv):
                         # for xplit in stock_split_obj.browse(cr, uid, [stock_split_id], context=None):
                         #     for xln in xplit.line_exist_ids:
                         #         print "###################### PRODUCT QTY >>>>", xln.quantity
-                        
-                        stock_split_obj.split_especial(cr, uid, [stock_split_id], [line.id], context=context)
+
+                        # stock_split_obj.split_especial(cr, uid, [stock_split_id], [line.id], context=context)
                         ##### BUSCAMOS LOS LOTES Y LOS ASIGNAMOS A LAS VENTAS DE PRODUCTOS QUE TENGAN PEDIMENTOS
                         # prodlot = self.pool.get('stock.production.lot').browse(cr, uid, data_ids, context=ctx)
         return  res
