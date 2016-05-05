@@ -2,7 +2,7 @@
 <openerp>
 	<data>
 		<menuitem id="menu_supply_request" name="Supply Request" parent="stock.menu_stock_root" sequence="1" groups="stock.group_stock_manager"/>
-		
+
          <record id="view_supply_request_form" model="ir.ui.view">
             <field name="name">supply.request.form</field>
             <field name="model">stock.supply_request</field>
@@ -25,10 +25,10 @@
                     			<field name="qty" required="1" attrs="{'readonly':[('state','!=','draft')]}"/>
                     			<field name="qty_send" readonly="1" attrs="{'readonly':[('state','!=','draft')]}"/>
                                 <field name="type" invisible="1" attrs="{'readonly':[('state','!=','draft')]}"/>
-                    			
+
                     		</group>
                     		<group >
-                                
+
                     			<field name="date" required="1" attrs="{'readonly':[('state','!=','draft')]}"/>
                     			<field name="required_date" required="1" attrs="{'readonly':[('state','!=','draft')]}"/>
                                 <field name="from_warehouse_id" required="1" widget="selection" attrs="{'readonly':[('state','!=','draft')]}"/>
@@ -36,21 +36,21 @@
                                 <field name="residual" attrs="{'readonly':[('state','!=','draft')]}"/>
                                 <field name="compliance" attrs="{'readonly':[('state','!=','draft')]}"/>
                     		</group>
-                    		
+
                     		<group>
-                    			
-                    			
+
+
 <!--                     			<field name="from_location_id" required="1" widget="selection"/> -->
 <!--                     			<field name="from_company_id"/> -->
-                               
+
 <!--                                 <field name="to_location_id" required="1"/> -->
 <!--                                 <field name="to_company_id" required="1"/> -->
 <!--                     			<field name="transfer_id"/> -->
 							</group>
-                    	
-                    	
+
+
                     	</group>
-                    
+
                     </sheet>
                     <div class="oe_chatter">
                     <field name="message_follower_ids" widget="mail_followers"/>
@@ -59,8 +59,8 @@
                 </form>
             </field>
        	 </record>
-       	 
-       	 
+
+
        	 <record id="view_supply_request_tree" model="ir.ui.view">
             <field name="name">supply.request.tree</field>
             <field name="model">stock.supply_request</field>
@@ -84,8 +84,8 @@
                 </tree>
             </field>
        	 </record>
-       	 
-       	 
+
+
        	  <record id="supply_request_search" model="ir.ui.view">
             <field name="name">stock.supply_request.search</field>
             <field name="model">stock.supply_request</field>
@@ -101,13 +101,13 @@
                 	<field name="to_warehouse_id" />
 <!--          			<field name="to_location_id" /> -->
 <!--          			<field name="to_company_id" /> -->
-         			
+
 <!-- 					<field name="transfer_id"/>  -->
           			<field name="state" />
           			<field name="partner_address_destination" />
           			<field name="type"/>
-                	
-      
+
+
                 </search>
             </field>
         </record>
@@ -128,15 +128,15 @@
             <field name="view_id" ref="view_supply_request_tree"/>
             <field name="act_window_id" ref="action_make_supply_request"/>
         </record>
-        
+
         <record id="action_make_supply_request_form" model="ir.actions.act_window.view">
             <field name="view_mode">form</field>
             <field name="view_id" ref="view_supply_request_form"/>
             <field name="act_window_id" ref="action_make_supply_request"/>
         </record>
-        
+
         <menuitem id="menu_action_supply_request" action="action_make_supply_request" parent="menu_supply_request"  sequence="1" />
-         
+
        	<record id="view_attend_supply_request_tree" model="ir.ui.view">
             <field name="name">supply.request.tree</field>
             <field name="model">stock.supply_request</field>
@@ -150,7 +150,7 @@
 <!--                         <field name="from_company_id"/> -->
                         <field name="to_warehouse_id" readonly="1"/>
 <!--                         <field name="to_company_id"/> -->
-                        
+
                         <field name="qty" readonly="1"/>
                         <field name="qty_send" readonly="1"/>
                         <field name="residual" readonly="1"/>
@@ -161,7 +161,7 @@
                 </tree>
             </field>
          </record>
-         
+
          <record id="action_attend_supply_request" model="ir.actions.act_window">
          <field name="type">ir.actions.act_window</field>
             <field name="name">Attend Supply Request</field>
@@ -175,22 +175,22 @@
         </record>
 
 		<menuitem id="menu_action_attend_supply_request" action="action_attend_supply_request" parent="menu_supply_request"  sequence="1" />
-		
-       	        
+
+
         <record id="warehouse_orderpoint_view_inherit" model="ir.ui.view">
 			<field name="name">stock.warehouse.orderpoint.inherit</field>
 			<field name="model">stock.warehouse.orderpoint</field>
-			<field name="inherit_id" ref="procurement.view_warehouse_orderpoint_form" />
+			<field name="inherit_id" ref="stock.view_warehouse_orderpoint_form" />
 			<field name="arch" type="xml">
 				<xpath expr="//field[@name='active']"  position="after">
                     <field name="supply_from_dist_center" />
-					<field name="dist_center_warehouse_id" widget="selection" 
+					<field name="dist_center_warehouse_id" widget="selection"
                         attrs="{'required':[('supply_from_dist_center','=',True)]}"/>
                 </xpath>
 			</field>
 		</record>
-       	
-        
-        
+
+
+
 	</data>
 </openerp>
