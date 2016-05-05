@@ -1,7 +1,7 @@
 <openerp>
 <data>
 
-<!-- 
+<!--
 ##############################
 purchase.order
 ##############################
@@ -31,7 +31,7 @@ purchase.order
         </record>
 
 
-<!-- 
+<!--
 ##############################
 stock.location
 ##############################
@@ -42,17 +42,25 @@ stock.location
             <field name="inherit_id" ref="stock.view_location_form"/>
             <field eval="1" name="priority"/>
             <field name="arch" type="xml">
-                <field name="active" position="after">
+                <xpath expr="//field[@name='active']" position="after">
                     <field name="transfer_location_type" attrs="{'invisible': [('usage', 'not in', ('inventory','transit'))]}"/>
-                </field>
-                <group string="Accounting Information" position="attributes">
-                    <attribute name="attrs">{'invisible':[('usage','not in',('inventory','production','transit'))]}</attribute>
-                </group>
+                </xpath>
             </field>
         </record>
-    
-    
-<!-- 
+
+
+        <record id="view_location_form_stock_transfer_account" model="ir.ui.view">
+            <field name="name">stock.location.stock.transfer</field>
+            <field name="model">stock.location</field>
+            <field name="inherit_id" ref="stock_account.view_location_form_inherit"/>
+            <field eval="1" name="priority"/>
+            <field name="arch" type="xml">
+                <xpath expr="//group[@string='Accounting Information']" position="attributes">
+                    <attribute name="attrs">{'invisible':[('usage','not in',('inventory','production','transit'))]}</attribute>
+                </xpath>
+            </field>
+        </record>
+<!--
 ##############################
 stock.move
 ##############################
@@ -67,25 +75,25 @@ stock.move
                     <field name="stock_transfer_id" />
                     <!--<field name="stock_transfer_line_id" />                    -->
                 </field>
-                <group name="destination_grp" position="after">
-                    <group colspan="4" col="4">
-                        <separator string="move_history_ids" colspan="4" />
-                        <field name="move_history_ids" colspan="4" nolabel="1"/>
-                        <separator string="move_history_ids2" colspan="4" />
-                        <field name="move_history_ids2" colspan="4" nolabel="1"/>
-                    </group>
-                </group>
+                <!-- <group name="destination_grp" position="after"> -->
+                <!--     <group colspan="4" col="4"> -->
+                <!--         <separator string="move_history_ids" colspan="4" /> -->
+                <!--         <field name="move_history_ids" colspan="4" nolabel="1"/> -->
+                <!--         <separator string="move_history_ids2" colspan="4" /> -->
+                <!--         <field name="move_history_ids2" colspan="4" nolabel="1"/> -->
+                <!--     </group> -->
+                <!-- </group> -->
             </field>
         </record>
 
 
 
-<!-- 
+<!--
 ##############################
 stock.transfer
 ##############################
 -->
-<!-- SEARCH View for stock.transfer  --> 
+<!-- SEARCH View for stock.transfer  -->
     <record id="view_stock_transfer_list_search" model="ir.ui.view">
         <field name="name">stock.transfer.search</field>
         <field name="model">stock.transfer</field>
@@ -182,7 +190,7 @@ stock.transfer
                 <field name="date" />
                 <field name="eta" attrs="{'required': [('type', '=', 'out')]}"/>
                 <field name="warehouse_id" on_change="on_change_warehouse_id(warehouse_id)" string="Warehouse Departure"/>
-                <field name="location_id" domain="[('usage', '=', 'internal')]" string="Location Departure"/> 
+                <field name="location_id" domain="[('usage', '=', 'internal')]" string="Location Departure"/>
                 <field name="warehouse_subsidiary_id" domain="[('id', '!=', warehouse_id)]" string="Send to Warehouse"/>
                 <notebook colspan="4">
                     <page string="Outgoing Products">
@@ -199,8 +207,8 @@ stock.transfer
                                 </tree>
                             </field>
                             <field name="expense_amount" />
-                            <button name="button_dummy" states="draft" string="Compute Expenses" 
-                                    type="object" icon="terp-stock_format-scientific" 
+                            <button name="button_dummy" states="draft" string="Compute Expenses"
+                                    type="object" icon="terp-stock_format-scientific"
                                     attrs="{'invisible': [('state', '!=', 'draft')]}"/>
                             <separator string="Outgoing Products" colspan="4"/>
                             <field name="transfer_line" nolabel="1" colspan="4">
@@ -239,8 +247,8 @@ stock.transfer
         </form>
       </field>
     </record>
-    
-    
+
+
 <!-- FORM View for stock.transfer In -->
     <record id="view_stock_transfer_in_form" model="ir.ui.view">
       <field name="name">stock.transfer.in.form</field>
@@ -248,7 +256,7 @@ stock.transfer
       <field name="type">form</field>
       <field name="arch" type="xml">
         <form string="Incoming Stock Transfer" version="7.0">
-          <header>            
+          <header>
             <button name="action_cancel" states="draft,done" string="Cancel"  type='object'
                     confirm="Are you sure you want to Cancel this Stock Transfer ?" /> <!--groups="purchase.group_purchase_manager"/> -->
             <button name="action_confirm_transfer" states="draft" type='object' string="Receive" class="oe_highlight" /> <!--groups="purchase.group_purchase_manager"/> -->
@@ -282,8 +290,8 @@ stock.transfer
                                 </tree>
                             </field>
                             <field name="expense_amount" />
-                            <button name="button_dummy" states="draft" string="Compute Expenses" 
-                                    type="object" icon="terp-stock_format-scientific" 
+                            <button name="button_dummy" states="draft" string="Compute Expenses"
+                                    type="object" icon="terp-stock_format-scientific"
                                     attrs="{'invisible': [('state', '!=', 'draft')]}"/>
                             <separator string="Incoming Products" colspan="4"/>
                             <field name="transfer_line" nolabel="1" colspan="4" readonly="1">
@@ -322,8 +330,8 @@ stock.transfer
         </form>
       </field>
     </record>
-        
-        
+
+
 <!-- Action for Suppliers stock.transfer -->
     <record model="ir.actions.act_window" id="action_stock_transfer_out">
         <field name="name">Outgoing Stock Transfer</field>
@@ -335,7 +343,7 @@ stock.transfer
         <field name="view_type">form</field>
         <field name="view_mode">tree,form</field>
     </record>
-        
+
     <record id="action_stock_transfer_out_view1" model="ir.actions.act_window.view">
         <field eval="1" name="sequence"/>
         <field name="view_mode">tree</field>
@@ -348,7 +356,7 @@ stock.transfer
         <field name="view_id" ref="view_stock_transfer_out_form"/>
         <field name="act_window_id" ref="action_stock_transfer_out"/>
     </record>
-        
+
 
 <!-- Action for Customer stock.transfer -->
     <record model="ir.actions.act_window" id="action_stock_transfer_in">
@@ -361,7 +369,7 @@ stock.transfer
         <field name="view_type">form</field>
         <field name="view_mode">tree,form</field>
     </record>
-        
+
     <record id="action_stock_transfer_in_view1" model="ir.actions.act_window.view">
         <field eval="1" name="sequence"/>
         <field name="view_mode">tree</field>
@@ -375,24 +383,24 @@ stock.transfer
         <field name="act_window_id" ref="action_stock_transfer_in"/>
     </record>
 
-    
-    <menuitem id="menu_stock_transfer_warehouse_mgmt" 
-              name="Stock Transfers" 
-              parent="stock.menu_stock_root" 
-              sequence="2" 
+
+    <menuitem id="menu_stock_transfer_warehouse_mgmt"
+              name="Stock Transfers"
+              parent="stock.menu_stock_root"
+              sequence="2"
               groups="group_stock_transfer_in,group_stock_transfer_out"/>
-        
+
 <!-- Menu for stock.transfer IN -->
     <menuitem name="Incoming Transfer" sequence="10"
               parent="menu_stock_transfer_warehouse_mgmt"
-              id="menu_stock_transfer_in_form" 
+              id="menu_stock_transfer_in_form"
               action="action_stock_transfer_in"
               groups="group_stock_transfer_in"/>
 
 <!-- Menu for stock.transfer OUT -->
     <menuitem name="Outgoing Transfer" sequence="11"
               parent="menu_stock_transfer_warehouse_mgmt"
-              id="menu_stock_transfer_out_form" 
+              id="menu_stock_transfer_out_form"
               action="action_stock_transfer_out"
               groups="group_stock_transfer_out"/>
 </data>

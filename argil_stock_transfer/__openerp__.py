@@ -1,6 +1,6 @@
 # -*- encoding: utf-8 -*-
 ##############################################################################
-#    
+#
 #    OpenERP, Open Source Management Solution
 #    Copyright (C) 2014 Argil Consulting (<http://www.argil.mx>)
 #    Information:
@@ -17,18 +17,18 @@
 #    GNU Affero General Public License for more details.
 #
 #    You should have received a copy of the GNU Affero General Public License
-#    along with this program.  If not, see <http://www.gnu.org/licenses/>.     
+#    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 ##############################################################################
 
-{   
+{
     "name"        : "Stock Transfers adding Landed Costs",
     "version"     : "1.2.1",
     "category"    : "Stock",
     'complexity'  : "normal",
     "author"      : "Argil Consulting",
     "website"     : "http://www.hesatecnica.com",
-    "depends"     : ["purchase","argil_multi_warehouse_view"],
+    "depends"     : ["purchase","argil_multi_warehouse_view", 'stock_account'],
     "summary"     : "Management of Stock Transfers between Subsidiaries",
     "description" : """
 Stock Subsidiary Transfer
@@ -39,7 +39,7 @@ You can manage Stock Transfers between:
  - Distribution Center to Subsidiary
  - Subsidiary to Subsidiary
  - Subsidiary to Distribution Center
- 
+
  Also you can add Expenses related to transfer, like:
  - Freight
  - Other expenses (Packaging, Product Load/Unload, etc).
