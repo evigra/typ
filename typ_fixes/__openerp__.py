@@ -37,10 +37,8 @@
     """,
     "website" : "http://poncesoft.blogspot.com",
     "license" : "AGPL-3",
-    "depends" : ["account","account_voucher","l10n_mx_invoice_datetime","purchase_requisition","l10n_mx_facturae_pac_sf","purchase","stock"],
-    "init_xml" : [],
-    "demo_xml" : [],
-    "update_xml" : [
+    "depends" : ["account","account_voucher","invoice_datetime","purchase_requisition","l10n_mx_facturae_pac_sf","purchase","stock"],
+    "data" : [
                     "stock_view.xml",
                     "account_view.xml",
                     ],

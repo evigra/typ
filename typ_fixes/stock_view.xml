@@ -2,17 +2,17 @@
 <data>
 
     <!-- HERENCIA AL METODO RECIBIR PRODUCTOS EN COMPRAS -->
-    <record id="view_purchase_typ_inhrt_fix_argil" model="ir.ui.view">
-            <field name="name">stock.partial.picking.inherit</field>
-            <field name="model">stock.partial.picking</field>
-            <field name="type">form</field>
-            <field name="inherit_id" ref="stock.stock_partial_picking_form"/>
-            <field name="arch" type="xml">
-                 <button name="do_partial" position="replace">
-                    <button name="do_partial" string="Enviar" type="object" class="oe_highlight"/>
-                 </button>
-            </field>
-        </record>
+    <!-- <record id="view_purchase_typ_inhrt_fix_argil" model="ir.ui.view"> -->
+    <!--         <field name="name">stock.partial.picking.inherit</field> -->
+    <!--         <field name="model">stock.partial.picking</field> -->
+    <!--         <field name="type">form</field> -->
+    <!--         <field name="inherit_id" ref="stock.stock_partial_picking_form"/> -->
+    <!--         <field name="arch" type="xml"> -->
+    <!--              <button name="do_partial" position="replace"> -->
+    <!--                 <button name="do_partial" string="Enviar" type="object" class="oe_highlight"/> -->
+    <!--              </button> -->
+    <!--         </field> -->
+    <!--     </record> -->
 
 </data>
 </openerp>

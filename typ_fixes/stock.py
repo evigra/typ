@@ -30,176 +30,176 @@ from openerp import SUPERUSER_ID
 from datetime import date, datetime, timedelta
 
 ####### MODIFICACION PARA INVENTARIO PENDIENTE VALIDACION #########
-class stock_fill_inventory(osv.osv_memory):
-    _name = "stock.fill.inventory"
-    _inherit = "stock.fill.inventory"
-    _columns = {
-    }
-    _defaults = {
-    }
+# class stock_fill_inventory(osv.osv_memory):
+#     _name = "stock.fill.inventory"
+#     _inherit = "stock.fill.inventory"
+#     _columns = {
+#     }
+#     _defaults = {
+#     }
 
-    def fill_inventory(self, cr, uid, ids, context=None):
-        """ To Import stock inventory according to products available in the selected locations.
-        @param self: The object pointer.
-        @param cr: A database cursor
-        @param uid: ID of the user currently logged in
-        @param ids: the ID or list of IDs if we want more than one
-        @param context: A standard dictionary
-        @return:
-        """
-        if context is None:
-            context = {}
+#     def fill_inventory(self, cr, uid, ids, context=None):
+#         """ To Import stock inventory according to products available in the selected locations.
+#         @param self: The object pointer.
+#         @param cr: A database cursor
+#         @param uid: ID of the user currently logged in
+#         @param ids: the ID or list of IDs if we want more than one
+#         @param context: A standard dictionary
+#         @return:
+#         """
+#         if context is None:
+#             context = {}
 
-        inventory_line_obj = self.pool.get('stock.inventory.line')
-        location_obj = self.pool.get('stock.location')
-        move_obj = self.pool.get('stock.move')
-        uom_obj = self.pool.get('product.uom')
-        if ids and len(ids):
-            ids = ids[0]
-        else:
-             return {'type': 'ir.actions.act_window_close'}
-        fill_inventory = self.browse(cr, uid, ids, context=context)
-        res = {}
-        res_location = {}
+#         inventory_line_obj = self.pool.get('stock.inventory.line')
+#         location_obj = self.pool.get('stock.location')
+#         move_obj = self.pool.get('stock.move')
+#         uom_obj = self.pool.get('product.uom')
+#         if ids and len(ids):
+#             ids = ids[0]
+#         else:
+#              return {'type': 'ir.actions.act_window_close'}
+#         fill_inventory = self.browse(cr, uid, ids, context=context)
+#         res = {}
+#         res_location = {}
 
-        if fill_inventory.recursive:
-            location_ids = location_obj.search(cr, uid, [('location_id',
-                             'child_of', [fill_inventory.location_id.id])], order="id",
-                             context=context)
-        else:
-            location_ids = [fill_inventory.location_id.id]
+#         if fill_inventory.recursive:
+#             location_ids = location_obj.search(cr, uid, [('location_id',
+#                              'child_of', [fill_inventory.location_id.id])], order="id",
+#                              context=context)
+#         else:
+#             location_ids = [fill_inventory.location_id.id]
 
-        res = {}
-        flag = False
-        if not fill_inventory.set_stock_zero:
-            date_now = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-            date_strp = datetime.strptime(date_now, '%Y-%m-%d %H:%M:%S')
-            date_consult = date_strp + timedelta(days=1)
-            datas = {}
-            for location in location_ids:
-                move_ids = move_obj.search(cr, uid, ['|',('location_dest_id','=',location),('location_id','=',location),('state','=','done')], context=context)
-                cr.execute("""
-                    select product_id from stock_move where id in %s group by product_id;
-                    """,(tuple(move_ids),))
-                cr_res = cr.fetchall()
-                product_ids = [x[0] for x in cr_res if cr_res]
-                ###### PRODUCTOS CON NUMERO DE SERIE >>>>>>>>>
-                cr.execute("""
-                    select product_id from stock_move where id in %s and
-                    prodlot_id is not null group by product_id;
-                    """,(tuple(move_ids),))
-                cr_res = cr.fetchall()
-                product_wl_ids = [x[0] for x in cr_res if cr_res]
-                cr.execute("""
-                    select product_id from stock_move where id in %s and
-                    product_id not in %s group by product_id;
-                    """,(tuple(move_ids), tuple(product_wl_ids),))
-                cr_res = cr.fetchall()
-                product_wol_ids = [x[0] for x in cr_res if cr_res]
+#         res = {}
+#         flag = False
+#         if not fill_inventory.set_stock_zero:
+#             date_now = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+#             date_strp = datetime.strptime(date_now, '%Y-%m-%d %H:%M:%S')
+#             date_consult = date_strp + timedelta(days=1)
+#             datas = {}
+#             for location in location_ids:
+#                 move_ids = move_obj.search(cr, uid, ['|',('location_dest_id','=',location),('location_id','=',location),('state','=','done')], context=context)
+#                 cr.execute("""
+#                     select product_id from stock_move where id in %s group by product_id;
+#                     """,(tuple(move_ids),))
+#                 cr_res = cr.fetchall()
+#                 product_ids = [x[0] for x in cr_res if cr_res]
+#                 ###### PRODUCTOS CON NUMERO DE SERIE >>>>>>>>>
+#                 cr.execute("""
+#                     select product_id from stock_move where id in %s and
+#                     prodlot_id is not null group by product_id;
+#                     """,(tuple(move_ids),))
+#                 cr_res = cr.fetchall()
+#                 product_wl_ids = [x[0] for x in cr_res if cr_res]
+#                 cr.execute("""
+#                     select product_id from stock_move where id in %s and
+#                     product_id not in %s group by product_id;
+#                     """,(tuple(move_ids), tuple(product_wl_ids),))
+#                 cr_res = cr.fetchall()
+#                 product_wol_ids = [x[0] for x in cr_res if cr_res]
 
-                for product in product_wol_ids:
-                    prod_br = self.pool.get('product.product').browse(cr, uid, product, context)
-                    stock_qty_product = self.pool.get('stock.location')._product_get(cr, uid, fill_inventory.location_id.id, [prod_br.id], {'uom': prod_br.uom_id.id, 'to_date': date_consult, 'compute_child': False})[prod_br.id]
-                    data_val_create = {'product_id': product, 
-                                        'location_id': location, 
-                                        'product_qty': stock_qty_product, 
-                                        'product_uom': prod_br.uom_id.id, 
-                                        'prod_lot_id': False,
-                                        'inventory_id': context['active_ids'][0]}
-                    inventory_line_obj.create(cr, uid, data_val_create, context=context)
-                res[location] = {}
-                move_ids = move_obj.search(cr, uid, [('id','in',tuple(move_ids)),('product_id','not in',tuple(product_wol_ids))], context=context)
-                local_context = dict(context)
-                local_context['raise-exception'] = False
-                for move in move_obj.browse(cr, uid, move_ids, context=context):
-                    lot_id = move.prodlot_id.id
-                    prod_id = move.product_id.id
-                    if move.location_dest_id.id != move.location_id.id:
-                        if move.location_dest_id.id == location:
-                            qty = uom_obj._compute_qty_obj(cr, uid, move.product_uom,move.product_qty, move.product_id.uom_id, context=local_context)
-                        else:
-                            qty = -uom_obj._compute_qty_obj(cr, uid, move.product_uom,move.product_qty, move.product_id.uom_id, context=local_context)
+#                 for product in product_wol_ids:
+#                     prod_br = self.pool.get('product.product').browse(cr, uid, product, context)
+#                     stock_qty_product = self.pool.get('stock.location')._product_get(cr, uid, fill_inventory.location_id.id, [prod_br.id], {'uom': prod_br.uom_id.id, 'to_date': date_consult, 'compute_child': False})[prod_br.id]
+#                     data_val_create = {'product_id': product,
+#                                         'location_id': location,
+#                                         'product_qty': stock_qty_product,
+#                                         'product_uom': prod_br.uom_id.id,
+#                                         'prod_lot_id': False,
+#                                         'inventory_id': context['active_ids'][0]}
+#                     inventory_line_obj.create(cr, uid, data_val_create, context=context)
+#                 res[location] = {}
+#                 move_ids = move_obj.search(cr, uid, [('id','in',tuple(move_ids)),('product_id','not in',tuple(product_wol_ids))], context=context)
+#                 local_context = dict(context)
+#                 local_context['raise-exception'] = False
+#                 for move in move_obj.browse(cr, uid, move_ids, context=context):
+#                     lot_id = move.prodlot_id.id
+#                     prod_id = move.product_id.id
+#                     if move.location_dest_id.id != move.location_id.id:
+#                         if move.location_dest_id.id == location:
+#                             qty = uom_obj._compute_qty_obj(cr, uid, move.product_uom,move.product_qty, move.product_id.uom_id, context=local_context)
+#                         else:
+#                             qty = -uom_obj._compute_qty_obj(cr, uid, move.product_uom,move.product_qty, move.product_id.uom_id, context=local_context)
 
-                        if datas.get((prod_id, lot_id)):
-                            qty += datas[(prod_id, lot_id)]['product_qty']
+#                         if datas.get((prod_id, lot_id)):
+#                             qty += datas[(prod_id, lot_id)]['product_qty']
 
-                        datas[(prod_id, lot_id)] = {'product_id': prod_id, 'location_id': location, 'product_qty': qty, 'product_uom': move.product_id.uom_id.id, 'prod_lot_id': lot_id}
-                if datas:
-                    flag = True
-                    res[location] = datas
+#                         datas[(prod_id, lot_id)] = {'product_id': prod_id, 'location_id': location, 'product_qty': qty, 'product_uom': move.product_id.uom_id.id, 'prod_lot_id': lot_id}
+#                 if datas:
+#                     flag = True
+#                     res[location] = datas
 
-                if not flag:
-                    raise osv.except_osv(_('Error!'), _('Ningún producto en esta ubicación. Por favor seleccione una ubicación que contenga el Producto.'))
+#                 if not flag:
+#                     raise osv.except_osv(_('Error!'), _('Ningún producto en esta ubicación. Por favor seleccione una ubicación que contenga el Producto.'))
 
-        else: 
-            for location in location_ids:
-                datas = {}
-                res[location] = {}
-                move_ids = move_obj.search(cr, uid, ['|',('location_dest_id','=',location),('location_id','=',location),('state','=','done')], context=context)
-                local_context = dict(context)
-                local_context['raise-exception'] = False
-                for move in move_obj.browse(cr, uid, move_ids, context=context):
-                    lot_id = move.prodlot_id.id
-                    prod_id = move.product_id.id
-                    if move.location_dest_id.id != move.location_id.id:
-                        if move.location_dest_id.id == location:
-                            qty = uom_obj._compute_qty_obj(cr, uid, move.product_uom,move.product_qty, move.product_id.uom_id, context=local_context)
-                        else:
-                            qty = -uom_obj._compute_qty_obj(cr, uid, move.product_uom,move.product_qty, move.product_id.uom_id, context=local_context)
+#         else:
+#             for location in location_ids:
+#                 datas = {}
+#                 res[location] = {}
+#                 move_ids = move_obj.search(cr, uid, ['|',('location_dest_id','=',location),('location_id','=',location),('state','=','done')], context=context)
+#                 local_context = dict(context)
+#                 local_context['raise-exception'] = False
+#                 for move in move_obj.browse(cr, uid, move_ids, context=context):
+#                     lot_id = move.prodlot_id.id
+#                     prod_id = move.product_id.id
+#                     if move.location_dest_id.id != move.location_id.id:
+#                         if move.location_dest_id.id == location:
+#                             qty = uom_obj._compute_qty_obj(cr, uid, move.product_uom,move.product_qty, move.product_id.uom_id, context=local_context)
+#                         else:
+#                             qty = -uom_obj._compute_qty_obj(cr, uid, move.product_uom,move.product_qty, move.product_id.uom_id, context=local_context)
 
 
-                        if datas.get((prod_id, lot_id)):
-                            qty += datas[(prod_id, lot_id)]['product_qty']
+#                         if datas.get((prod_id, lot_id)):
+#                             qty += datas[(prod_id, lot_id)]['product_qty']
 
-                        datas[(prod_id, lot_id)] = {'product_id': prod_id, 'location_id': location, 'product_qty': qty, 'product_uom': move.product_id.uom_id.id, 'prod_lot_id': lot_id}
+#                         datas[(prod_id, lot_id)] = {'product_id': prod_id, 'location_id': location, 'product_qty': qty, 'product_uom': move.product_id.uom_id.id, 'prod_lot_id': lot_id}
 
-                if datas:
-                    flag = True
-                    res[location] = datas
+#                 if datas:
+#                     flag = True
+#                     res[location] = datas
 
-            if not flag:
-                raise osv.except_osv(_('Error!'), _('Ningún producto en esta ubicación. Por favor seleccione una ubicación que contenga el Producto.'))
+#             if not flag:
+#                 raise osv.except_osv(_('Error!'), _('Ningún producto en esta ubicación. Por favor seleccione una ubicación que contenga el Producto.'))
 
-        for stock_move in res.values():
-            for stock_move_details in stock_move.values():
-                stock_move_details.update({'inventory_id': context['active_ids'][0]})
-                domain = []
-                for field, value in stock_move_details.items():
-                    if field == 'product_qty' and fill_inventory.set_stock_zero:
-                         domain.append((field, 'in', [value,'0']))
-                         continue
-                    domain.append((field, '=', value))
+#         for stock_move in res.values():
+#             for stock_move_details in stock_move.values():
+#                 stock_move_details.update({'inventory_id': context['active_ids'][0]})
+#                 domain = []
+#                 for field, value in stock_move_details.items():
+#                     if field == 'product_qty' and fill_inventory.set_stock_zero:
+#                          domain.append((field, 'in', [value,'0']))
+#                          continue
+#                     domain.append((field, '=', value))
 
-                if fill_inventory.set_stock_zero:
-                    stock_move_details.update({'product_qty': 0})
+#                 if fill_inventory.set_stock_zero:
+#                     stock_move_details.update({'product_qty': 0})
 
-                line_ids = inventory_line_obj.search(cr, uid, domain, context=context)
+#                 line_ids = inventory_line_obj.search(cr, uid, domain, context=context)
 
-                if not line_ids:
-                    inventory_line_obj.create(cr, uid, stock_move_details, context=context)
+#                 if not line_ids:
+#                     inventory_line_obj.create(cr, uid, stock_move_details, context=context)
 
-        return {'type': 'ir.actions.act_window_close'}
+#         return {'type': 'ir.actions.act_window_close'}
 
-stock_fill_inventory()
+# stock_fill_inventory()
 
-######### HERENCIA DE FACTURACION DESDE ALBARANES ##############
-class stock_partial_picking(osv.osv):
-    _name = 'stock.partial.picking'
-    _inherit ='stock.partial.picking'
-    _columns = {
-        }
+# ######### HERENCIA DE FACTURACION DESDE ALBARANES ##############
+# class stock_partial_picking(osv.osv):
+#     _name = 'stock.partial.picking'
+#     _inherit ='stock.partial.picking'
+#     _columns = {
+#         }
 
-    def do_partial(self, cr, uid, ids, context=None):
-        for rec in self.browse(cr, uid, ids, context=None):
-            if not rec.move_ids:
-                raise osv.except_osv(_('Error!'),
-                    _('Debes recibir o enviar al menos 1 producto.'))
+#     def do_partial(self, cr, uid, ids, context=None):
+#         for rec in self.browse(cr, uid, ids, context=None):
+#             if not rec.move_ids:
+#                 raise osv.except_osv(_('Error!'),
+#                     _('Debes recibir o enviar al menos 1 producto.'))
 
-        res = super(stock_partial_picking, self).do_partial(cr, uid, ids, context)
-        
-        return res
+#         res = super(stock_partial_picking, self).do_partial(cr, uid, ids, context)
 
-stock_partial_picking()
+#         return res
+
+# stock_partial_picking()
 
 class stock_return_picking(osv.osv_memory):
     _name = 'stock.return.picking'
@@ -211,7 +211,7 @@ class stock_return_picking(osv.osv_memory):
         }
 
     def create_returns(self, cr, uid, ids, context=None):
-        """ 
+        """
          Creates return picking.
          @param self: The object pointer.
          @param cr: A database cursor
@@ -221,7 +221,7 @@ class stock_return_picking(osv.osv_memory):
          @return: A dictionary which of fields with values.
         """
         if context is None:
-            context = {} 
+            context = {}
         record_id = context and context.get('active_id', False) or False
         move_obj = self.pool.get('stock.move')
         pick_obj = self.pool.get('stock.picking')
@@ -235,7 +235,7 @@ class stock_return_picking(osv.osv_memory):
         date_cur = time.strftime('%Y-%m-%d %H:%M:%S')
         set_invoice_state_to_none = True
         returned_lines = 0
-        
+
 #        Create new picking for returned products
 
         seq_obj_name = 'stock.picking'
@@ -249,13 +249,13 @@ class stock_return_picking(osv.osv_memory):
         new_pick_name = self.pool.get('ir.sequence').get(cr, uid, seq_obj_name)
         new_picking = pick_obj.copy(cr, uid, pick.id, {
                                         'name': _('%s-%s-return') % (new_pick_name, pick.name),
-                                        'move_lines': [], 
-                                        'state':'draft', 
+                                        'move_lines': [],
+                                        'state':'draft',
                                         'type': new_type,
-                                        'date':date_cur, 
+                                        'date':date_cur,
                                         'invoice_state': data['invoice_state'],
         })
-        
+
         val_id = data['product_return_moves']
         for v in val_id:
             data_get = data_obj.browse(cr, uid, v, context=context)
@@ -276,9 +276,9 @@ class stock_return_picking(osv.osv_memory):
                 new_move=move_obj.copy(cr, uid, move.id, {
                                             'product_qty': new_qty,
                                             'product_uos_qty': uom_obj._compute_qty(cr, uid, move.product_uom.id, new_qty, move.product_uos.id),
-                                            'picking_id': new_picking, 
+                                            'picking_id': new_picking,
                                             'state': 'draft',
-                                            'location_id': new_location, 
+                                            'location_id': new_location,
                                             'location_dest_id': move.location_id.id,
                                             'date': date_cur,
                 })
