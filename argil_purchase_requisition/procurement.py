@@ -25,9 +25,9 @@ from openerp.osv import fields,osv
 from openerp import netsvc
 
 class procurement_order(osv.osv):
-    
+
     _inherit = "procurement.order"
-    
+
 #     def action_po_assign(self, cr, uid, ids, context=None):
 #         """ This is action which call from workflow to assign purchase order to procurements
 #         @return: True
@@ -46,8 +46,8 @@ class procurement_order(osv.osv):
             if procurement.product_id.purchase_requisition:
                 return True
         return False
-    
-    
+
+
     def action_pr_assign(self, cr, uid, ids, context=None):
         """ This is action which call from workflow to assign purchase requisition to procurements
         @return: True
@@ -68,7 +68,7 @@ class procurement_order(osv.osv):
                     'date_end': procurement.date_planned,
                     'warehouse_id': self._get_warehouse(procurement, user_company),
                     'company_id': procurement.company_id.id,
-                    
+
                     'line_ids': [(0, 0, {
                         'product_id': procurement.product_id.id,
                         'product_uom_id': procurement.product_uom.id,
@@ -88,19 +88,19 @@ class procurement_order(osv.osv):
 #             res.update(super(procurement_order, self).make_po(cr, uid, non_requisition, context=context))
 
         return res
-    
+
     def reload_procurement_data(self, cr, uid, **args):
         """
-        This method is called to reload procurement in running state but its moves are in done state. 
+        This method is called to reload procurement in running state but its moves are in done state.
         """
-        procurement_ids = self.search(cr, uid, [('state','=', 'running'),('move_id.state','=','done'),
-                                         ('procure_method','=','make_to_order')])
-        if not procurement_ids:
-            return True
-        self.write(cr, uid, procurement_ids, {'state':'done'})
+        # procurement_ids = self.search(cr, uid, [('state','=', 'running'),('move_id.state','=','done'),
+        #                                  ('procure_method','=','make_to_order')])
+        # if not procurement_ids:
+        #     return True
+        # self.write(cr, uid, procurement_ids, {'state':'done'})
         return True
 procurement_order()
-    
+
 class stock_move(osv.osv):
     _inherit = "stock.move"
     def action_done(self, cr, uid, ids, context=None):
@@ -113,7 +113,7 @@ class stock_move(osv.osv):
         for proc_id in proc_ids:
             wf_service.trg_validate(uid, 'procurement.order', proc_id, 'subflow.pur_requisition_done', cr)
         return result
-    
+
 stock_move()
 
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
