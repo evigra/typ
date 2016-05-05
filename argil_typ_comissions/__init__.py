@@ -23,9 +23,9 @@
 #
 ##############################################################################
 
-import calculate_commissions
-import res_users
-import invoice_analisis_comissions
-import wizard
-import account_invoice
-import report
+from . import calculate_commissions
+from . import res_users
+from . import invoice_analisis_comissions
+from . import wizard
+from . import account_invoice
+from . import report

@@ -30,14 +30,14 @@
     'description': """
        Este modulo adapta una metodologia para aplicar comisiones de ventas sobre el pago de las facturas....
        Para utilizarlo es necesario identificar en la parte de usuarios a cuales se les aplicara estas comisiones
-        
+
        Equipos de Ventas que comisionan:\n
-        
+
         - Vendedor de mostrador
         - Ingeniero de Venta
         - Vendedor Empresarial
         - Gerente de Sucursal
-      
+
         - Gerente de División: equipo de aire acondicionado, equipo de refrigeración, refacciones \n
 
         Seguridad:\n
@@ -47,9 +47,7 @@
     "website" : "http://www.hesatecnica.com/",
     "license" : "AGPL-3",
     "depends" : ["account","sale","purchase","account_voucher","account_accountant","crm","report_webkit"],
-    "init_xml" : [],
-    "demo_xml" : [],
-    "update_xml" : [
+    "data" : [
                     'calculate_commissions_view.xml',
                     'res_users_view.xml',
                     'invoice_analisis_comissions_view.xml',
