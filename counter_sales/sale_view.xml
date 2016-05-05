@@ -163,7 +163,7 @@
                         <label string="Sales Order " attrs="{'invisible': [('state','in',('draft','sent'))]}"/>
                         <field name="name" class="oe_inline" readonly="1"/>
                     </h1>
-                    
+
                     <group>
 
                         <group>
@@ -173,7 +173,7 @@
                             <field name="project_id" context="{'partner_id':partner_invoice_id, 'default_pricelist_id':pricelist_id, 'default_name':name, 'default_type': 'contract'}" groups="sale.group_analytic_accounting" domain="[('type','in',['view','normal','contract'])]" invisible="1"/>
                             <field name="invoice_exists" invisible="1" />
                             <field name="user_id" invisible="1"/>
-                            
+
                             <field name="venta_mostrador" invisible="1"/>
 
                             <field name="pay_method_id" string="Metodo de Pago"/>
@@ -182,21 +182,21 @@
                         </group>
                         <group>
                             <field name="date_order" string="Fecha"/>
-                            <field name="shop_id" groups="base.group_no_one" on_change="onchange_shop_id(shop_id, context)" widget="selection" string="Tienda"/>
+                            <!-- <field name="shop_id" groups="base.group_no_one" on_change="onchange_shop_id(shop_id, context)" widget="selection" string="Tienda"/> -->
                             <field name="client_order_ref" string="Referencia del Cliente"/>
                             <!-- <field name="pricelist_currency" on_change="on_change_pricelist_currency(partner_id,pricelist_currency)" required="1" string="Moneda"/> -->
                             <field domain="[('type','=','sale')]" name="pricelist_id" groups="product.group_sale_pricelist" on_change="onchange_pricelist_id(pricelist_id,order_line)" string="Tarifa de Venta" widget="selection" />
                             <field name="currency_id" readonly="1"/>
                             <field name="sale_id" />
-                            
-                            
+
+
                             <group>
                                 <group name="sales_person" groups="base.group_user">
                                     <field name="user_id" invisible="1"/>
                                     <field groups="base.group_no_one" name="origin" invisible="1"/>
                                 </group>
                                 <group name="sale_pay">
-                                    
+
                                     <field name="fiscal_position" widget="selection" invisible="1"/>
                                     <field name="company_id" widget="selection" groups="base.group_multi_company" invisible="1"/>
                                 </group>
@@ -266,7 +266,7 @@
                                     <field name="th_weight" invisible="1"/>
                                     <field name="product_id"
                                         context="{'partner_id':parent.partner_id, 'quantity':product_uom_qty, 'pricelist':parent.pricelist_id, 'shop':parent.shop_id, 'uom':product_uom}"
-                                        groups="base.group_user" 
+                                        groups="base.group_user"
                                         on_change="product_id_change(parent.pricelist_id, product_id, product_uom_qty, False, product_uos_qty, False, name, parent.partner_id, False, True, parent.date_order, False, parent.fiscal_position, False, context)"/>
                                     <field name="name"/>
                                     <field name="product_uom_qty"
