@@ -7,7 +7,7 @@
             <field name="inherit_id" ref="sale.view_order_form"/>
             <field name="arch" type="xml">
                 <xpath expr="//field[@name='address_allotment_id']" position="after">
-                    <field name="dropshipping" attrs="{'invisible':[('type','!=','make_to_order')]}" />
+                    <field name="dropshipping"/>
                 </xpath>
             </field>
         </record>
