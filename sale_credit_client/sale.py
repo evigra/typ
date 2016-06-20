@@ -81,7 +81,7 @@ class account_invoice(osv.osv):
             warning = {
                         'title': 'Error!',
                         'message':'En Ventas de Contado solo podra Utilizar Plazos a 0 Dias.\n Si cree que esto es un Error, Contacta al Administrador.'}
-            res.update({'payment_term':payment_ids[0]})
+            res.update({'payment_term':payment_ids and payment_ids[0] or False})
             return {'value':res, 'warning': warning}
         return {'value':res}
 

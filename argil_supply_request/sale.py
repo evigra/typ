@@ -24,11 +24,11 @@ from openerp.osv import osv, fields
 
 class sale_order(osv.osv):
     _inherit = "sale.order"
-    def _prepare_order_line_procurement(self, cr, uid, order, line, move_id, date_planned, context=None):
+    def _______________prepare_order_line_procurement(self, cr, uid, order, line, move_id, date_planned, context=None):
         result = super(sale_order, self)._prepare_order_line_procurement(cr, uid, order, line, move_id, date_planned, context=context)
         result.update({'distribution_type':'sale'})
         return result
-        
+
 sale_order()
 
 class sale_order_line(osv.osv):
@@ -37,12 +37,16 @@ class sale_order_line(osv.osv):
         'type': fields.selection([('make_to_stock','From Stock'),
                                   ('make_to_order','On Order'),
                                   ('make_to_supply_request','On Supply Request')],
-                                 'Procurement Method', required=True, readonly=True, 
+                                 'Procurement Method', required=True, readonly=True,
                                  states={'draft': [('readonly', False)]},
                                  help="From stock: When needed, the product is taken from the "\
                                  "stock or we wait for replenishment.\nOn order: When needed, the "\
                                  "product is purchased or produced.\nOn Supply Request: When needed, "\
                                  "a request to distribution center is created"),
     }
+    _defaults = {
+        'type': 'make_to_stock'
+    }
+
 sale_order_line()
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:

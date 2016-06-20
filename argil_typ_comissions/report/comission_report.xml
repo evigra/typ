@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <openerp>
     <data>
-        
+
         <record id="comissions_header_id" model="ir.header_webkit">
             <field name="footer_html"><![CDATA[
 <html>
@@ -84,8 +84,8 @@
                         <field eval="55" name="margin_top"/>
                         <field eval="0" name="margin_bottom"/>
                         <field name="css"><![CDATA[
-           
-            
+
+
                                   body {
                                   font-family:helvetica;
                                   font-size:12;
@@ -168,22 +168,22 @@
                                   }
                                   .tax {
                                   width:50%;
-                                  } 
+                                  }
                               ]]>
               </field>
             <field name="name">Reporte de Comisiones</field>
         </record>
 
 
-        <report 
-            auto="False" 
-            id="comissions_report_webkit_id" 
+        <report
+            auto="False"
+            id="comissions_report_webkit_id"
             usage="default"
-            model="invoice.comission.report" 
-            name="invoice.comission.report.salesman" 
+            model="invoice.comission.report"
+            name="invoice.comission.report.salesman"
             file="argil_typ_comissions/report/comission_report.mako"
             string="Comisiones"
-            report_type="webkit"
-            webkit_header="comissions_header_id" />
+            report_type="pdf"
+            webkit_header="comissions_header_id"/>
     </data>
-</openerp> 
+</openerp>

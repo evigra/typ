@@ -1,6 +1,6 @@
 # -*- encoding: utf-8 -*-
 ##############################################################################
-#    
+#
 #    OpenERP, Open Source Management Solution
 #    Copyright (C) 2004-2009 Tiny SPRL (<http://tiny.be>).
 #
@@ -15,7 +15,7 @@
 #    GNU Affero General Public License for more details.
 #
 #    You should have received a copy of the GNU Affero General Public License
-#    along with this program.  If not, see <http://www.gnu.org/licenses/>.     
+#    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 ##############################################################################
 
@@ -53,7 +53,7 @@ class sale_order_counter(osv.osv):
         'tipo_venta': fields.selection([('credit','Credito'),('cash','Contado')], 'Plazo'),
         }
 
-    _defaults = {  
+    _defaults = {
         'state': 'draft',
         'pricelist_currency': 'mxn',
         'venta_mostrador': True,
@@ -100,7 +100,7 @@ class sale_order_counter(osv.osv):
                 'title': title,
                 'message': message,
         }
-        
+
         credit_exc = 0.0
         if partner.credit == 0:
             credit_exc == 0.0
@@ -141,7 +141,7 @@ class sale_order_counter(osv.osv):
         else:
             value_d = val
             if partner.property_payment_term:
-                
+
                 value_d['tipo_venta']= 'credit'
             return {'value': value_d}
 
@@ -227,7 +227,7 @@ class sale_order_counter(osv.osv):
                 date_act = datetime.now().strftime('%Y-%m-%d')
                 invoice_overdue_ids = invoice_obj.search(cr, uid, [('date_due','<',date_act),('state','=','open'),('residual','>',0.0),('partner_id','=',partner_br.id),('type','=','out_invoice')])
                 invoice_ids = invoice_obj.search(cr, uid, [('date_invoice','<=',date_act),('state','=','open'),('residual','>',0.0),('partner_id','=',partner_br.id),('type','=','out_invoice')])
-                
+
                 if partner_br.credit_limit == 0.0:
                     raise osv.except_osv(
                         _('Error de Informacion! \n El Cliente %s ' % partner_br.name),
@@ -269,8 +269,8 @@ class sale_order_counter(osv.osv):
                     raise osv.except_osv(
                             _('No se puede Confirmar !'),
                             _('El Cliente %s ah Excedido el Limite de Credito por la cantidad de %s \n Favor de solicitar pago o vender de contado' % (partner_br.name,str(credit_exc))))
-        
-        ##### CONFIRMANDO EL PEDIDO DE VENTA Y CREANDOLO ####  
+
+        ##### CONFIRMANDO EL PEDIDO DE VENTA Y CREANDOLO ####
 
         for rec in self.browse(cr, uid, ids, context=None):
             for line in rec.order_line:
@@ -432,7 +432,7 @@ class sale_order_counter(osv.osv):
                     product_br = product_obj.browse(cr, uid, product_id, context=None)[0]
                     if product_br.default_code:
                         product_name = ' [ '+product_br.default_code +' ] '+product_br.name
-                    
+
                     else:
                         product_name = product_br.name
                     if product_id:
@@ -550,7 +550,7 @@ class sale_order_counter(osv.osv):
                              \n -[Cantidad+CodigoProducto]'}
                     return {'value' : {'product_on_id':False,},'warning':warning}
 
-          
+
         return {'value' : {'product_on_id':False,'order_line':[x for x in lines]}}
 
 sale_order_counter()
@@ -608,7 +608,7 @@ class sale_order(osv.osv):
         }
 
 
-    _defaults = {  
+    _defaults = {
         'tipo_venta': 'cash',
         'order_policy': 'picking',
         }
@@ -637,7 +637,7 @@ class sale_order(osv.osv):
                     'title': title,
                     'message': message,
             }
-            
+
             credit_exc = 0.0
             if partner.credit == 0:
                 credit_exc == 0.0
@@ -729,7 +729,7 @@ class sale_order(osv.osv):
         invoice_obj = self.pool.get('account.invoice')
 
         for order in self.browse(cr, uid, ids, context=context):
-    
+
             partner_id = order.partner_id.id
             partner_br = order.partner_id
             if order.partner_id.is_company == False:
@@ -760,7 +760,7 @@ class sale_order(osv.osv):
                 date_act = datetime.now().strftime('%Y-%m-%d')
                 invoice_overdue_ids = invoice_obj.search(cr, uid, [('date_due','<',date_act),('state','=','open'),('residual','>',0.0),('partner_id','=',partner_br.id),('type','=','out_invoice')])
                 invoice_ids = invoice_obj.search(cr, uid, [('date_invoice','<=',date_act),('state','=','open'),('residual','>',0.0),('partner_id','=',partner_br.id),('type','=','out_invoice')])
-                
+
                 if partner_br.credit_limit == 0.0:
                     if contado == False:
                         raise osv.except_osv(
@@ -806,7 +806,7 @@ class sale_order(osv.osv):
                             _('No se puede Confirmar !'),
                             _('El Cliente %s ah Excedido el Limite de Credito por la cantidad de %s \n Favor de solicitar pago o vender de contado' % (partner_br.name,str(credit_exc))))
         # ############## INTERRUPCION DEL FLUJO PYTHON ############################
-        # raise osv.except_osv(_('Interrupcion del Flujo!'), 
+        # raise osv.except_osv(_('Interrupcion del Flujo!'),
         #                      _('Debugeando el Codigo de Creacion de Factura desde lineas de Compra') )
 
         return res
@@ -844,7 +844,7 @@ class sale_order(osv.osv):
     #                                     #'update_cost': fields.boolean('Need cost update'),
     #                                     #'cost' : fields.float("Cost", help="Unit Cost for this product line"),
     #                                     #'currency' : fields.many2one('res.currency', string="Currency", help="Currency in which Unit cost is expressed", ondelete='CASCADE'),
-    #                                     #'tracking': fields.function(_tracking, string='Tracking', type='boolean'), 
+    #                                     #'tracking': fields.function(_tracking, string='Tracking', type='boolean'),
     #                                     })
     #                     stock_lines.append(xline)
     #                 vals ={
@@ -901,8 +901,8 @@ class stock_invoice_onshipping(osv.osv_memory):
 
     _defaults = {
         }
-        
-    def create_invoice(self, cr, uid, ids, context=None):
+
+    def _____________create_invoice(self, cr, uid, ids, context=None):
         if context is None:
             context = {}
         picking_pool = self.pool.get('stock.picking')

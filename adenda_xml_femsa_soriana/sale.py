@@ -35,13 +35,14 @@ class sale_order(osv.osv):
     _defaults = {
 
     }
-    def onchange_partner_id(self, cr, uid, ids, part, context=None):
-        if not part:
-            return {'value':{}}
-        partner = self.pool.get('res.partner').browse(cr, uid, part, context=context)
-        result =  super(sale_order, self).onchange_partner_id(cr, uid, ids, part, context=context)
-        result['value'].update({'addenda_honda_partner':partner.addenda_honda})
-        return result
+    # commented because there i addenda_honda in res_partner
+    # def onchange_partner_id(self, cr, uid, ids, part, context=None):
+    #     if not part:
+    #         return {'value':{}}
+    #     partner = self.pool.get('res.partner').browse(cr, uid, part, context=context)
+    #     result =  super(sale_order, self).onchange_partner_id(cr, uid, ids, part, context=context)
+    #     result['value'].update({'addenda_honda_partner':partner.addenda_honda})
+    #     return result
 
     def action_invoice_create(self, cr, uid, ids, grouped=False, states=None, date_invoice = False, context=None):
         res = super(sale_order, self).action_invoice_create(cr, uid, ids, grouped=False, states=None, date_invoice = False, context=None)

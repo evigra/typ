@@ -175,7 +175,7 @@ class sale_order(osv.osv):
     _columns = {
     }
 
-    def action_button_confirm(self, cr, uid, ids, context=None):
+    def _______action_button_confirm(self, cr, uid, ids, context=None):
         res = super(sale_order, self).action_button_confirm(cr, uid, ids, context=None)
         for order in self.browse(cr, uid, ids, context=context):
             origin = order.name

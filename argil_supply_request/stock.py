@@ -37,12 +37,12 @@ class stock_move(osv.osv):
         result =super(stock_move, self).action_done(cr, uid, ids, context)
         procurement_pool = self.pool.get('procurement.order')
         wf_service = netsvc.LocalService("workflow")
-        proc_ids = procurement_pool.search(cr, uid,[('move_id','in',ids),
-                                                    ('state','=','running'),
-                                                    ('supply_req_id','!=',False)])
-        for proc_id in proc_ids:
-            wf_service.trg_validate(uid, 'procurement.order', proc_id, 'subflow.supply_request_done', cr)
+        # proc_ids = procurement_pool.search(cr, uid,[('move_id','in',ids),
+        #                                             ('state','=','running'),
+        #                                             ('supply_req_id','!=',False)])
+        # for proc_id in proc_ids:
+        #     wf_service.trg_validate(uid, 'procurement.order', proc_id, 'subflow.supply_request_done', cr)
         return result
-    
+
 stock_move()
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:

@@ -24,7 +24,7 @@ import user
 import product
 import supply_request
 import procurement
-import sale
+# import sale
 import stock
 import wizard
 

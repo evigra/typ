@@ -34,15 +34,15 @@ class procurement_order(osv.osv):
     _columns = {
         'procure_method': fields.selection([('make_to_stock','Make to Stock'),
                                             ('make_to_order','Make to Order'),
-                                            ('make_to_supply_request','Make to Supply Request')], 
+                                            ('make_to_supply_request','Make to Supply Request')],
                                            'Procurement Method', readonly=True, required=True,
-                                           states={'draft':[('readonly',False)], 'confirmed':[('readonly',False)]}, 
+                                           states={'draft':[('readonly',False)], 'confirmed':[('readonly',False)]},
                                            help="If you encode manually a Procurement, you probably want to use" \
                                            " a make to order method."),
         'supply_req_id': fields.many2one('stock.supply_request','Supply Request'),
         'distribution_type':fields.selection([('manual', 'Manual'), ('stock_reorder','Stock Re-order'), ('sale', 'Sale')], 'Distribution Type'),
     }
-    
+
     _defaults = {
         'distribution_type':'manual'
     }
@@ -52,7 +52,7 @@ class procurement_order(osv.osv):
            for computing their own purpose
         @return: True"""
         return True
-    
+
     def check_make_supply_request(self, cr, uid, ids, context=None):
         ''' return True if supply request is needed
         '''
@@ -63,15 +63,15 @@ class procurement_order(osv.osv):
             else:
                 ok = ok and self._check_make_to_supply_request_product(cr, uid, procurement, context)
         return ok
-    
-    
+
+
     def check_make_supply_request_done(self, cr, uid, ids, context=None):
         ok = True
         for procurement in self.browse(cr, uid, ids, context=context):
             if procurement.supply_req_id and procurement.supply_req_id.state != 'done':
                 return False
         return True
-    
+
     def action_supply_req_assign(self, cr, uid, ids, context=None):
         """ This is action which call from workflow to assign purchase requisition to procurements
         @return: True
@@ -79,7 +79,7 @@ class procurement_order(osv.osv):
         res = self.make_supply_request_sale(cr, uid, ids, context=context)
         res = res.values()
         return len(res) and res[0] or 0 #TO CHECK: why workflow is generated error if return not integer value
- 
+
     def action_supply_move_assigned(self, cr, uid, ids, context=None):
         """ Changes procurement state to Running and writes message.
         @return: True
@@ -89,7 +89,7 @@ class procurement_order(osv.osv):
                 'message': message}, context=context)
         self.message_post(cr, uid, ids, body=message, context=context)
         return True
-    
+
     def get_supply_request_data(self,cr, uid, order_point, qty,type='manual',
                                 move_obj=False,procurement=False, context=None):
 #         self.pool.get('stock.warehouse')
@@ -101,7 +101,7 @@ class procurement_order(osv.osv):
                     partner_id = move_obj.sale_line_id.order_id.partner_id.id or False
         if not partner_id:
             partner_id = order_point.warehouse_id.partner_id and order_point.warehouse_id.partner_id.id or False
-        
+
         return {
                 'name': procurement and procurement.origin +':'+ order_point.name or order_point.name ,
                 'product_id': procurement and procurement.product_id.id or order_point.product_id.id or False,
@@ -120,13 +120,13 @@ class procurement_order(osv.osv):
                 'type':type,
                 'dest_move_id': move_obj and move_obj.id or False,
             }
-    
+
     def get_supply_request_data_wo_orderpoint(self,cr, uid, qty,type='manual',
                                 move_obj=False,procurement=False, context=None):
 #         self.pool.get('stock.warehouse')
         partner_id = False
         warehouse_id, distribution_warehouse_id = False, False
-        
+
         if procurement:
             warehouse_id, distribution_warehouse_id = self.get_distribution_warehouse(cr, uid, procurement,context)
             warehouse_obj = self.pool.get('stock.warehouse').browse(cr, uid, warehouse_id, context)
@@ -137,7 +137,7 @@ class procurement_order(osv.osv):
                     partner_id = move_obj.sale_line_id.order_id.partner_id.id or False
         if not partner_id:
             partner_id = warehouse_obj.partner_id and warehouse_obj.partner_id.id or False
-        
+
         return {
                 'name': procurement and procurement.origin,
                 'product_id': procurement and procurement.product_id.id or False,
@@ -169,7 +169,7 @@ class procurement_order(osv.osv):
             'company_id': order_point.company_id.id or False,
             'auto_validate': True,
         }
-        
+
     def make_supply_request_sale(self,cr, uid, ids, context=None):
         res = {}
         if context is None:
@@ -188,7 +188,7 @@ class procurement_order(osv.osv):
             supply_request_type = procurement.distribution_type or 'sale'
             order_point_ids = orderpoint_pool.search(cr, uid, [('product_id', '=', procurement.product_id.id),
                                                               ('location_id', '=', procurement.location_id.id),
-                                                              ('supply_from_dist_center', '=', True)], 
+                                                              ('supply_from_dist_center', '=', True)],
                                                     context=context)
             if order_point_ids:
                 order_point = orderpoint_pool.browse(cr,uid, order_point_ids)[0]
@@ -208,15 +208,15 @@ class procurement_order(osv.osv):
             self.write(cr, uid, [procurement.id], {'state': 'running', 'supply_req_id': res[procurement.id]})
             wf_service.trg_validate(uid, 'stock.supply_request', supply_req_id, 'supply_request_confirm', cr)
         return res
-    
-    def _prepare_orderpoint_procurement(self, cr, uid, orderpoint, product_qty, context=None):
+
+    def ______prepare_orderpoint_procurement(self, cr, uid, orderpoint, product_qty, context=None):
         result = super(procurement_order, self)._prepare_orderpoint_procurement(cr, uid, orderpoint, product_qty, context=context)
         result.update({'distribution_type': context.get('automatic_supply_request', False) \
                        and 'stock_reorder' or 'manual',
                        'procure_method': context.get('automatic_supply_request', False) and \
                        'make_to_supply_request' or 'make_to_order',})
         return result
-    
+
     def make_automatic_supply_request(self, cr, uid, order_point, context=None):
         res = {}
         supply_req_id = False
@@ -273,14 +273,14 @@ class procurement_order(osv.osv):
 #             move_id = stock_move_pool.create(cr, uid, move_data)
 #             stock_move_pool.action_confirm(cr, uid, [move_id], context=context)
 #             supply_request_pool.write(cr, uid,supply_id, {'dest_move_id':move_id})
-#             
+#
 #             self.write(cr, uid, [procurement_id], { 'supply_id': supply_id})
         return True
-    
+
     def update_supply_request(self, cr, uid, order_point, context=None):
         #TODO
         return True
-    
+
     def get_distribution_warehouse(self, cr, uid, procurement, context=None):
         location_pool = self.pool.get('stock.location')
         warehouse_pool = self.pool.get('stock.warehouse')
@@ -291,7 +291,7 @@ class procurement_order(osv.osv):
                 warehouse_id, dist_warehouse_id = warehouse['id'],warehouse['dist_center_warehouse_id'] and warehouse['dist_center_warehouse_id'][0] or False
                 break
         return warehouse_id,dist_warehouse_id
-        
+
     def _check_make_to_supply_request_product(self, cr, uid, procurement, context=None):
         """ Checks procurement move state.
         @param procurement: Current procurement.
@@ -308,7 +308,7 @@ class procurement_order(osv.osv):
 #                 cntxt.update({'search_all_op':True})
                 order_point_id = self.pool.get('stock.warehouse.orderpoint').search(cr, uid, [('product_id', '=', procurement.product_id.id),
                                                                                               ('location_id', '=', procurement.location_id.id),
-                                                                                              ('supply_from_dist_center', '=', True)], 
+                                                                                              ('supply_from_dist_center', '=', True)],
                                                                                     context=cntxt)
 #                 if not order_point_id and procurement.distribution_type == 'sale'
                 if not order_point_id:
@@ -327,7 +327,7 @@ class procurement_order(osv.osv):
                         return ok
                 elif not ok:
                     message = _("Not enough stock. Waiting for Supply Request")
- 
+
                 if message:
                     message = _("Procurement '%s' is running: ") % (procurement.name) + message
                     #temporary context passed in write to prevent an infinite loop
@@ -335,10 +335,10 @@ class procurement_order(osv.osv):
                     ctx_wkf['workflow.trg_write.%s' % self._name] = False
                     self.write(cr, uid, [procurement.id], {'message': message},context=ctx_wkf)
         return True
-        
-    def _product_virtual_get(self, cr, uid, order_point):
+
+    def __________product_virtual_get(self, cr, uid, order_point):
         #TODO
-        
+
         if not order_point.supply_from_dist_center:
             return super(procurement_order, self)._product_virtual_get(cr, uid, order_point)
         if order_point.supply_req_ids:
@@ -351,7 +351,7 @@ class procurement_order(osv.osv):
 #             return None
         return super(procurement_order, self)._product_virtual_get(cr, uid, order_point)
 
-    def _procure_confirm(self, cr, uid, ids=None, use_new_cursor=False, context=None):
+    def _______procure_confirm(self, cr, uid, ids=None, use_new_cursor=False, context=None):
         '''
         Call the scheduler to check the procurement order
 

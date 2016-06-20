@@ -33,5 +33,5 @@ class sale_order_line(osv.osv):
         'warehouse_subsidiary_id' : fields.many2one('stock.warehouse_view', 'Warehouse From', required=False, states={'draft': [('readonly', False)]},
                                                    help='Select Warehouse the product will be shipped from.'),
     }
-    
+
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:

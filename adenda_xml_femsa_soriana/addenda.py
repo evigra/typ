@@ -592,18 +592,18 @@ class account_invoice(osv.osv):
         'entrega_mercancia': '1',
         'cantidad_pedidos': 1,
         }
-    def onchange_partner_id(self, cr, uid, ids, type, partner_id,\
-            date_invoice=False, payment_term=False, partner_bank_id=False, company_id=False):
-        if not partner_id:
-            return {'value':{}}
-        result =  super(account_invoice, self).onchange_partner_id(cr, uid, ids, type, partner_id,\
-            date_invoice, payment_term, partner_bank_id, company_id)
-        partner_br = self.pool.get('res.partner').browse(cr, uid, partner_id, context=None)
-        if partner_br.addenda_femsa:
-            result['value'].update({'customer_femsa':True})
-        if partner_br.addenda_soriana:
-            result['value'].update({'customer_soriana':True})
-        return result
+    # def onchange_partner_id(self, cr, uid, ids, type, partner_id,\
+    #         date_invoice=False, payment_term=False, partner_bank_id=False, company_id=False):
+    #     if not partner_id:
+    #         return {'value':{}}
+    #     result =  super(account_invoice, self).onchange_partner_id(cr, uid, ids, type, partner_id,\
+    #         date_invoice, payment_term, partner_bank_id, company_id)
+    #     partner_br = self.pool.get('res.partner').browse(cr, uid, partner_id, context=None)
+    #     if partner_br.addenda_femsa:
+    #         result['value'].update({'customer_femsa':True})
+    #     if partner_br.addenda_soriana:
+    #         result['value'].update({'customer_soriana':True})
+    #     return result
 
 
     def _get_facturae_invoice_xml_data(self, cr, uid, ids, context=None):
