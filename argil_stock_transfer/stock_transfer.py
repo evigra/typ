@@ -894,5 +894,108 @@ class stock_transfer_expense(osv.osv):
         return result
 
 
+class stock_transfer_line_prodlot(osv.osv):
+    _name = "stock.transfer.line.prodlot"
+    _description = "Stock Transfer Line Serial Number"
+
+    def _total_cost(self, cr, uid, ids, field_name, args, context=None):
+        res = {}
+        for rec in self.browse(cr, uid, ids, context=context):
+            res[rec.id] =  {'amount_product_cost': rec.qty * rec.standard_price,
+                            'amount' : rec.qty * rec.standard_price + (rec.amount_expenses or 0.0),
+                            'amount_per_uom' : rec.qty and ((rec.qty * rec.standard_price + (rec.amount_expenses or 0.0)) / rec.qty) or 0.0,
+                            }
+        return res
+
+    _columns = {
+        'stock_transfer_id'     : fields.related('stock_transfer_line_id', 'transfer_id', type='many2one', relation='stock.transfer', string='Stock Transfer', readonly=True),
+        'stock_transfer_line_id': fields.many2one('stock.transfer.line', 'Stock Transfer Line', required=True, ondelete='cascade'),
+        'product_id'            : fields.related('stock_transfer_line_id', 'product_id', type='many2one', relation='product.product', string='Product', readonly=True),
+        'product_uom'            : fields.related('stock_transfer_line_id', 'product_uom', type='many2one', relation='product.uom', string='Product UoM', readonly=True),
+        'prodlot_id'            : fields.many2one('stock.production.lot', 'Serial', required=True),
+        'qty'                   : fields.float('Qty', required=True, digits_compute=dp.get_precision('Product Unit of Measure')),
+    }
+
+class stock_transfer_line_prodlot_wizard(osv.osv_memory):
+    _name = "stock.transfer.line.prodlot.wizard"
+    _description = "Stock Transfer - Wizard 1 to assign Serial to Product"
+
+    _columns = {
+        'stock_transfer_line_id': fields.many2one('stock.transfer.line', 'Stock Transfer Line', readonly=True),
+        'product_id'     : fields.many2one('product.product', 'Product', readonly=True),
+        'product_uom'    : fields.many2one('product.uom', 'UoM', readonly=True),
+        'qty'            : fields.float('Qty', readonly=True, digits_compute=dp.get_precision('Product Unit of Measure')),
+        'serial_ids'     : fields.one2many('stock.transfer.line.prodlot.wizard2', 'wizard_id', 'Serial Numbers'),
+    }
+
+
+    def _get_serials(self, cr, uid, context=None):
+        """Return actual Serials for this Product line"""
+        if context is None:
+            context = {}
+        #print "context: ", context
+        line_id = context and context.get('active_id', False)
+        transfer_line_obj = self.pool.get('stock.transfer.line')
+        res = []
+        for line in transfer_line_obj.browse(cr, uid, [line_id]):
+            qty = 0.0
+            for serial in line.serial_ids:
+                res.append((0,0,{'prodlot_id': serial.prodlot_id.id,'qty':serial.qty}))
+
+        return res
+
+
+    _defaults = {
+        'serial_ids': _get_serials,
+    }
+
+    def split(self, cr, uid, ids, context=None):
+        """ To split stock transfer lines according to serial numbers.
+        :param line_ids: the ID or list of IDs of inventory lines we want to split
+        """
+        if context is None:
+            context = {}
+        transfer_line_obj = self.pool.get('stock.transfer.line')
+        transfer_line_prodlot_obj = self.pool.get('stock.transfer.line.prodlot')
+        prodlot_obj = self.pool.get('stock.production.lot')
+        serials = []
+        for data in self.browse(cr, uid, ids, context=context):
+            if not data.stock_transfer_line_id:
+                raise osv.except_osv(
+                            _('Error !'),
+                            _('There is not Stock Transfer Line ID, please call System Administrator.'))
+            serial_ids = transfer_line_prodlot_obj.search(cr, uid, [('stock_transfer_line_id','=',data.stock_transfer_line_id.id)])
+            if serial_ids:
+                transfer_line_prodlot_obj.unlink(cr, uid, serial_ids)
+            qty = 0.0
+            for serial in data.serial_ids:
+                serials.append({'stock_transfer_line_id': data.stock_transfer_line_id.id, 'prodlot_id': serial.prodlot_id.id,'qty':serial.qty})
+                qty += serial.qty
+            if qty > data.stock_transfer_line_id.qty:
+                raise osv.except_osv(
+                            _('Error !'),
+                            _('You can not have more Serial Numbers than Quantity.'))
+
+            for serial in serials:
+                transfer_line_prodlot_obj.create(cr, uid, serial)
+
+        return {'type': 'ir.actions.act_window_close'}
+
+class stock_transfer_line_prodlot_wizard2(osv.osv_memory):
+    _name = "stock.transfer.line.prodlot.wizard2"
+    _description = "Stock Transfer - Wizard 2 to assign Serial to Product"
+
+    _columns = {
+        'wizard_id'     : fields.many2one('stock.transfer.line.prodlot.wizard', 'Parent Wizard'),
+        'product_id'    : fields.many2one('product.product', 'Product', required=True),
+        'prodlot_id'    : fields.many2one('stock.production.lot', 'Serial', required=True),
+        'qty'           : fields.float('Qty', required=True, digits_compute=dp.get_precision('Product Unit of Measure')),
+    }
+
+    _defaults = {
+        'qty':1.0,
+    }
+
+
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
 
