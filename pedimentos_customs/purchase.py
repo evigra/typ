@@ -41,8 +41,8 @@ import os
 import codecs
 from openerp import SUPERUSER_ID
 
-# class stock_partial_picking(osv.osv):
-#     _name = 'stock.partial.picking'
+class stock_partial_picking(osv.osv):
+    _name = 'stock.partial.picking'
 #     _inherit ='stock.partial.picking'
 #     _columns = {
 #     # 'pedimento_id': fields.many2one('pedimento.custom', 'Pedimento Aduanal'),
@@ -138,8 +138,8 @@ from openerp import SUPERUSER_ID
 
 # stock_partial_picking()
 
-# # class stock_partial_picking_line(osv.osv):
-# #     _name = 'stock.partial.picking.line'
+class stock_partial_picking_line(osv.osv):
+    _name = 'stock.partial.picking.line'
 # #     _inherit ='stock.partial.picking.line'
 # #     _columns = {
 # #     'pedimento_id': fields.many2one('stock.production.lot.pedimento','No. Pedimento')

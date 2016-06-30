@@ -28,28 +28,30 @@ from openerp.tools.translate import _
 class purchase_order(osv.osv):
     _inherit = "purchase.order"
     _columns = {
-        'broker_log_ids': fields.one2many('purchase.order.broker_log','purchase_id','Brokers Log', readonly=False, 
+        'broker_log_ids': fields.one2many('purchase.order.broker_log','purchase_id','Brokers Log', readonly=False,
                                           ),
         'country_name': fields.related('partner_id', 'country_id','name', string='Country', type="char",size=64),
     }
-    
-    def onchange_partner_id(self, cr, uid, ids, partner_id):
+
+    def onchange_partner_id(self, cr, uid, ids, partner_id, context=None):
+        if context is None:
+            context = {}
         partner = self.pool.get('res.partner')
-        
-        res = super(purchase_order, self).onchange_partner_id(cr, uid, ids, partner_id)
+
+        res = super(purchase_order, self).onchange_partner_id(cr, uid, ids, partner_id, context)
         if not partner_id:
             return res
         supplier = partner.browse(cr, uid, partner_id)
         res['value'].update({'country_name':supplier.country_id and supplier.country_id.name or ''})
         return res
-    
+
 purchase_order()
 
 class purchase_broker_log(osv.osv):
     _name = "purchase.order.broker_log"
     _description = "Manage purchase travel history"
     _rec_name = 'partner_id'
-    
+
     def _get_spend_time(self, cr, uid, ids, field_name, arg, context=None):
         res = {}
         for log in self.browse(cr, uid, ids, context=context):
@@ -61,27 +63,27 @@ class purchase_broker_log(osv.osv):
                time_spend = days *24 + duration.seconds/float(60*60)
             res[log.id] = time_spend
         return res
-    
+
     _columns = {
         'partner_id': fields.many2one('res.partner', 'Partner', required=True,
-                                      domain=[('broker','=',True)], 
+                                      domain=[('broker','=',True)],
                                       help='This is the forwarding Agent(Broker)'),
         'date_arrival': fields.datetime('Arrival Date', help="Arrival Date to Customs"),
         'date_departure': fields.datetime('Departure Date', help="Released Date from customs"),
-        'time_custom': fields.function(_get_spend_time, string="Time Spent", type="float", 
+        'time_custom': fields.function(_get_spend_time, string="Time Spent", type="float",
                                        help="Time Spent in Customs(Hours between Departure "\
                                        "and Arrival Dates)"),
         'customs_port': fields.char("Customs Port", size=128,required=True),
         'notes': fields.text("Notes"),
         'purchase_id': fields.many2one('purchase.order','Purchase Order', help="Related Purchase order")
     }
-    
+
     def change_date(self, cr, uid, ids, arrival, departure, context=None):
         res = {}
         res['value'] = {}
         res['warning'] = {}
         if arrival and departure:
-            if (datetime.strptime(departure, DEFAULT_SERVER_DATETIME_FORMAT) - 
+            if (datetime.strptime(departure, DEFAULT_SERVER_DATETIME_FORMAT) -
                     datetime.strptime(arrival, DEFAULT_SERVER_DATETIME_FORMAT)).seconds < 0.0:
                 res['warning'] = {
                     'title': _('Warning!'),
