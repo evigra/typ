@@ -58,8 +58,8 @@ from openerp import SUPERUSER_ID
 # stock_production_lot()
 ## Herencia para Modificar un  metodo para Asignacion de Lotes ####
 
-# class stock_move_split_lines(osv.osv_memory):
-#     _name = "stock.move.split.lines"
+class stock_move_split_lines(osv.osv_memory):
+    _name = "stock.move.split.lines"
 #     _inherit = 'stock.move.split.lines'
 #     _columns = {
 #     'pedimento_id': fields.many2one('stock.production.lot.pedimento','No. Pedimento')
@@ -67,8 +67,8 @@ from openerp import SUPERUSER_ID
 #      }
 # stock_move_split_lines()
 
-# class split_in_production_lot(osv.osv_memory):
-#     _name = "stock.move.split"
+class split_in_production_lot(osv.osv_memory):
+    _name = "stock.move.split"
 #     _inherit = 'stock.move.split'
 #     _description = "Split in Serial Numbers"
 #     _columns = {
