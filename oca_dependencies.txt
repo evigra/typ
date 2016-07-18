@@ -2,5 +2,5 @@ addons-vauxoo git@github.com:Vauxoo/addons-vauxoo.git
 odoo-ifrs git@github.com:Vauxoo/odoo-ifrs.git
 account-financial-tools git@github.com:Vauxoo/account-financial-tools.git
 odoo-mexico-v2 git@github.com:Vauxoo/odoo-mexico-v2.git
-account-closing git@github.com:OCA/account-closing.git
-account-invoicing git@github.com:OCA/account-invoicing.git
+account-closing git@github.com:vauxoo/account-closing.git
+account-invoicing git@github.com:vauxoo/account-invoicing.git
