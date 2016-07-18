@@ -13,10 +13,11 @@ RETURNS varchar AS $$
         RETURN deleted; END;
     $$ LANGUAGE plpgsql;
 SELECT delete_old_views(views) AS name FROM ir_ui_view AS views WHERE arch ilike '%prodlot_id%' AND model='stock.move';
-SELECT delete_old_views(views) AS name FROM ir_ui_view AS views WHERE  model in ('stock.picking.in', 'stock.picking.out', 'stock.picking.int');
+SELECT delete_old_views(views) AS name FROM ir_ui_view AS views WHERE  model in ('stock.picking.in', 'stock.picking.out', 'stock.picking.int', 'stock.partial.picking.form');
 SELECT delete_old_views(views) AS name FROM ir_ui_view AS views WHERE arch ilike '%stock_journal_id%' AND model='stock.picking';
 SELECT delete_old_views(views) AS name FROM ir_ui_view AS views WHERE arch ilike '%xpath%button%action_process%' AND model='stock.picking';
 SELECT delete_old_views(views) AS name FROM ir_ui_view AS views WHERE arch ilike '%procurement_id%' AND model='stock.warehouse.orderpoint';
 SELECT delete_old_views(views) AS name FROM ir_ui_view AS views WHERE arch ilike '%xpath%string%Expected Date%' AND model='purchase.order';
 SELECT delete_old_views(views) AS name FROM ir_ui_view AS views WHERE arch ilike '%required_date_product%' AND model='purchase.order';
+SELECT delete_old_views(views) AS name FROM ir_ui_view AS views WHERE name='stock.partial.picking.form';
 DELETE FROM ir_ui_view WHERE arch ilike '%xpath%button%429%';
