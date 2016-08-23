@@ -33,7 +33,6 @@
         'l10n_mx_diot_report',
         'l10n_mx_facturae_base',
         'l10n_mx_facturae_pac_sf',
-        'l10n_mx_purchase_payment_method',
         'l10n_mx_sale_payment_method',
         'marketing_campaign',
         'mrp_operations',
