@@ -5,3 +5,4 @@ odoo-mexico-v2 git@github.com:Vauxoo/odoo-mexico-v2.git
 account-closing git@github.com:vauxoo/account-closing.git
 account-invoicing git@github.com:vauxoo/account-invoicing.git
 stock-logistics-workflow git@github.com:Vauxoo/stock-logistics-workflow.git
+odoo-afr git@github.com:Vauxoo/odoo-afr.git
