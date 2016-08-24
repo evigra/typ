@@ -38,6 +38,7 @@
         'marketing_campaign',
         'mrp_operations',
         'note',
+        'partner_credit_limit',
         'product_unique_serial',
         'project_issue',
         'purchase_double_validation',
