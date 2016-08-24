@@ -17,6 +17,7 @@
         'account_check_writing',
         'account_closure_preparation',
         'account_followup',
+        'account_financial_report',
         'account_ledger_report',
         'account_payment',
         'claim_from_delivery',
