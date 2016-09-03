@@ -1,0 +1,71 @@
+-
+  Base General Settings
+-
+  !record {model: base.config.settings, id: typ_default_base_properties}:
+    {
+    'alias_domain': 'erp.typrefrigeracion.com'
+    }
+-
+  !python {model: base.config.settings}: |
+    self.execute(cr, uid, [ref('typ_default_base_properties')], context=context)
+-
+  Purchase
+-
+  !record {model: purchase.config.settings, id: typ_default_purchase_properties}:
+    {
+    'group_purchase_pricelist': 1,
+    'group_costing_method': 1,
+    }
+    # Module stock_dropshipping ('module_stock_dropshipping': 1,) is removed
+    # because it causes and error when is instaled from the typ configuration
+    # file:
+    # TypeError: Cannot create a consistent method resolution order (MRO) for
+    # bases sale.order.line, sale_order_line
+-
+  !python {model: purchase.config.settings}: |
+    self.execute(cr, uid, [ref('typ_default_purchase_properties')], context=context)
+-
+  Sales
+-
+  !record {model: sale.config.settings, id: typ_default_sale_properties}:
+    {
+    'group_invoice_so_lines': 1,
+    'group_invoice_deli_orders': 1,
+    'group_sale_pricelist': 1,
+    'group_sale_delivery_address': 1,
+    'group_mrp_properties': 1,
+    'group_uom': 1,
+    'group_route_so_lines': 1,
+    'group_multi_salesteams': 1,
+    'default_order_policy': 'picking',
+    }
+-
+  !python {model: sale.config.settings}: |
+    self.execute(cr, uid, [ref('typ_default_sale_properties')], context=context)
+-
+  Accounting
+-
+  !record {model: account.config.settings, id: typ_default_account_properties}:
+    {
+    'date_stop': !eval time.strftime('%Y-12-31'),
+    'date_start': !eval time.strftime('%Y-01-01'),
+    'period': 'month',
+    'currency_id': base.MXN,
+    'payment_type': 'bdp',
+    }
+-
+  !python {model: account.config.settings}: |
+    self.execute(cr, uid, [ref('typ_default_account_properties')], context=context)
+-
+  Stock
+-
+  !record {model: stock.config.settings, id: typ_default_stock_properties}:
+    {
+    'group_stock_production_lot': 1,
+    'group_stock_tracking_lot': 1,
+    'group_stock_multiple_locations': 1,
+    'group_stock_adv_location': 1,
+    }
+-
+  !python {model: stock.config.settings}: |
+    self.execute(cr, uid, [ref('typ_default_stock_properties')], context=context)

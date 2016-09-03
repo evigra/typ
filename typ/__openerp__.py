@@ -8,7 +8,7 @@
     'website': 'http://www.vauxoo.com',
     'license': 'AGPL-3',
     'category': 'Installer',
-    'version': '0.1',
+    'version': '8.0.0.1.0',
     'depends': [
         'account_aged_partner_balance_vw',
         'account_anglo_saxon',
@@ -48,10 +48,12 @@
         'stock_invoice_directly',
         'stock_landed_costs_segmentation',
         'warning',
+        'stock_dropshipping',
     ],
     'test': [
     ],
     'data': [
+        'data/set_configuration.yml',
     ],
     'demo': [
     ],
