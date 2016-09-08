@@ -27,6 +27,7 @@
     ],
     # only loaded in demonstration mode
     'demo': [
+        'demo/stock_data.xml',
     ],
     'installable': True,
 }
