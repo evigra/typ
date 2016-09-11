@@ -17,7 +17,8 @@
     'website': 'http://www.vauxoo.com/',
     # any module necessary for this one to work correctly
     'depends': [
-        'stock',
+        'sale',
+        'delivery',
     ],
     # always loaded
     'data': [
