@@ -31,7 +31,12 @@ class TestTypStock(common.TransactionCase):
 
         self.first_pick = [pick for pick in self.sale_order.picking_ids if
                            pick.state == 'confirmed'][0]
-        self.first_pick.force_assign()
+        self.quant = self.env['stock.quant'].create({
+            'location_id': self.first_pick.location_id.id,
+            'product_id': product.id,
+            'qty': 3.0,
+        })
+        self.first_pick.action_assign()
 
         transfer_obj = self.env['stock.transfer_details']
         ctx = {
