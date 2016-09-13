@@ -9,7 +9,7 @@
 #    planned by: Julio Serna <julio@vauxoo.com>
 ############################################################################
 {
-    'name': "Typ Partner Credit Limit",
+    'name': "Typ Account",
     'license': "LGPL-3",
     'author': 'Vauxoo',
     'website': 'http://www.vauxoo.com/',
@@ -18,8 +18,6 @@
 
     # any module necessary for this one to work correctly
     'depends': [
-        'sale',
-        'account',
         'partner_credit_limit',
     ],
     # always loaded

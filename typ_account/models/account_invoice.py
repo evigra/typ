@@ -21,7 +21,7 @@ class AccountInvoice(models.Model):
         self.ensure_one()
         if not self.need_verify_limit_credit():
             return True
-        super(AccountInvoice, self).check_limit_credit()
+        return super(AccountInvoice, self).check_limit_credit()
 
     @api.multi
     def onchange_partner_id(self, types, partner_id, date_invoice=False,
