@@ -51,11 +51,15 @@
         'warning',
         'stock_dropshipping',
         'typ_account',
+        'typ_stock',
     ],
     'test': [
     ],
     'data': [
+        'data/typ_paper_format.xml',
         'data/set_configuration.yml',
+        'report/invoice_report.xml',
+        'report/report_invoice.xml',
     ],
     'demo': [
     ],

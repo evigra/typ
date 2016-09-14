@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <report auto="False"
+                id="account_invoice_qweb_report"
+                model="ir.attachment.facturae.mx"
+                name="account.invoice.qweb.report"
+                string="Electronic Invoice"
+                report_type="qweb-pdf"
+                attachment_use="1"
+                attachment="(object.state in ('done')) and (object.name and (object.name + ''))"
+                multi="False"
+                menu="False"/>
+
+        <record id="account_invoice_qweb_report" model="ir.actions.report.xml">
+            <field name="paperformat_id" ref="typ.typ_paperformat_invoice_letter"/>
+        </record>
+    </data>
+
+    <data noupdate="1">
+
+       <record id="report_qweb_invoice_registrer0" model="report.multicompany">
+            <field name="company_id"></field>
+            <field name="report_id" ref="typ.account_invoice_qweb_report"/>
+            <field name="model" search="[('model','=','ir.attachment.facturae.mx')]" model="ir.model"/>
+        </record>
+    </data>
+</openerp>

@@ -1,0 +1,178 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#    * typ
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 8.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2016-09-07 01:06+0000\n"
+"PO-Revision-Date: 2016-09-07 01:06+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: typ
+#: view:website:typ.report_electronic_invoice_document
+msgid "Additional Comments:"
+msgstr "Comentarios Adicionales:"
+
+#. module: typ
+#: view:website:typ.report_electronic_invoice_document
+msgid "Amount"
+msgstr "Monto"
+
+#. module: typ
+#: view:website:typ.report_electronic_invoice_document
+msgid "Amount In Letters"
+msgstr "Cantidad en Letras"
+
+#. module: typ
+#: view:website:typ.report_electronic_invoice_document
+msgid "Certificate Link"
+msgstr "Link del Certificado"
+
+#. module: typ
+#: view:website:typ.report_electronic_invoice_document
+msgid "Credit note"
+msgstr "Nota de crédito"
+
+#. module: typ
+#: view:website:typ.report_electronic_invoice_document
+msgid "Customer"
+msgstr "Cliente"
+
+#. module: typ
+#: view:website:typ.report_electronic_invoice_document
+msgid "Date Stamp"
+msgstr "Fecha de Timbrado"
+
+#. module: typ
+#: view:website:typ.report_electronic_invoice_document
+msgid "Description"
+msgstr "Descripción"
+
+#. module: typ
+#: view:website:typ.report_electronic_invoice_document
+msgid "Digital Stamp Issuer"
+msgstr "Sello Digital Emisor"
+
+#. module: typ
+#: view:website:typ.report_electronic_invoice_document
+msgid "Digital Stamp SAT"
+msgstr "Sello Digital SAT"
+
+#. module: typ
+#: view:website:typ.report_electronic_invoice_document
+msgid "Discount"
+msgstr "Descuento"
+
+#. module: typ
+#: field:report.account.invoice.qweb.report,display_name:0
+msgid "Display Name"
+msgstr "Nombre a Mostrar"
+
+#. module: typ
+#: view:website:typ.report_electronic_invoice_document
+msgid "Document Date"
+msgstr "Fecha del Documento"
+
+#. module: typ
+#: model:ir.actions.report.xml,name:typ.account_invoice_qweb_report
+msgid "Electronic Invoice"
+msgstr "Factura Electrónica"
+
+#. module: typ
+#: view:website:typ.report_electronic_invoice_document
+msgid "Fiscal Folio"
+msgstr "Folio Fiscal"
+
+#. module: typ
+#: view:website:typ.report_electronic_invoice_document
+msgid "Fiscal Regime"
+msgstr "Régimen Fiscal"
+
+#. module: typ
+#: field:report.account.invoice.qweb.report,id:0
+msgid "ID"
+msgstr "ID"
+
+#. module: typ
+#: view:website:typ.report_electronic_invoice_document
+msgid "Invoice:"
+msgstr "Factura:"
+
+#. module: typ
+#: view:website:typ.report_electronic_invoice_document
+msgid "Issuer"
+msgstr "Emisor"
+
+#. module: typ
+#: view:website:typ.report_electronic_invoice_document
+msgid "Issuer Certificate"
+msgstr "Certificado del Emisor"
+
+#. module: typ
+#: field:report.account.invoice.qweb.report,__last_update:0
+msgid "Last Modified on"
+msgstr "Última modificación en"
+
+#. module: typ
+#: view:website:typ.report_electronic_invoice_document
+msgid "Original String"
+msgstr "Cadena Original"
+
+#. module: typ
+#: view:website:typ.report_electronic_invoice_document
+msgid "Payment Method"
+msgstr "Método de Pago"
+
+#. module: typ
+#: view:website:typ.report_electronic_invoice_document
+msgid "Payroll"
+msgstr "Nómina"
+
+#. module: typ
+#: view:website:typ.report_electronic_invoice_document
+msgid "Place, date and time of issue"
+msgstr "Lugar, fecha y hora de emisión"
+
+#. module: typ
+#: view:website:typ.report_electronic_invoice_document
+msgid "Quantity"
+msgstr "Cantidad"
+
+#. module: typ
+#: view:website:typ.report_electronic_invoice_document
+msgid "SAT Certificate"
+msgstr "Certificado SAT"
+
+#. module: typ
+#: view:website:typ.report_electronic_invoice_document
+msgid "Sub Total"
+msgstr "Sub Total"
+
+#. module: typ
+#: view:website:typ.report_electronic_invoice_document
+msgid "Terms and Conditions:"
+msgstr "Condición de pago:"
+
+#. module: typ
+#: view:website:typ.report_electronic_invoice_document
+msgid "Unit"
+msgstr "Unidad"
+
+#. module: typ
+#: view:website:typ.report_electronic_invoice_document
+msgid "Unit Price"
+msgstr "Precio U."
+
+#. module: typ
+#: view:website:typ.report_electronic_invoice_document
+msgid "WITHOUT FOLIO OR INVALID STATUS"
+msgstr "SIN FOLIO O ESTATUS NO VALIDO"
+
+
