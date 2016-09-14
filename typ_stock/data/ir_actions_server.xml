@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<openerp>
+    <data noupdate="1">
+
+        <record id="server_action_propagate_picking_transfer" model="ir.actions.server">
+            <field name="name">Propagate picking transfer</field>
+            <field name="model_id" model="ir.model" search="[('model', '=', 'stock.move')]"/>
+            <field name="state">code</field>
+            <field name="code">object.propagate_picking_transfer()</field>
+        </record>
+
+    </data>
+</openerp>
