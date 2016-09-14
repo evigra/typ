@@ -50,6 +50,7 @@
         'stock_landed_costs_segmentation',
         'warning',
         'stock_dropshipping',
+        'typ_account',
         'typ_stock',
     ],
     'test': [
