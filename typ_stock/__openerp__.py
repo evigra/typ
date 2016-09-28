@@ -24,8 +24,9 @@
         'data/ir_actions_server.xml',
         'data/base_action_rule.xml',
         'views/procurement_rule_view.xml',
-        'security/res_groups.xml',
         'views/stock_view.xml',
+        'views/stock_picking_view.xml',
+        'security/res_groups.xml',
     ],
     # only loaded in demonstration mode
     'demo': [

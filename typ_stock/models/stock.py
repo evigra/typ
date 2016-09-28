@@ -24,3 +24,37 @@ class StockMove(models.Model):
             wizard_transfer_id = self.env['stock.transfer_details'].\
                 with_context(ctx).create({'picking_id': picking.id})
             wizard_transfer_id.do_detailed_transfer()
+
+
+class StockPicking(models.Model):
+
+    _inherit = "stock.picking"
+
+    @api.multi
+    def name_get(self):
+
+        name = super(StockPicking, self).name_get()
+        result = []
+        for inv in self:
+            result.append(
+                (inv.id, "%s %s" % (inv.name or '', inv.origin or ''))
+            )
+        return result if result else name
+
+    @api.model
+    def name_search(self, name, args=None, operator='ilike', limit=100):
+        if args is None:
+            args = []
+        recs = self.browse()
+        if name:
+            recs_origin = self.search(
+                [('origin', operator, name)] + args,
+                limit=limit
+            )
+            recs_name = self.search(
+                [('name', operator, name)] + args,
+                limit=limit
+            )
+            recs = recs_origin | recs_name
+        return recs.name_get() or super(StockPicking, self).name_search(
+            name, args=args, operator=operator, limit=limit)
