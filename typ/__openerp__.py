@@ -52,6 +52,7 @@
         'stock_dropshipping',
         'typ_account',
         'typ_stock',
+        'typ_partner',
     ],
     'test': [
     ],

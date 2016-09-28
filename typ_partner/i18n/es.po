@@ -1,0 +1,44 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* typ_partner
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 8.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2016-09-27 11:22+0000\n"
+"PO-Revision-Date: 2016-09-27 07:27-0400\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: \n"
+"Language: es\n"
+"X-Generator: Poedit 1.8.9\n"
+
+#. module: typ_partner
+#: help:res.partner,pricelist_ids:0
+msgid "Choose the Pricelist that partner can see"
+msgstr "Selección de las tarifas que se pueden ver con el cliente/proveedor"
+
+#. module: typ_partner
+#: model:ir.model,name:typ_partner.model_res_partner
+msgid "Partner"
+msgstr "Empresa"
+
+#. module: typ_partner
+#: view:res.partner:typ_partner.view_partner_form_pricelists_available
+#: field:res.partner,pricelist_ids:0
+msgid "Pricelist's partner"
+msgstr "Tarifas disponibles"
+
+#. module: typ_partner
+#: model:ir.model,name:typ_partner.model_purchase_order
+msgid "Purchase Order"
+msgstr "Pedido de compra"
+
+#. module: typ_partner
+#: model:ir.model,name:typ_partner.model_sale_order
+msgid "Sales Order"
+msgstr "Pedido de venta"
