@@ -17,6 +17,16 @@ When the field ``Propagate transfer`` is check in all procurement rules related
 with the stock moves created in a sale order, with make the transfer of first
 picking, all other pickings it will be transfered automatically.
 
+**Adding Refactoring Reording Rules & wizard for Minimun Stock Supply**
+inherit methods and base views related with supply orders & wizards Run
+Schedulers & Compute stock Minimum Rules Only by the group "Users that can
+run schedulers warehouse".
+
+It allows you to select a specific store and supply without having to run 
+the general supply.
+
+The methods inherit original path is: 
+
 Credits
 =======
 
@@ -24,6 +34,7 @@ Credits
 
 * Julio Serna <julio@vauxoo.com> (Planner/Auditor)
 * Yennifer Santiago <yennifer@vauxoo.com (Developer)
+* Jorge Escalona <jorge@vauxoo.com> (Developer)
 
 Maintainer
 ==========

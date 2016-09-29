@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="view_procurement_compute_wizard_inherit" model="ir.ui.view">
+            <field name="name">view.procurement.compute.wizard.inherit</field>
+            <field name="model">procurement.orderpoint.compute</field>
+            <field name="inherit_id"
+                ref="stock.view_procurement_compute_wizard"/>
+            <field name="arch" type="xml">
+                <xpath expr="//group" position="after">
+                    <group>
+                        <field name="warehouse_id" style="width: 40%"/>
+                    </group>
+                </xpath>
+            </field>
+        </record>
+        <!--Overwrite menuitem with new group for hide Run Scheduler-->
+        <record id="stock.menu_stock_proc_schedulers" model="ir.ui.menu">
+            <field name="groups_id" eval="[(6, 0, [ref('typ_stock.res_group_can_run_scheduler')])]" />
+        </record>
+    </data>
+</openerp>
