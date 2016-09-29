@@ -168,7 +168,7 @@ msgstr "Unidad"
 #. module: typ
 #: view:website:typ.report_electronic_invoice_document
 msgid "Unit Price"
-msgstr "Precio U."
+msgstr "Precio U"
 
 #. module: typ
 #: view:website:typ.report_electronic_invoice_document
