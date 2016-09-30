@@ -20,6 +20,6 @@ class SaleOrderLine(models.Model):
     @api.depends('route_id')
     def _compute_is_special_sale(self):
         for rec in self:
-            pull_buy = [pull for pull in rec.route_id.pull_ids if
-                        pull.action == 'buy']
+            pull_buy = rec.route_id.pull_ids.filtered(
+                lambda dat: dat.action == 'buy')
             rec.special_sale = True if pull_buy else False
