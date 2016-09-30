@@ -74,3 +74,17 @@ class StockPicking(models.Model):
             recs = recs_origin | recs_name
         return recs.name_get() or super(StockPicking, self).name_search(
             name, args=args, operator=operator, limit=limit)
+
+    @api.multi
+    def validate_move_internal(self):
+        """Validates internal movements so that when a movement is generated
+        do not allow to customers or suppliers
+        """
+        if self.picking_type_id.code == 'internal' and self.state == 'done':
+            for move in self.move_lines:
+                if move.location_id.usage != 'internal' or \
+                        move.location_dest_id.usage != 'internal':
+                    raise exceptions.Warning(
+                        _('Warning!'),
+                        _('Both locations must be internal type')
+                        )
