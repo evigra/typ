@@ -54,6 +54,7 @@
         'typ_stock',
         'typ_partner',
         'typ_sale',
+        'typ_landed_costs',
     ],
     'test': [
     ],
