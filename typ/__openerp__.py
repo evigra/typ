@@ -53,6 +53,7 @@
         'typ_account',
         'typ_stock',
         'typ_partner',
+        'typ_sale',
     ],
     'test': [
     ],
