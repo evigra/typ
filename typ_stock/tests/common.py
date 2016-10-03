@@ -8,22 +8,28 @@ class TestTypStock(common.TransactionCase):
     def setUp(self):
         super(TestTypStock, self).setUp()
 
-        product = self.env.ref('product.product_product_6')
-        partner = self.env.ref('base.res_partner_9')
-        warehouse = self.env.ref('typ_stock.whr_test_01')
+        self.product = self.env.ref('product.product_product_6')
+        self.partner = self.env.ref('base.res_partner_9')
+        self.warehouse = self.env.ref('typ_stock.whr_test_01')
         route = self.env.ref('typ_stock.stock_location_route_test_1')
+        self.stock_picking = self.env['stock.picking']
+        self.picking_type = self.env.ref('stock.picking_type_in')
+        self.transfer_obj = self.env['stock.transfer_details']
 
         dict_vals = {
-            'partner_id': partner.id,
-            'partner_invoice_id': partner.id,
-            'partner_shipping_id': partner.id,
+            'partner_id': self.partner.id,
+            'partner_invoice_id': self.partner.id,
+            'partner_shipping_id': self.partner.id,
             'picking_policy': 'direct',
             'pricelist_id': self.ref('product.list0'),
-            'warehouse_id': warehouse.id,
+            'warehouse_id': self.warehouse.id,
             'order_line': [
-                (0, 0, {'name': product.name, 'product_id': product.id,
-                        'product_uom_qty': 3, 'product_uom': product.uom_id.id,
-                        'price_unit': product.list_price, 'route_id': route.id,
+                (0, 0, {'name': self.product.name,
+                        'product_id': self.product.id,
+                        'product_uom_qty': 3,
+                        'product_uom': self.product.uom_id.id,
+                        'price_unit': self.product.list_price,
+                        'route_id': route.id,
                         })], }
 
         self.sale_order = self.env['sale.order'].create(dict_vals)
@@ -33,7 +39,7 @@ class TestTypStock(common.TransactionCase):
                            pick.state == 'confirmed'][0]
         self.quant = self.env['stock.quant'].create({
             'location_id': self.first_pick.location_id.id,
-            'product_id': product.id,
+            'product_id': self.product.id,
             'qty': 3.0,
         })
         self.first_pick.action_assign()
@@ -46,3 +52,48 @@ class TestTypStock(common.TransactionCase):
         }
         self.wizard_transfer_id = transfer_obj.with_context(ctx).create({
             'picking_id': self.first_pick.id, })
+
+    def create_picking_default(self, extra_values=None, line=None,  user=None):
+        """Create picking with parameters basic"""
+
+        user = user or self.env.user
+        extra_values = extra_values or {}
+        line = line or {}
+
+        # default
+        values = dict(
+            partner_id=self.partner.id,
+            origin='1234',
+            picking_type_id=self.picking_type.id,
+        )
+        values.update(extra_values)
+
+        # picking line values
+        line_values = self.picking_line_defaults()
+        line_values.update(line)
+
+        values.update(move_lines=[(0, 0, line_values)])
+        return self.stock_picking.sudo(user).create(values)
+
+    def picking_line_defaults(self, extra_values=None):
+        """Return a dictionary to be use to add a new move line to
+        a picking. This are the default values used to create a picking
+        line new values can be given.
+        :return dictionary
+        """
+        extra_values = extra_values or {}
+
+        location_src = self.picking_type.default_location_src_id.id
+        location_dest = self.picking_type.default_location_dest_id.id
+
+        values = dict(
+            product_id=self.product.id,
+            name=self.product.name,
+            product_uom_qty=5,
+            product_uom=self.product.uom_id.id,
+            price_unit=self.product.list_price,
+            location_id=location_src,
+            location_dest_id=location_dest,
+        )
+        values.update(extra_values)
+        return values
