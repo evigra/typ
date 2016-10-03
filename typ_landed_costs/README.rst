@@ -9,6 +9,11 @@ TYP Odoo implementation, related to the landed costs.
 
 * Adds the possibility to select Guides when creating a Landing Cost element.
 
+**Wizard to creation of invoices from several guides**
+
+Is possible create an invoice from several guides chosen by users. This guies
+must have the same partner and currency.
+
 Bug Tracker
 ===========
 
