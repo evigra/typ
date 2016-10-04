@@ -7,26 +7,76 @@
             <field name="model">stock.landed.cost.guide</field>
             <field name="arch" type="xml">
                 <form string="Guide">
-                    <group>
-                        <field name="name"/>
-                    </group>
-                    <group col="4">
-                        <field name="partner_id"/>
-                        <field name="date"/>
-                        <field name="warehouse_id"/>
-                        <field name="currency_id"/>
-                        <field name="origin"/>
-                        <field name="destination"/>
-                    </group>
-                    <group>
-                        <field name="line_ids"/>
-                    </group>
+                    <header>
+                        <button name="action_draft" type="object"
+                                string="Reset to draft"
+                                states="valid"/>
+                            <button name="action_valid" type="object"
+                                string="Validate"
+                                states="draft"
+                                class="oe_highlight"/>
+                        <field name="state" widget="statusbar"/>
+                    </header>
+                    <sheet string="Guide">
+                        <h1>
+                            <field name="name"/>
+                        </h1>
+                        <group col="4">
+                            <field name="partner_id"/>
+                            <field name="date"/>
+                            <field name="warehouse_id"/>
+                            <field name="journal_id"/>
+                            <field name="reference"/>
+                            <field name="currency_id"/>
+                            <field name="landed_cost_id"/>
+                        </group>
+                        <notebook>
+                            <page string="Guide Lines">
+                                <field name="line_ids" nolabel="1"/>
+                            </page>
+                        </notebook>
+                    </sheet>
                 </form>
+            </field>
+        </record>
+        <!-- Guide Tree View -->
+        <record id="guide_tree_view" model="ir.ui.view">
+            <field name="name">stock.landed.cost.guide.tree</field>
+            <field name="model">stock.landed.cost.guide</field>
+            <field name="arch" type="xml">
+                <tree string="Guide">
+                    <field name="name"/>
+                    <field name="partner_id"/>
+                    <field name="journal_id"/>
+                    <field name="date"/>
+                    <field name="state" invisible="1"/>
+                </tree>
+            </field>
+        </record>
+        <record id="guide_search_view" model="ir.ui.view">
+            <field name="name">stock.landed.cost.guide.tree</field>
+            <field name="model">stock.landed.cost.guide</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="name"/>
+                    <field name="partner_id"/>
+                    <field name="journal_id"/>
+                    <field name="reference"/>
+                    <field name="date"/>
+                    <group string="Group by">
+                        <filter name="by_journal" string="Journal"
+                            context="{'group_by': 'journal_id'}"/>
+                        <filter name="by_warehouse" string="Warehouse"
+                            context="{'group_by': 'warehouse_id'}"/>
+                        <filter name="by_partner" string="Partner"
+                            context="{'group_by': 'partner_id'}"/>
+                    </group>
+                </search>
             </field>
         </record>
         <!-- Guide Line Tree View -->
         <record id="guide_line_tree_view" model="ir.ui.view">
-            <field name="name">stock.landed.cost.guide.line.form</field>
+            <field name="name">stock.landed.cost.guide.line.tree</field>
             <field name="model">stock.landed.cost.guide.line</field>
             <field name="arch" type="xml">
                 <tree string="Guide Line" editable="bottom">

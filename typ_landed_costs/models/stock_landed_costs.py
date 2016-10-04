@@ -5,28 +5,73 @@ from openerp import models, fields, api
 
 class StockLandedGuides (models.Model):
     _name = 'stock.landed.cost.guide'
-    name = fields.Char(required=True,
-                       help='Name to identify the guide')
-    partner_id = fields.Many2one('res.partner',
-                                 string='Partner')
-    date = fields.Date()
-    currency_id = fields.Many2one('res.currency',
-                                  string='Currency',
-                                  required=True,
-                                  default=lambda self:
-                                  self._get_user_default_currency())
-    warehouse_id = fields.Many2one('stock.warehouse',
-                                   string='Warehouse')
-    line_ids = fields.One2many('stock.landed.cost.guide.line',
-                               'guide_id',
-                               string='Guide Lines')
+    name = fields.Char(
+        required=True,
+        help='Name to identify the guide',
+        readonly=True,
+        states={'draft': [('readonly', False)]})
+    partner_id = fields.Many2one(
+        'res.partner',
+        string='Partner',
+        required=True,
+        readonly=True,
+        states={'draft': [('readonly', False)]})
+    date = fields.Date(
+        readonly=True,
+        states={'draft': [('readonly', False)]})
+    currency_id = fields.Many2one(
+        'res.currency',
+        string='Currency',
+        required=True,
+        readonly=True,
+        states={'draft': [('readonly', False)]},
+        default=lambda self:
+        self._get_user_default_currency())
+    warehouse_id = fields.Many2one(
+        'stock.warehouse',
+        string='Warehouse',
+        readonly=True,
+        states={'draft': [('readonly', False)]})
+    journal_id = fields.Many2one(
+        'account.journal',
+        string='Journal',
+        required=True,
+        readonly=True,
+        states={'draft': [('readonly', False)]})
+    landed_cost_id = fields.Many2one(
+        'stock.landed.cost',
+        string='Landed Cost',
+        help='Landed cost document where this guide is added',
+        readonly=True)
+    line_ids = fields.One2many(
+        'stock.landed.cost.guide.line',
+        'guide_id',
+        string='Guide Lines',
+        readonly=True,
+        states={'draft': [('readonly', False)]})
     origin = fields.Char()
     destination = fields.Char()
+    reference = fields.Char(
+        readonly=True,
+        states={'draft': [('readonly', False)]})
+    state = fields.Selection(
+        [('draft', 'Draft'),
+         ('valid', 'Valid')],
+        string='Status',
+        default='draft')
 
     @api.model
     def _get_user_default_currency(self):
         """Return the default currency of the current user"""
         return self.env.user.company_id.currency_id
+
+    @api.multi
+    def action_draft(self):
+        self.state = 'draft'
+
+    @api.multi
+    def action_valid(self):
+        self.state = 'valid'
 
 
 class StockLandedGuidesLine (models.Model):
@@ -46,12 +91,12 @@ class StockLandedGuidesLine (models.Model):
 
 class StockLandedCost(models.Model):
     _inherit = 'stock.landed.cost'
-    guide_ids = fields.Many2many('stock.landed.cost.guide',
-                                 'stock_landed_cost_guide_rel',
-                                 'stock_landed_cost_id',
-                                 'stock_landed_cost_guide_id',
-                                 string='Guides',
-                                 help='Guides')
+    guide_ids = fields.One2many(
+        'stock.landed.cost.guide',
+        'landed_cost_id',
+        string='Guides',
+        help='Guides which contain items to be used as landed costs',
+        copy=False)
 
     @api.onchange('invoice_ids', 'guide_ids')
     def onchange_invoice_ids(self):
