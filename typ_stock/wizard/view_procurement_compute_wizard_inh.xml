@@ -10,6 +10,7 @@
                 <xpath expr="//group" position="after">
                     <group>
                         <field name="warehouse_id" style="width: 40%"/>
+                        <field name='importance' style="width: 40%"/>
                     </group>
                 </xpath>
             </field>

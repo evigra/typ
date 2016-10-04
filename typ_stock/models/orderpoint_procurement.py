@@ -15,14 +15,25 @@ class ProcurementCompute(models.TransientModel):
     warehouse_id = fields.Many2one('stock.warehouse', string='Warehouse',
                                    help="select warehouse"
                                    " to running schedulers")
+    importance = fields.Selection([
+        ('aa', 'AA'), ('a', 'A'), ('b', 'B'), ('c', 'C')])
 
     @api.multi
     def procure_calculation(self):
         # context = self._context.copy()
         # context["warehouse_id"] = self.warehouse_id
-        context = dict(self._context, warehouse_id=self.warehouse_id)
+        context = dict(
+            self._context,
+            warehouse_id=self.warehouse_id, importance=self.importance)
         return super(ProcurementCompute, self.with_context(context)
                      ).procure_calculation()
+
+
+class StockWarehouseOrderpoint(models.Model):
+    _inherit = 'stock.warehouse.orderpoint'
+
+    importance = fields.Selection([
+        ('aa', 'AA'), ('a', 'A'), ('b', 'B'), ('c', 'C')])
 
 
 class ProcurementOrder(models.Model):
@@ -51,6 +62,8 @@ class ProcurementOrder(models.Model):
         # Start custom patch
         if context['warehouse_id'].id:
             dom.append(('warehouse_id', '=', context['warehouse_id'].id))
+        if context['importance']:
+            dom.append(('importance', '=', context['importance']))
         # Stop custom patch
         orderpoint_ids = orderpoint_obj.search(cr, uid, dom)
         prev_ids = []
