@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 8.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-09-30 13:56+0000\n"
-"PO-Revision-Date: 2016-09-30 13:56+0000\n"
+"POT-Creation-Date: 2016-10-04 15:53+0000\n"
+"PO-Revision-Date: 2016-10-04 15:53+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -54,6 +54,11 @@ msgid "Display Name"
 msgstr "Nombre para mostrar"
 
 #. module: typ_landed_costs
+#: selection:stock.landed.cost.guide,state:0
+msgid "Draft"
+msgstr "Draft"
+
+#. module: typ_landed_costs
 #: selection:stock.landed.cost.guide.line,freight_type:0
 msgid "Freight - Others"
 msgstr "Flete - Otros"
@@ -79,36 +84,69 @@ msgid "Freight type"
 msgstr "Tipo de flete"
 
 #. module: typ_landed_costs
+#: view:stock.landed.cost.guide:typ_landed_costs.guide_search_view
+msgid "Group by"
+msgstr "Group by"
+
+#. module: typ_landed_costs
 #: view:stock.landed.cost.guide:typ_landed_costs.guide_form_view
+#: view:stock.landed.cost.guide:typ_landed_costs.guide_tree_view
 msgid "Guide"
-msgstr "Guia"
+msgstr "Guía"
 
 #. module: typ_landed_costs
 #: view:stock.landed.cost.guide.line:typ_landed_costs.guide_line_tree_view
 msgid "Guide Line"
-msgstr "Linea de Guia"
+msgstr "Linea de Guía"
 
 #. module: typ_landed_costs
+#: view:stock.landed.cost.guide:typ_landed_costs.guide_form_view
 #: field:stock.landed.cost.guide,line_ids:0
 msgid "Guide Lines"
-msgstr "Lineas de Guia"
+msgstr "Lineas de Guía"
 
 #. module: typ_landed_costs
 #: field:stock.landed.cost.guide.line,guide_id:0
 msgid "Guide id"
-msgstr "id de Guia"
+msgstr "id de Guía"
 
 #. module: typ_landed_costs
+#: model:ir.ui.menu,name:typ_landed_costs.menu_landed_cost_guides
 #: field:stock.landed.cost,guide_ids:0
-#: help:stock.landed.cost,guide_ids:0
 msgid "Guides"
-msgstr "Guias"
+msgstr "Guías"
+
+#. module: typ_landed_costs
+#: help:stock.landed.cost,guide_ids:0
+msgid "Guides which contain items to be used as landed costs"
+msgstr "Guías las cuales contienen elementos a ser usados como costos en destino"
 
 #. module: typ_landed_costs
 #: field:stock.landed.cost.guide,id:0
 #: field:stock.landed.cost.guide.line,id:0
 msgid "ID"
 msgstr "ID"
+
+#. module: typ_landed_costs
+#: view:stock.landed.cost.guide:typ_landed_costs.guide_search_view
+#: field:stock.landed.cost.guide,journal_id:0
+msgid "Journal"
+msgstr "Diario"
+
+#. module: typ_landed_costs
+#: field:stock.landed.cost.guide,landed_cost_id:0
+msgid "Landed Cost"
+msgstr "Coste en destino"
+
+#. module: typ_landed_costs
+#: model:ir.actions.act_window,name:typ_landed_costs.action_landed_cost_guides
+msgid "Landed Cost Guides"
+msgstr "Guías de Coste en Destino"
+
+#. module: typ_landed_costs
+#: help:stock.landed.cost.guide,landed_cost_id:0
+msgid "Landed cost document where this guide is added"
+msgstr "Documento de coste en destino donde la guía está agregada"
 
 #. module: typ_landed_costs
 #: field:stock.landed.cost.guide,__last_update:0
@@ -136,7 +174,7 @@ msgstr "Nombre"
 #. module: typ_landed_costs
 #: help:stock.landed.cost.guide,name:0
 msgid "Name to identify the guide"
-msgstr "Nombre para identificar la guia"
+msgstr "Nombre para identificar la guía"
 
 #. module: typ_landed_costs
 #: field:stock.landed.cost.guide,origin:0
@@ -144,9 +182,10 @@ msgid "Origin"
 msgstr "Origen"
 
 #. module: typ_landed_costs
+#: view:stock.landed.cost.guide:typ_landed_costs.guide_search_view
 #: field:stock.landed.cost.guide,partner_id:0
 msgid "Partner"
-msgstr "Socio"
+msgstr "Proveedor"
 
 #. module: typ_landed_costs
 #: field:stock.landed.cost.guide.line,product_id:0
@@ -154,9 +193,24 @@ msgid "Product"
 msgstr "Producto"
 
 #. module: typ_landed_costs
+#: field:stock.landed.cost.guide,reference:0
+msgid "Reference"
+msgstr "Referencia"
+
+#. module: typ_landed_costs
+#: view:stock.landed.cost.guide:typ_landed_costs.guide_form_view
+msgid "Reset to draft"
+msgstr "Reiniciar a borrador"
+
+#. module: typ_landed_costs
 #: selection:stock.landed.cost.guide.line,freight_type:0
 msgid "Services"
 msgstr "Servicios"
+
+#. module: typ_landed_costs
+#: field:stock.landed.cost.guide,state:0
+msgid "Status"
+msgstr "Estado"
 
 #. module: typ_landed_costs
 #: model:ir.model,name:typ_landed_costs.model_stock_landed_cost
@@ -164,6 +218,17 @@ msgid "Stock Landed Cost"
 msgstr "Coste en destino"
 
 #. module: typ_landed_costs
+#: selection:stock.landed.cost.guide,state:0
+msgid "Valid"
+msgstr "Válido"
+
+#. module: typ_landed_costs
+#: view:stock.landed.cost.guide:typ_landed_costs.guide_form_view
+msgid "Validate"
+msgstr "Validar"
+
+#. module: typ_landed_costs
+#: view:stock.landed.cost.guide:typ_landed_costs.guide_search_view
 #: field:stock.landed.cost.guide,warehouse_id:0
 msgid "Warehouse"
 msgstr "Almacén"
