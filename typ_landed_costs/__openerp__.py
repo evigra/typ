@@ -15,6 +15,7 @@
     "data": [
         "security/ir.model.access.csv",
         "views/stock_landed_costs.xml",
+        "wizards/invoice_from_guides_view.xml",
     ],
     "installable": True,
     "auto_install": False,
