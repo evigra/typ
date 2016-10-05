@@ -16,17 +16,47 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. module: typ_landed_costs
+#: code:addons/typ_landed_costs/wizards/invoice_from_guides.py:30
+#, python-format
+msgid "All guides selected must have the same currency"
+msgstr ""
+
+#. module: typ_landed_costs
+#: code:addons/typ_landed_costs/wizards/invoice_from_guides.py:25
+#, python-format
+msgid "All guides selected must have the same partner"
+msgstr ""
+
+#. module: typ_landed_costs
+#: view:invoice.guides:typ_landed_costs.view_invoice_from_guides_form
+msgid "Cancel"
+msgstr ""
+
+#. module: typ_landed_costs
 #: field:stock.landed.cost.guide.line,cost:0
 msgid "Cost"
 msgstr ""
 
 #. module: typ_landed_costs
+#: view:invoice.guides:typ_landed_costs.view_invoice_from_guides_form
+msgid "Create Invoice"
+msgstr ""
+
+#. module: typ_landed_costs
+#: view:invoice.guides:typ_landed_costs.view_invoice_from_guides_form
+#: model:ir.actions.act_window,name:typ_landed_costs.invoice_from_guides_wizard
+msgid "Create Invoice from Guides"
+msgstr ""
+
+#. module: typ_landed_costs
+#: field:invoice.guides,create_uid:0
 #: field:stock.landed.cost.guide,create_uid:0
 #: field:stock.landed.cost.guide.line,create_uid:0
 msgid "Created by"
 msgstr ""
 
 #. module: typ_landed_costs
+#: field:invoice.guides,create_date:0
 #: field:stock.landed.cost.guide,create_date:0
 #: field:stock.landed.cost.guide.line,create_date:0
 msgid "Created on"
@@ -43,11 +73,17 @@ msgid "Date"
 msgstr ""
 
 #. module: typ_landed_costs
+#: help:invoice.guides,date_invoice:0
+msgid "Date which want to create the invoice"
+msgstr ""
+
+#. module: typ_landed_costs
 #: field:stock.landed.cost.guide,destination:0
 msgid "Destination"
 msgstr ""
 
 #. module: typ_landed_costs
+#: field:invoice.guides,display_name:0
 #: field:stock.landed.cost.guide,display_name:0
 #: field:stock.landed.cost.guide.line,display_name:0
 msgid "Display Name"
@@ -56,6 +92,10 @@ msgstr ""
 #. module: typ_landed_costs
 #: selection:stock.landed.cost.guide,state:0
 msgid "Draft"
+
+#. module: typ_landed_costs
+#: view:invoice.guides:typ_landed_costs.view_invoice_from_guides_form
+msgid "Do you really want to create the invoice?"
 msgstr ""
 
 #. module: typ_landed_costs
@@ -139,6 +179,11 @@ msgid "Landed Cost"
 msgstr ""
 
 #. module: typ_landed_costs
+#: field:invoice.guides,date_invoice:0
+msgid "Invoice Date"
+msgstr ""
+
+#. module: typ_landed_costs
 #: model:ir.actions.act_window,name:typ_landed_costs.action_landed_cost_guides
 msgid "Landed Cost Guides"
 msgstr ""
@@ -155,12 +200,14 @@ msgid "Last Modified on"
 msgstr ""
 
 #. module: typ_landed_costs
+#: field:invoice.guides,write_uid:0
 #: field:stock.landed.cost.guide,write_uid:0
 #: field:stock.landed.cost.guide.line,write_uid:0
 msgid "Last Updated by"
 msgstr ""
 
 #. module: typ_landed_costs
+#: field:invoice.guides,write_date:0
 #: field:stock.landed.cost.guide,write_date:0
 #: field:stock.landed.cost.guide.line,write_date:0
 msgid "Last Updated on"
@@ -188,6 +235,12 @@ msgid "Partner"
 msgstr ""
 
 #. module: typ_landed_costs
+#: code:addons/typ_landed_costs/wizards/invoice_from_guides.py:58
+#, python-format
+msgid "Please define expense account for this product: \"%s\""
+msgstr ""
+
+#. module: typ_landed_costs
 #: field:stock.landed.cost.guide.line,product_id:0
 msgid "Product"
 msgstr ""
@@ -200,6 +253,11 @@ msgstr ""
 #. module: typ_landed_costs
 #: view:stock.landed.cost.guide:typ_landed_costs.guide_form_view
 msgid "Reset to draft"
+msgstr ""
+
+#. module: typ_landed_costs
+#: help:invoice.guides,journal_id:0
+msgid "Select the journal with which want the invoice to be created"
 msgstr ""
 
 #. module: typ_landed_costs
@@ -231,5 +289,10 @@ msgstr ""
 #: view:stock.landed.cost.guide:typ_landed_costs.guide_search_view
 #: field:stock.landed.cost.guide,warehouse_id:0
 msgid "Warehouse"
+msgstr ""
+
+#. module: typ_landed_costs
+#: view:invoice.guides:typ_landed_costs.view_invoice_from_guides_form
+msgid "or"
 msgstr ""
 
