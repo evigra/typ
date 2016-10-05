@@ -18,12 +18,15 @@ class TestTypLandedCosts(common.TransactionCase):
         self.currency_1 = self.env.ref('base.MXN')
         self.currency_2 = self.env.ref('base.USD')
         self.wizard_create_invoice = self.env['invoice.guides']
+        self.journal = self.env.ref('account.check_journal')
 
-    def create_guide(self, name, partner_id, currency_id, product_id):
+    def create_guide(self, name, partner_id, currency_id, product_id,
+                     journal_id):
         dict_vals = {
             'name': name,
             'partner_id': partner_id.id,
             'currency_id': currency_id.id,
+            'journal_id': journal_id.id,
             'line_ids': [(0, 0,
                           {'product_id': product_id.id, 'cost': 100.00,
                            'freight_type': 'purchases'})]

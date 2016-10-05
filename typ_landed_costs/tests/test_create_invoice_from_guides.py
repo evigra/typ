@@ -11,9 +11,11 @@ class TestCreateInvoiceFromGuides(TestTypLandedCosts):
         guides with different partners
         """
         guide_1 = self.create_guide('Test Guide 1', self.partner_1,
-                                    self.currency_1, self.product_1)
+                                    self.currency_1, self.product_1,
+                                    self.journal)
         guide_2 = self.create_guide('Test Guide 2', self.partner_2,
-                                    self.currency_1, self.product_2)
+                                    self.currency_1, self.product_2,
+                                    self.journal)
         context = {'active_ids': [guide_1.id, guide_2.id],
                    'active_model': 'stock.landed.cost.guide'}
         msg = ".*All guides selected must have the same partner.*"
@@ -25,9 +27,11 @@ class TestCreateInvoiceFromGuides(TestTypLandedCosts):
         guides with different currency
         """
         guide_1 = self.create_guide('Test Guide 1', self.partner_1,
-                                    self.currency_1, self.product_1)
+                                    self.currency_1, self.product_1,
+                                    self.journal)
         guide_2 = self.create_guide('Test Guide 2', self.partner_1,
-                                    self.currency_2, self.product_2)
+                                    self.currency_2, self.product_2,
+                                    self.journal)
         context = {'active_ids': [guide_1.id, guide_2.id],
                    'active_model': 'stock.landed.cost.guide'}
         msg = ".*All guides selected must have the same currency.*"
@@ -39,9 +43,11 @@ class TestCreateInvoiceFromGuides(TestTypLandedCosts):
         configuration
         """
         guide_1 = self.create_guide('Test Guide 1', self.partner_1,
-                                    self.currency_1, self.product_1)
+                                    self.currency_1, self.product_1,
+                                    self.journal)
         guide_2 = self.create_guide('Test Guide 2', self.partner_1,
-                                    self.currency_1, self.product_2)
+                                    self.currency_1, self.product_2,
+                                    self.journal)
         context = {'active_ids': [guide_1.id, guide_2.id],
                    'active_model': 'stock.landed.cost.guide'}
         res = self.wizard_create_invoice.with_context(context).create_invoice()
