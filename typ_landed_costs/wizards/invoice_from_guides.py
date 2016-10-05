@@ -51,8 +51,8 @@ class InvoiceFromGuides(models.TransientModel):
         invoice = self.env['account.invoice'].create(invoice_dict)
         guides_lines = guides.mapped('line_ids')
         for line in guides_lines:
-            account_line = line.product_id.property_account_expense or \
-                line.product_id.categ_id.property_account_expense_categ
+            account_line = line.product_id.property_stock_account_input or \
+                line.product_id.categ_id.property_stock_account_input_categ
             if not account_line:
                 raise exceptions.ValidationError(
                     _('Please define expense account for this product: "%s"')
