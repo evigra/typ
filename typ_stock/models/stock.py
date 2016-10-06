@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
-from openerp import api, models
+from openerp import api, models, _
+from openerp import exceptions
 
 
 class StockMove(models.Model):
@@ -24,6 +25,21 @@ class StockMove(models.Model):
             wizard_transfer_id = self.env['stock.transfer_details'].\
                 with_context(ctx).create({'picking_id': picking.id})
             wizard_transfer_id.do_detailed_transfer()
+
+    @api.multi
+    def validate_picking_negative(self):
+        """Validation warehouses to prevent negative numbers. Limiting the
+        warehouses not to allow movements generate if no stock.
+        """
+        if self.state == 'done':
+            for move in self.quant_ids:
+                if not move.location_id == self.location_dest_id or \
+                        move.qty < 0:
+                    raise exceptions.Warning(
+                        _('Warning!'),
+                        _('Negative Quant creation error. Contact personnel '
+                          'Vauxoo immediately')
+                    )
 
 
 class StockPicking(models.Model):
