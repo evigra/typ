@@ -17,6 +17,11 @@ When the field ``Propagate transfer`` is check in all procurement rules related
 with the stock moves created in a sale order, with make the transfer of first
 picking, all other pickings it will be transfered automatically.
 
+**Validation to warehouses to not allow negative availability in product.**
+
+This functionality allows warehouses to prevent negative numbers. Limiting 
+the warehouses not to allow movements generate if no stock.
+
 **Adding Refactoring Reording Rules & wizard for Minimun Stock Supply**
 inherit methods and base views related with supply orders & wizards Run
 Schedulers & Compute stock Minimum Rules Only by the group "Users that can
@@ -35,6 +40,7 @@ Credits
 * Julio Serna <julio@vauxoo.com> (Planner/Auditor)
 * Yennifer Santiago <yennifer@vauxoo.com (Developer)
 * Jorge Escalona <jorge@vauxoo.com> (Developer)
+* Deivis Laya <deivis@vauxoo.com> (Developer)
 
 Maintainer
 ==========

@@ -182,7 +182,7 @@ class StockLandedGuides (models.Model):
             # the same
             # account move reference when creating the same invoice after a
             # cancelled one:
-            # TODO: move.post()
+            move.post()
         # TODO self._log_event()
         return True
 
