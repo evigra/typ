@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 8.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-10-04 15:53+0000\n"
-"PO-Revision-Date: 2016-10-04 15:53+0000\n"
+"POT-Creation-Date: 2016-10-06 18:35+0000\n"
+"PO-Revision-Date: 2016-10-06 18:35+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -33,19 +33,34 @@ msgid "Cancel"
 msgstr ""
 
 #. module: typ_landed_costs
+#: field:stock.landed.cost.guide,company_id:0
+msgid "Company"
+msgstr ""
+
+#. module: typ_landed_costs
+#: help:stock.landed.cost.guide,company_id:0
+msgid "Company which this guide belongs to"
+msgstr ""
+
+#. module: typ_landed_costs
 #: field:stock.landed.cost.guide.line,cost:0
 msgid "Cost"
 msgstr ""
 
 #. module: typ_landed_costs
+#: help:stock.landed.cost.guide.line,cost:0
+msgid "Cost of the operation on this line"
+msgstr ""
+
+#. module: typ_landed_costs
 #: view:invoice.guides:typ_landed_costs.view_invoice_from_guides_form
-msgid "Create Invoice"
+msgid "Create invoice"
 msgstr ""
 
 #. module: typ_landed_costs
 #: view:invoice.guides:typ_landed_costs.view_invoice_from_guides_form
 #: model:ir.actions.act_window,name:typ_landed_costs.invoice_from_guides_wizard
-msgid "Create Invoice from Guides"
+msgid "Create invoice from guides"
 msgstr ""
 
 #. module: typ_landed_costs
@@ -68,18 +83,23 @@ msgid "Currency"
 msgstr ""
 
 #. module: typ_landed_costs
+#: help:stock.landed.cost.guide,currency_id:0
+msgid "Currency used for this guide"
+msgstr ""
+
+#. module: typ_landed_costs
 #: field:stock.landed.cost.guide,date:0
 msgid "Date"
 msgstr ""
 
 #. module: typ_landed_costs
-#: help:invoice.guides,date_invoice:0
-msgid "Date which want to create the invoice"
+#: help:stock.landed.cost.guide,date:0
+msgid "Date of the guide"
 msgstr ""
 
 #. module: typ_landed_costs
-#: field:stock.landed.cost.guide,destination:0
-msgid "Destination"
+#: help:invoice.guides,date_invoice:0
+msgid "Date which want to create the invoice"
 msgstr ""
 
 #. module: typ_landed_costs
@@ -90,12 +110,19 @@ msgid "Display Name"
 msgstr ""
 
 #. module: typ_landed_costs
-#: selection:stock.landed.cost.guide,state:0
-msgid "Draft"
-
-#. module: typ_landed_costs
 #: view:invoice.guides:typ_landed_costs.view_invoice_from_guides_form
 msgid "Do you really want to create the invoice?"
+msgstr ""
+
+#. module: typ_landed_costs
+#: selection:stock.landed.cost.guide,state:0
+msgid "Draft"
+msgstr ""
+
+#. module: typ_landed_costs
+#: code:addons/typ_landed_costs/models/stock_landed_costs.py:114
+#, python-format
+msgid "Error!"
 msgstr ""
 
 #. module: typ_landed_costs
@@ -121,6 +148,11 @@ msgstr ""
 #. module: typ_landed_costs
 #: field:stock.landed.cost.guide.line,freight_type:0
 msgid "Freight type"
+msgstr ""
+
+#. module: typ_landed_costs
+#: help:stock.landed.cost.guide.line,freight_type:0
+msgid "Freight type of this operation"
 msgstr ""
 
 #. module: typ_landed_costs
@@ -151,6 +183,21 @@ msgid "Guide id"
 msgstr ""
 
 #. module: typ_landed_costs
+#: help:stock.landed.cost.guide,period_id:0
+msgid "Guide period"
+msgstr ""
+
+#. module: typ_landed_costs
+#: help:stock.landed.cost.guide,state:0
+msgid "Guide status"
+msgstr ""
+
+#. module: typ_landed_costs
+#: help:stock.landed.cost.guide.line,guide_id:0
+msgid "Guide which this line belongs to"
+msgstr ""
+
+#. module: typ_landed_costs
 #: model:ir.ui.menu,name:typ_landed_costs.menu_landed_cost_guides
 #: field:stock.landed.cost,guide_ids:0
 msgid "Guides"
@@ -162,25 +209,37 @@ msgid "Guides which contain items to be used as landed costs"
 msgstr ""
 
 #. module: typ_landed_costs
+#: field:invoice.guides,id:0
 #: field:stock.landed.cost.guide,id:0
 #: field:stock.landed.cost.guide.line,id:0
 msgid "ID"
 msgstr ""
 
 #. module: typ_landed_costs
+#: field:invoice.guides,date_invoice:0
+msgid "Invoice date"
+msgstr ""
+
+#. module: typ_landed_costs
+#: field:invoice.guides,journal_id:0
 #: view:stock.landed.cost.guide:typ_landed_costs.guide_search_view
 #: field:stock.landed.cost.guide,journal_id:0
 msgid "Journal"
 msgstr ""
 
 #. module: typ_landed_costs
-#: field:stock.landed.cost.guide,landed_cost_id:0
-msgid "Landed Cost"
+#: field:stock.landed.cost.guide,move_id:0
+msgid "Journal Entry"
 msgstr ""
 
 #. module: typ_landed_costs
-#: field:invoice.guides,date_invoice:0
-msgid "Invoice Date"
+#: help:stock.landed.cost.guide,journal_id:0
+msgid "Journal used for this guide"
+msgstr ""
+
+#. module: typ_landed_costs
+#: field:stock.landed.cost.guide,landed_cost_id:0
+msgid "Landed Cost"
 msgstr ""
 
 #. module: typ_landed_costs
@@ -194,6 +253,7 @@ msgid "Landed cost document where this guide is added"
 msgstr ""
 
 #. module: typ_landed_costs
+#: field:invoice.guides,__last_update:0
 #: field:stock.landed.cost.guide,__last_update:0
 #: field:stock.landed.cost.guide.line,__last_update:0
 msgid "Last Modified on"
@@ -214,6 +274,11 @@ msgid "Last Updated on"
 msgstr ""
 
 #. module: typ_landed_costs
+#: help:stock.landed.cost.guide,move_id:0
+msgid "Link to the automatically generated Journal Items."
+msgstr ""
+
+#. module: typ_landed_costs
 #: field:stock.landed.cost.guide,name:0
 msgid "Name"
 msgstr ""
@@ -224,8 +289,14 @@ msgid "Name to identify the guide"
 msgstr ""
 
 #. module: typ_landed_costs
-#: field:stock.landed.cost.guide,origin:0
-msgid "Origin"
+#: code:addons/typ_landed_costs/models/stock_landed_costs.py:119
+#, python-format
+msgid "No Invoice Lines!"
+msgstr ""
+
+#. module: typ_landed_costs
+#: view:stock.landed.cost.guide:typ_landed_costs.guide_form_view
+msgid "Other info"
 msgstr ""
 
 #. module: typ_landed_costs
@@ -235,9 +306,31 @@ msgid "Partner"
 msgstr ""
 
 #. module: typ_landed_costs
+#: help:stock.landed.cost.guide,partner_id:0
+msgid "Partner associated to this guide"
+msgstr ""
+
+#. module: typ_landed_costs
+#: field:stock.landed.cost.guide,period_id:0
+msgid "Period"
+msgstr ""
+
+#. module: typ_landed_costs
+#: code:addons/typ_landed_costs/models/stock_landed_costs.py:120
+#, python-format
+msgid "Please create some guide lines."
+msgstr ""
+
+#. module: typ_landed_costs
 #: code:addons/typ_landed_costs/wizards/invoice_from_guides.py:58
 #, python-format
 msgid "Please define expense account for this product: \"%s\""
+msgstr ""
+
+#. module: typ_landed_costs
+#: code:addons/typ_landed_costs/models/stock_landed_costs.py:115
+#, python-format
+msgid "Please define sequence on the journal related to this guide."
 msgstr ""
 
 #. module: typ_landed_costs
@@ -246,8 +339,23 @@ msgid "Product"
 msgstr ""
 
 #. module: typ_landed_costs
+#: help:stock.landed.cost.guide.line,product_id:0
+msgid "Product associated to this line"
+msgstr ""
+
+#. module: typ_landed_costs
+#: help:stock.landed.cost.guide,line_ids:0
+msgid "Product lines associated to this guide"
+msgstr ""
+
+#. module: typ_landed_costs
 #: field:stock.landed.cost.guide,reference:0
 msgid "Reference"
+msgstr ""
+
+#. module: typ_landed_costs
+#: help:stock.landed.cost.guide,reference:0
+msgid "Reference code for this guide"
 msgstr ""
 
 #. module: typ_landed_costs
@@ -276,6 +384,12 @@ msgid "Stock Landed Cost"
 msgstr ""
 
 #. module: typ_landed_costs
+#: code:addons/typ_landed_costs/models/stock_landed_costs.py:127
+#, python-format
+msgid "User Error!"
+msgstr ""
+
+#. module: typ_landed_costs
 #: selection:stock.landed.cost.guide,state:0
 msgid "Valid"
 msgstr ""
@@ -289,6 +403,17 @@ msgstr ""
 #: view:stock.landed.cost.guide:typ_landed_costs.guide_search_view
 #: field:stock.landed.cost.guide,warehouse_id:0
 msgid "Warehouse"
+msgstr ""
+
+#. module: typ_landed_costs
+#: help:stock.landed.cost.guide,warehouse_id:0
+msgid "Warehouse which this guide belongs to"
+msgstr ""
+
+#. module: typ_landed_costs
+#: code:addons/typ_landed_costs/models/stock_landed_costs.py:128
+#, python-format
+msgid "You cannot create a guide on a centralized journal. Uncheck the centralized counterpart box in the related journal from the configuration menu."
 msgstr ""
 
 #. module: typ_landed_costs
