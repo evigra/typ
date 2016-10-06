@@ -12,7 +12,10 @@
     ],
 
     'data': [
-        'views/sale_order_line_view.xml'
+        'security/ir.model.access.csv',
+        'views/sale_order_line_view.xml',
+        'views/res_partner_warehouse_view.xml',
+        'views/sale_order_view.xml',
     ],
     'demo': [
     ],
