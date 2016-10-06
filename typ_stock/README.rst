@@ -22,6 +22,11 @@ picking, all other pickings it will be transfered automatically.
 This functionality allows warehouses to prevent negative numbers. Limiting 
 the warehouses not to allow movements generate if no stock.
 
+**Validation for internal movements in locations scrapped.**
+
+This functionality allows only users group manager/warehouse, confirm and 
+validate movements locations losses or scraped.
+
 **Adding Refactoring Reording Rules & wizard for Minimun Stock Supply**
 inherit methods and base views related with supply orders & wizards Run
 Schedulers & Compute stock Minimum Rules Only by the group "Users that can

@@ -41,6 +41,22 @@ class StockMove(models.Model):
                           'Vauxoo immediately')
                     )
 
+    @api.multi
+    def verify_user_scrap(self):
+        """Allows only users group manager/warehouse, confirm and validate
+        movements locations losses or scraped
+        """
+        if self.state == 'assigned':
+            if self.location_id.usage == 'internal' and \
+                    self.location_dest_id.usage == 'inventory':
+                manager = self.env.user.has_group('stock.group_stock_manager')
+                if not manager:
+                    raise exceptions.Warning(
+                        _('Warning!'),
+                        _('Permission denied only manager/warehouse group.'
+                          ' Contact personnel Vauxoo immediately')
+                    )
+
 
 class StockPicking(models.Model):
 

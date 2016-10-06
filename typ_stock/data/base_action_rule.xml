@@ -29,5 +29,14 @@
             <field name="server_action_ids" eval="[(6, 0, [ref('typ_stock.server_action_validate_move_internal')])]"/>
         </record>
 
+        <record id="automated_action_verify_user_scrap" model="base.action.rule">
+            <field name="name">Verified user scrap</field>
+            <field name="model_id" model="ir.model" search="[('model', '=', 'stock.move')]"/>
+            <field name="active">1</field>
+            <field name="sequence">5</field>
+            <field name="kind">on_write</field>
+            <field name="server_action_ids" eval="[(6, 0, [ref('typ_stock.server_action_verify_user_scrap')])]"/>
+        </record>
+
     </data>
 </openerp>
