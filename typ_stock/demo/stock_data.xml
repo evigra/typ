@@ -111,5 +111,17 @@
              <field name="propagate_warehouse_id" ref="typ_stock.whr_test_02"/>
          </record>
 
+        <!-- Products -->
+        <record id="product_product_whead" model="product.product">
+            <field name="name">Wireless Headphones custon</field>
+            <field name="categ_id" ref="product.product_category_7"/>
+            <field name="standard_price">80.0</field>
+            <field name="list_price">70.0</field>
+            <field name="type">consu</field>
+            <field name="uom_id" ref="product.product_uom_unit"/>
+            <field name="uom_po_id" ref="product.product_uom_unit"/>
+            <field name="default_code">HEADPHONE-01</field>
+        </record>
+
      </data>
 </openerp>

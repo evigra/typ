@@ -1,0 +1,140 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* typ_stock
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 8.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2016-10-05 19:20+0000\n"
+"PO-Revision-Date: 2016-10-05 19:20+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: typ_stock
+#: model:stock.picking.type,name:typ_stock.stock_picking_type_test_1
+msgid "Automatic output"
+msgstr ""
+
+#. module: typ_stock
+#: model:stock.picking.type,name:typ_stock.stock_picking_type_test_2
+msgid "Automatic transit"
+msgstr ""
+
+#. module: typ_stock
+#: model:ir.model,name:typ_stock.model_procurement_orderpoint_compute
+msgid "Compute Minimum Stock Rules"
+msgstr ""
+
+#. module: typ_stock
+#: code:addons/typ_stock/models/stock.py:40
+#, python-format
+msgid "Negative Quant creation error. Contact personnel Vauxoo immediately"
+msgstr ""
+
+#. module: typ_stock
+#: model:stock.picking.type,name:typ_stock.stock_picking_type_test_3
+msgid "Output to customer"
+msgstr ""
+
+#. module: typ_stock
+#: model:ir.model,name:typ_stock.model_stock_picking
+msgid "Picking List"
+msgstr ""
+
+#. module: typ_stock
+#: model:ir.model,name:typ_stock.model_procurement_order
+msgid "Procurement"
+msgstr ""
+
+#. module: typ_stock
+#: model:ir.model,name:typ_stock.model_procurement_rule
+msgid "Procurement Rule"
+msgstr ""
+
+#. module: typ_stock
+#: model:ir.actions.server,name:typ_stock.server_action_propagate_picking_transfer
+msgid "Propagate picking transfer"
+msgstr ""
+
+#. module: typ_stock
+#: field:procurement.rule,propagate_transfer:0
+msgid "Propagate transfer"
+msgstr ""
+
+#. module: typ_stock
+#: model:ir.model,name:typ_stock.model_stock_move
+msgid "Stock Move"
+msgstr ""
+
+#. module: typ_stock
+#: model:stock.location.route,name:typ_stock.stock_location_route_test_1
+msgid "TW1 Supply from TW2"
+msgstr ""
+
+#. module: typ_stock
+#: model:procurement.rule,name:typ_stock.pull_rule_test_1
+msgid "Test Warehouse 1: customer"
+msgstr ""
+
+#. module: typ_stock
+#: model:procurement.rule,name:typ_stock.pull_rule_test_2
+msgid "Test Warehouse 1: transit"
+msgstr ""
+
+#. module: typ_stock
+#: model:procurement.rule,name:typ_stock.pull_rule_test_3
+msgid "Test Warehouse 2: stock"
+msgstr ""
+
+#. module: typ_stock
+#: model:res.groups,name:typ_stock.res_group_force_stock_move
+msgid "Users that can force availability and unassign"
+msgstr ""
+
+#. module: typ_stock
+#: model:res.groups,name:typ_stock.res_group_can_run_scheduler
+msgid "Users that can run schedulers warehouse"
+msgstr ""
+
+#. module: typ_stock
+#: model:ir.actions.server,name:typ_stock.server_action_validate_picking_negative
+msgid "Validate picking negative"
+msgstr ""
+
+#. module: typ_stock
+#: field:procurement.orderpoint.compute,warehouse_id:0
+msgid "Warehouse"
+msgstr ""
+
+#. module: typ_stock
+#: code:addons/typ_stock/models/stock.py:39
+#, python-format
+msgid "Warning!"
+msgstr ""
+
+#. module: typ_stock
+#: help:procurement.rule,propagate_transfer:0
+msgid "When this field is check, the first stock move which is transferred triggers automatically the transfer to the other stock move related"
+msgstr ""
+
+#. module: typ_stock
+#: model:product.template,name:typ_stock.product_product_whead_product_template
+msgid "Wireless Headphones custon"
+msgstr ""
+
+#. module: typ_stock
+#: help:procurement.orderpoint.compute,warehouse_id:0
+msgid "select warehouse to running schedulers"
+msgstr ""
+
+#. module: typ_stock
+#: view:stock.move:typ_stock.view_stock_move_picking_force_assign
+#: view:stock.picking:typ_stock.view_stock_picking_force_assign
+msgid "typ_stock.res_group_force_stock_move"
+msgstr ""
+

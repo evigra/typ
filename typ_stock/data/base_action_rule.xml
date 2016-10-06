@@ -11,5 +11,13 @@
             <field name="server_action_ids" eval="[(6, 0, [ref('typ_stock.server_action_propagate_picking_transfer')])]"/>
         </record>
 
+        <record id="automated_action_validate_picking_negative" model="base.action.rule">
+            <field name="name">Validate picking negative</field>
+            <field name="model_id" model="ir.model" search="[('model', '=', 'stock.move')]"/>
+            <field name="active">1</field>
+            <field name="sequence">0</field>
+            <field name="kind">on_write</field>
+            <field name="server_action_ids" eval="[(6, 0, [ref('typ_stock.server_action_validate_picking_negative')])]"/>
+        </record>
     </data>
 </openerp>
