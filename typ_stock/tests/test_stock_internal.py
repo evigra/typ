@@ -40,3 +40,31 @@ class TestStockInternal(TestTypStock):
         msg = 'Both locations must be internal type'
         with self.assertRaisesRegexp(UserError, msg):
             wizard_transfer_id.do_detailed_transfer()
+
+    def test_20_validate_user_scrapped(self):
+        """Validate pickings of internal type, allowing only confirm to users
+        who are in manager / warehouse for location scrapped
+        """
+        demo_user = self.env.ref('base.user_demo')
+
+        values = dict(
+            picking_type_id=self.env.ref('stock.picking_type_internal').id,
+        )
+
+        lines = dict(
+            location_id=self.env.ref('stock.stock_location_stock').id,
+            location_dest_id=self.env.ref(
+                'typ_stock.location_scrapped_test').id,
+        )
+
+        picking = self.create_picking_default(
+            extra_values=values,
+            line=lines,
+            user=demo_user,
+        )
+
+        picking.sudo(demo_user).action_confirm()
+
+        msg = 'Permission denied only manager/warehouse group'
+        with self.assertRaisesRegexp(UserError, msg):
+            picking.sudo(demo_user).action_assign()
