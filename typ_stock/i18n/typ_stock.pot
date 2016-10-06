@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 8.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-10-05 19:20+0000\n"
-"PO-Revision-Date: 2016-10-05 19:20+0000\n"
+"POT-Creation-Date: 2016-10-03 20:06+0000\n"
+"PO-Revision-Date: 2016-10-03 20:06+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -34,6 +34,16 @@ msgstr ""
 #: code:addons/typ_stock/models/stock.py:40
 #, python-format
 msgid "Negative Quant creation error. Contact personnel Vauxoo immediately"
+msgstr ""
+
+#: code:addons/typ_stock/models/stock.py:74
+#, python-format
+msgid "Both locations must be internal type"
+msgstr ""
+
+#. module: typ_stock
+#: model:ir.model,name:typ_stock.model_procurement_orderpoint_compute
+msgid "Compute Minimum Stock Rules"
 msgstr ""
 
 #. module: typ_stock
@@ -106,13 +116,17 @@ msgstr ""
 msgid "Validate picking negative"
 msgstr ""
 
+#: model:ir.actions.server,name:typ_stock.server_action_validate_move_internal
+msgid "Validate move internal locations"
+msgstr ""
+
 #. module: typ_stock
 #: field:procurement.orderpoint.compute,warehouse_id:0
 msgid "Warehouse"
 msgstr ""
 
 #. module: typ_stock
-#: code:addons/typ_stock/models/stock.py:39
+#: code:addons/typ_stock/models/stock.py:73
 #, python-format
 msgid "Warning!"
 msgstr ""
@@ -137,4 +151,3 @@ msgstr ""
 #: view:stock.picking:typ_stock.view_stock_picking_force_assign
 msgid "typ_stock.res_group_force_stock_move"
 msgstr ""
-
