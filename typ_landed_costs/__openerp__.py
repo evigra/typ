@@ -13,6 +13,7 @@
     "demo": [
     ],
     "data": [
+        "data/res_groups.xml",
         "security/ir.model.access.csv",
         "views/stock_landed_costs.xml",
         "wizards/invoice_from_guides_view.xml",

@@ -10,7 +10,8 @@
                     <header>
                         <button name="action_draft" type="object"
                                 string="Reset to draft"
-                                states="valid"/>
+                                states="valid"
+                                groups="typ_landed_cost.group_landed_guide_manager"/>
                             <button name="action_valid" type="object"
                                 string="Validate"
                                 states="draft"
@@ -110,6 +111,7 @@
                         name="guide_ids"
                         widget="many2many_tags"
                         domain="[
+                            ('state', '!=', 'draft'),
                         ]"
                         />
                 </xpath>

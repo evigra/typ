@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
-from openerp import models, fields, api, _
-from openerp.exceptions import except_orm
+from openerp import api, fields, models, _
+from openerp.exceptions import except_orm, ValidationError
 
 
 class StockLandedGuides (models.Model):
@@ -103,7 +103,29 @@ class StockLandedGuides (models.Model):
 
     @api.multi
     def action_draft(self):
-        self.state = 'draft'
+        for guide in self:
+            if guide.landed_cost_id:
+                raise ValidationError(
+                    _("You cannot reset this guide to draft while it is"
+                      " associated to a Landed Cost Document:\n\n- %s" %
+                      guide.landed_cost_id.name))
+            self._cancel_moves()
+            guide.state = 'draft'
+
+    @api.model
+    def _cancel_moves(self):
+        moves = self.move_id
+        # First, set the invoices as cancelled and detach the move ids
+        self.write({'move_id': False})
+        if moves:
+            # second, invalidate the move(s)
+            moves.button_cancel()
+            # delete the move this invoice was pointing to
+            # Note that the corresponding move_lines and move_reconciles
+            # will be automatically deleted too
+            moves.unlink()
+        # TODO: self._log_event(-1.0, 'Cancel Invoice')
+        return True
 
     @api.multi
     def action_valid(self):
