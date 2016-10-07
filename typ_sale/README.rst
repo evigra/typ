@@ -16,6 +16,12 @@ product in special sale orders.**
   product in sale order line has. This supplier is use to create the new
   purchase order.
 
+**Table to configurate salesman and credit limit to each warehouse in
+partner**
+
+- With that functionality, when a partner or warehouse is selected in a sale
+  order, the salesperson changed depending on the configuration realted.
+
 Credits
 =======
 

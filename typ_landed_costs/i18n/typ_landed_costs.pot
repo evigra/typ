@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 8.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-10-06 18:35+0000\n"
-"PO-Revision-Date: 2016-10-06 18:35+0000\n"
+"POT-Creation-Date: 2016-10-07 14:50+0000\n"
+"PO-Revision-Date: 2016-10-07 14:50+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -195,6 +195,11 @@ msgstr ""
 #. module: typ_landed_costs
 #: help:stock.landed.cost.guide.line,guide_id:0
 msgid "Guide which this line belongs to"
+
+#. module: typ_landed_costs
+#: code:addons/typ_landed_costs/wizards/invoice_from_guides.py:43
+#, python-format
+msgid "The guide(s) "
 msgstr ""
 
 #. module: typ_landed_costs
@@ -218,6 +223,23 @@ msgstr ""
 #. module: typ_landed_costs
 #: field:invoice.guides,date_invoice:0
 msgid "Invoice date"
+msgstr ""
+
+#. module: typ_landed_costs
+#: field:invoice.guides,journal_id:0
+#: view:stock.landed.cost.guide:typ_landed_costs.guide_search_view
+#: field:stock.landed.cost.guide,invoice_id:0
+msgid "Invoice"
+msgstr ""
+
+#. module: typ_landed_costs
+#: field:invoice.guides,date_invoice:0
+msgid "Invoice date"
+msgstr ""
+
+#. module: typ_landed_costs
+#: field:stock.landed.cost.guide,invoiced:0
+msgid "Invoiced"
 msgstr ""
 
 #. module: typ_landed_costs
@@ -322,7 +344,7 @@ msgid "Please create some guide lines."
 msgstr ""
 
 #. module: typ_landed_costs
-#: code:addons/typ_landed_costs/wizards/invoice_from_guides.py:58
+#: code:addons/typ_landed_costs/wizards/invoice_from_guides.py:67
 #, python-format
 msgid "Please define expense account for this product: \"%s\""
 msgstr ""
@@ -356,6 +378,10 @@ msgstr ""
 #. module: typ_landed_costs
 #: help:stock.landed.cost.guide,reference:0
 msgid "Reference code for this guide"
+
+#. module: typ_landed_costs
+#: help:stock.landed.cost.guide,invoice_id:0
+msgid "Refers the invoice related whit this guide"
 msgstr ""
 
 #. module: typ_landed_costs
@@ -414,6 +440,16 @@ msgstr ""
 #: code:addons/typ_landed_costs/models/stock_landed_costs.py:128
 #, python-format
 msgid "You cannot create a guide on a centralized journal. Uncheck the centralized counterpart box in the related journal from the configuration menu."
+
+#. module: typ_landed_costs
+#: help:stock.landed.cost.guide,invoiced:0
+msgid "When the guide has been invoiced, this field is True, otherwise False"
+msgstr ""
+
+#. module: typ_landed_costs
+#: code:addons/typ_landed_costs/wizards/invoice_from_guides.py:49
+#, python-format
+msgid "is already invoiced"
 msgstr ""
 
 #. module: typ_landed_costs
