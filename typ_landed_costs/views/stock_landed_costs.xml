@@ -57,7 +57,7 @@
                     <field name="partner_id"/>
                     <field name="journal_id"/>
                     <field name="date"/>
-                    <field name="state" invisible="1"/>
+                    <field name="state"/>
                 </tree>
             </field>
         </record>
@@ -78,6 +78,8 @@
                             context="{'group_by': 'warehouse_id'}"/>
                         <filter name="by_partner" string="Partner"
                             context="{'group_by': 'partner_id'}"/>
+                        <filter name="by_landed_cost" string="Landed Cost"
+                            context="{'group_by': 'landed_cost_id'}"/>
                     </group>
                 </search>
             </field>
