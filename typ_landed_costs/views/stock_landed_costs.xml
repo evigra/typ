@@ -30,7 +30,6 @@
                             <field name="reference"/>
                             <field name="currency_id"/>
                             <field name="landed_cost_id"/>
-                            <field name="invoiced" readonly='True'/>
                         </group>
                         <notebook>
                             <page string="Guide Lines">
@@ -38,6 +37,8 @@
                             </page>
                             <page string="Other info">
                                 <group col="4">
+                                    <field name="landed"/>
+                                    <field name="invoiced" readonly='True'/>
                                     <field name="company_id"/>
                                     <field name="move_id"/>
                                     <field name="period_id"/>

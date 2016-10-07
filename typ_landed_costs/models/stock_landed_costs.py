@@ -70,6 +70,11 @@ class StockLandedGuides (models.Model):
         readonly=True,
         states={'draft': [('readonly', False)]},
         help='Reference code for this guide')
+    landed = fields.Boolean(
+        string='Is Landed Cost validated?',
+        help='This field is automatically True if the guide belongs to a'
+        ' validated Landed Cost document',
+        compute='_compute_landed')
     move_id = fields.Many2one(
         'account.move',
         string='Journal Entry',
@@ -96,6 +101,13 @@ class StockLandedGuides (models.Model):
     invoice_id = fields.Many2one('account.invoice', string='Invoice',
                                  help='Refers the invoice related whit'
                                  ' this guide')
+
+    @api.model
+    def _compute_landed(self):
+        """Set 'landed' field to True if the Landed Cost document of this guide
+        is in Valid state"""
+        lc = self.landed_cost_id
+        self.landed = lc and lc.state == 'done'
 
     @api.model
     def _get_user_default_currency(self):
