@@ -59,6 +59,12 @@ class StockLandedGuides (models.Model):
          ('valid', 'Valid')],
         string='Status',
         default='draft')
+    invoiced = fields.Boolean(string='Invoiced',
+                              help='When the guide has been invoiced, this'
+                              ' field is True, otherwise False')
+    invoice_id = fields.Many2one('account.invoice', string='Invoice',
+                                 help='Refers the invoice related whit'
+                                 ' this guide')
 
     @api.model
     def _get_user_default_currency(self):

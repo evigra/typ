@@ -29,6 +29,7 @@
                             <field name="reference"/>
                             <field name="currency_id"/>
                             <field name="landed_cost_id"/>
+                            <field name="invoiced" readonly='True'/>
                         </group>
                         <notebook>
                             <page string="Guide Lines">
@@ -48,6 +49,7 @@
                     <field name="name"/>
                     <field name="partner_id"/>
                     <field name="journal_id"/>
+                    <field name="invoice_id"/>
                     <field name="date"/>
                     <field name="state" invisible="1"/>
                 </tree>
@@ -70,6 +72,8 @@
                             context="{'group_by': 'warehouse_id'}"/>
                         <filter name="by_partner" string="Partner"
                             context="{'group_by': 'partner_id'}"/>
+                        <filter name="by_invoice" string="Invoice"
+                            context="{'group_by': 'invoice_id'}"/>
                     </group>
                 </search>
             </field>
