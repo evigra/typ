@@ -30,6 +30,8 @@
                             <field name="reference"/>
                             <field name="currency_id"/>
                             <field name="landed_cost_id"/>
+                            <field name="invoiced" readonly='True'/>
+                            <field name="invoice_id" readonly='True'/>
                         </group>
                         <notebook>
                             <page string="Guide Lines">
