@@ -38,6 +38,15 @@ class InvoiceFromGuides(models.TransientModel):
         ctx = self._context
         active_ids = ctx.get('active_ids', []) or []
         guides = self.env[ctx['active_model']].browse(active_ids)
+        is_invoiced = guides.filtered(lambda guide: guide.invoiced is True)
+        if is_invoiced:
+            msg = _('The guide(s) ')
+            names = []
+            for guide in is_invoiced:
+                msg = msg + '"%s" '
+                names.append(guide.name)
+            raise exceptions.ValidationError(
+                (msg + _('is already invoiced')) % tuple(names))
         partner = guides.mapped('partner_id')
         currency = guides.mapped('currency_id')
         self.validate_guides(partner, currency)
@@ -69,6 +78,7 @@ class InvoiceFromGuides(models.TransientModel):
                      [tax.id for tax in line.product_id.supplier_taxes_id])],
                 'invoice_id': invoice.id,
             })
+        guides.write({'invoiced': True, 'invoice_id': invoice.id})
         dict_return = {
             'type': 'ir.actions.act_window',
             'view_type': 'form',
