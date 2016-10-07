@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 8.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-10-04 15:53+0000\n"
-"PO-Revision-Date: 2016-10-04 15:53+0000\n"
+"POT-Creation-Date: 2016-10-07 14:49+0000\n"
+"PO-Revision-Date: 2016-10-07 10:55-0400\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -91,14 +91,14 @@ msgid "Display Name"
 msgstr "Nombre para mostrar"
 
 #. module: typ_landed_costs
-#: selection:stock.landed.cost.guide,state:0
-msgid "Draft"
-msgstr "Draft"
-
-#. module: typ_landed_costs
 #: view:invoice.guides:typ_landed_costs.view_invoice_from_guides_form
 msgid "Do you really want to create the invoice?"
 msgstr "¿Realmente desea crear la factura?"
+
+#. module: typ_landed_costs
+#: selection:stock.landed.cost.guide,state:0
+msgid "Draft"
+msgstr "Borrador"
 
 #. module: typ_landed_costs
 #: selection:stock.landed.cost.guide.line,freight_type:0
@@ -128,7 +128,7 @@ msgstr "Tipo de flete"
 #. module: typ_landed_costs
 #: view:stock.landed.cost.guide:typ_landed_costs.guide_search_view
 msgid "Group by"
-msgstr "Group by"
+msgstr "Agrupar por"
 
 #. module: typ_landed_costs
 #: view:stock.landed.cost.guide:typ_landed_costs.guide_form_view
@@ -153,8 +153,14 @@ msgid "Guide id"
 msgstr "id de Guía"
 
 #. module: typ_landed_costs
+#: code:addons/typ_landed_costs/wizards/invoice_from_guides.py:43
+#, python-format
+msgid "The guide(s) "
+msgstr "La(s) guía(s) "
+
+#. module: typ_landed_costs
 #: model:ir.ui.menu,name:typ_landed_costs.menu_landed_cost_guides
-#: field:stock.landed.cost,guide_ids:0 help:stock.landed.cost,guide_ids:0
+#: field:stock.landed.cost,guide_ids:0
 msgid "Guides"
 msgstr "Guías"
 
@@ -171,6 +177,23 @@ msgstr "ID"
 
 #. module: typ_landed_costs
 #: view:stock.landed.cost.guide:typ_landed_costs.guide_search_view
+#: field:stock.landed.cost.guide,invoice_id:0
+msgid "Invoice"
+msgstr "Factura"
+
+#. module: typ_landed_costs
+#: field:invoice.guides,date_invoice:0
+msgid "Invoice date"
+msgstr "Fecha de la factura"
+
+#. module: typ_landed_costs
+#: field:stock.landed.cost.guide,invoiced:0
+msgid "Invoiced"
+msgstr "Facturado"
+
+#. module: typ_landed_costs
+#: field:invoice.guides,journal_id:0
+#: view:stock.landed.cost.guide:typ_landed_costs.guide_search_view
 #: field:stock.landed.cost.guide,journal_id:0
 msgid "Journal"
 msgstr "Diario"
@@ -179,11 +202,6 @@ msgstr "Diario"
 #: field:stock.landed.cost.guide,landed_cost_id:0
 msgid "Landed Cost"
 msgstr "Coste en destino"
-
-#. module: typ_landed_costs
-#: field:invoice.guides,date_invoice:0
-msgid "Invoice date"
-msgstr "Fecha de la factura"
 
 #. module: typ_landed_costs
 #: model:ir.actions.act_window,name:typ_landed_costs.action_landed_cost_guides
@@ -196,6 +214,7 @@ msgid "Landed cost document where this guide is added"
 msgstr "Documento de coste en destino donde la guía está agregada"
 
 #. module: typ_landed_costs
+#: field:invoice.guides,__last_update:0
 #: field:stock.landed.cost.guide,__last_update:0
 #: field:stock.landed.cost.guide.line,__last_update:0
 msgid "Last Modified on"
@@ -235,7 +254,7 @@ msgid "Partner"
 msgstr "Proveedor"
 
 #. module: typ_landed_costs
-#: code:addons/typ_landed_costs/wizards/invoice_from_guides.py:58
+#: code:addons/typ_landed_costs/wizards/invoice_from_guides.py:67
 #, python-format
 msgid "Please define expense account for this product: \"%s\""
 msgstr "Por favor, defina la cuenta de gastos del producto: \"%s\""
@@ -249,6 +268,11 @@ msgstr "Producto"
 #: field:stock.landed.cost.guide,reference:0
 msgid "Reference"
 msgstr "Referencia"
+
+#. module: typ_landed_costs
+#: help:stock.landed.cost.guide,invoice_id:0
+msgid "Refers the invoice related whit this guide"
+msgstr "Referencia de la factura creada a partir de la guía"
 
 #. module: typ_landed_costs
 #: view:stock.landed.cost.guide:typ_landed_costs.guide_form_view
@@ -290,6 +314,17 @@ msgstr "Validar"
 #: field:stock.landed.cost.guide,warehouse_id:0
 msgid "Warehouse"
 msgstr "Almacén"
+
+#. module: typ_landed_costs
+#: help:stock.landed.cost.guide,invoiced:0
+msgid "When the guide has been invoiced, this field is True, otherwise False"
+msgstr "Cuando la guía ya ha sido facturada, este campo es Verdadero, de lo contrario es Falso"
+
+#. module: typ_landed_costs
+#: code:addons/typ_landed_costs/wizards/invoice_from_guides.py:49
+#, python-format
+msgid "is already invoiced"
+msgstr "ya esta(n) facturada(s)"
 
 #. module: typ_landed_costs
 #: view:invoice.guides:typ_landed_costs.view_invoice_from_guides_form
