@@ -18,6 +18,8 @@ class StockLandedGuides (models.Model):
         required=True,
         readonly=True,
         states={'draft': [('readonly', False)]},
+        default=lambda self:
+        self._get_user_default_company(),
         help='Company which this guide belongs to')
     partner_id = fields.Many2one(
         'res.partner',
@@ -93,6 +95,11 @@ class StockLandedGuides (models.Model):
     def _get_user_default_currency(self):
         """Return the default currency of the current user"""
         return self.env.user.company_id.currency_id
+
+    @api.model
+    def _get_user_default_company(self):
+        """Return the default company for the current user"""
+        return self.env.user.company_id
 
     @api.multi
     def action_draft(self):
