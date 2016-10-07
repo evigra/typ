@@ -57,3 +57,26 @@ class TestCreateInvoiceFromGuides(TestTypLandedCosts):
         products = invoice.invoice_line.mapped('product_id')
         self.assertIn(self.product_1, products)
         self.assertIn(self.product_2, products)
+
+    def test_30_try_invoice_guides_already_invoiced(self):
+        """Test guides that already have been invoiced doesn't can be invoiced
+        again
+        """
+        guide_1 = self.create_guide('Test Guide 1', self.partner_1,
+                                    self.currency_1, self.product_1,
+                                    self.journal)
+        guide_2 = self.create_guide('Test Guide 2', self.partner_1,
+                                    self.currency_1, self.product_2,
+                                    self.journal)
+        context = {'active_ids': [guide_1.id, guide_2.id],
+                   'active_model': 'stock.landed.cost.guide'}
+        res = self.wizard_create_invoice.with_context(context).create_invoice()
+        self.assertIn('res_id', res)
+        invoice = self.env['account.invoice'].browse(res['res_id'])
+        self.assertTrue(guide_1.invoice_id, invoice)
+        self.assertTrue(guide_2.invoice_id, invoice)
+        self.assertTrue(guide_1.invoiced, True)
+        self.assertTrue(guide_2.invoiced, True)
+        msg = ".*is already invoiced.*"
+        with self.assertRaisesRegexp(ValidationError, msg):
+            self.wizard_create_invoice.with_context(context).create_invoice()
