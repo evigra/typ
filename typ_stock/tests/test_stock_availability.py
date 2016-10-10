@@ -63,3 +63,52 @@ class TestStockAvailability(TransactionCase):
             'Vauxoo immediately'
         with self.assertRaisesRegexp(UserError, msg):
             wizard_transfer_id.do_detailed_transfer()
+
+    def test_20_validation_not_allow_amount_availability(self):
+        """Restrict the amounts, when greater than availability
+        """
+        demo_user = self.env.ref('base.user_demo')
+
+        sale = self.sale_obj.sudo(demo_user).create({
+            'name': 'Tests Main Sale Order',
+            'company_id': self.company.id,
+            'partner_id': self.partner.id,
+            'warehouse_id': self.test_wh.id,
+            'order_line': [(0, 0, {
+                'product_id': self.product.id,
+                'product_uom_qty': 5.0,
+                'price_unit': 100.0,
+                'product_uom': self.product.uom_id.id,
+            })],
+            'payment_term': self.payment_term.id,
+        })
+
+        # Confirm sale order
+        sale.sudo(demo_user).action_button_confirm()
+
+        pickings = sale.picking_ids.filtered(
+            lambda picking: 'OUT' in picking.name)
+
+        # Availability 5 products
+        self.quant = self.env['stock.quant'].create({
+            'location_id': pickings[0].location_id.id,
+            'product_id': self.product.id,
+            'qty': 5.0,
+        })
+
+        # Assign availability
+        pickings[0].sudo(demo_user).action_assign()
+        context = {
+            'active_model': "stock.picking",
+            'active_ids': [pickings[0].id],
+            'active_id': pickings[0].id,
+            }
+
+        wizard_transfer_id = self.transfer_obj.with_context(context).create(
+            {"picking_id": pickings.ids[0], }
+            )
+        wizard_transfer_id.item_ids[0].write({'quantity': 10})
+        msg = 'Negative Quant creation error. Contact personnel ' \
+            'Vauxoo immediately'
+        with self.assertRaisesRegexp(UserError, msg):
+            wizard_transfer_id.do_detailed_transfer()
