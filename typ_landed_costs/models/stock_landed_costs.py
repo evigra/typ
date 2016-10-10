@@ -400,3 +400,9 @@ class StockLandedCost(models.Model):
             if lines:
                 landed_cost.update({'cost_lines': lines})
         return res
+
+
+class StockLandedCostLines(models.Model):
+    _inherit = 'stock.landed.cost.lines'
+
+    segmentation_cost = fields.Selection(default='landed_cost')
