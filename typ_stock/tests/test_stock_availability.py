@@ -13,30 +13,31 @@ class TestStockAvailability(TransactionCase):
         self.company = self.env.ref('base.main_company')
         self.partner = self.env.ref('base.res_partner_9')
         self.product = self.env.ref('typ_stock.product_product_whead')
+        self.test_wh = self.env.ref(
+            'default_warehouse_from_sale_team.stock_warehouse_default_team'
+        )
+
+        self.payment_term = self.env.ref(
+            'account.account_payment_term_immediate')
 
     def test_10_validation_not_allow_negative_numbers(self):
         """Validate to warehouses to not allow negative numbers in product
            availability
         """
         demo_user = self.env.ref('base.user_demo')
-        test_wh = self.env.ref(
-            'default_warehouse_from_sale_team.stock_warehouse_default_team'
-        )
-
-        payment_term = self.env.ref('account.account_payment_term_immediate')
 
         sale = self.sale_obj.sudo(demo_user).create({
             'name': 'Tests Main Sale Order',
             'company_id': self.company.id,
             'partner_id': self.partner.id,
-            'warehouse_id': test_wh.id,
+            'warehouse_id': self.test_wh.id,
             'order_line': [(0, 0, {
                 'product_id': self.product.id,
                 'product_uom_qty': 1.0,
                 'price_unit': 100.0,
                 'product_uom': self.product.uom_id.id,
             })],
-            'payment_term': payment_term.id,
+            'payment_term': self.payment_term.id,
         })
 
         # Confirm sale order
