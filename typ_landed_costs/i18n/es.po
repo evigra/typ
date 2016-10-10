@@ -1,21 +1,19 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
-# 	* typ_landed_costs
+#	* typ_landed_costs
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 8.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-10-07 14:49+0000\n"
-"PO-Revision-Date: 2016-10-07 10:55-0400\n"
+"POT-Creation-Date: 2016-10-07 20:43+0000\n"
+"PO-Revision-Date: 2016-10-07 20:43+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
+"Content-Transfer-Encoding: \n"
 "Plural-Forms: \n"
-"Language: es\n"
-"X-Generator: Poedit 1.8.9\n"
 
 #. module: typ_landed_costs
 #: code:addons/typ_landed_costs/wizards/invoice_from_guides.py:30
@@ -35,9 +33,24 @@ msgid "Cancel"
 msgstr "Cancelar"
 
 #. module: typ_landed_costs
+#: field:stock.landed.cost.guide,company_id:0
+msgid "Company"
+msgstr "Compañía"
+
+#. module: typ_landed_costs
+#: help:stock.landed.cost.guide,company_id:0
+msgid "Company which this guide belongs to"
+msgstr "Compañía a la cual pertenece esta guía"
+
+#. module: typ_landed_costs
 #: field:stock.landed.cost.guide.line,cost:0
 msgid "Cost"
 msgstr "Costo"
+
+#. module: typ_landed_costs
+#: help:stock.landed.cost.guide.line,cost:0
+msgid "Cost of the operation on this line"
+msgstr "Costo de la operación en esta línea"
 
 #. module: typ_landed_costs
 #: view:invoice.guides:typ_landed_costs.view_invoice_from_guides_form
@@ -51,7 +64,8 @@ msgid "Create invoice from guides"
 msgstr "Crear factura de guías"
 
 #. module: typ_landed_costs
-#: field:invoice.guides,create_uid:0 field:stock.landed.cost.guide,create_uid:0
+#: field:invoice.guides,create_uid:0
+#: field:stock.landed.cost.guide,create_uid:0
 #: field:stock.landed.cost.guide.line,create_uid:0
 msgid "Created by"
 msgstr "Creado por"
@@ -69,19 +83,24 @@ msgid "Currency"
 msgstr "Moneda"
 
 #. module: typ_landed_costs
+#: help:stock.landed.cost.guide,currency_id:0
+msgid "Currency used for this guide"
+msgstr "Moneda usada para esta guía"
+
+#. module: typ_landed_costs
 #: field:stock.landed.cost.guide,date:0
 msgid "Date"
 msgstr "Fecha"
 
 #. module: typ_landed_costs
+#: help:stock.landed.cost.guide,date:0
+msgid "Date of the guide"
+msgstr "Fecha de la guía"
+
+#. module: typ_landed_costs
 #: help:invoice.guides,date_invoice:0
 msgid "Date which want to create the invoice"
 msgstr "Fecha con la que desea crear la factura"
-
-#. module: typ_landed_costs
-#: field:stock.landed.cost.guide,destination:0
-msgid "Destination"
-msgstr "Destino"
 
 #. module: typ_landed_costs
 #: field:invoice.guides,display_name:0
@@ -94,6 +113,17 @@ msgstr "Nombre para mostrar"
 #: view:invoice.guides:typ_landed_costs.view_invoice_from_guides_form
 msgid "Do you really want to create the invoice?"
 msgstr "¿Realmente desea crear la factura?"
+
+#. module: typ_landed_costs
+#: selection:stock.landed.cost.guide,state:0
+msgid "Draft"
+msgstr "Borrador"
+
+#. module: typ_landed_costs
+#: code:addons/typ_landed_costs/models/stock_landed_costs.py:149
+#, python-format
+msgid "Error!"
+msgstr "¡Error!"
 
 #. module: typ_landed_costs
 #: selection:stock.landed.cost.guide,state:0
@@ -126,6 +156,11 @@ msgid "Freight type"
 msgstr "Tipo de flete"
 
 #. module: typ_landed_costs
+#: help:stock.landed.cost.guide.line,freight_type:0
+msgid "Freight type of this operation"
+msgstr "Tipo de flete de esta operación"
+
+#. module: typ_landed_costs
 #: view:stock.landed.cost.guide:typ_landed_costs.guide_search_view
 msgid "Group by"
 msgstr "Agrupar por"
@@ -150,7 +185,22 @@ msgstr "Lineas de Guía"
 #. module: typ_landed_costs
 #: field:stock.landed.cost.guide.line,guide_id:0
 msgid "Guide id"
-msgstr "id de Guía"
+msgstr "Id de guía"
+
+#. module: typ_landed_costs
+#: help:stock.landed.cost.guide,period_id:0
+msgid "Guide period"
+msgstr "Período de la guía"
+
+#. module: typ_landed_costs
+#: help:stock.landed.cost.guide,state:0
+msgid "Guide status"
+msgstr "Estado de la guía"
+
+#. module: typ_landed_costs
+#: help:stock.landed.cost.guide.line,guide_id:0
+msgid "Guide which this line belongs to"
+msgstr "Guía a la cual pertenece esta línea"
 
 #. module: typ_landed_costs
 #: code:addons/typ_landed_costs/wizards/invoice_from_guides.py:43
@@ -167,15 +217,23 @@ msgstr "Guías"
 #. module: typ_landed_costs
 #: help:stock.landed.cost,guide_ids:0
 msgid "Guides which contain items to be used as landed costs"
-msgstr "Guías las cuales contienen elementos a ser usados como costos en destino"
+msgstr "Guías las cuales contienen elementos a ser usados como costos en"
+" destino"
 
 #. module: typ_landed_costs
-#: field:invoice.guides,id:0 field:stock.landed.cost.guide,id:0
+#: field:invoice.guides,id:0
+#: field:stock.landed.cost.guide,id:0
 #: field:stock.landed.cost.guide.line,id:0
 msgid "ID"
 msgstr "ID"
 
 #. module: typ_landed_costs
+#: field:invoice.guides,date_invoice:0
+msgid "Invoice date"
+msgstr "Fecha de la factura"
+
+#. module: typ_landed_costs
+#: field:invoice.guides,journal_id:0
 #: view:stock.landed.cost.guide:typ_landed_costs.guide_search_view
 #: field:stock.landed.cost.guide,invoice_id:0
 msgid "Invoice"
@@ -199,9 +257,25 @@ msgid "Journal"
 msgstr "Diario"
 
 #. module: typ_landed_costs
+#: field:stock.landed.cost.guide,move_id:0
+msgid "Journal Entry"
+msgstr "Entrada del Diario"
+
+#. module: typ_landed_costs
+#: help:stock.landed.cost.guide,journal_id:0
+msgid "Journal used for this guide"
+msgstr "Diario utilizado para esta guía"
+
+#. module: typ_landed_costs
+#: view:stock.landed.cost.guide:typ_landed_costs.guide_search_view
 #: field:stock.landed.cost.guide,landed_cost_id:0
 msgid "Landed Cost"
 msgstr "Coste en destino"
+
+#. module: typ_landed_costs
+#: model:res.groups,name:typ_landed_costs.group_landed_guide_manager
+msgid "Landed Cost Guide Manager"
+msgstr "Administrador de Guias de Coste en Destino"
 
 #. module: typ_landed_costs
 #: model:ir.actions.act_window,name:typ_landed_costs.action_landed_cost_guides
@@ -221,16 +295,23 @@ msgid "Last Modified on"
 msgstr "Modificado en"
 
 #. module: typ_landed_costs
-#: field:invoice.guides,write_uid:0 field:stock.landed.cost.guide,write_uid:0
+#: field:invoice.guides,write_uid:0
+#: field:stock.landed.cost.guide,write_uid:0
 #: field:stock.landed.cost.guide.line,write_uid:0
 msgid "Last Updated by"
 msgstr "Última Actualización por"
 
 #. module: typ_landed_costs
-#: field:invoice.guides,write_date:0 field:stock.landed.cost.guide,write_date:0
+#: field:invoice.guides,write_date:0
+#: field:stock.landed.cost.guide,write_date:0
 #: field:stock.landed.cost.guide.line,write_date:0
 msgid "Last Updated on"
 msgstr "Última Actualización en"
+
+#. module: typ_landed_costs
+#: help:stock.landed.cost.guide,move_id:0
+msgid "Link to the automatically generated Journal Items."
+msgstr "Enlace a los Elementos del Diario generados automáticamente."
 
 #. module: typ_landed_costs
 #: field:stock.landed.cost.guide,name:0
@@ -243,9 +324,15 @@ msgid "Name to identify the guide"
 msgstr "Nombre para identificar la guía"
 
 #. module: typ_landed_costs
-#: field:stock.landed.cost.guide,origin:0
-msgid "Origin"
-msgstr "Origen"
+#: code:addons/typ_landed_costs/models/stock_landed_costs.py:154
+#, python-format
+msgid "No Invoice Lines!"
+msgstr "¡No hay Líneas de Facturas!"
+
+#. module: typ_landed_costs
+#: view:stock.landed.cost.guide:typ_landed_costs.guide_form_view
+msgid "Other info"
+msgstr "Otra información"
 
 #. module: typ_landed_costs
 #: view:stock.landed.cost.guide:typ_landed_costs.guide_search_view
@@ -254,10 +341,32 @@ msgid "Partner"
 msgstr "Proveedor"
 
 #. module: typ_landed_costs
+#: help:stock.landed.cost.guide,partner_id:0
+msgid "Partner associated to this guide"
+msgstr "Proveedor asociado a esta guía"
+
+#. module: typ_landed_costs
+#: field:stock.landed.cost.guide,period_id:0
+msgid "Period"
+msgstr "Período"
+
+#. module: typ_landed_costs
+#: code:addons/typ_landed_costs/models/stock_landed_costs.py:155
+#, python-format
+msgid "Please create some guide lines."
+msgstr "Por favor cree algunas líneas de guía."
+
+#. module: typ_landed_costs
 #: code:addons/typ_landed_costs/wizards/invoice_from_guides.py:67
 #, python-format
 msgid "Please define expense account for this product: \"%s\""
 msgstr "Por favor, defina la cuenta de gastos del producto: \"%s\""
+
+#. module: typ_landed_costs
+#: code:addons/typ_landed_costs/models/stock_landed_costs.py:150
+#, python-format
+msgid "Please define sequence on the journal related to this guide."
+msgstr "Por favor defina una secuencia en el diario relacionado a esta guía."
 
 #. module: typ_landed_costs
 #: field:stock.landed.cost.guide.line,product_id:0
@@ -265,9 +374,24 @@ msgid "Product"
 msgstr "Producto"
 
 #. module: typ_landed_costs
+#: help:stock.landed.cost.guide.line,product_id:0
+msgid "Product associated to this line"
+msgstr "Producto asociado a esta línea"
+
+#. module: typ_landed_costs
+#: help:stock.landed.cost.guide,line_ids:0
+msgid "Product lines associated to this guide"
+msgstr "Lineas de producto asociadas a este guía"
+
+#. module: typ_landed_costs
 #: field:stock.landed.cost.guide,reference:0
 msgid "Reference"
 msgstr "Referencia"
+
+#. module: typ_landed_costs
+#: help:stock.landed.cost.guide,reference:0
+msgid "Reference code for this guide"
+msgstr "Código de referencia para esta guía"
 
 #. module: typ_landed_costs
 #: help:stock.landed.cost.guide,invoice_id:0
@@ -297,7 +421,30 @@ msgstr "Estado"
 #. module: typ_landed_costs
 #: model:ir.model,name:typ_landed_costs.model_stock_landed_cost
 msgid "Stock Landed Cost"
-msgstr "Coste en destino"
+msgstr "Costo en Destino de Inventario"
+
+#. module: typ_landed_costs
+#: code:addons/typ_landed_costs/wizards/invoice_from_guides.py:43
+#, python-format
+msgid "The guide(s) "
+msgstr "La(s) guía(s) "
+
+#. module: typ_landed_costs
+#: model:res.groups,comment:typ_landed_costs.group_landed_guide_manager
+msgid "This group is for Managers of Landed Cost Guides.\n"
+"\n"
+"They can:\n"
+"- Reset guides to Draft state."
+msgstr "Este grupo es para Administradores de las Guías de Coste en Destino.\n"
+"\n"
+"Ellos pueden:\n"
+"- Reestablecer las guías a estado Borrador."
+
+#. module: typ_landed_costs
+#: code:addons/typ_landed_costs/models/stock_landed_costs.py:162
+#, python-format
+msgid "User Error!"
+msgstr "¡Error de Usuario!"
 
 #. module: typ_landed_costs
 #: selection:stock.landed.cost.guide,state:0
@@ -316,6 +463,17 @@ msgid "Warehouse"
 msgstr "Almacén"
 
 #. module: typ_landed_costs
+#: help:stock.landed.cost.guide,warehouse_id:0
+msgid "Warehouse which this guide belongs to"
+msgstr "Almacén al cual pertenece esta guía"
+
+#. module: typ_landed_costs
+#: code:addons/typ_landed_costs/models/stock_landed_costs.py:128
+#, python-format
+msgid "You cannot create a guide on a centralized journal. Uncheck the centralized counterpart box in the related journal from the configuration menu."
+msgstr "No puede crear una guía en un diario centralizado. Desmarque la casilla contrapartida centralizada en el diario relacionado desde el menú de configuración."
+
+#. module: typ_landed_costs
 #: help:stock.landed.cost.guide,invoiced:0
 msgid "When the guide has been invoiced, this field is True, otherwise False"
 msgstr "Cuando la guía ya ha sido facturada, este campo es Verdadero, de lo contrario es Falso"
@@ -329,4 +487,5 @@ msgstr "ya esta(n) facturada(s)"
 #. module: typ_landed_costs
 #: view:invoice.guides:typ_landed_costs.view_invoice_from_guides_form
 msgid "or"
-msgstr "or"
+msgstr "ó"
+

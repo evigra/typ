@@ -10,7 +10,8 @@
                     <header>
                         <button name="action_draft" type="object"
                                 string="Reset to draft"
-                                states="valid"/>
+                                states="valid"
+                                groups="typ_landed_cost.group_landed_guide_manager"/>
                             <button name="action_valid" type="object"
                                 string="Validate"
                                 states="draft"
@@ -29,11 +30,19 @@
                             <field name="reference"/>
                             <field name="currency_id"/>
                             <field name="landed_cost_id"/>
-                            <field name="invoiced" readonly='True'/>
                         </group>
                         <notebook>
                             <page string="Guide Lines">
                                 <field name="line_ids" nolabel="1"/>
+                            </page>
+                            <page string="Other info">
+                                <group col="4">
+                                    <field name="landed"/>
+                                    <field name="invoiced" readonly='True'/>
+                                    <field name="company_id"/>
+                                    <field name="move_id"/>
+                                    <field name="period_id"/>
+                                </group>
                             </page>
                         </notebook>
                     </sheet>
@@ -51,7 +60,7 @@
                     <field name="journal_id"/>
                     <field name="invoice_id"/>
                     <field name="date"/>
-                    <field name="state" invisible="1"/>
+                    <field name="state"/>
                 </tree>
             </field>
         </record>
@@ -72,6 +81,8 @@
                             context="{'group_by': 'warehouse_id'}"/>
                         <filter name="by_partner" string="Partner"
                             context="{'group_by': 'partner_id'}"/>
+                        <filter name="by_landed_cost" string="Landed Cost"
+                            context="{'group_by': 'landed_cost_id'}"/>
                         <filter name="by_invoice" string="Invoice"
                             context="{'group_by': 'invoice_id'}"/>
                     </group>
@@ -107,6 +118,7 @@
                         name="guide_ids"
                         widget="many2many_tags"
                         domain="[
+                            ('state', '!=', 'draft'),
                         ]"
                         />
                 </xpath>
