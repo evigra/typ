@@ -289,6 +289,22 @@ class StockLandedGuides (models.Model):
         """
         return move_lines
 
+    @api.onchange('warehouse_id')
+    def onchange_warehouse_id(self):
+        """Filter list of Journals based on the selected warehouse. If the
+        warehouse selected is default for a Sale Team, we filter the list of
+        Journals associated to this Sale Team"""
+        warehouse = self.warehouse_id.id
+        res = {}
+        if warehouse:
+            journals = self.env['crm.case.section'].search(
+                [('default_warehouse', '=', warehouse)]
+            ).journal_team_ids.ids
+            domain = [('id', 'in', journals)] if journals else []
+            if journals:
+                res['domain'] = {'journal_id': domain}
+        return res
+
 
 class StockLandedGuidesLine (models.Model):
     _name = 'stock.landed.cost.guide.line'
