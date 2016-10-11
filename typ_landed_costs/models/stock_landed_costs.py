@@ -395,10 +395,18 @@ class StockLandedCost(models.Model):
                         'account_id': account,
                         'product_id': product.id,
                         'price_unit': cost,
-                        'split_method': 'by_quantity'
+                        'split_method': 'by_quantity',
+                        'segmentation_cost': 'landed_cost'
                     }))
             if lines:
                 landed_cost.update({'cost_lines': lines})
+        return res
+
+    def lcost_from_inv_line(self, inv_line):
+        """Inherited from stock_landed_cost_average to set default value of
+        segmentation_cost field to 'landed_cost'"""
+        res = super(StockLandedCost, self). lcost_from_inv_line(inv_line)
+        res['segmentation_cost'] = 'landed_cost'
         return res
 
 
