@@ -55,6 +55,7 @@
         'typ_partner',
         'typ_sale',
         'typ_landed_costs',
+        'typ_purchase',
     ],
     'test': [
     ],
