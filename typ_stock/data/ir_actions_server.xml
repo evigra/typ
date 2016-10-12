@@ -23,5 +23,12 @@
             <field name="code">object.validate_move_internal()</field>
         </record>
 
+        <record id="server_action_verify_user_scrap" model="ir.actions.server">
+            <field name="name">Verify user scrap</field>
+            <field name="model_id" model="ir.model" search="[('model', '=', 'stock.move')]"/>
+            <field name="state">code</field>
+            <field name="code">object.verify_user_scrap()</field>
+        </record>
+
     </data>
 </openerp>
