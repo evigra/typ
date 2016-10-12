@@ -8,6 +8,7 @@
     "website": "http://www.vauxoo.com/",
     "license": "AGPL-3",
     "depends": [
+        "default_warehouse_from_sale_team",
         "stock_landed_costs_segmentation",
     ],
     "demo": [
