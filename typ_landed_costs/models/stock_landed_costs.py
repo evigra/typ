@@ -306,6 +306,29 @@ class StockLandedGuides (models.Model):
                 res['domain'] = {'journal_id': domain}
         return res
 
+    @api.multi
+    def view_accrual(self):
+        """Launches a view with the account.move.lines related to the current
+        guide"""
+        res = []
+        res2 = []
+        for guide in self:
+            res += [gl.id for gl in guide.line_ids]
+            res2 += [il.id for il in guide.invoice_id.move_id.line_id]
+
+        domain = "['|', ('guide_line_id', 'in', \
+            [" + ','.join([str(item) for item in res]) + "]), \
+            ('id', 'in', [" + ','.join([str(item) for item in res2]) + "])]"
+        return {
+            'domain': domain,
+            'name': _('Journal Items'),
+            'view_type': 'form',
+            'view_mode': 'tree,form',
+            'res_model': 'account.move.line',
+            'view_id': False,
+            'type': 'ir.actions.act_window',
+        }
+
 
 class StockLandedGuidesLine (models.Model):
     _name = 'stock.landed.cost.guide.line'
