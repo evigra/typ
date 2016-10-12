@@ -289,6 +289,22 @@ class StockLandedGuides (models.Model):
         """
         return move_lines
 
+    @api.onchange('warehouse_id')
+    def onchange_warehouse_id(self):
+        """Filter list of Journals based on the selected warehouse. If the
+        warehouse selected is default for a Sale Team, we filter the list of
+        Journals associated to this Sale Team"""
+        warehouse = self.warehouse_id.id
+        res = {}
+        if warehouse:
+            journals = self.env['crm.case.section'].search(
+                [('default_warehouse', '=', warehouse)]
+            ).journal_team_ids.ids
+            domain = [('id', 'in', journals)] if journals else []
+            if journals:
+                res['domain'] = {'journal_id': domain}
+        return res
+
 
 class StockLandedGuidesLine (models.Model):
     _name = 'stock.landed.cost.guide.line'
@@ -379,8 +395,22 @@ class StockLandedCost(models.Model):
                         'account_id': account,
                         'product_id': product.id,
                         'price_unit': cost,
-                        'split_method': 'by_quantity'
+                        'split_method': 'by_quantity',
+                        'segmentation_cost': 'landed_cost'
                     }))
             if lines:
                 landed_cost.update({'cost_lines': lines})
         return res
+
+    def lcost_from_inv_line(self, inv_line):
+        """Inherited from stock_landed_cost_average to set default value of
+        segmentation_cost field to 'landed_cost'"""
+        res = super(StockLandedCost, self). lcost_from_inv_line(inv_line)
+        res['segmentation_cost'] = 'landed_cost'
+        return res
+
+
+class StockLandedCostLines(models.Model):
+    _inherit = 'stock.landed.cost.lines'
+
+    segmentation_cost = fields.Selection(default='landed_cost')
