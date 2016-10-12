@@ -22,6 +22,7 @@
     ],
     # always loaded
     'data': [
+        'views/account_invoice_view.xml',
     ],
     # only loaded in demonstration mode
     'demo': [
