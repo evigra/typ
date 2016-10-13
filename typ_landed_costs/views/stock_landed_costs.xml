@@ -9,19 +9,29 @@
                 <form string="Guide">
                     <header>
                         <button name="action_draft" type="object"
-                                string="Reset to draft"
-                                states="valid"
-                                groups="typ_landed_cost.group_landed_guide_manager"/>
-                            <button name="action_valid" type="object"
-                                string="Validate"
-                                states="draft"
-                                class="oe_highlight"/>
+                            string="Reset to draft"
+                            states="valid"
+                            groups="typ_landed_cost.group_landed_guide_manager"/>
+                        <button name="action_valid" type="object"
+                            string="Validate"
+                            states="draft"
+                            class="oe_highlight"/>
                         <field name="state" widget="statusbar"/>
                     </header>
                     <sheet string="Guide">
-                        <h1>
-                            <field name="name"/>
-                        </h1>
+                        <div class="oe_right oe_button_box" name="buttons">
+                            <button
+                                type="object"
+                                string="Stock Accruals"
+                                name="view_accrual"
+                                class="oe_stat_button"
+                                icon="fa-truck"/>
+                        </div>
+                        <div class="oe_title">
+                            <h1>
+                                <field name="name"/>
+                            </h1>
+                        </div>
                         <group col="4">
                             <field name="partner_id"/>
                             <field name="date"/>

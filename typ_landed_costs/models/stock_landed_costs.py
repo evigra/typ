@@ -273,6 +273,7 @@ class StockLandedGuides (models.Model):
             'product_id': line.get('product_id', False),
             'product_uom_id': line.get('uos_id', False),
             'analytic_account_id': line.get('account_analytic_id', False),
+            'guide_line_id': line.get('guide_line_id', False),
         }
 
     @api.multi
@@ -305,6 +306,26 @@ class StockLandedGuides (models.Model):
                 res['domain'] = {'journal_id': domain}
         return res
 
+    @api.multi
+    def view_accrual(self):
+        """Launches a view with the account.move.lines related to the current
+        guide"""
+        res = []
+        for guide in self:
+            res += guide.line_ids.ids
+
+        domain = "[('guide_line_id', 'in', \
+            [" + ','.join([str(item) for item in res]) + "])]"
+        return {
+            'domain': domain,
+            'name': _('Journal Items'),
+            'view_type': 'form',
+            'view_mode': 'tree,form',
+            'res_model': 'account.move.line',
+            'view_id': False,
+            'type': 'ir.actions.act_window',
+        }
+
 
 class StockLandedGuidesLine (models.Model):
     _name = 'stock.landed.cost.guide.line'
@@ -334,7 +355,6 @@ class StockLandedGuidesLine (models.Model):
             p_accounts = product_tmpl.get_product_accounts(product_tmpl.id)
 
             debit = self.move_line_get_item(line)
-            debit['guidel_id'] = line.id
             res.append(debit)
 
             # Reverse entry line for the input account
@@ -342,6 +362,7 @@ class StockLandedGuidesLine (models.Model):
             credit.update({
                 'account_id': p_accounts['stock_account_input'],
                 'price': credit['price'] * -1,
+                'guide_line_id': line.id,
             })
             res.append(credit)
         return res
