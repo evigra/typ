@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 8.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-10-12 03:38+0000\n"
-"PO-Revision-Date: 2016-10-12 03:38+0000\n"
+"POT-Creation-Date: 2016-10-15 07:40+0000\n"
+"PO-Revision-Date: 2016-10-15 07:40+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -65,11 +65,6 @@ msgid "Negative Quant creation error. Contact personnel Vauxoo immediately"
 msgstr ""
 
 #. module: typ_stock
-#: model:ir.model,name:typ_stock.model_procurement_orderpoint_compute
-msgid "Compute Minimum Stock Rules"
-msgstr ""
-
-#. module: typ_stock
 #: model:stock.picking.type,name:typ_stock.stock_picking_type_test_3
 msgid "Output to customer"
 msgstr ""
@@ -106,6 +101,11 @@ msgid "Propagate transfer"
 msgstr ""
 
 #. module: typ_stock
+#: model:ir.model,name:typ_stock.model_stock_return_picking
+msgid "Return Picking"
+msgstr ""
+
+#. module: typ_stock
 #: model:ir.model,name:typ_stock.model_stock_move
 msgid "Stock Move"
 msgstr ""
@@ -131,6 +131,13 @@ msgid "Test Warehouse 2: stock"
 msgstr ""
 
 #. module: typ_stock
+#: code:addons/typ_stock/models/stock.py:132
+#: code:addons/typ_stock/models/stock_return_picking.py:32
+#, python-format
+msgid "The return of the product %s, exceeds the amount invoiced"
+msgstr ""
+
+#. module: typ_stock
 #: model:res.groups,name:typ_stock.res_group_force_stock_move
 msgid "Users that can force availability and unassign"
 msgstr ""
@@ -151,6 +158,11 @@ msgid "Validate picking negative"
 msgstr ""
 
 #. module: typ_stock
+#: model:ir.actions.server,name:typ_stock.server_action_validate_return_customer
+msgid "Validate return of customer"
+msgstr ""
+
+#. module: typ_stock
 #: model:ir.actions.server,name:typ_stock.server_action_verify_user_scrap
 msgid "Verify user scrap"
 msgstr ""
@@ -164,6 +176,8 @@ msgstr ""
 #: code:addons/typ_stock/models/stock.py:39
 #: code:addons/typ_stock/models/stock.py:55
 #: code:addons/typ_stock/models/stock.py:105
+#: code:addons/typ_stock/models/stock.py:131
+#: code:addons/typ_stock/models/stock_return_picking.py:31
 #, python-format
 msgid "Warning!"
 msgstr ""
