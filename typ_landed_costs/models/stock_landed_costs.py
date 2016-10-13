@@ -311,14 +311,11 @@ class StockLandedGuides (models.Model):
         """Launches a view with the account.move.lines related to the current
         guide"""
         res = []
-        res2 = []
         for guide in self:
-            res += [gl.id for gl in guide.line_ids]
-            res2 += [il.id for il in guide.invoice_id.move_id.line_id]
+            res += guide.line_ids.ids
 
-        domain = "['|', ('guide_line_id', 'in', \
-            [" + ','.join([str(item) for item in res]) + "]), \
-            ('id', 'in', [" + ','.join([str(item) for item in res2]) + "])]"
+        domain = "[('guide_line_id', 'in', \
+            [" + ','.join([str(item) for item in res]) + "])]"
         return {
             'domain': domain,
             'name': _('Journal Items'),
