@@ -30,5 +30,11 @@
             <field name="code">object.verify_user_scrap()</field>
         </record>
 
+        <record id="server_action_validate_return_customer" model="ir.actions.server">
+            <field name="name">Validate return of customer</field>
+            <field name="model_id" model="ir.model" search="[('model', '=', 'stock.picking')]"/>
+            <field name="state">code</field>
+            <field name="code">object.validate_return_customer()</field>
+        </record>
     </data>
 </openerp>
