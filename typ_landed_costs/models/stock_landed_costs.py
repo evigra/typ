@@ -231,18 +231,17 @@ class StockLandedGuides (models.Model):
     def compute_guide_totals(self, company_currency, ref, guide_move_lines):
         total = 0
         total_currency = 0
+        currency = self.currency_id.with_context(
+            date=self.date or fields.Date.context_today(self))
         for line in guide_move_lines:
+            line['ref'] = ref
+            line['currency_id'] = False
+            line['amount_currency'] = False
             if self.currency_id != company_currency:
-                currency = self.currency_id.with_context(
-                    date=self.date or fields.Date.context_today(self))
                 line['currency_id'] = currency.id
                 line['amount_currency'] = currency.round(line['price'])
                 line['price'] = currency.compute(
                     line['price'], company_currency)
-            else:
-                line['currency_id'] = False
-                line['amount_currency'] = False
-            line['ref'] = ref
         return total, total_currency, guide_move_lines
 
     @api.model
