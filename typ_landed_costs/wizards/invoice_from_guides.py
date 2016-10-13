@@ -78,6 +78,7 @@ class InvoiceFromGuides(models.TransientModel):
                     (6, 0,
                      [tax.id for tax in line.product_id.supplier_taxes_id])],
                 'invoice_id': invoice.id,
+                'guide_line_id': line.id,
             })
         guides.write({'invoiced': True, 'invoice_id': invoice.id})
         dict_return = {
