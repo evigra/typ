@@ -133,12 +133,12 @@ class StockLandedGuides (models.Model):
     @api.model
     def _cancel_moves(self):
         moves = self.move_id
-        # First, set the invoices as cancelled and detach the move ids
+        # First, set the guides as cancelled and detach the move ids
         self.write({'move_id': False})
         if moves:
             # second, invalidate the move(s)
             moves.button_cancel()
-            # delete the move this invoice was pointing to
+            # delete the move this guide was pointing to
             # Note that the corresponding move_lines and move_reconciles
             # will be automatically deleted too
             moves.unlink()
@@ -163,7 +163,7 @@ class StockLandedGuides (models.Model):
                       ' guide.'))
             if not guide_brw.line_ids:
                 raise except_orm(
-                    _('No Invoice Lines!'),
+                    _('No Guide Lines!'),
                     _('Please create some guide lines.'))
             if guide_brw.move_id:
                 continue
@@ -186,12 +186,6 @@ class StockLandedGuides (models.Model):
             gml = self.env['stock.landed.cost.guide.line'].move_line_get(
                 self.id)
 
-            # TODO: Review to implement multi currency with @hbto
-            # diff_currency = guide_brw.currency_id != company_currency
-            # create one move line for the total and possibly adjust the other
-            # lines amount
-            # total, total_currency, gml = guide_brw.with_context(
-            #     ctx).compute_guide_totals(company_currency, ref, gml)
             gml = guide_brw.with_context(
                 ctx).compute_guide_totals(company_currency, ref, gml)[2]
 
@@ -225,9 +219,9 @@ class StockLandedGuides (models.Model):
                 'period_id': period.id,
             }
             guide_brw.with_context(ctx).write(vals)
-            # Pass invoice in context in method post: used if you want to get
+            # Pass guide in context in method post: used if you want to get
             # the same
-            # account move reference when creating the same invoice after a
+            # account move reference when creating the same guide after a
             # cancelled one:
             move.post()
         # TODO self._log_event()
@@ -239,12 +233,12 @@ class StockLandedGuides (models.Model):
         total_currency = 0
         for line in guide_move_lines:
             if self.currency_id != company_currency:
-                # TODO: Review to implement multi currency with @hbto
-                pass
-                # currency = self.currency_id.with_context(
-                #     date=self.date or fields.Date.context_today(self))
-                # line['currency_id'] = currency.id
-                # line['amount_currency'] = currency.round(line['price'])
+                currency = self.currency_id.with_context(
+                    date=self.date or fields.Date.context_today(self))
+                line['currency_id'] = currency.id
+                line['amount_currency'] = currency.round(line['price'])
+                line['price'] = currency.compute(
+                    line['price'], company_currency)
             else:
                 line['currency_id'] = False
                 line['amount_currency'] = False

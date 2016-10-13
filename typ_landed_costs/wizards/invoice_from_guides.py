@@ -54,7 +54,8 @@ class InvoiceFromGuides(models.TransientModel):
             'partner_id': partner.id,
             'date_invoice': self.date_invoice,
             'type': 'in_invoice',
-            'account_id': partner.property_account_payable.id}
+            'account_id': partner.property_account_payable.id,
+            'currency_id': currency.id}
         if self.journal_id:
             invoice_dict.update({'journal_id': self.journal_id.id})
         invoice = self.env['account.invoice'].create(invoice_dict)
