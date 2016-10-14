@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 8.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-10-07 20:43+0000\n"
-"PO-Revision-Date: 2016-10-07 20:43+0000\n"
+"POT-Creation-Date: 2016-10-13 19:25+0000\n"
+"PO-Revision-Date: 2016-10-13 19:25+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -120,7 +120,7 @@ msgid "Draft"
 msgstr ""
 
 #. module: typ_landed_costs
-#: code:addons/typ_landed_costs/models/stock_landed_costs.py:149
+#: code:addons/typ_landed_costs/models/stock_landed_costs.py:161
 #, python-format
 msgid "Error!"
 msgstr ""
@@ -216,9 +216,15 @@ msgid "ID"
 msgstr ""
 
 #. module: typ_landed_costs
+#: model:ir.model,name:typ_landed_costs.model_account_invoice
 #: view:stock.landed.cost.guide:typ_landed_costs.guide_search_view
 #: field:stock.landed.cost.guide,invoice_id:0
 msgid "Invoice"
+msgstr ""
+
+#. module: typ_landed_costs
+#: model:ir.model,name:typ_landed_costs.model_account_invoice_line
+msgid "Invoice Line"
 msgstr ""
 
 #. module: typ_landed_costs
@@ -232,6 +238,11 @@ msgid "Invoiced"
 msgstr ""
 
 #. module: typ_landed_costs
+#: field:stock.landed.cost.guide,landed:0
+msgid "Is Landed Cost validated?"
+msgstr ""
+
+#. module: typ_landed_costs
 #: field:invoice.guides,journal_id:0
 #: view:stock.landed.cost.guide:typ_landed_costs.guide_search_view
 #: field:stock.landed.cost.guide,journal_id:0
@@ -241,6 +252,11 @@ msgstr ""
 #. module: typ_landed_costs
 #: field:stock.landed.cost.guide,move_id:0
 msgid "Journal Entry"
+msgstr ""
+
+#. module: typ_landed_costs
+#: model:ir.model,name:typ_landed_costs.model_account_move_line
+msgid "Journal Items"
 msgstr ""
 
 #. module: typ_landed_costs
@@ -306,9 +322,9 @@ msgid "Name to identify the guide"
 msgstr ""
 
 #. module: typ_landed_costs
-#: code:addons/typ_landed_costs/models/stock_landed_costs.py:154
+#: code:addons/typ_landed_costs/models/stock_landed_costs.py:166
 #, python-format
-msgid "No Invoice Lines!"
+msgid "No Guide Lines!"
 msgstr ""
 
 #. module: typ_landed_costs
@@ -333,19 +349,19 @@ msgid "Period"
 msgstr ""
 
 #. module: typ_landed_costs
-#: code:addons/typ_landed_costs/models/stock_landed_costs.py:155
+#: code:addons/typ_landed_costs/models/stock_landed_costs.py:167
 #, python-format
 msgid "Please create some guide lines."
 msgstr ""
 
 #. module: typ_landed_costs
-#: code:addons/typ_landed_costs/wizards/invoice_from_guides.py:67
+#: code:addons/typ_landed_costs/wizards/invoice_from_guides.py:68
 #, python-format
 msgid "Please define expense account for this product: \"%s\""
 msgstr ""
 
 #. module: typ_landed_costs
-#: code:addons/typ_landed_costs/models/stock_landed_costs.py:150
+#: code:addons/typ_landed_costs/models/stock_landed_costs.py:162
 #, python-format
 msgid "Please define sequence on the journal related to this guide."
 msgstr ""
@@ -406,9 +422,19 @@ msgid "Stock Landed Cost"
 msgstr ""
 
 #. module: typ_landed_costs
+#: model:ir.model,name:typ_landed_costs.model_stock_landed_cost_lines
+msgid "Stock Landed Cost Lines"
+msgstr ""
+
+#. module: typ_landed_costs
 #: code:addons/typ_landed_costs/wizards/invoice_from_guides.py:43
 #, python-format
 msgid "The guide(s) "
+msgstr ""
+
+#. module: typ_landed_costs
+#: help:stock.landed.cost.guide,landed:0
+msgid "This field is automatically True if the guide belongs to a validated Landed Cost document"
 msgstr ""
 
 #. module: typ_landed_costs
@@ -420,7 +446,7 @@ msgid "This group is for Managers of Landed Cost Guides.\n"
 msgstr ""
 
 #. module: typ_landed_costs
-#: code:addons/typ_landed_costs/models/stock_landed_costs.py:162
+#: code:addons/typ_landed_costs/models/stock_landed_costs.py:174
 #, python-format
 msgid "User Error!"
 msgstr ""
@@ -452,13 +478,13 @@ msgid "When the guide has been invoiced, this field is True, otherwise False"
 msgstr ""
 
 #. module: typ_landed_costs
-#: code:addons/typ_landed_costs/models/stock_landed_costs.py:163
+#: code:addons/typ_landed_costs/models/stock_landed_costs.py:175
 #, python-format
 msgid "You cannot create a guide on a centralized journal. Uncheck the centralized counterpart box in the related journal from the configuration menu."
 msgstr ""
 
 #. module: typ_landed_costs
-#: code:addons/typ_landed_costs/models/stock_landed_costs.py:115
+#: code:addons/typ_landed_costs/models/stock_landed_costs.py:127
 #, python-format
 msgid "You cannot reset this guide to draft while it is associated to a Landed Cost Document:\n"
 "\n"
