@@ -35,6 +35,7 @@
         'l10n_mx_facturae_pac_sf',
         'l10n_mx_sale_payment_method',
         'l10n_mx_landing',
+        'l10n_mx_accountinge',
         'marketing_campaign',
         'mrp_operations',
         'note',
@@ -67,4 +68,6 @@
     ],
     'demo': [
     ],
+    "installable": True,
+    "application": True,
 }
