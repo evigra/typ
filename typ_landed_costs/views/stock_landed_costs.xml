@@ -45,6 +45,11 @@
                         <notebook>
                             <page string="Guide Lines">
                                 <field name="line_ids" nolabel="1"/>
+                                    <group>
+                                        <group name="totals" class="oe_subtotal_footer oe_right">
+                                            <field name="amount_total" class="oe_subtotal_footer_separator" widget="monetary" options="{'currency_field': 'currency_id'}"/>
+                                        </group>
+                                    </group>
                             </page>
                             <page string="Other info">
                                 <group col="4">
@@ -68,9 +73,11 @@
                 <tree string="Guide">
                     <field name="name"/>
                     <field name="partner_id"/>
-                    <field name="journal_id"/>
+                    <field name="warehouse_id"/>
                     <field name="invoice_id"/>
                     <field name="date"/>
+                    <field name="landed_cost_id"/>
+                    <field name="amount_total"/>
                     <field name="state"/>
                 </tree>
             </field>
