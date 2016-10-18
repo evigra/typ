@@ -27,6 +27,11 @@ the warehouses not to allow movements generate if no stock.
 This functionality allows only users group manager/warehouse, confirm and 
 validate movements locations losses or scraped.
 
+**Validation for return of customers from sale order.**
+
+This functionality validate quantity return for customers for the purpose not 
+to exceed the quatities invoiced from the sales order.
+
 **Adding Refactoring Reording Rules & wizard for Minimun Stock Supply**
 inherit methods and base views related with supply orders & wizards Run
 Schedulers & Compute stock Minimum Rules Only by the group "Users that can

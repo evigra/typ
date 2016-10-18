@@ -107,3 +107,28 @@ class StockPicking(models.Model):
                           'source type internal and location destination type '
                           'inventory')
                         )
+
+    @api.multi
+    def validate_return_customer(self):
+        """Restricts the quantity of products by return of a sale does not
+        exceed more than invoiced
+        """
+        if self.picking_type_id.code == 'incoming' and \
+                self.state == 'confirmed':
+            uom = self.env['product.uom']
+            for move in self.move_lines:
+                if move.location_id.usage == 'customer':
+                    total_move_qty = uom._compute_qty(
+                        move.product_uom.id,
+                        move.product_uom_qty,
+                        move.product_id.uom_id.id,
+                    )
+                    total_origin_move_qty = sum(move.origin_returned_move_id.
+                                                quant_ids.mapped('qty'))
+
+                if total_move_qty > total_origin_move_qty:
+                    raise exceptions.Warning(
+                        _('Warning!'),
+                        _('The return of the product %s, exceeds the amount '
+                            'invoiced') % (move.product_id.name)
+                        )
