@@ -29,6 +29,7 @@ class StockLandedGuides (models.Model):
         states={'draft': [('readonly', False)]},
         help='Partner associated to this guide')
     date = fields.Date(
+        required=True,
         readonly=True,
         states={'draft': [('readonly', False)]},
         help='Date of the guide')
