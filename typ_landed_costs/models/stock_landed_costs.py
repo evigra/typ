@@ -113,7 +113,7 @@ class StockLandedGuides (models.Model):
     @api.model
     @api.depends('line_ids.cost')
     def _compute_amount(self):
-        self.amount_total = sum(line.cost for line in self.line_ids)
+        self.amount_total = sum(self.line_ids.mapped('cost'))
 
     @api.model
     def _compute_landed(self):
