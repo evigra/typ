@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 
+from openerp import fields
 from openerp.tests import common
 
 
@@ -24,6 +25,7 @@ class TestTypLandedCosts(common.TransactionCase):
                      journal_id):
         dict_vals = {
             'name': name,
+            'date': fields.Date.today(),
             'partner_id': partner_id.id,
             'currency_id': currency_id.id,
             'journal_id': journal_id.id,
