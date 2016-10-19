@@ -19,10 +19,12 @@
     # any module necessary for this one to work correctly
     'depends': [
         'partner_credit_limit',
+        'account_voucher_tax',
     ],
     # always loaded
     'data': [
         'views/account_invoice_view.xml',
+        'views/account_voucher_tax_view.xml',
     ],
     # only loaded in demonstration mode
     'demo': [
