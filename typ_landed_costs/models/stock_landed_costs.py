@@ -110,17 +110,19 @@ class StockLandedGuides (models.Model):
                                  help='Refers the invoice related whit'
                                  ' this guide')
 
-    @api.model
+    @api.multi
     @api.depends('line_ids.cost')
     def _compute_amount(self):
-        self.amount_total = sum(self.line_ids.mapped('cost'))
+        for guide in self:
+            guide.amount_total = sum(guide.line_ids.mapped('cost'))
 
-    @api.model
+    @api.multi
     def _compute_landed(self):
         """Set 'landed' field to True if the Landed Cost document of this guide
         is in Valid state"""
-        lc = self.landed_cost_id
-        self.landed = lc and lc.state == 'done'
+        for guide in self:
+            lc = guide.landed_cost_id
+            guide.landed = lc and lc.state == 'done'
 
     @api.model
     def _get_user_default_currency(self):
