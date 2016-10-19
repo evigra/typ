@@ -2,6 +2,7 @@
 
 from openerp import api, fields, models, _
 from openerp.exceptions import except_orm, ValidationError
+import openerp.addons.decimal_precision as dp
 
 
 class StockLandedGuides (models.Model):
@@ -29,6 +30,7 @@ class StockLandedGuides (models.Model):
         states={'draft': [('readonly', False)]},
         help='Partner associated to this guide')
     date = fields.Date(
+        required=True,
         readonly=True,
         states={'draft': [('readonly', False)]},
         help='Date of the guide')
@@ -47,6 +49,12 @@ class StockLandedGuides (models.Model):
         readonly=True,
         states={'draft': [('readonly', False)]},
         help='Warehouse which this guide belongs to')
+    amount_total = fields.Float(
+        string='Total',
+        digits=dp.get_precision('Account'),
+        store=True,
+        readonly=True,
+        compute='_compute_amount')
     journal_id = fields.Many2one(
         'account.journal',
         string='Journal',
@@ -101,6 +109,11 @@ class StockLandedGuides (models.Model):
     invoice_id = fields.Many2one('account.invoice', string='Invoice',
                                  help='Refers the invoice related whit'
                                  ' this guide')
+
+    @api.model
+    @api.depends('line_ids.cost')
+    def _compute_amount(self):
+        self.amount_total = sum(self.line_ids.mapped('cost'))
 
     @api.model
     def _compute_landed(self):
