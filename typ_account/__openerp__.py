@@ -20,9 +20,11 @@
     'depends': [
         'partner_credit_limit',
         'account_voucher_tax',
+        'default_warehouse_from_sale_team',
     ],
     # always loaded
     'data': [
+        'views/sale_order_view.xml',
         'views/account_invoice_view.xml',
         'views/account_voucher_tax_view.xml',
     ],

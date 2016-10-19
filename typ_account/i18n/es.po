@@ -30,7 +30,7 @@ msgstr "Orden de venta"
 #: code:addons/typ_partner_credit_limit/models/sale_order.py:19
 #, python-format
 msgid "The partner selected has the credit closed."
-msgstr "El Cliente seleccionado no tiene límite de crédito!"
+msgstr "El cliente seleccionado no tiene límite de crédito."
 
 #. module: typ_partner_credit_limit
 #: code:addons/typ_partner_credit_limit/models/account_invoice.py:38
