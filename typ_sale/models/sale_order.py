@@ -1,11 +1,28 @@
 # coding: utf-8
 
-from openerp import api, models
+from openerp import api, fields, models
 
 
 class SaleOrder(models.Model):
 
     _inherit = 'sale.order'
+
+    type_payment_term = fields.Selection(
+        [('credit', 'Credit'), ('cash', 'Cash'),
+         ('postdated_check', 'Postdated check')], default='credit',
+        string='Type payment term')
+
+    @api.onchange('type_payment_term')
+    def get_payment_term(self):
+        """Get payment term depends on type payment term.
+        """
+        if self.type_payment_term in ('cash', 'postdated_check'):
+            for payment_term in self.env['account.payment.term'].search([]):
+                if payment_term.payment_type == 'cash':
+                    self.payment_term = payment_term.id
+                    break
+        else:
+            self.payment_term = self.partner_id.property_payment_term.id
 
     @api.onchange('warehouse_id', 'partner_id')
     def get_salesman_from_warehouse_config(self):

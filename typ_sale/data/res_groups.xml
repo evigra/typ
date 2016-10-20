@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record model="res.groups" id="group_sale_order_invoice_payment_term_manager">
+            <field name="name">Sale order - Invoice - payment term manager</field>
+            <field name="comment">This group has access to modify field payment term in Sale Orders and Invoices.</field>
+        </record>
+    </data>
+</openerp>

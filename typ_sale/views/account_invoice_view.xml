@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<openerp>
+    <data>
+
+        <record id="view_account_invoice_form_type_payment_term" model="ir.ui.view">
+            <field name="name">account.invoice.form.type.payment.term</field>
+            <field name="model">account.invoice</field>
+            <field name="inherit_id" ref="account.invoice_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='payment_term']" position="attributes">
+                    <attribute name="readonly">True</attribute>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="view_account_invoice_form_type_payment_term_manager" model="ir.ui.view">
+            <field name="name">account.invoice.form.type.payment.term.manager</field>
+            <field name="model">account.invoice</field>
+            <field name="inherit_id" ref="account.invoice_form"/>
+            <field name="groups_id" eval="[(4, ref('typ_sale.group_sale_order_invoice_payment_term_manager'))]"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='payment_term']" position="attributes">
+                    <attribute name="readonly">False</attribute>
+                </xpath>
+            </field>
+        </record>
+
+    </data>
+</openerp>
