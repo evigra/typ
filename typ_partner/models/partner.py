@@ -12,3 +12,5 @@ class ResPartner(models.Model):
         'partner_id', string="Pricelist's partner",
         help="Choose the Pricelist that partner can see"
     )
+
+    buyer_id = fields.Many2one("res.users", "Buyer", sercheable=True)

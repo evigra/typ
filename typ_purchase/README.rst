@@ -20,6 +20,7 @@ Credits
 
 * Julio Serna <julio@vauxoo.com> (Planner/Auditor)
 * Deivis Laya <deivis@vauxoo.com (Developer)
+* Carlos Mexia <cmexia@typrefrigeracion.com (Developer)
 
 Maintainer
 ==========

@@ -15,5 +15,42 @@
             </field>
         </record>
 
+        <record id='view_partner_form_buyer_assignment' model='ir.ui.view'>
+            <field name='name'>partner.form.buyer.assignment</field>
+            <field name='model'>res.partner</field>
+            <field name='inherit_id' ref='base.view_partner_form'/>
+            <field name='type'>form</field>
+            <field name='arch' type='xml'>
+                    <field name="user_id" position="after">
+                            <field name="buyer_id"/>
+                    </field>
+            </field>
+        </record>
+
+        <record id="view_res_partner_filter_buyer" model="ir.ui.view">
+            <field name="name">res.partner.filter.buyer</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_res_partner_filter"/>
+            <field name="arch" type="xml">
+                    <group>
+                            <filter string="buyer" icon="terp-partner" domain="[]" context="{'group_by': 'buyer_id'}" />
+                    </group>
+            </field>
+        </record>
+
+        <record id='view_partner_tree_credit_info' model='ir.ui.view'>
+            <field name='name'>partner.tree.credit.info</field>
+            <field name='model'>res.partner</field>
+            <field name='inherit_id' ref='base.view_partner_tree'/>
+            <field name='type'>tree</field>
+            <field name='arch' type='xml'>
+                <tree>
+                    <field name="property_payment_term"/>
+                    <field name="property_supplier_payment_term"/>
+                    <field name="credit_limit"/>
+                </tree>
+            </field>
+        </record>
+
     </data>
 </openerp>

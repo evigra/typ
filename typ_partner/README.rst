@@ -7,11 +7,20 @@ Typ Partner
 
 This module adding the follow functionalities.
 
-**Pricelist's available by Partner.**
+**pricelist's available by partner.**
 
 - Add to partner object a list of pricelist available.
 - In the sale orders, the pricelist field domain depends on the pricelist that Customer related has.
 - In the purchases, the pricelist field domain depends on the pricelist that Supplier related has.
+
+**Buyer field to track Suppliers**
+
+- Add to the partner object a buyer field to track the suppliers.
+- The partner is able to 'group by' this field in its search view.
+
+**Credit info of partner**
+
+- Adding credit info to the tree view of customers/suppliers
 
 Credits
 =======
@@ -20,6 +29,7 @@ Credits
 
 * Julio Serna <julio@vauxoo.com> (Planner/Auditor)
 * Yennifer Santiago <yennifer@vauxoo.com (Developer)
+* Carlos Mexia <cmexia@typrefrigeracion.com (Developer)
 
 Maintainer
 ==========
