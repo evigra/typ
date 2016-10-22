@@ -54,8 +54,9 @@ class ResPartner(models.Model):
                 ('partner_id', '=', partner.id),
                 ('account_id.type', '=', 'receivable'),
                 ('state', '!=', 'draft'), ('reconcile_id', '=', False),
-                ('journal_id', 'in', journals_sale_team)])
-            credit = sum(move_lines.mapped('debit')) or 0.0
+                ('journal_id', 'in', journals_sale_team),
+                ('debit', '!=', 0.0)])
+            credit = sum(move_lines.mapped('amount_residual')) or 0.0
             warehouse_config = partner.res_warehouse_ids.filtered(
                 lambda wh_conf: wh_conf.warehouse_id.id == current_warehouse)
             credit_limit = warehouse_config.credit_limit if \

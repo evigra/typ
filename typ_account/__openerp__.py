@@ -30,6 +30,7 @@
     ],
     # only loaded in demonstration mode
     'demo': [
+        'demo/configuration_warehouse.xml',
     ],
     'installable': True,
 }
