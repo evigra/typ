@@ -52,7 +52,8 @@ class AccountBankStatementLine(models.Model):
         employee = self.env['hr.employee'].search([
             ('address_home_id', '=', partner_id)])
 
-        mv_line_dicts = not employee and mv_line_dicts or []
+        if employee:
+            mv_line_dicts = []
 
         return super(AccountBankStatementLine,
                      self).create_move_line_tax_payment(
