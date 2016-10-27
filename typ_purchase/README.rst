@@ -7,11 +7,17 @@ Typ Purchase
 
 This module adding the follow functionalities.
 
-Add option to search source document
-====================================
+**Tracking of purchase orders**
 
-Modify search request for quotation view and sales orders, adding the option 
-to search for "source document" to be located as first choice search
+- Modify search request for quotation view and sales orders, adding the option 
+  to search for "source document" to be located as first choice search
+- Adding the create date of the purchase order to form and tree view
+  to perform a better tracking of Purchases. also this date is on Readonly mode.
+- Creating a search view to be able of group by state purchase orders
+- Add shipment date to the Purchase order
+- Add shipment date to the product in purchase order lines
+- The Buyer in charge of the order is available in the order's form via buyer field
+- Purchase Orders can be group by Buyer
 
 Credits
 =======
@@ -20,7 +26,7 @@ Credits
 
 * Julio Serna <julio@vauxoo.com> (Planner/Auditor)
 * Deivis Laya <deivis@vauxoo.com (Developer)
-* Carlos Mexia <cmexia@typrefrigeracion.com (Developer)
+* Carlos Mexia <cmexia@typrefrigeracion.com> (Developer)
 
 Maintainer
 ==========

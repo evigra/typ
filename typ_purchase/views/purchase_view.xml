@@ -11,5 +11,86 @@
                 </xpath>
             </field>
         </record>
+
+        <record id="view_state_purchase_order_search_inherit" model="ir.ui.view">
+            <field name="name">state.purchase.order.search.inherit</field>
+            <field name="model">purchase.order</field>
+            <field name="inherit_id" ref="purchase.view_purchase_order_filter"/>
+            <field name="arch" type="xml">
+                <xpath expr="//group[@string='Group By']" position="inside">
+                    <filter string="State" domain="[]" context="{'group_by':'state'}"/>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="view_create_date_purchase_order_form" model="ir.ui.view">
+            <field name="name">create_date.purchase.order.inherit</field>
+            <field name="model">purchase.order</field>
+            <field name="inherit_id" ref="purchase.purchase_order_form"/>
+            <field name='type'>form</field>
+            <field name='arch' type='xml'>
+                <field name="date_order" position="before">
+                    <field name="create_date"/>
+                    <field name="shipment_date"/>
+                    </field>
+               <field name="create_date" position="attributes">
+                    <attribute name="readonly">True</attribute>
+                </field>
+                <field name="shipment_date" position="attributes">
+                    <attribute name="required">True</attribute>
+                </field>
+                <field name="date_order" position="replace">
+                    <field name="date_order" invisible="1"/>
+                </field>
+                <xpath expr="//field[@name='order_line']/tree/field[@name='date_planned']" position="before">
+                    <field name="shipment_date"/>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="view_create_date_purchase_order_tree" model="ir.ui.view">
+        <field name='name'>create_date.purchase.order.tree</field>
+        <field name='model'>purchase.order</field>
+        <field name='inherit_id' ref='purchase.purchase_order_tree'/>
+        <field name='type'>tree</field>
+        <field name='arch' type='xml'>
+<!--            <xpath expr="/tree/field[@name='date_order']" position="replace">
+                       <field name="create_date" />
+                </xpath> direct replace-->
+            <field name="minimum_planned_date" position="replace">
+            </field>
+            <field name="date_order" position="before">
+                <field name="create_date"/>
+                <field name="shipment_date"/>
+                <field name="minimum_planned_date"/>
+            </field>
+            <field name="date_order" position="replace">
+                <field name="date_order" invisible="1"/>
+            </field>
+        </field>
+       </record>
+
+        <record id="view_buyer_assignment_form" model="ir.ui.view">
+            <field name="name">buyer.assignment.form</field>
+            <field name="model">purchase.order</field>
+            <field name="inherit_id" ref="purchase.purchase_order_form"/>
+            <field name="arch" type="xml">
+                <field name="partner_id" position="after">
+                    <field name="buyer"/>
+                </field>
+            </field>
+        </record>
+
+        <record id="view_buyer_purchase_order_filter" model="ir.ui.view">
+            <field name="name">buyer.purchase.order.filter</field>
+            <field name="model">purchase.order</field>
+            <field name="inherit_id" ref="purchase.view_purchase_order_filter"/>
+            <field name="arch" type="xml">
+                <xpath expr="//group[@string='Group By']" position="inside">
+                    <filter string="Buyer" domain="[]" context="{'group_by':'buyer'}"/>
+                </xpath>
+            </field>
+        </record>
+
     </data>
 </openerp>
