@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 
+from openerp import fields
 from openerp.tests import common
 
 
@@ -14,10 +15,13 @@ class TestTypAccount(common.TransactionCase):
         self.warehouse = self.env.ref('typ_account.wh_01')
         self.sale_team = self.env.ref('typ_account.sale_team_01')
         self.journal = self.env.ref("account.sales_journal")
+        self.journal_bank = self.env.ref("account.bank_journal")
         self.account = self.env.ref("account.a_recv")
         self.payment_term_credit = self.env.ref(
             'payment_term_type.payment_term_credit')
         self.conf_warehouse = self.env.ref('typ_account.res_partner_wh_01')
+        self.acc_bank_stmt_model = self.env['account.bank.statement']
+        self.acc_bank_stmt_line_model = self.env['account.bank.statement.line']
 
         # Create an invoice to have a pending payment
         dict_vals = {
@@ -44,3 +48,38 @@ class TestTypAccount(common.TransactionCase):
                   'product_uom_qty': 1, 'product_uom': self.product.uom_id.id,
                   'price_unit': 500, })], }
         self.sale_order = self.sale_order.create(self.dict_vals_sale)
+
+    def create_statement(self, partner, amount, journal=None,
+                         line_invoice=None, date_bank=None, account_id=None,
+                         currency=None, amount_currency=0):
+
+        bank_stmt_id = self.acc_bank_stmt_model.create({
+            'journal_id': journal and journal.id or self.journal_bank.id,
+            'date': date_bank or fields.Date.today(),
+        })
+
+        bank_stmt_line_id = self.acc_bank_stmt_line_model.create({
+            'name': 'payment',
+            'statement_id': bank_stmt_id.id,
+            'partner_id': partner.id,
+            'amount': amount,
+            'currency_id': currency,
+            'amount_currency': amount_currency,
+            'date': date_bank or fields.Date.today(), })
+
+        amount = amount_currency and amount_currency or amount
+
+        val = {
+            'credit': amount > 0 and amount or 0,
+            'debit': amount < 0 and amount * -1 or 0,
+            'name': line_invoice and line_invoice.name or 'Advance Employee'}
+
+        if line_invoice:
+            val.update({'counterpart_move_line_id': line_invoice.id})
+
+        if account_id:
+            val.update({'account_id': account_id.id})
+
+        bank_stmt_line_id.process_reconciliation([val])
+        move_line_ids_complete = bank_stmt_id.move_line_ids
+        return move_line_ids_complete

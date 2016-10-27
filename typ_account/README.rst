@@ -21,6 +21,10 @@ This module adding the follow functionalities.
 
 - The credit limit is only validated in invoices of type 'out_invoice'.
 
+**Validates creation of policy for employees advance**
+
+- The advance of employee are validate in creation of policy without tax.
+
 Credits
 =======
 
