@@ -137,3 +137,23 @@ msgstr "Configuración de almacén"
 #: view:res.partner:typ_sale.view_res_partner_warehouse_form
 msgid "Warehouse configurations"
 msgstr "Configuración de almacenes"
+
+#. module: typ_sale
+#: selection:sale.order,type_payment_term:0
+msgid "Cash"
+msgstr "Contado"
+
+#. module: typ_sale
+#: selection:sale.order,type_payment_term:0
+msgid "Credit"
+msgstr "Crédito"
+
+#. module: typ_sale
+#: selection:sale.order,type_payment_term:0
+msgid "Postdated check"
+msgstr "Cheque posfechado"
+
+#. module: typ_sale
+#: field:sale.order,type_payment_term:0
+msgid "Type payment term"
+msgstr "Tipo plazo de pago"

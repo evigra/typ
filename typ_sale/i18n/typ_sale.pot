@@ -136,3 +136,22 @@ msgstr ""
 msgid "Warehouse configurations"
 msgstr ""
 
+#. module: typ_sale
+#: selection:sale.order,type_payment_term:0
+msgid "Cash"
+msgstr ""
+
+#. module: typ_sale
+#: selection:sale.order,type_payment_term:0
+msgid "Credit"
+msgstr ""
+
+#. module: typ_sale
+#: selection:sale.order,type_payment_term:0
+msgid "Postdated check"
+msgstr ""
+
+#. module: typ_sale
+#: field:sale.order,type_payment_term:0
+msgid "Type payment term"
+msgstr ""
