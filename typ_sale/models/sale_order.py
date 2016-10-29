@@ -39,3 +39,11 @@ class SaleOrder(models.Model):
             lambda wh_conf: wh_conf.warehouse_id == self.warehouse_id)
         if warehouse_config:
             self.user_id = warehouse_config.user_id.id
+
+    @api.model
+    def _prepare_order_line_procurement(self, order, line, group_id=False):
+        """Inherit to reassign origin field in procurement order"""
+        res = super(SaleOrder, self)._prepare_order_line_procurement(
+            order, line, group_id)
+        res.update({'origin': order.name})
+        return res
