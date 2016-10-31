@@ -355,12 +355,18 @@ class StockLandedGuidesLine (models.Model):
         )
 
     @api.model
+    def product_stock_account_in(self):
+        """Returns the ID for the 'stock_account_input' of the current line
+        product"""
+        product_tmpl = self.product_id.product_tmpl_id
+        accounts = product_tmpl.get_product_accounts(product_tmpl.id)
+        return accounts['stock_account_input']
+
+    @api.model
     def move_line_get(self, guide_id):
         guide_brw = self.env['stock.landed.cost.guide'].browse(guide_id)
         res = []
         for line in guide_brw.line_ids:
-            product_tmpl = line.product_id.product_tmpl_id
-            p_accounts = product_tmpl.get_product_accounts(product_tmpl.id)
 
             debit = self.move_line_get_item(line)
             res.append(debit)
@@ -368,7 +374,7 @@ class StockLandedGuidesLine (models.Model):
             # Reverse entry line for the input account
             credit = debit.copy()
             credit.update({
-                'account_id': p_accounts['stock_account_input'],
+                'account_id': line.product_stock_account_in(),
                 'price': credit['price'] * -1,
                 'guide_line_id': line.id,
             })
@@ -397,6 +403,14 @@ class StockLandedCost(models.Model):
         string='Guides',
         help='Guides which contain items to be used as landed costs',
         copy=False)
+
+    @api.multi
+    def button_validate(self):
+        """Inherited to add a validation message"""
+        self.ensure_one()
+        if 'draft' in [itm.state for itm in self.guide_ids]:
+            raise ValidationError(
+                _('Only valid guides can be added to a landed cost'))
 
     @api.onchange('invoice_ids', 'guide_ids')
     def onchange_invoice_ids(self):

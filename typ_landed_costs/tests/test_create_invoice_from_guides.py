@@ -10,12 +10,11 @@ class TestCreateInvoiceFromGuides(TestTypLandedCosts):
         """Test that raise a message when is try to create an invoice from
         guides with different partners
         """
-        guide_1 = self.create_guide('Test Guide 1', self.partner_1,
-                                    self.currency_1, self.product_1,
-                                    self.journal)
-        guide_2 = self.create_guide('Test Guide 2', self.partner_2,
-                                    self.currency_1, self.product_2,
-                                    self.journal)
+        guide_1 = self.create_guide({'name': 'Test Guide 1'})
+        guide_2 = self.create_guide({
+            'name': 'Test Guide 2',
+            'partner_id': self.partner_2.id,
+        }, self.product_2.id)
         context = {'active_ids': [guide_1.id, guide_2.id],
                    'active_model': 'stock.landed.cost.guide'}
         msg = ".*All guides selected must have the same partner.*"
@@ -26,12 +25,11 @@ class TestCreateInvoiceFromGuides(TestTypLandedCosts):
         """Test that raise a message when is try to create an invoice from
         guides with different currency
         """
-        guide_1 = self.create_guide('Test Guide 1', self.partner_1,
-                                    self.currency_1, self.product_1,
-                                    self.journal)
-        guide_2 = self.create_guide('Test Guide 2', self.partner_1,
-                                    self.currency_2, self.product_2,
-                                    self.journal)
+        guide_1 = self.create_guide({'name': 'Test Guide 1'})
+        guide_2 = self.create_guide({
+            'name': 'Test Guide 2',
+            'currency_id': self.currency_2.id,
+        }, self.product_2.id)
         context = {'active_ids': [guide_1.id, guide_2.id],
                    'active_model': 'stock.landed.cost.guide'}
         msg = ".*All guides selected must have the same currency.*"
@@ -42,12 +40,9 @@ class TestCreateInvoiceFromGuides(TestTypLandedCosts):
         """Test create correctly an invoice when guides have the right
         configuration
         """
-        guide_1 = self.create_guide('Test Guide 1', self.partner_1,
-                                    self.currency_1, self.product_1,
-                                    self.journal)
-        guide_2 = self.create_guide('Test Guide 2', self.partner_1,
-                                    self.currency_1, self.product_2,
-                                    self.journal)
+        guide_1 = self.create_guide({'name': 'Test Guide 1'})
+        guide_2 = self.create_guide({'name': 'Test Guide 2'},
+                                    self.product_2.id)
         context = {'active_ids': [guide_1.id, guide_2.id],
                    'active_model': 'stock.landed.cost.guide'}
         res = self.wizard_create_invoice.with_context(context).create_invoice()
@@ -62,12 +57,9 @@ class TestCreateInvoiceFromGuides(TestTypLandedCosts):
         """Test guides that already have been invoiced doesn't can be invoiced
         again
         """
-        guide_1 = self.create_guide('Test Guide 1', self.partner_1,
-                                    self.currency_1, self.product_1,
-                                    self.journal)
-        guide_2 = self.create_guide('Test Guide 2', self.partner_1,
-                                    self.currency_1, self.product_2,
-                                    self.journal)
+        guide_1 = self.create_guide({'name': 'Test Guide 1'})
+        guide_2 = self.create_guide({'name': 'Test Guide 2'},
+                                    self.product_2.id)
         context = {'active_ids': [guide_1.id, guide_2.id],
                    'active_model': 'stock.landed.cost.guide'}
         res = self.wizard_create_invoice.with_context(context).create_invoice()
