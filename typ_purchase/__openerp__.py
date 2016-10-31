@@ -19,10 +19,13 @@
     # any module necessary for this one to work correctly
     'depends': [
         'purchase',
+        'purchase_requisition',
     ],
 
     # always loaded
     'data': [
+        'security/res_groups.xml',
+        'security/ir.model.access.csv',
         'views/purchase_view.xml',
     ],
     # only loaded in demonstration mode

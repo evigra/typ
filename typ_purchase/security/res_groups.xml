@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record model="res.groups" id="group_purchase_budget_manager">
+            <field name="name">Purchase Budget Manager</field>
+            <field name="comment">This group is for Managers of Budget.
+
+They can:
+- Make budget requests.</field>
+        </record>
+    </data>
+</openerp>

@@ -92,5 +92,15 @@
             </field>
         </record>
 
+        <record id="view_requisition_budget_form" model="ir.ui.view">
+            <field name="name">requisition.budget.form</field>
+            <field name="model">purchase.requisition</field>
+            <field name="inherit_id" ref="purchase_requisition.view_purchase_requisition_form"/>
+            <field name="arch" type="xml">
+               <button name="%(purchase_requisition.action_purchase_requisition_partner)d" position="attributes">
+                    <attribute name="groups">typ_purchase.group_purchase_budget_manager</attribute>
+               </button>
+            </field>
+        </record>
     </data>
 </openerp>

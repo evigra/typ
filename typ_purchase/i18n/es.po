@@ -1,0 +1,33 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* typ_purchase
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 8.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2016-10-28 20:41+0000\n"
+"PO-Revision-Date: 2016-10-28 20:41+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: typ_purchase
+#: model:res.groups,name:typ_purchase.group_purchase_budget_manager
+msgid "Purchase Budget Manager"
+msgstr "Presupuesto en Compras / Administrador"
+
+#. module: typ_purchase
+#: model:res.groups,comment:typ_purchase.group_purchase_budget_manager
+msgid "This group is for Managers of Budget.\n"
+"\n"
+"They can:\n"
+"- Make budget requests."
+msgstr "Este grupo es para la administración de solicitudes de presupuesto.\n"
+"\n"
+"Ellos pueden:\n"
+"- Realizar solitudes de presupuesto."
+
