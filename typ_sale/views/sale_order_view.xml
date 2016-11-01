@@ -30,22 +30,10 @@
             <field name="inherit_id" ref="sale.view_order_form"/>
             <field name="arch" type="xml">
                 <xpath expr="//field[@name='pricelist_id']" position="after">
-                    <field name="type_payment_term" required="True"/>
+                    <field name="type_payment_term" attrs="{'readonly': [('state', '!=', 'draft')],'required': [('state', '=', 'draft')],}"/>
                 </xpath>
                 <xpath expr="//field[@name='payment_term']" position="attributes">
-                    <attribute name="readonly">True</attribute>
-                </xpath>
-            </field>
-        </record>
-
-        <record id="view_sale_order_form_type_payment_term_manager" model="ir.ui.view">
-            <field name="name">sale.order.form.type.payment.term.manager</field>
-            <field name="model">sale.order</field>
-            <field name="inherit_id" ref="sale.view_order_form"/>
-            <field name="groups_id" eval="[(4, ref('typ_sale.group_sale_order_invoice_payment_term_manager'))]"/>
-            <field name="arch" type="xml">
-                <xpath expr="//field[@name='payment_term']" position="attributes">
-                    <attribute name="readonly">False</attribute>
+                    <attribute name="groups">typ_sale.group_sale_order_invoice_payment_term_manager</attribute>
                 </xpath>
             </field>
         </record>

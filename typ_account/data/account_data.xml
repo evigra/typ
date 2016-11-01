@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data noupdate="1">
+
+        <!--Payment term-->
+        <record id="typ_account_payment_term_immediate" model="account.payment.term">
+            <field name="name">Immediate Payment</field>
+            <field name="note">Immediate Payment</field>
+        </record>
+
+        <record id="typ_account_payment_term_line_immediate" model="account.payment.term.line">
+            <field name="value">balance</field>
+            <field eval="0" name="days"/>
+            <field eval="0" name="days2"/>
+            <field eval="typ_account_payment_term_immediate" name="payment_id"/>
+        </record>
+
+    </data>
+</openerp>

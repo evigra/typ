@@ -39,3 +39,8 @@ msgstr "El cliente seleccionado no tiene límite de crédito."
 msgid "Warning!"
 msgstr "Advertencia!"
 
+#. module: typ_account
+#: model:account.payment.term,name:typ_account.typ_account_payment_term_immediate
+#: model:account.payment.term,note:typ_account.typ_account_payment_term_immediate
+msgid "Immediate Payment"
+msgstr "Pago Inmediato"

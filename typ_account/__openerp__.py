@@ -24,6 +24,7 @@
     ],
     # always loaded
     'data': [
+        'data/account_data.xml',
         'views/sale_order_view.xml',
         'views/account_invoice_view.xml',
         'views/account_voucher_tax_view.xml',

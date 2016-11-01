@@ -12,18 +12,6 @@ class SaleOrder(models.Model):
          ('postdated_check', 'Postdated check')], default='credit',
         string='Type payment term')
 
-    @api.onchange('type_payment_term')
-    def get_payment_term(self):
-        """Get payment term depends on type payment term.
-        """
-        if self.type_payment_term in ('cash', 'postdated_check'):
-            for payment_term in self.env['account.payment.term'].search([]):
-                if payment_term.payment_type == 'cash':
-                    self.payment_term = payment_term.id
-                    break
-        else:
-            self.payment_term = self.partner_id.property_payment_term.id
-
     @api.onchange('warehouse_id', 'partner_id')
     def get_salesman_from_warehouse_config(self):
         """Obtain Salesman depending on configuration warehouse in partner
@@ -47,3 +35,24 @@ class SaleOrder(models.Model):
             order, line, group_id)
         res.update({'origin': order.name})
         return res
+
+    @api.onchange('type_payment_term', 'partner_id')
+    def get_payment_term(self):
+        """Get payment term depends on type payment term.
+        """
+        if self.partner_id:
+            if self.type_payment_term in ('cash', 'postdated_check'):
+                for payment_term in \
+                        self.env['account.payment.term'].search([]):
+                    if payment_term.payment_type == 'cash':
+                        self.payment_term = payment_term.id
+                        break
+            else:
+                self.payment_term = self.partner_id.property_payment_term.id
+            if self.type_payment_term == 'credit' and \
+                    (not self.payment_term or
+                        self.payment_term.payment_type == 'cash'):
+                self.type_payment_term = 'cash'
+            elif self.type_payment_term in ('cash', 'postdated_check') and \
+                    self.payment_term.payment_type == 'credit':
+                self.type_payment_term = 'credit'

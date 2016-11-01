@@ -21,3 +21,57 @@ msgstr ""
 msgid "Reference/Customer"
 msgstr "Referencia/Cliente"
 
+#. module: typ_sale
+#: field:res.partner.warehouse,warehouse_id:0
+msgid "Warehouse"
+msgstr "Almacén"
+
+#. module: typ_sale
+#: field:res.partner,res_warehouse_ids:0
+msgid "Warehouse configuration"
+msgstr "Configuración de almacén"
+
+#. module: typ_sale
+#: view:res.partner:typ_sale.view_res_partner_warehouse_form
+msgid "Warehouse configurations"
+msgstr "Configuración de almacenes"
+
+#. module: typ_sale
+#: selection:sale.order,type_payment_term:0
+msgid "Cash"
+msgstr "Contado"
+
+#. module: typ_sale
+#: selection:sale.order,type_payment_term:0
+msgid "Credit"
+msgstr "Crédito"
+
+#. module: typ_sale
+#: selection:sale.order,type_payment_term:0
+msgid "Postdated check"
+msgstr "Cheque posfechado"
+
+#. module: typ_sale
+#: field:sale.order,type_payment_term:0
+msgid "Type payment term"
+msgstr "Tipo plazo de pago"
+
+#. module: typ_sale
+#: selection:account.invoice,type_payment_term:0
+msgid "Cash"
+msgstr "Contado"
+
+#. module: typ_sale
+#: selection:account.invoice,type_payment_term:0
+msgid "Credit"
+msgstr "Crédito"
+
+#. module: typ_sale
+#: selection:account.invoice,type_payment_term:0
+msgid "Postdated check"
+msgstr "Cheque posfechado"
+
+#. module: typ_sale
+#: field:account.invoice,type_payment_term:0
+msgid "Type payment term"
+msgstr "Tipo plazo de pago"
