@@ -408,7 +408,9 @@ class StockLandedCost(models.Model):
     def button_validate(self):
         """Inherited to add a validation message"""
         self.ensure_one()
-        if 'draft' in [itm.state for itm in self.guide_ids]:
+        draft_guides = self.guide_ids.filtered(
+            lambda dat: 'draft' in dat.state)
+        if draft_guides:
             raise ValidationError(
                 _('Only valid guides can be added to a landed cost'))
 
