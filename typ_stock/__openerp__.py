@@ -18,6 +18,7 @@
     # any module necessary for this one to work correctly
     'depends': [
         'delivery',
+        'typ_purchase',
     ],
     # always loaded
     'data': [
@@ -33,6 +34,7 @@
     # only loaded in demonstration mode
     'demo': [
         'demo/stock_data.xml',
+        'demo/stock_data_reordering_rule.xml',
     ],
     'installable': True,
 }

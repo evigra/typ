@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data noupdate="1">
+
+        <!-- Stock Location Route rr=reordering rules -->
+        <record id="stock_location_route_test_rr_0" model="stock.location.route">
+            <field name="name">Test warehouse 3: Supply products from YourCompany</field>
+            <field name="product_selectable" eval="True"/>
+            <field name="product_categ_selectable" eval="True"/>
+            <field name="warehouse_selectable" eval="False"/>
+            <field name="sale_selectable" eval="False"/>
+        </record>
+        <record id="stock_location_route_test_rr_1" model="stock.location.route">
+            <field name="name">Test warehouse 4: Supply products from YourCompany</field>
+            <field name="product_selectable" eval="True"/>
+            <field name="product_categ_selectable" eval="True"/>
+            <field name="warehouse_selectable" eval="False"/>
+            <field name="sale_selectable" eval="False"/>
+        </record>
+        <!-- Warehouses -->
+        <record id="whr_test_03" model="stock.warehouse">
+           <field name="name">Test warehouse 3</field>
+           <field name="code">TW3</field>
+           <field name="buy_to_resupply" eval="True"/>
+           <field name="manufacture_to_resupply" eval="True"/>
+        </record>
+        <record id="whr_test_04" model="stock.warehouse">
+           <field name="name">Test warehouse 4</field>
+           <field name="code">TW4</field>
+           <field name="buy_to_resupply" eval="False"/>
+           <field name="manufacture_to_resupply" eval="False"/>
+        </record>
+
+        <!-- Test Product -->
+        <record id="product_test_01" model="product.product">
+            <field name="name">prueba 3</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="True" />
+            <field name="type">product</field>
+            <field name="route_ids" eval="[(6,0,[
+                ref('stock_location_route_test_rr_0'),
+                ref('stock_location_route_test_rr_1'),
+                ref('purchase.route_warehouse0_buy')])]"/>
+            <field name="seller_ids" eval="[(6,0,[ref('base.res_partner_22')])]"/>
+        </record>
+
+        <!-- Product Orderpoint copied from
+            yoytec/demo/product_orderpoint.xml-->
+
+        <record id="stock_warehouse_orderpoint_0" model="stock.warehouse.orderpoint">
+           <field name="product_max_qty">200.0</field>
+           <field name="product_min_qty">10.0</field>
+           <field name="product_id" ref="product_test_01"/>
+           <field name="location_id" ref="stock.stock_location_stock"/>
+        </record>
+        <record id="stock_warehouse_orderpoint_1" model="stock.warehouse.orderpoint">
+           <field name="product_max_qty">75.0</field>
+           <field name="product_min_qty">15.0</field>
+           <field name="product_id" ref="product_test_01"/>
+           <field name="warehouse_id" ref="typ_stock.whr_test_03"/>
+        </record>
+        <record id="stock_warehouse_orderpoint_2" model="stock.warehouse.orderpoint">
+           <field name="product_max_qty">80.0</field>
+           <field name="product_min_qty">20.0</field>
+           <field name="product_id" ref="product_test_01"/>
+           <field name="warehouse_id" ref="typ_stock.whr_test_04"/>
+        </record>
+    </data>
+</openerp>

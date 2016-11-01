@@ -3,3 +3,4 @@ from . import test_propagate_transfer
 from . import test_landed_cost
 from . import test_stock_availability
 from . import test_stock_internal
+from . import test_reordering_rule
