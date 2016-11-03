@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 
+import threading
 import openerp
 from openerp import api
 from openerp.tests import common
@@ -32,15 +33,15 @@ class TestReorderingRule(TestTypStock):
         self.order_rule = self.env['stock.warehouse.orderpoint']
         self.procurement_rule = self.env['procurement.rule']
         self.stock_route = self.env['stock.location.route']
+        self.wh_op = self.env.ref('typ_stock.stock_warehouse_orderpoint_1')
 
     def write_data(self):
         """Save data for that the cursor used in threads of
         test read the changes"""
-        wh_op = self.env.ref('typ_stock.stock_warehouse_orderpoint_1')
         self.old_values = {
             self.warehouse_id: (
                 'resupply_wh_ids', self.warehouse_id.resupply_wh_ids),
-            wh_op: ('location_id', wh_op.location_id),
+            self.wh_op: ('location_id', self.wh_op.location_id),
             self.product_id: ('route_ids', self.product_id.route_ids),
         }
         with openerp.api.Environment.manage():
@@ -50,7 +51,7 @@ class TestReorderingRule(TestTypStock):
                 # to reordering rule
                 self.warehouse_id.with_env(newenv).write({
                     'resupply_wh_ids': [(6, 0, [self.yourcompany_id.id])]})
-                wh_op.with_env(newenv).write({
+                self.wh_op.with_env(newenv).write({
                     'location_id': self.warehouse_id.lot_stock_id.id})
                 # Assign location route to product
                 stock_lot = self.stock_route.with_env(newenv).search([
@@ -122,8 +123,19 @@ class TestReorderingRule(TestTypStock):
         self.write_data()
         sched_id = self.sched.create(
             {'warehouse_id': self.warehouse_id.id})
-        sched_id._procure_calculation_orderpoint()
+        sched_id.procure_calculation()
+        for thread in threading.enumerate():
+            if thread.name.startswith('Thread-'):
+                thread.run()
         proc = self.proc.search([
             ('warehouse_id', '=', self.warehouse_id.id),
             ('product_id', '=', self.product_id.id)], limit=1)
         self.assertEqual(proc.state, 'running', self.debug_info())
+
+    def tearDown(self):
+        for thread in threading.enumerate():
+            if thread.name.startswith('Thread-'):
+                thread._Thread__target = True
+                thread._Thread__args = True
+                thread._Thread__kwargs = True
+        super(TestReorderingRule, self).tearDown()

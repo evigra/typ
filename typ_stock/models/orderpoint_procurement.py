@@ -19,15 +19,15 @@ class ProcurementCompute(models.TransientModel):
         ('aa', 'AA'), ('a', 'A'), ('b', 'B'), ('c', 'C')])
 
     @api.multi
-    def _procure_calculation_orderpoint(self):
+    def procure_calculation(self):
         """
         method insert warehouse_id in context & call super procure_calculation
         """
         context = dict(
             self._context,
             warehouse_id=self.warehouse_id, importance=self.importance)
-        return super(ProcurementCompute, self.with_context(context)
-                     )._procure_calculation_orderpoint()
+        return super(ProcurementCompute,
+                     self.with_context(context)).procure_calculation()
 
 
 class StockWarehouseOrderpoint(models.Model):
