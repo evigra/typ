@@ -12,6 +12,17 @@
             </field>
         </record>
 
+        <record id="purchase_order_form_inherit" model="ir.ui.view">
+            <field name="name">purchase.order.form.inherit</field>
+            <field name="model">purchase.order</field>
+            <field name="inherit_id" ref="purchase.purchase_order_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='picking_type_id']" position="attributes">
+                    <attribute name="domain">[('code', '=', 'incoming'), ('default_location_src_id.usage', '=', 'supplier')]</attribute>
+                </xpath>
+            </field>
+        </record>
+
         <record id="view_state_purchase_order_search_inherit" model="ir.ui.view">
             <field name="name">state.purchase.order.search.inherit</field>
             <field name="model">purchase.order</field>
