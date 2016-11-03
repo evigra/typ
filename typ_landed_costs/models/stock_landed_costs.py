@@ -407,12 +407,18 @@ class StockLandedCost(models.Model):
     @api.multi
     def button_validate(self):
         """Inherited to add a validation message"""
-        self.ensure_one()
-        draft_guides = self.guide_ids.filtered(
-            lambda dat: 'draft' in dat.state)
+        draft_guides = self.env['stock.landed.cost.guide']
+        for landed in self:
+            draft_guides += landed.guide_ids.filtered(
+                lambda dat: 'draft' in dat.state)
+        msj = ""
+        for guide in draft_guides:
+            msj += _("\n- Check '%s' into '%s'") % (
+                guide.name, guide.landed_cost_id.name)
         if draft_guides:
             raise ValidationError(
-                _('Only valid guides can be added to a landed cost'))
+                _('Only valid guides can be added to a landed cost') + msj)
+        return super(StockLandedCost, self).button_validate()
 
     @api.onchange('invoice_ids', 'guide_ids')
     def onchange_invoice_ids(self):

@@ -16,6 +16,14 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. module: typ_landed_costs
+#: code:addons/typ_landed_costs/models/stock_landed_costs.py:416
+#, python-format
+msgid "\n"
+"- Check '%s' into '%s'"
+msgstr "\n"
+"- Revise '%s' dentro de '%s'"
+
+#. module: typ_landed_costs
 #: code:addons/typ_landed_costs/wizards/invoice_from_guides.py:30
 #, python-format
 msgid "All guides selected must have the same currency"
