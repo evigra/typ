@@ -16,7 +16,7 @@ class ProcurementCompute(models.TransientModel):
                                    help="select warehouse"
                                    " to running schedulers")
     importance = fields.Selection([
-        ('aa', 'AA'), ('a', 'A'), ('b', 'B'), ('c', 'C')])
+        ('aa', 'AA'), ('a', 'A'), ('b', 'B'), ('c', 'C'), ('d', 'D')])
 
     @api.multi
     def procure_calculation(self):
@@ -34,7 +34,7 @@ class StockWarehouseOrderpoint(models.Model):
     _inherit = 'stock.warehouse.orderpoint'
 
     importance = fields.Selection([
-        ('aa', 'AA'), ('a', 'A'), ('b', 'B'), ('c', 'C')])
+        ('aa', 'AA'), ('a', 'A'), ('b', 'B'), ('c', 'C'), ('d', 'D')])
 
 
 class ProcurementOrder(models.Model):
