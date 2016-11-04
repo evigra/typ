@@ -1,12 +1,17 @@
 # -*- coding: utf-8 -*-
 
-from openerp import models, api, _
+from datetime import date
+from openerp import models, api, fields, _
 from openerp import exceptions
 
 
 class AccountInvoice(models.Model):
 
     _inherit = 'account.invoice'
+
+    validation_date = fields.Date('Invoice validation date',
+                                  help="This date indicate "
+                                  "when the invoice was validated")
 
     @api.multi
     def need_verify_limit_credit(self):
@@ -66,4 +71,11 @@ class AccountInvoice(models.Model):
                 'message': _('The partner selected has the credit closed.'),
             }
             res['warning'] = warning
+        return res
+
+    @api.model
+    def invoice_validate(self):
+        res = super(AccountInvoice, self).invoice_validate()
+        validation_date = date.today().strftime('%d-%m-%Y')
+        self.write({'validation_date': validation_date})
         return res

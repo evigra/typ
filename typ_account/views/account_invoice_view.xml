@@ -25,6 +25,16 @@
                 </xpath>
             </field>
         </record>
+        <record id="view_invoice_validation_date" model="ir.ui.view">
+            <field name="name">invoice.validation.date</field>
+            <field name="model">account.invoice</field>
+            <field name="inherit_id" ref="account.invoice_supplier_form"/>
+            <field name="arch" type="xml">
+                <field name="account_id" position="before">
+                    <field name="validation_date" readonly="1"/>
+                </field>
+            </field>
+        </record>
 
     </data>
 </openerp>

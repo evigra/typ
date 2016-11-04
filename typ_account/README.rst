@@ -17,9 +17,10 @@ This module adding the follow functionalities.
 - When a client with credit closed is selected on an invoice, a warning
   message is displayed to notify the client status to the user.
 
-**Credit limit invoice validation**
+**Invoice validation**
 
 - The credit limit is only validated in invoices of type 'out_invoice'.
+- The invoice validation date is stored in database
 
 **Validates creation of policy for employees advance**
 
@@ -32,6 +33,7 @@ Credits
 
 * Julio Serna <julio@vauxoo.com> (Planner/Auditor)
 * Yennifer Santiago <yennifer@vauxoo.com (Developer)
+* Carlos Fernando Mexia <cmexia@typrefrigeracion.com> (Developer)
 
 Maintainer
 ==========
