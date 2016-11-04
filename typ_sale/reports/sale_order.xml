@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+<data>
+        <template id='typ_sale.report_saleorder_document' inherit_id="sale.report_saleorder_document">
+        <xpath expr="//t[@t-call='report.external_layout']" position="replace">
+        <t t-call="typ_sale.external_layout">
+        <div class="page">
+            <div class="row">
+                <div class="col-xs-6">
+                    <h5 style="border-bottom: 1px solid #ccc; line-height: 2em;"><strong>Shipping address:</strong></h5>
+                    <address>
+                        <t t-esc="o.partner_shipping_id and o.partner_shipping_id.name or ''"/><br/>
+                        <t t-if="o.partner_shipping_id.street">
+                            <span t-raw="o.partner_shipping_id.street"/>
+                        </t>
+                        <t t-if="o.partner_shipping_id.l10n_mx_street3">
+                            <span t-raw="o.partner_shipping_id.l10n_mx_street3"/>
+                        </t>
+                        <t t-if="o.partner_shipping_id.l10n_mx_street4">
+                            <span t-raw="o.partner_shipping_id.l10n_mx_street4"/>
+                        </t><br/>
+                        <t t-if="o.partner_shipping_id.street2">
+                            <span t-raw="o.partner_shipping_id.street2"/>
+                        </t>
+                        <t t-if="o.partner_shipping_id.city">
+                            <span t-raw="o.partner_shipping_id.city"/>
+                        </t>
+                        <t t-if="o.partner_shipping_id.l10n_mx_city2">
+                            <span t-raw="o.partner_shipping_id.l10n_mx_city2"/>
+                        </t><br/>
+                        <t t-if="o.partner_shipping_id.state_id">
+                            <span t-raw="o.partner_shipping_id.state_id.name"/>
+                        </t>
+                        <t t-if="o.partner_shipping_id.country_id">
+                            <span t-raw="o.partner_shipping_id.country_id.name"/>
+                        </t>
+                        <t t-if="o.partner_shipping_id.zip">
+                            <span t-raw="o.partner_shipping_id.zip"/>
+                        </t><br/>
+                    </address>
+                    <h5 style="border-bottom: 1px solid #ccc; line-height: 2em;"><strong>Invoice address:</strong></h5>
+                    <address class="address"> <!-- respect this order in all places always -->
+                        <t t-esc="o.partner_invoice_id and o.partner_invoice_id.name or ''"/><br/>
+                        <t t-if="o.partner_invoice_id.street">
+                            <span t-raw="o.partner_invoice_id.street"/>
+                        </t>
+                        <t t-if="o.partner_invoice_id.l10n_mx_street3">
+                            <span t-raw="o.partner_invoice_id.l10n_mx_street3"/>
+                        </t>
+                        <t t-if="o.partner_invoice_id.l10n_mx_street4">
+                            <span t-raw="o.partner_invoice_id.l10n_mx_street4"/>
+                        </t><br/>
+                        <t t-if="o.partner_invoice_id.street2">
+                            <span t-raw="o.partner_invoice_id.street2"/>
+                        </t>
+                        <t t-if="o.partner_invoice_id.city">
+                            <span t-raw="o.partner_invoice_id.city"/>
+                        </t>
+                        <t t-if="o.partner_invoice_id.l10n_mx_city2">
+                            <span t-raw="o.partner_invoice_id.l10n_mx_city2"/>
+                        </t><br/>
+                        <t t-if="o.partner_invoice_id.state_id">
+                            <span t-raw="o.partner_invoice_id.state_id.name"/>
+                        </t>
+                        <t t-if="o.partner_invoice_id.country_id">
+                            <span t-raw="o.partner_invoice_id.country_id.name"/>
+                        </t>
+                        <t t-if="o.partner_invoice_id.zip">
+                            <span t-raw="o.partner_invoice_id.zip"/>
+                        </t><br/>
+                        <span>RFC:</span> <t t-esc="o.partner_invoice_id and o.partner_invoice_id.vat_split or ''"/><br/>
+                    </address>
+                </div>
+                <div class="col-xs-6">
+                    <h5 style="border-bottom: 1px solid #ccc; line-height: 2em;"><strong>Client:</strong></h5>
+                    <address>
+                        <t t-esc="o.partner_id and o.partner_id.name or ''"/><br/>
+                        <t t-if="o.partner_id.street">
+                            <span t-raw="o.partner_id.street"/>
+                        </t>
+                        <t t-if="o.partner_id.l10n_mx_street3">
+                            <span t-raw="o.partner_id.l10n_mx_street3"/>
+                        </t>
+                        <t t-if="o.partner_id.l10n_mx_street4">
+                            <span t-raw="o.partner_id.l10n_mx_street4"/>
+                        </t><br/>
+                        <t t-if="o.partner_id.street2">
+                            <span t-raw="o.partner_id.street2"/>
+                        </t>
+                        <t t-if="o.partner_id.city">
+                            <span t-raw="o.partner_id.city"/>
+                        </t>
+                        <t t-if="o.partner_id.l10n_mx_city2">
+                            <span t-raw="o.partner_id.l10n_mx_city2"/>
+                        </t><br/>
+                        <t t-if="o.partner_id.state_id">
+                            <span t-raw="o.partner_id.state_id.name"/>
+                        </t>
+                        <t t-if="o.partner_id.country_id">
+                            <span t-raw="o.partner_id.country_id.name"/>
+                        </t>
+                        <t t-if="o.partner_id.zip">
+                            <span t-raw="o.partner_id.zip"/>
+                        </t><br/>
+                    </address>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-3">
+                    <span><strong>Your reference: </strong></span>
+                    <br/>
+                    <span t-raw="o.partner_id.ref"/>
+                </div>
+                <div class="col-xs-3">
+                    <span t-if="o.state not in ['draft','sent']"><strong>Order Date</strong>:</span>
+                    <span t-if="o.state in ['draft','sent']"><strong>Quotation Date</strong>:</span>
+                    <br/>
+                    <span t-field="o.date_order" t-field-options='{"widget": "date"}'/><br/>
+                </div>
+                <div class="col-xs-3">
+                    <span><strong>Salesman</strong>:
+                    <br/>
+                    </span><span t-esc="o.user_id.name"/><br/>
+                </div>
+                <div class="col-xs-3">
+                    <span><strong>Currency: </strong></span>
+                    <br/>
+                    (<span t-esc="o.pricelist_id and o.pricelist_id.currency_id and o.pricelist_id.currency_id.symbol or ''"/>)
+                    <span t-esc="o.pricelist_id and o.pricelist_id.currency_id and o.pricelist_id.currency_id.name or ''"/><br/>
+                </div>
+            </div>
+            <div class="row">
+            <div class="col-xs-12">
+            <table class="table-striped table-bordered  table-condensed table" width="100%">
+                <thead class="text-center">
+                <tr>
+                    <th> <span>Description</span> </th>
+                    <th> <span>Quantity</span> </th>
+                    <th> <span>Unit Price</span> </th>
+                    <th> <span>Price</span> </th>
+                </tr>
+                </thead>
+                <tbody>
+                    <tr t-foreach="o.order_line" t-as="line">
+                        <td class="col-xs-6 vauxoo" style="font-size: 12px;">
+                            <t t-raw="line.name"/>
+                        </td>
+                        <td class="text-right">
+                            <t t-esc="int(line.product_uos and line.product_uos_qty or line.product_uom_qty)" />
+                            <t t-esc="line.product_uos and line.product_uos.name or line.product_uom and line.product_uom.name or ''" />
+                        </td>
+                        <td class="text-right">
+                            <span t-field="line.price_unit"/><br/>
+                        </td>
+                        <td class="text-right">
+                            <span t-field="line.price_subtotal"/>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            </div>
+            </div>
+            <div class="row vauxoo">
+                <div class="col-xs-6 col-md-8">
+                <!-- TODO Delete div or use it for something -->
+                </div>
+                <div class="col-xs-6 col-md-4 text-right">
+                    <div class="row">
+                        <span class="col-xs-4 text-left"><strong>SubTotal</strong>:</span> <span class="col-xs-1" t-esc="o.pricelist_id and o.pricelist_id.currency_id and o.pricelist_id.currency_id.symbol or ''"/> <span class="col-xs-7 text-right" t-field="o.amount_untaxed"/>
+                    </div>
+                    <div class="row">
+                        <span class="col-xs-4 text-left"><strong>IVA 16%</strong>:</span> <span class="col-xs-1" t-esc="o.pricelist_id and o.pricelist_id.currency_id and o.pricelist_id.currency_id.symbol or ''"/> <span class="col-xs-7 text-right" t-field="o.amount_tax"/>
+                    </div>
+                    <div class="row">
+                        <span class="col-xs-4 text-left"><strong>Total</strong>:</span> <span class="col-xs-1" t-esc="o.pricelist_id and o.pricelist_id.currency_id and o.pricelist_id.currency_id.symbol or ''"/> <span class="col-xs-7 text-right" t-field="o.amount_total"/>
+                    </div>
+                </div>
+            </div>
+            <br/>
+            <div class="row">
+                <div class="col-xs-6" style="font-size: 12px; line-height: 13px;">
+                    <ul>
+                        <li><strong>Validity:</strong><br/> 15 days for repairs and 30 days for equipments.</li>
+                        <li><strong>Warranty:</strong><br/> 1 year for parts and 5 years for compressor in American equipment. 1 year for parts and compressor for Asian equipment. Does not apply to equipment with power failures or burns.</li>
+                        <li><strong>Payment method:</strong><br/> If payment is by check, consider additional 2% of the total amount for concept of check protection.</li>
+                        <li><strong>Financing:</strong><br/> When buying equipment on credit, consider additional 2%, that will be credited if payment is performed within the time allowed.</li>
+                    </ul>
+                </div>
+                <div class="col-xs-6 text-left">
+                    <div class="text-left" t-if="o.note">
+                        <h5>
+                            <span><strong>Notes:</strong></span>
+                        </h5>
+                        <div t-raw="o.note"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </t>
+        </xpath>
+    </template>
+</data>
+</openerp>

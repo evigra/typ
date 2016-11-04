@@ -1,0 +1,26 @@
+/**
+    To show correctly the report in the screen only using website
+    Features.
+*/
+.vauxoo .border-bottom {
+    border-bottom: 1px solid #ccc;
+}
+
+/** rst2html styles
+ */
+.title {
+    font-size: 1.5em;
+}
+
+.subtitle {
+    font-size: 1.5em;
+}
+
+.vauxoo ul {
+    margin-left: 15px;
+}
+
+.page address {
+    font-size: 12px;
+    line-height: 14px;
+}

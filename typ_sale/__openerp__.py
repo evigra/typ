@@ -13,6 +13,8 @@
 
     'data': [
         'data/res_groups.xml',
+        'reports/sale_order.xml',
+        'reports/layout.xml',
         'security/ir.model.access.csv',
         'views/sale_order_line_view.xml',
         'views/res_partner_warehouse_view.xml',
