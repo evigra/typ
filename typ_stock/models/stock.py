@@ -126,9 +126,8 @@ class StockPicking(models.Model):
                     total_origin_move_qty = sum(move.origin_returned_move_id.
                                                 quant_ids.mapped('qty'))
 
-                if total_move_qty > total_origin_move_qty:
-                    raise exceptions.Warning(
-                        _('Warning!'),
-                        _('The return of the product %s, exceeds the amount '
-                            'invoiced') % (move.product_id.name)
-                        )
+                    if total_move_qty > total_origin_move_qty:
+                        raise exceptions.Warning(
+                            _('Warning!'),
+                            _('The return of the product %s, exceeds the '
+                              'amount invoiced') % (move.product_id.name))
