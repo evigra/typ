@@ -57,6 +57,28 @@ class StockMove(models.Model):
                           ' Contact personnel Vauxoo immediately')
                     )
 
+    @api.model
+    def check_tracking_product(self, product, lot_id, location, location_dest):
+        """Overwrite method check_tracking_product super
+        """
+        check = False
+        if product.track_all and not location_dest.usage == 'inventory':
+            check = True
+        elif product.track_incoming and location.usage in (
+            'supplier', 'transit', 'inventory') and \
+                location_dest.usage == 'internal':
+            check = True
+        elif product.track_outgoing and location_dest.usage in (
+                'customer', 'transit') and location.usage == 'internal':
+            check = True
+        if check and not lot_id:
+            raise exceptions.Warning(
+                _('Warning!'),
+                _('You must assign a serial number for the product [%s] %s') %
+                (product.default_code, product.name))
+        return super(StockMove, self).check_tracking_product(
+            product, lot_id, location, location_dest)
+
 
 class StockPicking(models.Model):
 
