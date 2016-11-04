@@ -13,8 +13,7 @@ class ProcurementOrder(models.Model):
         Supplier for purchase (field purchase_partner_id), return it to create
         the purchase order with that partner.
         """
-        if procurement.sale_line_id and \
-                procurement.sale_line_id.purchase_partner_id:
-            return procurement.sale_line_id.purchase_partner_id
-        return super(ProcurementOrder, self)._get_product_supplier(
-            procurement)
+        sale_line_id = procurement.sale_line_id or \
+            procurement.move_dest_id.procurement_id.sale_line_id
+        return sale_line_id.purchase_partner_id or \
+            super(ProcurementOrder, self)._get_product_supplier(procurement)

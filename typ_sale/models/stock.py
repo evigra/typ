@@ -15,3 +15,16 @@ class StockPicking(models.Model):
             'payment_term': move.picking_id.sale_id.payment_term.id,
             'type_payment_term': move.picking_id.sale_id.type_payment_term, })
         return res
+
+
+class StockMove(models.Model):
+
+    _inherit = 'stock.move'
+
+    @api.model
+    def _prepare_procurement_from_move(self, move):
+        """Inherit to reassign origin field in procurement order"""
+        res = super(StockMove, self)._prepare_procurement_from_move(move)
+        order = move.procurement_id.sale_line_id.order_id
+        res.update({'origin': order.name})
+        return res
