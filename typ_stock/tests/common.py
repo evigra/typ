@@ -14,7 +14,9 @@ class TestTypStock(common.TransactionCase):
         route = self.env.ref('typ_stock.stock_location_route_test_1')
         self.stock_picking = self.env['stock.picking']
         self.picking_type = self.env.ref('stock.picking_type_in')
+        self.picking_type_out = self.env.ref('stock.picking_type_out')
         self.transfer_obj = self.env['stock.transfer_details']
+        self.lot = self.env['stock.production.lot']
 
         dict_vals = {
             'partner_id': self.partner.id,
@@ -97,3 +99,23 @@ class TestTypStock(common.TransactionCase):
         )
         values.update(extra_values)
         return values
+
+    def update_product_qty(self):
+        self.lot_1 = self.lot.create({
+            'name': 'lot_1',
+            'product_id': self.product_test.id})
+        self.lot_2 = self.lot.create({
+            'name': 'lot_2',
+            'product_id': self.product_test.id})
+        self.env['stock.change.product.qty'].create({
+            'location_id': self.warehouse.lot_stock_id.id,
+            'product_id': self.product_test.id,
+            'lot_id': self.lot_1.id,
+            'new_quantity': 1
+        }).change_product_qty()
+        self.env['stock.change.product.qty'].create({
+            'location_id': self.warehouse.lot_stock_id.id,
+            'product_id': self.product_test.id,
+            'lot_id': self.lot_2.id,
+            'new_quantity': 1
+        }).change_product_qty()

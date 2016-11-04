@@ -19,6 +19,7 @@
     'depends': [
         'delivery',
         'typ_purchase',
+        'product_unique_serial',
     ],
     # always loaded
     'data': [
@@ -31,6 +32,7 @@
         'views/stock_picking_view.xml',
         'security/res_groups.xml',
         'wizard/view_procurement_compute_wizard_inh.xml',
+        'wizard/stock_serial_view.xml',
     ],
     # only loaded in demonstration mode
     'demo': [
