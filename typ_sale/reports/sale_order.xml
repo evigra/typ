@@ -109,7 +109,7 @@
                 <div class="col-xs-3">
                     <span><strong>Your reference: </strong></span>
                     <br/>
-                    <span t-raw="o.partner_id.ref"/>
+                    <span t-raw="o.client_order_ref"/>
                 </div>
                 <div class="col-xs-3">
                     <span t-if="o.state not in ['draft','sent']"><strong>Order Date</strong>:</span>
@@ -184,6 +184,7 @@
                         <li><strong>Warranty:</strong><br/> 1 year for parts and 5 years for compressor in American equipment. 1 year for parts and compressor for Asian equipment. Does not apply to equipment with power failures or burns.</li>
                         <li><strong>Payment method:</strong><br/> If payment is by check, consider additional 2% of the total amount for concept of check protection.</li>
                         <li><strong>Financing:</strong><br/> When buying equipment on credit, consider additional 2%, that will be credited if payment is performed within the time allowed.</li>
+                        <li><strong>Availability:</strong><br/> Except prior sale.</li>
                     </ul>
                 </div>
                 <div class="col-xs-6 text-left">
