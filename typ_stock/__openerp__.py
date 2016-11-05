@@ -23,7 +23,6 @@
     ],
     # always loaded
     'data': [
-        'security/res_groups.xml',
         'data/ir_actions_server.xml',
         'data/base_action_rule.xml',
         'views/procurement_rule_view.xml',
@@ -33,6 +32,7 @@
         'security/res_groups.xml',
         'wizard/view_procurement_compute_wizard_inh.xml',
         'wizard/stock_serial_view.xml',
+        'report/report_stockpicking.xml',
     ],
     # only loaded in demonstration mode
     'demo': [
