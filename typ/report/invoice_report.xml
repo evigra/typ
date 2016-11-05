@@ -2,16 +2,21 @@
     <openerp>
         <data>
             <template id="report_electronic_invoice_document">
-                <div class="page">
+                <div class="header">
+                    <div style="font-size: 9px; line-height: 10px; position: absolute; top: 700px; left: 0px; z-index: -1; overflow: visible; -webkit-transform:rotate(-90deg); -webkit-transform-origin: 0% 0%;">This document is a printed representation of a CFDI</div>
+                </div>
+                <div class="page" style="margin: auto 0 auto 15px;">
                     <t t-if="o">
                         <t t-value="set_global_data(o)"></t>
                         <t t-set="dict_data" t-value="set_dict_data(o)"></t>
                         <t t-set="extra_data" t-value="o.context_extra_data"></t>
                         <t t-set="dict_context_extra_data" t-value="eval(extra_data)"></t>
                         <t t-set="empty_dict" t-value="{}"></t>
+                        <t t-set="invoice_obj" t-value="get_model_object(o)"></t>
+                        <t t-set="order_obj" t-value="get_sale_order(invoice_obj.id)"></t>
                     </t>
                     <div class="row">
-                        <div class="col-xs-3 text-center">
+                        <div class="col-xs-3" style="margin: 0px; padding: 0px;">
                             <img t-if="company.logo" t-att-src="'data:image/png;base64,%s' % company.logo" style="max-height: 60; max-width: auto;"/>
                         </div>
                         <div class="col-xs-offset-4 col-xs-5 text-right">
@@ -38,7 +43,7 @@
                                         </t>
                                     </h4>
                                 </div>
-                                <div class="col-xs-8 text-center">
+                                <div class="col-xs-8 text-center" style="padding-top: 1.0em; font-size: 10;">
                                     <span t-esc="dict_data.get('@fecha', False) and datetime.strptime(dict_data.get('@fecha').encode('ascii','replace'), '%Y-%m-%dT%H:%M:%S').strftime('%d/%m/%Y %H:%M:%S') or ''"/>
                                 </div>
                             </div>
@@ -47,7 +52,7 @@
                     <div class="row" style="padding-top: 0.5em; font-size: 12;">
                         <div class="col-xs-5" style="padding-left: 0.0em; padding-right: 0.2em;">
                             <div class="text-center bg-primary" style="border-top-right-radius: 0.4em; border-top-left-radius: 0.4em; padding-top: 0.0em;">
-                                <span>Fiscal Folio</span>
+                                <span>Client Reference</span>
                             </div>
                         </div>
                         <div class="col-xs-4" style="padding-right: 0.2em; padding-left: 0.2em;">
@@ -57,7 +62,7 @@
                         </div>
                         <div class="col-xs-3" style="padding-right: 0.0em; padding-left: 0.2em;">
                             <div class="text-center bg-primary" style="border-top-right-radius: 0.4em; border-top-left-radius: 0.4em; padding-top: 0.0em;">
-                                <span>Issuer Certificate</span>
+                                <span>Type Payment Term</span>
                             </div>
                         </div>
                     </div>
@@ -65,7 +70,7 @@
                         <div>
                             <div class="col-xs-5" style="padding-left: 0.0em; padding-right: 0.2em;">
                                 <div class="text-center" style="border-bottom-right-radius: 0.4em; border-bottom-left-radius: 0.4em; border: 2px solid #deeff5; padding-top: 0.0em; font-size: 10;">
-                                    <span t-esc="dict_data.get('Complemento', {}).get('TimbreFiscalDigital').get('@UUID', 'No identificado')"/>
+                                    <span t-esc="order_obj and order_obj.client_order_ref or ''"/>
                                 </div>
                             </div>
                             <div class="col-xs-4" style="padding-right: 0.2em; padding-left: 0.2em;">
@@ -75,80 +80,109 @@
                             </div>
                             <div class="col-xs-3" style="padding-right: 0.0em; padding-left: 0.2em;">
                                 <div class="text-center" style="border-bottom-right-radius: 0.4em; border-bottom-left-radius: 0.4em; border: 2px solid #deeff5; padding-top: 0.0em; font-size: 10;">
-                                    <span t-esc="dict_data.get('@noCertificado', 'No identificado')"/>
+                                    <span t-esc="get_type_payment_term(invoice_obj)"/>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="row" style="padding-top: 0.5em; font-size: 12;">
                         <div>
-                            <div class="col-xs-6" style="padding-right: 0.2em; padding-left: 0.0em;">
+                            <div class="col-xs-4" style="padding-right: 0.2em; padding-left: 0.0em;">
                                 <div class="text-center bg-primary" style="border-top-right-radius: 0.4em; border-top-left-radius: 0.4em; padding-top: 0.0em;">
                                     <span>Issuer</span>
                                 </div>
                             </div>
-                            <div class="col-xs-6" style="padding-right: 0.0em; padding-left: 0.2em;">
+                            <div class="col-xs-4" style="padding-right: 0.0em; padding-left: 0.2em;">
                                 <div class="text-center bg-primary" style="border-top-right-radius: 0.4em; border-top-left-radius: 0.4em; padding-top: 0.0em;">
                                     <span>Customer</span>
+                                </div>
+                            </div>
+                            <div class="col-xs-4" style="padding-right: 0.0em; padding-left: 0.2em;">
+                                <div class="text-center bg-primary" style="border-top-right-radius: 0.4em; border-top-left-radius: 0.4em; padding-top: 0.0em;">
+                                    <span>Issued at</span>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div style="font-size: 10;">
-                            <div class="col-xs-6" style="padding-right: 0.2em; padding-left: 0.0em;">
+                            <div class="col-xs-4" style="padding-right: 0.2em; padding-left: 0.0em;">
                                 <div class="text-left" style="border-bottom-right-radius: 0.4em; border-bottom-left-radius: 0.4em; border: 2px solid #deeff5; padding-top: 0.0em;">
                                     <t t-set="dom_fis" t-value="dict_data.get('Emisor', {}).get('DomicilioFiscal', {}) or {}"></t>
                                     <t t-set="emisor" t-value="dict_context_extra_data.get('emisor', {})"></t>
                                     <div>
-                                        <strong><span t-esc="dict_data.get('Emisor', '') and dict_data.get('Emisor').get('@nombre', '') or ''"/></strong>
+                                        <strong t-esc="dict_data.get('Emisor', '') and dict_data.get('Emisor').get('@nombre', '') or ''"/>
                                     </div>
                                     <div>
                                         <span t-esc="dom_fis.get('@calle', '')"/>
                                         <span t-esc="dom_fis.get('@noExterior', '')"/>
                                         <span t-esc="dom_fis.get('@noInterior', '')"/>
                                         <br/>
-                                        <span t-esc="'Col. %s,' %(dom_fis.get('@colonia', ''))"/>
-                                        <span t-esc="'CP. %s' % (dom_fis.get('@codigoPostal', ''))"/>
+                                        <span t-esc="dom_fis.get('@colonia', '')"/>
+                                        <span t-esc="dom_fis.get('@codigoPostal', '')"/>
                                         <br/>
-                                        <span t-esc="'%s, '%(dom_fis.get('@localidad', ''))"/>
+                                        <span t-esc="dom_fis.get('@localidad', '')"/>
                                         <br/>
-                                        <span t-esc="'%s, '%(dom_fis.get('@municipio', ''))"/>
-                                        <span t-esc="'%s, '%(dom_fis.get('@estado', ''))"/>
-                                        <span t-esc="'%s, '%(dom_fis.get('@pais', ''))"/>
+                                        <span t-esc="dom_fis.get('@municipio', '')"/>
+                                        <span t-esc="dom_fis.get('@estado', '')"/>
+                                        <span t-esc="dom_fis.get('@pais', '')"/>
                                     </div>
                                     <div>
-                                         <span t-if="emisor.get('phone', False)" t-esc="'Tel. %s'%(emisor.get('phone', ''))"/>
+                                         <span t-if="emisor.get('phone', False)" t-esc="emisor.get('phone', '')"/>
                                     </div>
                                     <div>
-                                         <strong><span t-esc="'RFC. %s'%(dict_data.get('Emisor', '') and dict_data.get('Emisor').get('@rfc', ''))"/></strong>
+                                         <strong t-esc="'RFC. %s'%(dict_data.get('Emisor', '') and dict_data.get('Emisor').get('@rfc', ''))"/>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-xs-6" style="padding-right: 0.0em; padding-left: 0.2em;">
-                                <div class="text-right" style="border-bottom-right-radius: 0.4em; border-bottom-left-radius: 0.4em; border: 2px solid #deeff5; padding-top: 0.0em;">
+                            <div class="col-xs-4" style="padding-right: 0.0em; padding-left: 0.2em;">
+                                <div class="text-center" style="border-bottom-right-radius: 0.4em; border-bottom-left-radius: 0.4em; border: 2px solid #deeff5; padding-top: 0.0em;">
                                     <t t-set="add_receptor" t-value="dict_data.get('Receptor', {}).get('Domicilio', {})"></t>
                                     <div>
-                                        <strong><span t-esc="dict_data.get('Receptor', False) and dict_data.get('Receptor').get('@nombre', '')"/></strong>
+                                        <strong t-esc="dict_data.get('Receptor', False) and dict_data.get('Receptor').get('@nombre', '')"/>
                                     </div>
                                     <div>
-                                        <span t-esc="add_receptor.get('@calle', False) and add_receptor.get('@calle', '')"/>
-                                        <span t-esc="add_receptor.get('@noExterior', False) and 'No. Ext. %s, '%(add_receptor.get('@noExterior', ''))"/>
-                                        <span t-esc="add_receptor.get('@noInterior', False) and 'No. Int.%s, '%(add_receptor.get('@noInterior', ''))"/>
+                                        <span t-esc="add_receptor.get('@calle', '')"/>
+                                        <span t-esc="add_receptor.get('@noExterior', '')"/>
+                                        <span t-esc="add_receptor.get('@noInterior', '')"/>
                                         <br/>
-                                        <span t-esc="add_receptor.get('@colonia', False) and '%s, '%(add_receptor.get('@colonia', ''))"/>
-                                        <span t-esc="add_receptor.get('@codigoPostal', False) and 'CP. %s, '%(add_receptor.get('@codigoPostal', ''))"/>
+                                        <span t-esc="add_receptor.get('@colonia', '')"/>
+                                        <span t-esc="add_receptor.get('@codigoPostal', '')"/>
                                         <br/>
-                                        <span t-esc="add_receptor.get('@localidad', False) and '%s, '%(add_receptor.get('@localidad', ''))"/>
+                                        <span t-esc="add_receptor.get('@localidad', '')"/>
                                         <br/>
-                                        <span t-esc="add_receptor.get('@municipio', False) and '%s, '%(add_receptor.get('@municipio', ''))"/>
-                                        <span t-esc="add_receptor.get('@estado', False) and '%s, '%(add_receptor.get('@estado', ''))"/>
-                                        <span t-esc="add_receptor.get('@pais', False) and add_receptor.get('@pais', '')"/>
+                                        <span t-esc="add_receptor.get('@municipio', '')"/>
+                                        <span t-esc="add_receptor.get('@estado', '')"/>
+                                        <span t-esc="add_receptor.get('@pais', '')"/>
                                     </div>
                                     <br/>
                                     <div>
-                                        <strong><span t-esc="'RFC. %s' % (dict_data.get('Receptor', False) and dict_data.get('Receptor').get('@rfc', ''))"/></strong>
+                                        <strong t-esc="'RFC. %s' % (dict_data.get('Receptor', False) and dict_data.get('Receptor').get('@rfc', ''))"/>
                                     </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-4" style="padding-right: 0.0em; padding-left: 0.2em;">
+                                <div class="text-right" style="border-bottom-right-radius: 0.4em; border-bottom-left-radius: 0.4em; border: 2px solid #deeff5; padding-top: 0.0em;">
+                                    <t t-set="address" t-value="dict_data.get('Emisor', {}).get('ExpedidoEn', {}) or {}"></t>
+                                    <div>
+                                        <strong t-esc="dict_data.get('Emisor', '') and dict_data.get('Emisor').get('@nombre', '') or ''"/>
+                                    </div>
+                                    <div>
+                                        <span t-esc="address.get('@calle', '')"/>
+                                        <span t-esc="address.get('@noExterior', '')"/>
+                                        <span t-esc="address.get('@noInterior', '')"/>
+                                        <br/>
+                                        <span t-esc="address.get('@colonia', '')"/>
+                                        <span t-esc="address.get('@codigoPostal', '')"/>
+                                        <br/>
+                                        <span t-esc="address.get('@localidad', '')"/>
+                                        <br/>
+                                        <span t-esc="address.get('@municipio', '')"/>
+                                        <span t-esc="address.get('@estado', '')"/>
+                                        <span t-esc="address.get('@pais', '')"/>
+                                    </div>
+                                    <br/>
+                                    <br/>
                                 </div>
                             </div>
                         </div>
@@ -160,10 +194,10 @@
                         <div class="col-xs-1 text-center bg-primary">
                             <span>Unit</span>
                         </div>
-                        <div class="col-xs-7 text-center bg-primary">
+                        <div class="col-xs-6 text-center bg-primary">
                             <span>Description</span>
                         </div>
-                        <div class="col-xs-1 text-center bg-primary">
+                        <div class="col-xs-2 text-center bg-primary">
                             <span>Unit Price</span>
                         </div>
                         <div class="col-xs-2 text-center bg-primary">
@@ -180,8 +214,25 @@
                                 <tr class="text-center">
                                     <td class="col-xs-1 text-right"><span t-esc="formatLang(float(dict_lines[dicto].get('@cantidad', '0.0')),digits=0, grouping=True)"></span></td>
                                     <td class="col-xs-1 text-left"><span t-esc="dict_lines[dicto].get('@unidad', '0.0')"></span></td>
-                                    <td class="col-xs-7 text-left"><span t-esc="dict_lines[dicto].get('@descripcion', '0.0')"></span></td>
-                                    <td class="col-xs-1 text-right"><span t-esc="formatLang(float(dict_lines[dicto].get('@valorUnitario', '0.0')),digits=4, grouping=True)"></span></td>
+                                    <td class="col-xs-6 text-left">
+                                        <span t-esc="dict_lines[dicto].get('@descripcion', '0.0')"></span>
+                                        <!-- FIXME: I'm doing a workaround here using InformacionAduanera OR cfdi:InformacionAduanera because when
+                                        the invoice have many lines the "cfdi:" prefix of the InformacionAduanera element is not being removed -->
+                                        <t t-set="customs_info" t-value="dict_lines[dicto].get('InformacionAduanera', []) or dict_lines[dicto].get('cfdi:InformacionAduanera', [])"/>
+                                        <t t-if="not isinstance(customs_info, list)">
+                                            <t t-set="customs_info" t-value="[customs_info]"/>
+                                        </t>
+                                        <t t-foreach="range(0,len(customs_info))" t-as="numcus">
+                                            <br/>
+                                            <i>Customs</i>:
+                                            <span t-esc="customs_info[numcus].get('@aduana', '')"/>
+                                            / <i>Customs Date</i>:
+                                            <span t-esc="customs_info[numcus].get('@fecha', '')"/>
+                                            / <i>Pedimento</i>:
+                                            <span t-esc="customs_info[numcus].get('@numero', '')"/>
+                                        </t>
+                                    </td>
+                                    <td class="col-xs-2 text-right"><span t-esc="formatLang(float(dict_lines[dicto].get('@valorUnitario', '0.0')),digits=4, grouping=True)"></span></td>
                                     <td class="col-xs-2 text-right"><span t-esc="formatLang(float(dict_lines[dicto].get('@importe', '0.0')),digits=2, grouping=True)"></span></td>
                                 </tr>
                             </t>
@@ -260,15 +311,46 @@
                             <span t-esc="_('PAGO EN UNA SOLA EXHIBICIÓN - EFECTOS FISCALES AL PAGO')"/>
                         </div>
                         <div class="col-xs-12">
-                            <t t-if="dict_context_extra_data.get('payment_term', '')">
-                                <strong>Terms and Conditions:</strong><span t-esc="dict_context_extra_data.get('payment_term', '')"/>
-                            </t>
+                            <p class="text-center">Deadline for returns of 15 calendar days from delivery. Product must be presented in original packaging. Warranties: American 1 year parts and 5 years compressor equipment. Asia 1 year parts and compressor equipment. Does not apply to equipment with power failures or burns.</p>
                             <t t-if="dict_context_extra_data.get('comment', '')">
-                                <strong>Additional Comments:</strong><span t-esc="dict_context_extra_data.get('comment', '')"/>
+                                <p><strong>Notes</strong>: <span t-esc="dict_context_extra_data.get('comment', '')"/></p>
                             </t>
                         </div>
-                        <div class="col-xs-12">
-                            <span t-esc="get_text_promissory(o.model_source, o.id_source)"/>
+                    </div>
+                    <div class="row" style="padding-top: 0.5em; font-size: 12;">
+                        <div class="col-xs-4" style="padding-left: 0.0em; padding-right: 0.2em;">
+                            <div class="text-center bg-primary" style="border-top-right-radius: 0.4em; border-top-left-radius: 0.4em; padding-top: 0.0em;">
+                                <span>Fiscal Folio</span>
+                            </div>
+                        </div>
+                        <div class="col-xs-4" style="padding-right: 0.2em; padding-left: 0.2em;">
+                            <div class="text-center bg-primary" style="border-top-right-radius: 0.4em; border-top-left-radius: 0.4em; padding-top: 0.0em;">
+                                <span>Account Last 4 Numbers</span>
+                            </div>
+                        </div>
+                        <div class="col-xs-4" style="padding-right: 0.0em; padding-left: 0.2em;">
+                            <div class="text-center bg-primary" style="border-top-right-radius: 0.4em; border-top-left-radius: 0.4em; padding-top: 0.0em;">
+                                <span>Issuer Certificate</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div>
+                            <div class="col-xs-4" style="padding-left: 0.0em; padding-right: 0.2em;">
+                                <div class="text-center" style="border-bottom-right-radius: 0.4em; border-bottom-left-radius: 0.4em; border: 2px solid #deeff5; padding-top: 0.0em; font-size: 10;">
+                                    <span t-esc="dict_data.get('Complemento', {}).get('TimbreFiscalDigital').get('@UUID', 'No identificado')"/>
+                                </div>
+                            </div>
+                            <div class="col-xs-4" style="padding-right: 0.2em; padding-left: 0.2em;">
+                                <div class="text-center" style="border-bottom-right-radius: 0.4em; border-bottom-left-radius: 0.4em; border: 2px solid #deeff5; padding-top: 0.0em; font-size: 10;">
+                                    <span t-esc="dict_data.get('@NumCtaPago', '')"/>
+                                </div>
+                            </div>
+                            <div class="col-xs-4" style="padding-right: 0.0em; padding-left: 0.2em;">
+                                <div class="text-center" style="border-bottom-right-radius: 0.4em; border-bottom-left-radius: 0.4em; border: 2px solid #deeff5; padding-top: 0.0em; font-size: 10;">
+                                    <span t-esc="dict_data.get('@noCertificado', 'No identificado')"/>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="row" style="padding-top: 0.5em; font-size: 12;">
@@ -293,45 +375,20 @@
                     <div class="row">
                         <div>
                             <div class="col-xs-4" style="padding-left: 0.0em; padding-right: 0.2em;">
-                                <div class="text-center" style="border-bottom-right-radius: 0.4em; border-bottom-left-radius: 0.4em; border: 2px solid #deeff5; padding-top: 0.0em;">
+                                <div class="text-center" style="border-bottom-right-radius: 0.4em; border-bottom-left-radius: 0.4em; border: 2px solid #deeff5; padding-top: 0.0em; font-size: 10;">
                                     <span t-esc="dict_data.get('@metodoDePago', 'No identificado')"/>
+                                    <span t-esc="invoice_obj.pay_method_id.name"/>
                                 </div>
                             </div>
                             <div class="col-xs-4" style="padding-left: 0.2em; padding-right: 0.2em;">
-                                <div class="text-center" style="border-bottom-right-radius: 0.4em; border-bottom-left-radius: 0.4em; border: 2px solid #deeff5; padding-top: 0.0em;">
+                                <div class="text-center" style="border-bottom-right-radius: 0.4em; border-bottom-left-radius: 0.4em; border: 2px solid #deeff5; padding-top: 0.0em; font-size: 10;">
                                     <span t-esc="'%s' % dict_data.get('Complemento', {}).get('TimbreFiscalDigital', {}).get('@FechaTimbrado', False) and datetime.strptime(dict_data.get('Complemento', {}).get('TimbreFiscalDigital', {}).get('@FechaTimbrado').encode('ascii','replace'), '%Y-%m-%dT%H:%M:%S').strftime('%d/%m/%Y %H:%M:%S') or 'No identificado'"/>
                                 </div>
                             </div>
                             <div class="col-xs-4" style="padding-left: 0.2em; padding-right: 0.0em;">
-                                <div class="text-center" style="border-bottom-right-radius: 0.4em; border-bottom-left-radius: 0.4em; border: 2px solid #deeff5; padding-top: 0.0em;">
+                                <div class="text-center" style="border-bottom-right-radius: 0.4em; border-bottom-left-radius: 0.4em; border: 2px solid #deeff5; padding-top: 0.0em; font-size: 10;">
                                     <span t-esc="dict_data.get('Complemento', empty_dict).get('TimbreFiscalDigital', empty_dict).get('@noCertificadoSAT', 'No identificado')"/>
                                 </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row" style="padding-top: 0.5em;">
-                        <div class="col-xs-12 img-rounded" style="border: 2px solid #deeff5; padding-left: 0.0em; padding-right: 0.0em;">
-                            <div class="text-center bg-primary" style="border-top-right-radius: 0.4em; border-top-left-radius: 0.4em; padding-top: 0.0em; font-size: 12;">
-                                <span>Place, date and time of issue</span>
-                            </div>
-                            <div class="text-center" style="font-size: 7pt;">
-                                <t t-set="address" t-value="dict_data.get('Emisor', {}).get('ExpedidoEn', {}) or {}"></t>
-                                <span t-esc="dict_data.get('Emisor', '') and dict_data.get('Emisor').get('@nombre', '') or ''"/>
-                                <br/>
-                                <span t-esc="address.get('@calle', '')"/>
-                                <span t-esc="address.get('@noExterior', '')"/>
-                                <span t-esc="address.get('@noInterior', '')"/>
-                                <br/>
-                                <span t-esc="address.get('@colonia', '')"/>
-                                <span t-esc="_('ZIP')"/><span t-esc="address.get('@codigoPostal', '')"/>
-                                <br/>
-                                <span t-esc="_('Locality')"/><span t-esc="address.get('@localidad', '')"/>
-                                <br/>
-                                <span t-esc="address.get('@municipio', '')"/>
-                                <span t-esc="address.get('@estado', '')"/>
-                                <span t-esc="address.get('@pais', '')"/>
-                                <br/>
-                                <span t-esc="dict_data.get('@fecha', False) and datetime.strptime(dict_data.get('@fecha').encode('ascii','replace'), '%Y-%m-%dT%H:%M:%S').strftime('%d/%m/%Y %H:%M:%S') or ''"/>
                             </div>
                         </div>
                     </div>
@@ -339,32 +396,28 @@
                         <div class="col-xs-12 img-rounded" style="page-break-inside:avoid; border: 2px solid #deeff5;">
                             <div class="col-xs-3" style="float:left; padding-top: 0.3em; padding-bottom: 0.3em;">
                                 <t t-set="img" t-value="create_qrcode(dict_data.get('Emisor', {}).get('@rfc', ''), dict_data.get('Receptor', {}).get('@rfc', ''), float(dict_data.get('@total', '').encode('ascii','replace')), dict_data.get('Complemento', {}).get('TimbreFiscalDigital', {}).get('@UUID', ''))"/>
-                                <img t-if="img" t-att-src="'data:image/png;base64,%s' % img" style="max-height: 180; max-width: 180;"/>
+                                <img t-if="img" t-att-src="'data:image/png;base64,%s' % img" style="max-height: 150; max-width: 150;"/>
                             </div>
                             <div class="col-xs-9" style="font-size:8px">
                                 <br/>
                                 <div style="padding-top: 0.3em; padding-bottom: 0.3em;">
                                     <strong>Digital Stamp Issuer</strong>
-                                </div>
-                                <div style="padding-top: 0.3em; padding-bottom: 0.3em;">
+                                    <br/>
                                     <span t-esc="split_string( dict_data.get('@sello', ''))"/>
                                 </div>
                                 <div style="padding-top: 0.3em; padding-bottom: 0.3em;">
                                     <strong>Digital Stamp SAT</strong>
-                                </div>
-                                <div style="padding-top: 0.3em; padding-bottom: 0.3em;">
+                                    <br/>
                                     <span t-esc="split_string( dict_data.get('Complemento', empty_dict).get('TimbreFiscalDigital', empty_dict).get('@selloSAT', ''))"/>
                                 </div>
                                 <div style="padding-top: 0.3em; padding-bottom: 0.3em;">
                                     <strong>Original String</strong>
-                                </div>
-                                <div style="padding-top: 0.3em; padding-bottom: 0.3em;">
+                                    <br/>
                                     <span t-esc="split_string( o.cfdi_cadena_original ) or ''"/>
                                 </div>
                                 <div style="padding-top: 0.3em; padding-bottom: 0.3em;">
                                     <strong>Certificate Link</strong>
-                                </div>
-                                <div style="padding-top: 0.3em; padding-bottom: 0.3em;">
+                                    <br/>
                                     <span t-esc="split_string( o.certificate_link) or ''"/>
                                 </div>
                             </div>

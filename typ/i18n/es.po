@@ -1,13 +1,13 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
-#    * typ
+#	* typ
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 8.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-09-07 01:06+0000\n"
-"PO-Revision-Date: 2016-09-07 01:06+0000\n"
+"POT-Creation-Date: 2016-11-04 20:03+0000\n"
+"PO-Revision-Date: 2016-11-04 20:03+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -17,13 +17,13 @@ msgstr ""
 
 #. module: typ
 #: view:website:typ.report_electronic_invoice_document
-msgid "Additional Comments:"
-msgstr "Comentarios Adicionales:"
+msgid "Account Last 4 Numbers"
+msgstr "Últimos 4 Números de la Cuenta"
 
 #. module: typ
 #: view:website:typ.report_electronic_invoice_document
 msgid "Amount"
-msgstr "Monto"
+msgstr "Importe"
 
 #. module: typ
 #: view:website:typ.report_electronic_invoice_document
@@ -37,6 +37,11 @@ msgstr "Link del Certificado"
 
 #. module: typ
 #: view:website:typ.report_electronic_invoice_document
+msgid "Client Reference"
+msgstr "Referencia del Cliente"
+
+#. module: typ
+#: view:website:typ.report_electronic_invoice_document
 msgid "Credit note"
 msgstr "Nota de crédito"
 
@@ -47,8 +52,23 @@ msgstr "Cliente"
 
 #. module: typ
 #: view:website:typ.report_electronic_invoice_document
+msgid "Customs"
+msgstr "Aduana"
+
+#. module: typ
+#: view:website:typ.report_electronic_invoice_document
+msgid "Customs Date"
+msgstr "Fecha de Aduana"
+
+#. module: typ
+#: view:website:typ.report_electronic_invoice_document
 msgid "Date Stamp"
 msgstr "Fecha de Timbrado"
+
+#. module: typ
+#: view:website:typ.report_electronic_invoice_document
+msgid "Deadline for returns of 15 calendar days from delivery. Product must be presented in original packaging. Warranties: American 1 year parts and 5 years compressor equipment. Asia 1 year parts and compressor equipment. Does not apply to equipment with power failures or burns."
+msgstr "Plazo para devoluciones de 15 días naturales a partir de la entrega. Es necesario presentar producto en empaque original. Garantías: Equipo americano 1 año en partes y 5 años en compresor. Equipo asiático 1 año en partes y compresor. No aplica en equipo con fallas eléctricas ni quemaduras."
 
 #. module: typ
 #: view:website:typ.report_electronic_invoice_document
@@ -107,6 +127,11 @@ msgstr "Factura:"
 
 #. module: typ
 #: view:website:typ.report_electronic_invoice_document
+msgid "Issued at"
+msgstr "Expedido en"
+
+#. module: typ
+#: view:website:typ.report_electronic_invoice_document
 msgid "Issuer"
 msgstr "Emisor"
 
@@ -119,6 +144,11 @@ msgstr "Certificado del Emisor"
 #: field:report.account.invoice.qweb.report,__last_update:0
 msgid "Last Modified on"
 msgstr "Última modificación en"
+
+#. module: typ
+#: view:website:typ.report_electronic_invoice_document
+msgid "Notes"
+msgstr "Notas"
 
 #. module: typ
 #: view:website:typ.report_electronic_invoice_document
@@ -137,8 +167,8 @@ msgstr "Nómina"
 
 #. module: typ
 #: view:website:typ.report_electronic_invoice_document
-msgid "Place, date and time of issue"
-msgstr "Lugar, fecha y hora de emisión"
+msgid "Pedimento"
+msgstr "Pedimento"
 
 #. module: typ
 #: view:website:typ.report_electronic_invoice_document
@@ -157,8 +187,13 @@ msgstr "Sub Total"
 
 #. module: typ
 #: view:website:typ.report_electronic_invoice_document
-msgid "Terms and Conditions:"
-msgstr "Condición de pago:"
+msgid "This document is a printed representation of a CFDI"
+msgstr "Este documento es una representación impresa de un CFDI"
+
+#. module: typ
+#: view:website:typ.report_electronic_invoice_document
+msgid "Type Payment Term"
+msgstr "Tipo de Plazo de Pago"
 
 #. module: typ
 #: view:website:typ.report_electronic_invoice_document
@@ -168,11 +203,10 @@ msgstr "Unidad"
 #. module: typ
 #: view:website:typ.report_electronic_invoice_document
 msgid "Unit Price"
-msgstr "Precio U"
+msgstr "Precio Unidad"
 
 #. module: typ
 #: view:website:typ.report_electronic_invoice_document
 msgid "WITHOUT FOLIO OR INVALID STATUS"
 msgstr "SIN FOLIO O ESTATUS NO VALIDO"
-
 
