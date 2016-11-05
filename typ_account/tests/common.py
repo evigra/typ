@@ -11,15 +11,15 @@ class TestTypAccount(common.TransactionCase):
         self.account_invoice = self.env['account.invoice']
         self.sale_order = self.env['sale.order']
         self.product = self.env.ref('product.product_product_6')
-        self.partner = self.env.ref('typ_account.partner_01')
-        self.warehouse = self.env.ref('typ_account.wh_01')
-        self.sale_team = self.env.ref('typ_account.sale_team_01')
+        self.partner = self.env.ref('typ_sale.partner_01')
+        self.warehouse = self.env.ref('typ_sale.wh_01')
+        self.sale_team = self.env.ref('typ_sale.sale_team_01')
         self.journal = self.env.ref("account.sales_journal")
         self.journal_bank = self.env.ref("account.bank_journal")
         self.account = self.env.ref("account.a_recv")
         self.payment_term_credit = self.env.ref(
             'payment_term_type.payment_term_credit')
-        self.conf_warehouse = self.env.ref('typ_account.res_partner_wh_01')
+        self.conf_warehouse = self.env.ref('typ_sale.res_partner_wh_01')
         self.acc_bank_stmt_model = self.env['account.bank.statement']
         self.acc_bank_stmt_line_model = self.env['account.bank.statement.line']
 

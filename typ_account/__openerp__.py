@@ -20,7 +20,7 @@
     'depends': [
         'partner_credit_limit',
         'account_voucher_tax',
-        'default_warehouse_from_sale_team',
+        'typ_sale',
     ],
     # always loaded
     'data': [
@@ -31,7 +31,6 @@
     ],
     # only loaded in demonstration mode
     'demo': [
-        'demo/configuration_warehouse.xml',
     ],
     'installable': True,
 }

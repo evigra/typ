@@ -9,6 +9,8 @@
 
     'depends': [
         'sale_stock',
+        'typ_stock',
+        'default_warehouse_from_sale_team',
     ],
 
     'data': [
@@ -22,5 +24,6 @@
         'views/account_invoice_view.xml',
     ],
     'demo': [
+        'demo/sale_data_demo.xml',
     ],
 }
