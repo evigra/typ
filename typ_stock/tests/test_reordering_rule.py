@@ -21,6 +21,7 @@ class TestReorderingRule(TestTypStock):
         self.env.cr.autocommit(False)
         self.demo_user = self.env.ref('base.user_demo')
         self.warehouse_id = self.env.ref('typ_stock.whr_test_03')
+        self.warehouse_id4 = self.env.ref('typ_stock.whr_test_04')
         self.yourcompany_id = self.env.ref('stock.warehouse0')
         self.product_id = self.env.ref('typ_stock.product_test_01')
 
@@ -34,14 +35,26 @@ class TestReorderingRule(TestTypStock):
         self.procurement_rule = self.env['procurement.rule']
         self.stock_route = self.env['stock.location.route']
         self.wh_op = self.env.ref('typ_stock.stock_warehouse_orderpoint_1')
+        self.wh_op4 = self.env.ref('typ_stock.stock_warehouse_orderpoint_2')
 
-    def write_data(self):
+        self.importance = "aa"
+        self.thread_excl = [thr.name for thr in threading.enumerate()]
+
+    def get_threads(self):
+        return [thread for thread in threading.enumerate()
+                if thread.name.startswith('Thread-') and
+                thread.name not in self.thread_excl]
+
+    def write_data(self, procurement_data=None):
         """Save data for that the cursor used in threads of
         test read the changes"""
         self.old_values = {
             self.warehouse_id: (
                 'resupply_wh_ids', self.warehouse_id.resupply_wh_ids),
+            self.warehouse_id4: (
+                'resupply_wh_ids', self.warehouse_id4.resupply_wh_ids),
             self.wh_op: ('location_id', self.wh_op.location_id),
+            self.wh_op4: ('location_id', self.wh_op4.location_id),
             self.product_id: ('route_ids', self.product_id.route_ids),
         }
         with openerp.api.Environment.manage():
@@ -51,14 +64,26 @@ class TestReorderingRule(TestTypStock):
                 # to reordering rule
                 self.warehouse_id.with_env(newenv).write({
                     'resupply_wh_ids': [(6, 0, [self.yourcompany_id.id])]})
+                self.warehouse_id4.with_env(newenv).write({
+                    'resupply_wh_ids': [(6, 0, [self.yourcompany_id.id])]})
                 self.wh_op.with_env(newenv).write({
                     'location_id': self.warehouse_id.lot_stock_id.id})
+                self.wh_op4.with_env(newenv).write({
+                    'location_id': self.warehouse_id4.lot_stock_id.id})
                 # Assign location route to product
                 stock_lot = self.stock_route.with_env(newenv).search([
                     ('supplied_wh_id', '=', self.warehouse_id.id)], limit=1)
+                stock_lot4 = self.stock_route.with_env(newenv).search([
+                    ('supplied_wh_id', '=', self.warehouse_id4.id)], limit=1)
                 self.product_id.with_env(newenv).write({
-                    'route_ids': [(6, 0, stock_lot.ids)]})
+                    'route_ids': [(6, 0, stock_lot.ids + stock_lot4.ids)]})
                 newenv.cr.commit()
+                if procurement_data is not None:
+                    sched_id = self.sched.create(procurement_data)
+                    sched_id.procure_calculation()
+                    for thread in self.get_threads():
+                        thread.run()
+                    return sched_id.id
 
     def debug_info(self):
         """ This method is used to print both warehouse, product, procurement
@@ -118,24 +143,42 @@ class TestReorderingRule(TestTypStock):
 
     # Methods of test
     def test_10_validate_yourcompany_supply_tw3(self):
-        """Validate scheduler to testwarehouse 3
-        """
-        self.write_data()
-        sched_id = self.sched.create(
-            {'warehouse_id': self.warehouse_id.id})
-        sched_id.procure_calculation()
-        for thread in threading.enumerate():
-            if thread.name.startswith('Thread-'):
-                thread.run()
-        proc = self.proc.search([
-            ('warehouse_id', '=', self.warehouse_id.id),
-            ('product_id', '=', self.product_id.id)], limit=1)
+        """Validate scheduler to testwarehouse 3"""
+        dom = [('warehouse_id', '=', self.warehouse_id.id),
+               ('product_id', '=', self.product_id.id)]
+        self.reset_data(dom)
+        self.write_data({'warehouse_id': self.warehouse_id.id})
+        proc = self.proc.search(dom, limit=1)
         self.assertEqual(proc.state, 'running', self.debug_info())
 
+    def test_20_validate_importance_supply_tw3(self):
+        """Validate the wizard supply only orderpoint like importance selected
+        """
+        dom = [('product_id', '=', self.product_id.id),
+               ('warehouse_id', '=', self.warehouse_id4.id)]
+        self.reset_data(dom)
+        self.write_data({'importance': self.importance})
+        procurement = self.proc.search(dom, limit=1)
+        order_rule = self.order_rule.search([
+            ('product_id', '=', self.product_id.id),
+            ('importance', '=', self.importance),
+            ('warehouse_id', '=', self.warehouse_id4.id)])
+        self.assertEqual(procurement.state, 'running')
+        self.assertEqual(order_rule.name, procurement.name)
+        self.assertEqual(order_rule.id, procurement.orderpoint_id.id)
+
+    def reset_data(self, domain):
+        with openerp.api.Environment.manage():
+            with openerp.registry(self.env.cr.dbname).cursor() as newcr:
+                newenv = api.Environment(newcr, self.env.uid, self.env.context)
+                olds = self.proc.with_env(newenv).search(domain)
+                olds.cancel()
+                olds.unlink()
+                newenv.cr.commit()
+
     def tearDown(self):
-        for thread in threading.enumerate():
-            if thread.name.startswith('Thread-'):
-                thread._Thread__target = True
-                thread._Thread__args = True
-                thread._Thread__kwargs = True
+        for thread in self.get_threads():
+            thread._Thread__target = True
+            thread._Thread__args = True
+            thread._Thread__kwargs = True
         super(TestReorderingRule, self).tearDown()
