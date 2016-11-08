@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="account_account_action" model="ir.actions.server">
+            <field name="name">Account Parent Store Compute</field>
+            <field name="model_id" ref="account.model_account_account"/>
+            <field name="code">
+                self._parent_store_compute(cr)
+            </field>
+        </record>
+        <record id="stock_location_action" model="ir.actions.server">
+            <field name="name">Stock Location Parent Store Compute</field>
+            <field name="model_id" ref="stock.model_stock_location"/>
+            <field name="code">
+                self._parent_store_compute(cr)
+            </field>
+        </record>
+    </data>
+</openerp>
