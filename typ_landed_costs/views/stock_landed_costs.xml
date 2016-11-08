@@ -72,6 +72,7 @@
             <field name="arch" type="xml">
                 <tree string="Guide">
                     <field name="name"/>
+                    <field name="reference"/>
                     <field name="partner_id"/>
                     <field name="warehouse_id"/>
                     <field name="invoice_id"/>
@@ -79,7 +80,6 @@
                     <field name="landed_cost_id"/>
                     <field name="amount_total"/>
                     <field name="state"/>
-                    <field name="reference"/>
                 </tree>
             </field>
         </record>
