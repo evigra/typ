@@ -15,6 +15,12 @@ msgstr ""
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: \n"
 
+# term added manually without deleting
+#. module: product_available_by_warehouse
+#: field:sale.order.line,show_message:0
+msgid "Show Message"
+msgstr "Consultar Existencias"
+
 #. module: typ_sale
 #: view:website:sale.report_saleorder_document
 msgid "1 year for parts and 5 years for compressor in American equipment. 1 year for parts and compressor for Asian equipment. Does not apply to equipment with power failures or burns."
