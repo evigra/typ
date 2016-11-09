@@ -7,6 +7,7 @@ import openerp.addons.decimal_precision as dp
 
 class StockLandedGuides (models.Model):
     _name = 'stock.landed.cost.guide'
+
     name = fields.Char(
         required=True,
         help='Name to identify the guide',

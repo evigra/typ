@@ -1,0 +1,37 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* typ_default_warehouse_from_sale_team
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 8.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2016-11-06 05:39+0000\n"
+"PO-Revision-Date: 2016-11-06 05:39+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: typ_default_warehouse_from_sale_team
+#: help:crm.case.section,journal_guide_id:0
+msgid "It indicates journal to be used when landed cost guide is created"
+msgstr "Diario que debe ser usado cuando una Guía de costo en destino es creada"
+
+#. module: typ_default_warehouse_from_sale_team
+#: help:crm.case.section,journal_landed_id:0
+msgid "It indicates journal to be used when landed cost is created"
+msgstr "Diario que debe ser usado cuando un Costo en destino es creado"
+
+#. module: typ_default_warehouse_from_sale_team
+#: field:crm.case.section,journal_landed_id:0
+msgid "Journal landed cost"
+msgstr "Diario de costo en destino"
+
+#. module: typ_default_warehouse_from_sale_team
+#: field:crm.case.section,journal_guide_id:0
+msgid "Journal landed cost guide"
+msgstr "Diario de guía de costo en destino"
+
