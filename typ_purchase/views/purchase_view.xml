@@ -56,6 +56,9 @@
                 <xpath expr="//field[@name='order_line']/tree/field[@name='date_planned']" position="before">
                     <field name="shipment_date"/>
                 </xpath>
+                <xpath expr="//field[@name='origin']" position="attributes">
+                    <attribute name="attrs">[]</attribute>
+                </xpath>
             </field>
         </record>
 
