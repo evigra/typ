@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 8.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-10-28 20:41+0000\n"
-"PO-Revision-Date: 2016-10-28 20:41+0000\n"
+"POT-Creation-Date: 2016-11-09 22:24+0000\n"
+"PO-Revision-Date: 2016-11-09 22:24+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -16,18 +16,212 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. module: typ_purchase
-#: model:res.groups,name:typ_purchase.group_purchase_budget_manager
-msgid "Purchase Budget Manager"
-msgstr "Presupuesto en Compras / Administrador"
+#: field:purchase.order,broker_id:0
+msgid "Broker"
+msgstr "Agente aduanal"
 
 #. module: typ_purchase
-#: model:res.groups,comment:typ_purchase.group_purchase_budget_manager
-msgid "This group is for Managers of Budget.\n"
-"\n"
-"They can:\n"
-"- Make budget requests."
-msgstr "Este grupo es para la administración de solicitudes de presupuesto.\n"
-"\n"
-"Ellos pueden:\n"
-"- Realizar solitudes de presupuesto."
+#: help:purchase.order,broker_id:0
+msgid "Broker for imported products"
+msgstr "Agente aduanal para productos importados"
 
+#. module: typ_purchase
+#: view:purchase.order:typ_purchase.view_buyer_purchase_order_filter
+#: field:purchase.order,buyer:0
+msgid "Buyer"
+msgstr "Comprador"
+
+#. module: typ_purchase
+#: view:website:typ_purchase.external_layout_footer
+msgid "Contact"
+msgstr "Contacto"
+
+#. module: typ_purchase
+#: view:website:purchase.report_purchaseorder_document
+msgid "Created on:"
+msgstr "Creado en:"
+
+#. module: typ_purchase
+#: view:website:purchase.report_purchaseorder_document
+msgid "Currency:"
+msgstr "Moneda:"
+
+#. module: typ_purchase
+#: view:website:purchase.report_purchasequotation_document
+msgid "Description"
+msgstr "Descripción"
+
+#. module: typ_purchase
+#: view:website:typ_purchase.external_layout_footer
+msgid "Email"
+msgstr "Email"
+
+#. module: typ_purchase
+#: view:website:purchase.report_purchasequotation_document
+msgid "Expected Date"
+msgstr "Fecha prevista"
+
+#. module: typ_purchase
+#: view:website:purchase.report_purchaseorder_document
+msgid "Invoice address:"
+msgstr "Dirección de facturación:"
+
+#. module: typ_purchase
+#: view:website:purchase.report_purchaseorder_document
+msgid "Net Price"
+msgstr "Precio Neto"
+
+#. module: typ_purchase
+#: view:website:purchase.report_purchaseorder_document
+msgid "Notes:"
+msgstr "Notas:"
+
+#. module: typ_purchase
+#: field:purchase.order,shipment_date:0
+msgid "Order shipment date"
+msgstr "Fecha de embarque del pedido"
+
+#. module: typ_purchase
+#: view:website:purchase.report_purchaseorder_document
+msgid "Our Order Reference:"
+msgstr "Nuestra Referencia de Pedido:"
+
+#. module: typ_purchase
+#: view:website:typ_purchase.external_layout_footer
+msgid "Page:"
+msgstr "Página:"
+
+#. module: typ_purchase
+#: view:website:purchase.report_purchaseorder_document
+#: view:website:purchase.report_purchasequotation_document
+msgid "Partner:"
+msgstr "Proveedor:"
+
+#. module: typ_purchase
+#: view:website:typ_purchase.external_layout_footer
+msgid "Phone"
+msgstr "Teléfono"
+
+#. module: typ_purchase
+#: view:website:purchase.report_purchaseorder_document
+msgid "Product Code"
+msgstr "Código de Producto"
+
+#. module: typ_purchase
+#: field:purchase.order.line,shipment_date:0
+msgid "Product shipment date"
+msgstr "Fecha de embarque del producto"
+
+#. module: typ_purchase
+#: view:website:purchase.report_purchaseorder_document
+msgid "Provider Code / Description"
+msgstr "Código de Proveedor / Descripción"
+
+#. module: typ_purchase
+#: model:ir.model,name:typ_purchase.model_purchase_order
+msgid "Purchase Order"
+msgstr "Pedido de Compra"
+
+#. module: typ_purchase
+#: model:ir.model,name:typ_purchase.model_purchase_order_line
+msgid "Purchase Order Line"
+msgstr "Línea del Pedido de Compra"
+
+#. module: typ_purchase
+#: view:website:purchase.report_purchaseorder_document
+msgid "Purchase Order N°"
+msgstr "Pedido de Compra N°"
+
+#. module: typ_purchase
+#: view:website:purchase.report_purchaseorder_document
+#: view:website:purchase.report_purchasequotation_document
+msgid "Quantity"
+msgstr "Cantidad"
+
+#. module: typ_purchase
+#: view:website:purchase.report_purchasequotation_document
+msgid "Regards,"
+msgstr "Saludos cordiales,"
+
+#. module: typ_purchase
+#: field:purchase.order,report_lang:0
+msgid "Report Language"
+msgstr "Lenguaje del Reporte"
+
+#. module: typ_purchase
+#: view:website:purchase.report_purchasequotation_document
+msgid "Request for Quotation"
+msgstr "Solicitud de Presupuesto"
+
+#. module: typ_purchase
+#: view:website:purchase.report_purchaseorder_document
+msgid "Shipment Date"
+msgstr "Fecha de Embarque"
+
+#. module: typ_purchase
+#: view:website:purchase.report_purchaseorder_document
+#: view:website:purchase.report_purchasequotation_document
+msgid "Shipping address:"
+msgstr "Dirección de envío:"
+
+#. module: typ_purchase
+#: view:purchase.order:typ_purchase.view_state_purchase_order_search_inherit
+msgid "State"
+msgstr "Estado"
+
+#. module: typ_purchase
+#: view:website:purchase.report_purchaseorder_document
+msgid "Subtotal"
+msgstr "Subtotal"
+
+#. module: typ_purchase
+#: view:website:purchase.report_purchaseorder_document
+msgid "Taxes"
+msgstr "Impuestos"
+
+#. module: typ_purchase
+#: help:purchase.order,report_lang:0
+msgid "This field is automatically set from partner or broker language if exists"
+msgstr "Este campo es automáticamente configurado a partir del lenguaje del proveedor o el broker si existe"
+
+#. module: typ_purchase
+#: help:purchase.order,buyer:0
+msgid "This is the buyer in charge of the order's supplier"
+msgstr "Este es el comprador a cargo del proveedor de la orden"
+
+#. module: typ_purchase
+#: help:purchase.order,shipment_date:0
+msgid "This is used to indicate when products ships from supplier warehouse"
+msgstr "Se usa para indicar cuando los productos son enviados desde el almacén del proveedor"
+
+#. module: typ_purchase
+#: view:website:purchase.report_purchaseorder_document
+msgid "Total"
+msgstr "Total"
+
+#. module: typ_purchase
+#: view:purchase.order:typ_purchase.view_create_date_purchase_order_form
+msgid "True"
+msgstr "Verdadero"
+
+#. module: typ_purchase
+#: view:website:purchase.report_purchaseorder_document
+msgid "Unit Price"
+msgstr "Precio Unidad"
+
+#. module: typ_purchase
+#: view:website:purchase.report_purchaseorder_document
+#: view:website:purchase.report_purchasequotation_document
+#: view:website:typ_purchase.external_layout_header_with_address
+msgid "VAT"
+msgstr "RFC"
+
+#. module: typ_purchase
+#: view:website:purchase.report_purchaseorder_document
+msgid "Validated By:"
+msgstr "Validado por:"
+
+#. module: typ_purchase
+#: view:website:typ_purchase.external_layout_footer
+msgid "Website"
+msgstr "Sitio web"

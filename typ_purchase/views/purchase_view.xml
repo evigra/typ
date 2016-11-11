@@ -20,6 +20,9 @@
                 <xpath expr="//field[@name='picking_type_id']" position="attributes">
                     <attribute name="domain">[('code', '=', 'incoming'), ('default_location_src_id.usage', '=', 'supplier')]</attribute>
                 </xpath>
+                <field name="location_id" position="before">
+                    <field name="broker_id"/>
+                </field>
             </field>
         </record>
 

@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+<data>
+    <template id='typ_purchase.report_purchasequotation_document' inherit_id="purchase.report_purchasequotation_document">
+        <xpath expr="//t[@t-call='report.external_layout']" position="replace">
+            <t t-call="typ_purchase.external_layout_with_address">
+                <div class="page">
+                    <div class="row mt32 mb32" style="padding-top: 20px;">
+                        <div class="col-xs-6">
+                            <strong>Shipping address:</strong>
+                            <div t-if="o.broker_id">
+                                <div t-field="o.broker_id"
+                                    t-field-options='{"widget": "contact", "no_marker": true}'/>
+                            </div>
+                            <t t-if="not o.broker_id">
+                                <div t-if="o.dest_address_id">
+                                    <div t-field="o.dest_address_id"
+                                        t-field-options='{"widget": "contact", "no_marker": true}'/>
+                                </div>
+                                <div t-if="not o.dest_address_id and o.picking_type_id and o.picking_type_id.warehouse_id">
+                                    <span t-field="o.picking_type_id.warehouse_id.name"/>
+                                    <div t-field="o.picking_type_id.warehouse_id.partner_id"
+                                        t-field-options='{"widget": "contact", "no_marker": true}'/>
+                                </div>
+                            </t>
+                        </div>
+                        <div class="col-xs-5 col-xs-offset-1">
+                            <strong>Partner:</strong>
+                            <div t-field="o.partner_id"
+                                t-field-options='{"widget": "contact", "fields": ["address", "name", "phone", "fax"], "no_marker": true}'/>
+                            <p t-if="o.partner_id.vat"><span>VAT</span>: <span t-field="o.partner_id.vat_split"/></p>
+                        </div>
+                    </div>
+
+                    <h2>Request for Quotation <span t-field="o.name"/></h2>
+
+                    <table class="table table-condensed">
+                        <thead>
+                            <tr>
+                                <th><strong>Description</strong></th>
+                                <th class="text-center"><strong>Expected Date</strong></th>
+                                <th class="text-right"><strong>Quantity</strong></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr t-foreach="o.order_line" t-as="order_line">
+                                <td>
+                                    <span t-field="order_line.name"/>
+                                </td>
+                                <td class="text-center">
+                                    <span t-field="order_line.date_planned"/>
+                                </td>
+                                <td class="text-right">
+                                    <span t-field="order_line.product_qty"/>
+                                    <span t-field="order_line.product_uom" groups="product.group_uom"/>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <p t-field="o.notes"/>
+                    <span>Regards,</span>
+                    <br/>
+                    <span t-field="user.signature"/>
+                </div>
+            </t>
+        </xpath>
+    </template>
+
+    <template id="report_purchasequotation" inherit_id="purchase.report_purchasequotation">
+        <xpath expr="//t[@t-call='report.html_container']" position="replace">
+            <t t-call="report.html_container">
+                <t t-foreach="doc_ids" t-as="doc_id">
+                    <t t-raw="translate_doc(doc_id, doc_model, 'report_lang', 'purchase.report_purchasequotation_document')"/>
+                </t>
+            </t>
+        </xpath>
+    </template>
+</data>
+</openerp>
