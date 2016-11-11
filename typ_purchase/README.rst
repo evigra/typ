@@ -19,6 +19,10 @@ This module adding the follow functionalities.
 - The Buyer in charge of the order is available in the order's form via buyer field
 - Purchase Orders can be group by Buyer
 
+**Allow create purchase order separate with silimar characteristics**
+
+- Always create a new Purchase Orders when is from a Sale Order.
+
 Credits
 =======
 
