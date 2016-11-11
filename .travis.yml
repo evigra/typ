@@ -8,14 +8,11 @@ cache:
 
 addons:
   apt:
-    sources:
-      - pov-wkhtmltopdf
     packages:
       - expect-dev
       - python-lxml
       - python-simplejson
       - python-yaml
-      - wkhtmltopdf
       - swig  # Required for m2crypto
       - python-m2crypto
       - xmlstarlet
