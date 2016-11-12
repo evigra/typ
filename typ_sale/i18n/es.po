@@ -37,11 +37,6 @@ msgid "Availability:"
 msgstr "Disponibilidad:"
 
 #. module: typ_sale
-#: selection:sale.order,type_payment_term:0
-msgid "Cash"
-msgstr "Efectivo"
-
-#. module: typ_sale
 #: view:website:sale.report_saleorder_document
 msgid "Client:"
 msgstr "Cliente:"
@@ -259,6 +254,11 @@ msgstr "Vendedor"
 
 #. module: typ_sale
 #: selection:sale.order,type_payment_term:0
+msgid "Cash"
+msgstr "Contado"
+
+#. module: typ_sale
+#: selection:account.invoice,type_payment_term:0
 msgid "Cash"
 msgstr "Contado"
 
