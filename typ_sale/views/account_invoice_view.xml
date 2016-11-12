@@ -12,6 +12,7 @@
                 </xpath>
                 <xpath expr="//field[@name='payment_term']" position="attributes">
                     <attribute name="groups">typ_sale.group_sale_order_invoice_payment_term_manager</attribute>
+                    <attribute name="required">1</attribute>
                 </xpath>
             </field>
         </record>
