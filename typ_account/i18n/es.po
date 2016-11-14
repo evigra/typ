@@ -1,46 +1,128 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
-# 	* typ_partner_credit_limit
+#	* typ_account
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 8.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-09-06 16:50+0000\n"
-"PO-Revision-Date: 2016-09-06 12:52-0400\n"
+"POT-Creation-Date: 2016-11-14 14:30+0000\n"
+"PO-Revision-Date: 2016-11-14 14:30+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
+"Content-Transfer-Encoding: \n"
 "Plural-Forms: \n"
 
-#. module: typ_partner_credit_limit
-#: model:ir.model,name:typ_partner_credit_limit.model_account_invoice
-msgid "Invoice"
-msgstr "Factura"
-
-#. module: typ_partner_credit_limit
-#: model:ir.model,name:typ_partner_credit_limit.model_sale_order
-msgid "Sales Order"
-msgstr "Orden de venta"
-
-#. module: typ_partner_credit_limit
-#: code:addons/typ_partner_credit_limit/models/account_invoice.py:39
-#: code:addons/typ_partner_credit_limit/models/sale_order.py:19
+#. module: typ_account
+#: code:addons/typ_account/models/sale_order.py:35
 #, python-format
-msgid "The partner selected has the credit closed."
-msgstr "El cliente seleccionado no tiene límite de crédito."
+msgid " and credit overloaded"
+msgstr " y ha excedido el límite de crédito"
 
-#. module: typ_partner_credit_limit
-#: code:addons/typ_partner_credit_limit/models/account_invoice.py:38
-#: code:addons/typ_partner_credit_limit/models/sale_order.py:18
+#. module: typ_account
+#: code:addons/typ_account/models/account_invoice.py:79
 #, python-format
-msgid "Warning!"
-msgstr "Advertencia!"
+msgid " and has overdue invoices"
+msgstr " y tiene facturas vencidas"
+
+#. module: typ_account
+#: code:addons/typ_account/models/account_invoice.py:77
+#: code:addons/typ_account/models/sale_order.py:37
+#, python-format
+msgid "%s has credit overloaded"
+msgstr "%s ha excedido el límite de crédito"
+
+#. module: typ_account
+#: code:addons/typ_account/models/account_invoice.py:81
+#: code:addons/typ_account/models/sale_order.py:33
+#, python-format
+msgid "%s has overdue invoices"
+msgstr "%s tiene facturas vencidas"
+
+#. module: typ_account
+#: code:addons/typ_account/models/account_invoice.py:82
+#: code:addons/typ_account/models/sale_order.py:38
+#, python-format
+msgid ". Please request payment or sell cash!"
+msgstr ". Favor solicitar pago o vender de contado!"
+
+#. module: typ_account
+#: model:ir.model,name:typ_account.model_account_bank_statement_line
+msgid "Bank Statement Line"
+msgstr "Línea de extracto bancario"
+
+#. module: typ_account
+#: code:addons/typ_account/models/sale_order.py:64
+#, python-format
+msgid "Can not confirm the Sale Order because Partner has late payments or has exceeded the credit limit.\n"
+"Please cover the late payment or check credit limit\n"
+"Credit Limit : %s"
+msgstr "No se puede confirmar la Orden de Venta porque el Cliente tiene pagos atrasados o ha excedido el límite de crédito.\n"
+"Por favor solicitar pago o comprobar el límite de crédito\n"
+"Límite de Crédito : %s"
+
+#. module: typ_account
+#: code:addons/typ_account/models/account_invoice.py:46
+#, python-format
+msgid "Can not validate the Invoice because Partner has late payments or has exceeded the credit limit.\n"
+"Please cover the late payment or check credit limit\n"
+"Credit Limit : %s"
+msgstr "No se puede validar la Factura porque el Cliente tiene pagos atrasados o ha excedido el límite de crédito.\n"
+"Por favor solicitar pago o comprobar el límite de crédito\n"
+"Límite de Crédito : %s"
 
 #. module: typ_account
 #: model:account.payment.term,name:typ_account.typ_account_payment_term_immediate
 #: model:account.payment.term,note:typ_account.typ_account_payment_term_immediate
 msgid "Immediate Payment"
 msgstr "Pago Inmediato"
+
+#. module: typ_account
+#: model:ir.model,name:typ_account.model_account_invoice
+msgid "Invoice"
+msgstr "Factura"
+
+#. module: typ_account
+#: field:account.invoice,validation_date:0
+msgid "Invoice validation date"
+msgstr "Fecha de validación de la factura"
+
+#. module: typ_account
+#: model:ir.model,name:typ_account.model_res_partner
+msgid "Partner"
+msgstr "Empresa"
+
+#. module: typ_account
+#: model:ir.model,name:typ_account.model_sale_order
+msgid "Sales Order"
+msgstr "Pedido de venta"
+
+#. module: typ_account
+#: code:addons/typ_account/models/account_invoice.py:75
+#: code:addons/typ_account/models/sale_order.py:31
+#, python-format
+msgid "The partner "
+msgstr "El cliente "
+
+#. module: typ_account
+#: help:account.invoice,validation_date:0
+msgid "This date indicate when the invoice was validated"
+msgstr "Esta fecha indica cuándo se validó la factura"
+
+#. module: typ_account
+#: code:addons/typ_account/models/account_invoice.py:51
+#: code:addons/typ_account/models/account_invoice.py:84
+#: code:addons/typ_account/models/sale_order.py:40
+#: code:addons/typ_account/models/sale_order.py:68
+#, python-format
+msgid "Warning!"
+msgstr "Advertencia!"
+
+#. module: typ_account
+#: view:account.voucher:typ_account.view_account_voucher_lines_dr_payment_tax
+#: view:account.voucher:typ_account.view_account_voucher_lines_dr_tax
+msgid "bottom"
+msgstr "bottom"
+

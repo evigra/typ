@@ -45,7 +45,7 @@ class AccountInvoice(models.Model):
                 msg = _('Can not validate the Invoice because Partner '
                         'has late payments or has exceeded the credit limit.'
                         '\nPlease cover the late payment or check credit limit'
-                        '\nCreadit'
+                        '\nCredit'
                         ' Limit : %s') % (credit_limit)
                 raise exceptions.Warning(_('Warning!'), msg)
 
@@ -53,6 +53,7 @@ class AccountInvoice(models.Model):
     def get_partner_allowed_sale(self):
         """Show warning message if partner selected has no credit limit.
         """
+        res_partner = self.env['res.partner']
         res = self.onchange_partner_id(
             self.type, self.partner_id.id, self.date_invoice,
             self.payment_term.id, self.partner_bank_id.id, self.company_id.id)
@@ -61,13 +62,27 @@ class AccountInvoice(models.Model):
                 del res['value'][key]
         # Reasign values obtain in original onchange
         self.update(res['value'])
-        allowed_sale = self.env['res.partner'].with_context(
+        allowed_sale = res_partner.with_context(
             {'journal_id': self.journal_id.id}).browse(
                 self.partner_id.id).allowed_sale
         if self.partner_id and not allowed_sale:
+            credit_overloaded = res_partner.with_context(
+                {'journal_id': self.journal_id.id}).browse(
+                    self.partner_id.id).credit_overloaded
+            overdue_credit = res_partner.with_context(
+                {'journal_id': self.journal_id.id}).browse(
+                    self.partner_id.id).overdue_credit
+            msg = _('The partner ')
+            if credit_overloaded:
+                msg = msg + _('%s has credit overloaded')
+                if overdue_credit:
+                    msg = msg + _(' and has overdue invoices')
+            if overdue_credit:
+                msg = msg + _('%s has overdue invoices')
+            msg = msg + _('. Please request payment or sell cash!')
             warning = {
                 'title': _('Warning!'),
-                'message': _('The partner selected has the credit closed.'),
+                'message': ((msg) % self.partner_id.name),
             }
             res['warning'] = warning
         return res
