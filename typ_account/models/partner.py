@@ -59,10 +59,15 @@ class ResPartner(models.Model):
             credit = sum(move_lines.mapped('amount_residual')) or 0.0
             warehouse_config = partner.res_warehouse_ids.filtered(
                 lambda wh_conf: wh_conf.warehouse_id.id == current_warehouse)
-            credit_limit = warehouse_config.credit_limit if \
-                warehouse_config else partner.credit_limit
-            new_credit = credit + new_amount_currency
-            partner.credit_overloaded = new_credit > credit_limit
+            # If a warehouse configuration doesn't exist then it must assume
+            # that credit limit in this warehouse is cero and allowed
+            # only cash sales.
+            if not warehouse_config:
+                partner.credit_overloaded = True
+            else:
+                credit_limit = warehouse_config.credit_limit
+                new_credit = credit + new_amount_currency
+                partner.credit_overloaded = new_credit > credit_limit
 
     @api.multi
     def _get_overdue_credit(self):
