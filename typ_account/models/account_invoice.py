@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 
-from datetime import date
 from openerp import models, api, fields, _
 from openerp import exceptions
 
@@ -76,6 +75,6 @@ class AccountInvoice(models.Model):
     @api.model
     def invoice_validate(self):
         res = super(AccountInvoice, self).invoice_validate()
-        validation_date = date.today().strftime('%d-%m-%Y')
+        validation_date = fields.Date.context_today(self)
         self.write({'validation_date': validation_date})
         return res
