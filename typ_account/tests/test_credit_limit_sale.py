@@ -36,3 +36,15 @@ class TestCreditLimitSale(TestTypAccount):
         self.assertEqual(self.sale_order.state, 'draft')
         self.sale_order.signal_workflow("order_confirm")
         self.assertIn(self.sale_order.state, ('manual', 'progress'))
+
+    def test_30_credit_limit_sale_without_res_partner_warehouse_config(self):
+        """Sale order can`t be confirmed when doesn't exist a warehouse
+        configuration for a warehouse selected.
+        """
+        self.dict_vals_sale.update({'warehouse_id': self.warehouse_2.id})
+        warehouse_config = self.partner.res_warehouse_ids.filtered(
+            lambda wh_conf: wh_conf.warehouse_id == self.warehouse_2)
+        self.assertFalse(warehouse_config)
+        sale_order = self.sale_order.create(self.dict_vals_sale)
+        with self.assertRaises(exceptions.Warning):
+            sale_order.signal_workflow("order_confirm")

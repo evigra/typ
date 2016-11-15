@@ -13,6 +13,7 @@ class TestTypAccount(common.TransactionCase):
         self.product = self.env.ref('product.product_product_6')
         self.partner = self.env.ref('typ_sale.partner_01')
         self.warehouse = self.env.ref('typ_sale.wh_01')
+        self.warehouse_2 = self.env.ref('typ_stock.whr_test_01')
         self.sale_team = self.env.ref('typ_sale.sale_team_01')
         self.journal = self.env.ref("account.sales_journal")
         self.journal_bank = self.env.ref("account.bank_journal")
