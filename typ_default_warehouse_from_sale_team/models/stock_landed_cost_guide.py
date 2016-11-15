@@ -5,7 +5,6 @@ from openerp import api, fields, models
 
 class StockLandedCostGuides(models.Model):
 
-    _name = 'stock.landed.cost.guide'
     _inherit = 'stock.landed.cost.guide'
 
     @api.multi
