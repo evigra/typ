@@ -62,13 +62,14 @@ class AccountInvoice(models.Model):
                 del res['value'][key]
         # Reasign values obtain in original onchange
         self.update(res['value'])
-        allowed_sale = res_partner.with_context(
-            {'journal_id': self.journal_id.id}).browse(
-                self.partner_id.id).allowed_sale
+        ctx = {'new_amount': self.amount_total,
+               'new_currency': self.currency_id.id,
+               'journal_id': self.journal_id.id}
+        allowed_sale = res_partner.with_context(ctx).browse(
+            self.partner_id.id).allowed_sale
         if self.partner_id and not allowed_sale:
-            credit_overloaded = res_partner.with_context(
-                {'journal_id': self.journal_id.id}).browse(
-                    self.partner_id.id).credit_overloaded
+            credit_overloaded = res_partner.with_context(ctx).browse(
+                self.partner_id.id).credit_overloaded
             overdue_credit = res_partner.with_context(
                 {'journal_id': self.journal_id.id}).browse(
                     self.partner_id.id).overdue_credit

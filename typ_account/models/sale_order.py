@@ -19,13 +19,14 @@ class SaleOrder(models.Model):
                 del res['value'][key]
         # Reasign values obtain in original onchange
         self.update(res['value'])
-        allowed_sale = res_partner.with_context(
-            {'warehouse_id': self.warehouse_id.id}).browse(
-                self.partner_id.id).allowed_sale
+        ctx = {'new_amount': self.amount_total,
+               'new_currency': self.currency_id.id,
+               'warehouse_id': self.warehouse_id.id}
+        allowed_sale = res_partner.with_context(ctx).browse(
+            self.partner_id.id).allowed_sale
         if self.partner_id and not allowed_sale:
-            credit_overloaded = res_partner.with_context(
-                {'warehouse_id': self.warehouse_id.id}).browse(
-                    self.partner_id.id).credit_overloaded
+            credit_overloaded = res_partner.with_context(ctx).browse(
+                self.partner_id.id).credit_overloaded
             overdue_credit = res_partner.with_context(
                 {'warehouse_id': self.warehouse_id.id}).browse(
                     self.partner_id.id).overdue_credit
@@ -51,7 +52,7 @@ class SaleOrder(models.Model):
                 return True
             allowed_sale = self.env['res.partner'].with_context(
                 {'new_amount': so.amount_total,
-                 'new_currency': so.company_id.currency_id.id,
+                 'new_currency': so.currency_id.id,
                  'warehouse_id': self.warehouse_id.id}).browse(
                      so.partner_id.id).allowed_sale
             if allowed_sale:
