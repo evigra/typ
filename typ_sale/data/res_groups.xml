@@ -5,5 +5,10 @@
             <field name="name">Sale order - Invoice - payment term manager</field>
             <field name="comment">This group has access to modify field payment term in Sale Orders and Invoices.</field>
         </record>
+
+        <record model="res.groups" id="group_res_partner_warehouse_manager">
+            <field name="name">Partner warehouse configuration manager</field>
+            <field name="comment">This group can register partner warehouse configurations.</field>
+        </record>
     </data>
 </openerp>
