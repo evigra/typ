@@ -31,6 +31,7 @@
         'reports/purchase_order.xml',
         'reports/purchase_quotation.xml',
         'views/purchase_view.xml',
+        'views/partner_view.xml',
     ],
     # only loaded in demonstration mode
     'demo': [
