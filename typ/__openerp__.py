@@ -66,6 +66,7 @@
         'data/typ_paper_format.xml',
         'data/server_actions.xml',
         'data/set_configuration.yml',
+        'data/typ_security.xml',
         'report/invoice_report.xml',
         'report/report_invoice.xml',
     ],
