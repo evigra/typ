@@ -11,4 +11,5 @@ class ResPartnerWarehouse(models.Model):
                                    help='Set the warehouse')
     user_id = fields.Many2one('res.users', string='Salesperson')
     credit_limit = fields.Float(string='Credit limit')
+    allow_overdue_invoice = fields.Boolean('Allow overdue invoices')
     partner_id = fields.Many2one('res.partner', string='Partner')

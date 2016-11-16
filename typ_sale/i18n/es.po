@@ -358,3 +358,7 @@ msgstr "En la compra de equipo a crédito, considere un adicional de 2%, que ser
 msgid "Your reference:"
 msgstr "Su referencia:"
 
+#. module: typ_sale
+#: field:res.partner.warehouse,allow_overdue_invoice:0
+msgid "Allow overdue invoices"
+msgstr "Permitir facturas vencidas"

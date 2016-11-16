@@ -14,6 +14,7 @@
                             <field name="warehouse_id" required="True"/>
                             <field name="user_id"/>
                             <field name="credit_limit"/>
+                            <field name="allow_overdue_invoice"/>
                         </tree>
                     </field>
                 </xpath>

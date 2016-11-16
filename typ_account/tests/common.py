@@ -35,7 +35,6 @@ class TestTypAccount(common.TransactionCase):
                  {'name': self.product.name, 'product_id': self.product.id,
                   'quantity': 1, 'price_unit': 500, })], }
         self.account_invoice_1 = self.account_invoice.create(dict_vals)
-        self.account_invoice_1.signal_workflow('invoice_open')
         self.account_invoice_2 = self.account_invoice.create(dict_vals)
 
         self.dict_vals_sale = {

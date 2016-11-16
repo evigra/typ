@@ -10,6 +10,7 @@ class TestCreditLimitInvoice(TestTypAccount):
     def test_00_credit_limit_invoice_warning_message(self):
         """Warning must be shown when partner hasn't credit limit
         """
+        self.account_invoice_1.signal_workflow('invoice_open')
         self.conf_warehouse.write({'credit_limit': 0.0})
         self.assertEqual(self.conf_warehouse.credit_limit, 0.0)
 

@@ -78,7 +78,7 @@ class AccountInvoice(models.Model):
                 msg = msg + _('%s has credit overloaded')
                 if overdue_credit:
                     msg = msg + _(' and has overdue invoices')
-            if overdue_credit:
+            elif overdue_credit:
                 msg = msg + _('%s has overdue invoices')
             msg = msg + _('. Please request payment or sell cash!')
             warning = {

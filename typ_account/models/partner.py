@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from datetime import timedelta
-from openerp import api, fields, models
+from openerp import api, models
 
 
 class ResPartner(models.Model):
@@ -77,6 +76,14 @@ class ResPartner(models.Model):
             current_warehouse = context.get('warehouse_id', False)
             journals_sale_team = self.sale_team_journals(
                 current_warehouse, current_journal)
+            if not current_warehouse:
+                # We have to search the sale team that has the journal_id in
+                # journal_team_ids to obtain its default_warehouse
+                default_sale_team = self.env['account.journal'].browse(
+                    current_journal).section_id
+                current_warehouse = default_sale_team.default_warehouse.id
+            warehouse_config = partner.res_warehouse_ids.filtered(
+                lambda wh_conf: wh_conf.warehouse_id.id == current_warehouse)
             movelines = self.env['account.move.line'].search([
                 ('partner_id', '=', partner.id),
                 ('account_id.type', '=', 'receivable'),
@@ -84,21 +91,10 @@ class ResPartner(models.Model):
                 ('journal_id', 'in', journals_sale_team)])
             debit_maturity, credit_maturity = 0.0, 0.0
             for line in movelines:
-                if line.date_maturity and line.partner_id.grace_payment_days:
-                    maturity = fields.Datetime.from_string(
-                        line.date_maturity)
-                    grace_payment_days = timedelta(
-                        days=line.partner_id.grace_payment_days)
-                    limit_day = maturity + grace_payment_days
-                    limit_day = limit_day.strftime("%Y-%m-%d")
-
-                elif line.date_maturity:
-                    limit_day = line.date_maturity
-                else:
-                    limit_day = fields.Date.today()
-                if limit_day <= fields.Date.today():
-                    # credit and debit maturity sums all aml
-                    # with late payments
+                # Allow sale if a partner has the warehouse configuration with
+                # allow_overdue_invoice True
+                if not warehouse_config or not \
+                        warehouse_config.allow_overdue_invoice:
                     debit_maturity += line.debit
                 credit_maturity += line.credit
             balance_maturity = debit_maturity - credit_maturity

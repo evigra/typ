@@ -16,6 +16,7 @@ class TestCreditLimitSale(TestTypAccount):
     def test_002_credit_limit_sale_warning_message(self):
         """Test that message warning is raise when partner hasn't credit limit
         """
+        self.account_invoice_1.signal_workflow('invoice_open')
         self.conf_warehouse.write({'credit_limit': 0.0})
         self.assertEqual(self.conf_warehouse.credit_limit, 0.0)
 
@@ -48,3 +49,18 @@ class TestCreditLimitSale(TestTypAccount):
         sale_order = self.sale_order.create(self.dict_vals_sale)
         with self.assertRaises(exceptions.Warning):
             sale_order.signal_workflow("order_confirm")
+
+    def test_40_sale_when_allow_overdue_invoice_is_true(self):
+        """Sale order can be confirmed when exist overdue payments but
+        allow_overdue_invoice is true
+        """
+        self.account_invoice_1.signal_workflow('invoice_open')
+        self.dict_vals_sale.update({'name': 'Test001'})
+        sale_order = self.sale_order.create(self.dict_vals_sale)
+        self.assertEqual(sale_order.state, 'draft')
+        with self.assertRaises(exceptions.Warning):
+            sale_order.signal_workflow("order_confirm")
+
+        self.conf_warehouse.write({'allow_overdue_invoice': True})
+        sale_order.signal_workflow("order_confirm")
+        self.assertIn(sale_order.state, ('manual', 'progress'))
