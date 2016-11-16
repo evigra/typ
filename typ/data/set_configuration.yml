@@ -15,6 +15,7 @@
     {
     'group_purchase_pricelist': 1,
     'group_costing_method': 1,
+    'default_invoice_method': 'picking',
     }
     # Module stock_dropshipping ('module_stock_dropshipping': 1,) is removed
     # because it causes and error when is instaled from the typ configuration
