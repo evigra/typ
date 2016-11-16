@@ -9,8 +9,11 @@ They can:
 - Make budget requests.</field>
         </record>
         <record id="purchase_group_hidden_create_button" model="res.groups">
-            <field name="name">Purchase Hidden Create Button</field>
-            <field name="comment">This group do not see the "Create" button on the purchase order.</field>
+            <field name="name">Purchase restricted users</field>
+            <field name="comment">Users of this group:
+- Do not see the "Create" button on the purchase order.
+- Do not see the "Confirm" button on the purchase order.
+- Do not see the "Create" button on the Partner.</field>
         </record>
     </data>
 </openerp>
