@@ -33,7 +33,7 @@ class TestTypAccount(common.TransactionCase):
             'invoice_line': [
                 (0, 0,
                  {'name': self.product.name, 'product_id': self.product.id,
-                  'quantity': 1, 'price_unit': 500, })], }
+                  'quantity': 1, 'price_unit': 900, })], }
         self.account_invoice_1 = self.account_invoice.create(dict_vals)
         self.account_invoice_2 = self.account_invoice.create(dict_vals)
 
@@ -46,7 +46,7 @@ class TestTypAccount(common.TransactionCase):
                 (0, 0,
                  {'name': self.product.name, 'product_id': self.product.id,
                   'product_uom_qty': 1, 'product_uom': self.product.uom_id.id,
-                  'price_unit': 500, })], }
+                  'price_unit': 900, })], }
         self.sale_order = self.sale_order.create(self.dict_vals_sale)
 
     def create_statement(self, partner, amount, journal=None,

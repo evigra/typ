@@ -30,7 +30,7 @@ class TestTypStock(common.TransactionCase):
                         'product_id': self.product.id,
                         'product_uom_qty': 3,
                         'product_uom': self.product.uom_id.id,
-                        'price_unit': self.product.list_price,
+                        'price_unit': 900,
                         'route_id': route.id,
                         })], }
 

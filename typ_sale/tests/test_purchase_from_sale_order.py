@@ -21,7 +21,7 @@ class TestPurchaseFromSaleOrder(TransactionCase):
         self.line_vals = {
             'name': self.product.name, 'product_id': self.product.id,
             'product_uom_qty': 1, 'product_uom': self.product.uom_id.id,
-            'price_unit': 500, 'route_id': self.route.id,
+            'price_unit': 900, 'route_id': self.route.id,
             'purchase_partner_id': self.partner_purchase.id, }
         self.dict_vals = {
             'partner_id': self.partner.id,

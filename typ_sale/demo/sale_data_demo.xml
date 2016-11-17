@@ -41,7 +41,7 @@
         <!-- Res partner warehouse-->
         <record id="res_partner_wh_01" model="res.partner.warehouse">
             <field name="warehouse_id" ref="typ_sale.wh_01"/>
-            <field name="credit_limit">1000.0</field>
+            <field name="credit_limit">2000.0</field>
             <field name="partner_id" ref="typ_sale.partner_01"/>
         </record>
         <record id="res_partner_wh_02" model="res.partner.warehouse">

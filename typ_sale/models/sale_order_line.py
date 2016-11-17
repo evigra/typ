@@ -1,6 +1,8 @@
 # coding: utf-8
 
-from openerp import api, fields, models
+from __future__ import division
+from openerp import api, fields, models, _
+from openerp import exceptions
 
 
 class SaleOrderLine(models.Model):
@@ -23,3 +25,30 @@ class SaleOrderLine(models.Model):
             pull_buy = rec.route_id.pull_ids.filtered(
                 lambda dat: dat.action == 'buy')
             rec.special_sale = True if pull_buy else False
+
+    @api.multi
+    def check_margin(self):
+        """Verify margin minimum in sale order line.
+        """
+        self.ensure_one()
+        if self.env.user.has_group(
+                'typ_sale.res_group_can_sell_below_minimum_margin'):
+            return
+        warning_title = _('The product %s' % (self.product_id.name))
+        warning_message = _('You can not be sold below permitted '
+                            'margin \n Contact Manager')
+        if self.price_subtotal <= 0:
+            raise exceptions.Warning(warning_title, warning_message)
+        margin = self.env.user.company_id.margin_allowed
+        cur = self.order_id.pricelist_id.currency_id
+        tmp_standard_price = self.env.user.company_id.currency_id.compute(
+            self.product_id.standard_price,
+            cur)
+        tmp_margin = self.price_subtotal - (
+            (tmp_standard_price if self.product_id.standard_price
+             else self.purchase_price) * self.product_uom_qty)
+        purchase_sale = cur.round(tmp_margin)
+
+        margin_sale = (purchase_sale / self.price_subtotal) * 100
+        if margin_sale < margin:
+            raise exceptions.Warning(warning_title, warning_message)

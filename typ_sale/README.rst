@@ -22,6 +22,9 @@ partner**
 - With that functionality, when a partner or warehouse is selected in a sale
   order, the salesperson changed depending on the configuration realted.
 
+**Margin on sale orders**
+- Porcent (%) of Margin allowed to be modified on sale order
+
 Credits
 =======
 

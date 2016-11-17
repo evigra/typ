@@ -15,6 +15,8 @@
 
     'data': [
         'data/res_groups.xml',
+        'data/ir_actions_server.xml',
+        'data/base_action_rule.xml',
         'reports/sale_order.xml',
         'reports/layout.xml',
         'security/ir.model.access.csv',
@@ -22,6 +24,8 @@
         'views/res_partner_warehouse_view.xml',
         'views/sale_order_view.xml',
         'views/account_invoice_view.xml',
+        'views/res_company_view.xml',
+        'views/res_config_view.xml',
     ],
     'demo': [
         'demo/sale_data_demo.xml',

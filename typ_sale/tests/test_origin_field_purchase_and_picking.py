@@ -24,7 +24,7 @@ class TestOriginFieldPurchasePicking(TransactionCase):
                 (0, 0,
                  {'name': self.product.name, 'product_id': self.product.id,
                   'product_uom_qty': 1, 'product_uom': self.product.uom_id.id,
-                  'price_unit': 500, 'route_id': self.route.id,
+                  'price_unit': 900, 'route_id': self.route.id,
                   'purchase_partner_id': self.partner_purchase.id})], }
         sale_order = self.env['sale.order'].create(dict_vals)
         sale_order.action_button_confirm()

@@ -1,0 +1,19 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<openerp>
+    <data>
+
+        <record id="view_sales_config_inherit_margin_allowed" model="ir.ui.view">
+            <field name="name">sales.config.inherit.margin.allowed</field>
+            <field name="model">sale.config.settings</field>
+            <field name="inherit_id" ref="sale.view_sales_config"/>
+            <field name="arch" type="xml">
+                <div name="module_sale_margin" position="after">
+                    <label for="margin_allowed"/>
+                    <field name="margin_allowed" class="oe_inline"/>
+                    <field name="company_id" invisible="1"/>
+                </div>
+            </field>
+        </record>
+
+    </data>
+</openerp>

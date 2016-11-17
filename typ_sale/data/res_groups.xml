@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <openerp>
     <data>
+
         <record model="res.groups" id="group_sale_order_invoice_payment_term_manager">
             <field name="name">Sale order - Invoice - payment term manager</field>
             <field name="comment">This group has access to modify field payment term in Sale Orders and Invoices.</field>
@@ -10,5 +11,11 @@
             <field name="name">Partner warehouse configuration manager</field>
             <field name="comment">This group can register partner warehouse configurations.</field>
         </record>
+
+        <record id="res_group_can_sell_below_minimum_margin" model="res.groups">
+          <field name="name">Users that can sell below the minimum margin</field>
+          <field name="comment">This group allow sale order bellow the minimum margin.</field>
+        </record>
+
     </data>
 </openerp>
