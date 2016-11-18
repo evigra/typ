@@ -447,7 +447,7 @@ class StockLandedCost(models.Model):
                         'account_id': account,
                         'product_id': product.id,
                         'price_unit': cost,
-                        'split_method': 'by_quantity',
+                        'split_method': 'by_current_cost_price',
                         'segmentation_cost': 'landed_cost'
                     }))
             if lines:
