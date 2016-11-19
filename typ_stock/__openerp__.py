@@ -29,6 +29,7 @@
         'views/stock_view.xml',
         'views/stock_warehouse_view.xml',
         'views/stock_picking_view.xml',
+        'views/product_view.xml',
         'security/res_groups.xml',
         'wizard/view_procurement_compute_wizard_inh.xml',
         'wizard/stock_serial_view.xml',

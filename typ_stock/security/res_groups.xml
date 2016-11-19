@@ -7,5 +7,10 @@
         <record id="res_group_can_run_scheduler" model="res.groups">
           <field name="name">Users that can run schedulers warehouse</field>
         </record>
+
+        <record id="res_group_standard_price" model="res.groups">
+          <field name="name">Users that can see standard price</field>
+          <field name="comment">This group can see price cost of product.</field>
+        </record>
     </data>
 </openerp>

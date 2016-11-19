@@ -15,6 +15,28 @@
            </field>
         </record>
 
+        <record model="ir.ui.view" id="sale_standard_price_sale_order_line">
+            <field name="name">sale.order.line.standard.price.view.form</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale_margin.sale_margin_sale_order_line"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='order_line']/form//field[@name='purchase_price']" position="attributes">
+                    <attribute name="groups">typ_stock.res_group_standard_price</attribute>
+                </xpath>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="sale_standard_price_sale_order_line_form">
+            <field name="name">sale.order.line.tree.standard.price.view.form</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale_margin.sale_margin_sale_order_line_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='order_line']/tree//field[@name='purchase_price']" position="attributes">
+                    <attribute name="groups">typ_stock.res_group_standard_price</attribute>
+                </xpath>
+            </field>
+        </record>
+
     </data>
 </openerp>
 

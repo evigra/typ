@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 8.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-11-16 19:27+0000\n"
-"PO-Revision-Date: 2016-11-16 19:27+0000\n"
+"POT-Creation-Date: 2016-11-17 21:11+0000\n"
+"PO-Revision-Date: 2016-11-17 21:11+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -364,6 +364,11 @@ msgid "This group can register partner warehouse configurations."
 msgstr "This group can register partner warehouse configurations."
 
 #. module: typ_sale
+#: model:res.groups,comment:typ_sale.res_group_margin_sale_order
+msgid "This group can see margin in sale order."
+msgstr "Este grupo puede ver el margen en el pedido de venta."
+
+#. module: typ_sale
 #: model:res.groups,comment:typ_sale.group_sale_order_invoice_payment_term_manager
 msgid "This group has access to modify field payment term in Sale Orders and Invoices."
 msgstr "Este grupo tiene acceso a modificar campos de plazo de pago en Ordenes de Venta y Facturas."
@@ -388,6 +393,11 @@ msgstr "Tipo plazo de pago"
 #: view:website:sale.report_saleorder_document
 msgid "Unit Price"
 msgstr "Precio unidad"
+
+#. module: typ_sale
+#: model:res.groups,name:typ_sale.res_group_margin_sale_order
+msgid "Users that can see the margin of sale"
+msgstr "Usuarios que pueden ver el margen en el pedido de venta"
 
 #. module: typ_sale
 #: model:res.groups,name:typ_sale.res_group_can_sell_below_minimum_margin
@@ -447,4 +457,9 @@ msgstr "Your reference:"
 #: view:sale.order:typ_sale.view_sale_order_form_type_payment_term
 msgid "typ_sale.group_sale_order_invoice_payment_term_manager"
 msgstr "typ_sale.group_sale_order_invoice_payment_term_manager"
+
+#. module: typ_sale
+#: view:sale.order:typ_sale.view_sale_order_form_margin
+msgid "typ_sale.res_group_margin_sale_order"
+msgstr "typ_sale.res_group_margin_sale_order"
 

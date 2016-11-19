@@ -52,5 +52,15 @@
             </field>
         </record>
 
+        <record id="view_sale_order_form_margin" model="ir.ui.view">
+            <field name="name">sale.order.form.margin</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale_margin.sale_margin_sale_order"/>
+            <field name="arch" type="xml">
+               <field name="margin" position="attributes">
+                    <attribute name="groups">typ_sale.res_group_margin_sale_order</attribute>
+               </field>
+            </field>
+        </record>
     </data>
 </openerp>

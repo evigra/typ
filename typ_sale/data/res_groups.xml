@@ -17,5 +17,10 @@
           <field name="comment">This group allow sale order bellow the minimum margin.</field>
         </record>
 
+        <record id="res_group_margin_sale_order" model="res.groups">
+          <field name="name">Users that can see the margin of sale</field>
+          <field name="comment">This group can see margin in sale order.</field>
+        </record>
+
     </data>
 </openerp>

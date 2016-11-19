@@ -8,6 +8,7 @@
     'version': '8.0.1.0.0',
 
     'depends': [
+        'sale_margin',
         'sale_stock',
         'typ_stock',
         'default_warehouse_from_sale_team',
