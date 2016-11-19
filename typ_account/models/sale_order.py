@@ -24,7 +24,11 @@ class SaleOrder(models.Model):
                'warehouse_id': self.warehouse_id.id}
         allowed_sale = res_partner.with_context(ctx).browse(
             self.partner_id.id).allowed_sale
-        if self.partner_id and not allowed_sale:
+        is_cash = any(
+            [self.type_payment_term in ('cash', 'postdated_check'),
+             not self.partner_id.property_payment_term,
+             self.partner_id.property_payment_term.payment_type == 'cash'])
+        if all([self.partner_id, not is_cash, not allowed_sale]):
             credit_overloaded = res_partner.with_context(ctx).browse(
                 self.partner_id.id).credit_overloaded
             overdue_credit = res_partner.with_context(
