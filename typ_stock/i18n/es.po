@@ -36,3 +36,13 @@ msgstr "Debe asignar un número de serial para el producto [%s] %s"
 msgid "typ_stock.res_group_standard_price"
 msgstr "typ_stock.res_group_standard_price"
 
+#. module: typ_stock
+#: field:stock.warehouse,active:0
+msgid "Active"
+msgstr "Activo"
+
+#. module: typ_stock
+#: code:addons/typ_stock/models/stock.py:184
+#, python-format
+msgid "You can not inactivate a warehouse with products on it, please adjust your inventories first and then come back and inactivate it."
+msgstr "No puede inactivar un almacén con productos en él, por favor, ajuste primero sus inventarios y luego vuelva a desactivarlo."

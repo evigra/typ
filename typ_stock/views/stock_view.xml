@@ -37,5 +37,16 @@
                 </xpath>
             </field>
         </record>
+
+        <record model="ir.ui.view" id="view_stock_wareohuse_active_field">
+            <field name="name">stock.warehouse.active.field</field>
+            <field name="model">stock.warehouse</field>
+            <field name="inherit_id" ref="stock.view_warehouse"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='code']" position="after">
+                    <field name='active'/>
+                </xpath>
+            </field>
+        </record>
     </data>
 </openerp>

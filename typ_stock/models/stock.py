@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from openerp import api, models, _
+from openerp import api, fields, models, _
 from openerp import exceptions
 
 
@@ -153,3 +153,22 @@ class StockPicking(models.Model):
                             _('Warning!'),
                             _('The return of the product %s, exceeds the '
                               'amount invoiced') % (move.product_id.name))
+
+
+class StockWarehouse(models.Model):
+
+    _inherit = "stock.warehouse"
+
+    active = fields.Boolean(default=True)
+
+    @api.multi
+    @api.constrains('active')
+    def _check_active(self):
+        location_ids = self.filtered(lambda x: not x.active).mapped(
+            'view_location_id')._get_sublocations()
+        if self.env["stock.quant"].search([("location_id", "in",
+                                            location_ids)], limit=1):
+            msg = _('You can not inactivate a warehouse with products'
+                    ' on it, please adjust your inventories first and'
+                    ' then come back and inactivate it.')
+            raise exceptions.ValidationError(msg)
