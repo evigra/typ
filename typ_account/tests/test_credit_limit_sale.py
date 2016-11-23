@@ -68,7 +68,9 @@ class TestCreditLimitSale(TestTypAccount):
         """Sale order can be confirmed when exist overdue payments but
         allow_overdue_invoice is true
         """
-        self.account_invoice_1.signal_workflow('invoice_open')
+        self.dict_vals.update({'payment_term': self.payment_term_cash.id})
+        account_invoice = self.account_invoice.create(self.dict_vals)
+        account_invoice.signal_workflow('invoice_open')
         self.dict_vals_sale.update({'name': 'Test001'})
         sale_order = self.sale_order.create(self.dict_vals_sale)
         self.assertEqual(sale_order.state, 'draft')

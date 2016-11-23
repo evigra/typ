@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from openerp import api, models
+from openerp import api, fields, models
 
 
 class ResPartner(models.Model):
@@ -95,8 +95,15 @@ class ResPartner(models.Model):
                 # allow_overdue_invoice True
                 if not warehouse_config or not \
                         warehouse_config.allow_overdue_invoice:
-                    debit_maturity += line.debit
-                credit_maturity += line.credit
+                    if line.date_maturity:
+                        limit_day = line.date_maturity
+                    else:
+                        limit_day = fields.Date.today()
+                    if limit_day <= fields.Date.today():
+                        # credit and debit maturity sums all aml
+                        # with late payments
+                        debit_maturity += line.debit
+                    credit_maturity += line.credit
             balance_maturity = debit_maturity - credit_maturity
             partner.overdue_credit = balance_maturity > 0.0
 

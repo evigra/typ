@@ -20,12 +20,14 @@ class TestTypAccount(common.TransactionCase):
         self.account = self.env.ref("account.a_recv")
         self.payment_term_credit = self.env.ref(
             'payment_term_type.payment_term_credit')
+        self.payment_term_cash = self.env.ref(
+            'account.account_payment_term_immediate')
         self.conf_warehouse = self.env.ref('typ_sale.res_partner_wh_01')
         self.acc_bank_stmt_model = self.env['account.bank.statement']
         self.acc_bank_stmt_line_model = self.env['account.bank.statement.line']
 
         # Create an invoice to have a pending payment
-        dict_vals = {
+        self.dict_vals = {
             'partner_id': self.partner.id,
             'account_id': self.account.id,
             'payment_term': self.payment_term_credit.id,
@@ -34,8 +36,8 @@ class TestTypAccount(common.TransactionCase):
                 (0, 0,
                  {'name': self.product.name, 'product_id': self.product.id,
                   'quantity': 1, 'price_unit': 900, })], }
-        self.account_invoice_1 = self.account_invoice.create(dict_vals)
-        self.account_invoice_2 = self.account_invoice.create(dict_vals)
+        self.account_invoice_1 = self.account_invoice.create(self.dict_vals)
+        self.account_invoice_2 = self.account_invoice.create(self.dict_vals)
 
         self.dict_vals_sale = {
             'partner_id': self.partner.id,
