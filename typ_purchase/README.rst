@@ -17,7 +17,15 @@ This module adding the follow functionalities.
 - Add shipment date to the Purchase order
 - Add shipment date to the product in purchase order lines
 - The Buyer in charge of the order is available in the order's form via buyer field
+- Can handle shipment dates by order_line
 - Purchase Orders can be group by Buyer
+
+Usage
+=====
+
+* To set all order lines shipment dates at once, you must first add the products, then
+  add the global order shipment date and automatically this module sets the values for you,
+  also you can hande shipment dates per line simply adding it.
 
 **Allow create purchase order separate with silimar characteristics**
 

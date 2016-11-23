@@ -83,9 +83,15 @@
                 <field name="date_order" position="replace">
                     <field name="date_order" invisible="1"/>
                 </field>
-                <xpath expr="//field[@name='order_line']/tree/field[@name='date_planned']" position="before">
-                    <field name="shipment_date"/>
+
+               <xpath expr="//field[@name='order_line']/tree/field[@name='date_planned']" position="before">
+                    <field name="shipment_date" />
                 </xpath>
+
+                <field name="order_line" position="attributes">
+                        <attribute name="context">{'shipment_date': shipment_date}</attribute>
+                </field>
+
                 <xpath expr="//field[@name='origin']" position="attributes">
                     <attribute name="attrs">[]</attribute>
                 </xpath>

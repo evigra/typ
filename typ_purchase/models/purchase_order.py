@@ -7,9 +7,9 @@ class PurchaseOrder(models.Model):
 
     _inherit = "purchase.order"
 
-    shipment_date = fields.Datetime('Order shipment date',
-                                    help="This is used to indicate when "
-                                    "products ships from supplier warehouse")
+    shipment_date = fields.Date('Order shipment date',
+                                help="This is used to indicate when "
+                                "products ships from supplier warehouse")
     broker_id = fields.Many2one(
         'res.partner', "Broker", help="Broker for imported products")
     buyer = fields.Many2one(
@@ -27,3 +27,9 @@ class PurchaseOrder(models.Model):
     def _compute_report_lang(self):
         for record in self:
             record.report_lang = self.broker_id.lang or self.partner_id.lang
+
+    @api.multi
+    @api.onchange('shipment_date')
+    def _onchange_shipment_date(self):
+        for line in self.order_line:
+            line.update({'shipment_date': self.shipment_date})
