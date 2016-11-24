@@ -26,11 +26,15 @@ python:
 
 env:
   global:
-  - TEST_OTHER_PROJECTS=${HOME}/addons-vauxoo LINT_CHECK=0 TESTS="0" VERSION="8.0" ODOO_REPO="vauxoo/odoo" INCLUDE="typ"
+  - TEST_OTHER_PROJECTS="${HOME}/addons-vauxoo"
+  - LINT_CHECK="0" TESTS="0"
+  - VERSION="8.0" ODOO_REPO="Vauxoo/odoo"
+  - secure: jKoOEoYGOnTNEqhm8IPy/QpI7joMFZNibOVDZqP7xqg3yTmVexAYiHXA1yx/z52+v+vJlcF96jSnkBIHMEx0Brbee6QgXx++0FWmI+AL5/XOO3br0Q7mu9hFN8iODTpPhkN/NF4QDQcyDPV++dTrHhi63FF8uKzj5dTGBRvzcsa/jfep2O34DeX3ixYNLSCYurEj2FeEZ/L3ThFw0tMdNIigw2xWH1KLz/TzrajbfSvXUAiUkuNBKN3O+tJUaLZ7qlFlj3Cbki4lIJhyR79juv/lgV0SHzG8AfEcj3oYnx5t88vKcdJkmC7y81pIyaRpKYj9qEqYn/WUtjifFXGOjUIKZDYmDWxamFqUyEvGFc5KXy5c6VkP4YtpByoifEdzfh0YhlUEjWFLcpN4cUp++chC8SzvSMPSPEVTgyAmguv2aVwE7z0QZ7w4vqn9sqznfP0Qt0qtTvnfhAIDx5sVbk0I3GuI+Hrdp0envo4ESQ84BwwJT+jhk5Siu+QDPYzwgl6nkgIyfUk13i1JmvQSua31atn7JOvdO8qabKy10XFu27ZVXeFkQHgywZ7VImxzJa5jAj2049IXHYGz4jy2v0hY9L6qwTC4Mh10v9qg8Gg1PUHlzztjjYGW9SHthjUbuLLwx7UCHU+FmUIvzlTu7249NradvRz+69PGAH2DVqY=
 
   matrix:
-  - LINT_CHECK=1
-  - TESTS="1"
+  - LINT_CHECK="1"
+  - TESTS="1" INCLUDE="typ"
+  - TRANSIFEX="1"
 
 virtualenv:
   system_site_packages: true
