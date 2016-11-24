@@ -10,6 +10,12 @@ class StockMove(models.Model):
 
     _inherit = "stock.move"
 
+    shipment_date = fields.Date(
+        'Product shipment date',
+        default=fields.Date.context_today, index=True,
+        states={'done': [('readonly', True)]},
+        help="Scheduled date for the shipment of this move")
+
     @api.multi
     def propagate_picking_transfer(self):
         """If stock_move is done verify if it have to propagate transfer to

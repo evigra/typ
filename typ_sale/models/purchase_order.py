@@ -16,3 +16,11 @@ class PurchaseOrder(models.Model):
                 self.env['stock.picking'].browse(res).write(
                     {'origin': new_origin})
             return res
+
+    @api.model
+    def _prepare_order_line_move(self,
+                                 order, order_line, picking_id, group_id):
+        res = super(PurchaseOrder, order)._prepare_order_line_move(
+            order, order_line, picking_id, group_id)
+        res[0].update({'shipment_date': order_line.shipment_date})
+        return res

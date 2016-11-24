@@ -48,5 +48,28 @@
                 </xpath>
             </field>
         </record>
+
+        <record model="ir.ui.view" id="view_stock_move_shipment_date_form">
+            <field name="name">stock.move.shipment.date.form</field>
+            <field name="model">stock.move</field>
+            <field name="inherit_id" ref="stock.view_move_picking_form"/>
+            <field name="arch" type="xml">
+                <field name="date_expected" position="before">
+                    <field name='shipment_date'/>
+                </field>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="view_stock_move_shipment_date_tree">
+            <field name="name">stock.move.shipment.date.tree</field>
+            <field name="model">stock.move</field>
+            <field name="inherit_id" ref="stock.view_move_picking_tree"/>
+            <field name="arch" type="xml">
+                <field name="date_expected" position="before">
+                    <field name='shipment_date'/>
+                </field>
+            </field>
+        </record>
+
     </data>
 </openerp>
