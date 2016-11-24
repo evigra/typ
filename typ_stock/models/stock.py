@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
 
+from __future__ import division
+
 from openerp import api, fields, models, _
 from openerp import exceptions
 
@@ -78,6 +80,28 @@ class StockMove(models.Model):
                 (product.default_code, product.name))
         return super(StockMove, self).check_tracking_product(
             product, lot_id, location, location_dest)
+
+    @api.model
+    def get_price_unit(self, move):
+        """Overwrite this function to set price unit in exchange rate of
+        reception when currency of purchase order is in currency secondary
+        Bug Odoo https://github.com/odoo/odoo/issues/1924
+        """
+        if move.purchase_line_id:
+            order = move.purchase_line_id.order_id
+            line_po = move.purchase_line_id
+            price_unit = line_po.price_unit
+            if line_po.product_uom.id != line_po.product_id.uom_id.id:
+                price_unit *= line_po.product_uom.factor /\
+                    line_po.product_id.uom_id.factor
+            # if currency of purchase order is different to company
+            # price unit must be calculated in date of reception
+            if order.currency_id != order.company_id.currency_id:
+                price_unit = order.currency_id.compute(
+                    price_unit, order.company_id.currency_id, round=False)
+            return price_unit or move.price_unit
+
+        return super(StockMove, self).get_price_unit(move)
 
 
 class StockPicking(models.Model):
