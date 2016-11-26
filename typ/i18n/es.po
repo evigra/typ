@@ -1,24 +1,35 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
-#	* typ
-#
+# * typ
+# 
+# Translators:
+# Coward Vassal Vauxoo <coward@vauxoo.com>, 2016
+# Erick Birbe <erickcion@gmail.com>, 2016
+# Deivis Laya <deivis@vauxoo.com>, 2016
+# Humberto Arocha <hbto@vauxoo.com>, 2016
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 8.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-11-04 20:03+0000\n"
-"PO-Revision-Date: 2016-11-04 20:03+0000\n"
-"Last-Translator: <>\n"
-"Language-Team: \n"
+"POT-Creation-Date: 2016-11-24 22:20+0000\n"
+"PO-Revision-Date: 2016-11-24 22:20+0000\n"
+"Last-Translator: Humberto Arocha <hbto@vauxoo.com>, 2016\n"
+"Language-Team: Spanish (https://www.transifex.com/Vauxoo/teams/69438/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
-"Plural-Forms: \n"
+"Language: es\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #. module: typ
 #: view:website:typ.report_electronic_invoice_document
 msgid "Account Last 4 Numbers"
 msgstr "Últimos 4 Números de la Cuenta"
+
+#. module: typ
+#: model:ir.actions.server,name:typ.account_account_action
+msgid "Account Parent Store Compute"
+msgstr "Cálculo de Almacenaje de Cuenta Padre"
 
 #. module: typ
 #: view:website:typ.report_electronic_invoice_document
@@ -67,8 +78,16 @@ msgstr "Fecha de Timbrado"
 
 #. module: typ
 #: view:website:typ.report_electronic_invoice_document
-msgid "Deadline for returns of 15 calendar days from delivery. Product must be presented in original packaging. Warranties: American 1 year parts and 5 years compressor equipment. Asia 1 year parts and compressor equipment. Does not apply to equipment with power failures or burns."
-msgstr "Plazo para devoluciones de 15 días naturales a partir de la entrega. Es necesario presentar producto en empaque original. Garantías: Equipo americano 1 año en partes y 5 años en compresor. Equipo asiático 1 año en partes y compresor. No aplica en equipo con fallas eléctricas ni quemaduras."
+msgid ""
+"Deadline for returns of 15 calendar days from delivery. Product must be "
+"presented in original packaging. Warranties: American 1 year parts and 5 "
+"years compressor equipment. Asia 1 year parts and compressor equipment. Does"
+" not apply to equipment with power failures or burns."
+msgstr ""
+"Plazo para devoluciones de 15 días naturales a partir de la entrega. Es "
+"necesario presentar producto en empaque original. Garantías: Equipo "
+"americano 1 año en partes y 5 años en compresor. Equipo asiático 1 año en "
+"partes y compresor. No aplica en equipo con fallas eléctricas ni quemaduras."
 
 #. module: typ
 #: view:website:typ.report_electronic_invoice_document
@@ -104,6 +123,11 @@ msgstr "Fecha del Documento"
 #: model:ir.actions.report.xml,name:typ.account_invoice_qweb_report
 msgid "Electronic Invoice"
 msgstr "Factura Electrónica"
+
+#. module: typ
+#: model:ir.model,name:typ.model_ir_attachment_facturae_mx
+msgid "Email Thread"
+msgstr "Hilo de Correo"
 
 #. module: typ
 #: view:website:typ.report_electronic_invoice_document
@@ -171,14 +195,29 @@ msgid "Pedimento"
 msgstr "Pedimento"
 
 #. module: typ
+#: model:ir.actions.server,name:typ.procurement_cancel_action
+msgid "Procurement exception to cancel"
+msgstr "Excepción de Abastecimiento a cancelar"
+
+#. module: typ
 #: view:website:typ.report_electronic_invoice_document
 msgid "Quantity"
 msgstr "Cantidad"
 
 #. module: typ
+#: field:ir.attachment.facturae.mx,report_lang:0
+msgid "Report Language"
+msgstr "Idioma del Reporte"
+
+#. module: typ
 #: view:website:typ.report_electronic_invoice_document
 msgid "SAT Certificate"
 msgstr "Certificado SAT"
+
+#. module: typ
+#: model:ir.actions.server,name:typ.stock_location_action
+msgid "Stock Location Parent Store Compute"
+msgstr "Cálculo de Almacenaje de Ubicación de Almacén Padre"
 
 #. module: typ
 #: view:website:typ.report_electronic_invoice_document
@@ -189,6 +228,13 @@ msgstr "Sub Total"
 #: view:website:typ.report_electronic_invoice_document
 msgid "This document is a printed representation of a CFDI"
 msgstr "Este documento es una representación impresa de un CFDI"
+
+#. module: typ
+#: help:ir.attachment.facturae.mx,report_lang:0
+msgid "This field is automatically set from partner of account invoice object"
+msgstr ""
+"Este campo se establece automáticamente desde la empresa del objeto account "
+"invoice"
 
 #. module: typ
 #: view:website:typ.report_electronic_invoice_document
@@ -209,4 +255,3 @@ msgstr "Precio Unidad"
 #: view:website:typ.report_electronic_invoice_document
 msgid "WITHOUT FOLIO OR INVALID STATUS"
 msgstr "SIN FOLIO O ESTATUS NO VALIDO"
-

@@ -5,13 +5,16 @@
 # Translators:
 # Coward Vassal Vauxoo <coward@vauxoo.com>, 2016
 # Julio [Vauxoo] <julio@vauxoo.com>, 2016
+# jorge escalona <escajorge@gmail.com>, 2016
+# Edgar Rivero <edgar@vauxoo.com>, 2016
+# Humberto Arocha <hbto@vauxoo.com>, 2016
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 8.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-11-24 09:33+0000\n"
-"PO-Revision-Date: 2016-11-24 09:33+0000\n"
-"Last-Translator: Julio [Vauxoo] <julio@vauxoo.com>, 2016\n"
+"POT-Creation-Date: 2016-11-24 22:20+0000\n"
+"PO-Revision-Date: 2016-11-24 22:20+0000\n"
+"Last-Translator: Humberto Arocha <hbto@vauxoo.com>, 2016\n"
 "Language-Team: Spanish (https://www.transifex.com/Vauxoo/teams/69438/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -23,7 +26,7 @@ msgstr ""
 #: selection:procurement.orderpoint.compute,importance:0
 #: selection:stock.warehouse.orderpoint,importance:0
 msgid "AA"
-msgstr ""
+msgstr "AA"
 
 #. module: typ_stock
 #: field:stock.warehouse,active:0
@@ -38,12 +41,12 @@ msgstr "Salida automatica"
 #. module: typ_stock
 #: model:stock.picking.type,name:typ_stock.stock_picking_type_test_2
 msgid "Automatic transit"
-msgstr ""
+msgstr "Transito automático"
 
 #. module: typ_stock
 #: view:website:stock.report_picking
 msgid "Barcode"
-msgstr ""
+msgstr "Código de barras"
 
 #. module: typ_stock
 #: code:addons/typ_stock/models/stock.py:158
@@ -52,68 +55,72 @@ msgid ""
 "Both locations must be internal type or location source type internal and "
 "location destination type inventory"
 msgstr ""
+"Ambas locaciones deben ser del tipo interno o su destino interno y el lugar "
+"de destino tipo inventario"
 
 #. module: typ_stock
 #: view:website:stock.report_picking
 msgid "Commitment Date"
-msgstr ""
+msgstr "Fecha de Compromiso"
 
 #. module: typ_stock
 #: model:ir.model,name:typ_stock.model_procurement_orderpoint_compute
 msgid "Compute Minimum Stock Rules"
-msgstr ""
+msgstr "Reglas de Cálculo de Stock Mínimo"
 
 #. module: typ_stock
 #: view:website:stock.report_picking
 msgid "Customer Address:"
-msgstr ""
+msgstr "Dirección del Cliente:"
 
 #. module: typ_stock
 #: view:website:stock.report_picking
 msgid "Delivery Address:"
-msgstr ""
+msgstr "Dirección de Entrega:"
 
 #. module: typ_stock
 #: view:website:stock.report_picking
 msgid "Destination"
-msgstr ""
+msgstr "Destino"
 
 #. module: typ_stock
 #: field:procurement.orderpoint.compute,importance:0
 #: field:stock.warehouse.orderpoint,importance:0
 msgid "Importance"
-msgstr ""
+msgstr "Importancia"
 
 #. module: typ_stock
 #: model:stock.location,name:typ_stock.location_scrapped_test
 msgid "Location scrapped test"
-msgstr ""
+msgstr "Ubicación de pruebas de desecho"
 
 #. module: typ_stock
 #: model:ir.model,name:typ_stock.model_stock_warehouse_orderpoint
 msgid "Minimum Inventory Rule"
-msgstr ""
+msgstr "Regla de Inventario Mínimo"
 
 #. module: typ_stock
 #: code:addons/typ_stock/models/stock.py:48
 #, python-format
 msgid "Negative Quant creation error. Contact personnel Vauxoo immediately"
 msgstr ""
+"Quant Negativo error de creación. Contacte al personal de Vauxoo "
+"inmediatamente"
 
 #. module: typ_stock
 #: view:website:stock.report_picking
 msgid "Order (Origin)"
-msgstr ""
+msgstr "Orden (Origen)"
 
 #. module: typ_stock
 #: model:stock.picking.type,name:typ_stock.stock_picking_type_test_3
 msgid "Output to customer"
-msgstr ""
+msgstr "Salida al cliente"
 
 #. module: typ_stock
 #: model:stock.location.route,name:typ_stock.stock_location_route_test_2
 msgid "PE TW1 - TW2"
-msgstr ""
+msgstr "PE TW1 - TW2"
 
 #. module: typ_stock
 #: code:addons/typ_stock/models/stock.py:64
@@ -122,145 +129,147 @@ msgid ""
 "Permission denied only manager/warehouse group. Contact personnel Vauxoo "
 "immediately"
 msgstr ""
+"Permiso denegado solamente el grupo administrador/almacenes. Contacte al "
+"personal de Vauxoo inmediatamente"
 
 #. module: typ_stock
 #: model:ir.model,name:typ_stock.model_stock_picking
 msgid "Picking List"
-msgstr ""
+msgstr "Albarán"
 
 #. module: typ_stock
 #: model:ir.model,name:typ_stock.model_procurement_order
 msgid "Procurement"
-msgstr ""
+msgstr "Procura"
 
 #. module: typ_stock
 #: model:ir.model,name:typ_stock.model_procurement_rule
 msgid "Procurement Rule"
-msgstr ""
+msgstr "Regla de Procura"
 
 #. module: typ_stock
 #: view:website:stock.report_picking
 msgid "Product"
-msgstr ""
+msgstr "Producto"
 
 #. module: typ_stock
 #: field:stock.serial.line,product_id:0
 msgid "Product id"
-msgstr ""
+msgstr "Id del Producto"
 
 #. module: typ_stock
 #: field:stock.move,shipment_date:0
 msgid "Product shipment date"
-msgstr ""
+msgstr "Fecha de envío del producto"
 
 #. module: typ_stock
 #: model:ir.actions.server,name:typ_stock.server_action_propagate_picking_transfer
 msgid "Propagate picking transfer"
-msgstr ""
+msgstr "Propagar transferencia de albarán"
 
 #. module: typ_stock
 #: field:procurement.rule,propagate_transfer:0
 msgid "Propagate transfer"
-msgstr ""
+msgstr "Propagar transferencia"
 
 #. module: typ_stock
 #: view:website:stock.report_picking
 msgid "Quantity"
-msgstr ""
+msgstr "Cantidad"
 
 #. module: typ_stock
 #: model:ir.model,name:typ_stock.model_stock_return_picking
 msgid "Return Picking"
-msgstr ""
+msgstr "Devolver Albarán"
 
 #. module: typ_stock
 #: view:website:stock.report_picking
 msgid "Scheduled Date"
-msgstr ""
+msgstr "Fecha Programada"
 
 #. module: typ_stock
 #: help:stock.move,shipment_date:0
 msgid "Scheduled date for the shipment of this move"
-msgstr ""
+msgstr "Fecha programada para el envío de este movimiento"
 
 #. module: typ_stock
 #: view:website:stock.report_picking
 msgid "Source"
-msgstr ""
+msgstr "Origen"
 
 #. module: typ_stock
 #: field:stock.serial.line,source_loc_id:0
 msgid "Source loc id"
-msgstr ""
+msgstr "Fuente loc id"
 
 #. module: typ_stock
 #: view:website:stock.report_picking
 msgid "State"
-msgstr ""
+msgstr "Estado"
 
 #. module: typ_stock
 #: model:ir.model,name:typ_stock.model_stock_move
 msgid "Stock Move"
-msgstr ""
+msgstr "Movimiento de Inventario"
 
 #. module: typ_stock
 #: view:website:stock.report_picking
 msgid "Supplier Address:"
-msgstr ""
+msgstr "Dirección del Proveedor:"
 
 #. module: typ_stock
 #: model:stock.location.route,name:typ_stock.stock_location_route_test_1
 msgid "TW1 Supply from TW2"
-msgstr ""
+msgstr "Suministro TW1 desde TW2"
 
 #. module: typ_stock
 #: model:procurement.rule,name:typ_stock.pull_rule_test_2_1
 msgid "TW1: purchase -> stock"
-msgstr ""
+msgstr "TW1: compra -> stock"
 
 #. module: typ_stock
 #: model:procurement.rule,name:typ_stock.pull_rule_test_2_2
 msgid "TW2: purchase -> stock"
-msgstr ""
+msgstr "TW2: compra -> stock"
 
 #. module: typ_stock
 #: model:procurement.rule,name:typ_stock.pull_rule_test_2_3
 msgid "TW2: stock -> cliente"
-msgstr ""
+msgstr "TW2: stock -> cliente"
 
 #. module: typ_stock
 #: model:procurement.rule,name:typ_stock.pull_rule_test_1
 msgid "Test Warehouse 1: customer"
-msgstr ""
+msgstr "Almacen de Prueba 1: cliente"
 
 #. module: typ_stock
 #: model:procurement.rule,name:typ_stock.pull_rule_test_2
 msgid "Test Warehouse 1: transit"
-msgstr ""
+msgstr "Almacén de Prueba 1: tránsito"
 
 #. module: typ_stock
 #: model:procurement.rule,name:typ_stock.pull_rule_test_3
 msgid "Test Warehouse 2: stock"
-msgstr ""
+msgstr "Almacen de Prueba 2: stock"
 
 #. module: typ_stock
 #: code:addons/typ_stock/wizard/stock_serial.py:84
 #, python-format
 msgid "The Serial number %s already captured"
-msgstr ""
+msgstr "El número de Serie %s ya se capturó"
 
 #. module: typ_stock
 #: code:addons/typ_stock/models/stock.py:184
 #: code:addons/typ_stock/models/stock_return_picking.py:38
 #, python-format
 msgid "The return of the product %s, exceeds the amount invoiced"
-msgstr ""
+msgstr "El producto devuelto %s, excede la cantidad facturada"
 
 #. module: typ_stock
 #: code:addons/typ_stock/wizard/stock_serial.py:132
 #, python-format
 msgid "The serial number %s is already in stock"
-msgstr ""
+msgstr "El número de serie %s ya está en stock"
 
 #. module: typ_stock
 #: model:res.groups,comment:typ_stock.res_group_standard_price
@@ -270,17 +279,17 @@ msgstr "Este grupo puede ver el precio de costo del producto."
 #. module: typ_stock
 #: model:procurement.rule,name:typ_stock.pull_rule_test_2_4
 msgid "Transit Stock"
-msgstr ""
+msgstr "Stock de Tránsito"
 
 #. module: typ_stock
 #: model:res.groups,name:typ_stock.res_group_force_stock_move
 msgid "Users that can force availability and unassign"
-msgstr ""
+msgstr "Usuarios que pueden forzar disponibilidad y cancelar asignación"
 
 #. module: typ_stock
 #: model:res.groups,name:typ_stock.res_group_can_run_scheduler
 msgid "Users that can run schedulers warehouse"
-msgstr ""
+msgstr "Usuarios que pueden ejecutar programadores de almacén"
 
 #. module: typ_stock
 #: model:res.groups,name:typ_stock.res_group_standard_price
@@ -290,50 +299,50 @@ msgstr "Usuarios que pueden ver el precio estándar"
 #. module: typ_stock
 #: view:website:stock.report_picking
 msgid "VAT:"
-msgstr ""
+msgstr "RFC"
 
 #. module: typ_stock
 #: model:ir.actions.server,name:typ_stock.server_action_validate_move_internal
 msgid "Validate move internal locations"
-msgstr ""
+msgstr "Validar movimientos en ubicaciones internas"
 
 #. module: typ_stock
 #: model:ir.actions.server,name:typ_stock.server_action_validate_picking_negative
 msgid "Validate picking negative"
-msgstr ""
+msgstr "Validar albarán negativo"
 
 #. module: typ_stock
 #: model:ir.actions.server,name:typ_stock.server_action_validate_return_customer
 msgid "Validate return of customer"
-msgstr ""
+msgstr "Validar devolución de cliente"
 
 #. module: typ_stock
 #: model:ir.actions.server,name:typ_stock.server_action_procurement_migration
 msgid "Validation procurement in migration"
-msgstr ""
+msgstr "Validar procura en migración"
 
 #. module: typ_stock
 #: model:ir.actions.server,name:typ_stock.server_action_verify_user_scrap
 msgid "Verify user scrap"
-msgstr ""
+msgstr "Verificar usuario de desecho"
 
 #. module: typ_stock
 #: model:ir.model,name:typ_stock.model_stock_warehouse
 #: field:procurement.orderpoint.compute,warehouse_id:0
 msgid "Warehouse"
-msgstr ""
+msgstr "Almacén"
 
 #. module: typ_stock
 #: view:website:stock.report_picking
 msgid "Warehouse Address:"
-msgstr ""
+msgstr "Dirección de Almacén:"
 
 #. module: typ_stock
 #: code:addons/typ_stock/wizard/stock_serial.py:82
 #: code:addons/typ_stock/wizard/stock_serial.py:130
 #, python-format
 msgid "Warning"
-msgstr ""
+msgstr "Advertencia"
 
 #. module: typ_stock
 #: code:addons/typ_stock/models/stock.py:47
@@ -344,7 +353,7 @@ msgstr ""
 #: code:addons/typ_stock/models/stock_return_picking.py:37
 #, python-format
 msgid "Warning!"
-msgstr ""
+msgstr "¡Advertencia!"
 
 #. module: typ_stock
 #: help:procurement.rule,propagate_transfer:0
@@ -352,11 +361,14 @@ msgid ""
 "When this field is check, the first stock move which is transferred triggers"
 " automatically the transfer to the other stock move related"
 msgstr ""
+"Cuando este campo está marcado, el primer movimiento de inventario que se "
+"transfiere dispara automáticamente la transferencia de otro movimiento de "
+"inventario relacionado"
 
 #. module: typ_stock
 #: model:product.template,name:typ_stock.product_product_whead_product_template
 msgid "Wireless Headphones custon"
-msgstr ""
+msgstr "Audífonos Inalámbricos personalizados"
 
 #. module: typ_stock
 #: code:addons/typ_stock/models/stock.py:201
@@ -377,18 +389,18 @@ msgstr "Debe asignar un número de serial para el producto [%s] %s"
 #. module: typ_stock
 #: model:product.template,name:typ_stock.product_test_01_product_template
 msgid "prueba 3"
-msgstr ""
+msgstr "prueba 3"
 
 #. module: typ_stock
 #: help:procurement.orderpoint.compute,warehouse_id:0
 msgid "select warehouse to running schedulers"
-msgstr ""
+msgstr "seleccione el almacén para ejecutar los programadores"
 
 #. module: typ_stock
 #: view:stock.move:typ_stock.view_stock_move_picking_force_assign
 #: view:stock.picking:typ_stock.view_stock_picking_force_assign
 msgid "typ_stock.res_group_force_stock_move"
-msgstr ""
+msgstr "typ_stock.res_group_force_stock_move"
 
 #. module: typ_stock
 #: view:product.template:typ_stock.view_product_template_stock_property_inherit

@@ -1,26 +1,33 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
-#	* typ_landed_costs
-#
+# * typ_landed_costs
+# 
+# Translators:
+# Coward Vassal Vauxoo <coward@vauxoo.com>, 2016
+# Yennifer Santiago <yennifersantiago@gmail.com>, 2016
+# Humberto Arocha <hbto@vauxoo.com>, 2016
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 8.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-10-18 01:53+0000\n"
-"PO-Revision-Date: 2016-10-18 01:53+0000\n"
-"Last-Translator: <>\n"
-"Language-Team: \n"
+"POT-Creation-Date: 2016-11-24 22:20+0000\n"
+"PO-Revision-Date: 2016-11-24 22:20+0000\n"
+"Last-Translator: Humberto Arocha <hbto@vauxoo.com>, 2016\n"
+"Language-Team: Spanish (https://www.transifex.com/Vauxoo/teams/69438/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
-"Plural-Forms: \n"
+"Language: es\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #. module: typ_landed_costs
-#: code:addons/typ_landed_costs/models/stock_landed_costs.py:416
+#: code:addons/typ_landed_costs/models/stock_landed_costs.py:417
 #, python-format
-msgid "\n"
+msgid ""
+"\n"
 "- Check '%s' into '%s'"
-msgstr "\n"
+msgstr ""
+"\n"
 "- Revise '%s' dentro de '%s'"
 
 #. module: typ_landed_costs
@@ -128,7 +135,7 @@ msgid "Draft"
 msgstr "Borrador"
 
 #. module: typ_landed_costs
-#: code:addons/typ_landed_costs/models/stock_landed_costs.py:161
+#: code:addons/typ_landed_costs/models/stock_landed_costs.py:177
 #, python-format
 msgid "Error!"
 msgstr "¡Error!"
@@ -230,11 +237,11 @@ msgstr "Guías"
 #. module: typ_landed_costs
 #: help:stock.landed.cost,guide_ids:0
 msgid "Guides which contain items to be used as landed costs"
-msgstr "Guías las cuales contienen elementos a ser usados como costos en destino"
+msgstr ""
+"Guías las cuales contienen elementos a ser usados como costos en destino"
 
 #. module: typ_landed_costs
-#: field:invoice.guides,id:0
-#: field:stock.landed.cost.guide,id:0
+#: field:invoice.guides,id:0 field:stock.landed.cost.guide,id:0
 #: field:stock.landed.cost.guide.line,id:0
 msgid "ID"
 msgstr "ID"
@@ -279,7 +286,7 @@ msgid "Journal Entry"
 msgstr "Entrada del Diario"
 
 #. module: typ_landed_costs
-#: code:addons/typ_landed_costs/models/stock_landed_costs.py:314
+#: code:addons/typ_landed_costs/models/stock_landed_costs.py:330
 #: model:ir.model,name:typ_landed_costs.model_account_move_line
 #, python-format
 msgid "Journal Items"
@@ -319,8 +326,7 @@ msgid "Last Modified on"
 msgstr "Modificado en"
 
 #. module: typ_landed_costs
-#: field:invoice.guides,write_uid:0
-#: field:stock.landed.cost.guide,write_uid:0
+#: field:invoice.guides,write_uid:0 field:stock.landed.cost.guide,write_uid:0
 #: field:stock.landed.cost.guide.line,write_uid:0
 msgid "Last Updated by"
 msgstr "Última Actualización por"
@@ -348,13 +354,13 @@ msgid "Name to identify the guide"
 msgstr "Nombre para identificar la guía"
 
 #. module: typ_landed_costs
-#: code:addons/typ_landed_costs/models/stock_landed_costs.py:166
+#: code:addons/typ_landed_costs/models/stock_landed_costs.py:182
 #, python-format
 msgid "No Guide Lines!"
 msgstr "¡No hay Líneas de la Guía!"
 
 #. module: typ_landed_costs
-#: code:addons/typ_landed_costs/models/stock_landed_costs.py:398
+#: code:addons/typ_landed_costs/models/stock_landed_costs.py:421
 #, python-format
 msgid "Only valid guides can be added to a landed cost"
 msgstr "Sólo guías validadas pueden ser agregadas a un costo en destino"
@@ -381,7 +387,7 @@ msgid "Period"
 msgstr "Período"
 
 #. module: typ_landed_costs
-#: code:addons/typ_landed_costs/models/stock_landed_costs.py:167
+#: code:addons/typ_landed_costs/models/stock_landed_costs.py:183
 #, python-format
 msgid "Please create some guide lines."
 msgstr "Por favor cree algunas líneas de guía."
@@ -393,7 +399,7 @@ msgid "Please define expense account for this product: \"%s\""
 msgstr "Por favor, defina la cuenta de gastos del producto: \"%s\""
 
 #. module: typ_landed_costs
-#: code:addons/typ_landed_costs/models/stock_landed_costs.py:162
+#: code:addons/typ_landed_costs/models/stock_landed_costs.py:178
 #, python-format
 msgid "Please define sequence on the journal related to this guide."
 msgstr "Por favor defina una secuencia en el diario relacionado a esta guía."
@@ -402,6 +408,11 @@ msgstr "Por favor defina una secuencia en el diario relacionado a esta guía."
 #: field:stock.landed.cost.guide.line,product_id:0
 msgid "Product"
 msgstr "Producto"
+
+#. module: typ_landed_costs
+#: model:ir.model,name:typ_landed_costs.model_product_template
+msgid "Product Template"
+msgstr "Plantilla de Producto"
 
 #. module: typ_landed_costs
 #: help:stock.landed.cost.guide.line,product_id:0
@@ -471,22 +482,33 @@ msgstr "La(s) guía(s) "
 
 #. module: typ_landed_costs
 #: help:stock.landed.cost.guide,landed:0
-msgid "This field is automatically True if the guide belongs to a validated Landed Cost document"
-msgstr "Este campo es automáticamente Verdadero si la guía pertenece a un documento de Coste en Destino"
+msgid ""
+"This field is automatically True if the guide belongs to a validated Landed "
+"Cost document"
+msgstr ""
+"Este campo es automáticamente Verdadero si la guía pertenece a un documento "
+"de Coste en Destino"
 
 #. module: typ_landed_costs
 #: model:res.groups,comment:typ_landed_costs.group_landed_guide_manager
-msgid "This group is for Managers of Landed Cost Guides.\n"
+msgid ""
+"This group is for Managers of Landed Cost Guides.\n"
 "\n"
 "They can:\n"
 "- Reset guides to Draft state."
-msgstr "Este grupo es para Administradores de las Guías de Coste en Destino.\n"
+msgstr ""
+"Este grupo es para Administradores de las Guías de Coste en Destino.\n"
 "\n"
 "Ellos pueden:\n"
 "- Reestablecer las guías a estado Borrador."
 
 #. module: typ_landed_costs
-#: code:addons/typ_landed_costs/models/stock_landed_costs.py:174
+#: field:stock.landed.cost.guide,amount_total:0
+msgid "Total"
+msgstr "Total"
+
+#. module: typ_landed_costs
+#: code:addons/typ_landed_costs/models/stock_landed_costs.py:190
 #, python-format
 msgid "User Error!"
 msgstr "¡Error de Usuario!"
@@ -515,21 +537,30 @@ msgstr "Almacén al cual pertenece esta guía"
 #. module: typ_landed_costs
 #: help:stock.landed.cost.guide,invoiced:0
 msgid "When the guide has been invoiced, this field is True, otherwise False"
-msgstr "Cuando la guía ya ha sido facturada, este campo es Verdadero, de lo contrario es Falso"
+msgstr ""
+"Cuando la guía ya ha sido facturada, este campo es Verdadero, de lo "
+"contrario es Falso"
 
 #. module: typ_landed_costs
-#: code:addons/typ_landed_costs/models/stock_landed_costs.py:175
+#: code:addons/typ_landed_costs/models/stock_landed_costs.py:191
 #, python-format
-msgid "You cannot create a guide on a centralized journal. Uncheck the centralized counterpart box in the related journal from the configuration menu."
-msgstr "No puede crear una guía en un diario centralizado. Desmarque la casilla contrapartida centralizada en el diario relacionado desde el menú de configuración."
+msgid ""
+"You cannot create a guide on a centralized journal. Uncheck the centralized "
+"counterpart box in the related journal from the configuration menu."
+msgstr ""
+"No puede crear una guía en un diario centralizado. Desmarque la casilla "
+"contrapartida centralizada en el diario relacionado desde el menú de "
+"configuración."
 
 #. module: typ_landed_costs
-#: code:addons/typ_landed_costs/models/stock_landed_costs.py:127
+#: code:addons/typ_landed_costs/models/stock_landed_costs.py:143
 #, python-format
-msgid "You cannot reset this guide to draft while it is associated to a Landed Cost Document:\n"
+msgid ""
+"You cannot reset this guide to draft while it is associated to a Landed Cost Document:\n"
 "\n"
 "- %s"
-msgstr "No puedes reiniciar esta guía a borrador mientras esté asociada a un Documento de Coste en Destino:\n"
+msgstr ""
+"No puedes reiniciar esta guía a borrador mientras esté asociada a un Documento de Coste en Destino:\n"
 "\n"
 "- %s"
 
@@ -543,4 +574,3 @@ msgstr "ya esta(n) facturada(s)"
 #: view:invoice.guides:typ_landed_costs.view_invoice_from_guides_form
 msgid "or"
 msgstr "ó"
-

@@ -1,29 +1,36 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
-#	* typ_default_warehouse_from_sale_team
-#
+# * typ_default_warehouse_from_sale_team
+# 
+# Translators:
+# Humberto Arocha <hbto@vauxoo.com>, 2016
+# Coward Vassal Vauxoo <coward@vauxoo.com>, 2016
+# Antonio Rogel <arogel@typrefrigeracion.com>, 2016
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 8.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-11-06 05:39+0000\n"
-"PO-Revision-Date: 2016-11-06 05:39+0000\n"
-"Last-Translator: <>\n"
-"Language-Team: \n"
+"POT-Creation-Date: 2016-11-24 22:20+0000\n"
+"PO-Revision-Date: 2016-11-24 22:20+0000\n"
+"Last-Translator: Antonio Rogel <arogel@typrefrigeracion.com>, 2016\n"
+"Language-Team: Spanish (https://www.transifex.com/Vauxoo/teams/69438/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
-"Plural-Forms: \n"
+"Language: es\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #. module: typ_default_warehouse_from_sale_team
 #: help:crm.case.section,journal_guide_id:0
 msgid "It indicates journal to be used when landed cost guide is created"
-msgstr "Diario que debe ser usado cuando una Guía de costo en destino es creada"
+msgstr ""
+"Indica el diario que se debe usar cuando una guía de costo en destino se "
+"crea"
 
 #. module: typ_default_warehouse_from_sale_team
 #: help:crm.case.section,journal_landed_id:0
 msgid "It indicates journal to be used when landed cost is created"
-msgstr "Diario que debe ser usado cuando un Costo en destino es creado"
+msgstr "Indica el diario que se debe usar cuando el costo en destino se crea"
 
 #. module: typ_default_warehouse_from_sale_team
 #: field:crm.case.section,journal_landed_id:0
@@ -35,3 +42,12 @@ msgstr "Diario de costo en destino"
 msgid "Journal landed cost guide"
 msgstr "Diario de guía de costo en destino"
 
+#. module: typ_default_warehouse_from_sale_team
+#: model:ir.model,name:typ_default_warehouse_from_sale_team.model_crm_case_section
+msgid "Sales Teams"
+msgstr "Equipos de ventas"
+
+#. module: typ_default_warehouse_from_sale_team
+#: model:ir.model,name:typ_default_warehouse_from_sale_team.model_stock_landed_cost
+msgid "Stock Landed Cost"
+msgstr "Costo en Destino"
