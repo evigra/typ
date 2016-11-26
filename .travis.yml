@@ -34,7 +34,7 @@ env:
   matrix:
   - LINT_CHECK="1"
   - TESTS="1" INCLUDE="typ"
-  - TRANSIFEX="1"
+  - TRANSIFEX="1" LANG_ALLOWED="es"
 
 virtualenv:
   system_site_packages: true
