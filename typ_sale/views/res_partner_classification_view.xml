@@ -1,0 +1,22 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<openerp>
+    <data>
+        <record model="ir.ui.view" id="partner_clients_typ">
+            <field name='name'>res.partner.form.classification</field>
+            <field name='model'>res.partner</field>
+            <field name='inherit_id' ref='base.view_partner_form'/>
+            <field name='type'>form</field>
+            <field name='arch' type='xml'>
+                <xpath expr="/form/sheet/notebook/page/group/group/field[@name='supplier']" position="after">
+                        <field name="importance" />
+                        <field name="potential_importance" />
+                        <field name="partner_type" />
+                        <field name="business_activity" />
+                        <field name="dealer" />
+                        <field name="region" />
+                </xpath>
+            </field>
+        </record>
+    </data>
+</openerp>
+

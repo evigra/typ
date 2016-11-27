@@ -27,6 +27,7 @@
         'views/account_invoice_view.xml',
         'views/res_company_view.xml',
         'views/res_config_view.xml',
+        'views/res_partner_classification_view.xml',
     ],
     'demo': [
         'demo/sale_data_demo.xml',
