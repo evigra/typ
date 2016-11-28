@@ -22,5 +22,9 @@
           <field name="comment">This group can see margin in sale order.</field>
         </record>
 
+        <record id="res_group_cancel_sale_order" model="res.groups">
+          <field name="name">Users that can cancel a sale order</field>
+          <field name="comment">This group can cancel the sale orders.</field>
+        </record>
     </data>
 </openerp>

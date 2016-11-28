@@ -62,5 +62,20 @@
                </field>
             </field>
         </record>
+
+        <record id="view_sale_order_button_cancel" model="ir.ui.view">
+            <field name="name">sale.order.button.cancel</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="arch" type="xml">
+               <button name="cancel" position="attributes">
+                    <attribute name="groups">typ_sale.res_group_cancel_sale_order</attribute>
+               </button>
+               <button name="action_cancel" position="attributes">
+                    <attribute name="groups">typ_sale.res_group_cancel_sale_order</attribute>
+               </button>
+            </field>
+        </record>
+
     </data>
 </openerp>
