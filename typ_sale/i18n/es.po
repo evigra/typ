@@ -4,13 +4,14 @@
 # 
 # Translators:
 # Coward Vassal Vauxoo <coward@vauxoo.com>, 2016
+# omejia26 <omejia@typrefrigeracion.com>, 2016
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 8.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-11-27 09:35+0000\n"
-"PO-Revision-Date: 2016-11-27 09:35+0000\n"
-"Last-Translator: Coward Vassal Vauxoo <coward@vauxoo.com>, 2016\n"
+"POT-Creation-Date: 2016-11-28 20:23+0000\n"
+"PO-Revision-Date: 2016-11-28 20:23+0000\n"
+"Last-Translator: omejia26 <omejia@typrefrigeracion.com>, 2016\n"
 "Language-Team: Spanish (https://www.transifex.com/Vauxoo/teams/45447/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -38,12 +39,12 @@ msgstr "15 días en refacciones y 30 días en equipos."
 #: selection:res.partner,importance:0
 #: selection:res.partner,potential_importance:0
 msgid "AA"
-msgstr ""
+msgstr "AA"
 
 #. module: typ_sale
 #: selection:res.partner,dealer:0
 msgid "AD"
-msgstr ""
+msgstr "DA"
 
 #. module: typ_sale
 #: field:res.partner.warehouse,allow_overdue_invoice:0
@@ -58,27 +59,27 @@ msgstr "Disponibilidad:"
 #. module: typ_sale
 #: selection:res.partner,partner_type:0
 msgid "BOT"
-msgstr ""
+msgstr "EMB"
 
 #. module: typ_sale
 #: field:res.partner,business_activity:0
 msgid "Business activity"
-msgstr ""
+msgstr "Giro"
 
 #. module: typ_sale
 #: selection:res.partner,region:0
 msgid "CENTER"
-msgstr ""
+msgstr "CENTRO"
 
 #. module: typ_sale
 #: selection:res.partner,business_activity:0
 msgid "COM"
-msgstr ""
+msgstr "EMP"
 
 #. module: typ_sale
 #: selection:res.partner,business_activity:0
 msgid "CON"
-msgstr ""
+msgstr "CON"
 
 #. module: typ_sale
 #: selection:account.invoice,type_payment_term:0
@@ -145,7 +146,7 @@ msgstr "Moneda:"
 #. module: typ_sale
 #: field:res.partner,dealer:0
 msgid "Dealer type"
-msgstr ""
+msgstr "Tipo dealer"
 
 #. module: typ_sale
 #: view:website:sale.report_saleorder_document
@@ -162,12 +163,12 @@ msgstr "Nombre para mostrar"
 #: selection:res.partner,importance:0 selection:res.partner,partner_type:0
 #: selection:res.partner,potential_importance:0
 msgid "EMPLOYEE"
-msgstr ""
+msgstr "EMPLEADO"
 
 #. module: typ_sale
 #: selection:res.partner,partner_type:0
 msgid "ESP"
-msgstr ""
+msgstr "ESP"
 
 #. module: typ_sale
 #: view:website:typ_sale.external_layout_footer
@@ -182,7 +183,7 @@ msgstr "Salvo previa venta."
 #. module: typ_sale
 #: selection:res.partner,partner_type:0
 msgid "FSC"
-msgstr ""
+msgstr "ALI"
 
 #. module: typ_sale
 #: view:website:sale.report_saleorder_document
@@ -211,7 +212,7 @@ msgstr ""
 #. module: typ_sale
 #: field:res.partner,importance:0
 msgid "Importance"
-msgstr ""
+msgstr "Importancia"
 
 #. module: typ_sale
 #: help:sale.order.line,purchase_partner_id:0
@@ -256,36 +257,36 @@ msgstr "Margen permitido en Pedido de Venta"
 #. module: typ_sale
 #: selection:res.partner,partner_type:0
 msgid "NC"
-msgstr ""
+msgstr "CN"
 
 #. module: typ_sale
 #: selection:res.partner,importance:0
 #: selection:res.partner,potential_importance:0
 msgid "NEGOTIATION"
-msgstr ""
+msgstr "NEGOCIACION"
 
 #. module: typ_sale
 #: selection:res.partner,importance:0
 #: selection:res.partner,potential_importance:0
 msgid "NEW"
-msgstr ""
+msgstr "NUEVO"
 
 #. module: typ_sale
 #: selection:res.partner,region:0
 msgid "NORTHEAST"
-msgstr ""
+msgstr "NORESTE"
 
 #. module: typ_sale
 #: selection:res.partner,region:0
 msgid "NORTHWEST"
-msgstr ""
+msgstr "NOROESTE"
 
 #. module: typ_sale
 #: selection:res.partner,business_activity:0
 #: selection:res.partner,importance:0 selection:res.partner,partner_type:0
 #: selection:res.partner,potential_importance:0
 msgid "NOT CLASSIFIED"
-msgstr ""
+msgstr "NO CLASIFICADO"
 
 #. module: typ_sale
 #: help:res.partner,business_activity:0
@@ -295,6 +296,10 @@ msgid ""
 "COM - Company\n"
 "WHO - Wholesaler"
 msgstr ""
+"No clasificado \\n\n"
+"CON - Contratista\\n\n"
+"EMP - Empresa \\n\n"
+"MAY - Mayorista"
 
 #. module: typ_sale
 #: view:website:sale.report_saleorder_document
@@ -304,7 +309,7 @@ msgstr "Notas:"
 #. module: typ_sale
 #: selection:res.partner,partner_type:0
 msgid "OC"
-msgstr ""
+msgstr "CO"
 
 #. module: typ_sale
 #: help:res.partner,partner_type:0
@@ -322,11 +327,23 @@ msgid ""
 "WW - Wholesaler wholesaler\n"
 "WI - Wholesaler ironmonger"
 msgstr ""
+"CO - Contratista operador\\n\n"
+"CN - Contratista obra nueva\\n\n"
+"CP - Contratista profesional\\n\n"
+"RC - Contratista refrigeracion\\n\n"
+"ESP - Especificador\\n\n"
+"ALI - Empresa de alimentos\\n\n"
+"SUP - Empresa supermercado\\n\n"
+"EMB - Embotelladora\\n\n"
+"OTR - Otras\\n\n"
+"MC -  Mayorista contratista\\n\n"
+"MM - Mayorista mayorista\\n\n"
+"MF - Mayorista Ferretero"
 
 #. module: typ_sale
 #: selection:res.partner,partner_type:0
 msgid "OTH"
-msgstr ""
+msgstr "OTR"
 
 #. module: typ_sale
 #: view:website:sale.report_saleorder_document
@@ -341,12 +358,12 @@ msgstr "Pedido Nº"
 #. module: typ_sale
 #: selection:res.partner,partner_type:0
 msgid "PC"
-msgstr ""
+msgstr "CP"
 
 #. module: typ_sale
 #: selection:res.partner,dealer:0
 msgid "PD"
-msgstr ""
+msgstr "DP"
 
 #. module: typ_sale
 #: help:res.partner,dealer:0
@@ -355,6 +372,9 @@ msgid ""
 "AD - Authorized dealer\n"
 "SD - Sporadic dealer"
 msgstr ""
+"DP - Dealer premier\\n\n"
+"DA - Dealer autorizado\\n\n"
+"DE - Dealer esporadico"
 
 #. module: typ_sale
 #: view:website:typ_sale.external_layout_footer
@@ -370,7 +390,7 @@ msgstr "Empresa"
 #. module: typ_sale
 #: field:res.partner,partner_type:0
 msgid "Partner type"
-msgstr ""
+msgstr "Tipo cliente"
 
 #. module: typ_sale
 #: model:res.groups,name:typ_sale.group_res_partner_warehouse_manager
@@ -408,7 +428,7 @@ msgstr "Cheque posfechado"
 #. module: typ_sale
 #: field:res.partner,potential_importance:0
 msgid "Potential importance"
-msgstr ""
+msgstr "Importancia potencial"
 
 #. module: typ_sale
 #: view:website:sale.report_saleorder_document
@@ -443,7 +463,7 @@ msgstr "Presupuesto Nº"
 #. module: typ_sale
 #: selection:res.partner,partner_type:0
 msgid "RC"
-msgstr ""
+msgstr "CR"
 
 #. module: typ_sale
 #: view:website:typ_sale.external_layout_header
@@ -463,27 +483,27 @@ msgstr "Referencia/Cliente"
 #. module: typ_sale
 #: field:res.partner,region:0
 msgid "Region"
-msgstr ""
+msgstr "Región"
 
 #. module: typ_sale
 #: selection:res.partner,dealer:0
 msgid "SD"
-msgstr ""
+msgstr "DE"
 
 #. module: typ_sale
 #: selection:res.partner,region:0
 msgid "SOUTH"
-msgstr ""
+msgstr "SUR"
 
 #. module: typ_sale
 #: selection:res.partner,region:0
 msgid "SOUTHEAST"
-msgstr ""
+msgstr "SURESTE"
 
 #. module: typ_sale
 #: selection:res.partner,partner_type:0
 msgid "SUP"
-msgstr ""
+msgstr "SUP"
 
 #. module: typ_sale
 #: model:res.groups,name:typ_sale.group_sale_order_invoice_payment_term_manager
@@ -572,6 +592,11 @@ msgid "This group allow sale order bellow the minimum margin."
 msgstr "Este grupo permite pedidos de venta por debajo del margen mínimo."
 
 #. module: typ_sale
+#: model:res.groups,comment:typ_sale.res_group_cancel_sale_order
+msgid "This group can cancel the sale orders."
+msgstr ""
+
+#. module: typ_sale
 #: model:res.groups,comment:typ_sale.group_res_partner_warehouse_manager
 msgid "This group can register partner warehouse configurations."
 msgstr "Este grupo puede registrar configuraciones de almacén del cliente."
@@ -616,6 +641,11 @@ msgid "Unit Price"
 msgstr "Precio Unidad"
 
 #. module: typ_sale
+#: model:res.groups,name:typ_sale.res_group_cancel_sale_order
+msgid "Users that can cancel a sale order"
+msgstr ""
+
+#. module: typ_sale
 #: model:res.groups,name:typ_sale.res_group_margin_sale_order
 msgid "Users that can see the margin of sale"
 msgstr "Usuarios que pueden ver el margen en el pedido de venta"
@@ -633,27 +663,27 @@ msgstr "Vigencia:"
 #. module: typ_sale
 #: selection:res.partner,region:0
 msgid "WEST"
-msgstr ""
+msgstr "OCCIDENTE"
 
 #. module: typ_sale
 #: selection:res.partner,partner_type:0
 msgid "WHC"
-msgstr ""
+msgstr "MC"
 
 #. module: typ_sale
 #: selection:res.partner,business_activity:0
 msgid "WHO"
-msgstr ""
+msgstr "MAY"
 
 #. module: typ_sale
 #: selection:res.partner,partner_type:0
 msgid "WI"
-msgstr ""
+msgstr "MF"
 
 #. module: typ_sale
 #: selection:res.partner,partner_type:0
 msgid "WW"
-msgstr ""
+msgstr "MM"
 
 #. module: typ_sale
 #: field:res.partner.warehouse,warehouse_id:0
@@ -709,6 +739,11 @@ msgstr "Su referencia:"
 #: view:sale.order:typ_sale.view_sale_order_form_type_payment_term
 msgid "typ_sale.group_sale_order_invoice_payment_term_manager"
 msgstr "typ_sale.group_sale_order_invoice_payment_term_manager"
+
+#. module: typ_sale
+#: view:sale.order:typ_sale.view_sale_order_button_cancel
+msgid "typ_sale.res_group_cancel_sale_order"
+msgstr ""
 
 #. module: typ_sale
 #: view:sale.order:typ_sale.view_sale_order_form_margin
