@@ -9,6 +9,9 @@
                 <xpath expr="//field[@name='partner_id']" position="before">
                     <field name="origin"/>
                 </xpath>
+                <xpath expr="//filter[@string='Origin']" position="before">
+                    <filter string="Partner" domain="[]" context="{'group_by':'partner_id'}"/>
+                </xpath>
             </field>
         </record>
         <record id="view_move_picking_tree_inherit" model="ir.ui.view">
@@ -21,7 +24,6 @@
                 </xpath>
             </field>
         </record>
-
         <record id="view_typ_picking_button_cancel_inherit" model="ir.ui.view">
             <field name="name">typ.picking.button.cancel</field>
             <field name="model">stock.picking</field>
@@ -32,7 +34,6 @@
                </button>
             </field>
         </record>
-
         <record id="view_move_picking_form_inherit" model="ir.ui.view">
             <field name="name">move.picking.form.inherit</field>
             <field name="model">stock.move</field>
@@ -55,6 +56,16 @@
                 </xpath>
                 <xpath expr="//field[@name='location_dest_id']" position="attributes">
                     <attribute name="attrs">{'readonly': [('state', '!=', 'draft')]}</attribute>
+                </xpath>
+            </field>
+        </record>
+        <record id="view_stock_picking_tree_inherit" model="ir.ui.view">
+            <field name="name">stock.picking.tree.inherit</field>
+            <field name="model">stock.picking</field>
+            <field name="inherit_id" ref="stock.vpicktree"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='min_date']" position="attributes">
+                    <attribute name="invisible">0</attribute>
                 </xpath>
             </field>
         </record>
