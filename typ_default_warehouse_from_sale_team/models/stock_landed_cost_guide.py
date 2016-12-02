@@ -17,7 +17,7 @@ class StockLandedCostGuides(models.Model):
         """If the warehouse selected is default for a Sale Team, set in
         journal_id the journal_guide_id associated to this Sale Team"""
         warehouse = self.warehouse_id.id
-        res = super(StockLandedCostGuides, self).onchange_warehouse_id()
+        res = {}
         if warehouse:
             journal_id = self.env['crm.case.section'].search([
                 ('default_warehouse', '=', warehouse)]).journal_guide_id

@@ -75,19 +75,3 @@ class TestGuides(TestTypLandedCosts):
         self.assertEqual(debit_line.debit, comp_cost)
         self.assertEqual(debit_line.credit, 0)
         self.assertEqual(debit_line.amount_currency, cost)
-
-    def test_20_filter_journal_from_warehouse(self):
-        """Test default warehouse from sale teams filters guide journals"""
-        guide = self.create_guide()
-        sale_team = self.env.ref('default_warehouse_from_sale_team'
-                                 '.section_sales_default_team')
-        guide.warehouse_id = sale_team.default_warehouse
-        journal = self.env.ref('account.sales_journal')
-        sale_team.write({'journal_team_ids': [(6, 0, journal.ids)]})
-        res = guide.onchange_warehouse_id()
-        self.assertIn('domain', res)
-        dom = res['domain']
-        self.assertIn('journal_id', dom)
-        journal2 = self.env['account.journal'].search(dom['journal_id'])
-        self.assertEqual(len(journal2), 1)
-        self.assertIn(journal, journal2)
