@@ -35,7 +35,7 @@
                                     <h4 style="color:red;">
                                         <t t-if="dict_context_extra_data.get('type', False) in ['out_invoice', 'out_refund']">
                                             <t t-if="o.state in ['done', 'signed']">
-                                                <strong t-esc="dict_data.get('@folio', '')"/>
+                                                <strong t-esc="invoice_obj.number"/>
                                             </t>
                                             <t t-if="not o.state in ['done', 'signed']">
                                                 <strong>WITHOUT FOLIO OR INVALID STATUS</strong>
