@@ -11,14 +11,16 @@ msgstr ""
 "Project-Id-Version: Odoo Server 8.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-11-24 22:20+0000\n"
-"PO-Revision-Date: 2016-11-24 22:20+0000\n"
-"Last-Translator: Humberto Arocha <hbto@vauxoo.com>, 2016\n"
-"Language-Team: Spanish (https://www.transifex.com/Vauxoo/teams/69438/es/)\n"
+"PO-Revision-Date: 2016-12-03 06:23+0000\n"
+"Last-Translator: Humberto <hbto@vauxoo.com>\n"
+"Language-Team: Spanish "
+"<http://weblate.vauxoo.com/projects/typ-80/typ_purchase/es/>\n"
+"Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
-"Language: es\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 2.9\n"
 
 #. module: typ_purchase
 #: field:purchase.order,broker_id:0
@@ -65,7 +67,7 @@ msgstr "Orden de Compra en Borrador creada"
 #. module: typ_purchase
 #: view:website:typ_purchase.external_layout_footer
 msgid "Email"
-msgstr "Email"
+msgstr "Correo electrónico"
 
 #. module: typ_purchase
 #: view:website:purchase.report_purchasequotation_document
@@ -132,7 +134,7 @@ msgstr "Teléfono"
 #. module: typ_purchase
 #: model:ir.model,name:typ_purchase.model_procurement_order
 msgid "Procurement"
-msgstr "Procura"
+msgstr "Abastecimiento"
 
 #. module: typ_purchase
 #: view:website:purchase.report_purchaseorder_document
@@ -142,7 +144,7 @@ msgstr "Código de Producto"
 #. module: typ_purchase
 #: field:purchase.order.line,shipment_date:0
 msgid "Product shipment date"
-msgstr "Fecha de embarque del producto"
+msgstr "Fecha de envío del producto"
 
 #. module: typ_purchase
 #: view:website:purchase.report_purchaseorder_document
@@ -188,7 +190,7 @@ msgstr "Saludos cordiales,"
 #. module: typ_purchase
 #: field:purchase.order,report_lang:0
 msgid "Report Language"
-msgstr "Lenguaje del Reporte"
+msgstr "Idioma del Reporte"
 
 #. module: typ_purchase
 #: view:website:purchase.report_purchasequotation_document
