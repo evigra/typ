@@ -10,14 +10,16 @@ msgstr ""
 "Project-Id-Version: Odoo Server 8.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-11-28 20:23+0000\n"
-"PO-Revision-Date: 2016-11-28 20:23+0000\n"
-"Last-Translator: omejia26 <omejia@typrefrigeracion.com>, 2016\n"
-"Language-Team: Spanish (https://www.transifex.com/Vauxoo/teams/45447/es/)\n"
+"PO-Revision-Date: 2016-12-03 06:22+0000\n"
+"Last-Translator: Humberto <hbto@vauxoo.com>\n"
+"Language-Team: Spanish "
+"<http://weblate.vauxoo.com/projects/typ-80/typ_sale/es/>\n"
+"Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
-"Language: es\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 2.9\n"
 
 #. module: typ_sale
 #: view:website:sale.report_saleorder_document
@@ -131,7 +133,7 @@ msgstr "Crédito"
 #. module: typ_sale
 #: model:account.payment.term,name:typ_sale.typ_sale_payment_term_credit
 msgid "Credit Payment Term"
-msgstr "Credit Payment Term"
+msgstr "Término de Pago a Crédito"
 
 #. module: typ_sale
 #: field:res.partner.warehouse,credit_limit:0
@@ -156,7 +158,7 @@ msgstr "Descripción"
 #. module: typ_sale
 #: field:res.partner.warehouse,display_name:0
 msgid "Display Name"
-msgstr "Nombre para mostrar"
+msgstr "Nombre a Mostrar"
 
 #. module: typ_sale
 #: selection:res.partner,business_activity:0
@@ -236,17 +238,17 @@ msgstr "Dirección de facturación:"
 #. module: typ_sale
 #: field:res.partner.warehouse,__last_update:0
 msgid "Last Modified on"
-msgstr "Ultima Modificación en"
+msgstr "Última Modificación el"
 
 #. module: typ_sale
 #: field:res.partner.warehouse,write_uid:0
 msgid "Last Updated by"
-msgstr "Última actualización por"
+msgstr "Última Actualización por"
 
 #. module: typ_sale
 #: field:res.partner.warehouse,write_date:0
 msgid "Last Updated on"
-msgstr "Última actualización en"
+msgstr "Última Actualización el"
 
 #. module: typ_sale
 #: field:res.company,margin_allowed:0
@@ -296,9 +298,9 @@ msgid ""
 "COM - Company\n"
 "WHO - Wholesaler"
 msgstr ""
-"No clasificado \\n\n"
-"CON - Contratista\\n\n"
-"EMP - Empresa \\n\n"
+"No clasificado \n"
+"CON - Contratista\n"
+"EMP - Empresa \n"
 "MAY - Mayorista"
 
 #. module: typ_sale
@@ -327,17 +329,17 @@ msgid ""
 "WW - Wholesaler wholesaler\n"
 "WI - Wholesaler ironmonger"
 msgstr ""
-"CO - Contratista operador\\n\n"
-"CN - Contratista obra nueva\\n\n"
-"CP - Contratista profesional\\n\n"
-"RC - Contratista refrigeracion\\n\n"
-"ESP - Especificador\\n\n"
-"ALI - Empresa de alimentos\\n\n"
-"SUP - Empresa supermercado\\n\n"
-"EMB - Embotelladora\\n\n"
-"OTR - Otras\\n\n"
-"MC -  Mayorista contratista\\n\n"
-"MM - Mayorista mayorista\\n\n"
+"CO - Contratista operador\n"
+"CN - Contratista obra nueva\n"
+"CP - Contratista profesional\n"
+"RC - Contratista refrigeracion\n"
+"ESP - Especificador\n"
+"ALI - Empresa de alimentos\n"
+"SUP - Empresa supermercado\n"
+"EMB - Embotelladora\n"
+"OTR - Otras\n"
+"MC -  Mayorista contratista\n"
+"MM - Mayorista mayorista\n"
 "MF - Mayorista Ferretero"
 
 #. module: typ_sale
@@ -372,8 +374,8 @@ msgid ""
 "AD - Authorized dealer\n"
 "SD - Sporadic dealer"
 msgstr ""
-"DP - Dealer premier\\n\n"
-"DA - Dealer autorizado\\n\n"
+"DP - Dealer premier\n"
+"DA - Dealer autorizado\n"
 "DE - Dealer esporadico"
 
 #. module: typ_sale
@@ -443,7 +445,7 @@ msgstr "Abastecimiento"
 #. module: typ_sale
 #: model:ir.model,name:typ_sale.model_purchase_order
 msgid "Purchase Order"
-msgstr "Pedido de compra"
+msgstr "Pedido de Compra"
 
 #. module: typ_sale
 #: view:website:sale.report_saleorder_document
@@ -558,7 +560,7 @@ msgstr "Venta especial"
 #. module: typ_sale
 #: model:ir.model,name:typ_sale.model_stock_move
 msgid "Stock Move"
-msgstr "Movimiento de existencias"
+msgstr "Movimiento de Inventario"
 
 #. module: typ_sale
 #: view:website:sale.report_saleorder_document
@@ -594,7 +596,7 @@ msgstr "Este grupo permite pedidos de venta por debajo del margen mínimo."
 #. module: typ_sale
 #: model:res.groups,comment:typ_sale.res_group_cancel_sale_order
 msgid "This group can cancel the sale orders."
-msgstr ""
+msgstr "Este grupo puede cancelar las órdenes de venta."
 
 #. module: typ_sale
 #: model:res.groups,comment:typ_sale.group_res_partner_warehouse_manager
@@ -643,7 +645,7 @@ msgstr "Precio Unidad"
 #. module: typ_sale
 #: model:res.groups,name:typ_sale.res_group_cancel_sale_order
 msgid "Users that can cancel a sale order"
-msgstr ""
+msgstr "Los usuarios que pueden cancelar una orden de venta"
 
 #. module: typ_sale
 #: model:res.groups,name:typ_sale.res_group_margin_sale_order
@@ -743,7 +745,7 @@ msgstr "typ_sale.group_sale_order_invoice_payment_term_manager"
 #. module: typ_sale
 #: view:sale.order:typ_sale.view_sale_order_button_cancel
 msgid "typ_sale.res_group_cancel_sale_order"
-msgstr ""
+msgstr "typ_sale.res_group_cancel_sale_order"
 
 #. module: typ_sale
 #: view:sale.order:typ_sale.view_sale_order_form_margin
