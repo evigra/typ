@@ -43,6 +43,7 @@
         'note',
         'partner_credit_limit',
         'product_available_by_warehouse',
+        'product_extended_variants',
         'product_unique_serial',
         'project_issue',
         'purchase_double_validation',
