@@ -3,6 +3,7 @@
 from lxml import etree
 import simplejson
 from openerp import _, api, fields, models
+from openerp.exceptions import ValidationError
 
 
 def domain_str_append(old_domain_str, subdomain_str):
@@ -74,18 +75,88 @@ class StockSerial(models.TransientModel):
 
     @api.onchange('serial_ids')
     def onchange_serial(self):
-        serial = []
-        for serial_id in self.serial_ids:
-            if serial_id.lot_id in serial:
-                return {
-                    'warning': {
-                        'title': _('Warning'),
-                        'message': (
-                            _('The Serial number %s already captured') %
-                            (serial_id.lot_id.name.encode('utf-8')))
-                    }}
-            else:
-                serial.append(serial_id.lot_id)
+        move = self.env['stock.move'].browse(self._context['active_id'])
+        if move.picking_type_id.use_existing_lots:
+            serial = []
+            for serial_id in self.serial_ids:
+                if serial_id.lot_id in serial:
+                    return {
+                        'warning': {
+                            'title': _('Warning'),
+                            'message': (
+                                _('The Serial number %s already captured') %
+                                (serial_id.lot_id.name.encode('utf-8')))
+                        }}
+                else:
+                    serial.append(serial_id.lot_id)
+
+        else:
+            return super(StockSerial, self).onchange_serial()
+
+    @api.multi
+    def move_serial(self):
+        quant_obj = self.env['stock.quant']
+
+        for move in self:
+            move_id = move.move_id
+            product_id = move_id.product_id.id
+            move_id.picking_id.pack_operation_ids.filtered(
+                lambda dat: dat.product_id.id == product_id).unlink()
+
+            if len(move.serial_ids) > move_id.product_uom_qty:
+                raise ValidationError(
+                    _('The serial numbers loaded cannot be greater'
+                      ' than the requested quantity of the product'))
+
+            if move_id.picking_type_id.use_existing_lots:
+                move_id.do_unreserve()
+
+            for move_serial in move.serial_ids:
+                # This validation by picking type code and
+                # picking type create/existing lots is necessary because
+                # the lot can be used again if are not present in someone
+                # location of type internal and not need to be created
+                if move_id.picking_type_id.use_create_lots:
+                    if quant_obj.search_count(
+                        [('product_id', '=', move_id.product_id.id),
+                         ('lot_id.name', '=', move_serial.serial),
+                         ('qty', '>', 0.0),
+                         ('location_id.usage', '=', 'internal')]):
+                        raise ValidationError(
+                            _('The serial number %s is already stock') %
+                            (move_serial.serial))
+                    self._get_pack_ops_lot(move, move_serial)
+                elif all(
+                    [move_id.picking_type_id.use_existing_lots,
+                     move_id.picking_id.picking_type_id.code == 'incoming']):
+                    if quant_obj.search_count(
+                        [('product_id', '=', move_id.product_id.id),
+                         ('lot_id', '=', move_serial.lot_id.id),
+                         ('qty', '>', 0.0),
+                         ('location_id.usage', '=', 'internal')]):
+                        raise ValidationError(
+                            _('The serial number %s is already stock') % (
+                                move_serial.serial))
+                    self._get_pack_ops_lot(move, move_serial)
+                elif not move_serial.lot_id:
+                    raise ValidationError(
+                        _('Serial number %s not found') % (move_serial.serial))
+                elif move_serial.lot_id.quant_ids.filtered('reservation_id'):
+                    raise ValidationError(
+                        _('The serial number %s is already reserved in'
+                          ' another move') % (move_serial.serial))
+                else:
+                    quants = quant_obj.quants_get_prefered_domain(
+                        move_id.location_id,
+                        move_id.product_id,
+                        qty=1,
+                        domain=[],
+                        prefered_domain_list=[],
+                        restrict_lot_id=move_serial.lot_id.id,
+                        restrict_partner_id=[],
+                    )
+                    quant_obj.quants_reserve(quants, move_id)
+        return True
 
 
 class StockSerialLine(models.TransientModel):

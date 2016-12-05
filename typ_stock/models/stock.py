@@ -109,6 +109,19 @@ class StockMove(models.Model):
 
         return super(StockMove, self).get_price_unit(move)
 
+    @api.multi
+    def _compute_move_lot_unique(self):
+        for move in self:
+            pick_type = move.picking_id.picking_type_id
+            if all(
+                [any([move.product_id.lot_unique_ok,
+                      move.product_id.track_incoming,
+                      move.product_id.track_outgoing]),
+                 move.state in ('draft', 'waiting', 'confirmed', 'assigned'),
+                 any([pick_type.use_create_lots,
+                      pick_type.use_existing_lots])]):
+                move.lot_unique = True
+
 
 class StockPicking(models.Model):
 
