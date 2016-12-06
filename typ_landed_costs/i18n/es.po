@@ -22,13 +22,11 @@ msgstr ""
 "X-Generator: Weblate 2.9\n"
 
 #. module: typ_landed_costs
-#: code:addons/typ_landed_costs/models/stock_landed_costs.py:560
+#: code:addons/typ_landed_costs/models/stock_landed_costs.py:544
 #, python-format
-msgid ""
-"\n"
+msgid "\n"
 "- Check '%s' into '%s'"
-msgstr ""
-"\n"
+msgstr "\n"
 "- Revise '%s' dentro de '%s'"
 
 #. module: typ_landed_costs
@@ -59,7 +57,8 @@ msgid "Company which this guide belongs to"
 msgstr "Compañía a la cual pertenece esta guía"
 
 #. module: typ_landed_costs
-#: field:stock.discrete,cost:0 field:stock.landed.cost.guide.line,cost:0
+#: field:stock.discrete,cost:0
+#: field:stock.landed.cost.guide.line,cost:0
 msgid "Cost"
 msgstr "Costo"
 
@@ -80,14 +79,16 @@ msgid "Create invoice from guides"
 msgstr "Crear factura de guías"
 
 #. module: typ_landed_costs
-#: field:invoice.guides,create_uid:0 field:stock.discrete,create_uid:0
+#: field:invoice.guides,create_uid:0
+#: field:stock.discrete,create_uid:0
 #: field:stock.landed.cost.guide,create_uid:0
 #: field:stock.landed.cost.guide.line,create_uid:0
 msgid "Created by"
 msgstr "Creado por"
 
 #. module: typ_landed_costs
-#: field:invoice.guides,create_date:0 field:stock.discrete,create_date:0
+#: field:invoice.guides,create_date:0
+#: field:stock.discrete,create_date:0
 #: field:stock.landed.cost.guide,create_date:0
 #: field:stock.landed.cost.guide.line,create_date:0
 msgid "Created on"
@@ -129,7 +130,8 @@ msgid "Discrete ids"
 msgstr "Ids de Discreto"
 
 #. module: typ_landed_costs
-#: field:invoice.guides,display_name:0 field:stock.discrete,display_name:0
+#: field:invoice.guides,display_name:0
+#: field:stock.discrete,display_name:0
 #: field:stock.landed.cost.guide,display_name:0
 #: field:stock.landed.cost.guide.line,display_name:0
 msgid "Display Name"
@@ -147,7 +149,7 @@ msgstr "Borrador"
 
 #. module: typ_landed_costs
 #: code:addons/typ_landed_costs/models/stock_landed_costs.py:180
-#: code:addons/typ_landed_costs/models/stock_landed_costs.py:477
+#: code:addons/typ_landed_costs/models/stock_landed_costs.py:461
 #, python-format
 msgid "Error!"
 msgstr "¡Error!"
@@ -249,12 +251,13 @@ msgstr "Guías"
 #. module: typ_landed_costs
 #: help:stock.landed.cost,guide_ids:0
 msgid "Guides which contain items to be used as landed costs"
-msgstr ""
-"Guías las cuales contienen elementos a ser usados como costos en destino"
+msgstr "Guías las cuales contienen elementos a ser usados como costos en destino"
 
 #. module: typ_landed_costs
-#: field:invoice.guides,id:0 field:stock.discrete,id:0
-#: field:stock.landed.cost.guide,id:0 field:stock.landed.cost.guide.line,id:0
+#: field:invoice.guides,id:0
+#: field:stock.discrete,id:0
+#: field:stock.landed.cost.guide,id:0
+#: field:stock.landed.cost.guide.line,id:0
 msgid "ID"
 msgstr "ID"
 
@@ -298,7 +301,7 @@ msgid "Journal Entry"
 msgstr "Entrada del Diario"
 
 #. module: typ_landed_costs
-#: code:addons/typ_landed_costs/models/stock_landed_costs.py:333
+#: code:addons/typ_landed_costs/models/stock_landed_costs.py:317
 #: model:ir.model,name:typ_landed_costs.model_account_move_line
 #, python-format
 msgid "Journal Items"
@@ -332,21 +335,24 @@ msgid "Landed cost document where this guide is added"
 msgstr "Documento de coste en destino donde la guía está agregada"
 
 #. module: typ_landed_costs
-#: field:invoice.guides,__last_update:0 field:stock.discrete,__last_update:0
+#: field:invoice.guides,__last_update:0
+#: field:stock.discrete,__last_update:0
 #: field:stock.landed.cost.guide,__last_update:0
 #: field:stock.landed.cost.guide.line,__last_update:0
 msgid "Last Modified on"
 msgstr "Última Modificación el"
 
 #. module: typ_landed_costs
-#: field:invoice.guides,write_uid:0 field:stock.discrete,write_uid:0
+#: field:invoice.guides,write_uid:0
+#: field:stock.discrete,write_uid:0
 #: field:stock.landed.cost.guide,write_uid:0
 #: field:stock.landed.cost.guide.line,write_uid:0
 msgid "Last Updated by"
 msgstr "Última Actualización por"
 
 #. module: typ_landed_costs
-#: field:invoice.guides,write_date:0 field:stock.discrete,write_date:0
+#: field:invoice.guides,write_date:0
+#: field:stock.discrete,write_date:0
 #: field:stock.landed.cost.guide,write_date:0
 #: field:stock.landed.cost.guide.line,write_date:0
 msgid "Last Updated on"
@@ -384,14 +390,14 @@ msgid "No Guide Lines!"
 msgstr "¡No hay Líneas de la Guía!"
 
 #. module: typ_landed_costs
-#: code:addons/typ_landed_costs/models/stock_landed_costs.py:494
-#: code:addons/typ_landed_costs/models/stock_landed_costs.py:571
+#: code:addons/typ_landed_costs/models/stock_landed_costs.py:478
+#: code:addons/typ_landed_costs/models/stock_landed_costs.py:555
 #, python-format
 msgid "Only draft landed costs can be validated"
 msgstr "Solo prorrateos en borrador pueden ser validados"
 
 #. module: typ_landed_costs
-#: code:addons/typ_landed_costs/models/stock_landed_costs.py:564
+#: code:addons/typ_landed_costs/models/stock_landed_costs.py:548
 #, python-format
 msgid "Only valid guides can be added to a landed cost"
 msgstr "Sólo guías validadas pueden ser agregadas a un costo en destino"
@@ -436,7 +442,7 @@ msgid "Please define sequence on the journal related to this guide."
 msgstr "Por favor defina una secuencia en el diario relacionado a esta guía."
 
 #. module: typ_landed_costs
-#: code:addons/typ_landed_costs/models/stock_landed_costs.py:504
+#: code:addons/typ_landed_costs/models/stock_landed_costs.py:488
 #, python-format
 msgid "Please fill the segmentation field in Cost Lines"
 msgstr "Favor de llenar el campo de segmentación en la lineas de costeo"
@@ -538,37 +544,23 @@ msgid "The guide(s) "
 msgstr "La(s) guía(s) "
 
 #. module: typ_landed_costs
-#: code:addons/typ_landed_costs/models/stock_landed_costs.py:478
+#: code:addons/typ_landed_costs/models/stock_landed_costs.py:462
 #, python-format
-msgid ""
-"The selected picking does not contain any move that would be impacted by "
-"landed costs. Landed costs are only possible for products configured in real"
-" time valuation. Please make sure it is the case, or you selected the "
-"correct picking."
-msgstr ""
-"El albarán seleccionado no contiene ningún movimiento que pudiera ser "
-"impactado por costos en destino. Los costos en destino son solo posible en "
-"productos configurados con valoración en tiempo real. Por favor asegúrese "
-"que este sea el caso, o seleccione un albarán correcto."
+msgid "The selected picking does not contain any move that would be impacted by landed costs. Landed costs are only possible for products configured in real time valuation. Please make sure it is the case, or you selected the correct picking."
+msgstr "El albarán seleccionado no contiene ningún movimiento que pudiera ser impactado por costos en destino. Los costos en destino son solo posible en productos configurados con valoración en tiempo real. Por favor asegúrese que este sea el caso, o seleccione un albarán correcto."
 
 #. module: typ_landed_costs
 #: help:stock.landed.cost.guide,landed:0
-msgid ""
-"This field is automatically True if the guide belongs to a validated Landed "
-"Cost document"
-msgstr ""
-"Este campo es automáticamente Verdadero si la guía pertenece a un documento "
-"de Coste en Destino"
+msgid "This field is automatically True if the guide belongs to a validated Landed Cost document"
+msgstr "Este campo es automáticamente Verdadero si la guía pertenece a un documento de Coste en Destino"
 
 #. module: typ_landed_costs
 #: model:res.groups,comment:typ_landed_costs.group_landed_guide_manager
-msgid ""
-"This group is for Managers of Landed Cost Guides.\n"
+msgid "This group is for Managers of Landed Cost Guides.\n"
 "\n"
 "They can:\n"
 "- Reset guides to Draft state."
-msgstr ""
-"Este grupo es para Administradores de las Guías de Coste en Destino.\n"
+msgstr "Este grupo es para Administradores de las Guías de Coste en Destino.\n"
 "\n"
 "Ellos pueden:\n"
 "- Reestablecer las guías a estado Borrador."
@@ -608,43 +600,30 @@ msgstr "Almacén al cual pertenece esta guía"
 #. module: typ_landed_costs
 #: help:stock.landed.cost.guide,invoiced:0
 msgid "When the guide has been invoiced, this field is True, otherwise False"
-msgstr ""
-"Cuando la guía ya ha sido facturada, este campo es Verdadero, de lo "
-"contrario es Falso"
+msgstr "Cuando la guía ya ha sido facturada, este campo es Verdadero, de lo contrario es Falso"
 
 #. module: typ_landed_costs
 #: code:addons/typ_landed_costs/models/stock_landed_costs.py:194
 #, python-format
-msgid ""
-"You cannot create a guide on a centralized journal. Uncheck the centralized "
-"counterpart box in the related journal from the configuration menu."
-msgstr ""
-"No puede crear una guía en un diario centralizado. Desmarque la casilla "
-"contrapartida centralizada en el diario relacionado desde el menú de "
-"configuración."
+msgid "You cannot create a guide on a centralized journal. Uncheck the centralized counterpart box in the related journal from the configuration menu."
+msgstr "No puede crear una guía en un diario centralizado. Desmarque la casilla contrapartida centralizada en el diario relacionado desde el menú de configuración."
 
 #. module: typ_landed_costs
 #: code:addons/typ_landed_costs/models/stock_landed_costs.py:146
 #, python-format
-msgid ""
-"You cannot reset this guide to draft while it is associated to a Landed Cost Document:\n"
+msgid "You cannot reset this guide to draft while it is associated to a Landed Cost Document:\n"
 "\n"
 "- %s"
-msgstr ""
-"No puedes reiniciar esta guía a borrador mientras esté asociada a un Documento de Coste en Destino:\n"
+msgstr "No puedes reiniciar esta guía a borrador mientras esté asociada a un Documento de Coste en Destino:\n"
 "\n"
 "- %s"
 
 #. module: typ_landed_costs
-#: code:addons/typ_landed_costs/models/stock_landed_costs.py:498
-#: code:addons/typ_landed_costs/models/stock_landed_costs.py:575
+#: code:addons/typ_landed_costs/models/stock_landed_costs.py:482
+#: code:addons/typ_landed_costs/models/stock_landed_costs.py:559
 #, python-format
-msgid ""
-"You cannot validate a landed cost which has no valid valuation adjustments "
-"lines. Did you click on Compute?"
-msgstr ""
-"No puede validar un costo en destino el cual no tiene líneas de ajustes de "
-"valoración válidas. ¿Usted hizo clic en Calcular?"
+msgid "You cannot validate a landed cost which has no valid valuation adjustments lines. Did you click on Compute?"
+msgstr "No puede validar un costo en destino el cual no tiene líneas de ajustes de valoración válidas. ¿Usted hizo clic en Calcular?"
 
 #. module: typ_landed_costs
 #: code:addons/typ_landed_costs/wizards/invoice_from_guides.py:49

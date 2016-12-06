@@ -23,9 +23,7 @@ msgstr ""
 #. module: typ_default_warehouse_from_sale_team
 #: help:crm.case.section,journal_guide_id:0
 msgid "It indicates journal to be used when landed cost guide is created"
-msgstr ""
-"Indica el diario que se debe usar cuando una guía de costo en destino se "
-"crea"
+msgstr "Indica el diario que se debe usar cuando una guía de costo en destino se crea"
 
 #. module: typ_default_warehouse_from_sale_team
 #: help:crm.case.section,journal_landed_id:0

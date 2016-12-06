@@ -19,34 +19,34 @@ msgstr ""
 "X-Generator: Weblate 2.9\n"
 
 #. module: typ_account
-#: code:addons/typ_account/models/sale_order.py:35
+#: code:addons/typ_account/models/sale_order.py:41
 #, python-format
 msgid " and credit overloaded"
 msgstr " y ha excedido el límite de crédito"
 
 #. module: typ_account
-#: code:addons/typ_account/models/account_invoice.py:79
+#: code:addons/typ_account/models/account_invoice.py:80
 #, python-format
 msgid " and has overdue invoices"
 msgstr " y tiene facturas vencidas"
 
 #. module: typ_account
-#: code:addons/typ_account/models/account_invoice.py:77
-#: code:addons/typ_account/models/sale_order.py:37
+#: code:addons/typ_account/models/account_invoice.py:78
+#: code:addons/typ_account/models/sale_order.py:43
 #, python-format
 msgid "%s has credit overloaded"
 msgstr "%s ha excedido el límite de crédito"
 
 #. module: typ_account
-#: code:addons/typ_account/models/account_invoice.py:81
-#: code:addons/typ_account/models/sale_order.py:33
+#: code:addons/typ_account/models/account_invoice.py:82
+#: code:addons/typ_account/models/sale_order.py:39
 #, python-format
 msgid "%s has overdue invoices"
 msgstr "%s tiene facturas vencidas"
 
 #. module: typ_account
-#: code:addons/typ_account/models/account_invoice.py:82
-#: code:addons/typ_account/models/sale_order.py:38
+#: code:addons/typ_account/models/account_invoice.py:83
+#: code:addons/typ_account/models/sale_order.py:44
 #, python-format
 msgid ". Please request payment or sell cash!"
 msgstr ". Favor solicitar pago o vender de contado!"
@@ -57,7 +57,7 @@ msgid "Bank Statement Line"
 msgstr "Línea de extracto bancario"
 
 #. module: typ_account
-#: code:addons/typ_account/models/sale_order.py:64
+#: code:addons/typ_account/models/sale_order.py:70
 #, python-format
 msgid "Can not confirm the Sale Order because Partner has late payments or has exceeded the credit limit.\n"
 "Please cover the late payment or check credit limit\n"
@@ -67,7 +67,7 @@ msgstr "No se puede confirmar la Orden de Venta porque el Cliente tiene pagos at
 "Límite de Crédito : %s"
 
 #. module: typ_account
-#: code:addons/typ_account/models/account_invoice.py:46
+#: code:addons/typ_account/models/account_invoice.py:45
 #, python-format
 msgid "Can not validate the Invoice because Partner has late payments or has exceeded the credit limit.\n"
 "Please cover the late payment or check credit limit\n"
@@ -103,8 +103,8 @@ msgid "Sales Order"
 msgstr "Pedido de venta"
 
 #. module: typ_account
-#: code:addons/typ_account/models/account_invoice.py:75
-#: code:addons/typ_account/models/sale_order.py:31
+#: code:addons/typ_account/models/account_invoice.py:76
+#: code:addons/typ_account/models/sale_order.py:37
 #, python-format
 msgid "The partner "
 msgstr "El cliente "
@@ -115,10 +115,10 @@ msgid "This date indicate when the invoice was validated"
 msgstr "Esta fecha indica cuándo se validó la factura"
 
 #. module: typ_account
-#: code:addons/typ_account/models/account_invoice.py:51
-#: code:addons/typ_account/models/account_invoice.py:84
-#: code:addons/typ_account/models/sale_order.py:40
-#: code:addons/typ_account/models/sale_order.py:68
+#: code:addons/typ_account/models/account_invoice.py:50
+#: code:addons/typ_account/models/account_invoice.py:85
+#: code:addons/typ_account/models/sale_order.py:46
+#: code:addons/typ_account/models/sale_order.py:74
 #, python-format
 msgid "Warning!"
 msgstr "¡Advertencia!"

@@ -231,21 +231,16 @@ msgstr "No hay un proveedor asociado al producto %s"
 
 #. module: typ_purchase
 #: help:purchase.order,report_lang:0
-msgid ""
-"This field is automatically set from partner or broker language if exists"
-msgstr ""
-"Este campo es automáticamente configurado a partir del lenguaje del "
-"proveedor o el broker si existe"
+msgid "This field is automatically set from partner or broker language if exists"
+msgstr "Este campo es automáticamente configurado a partir del lenguaje del proveedor o el broker si existe"
 
 #. module: typ_purchase
 #: model:res.groups,comment:typ_purchase.group_purchase_budget_manager
-msgid ""
-"This group is for Managers of Budget.\n"
+msgid "This group is for Managers of Budget.\n"
 "\n"
 "They can:\n"
 "- Make budget requests."
-msgstr ""
-"Este grupo es para Administradores de Presupuesto.\n"
+msgstr "Este grupo es para Administradores de Presupuesto.\n"
 "\n"
 "Ellos pueden:\n"
 "- Hacer peticiones de presupuesto."
@@ -258,9 +253,7 @@ msgstr "Este es el comprador a cargo del proveedor de la orden"
 #. module: typ_purchase
 #: help:purchase.order,shipment_date:0
 msgid "This is used to indicate when products ships from supplier warehouse"
-msgstr ""
-"Se usa para indicar cuando los productos son enviados desde el almacén del "
-"proveedor"
+msgstr "Se usa para indicar cuando los productos son enviados desde el almacén del proveedor"
 
 #. module: typ_purchase
 #: view:website:purchase.report_purchaseorder_document
@@ -279,21 +272,17 @@ msgstr "Precio Unidad"
 
 #. module: typ_purchase
 #: model:res.groups,comment:typ_purchase.partner_group_hidden_create_button
-msgid ""
-"Users of this group:\n"
+msgid "Users of this group:\n"
 "- Do not see the \"Create\" button on the partner."
-msgstr ""
-"Los usuarios de este grupo:\n"
+msgstr "Los usuarios de este grupo:\n"
 "- No ven el botón \"Crear\" en la empresa."
 
 #. module: typ_purchase
 #: model:res.groups,comment:typ_purchase.purchase_group_hidden_create_button
-msgid ""
-"Users of this group:\n"
+msgid "Users of this group:\n"
 "- Do not see the \"Create\" button on the purchase order.\n"
 "- Do not see the \"Confirm\" button on the purchase order."
-msgstr ""
-"Los usuarios de este grupo:\n"
+msgstr "Los usuarios de este grupo:\n"
 "- No ven el botón \"Crear\" en la orden de compra.\n"
 "- No ven el botón \"Confirmar\" en la orden de compra."
 
@@ -316,12 +305,8 @@ msgstr "Sitio web"
 
 #. module: typ_purchase
 #: view:purchase.order:typ_purchase.purchase_order_form_inherit
-msgid ""
-"[('code', '=', 'incoming'), ('default_location_src_id.usage', '=', "
-"'supplier')]"
-msgstr ""
-"[('code', '=', 'incoming'), ('default_location_src_id.usage', '=', "
-"'supplier')]"
+msgid "[('code', '=', 'incoming'), ('default_location_src_id.usage', '=', 'supplier')]"
+msgstr "[('code', '=', 'incoming'), ('default_location_src_id.usage', '=', 'supplier')]"
 
 #. module: typ_purchase
 #: view:purchase.order:typ_purchase.purchase_order_hide_button_form

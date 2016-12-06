@@ -79,16 +79,8 @@ msgstr "Fecha de Timbrado"
 
 #. module: typ
 #: view:website:typ.report_electronic_invoice_document
-msgid ""
-"Deadline for returns of 15 calendar days from delivery. Product must be "
-"presented in original packaging. Warranties: American 1 year parts and 5 "
-"years compressor equipment. Asia 1 year parts and compressor equipment. Does"
-" not apply to equipment with power failures or burns."
-msgstr ""
-"Plazo para devoluciones de 15 días naturales a partir de la entrega. Es "
-"necesario presentar producto en empaque original. Garantías: Equipo "
-"americano 1 año en partes y 5 años en compresor. Equipo asiático 1 año en "
-"partes y compresor. No aplica en equipo con fallas eléctricas ni quemaduras."
+msgid "Deadline for returns of 15 calendar days from delivery. Product must be presented in original packaging. Warranties: American 1 year parts and 5 years compressor equipment. Asia 1 year parts and compressor equipment. Does not apply to equipment with power failures or burns."
+msgstr "Plazo para devoluciones de 15 días naturales a partir de la entrega. Es necesario presentar producto en empaque original. Garantías: Equipo americano 1 año en partes y 5 años en compresor. Equipo asiático 1 año en partes y compresor. No aplica en equipo con fallas eléctricas ni quemaduras."
 
 #. module: typ
 #: view:website:typ.report_electronic_invoice_document
@@ -233,9 +225,7 @@ msgstr "Este documento es una representación impresa de un CFDI"
 #. module: typ
 #: help:ir.attachment.facturae.mx,report_lang:0
 msgid "This field is automatically set from partner of account invoice object"
-msgstr ""
-"Este campo se establece automáticamente desde la empresa del objeto account "
-"invoice"
+msgstr "Este campo se establece automáticamente desde la empresa del objeto account invoice"
 
 #. module: typ
 #: view:website:typ.report_electronic_invoice_document
