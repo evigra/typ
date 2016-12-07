@@ -14,7 +14,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-11-24 22:20+0000\n"
 "PO-Revision-Date: 2016-12-07 14:36+0000\n"
-"Last-Translator: Ruben Dario Machado <ruben@vauxoo.com>\n"
+"Last-Translator: Yennnifer Santiago <yennifer@vauxoo.com>\n"
 "Language-Team: Spanish "
 "<http://weblate.vauxoo.com/projects/typ-8-0/typ_stock/es/>\n"
 "Language: es\n"
@@ -313,7 +313,7 @@ msgstr "Stock de Tránsito"
 #. module: typ_stock
 #: model:res.groups,name:typ_stock.res_group_cancel_picking
 msgid "Users that can cancel a picking"
-msgstr "Los Usuarios pueden cancelar un albarán"
+msgstr "Usuarios que pueden cancelar un albarán"
 
 #. module: typ_stock
 #: model:res.groups,name:typ_stock.res_group_force_stock_move
