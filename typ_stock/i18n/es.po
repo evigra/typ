@@ -291,9 +291,7 @@ msgstr "El número serial %s ya se encuentra en existencia"
 #: code:addons/typ_stock/wizard/stock_serial.py:108
 #, python-format
 msgid "The serial numbers loaded cannot be greater than the requested quantity of the product"
-msgstr ""
-"Los números seriales cargados no pueden ser mayores que la cantidad de "
-"productos requerida"
+msgstr "Los números seriales cargados no pueden ser mayores que la cantidad de productos requerida"
 
 #. module: typ_stock
 #: model:res.groups,comment:typ_stock.res_group_cancel_picking
