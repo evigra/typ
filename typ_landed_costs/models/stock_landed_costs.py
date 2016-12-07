@@ -726,9 +726,13 @@ class StockLandedCost(models.Model):
 
     def lcost_from_inv_line(self, inv_line):
         """Inherited from stock_landed_cost_average to set default value of
-        segmentation_cost field to 'landed_cost'"""
+        segmentation_cost field to 'landed_cost', add default value to split
+        method"""
         res = super(StockLandedCost, self). lcost_from_inv_line(inv_line)
-        res['segmentation_cost'] = 'landed_cost'
+        res.update({
+            'segmentation_cost': 'landed_cost',
+            'split_method': 'by_current_cost_price',
+        })
         return res
 
 
@@ -736,3 +740,14 @@ class StockLandedCostLines(models.Model):
     _inherit = 'stock.landed.cost.lines'
 
     segmentation_cost = fields.Selection(default='landed_cost')
+    split_method = fields.Selection(default="by_current_cost_price")
+
+    @api.onchange('product_id')
+    @api.v7
+    def onchange_product_id(self, cr, uid, ids, product_id=False,
+                            context=None):
+        # We first load products calling super() method
+        res = super(StockLandedCostLines, self).onchange_product_id(
+            cr, uid, ids, product_id, context=context)
+        res['value'].update({'split_method': 'by_current_cost_price'})
+        return res
