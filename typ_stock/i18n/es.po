@@ -295,8 +295,13 @@ msgstr "Los números seriales cargados no pueden ser mayores que la cantidad de 
 
 #. module: typ_stock
 #: model:res.groups,comment:typ_stock.res_group_cancel_picking
-msgid "This group can cancel the pickings."
-msgstr "Este grupo puede cancelar los albaranes."
+msgid "This group can cancel the pickings"
+msgstr "This group can cancel the pickings"
+
+#. module: typ_stock
+#: model:res.groups,comment:typ_stock.res_group_reverse_transfer
+msgid "This group can reverse transfer in pickings"
+msgstr "This group can reverse transfer in pickings"
 
 #. module: typ_stock
 #: model:res.groups,comment:typ_stock.res_group_standard_price
@@ -317,6 +322,11 @@ msgstr "Usuarios que pueden cancelar un albarán"
 #: model:res.groups,name:typ_stock.res_group_force_stock_move
 msgid "Users that can force availability and unassign"
 msgstr "Usuarios que pueden forzar disponibilidad y cancelar asignación"
+
+#. module: typ_stock
+#: model:res.groups,name:typ_stock.res_group_reverse_transfer
+msgid "Users that can reverse transfer in picking"
+msgstr "Users that can reverse transfer in picking"
 
 #. module: typ_stock
 #: model:res.groups,name:typ_stock.res_group_can_run_scheduler
@@ -439,6 +449,11 @@ msgstr "typ_stock.res_group_cancel_picking"
 #: view:stock.picking:typ_stock.view_stock_picking_force_assign
 msgid "typ_stock.res_group_force_stock_move"
 msgstr "typ_stock.res_group_force_stock_move"
+
+#. module: typ_stock
+#: view:stock.picking:typ_stock.view_stock_picking_form_inherit
+msgid "typ_stock.res_group_reverse_transfer"
+msgstr "typ_stock.res_group_reverse_transfer"
 
 #. module: typ_stock
 #: view:product.template:typ_stock.view_product_template_stock_property_inherit
