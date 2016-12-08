@@ -132,15 +132,18 @@
                 ref="stock_landed_costs_average.view_stock_landed_cost_form"
                 />
             <field name="arch" type="xml">
-                <xpath expr='//field[@name="invoice_ids"]' position='after'>
-                    <field
-                        name="guide_ids"
-                        widget="many2many_tags"
-                        domain="[
-                            ('state', '!=', 'draft'),
-                        ]"
-                        />
-                </xpath>
+            <xpath expr='//field[@name="invoice_ids"]' position='after'>
+                <field
+                    name="guide_ids"
+                    widget="many2many_tags"
+                    domain="[
+                        ('state', '!=', 'draft'),
+                    ]"
+                    />
+            </xpath>
+            <xpath expr='//field[@name="cost_line_id"]' position='after'>
+                <field name="picking_id" readonly="True"/>
+            </xpath>
             </field>
         </record>
         <record model="ir.actions.act_window" id="action_landed_cost_guides">

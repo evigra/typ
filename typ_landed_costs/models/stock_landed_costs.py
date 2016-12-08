@@ -454,7 +454,8 @@ class StockLandedCost(models.Model):
                 quantity=move.product_uom_qty,
                 former_cost=total_cost,
                 weight=weight,
-                volume=volume)
+                volume=volume,
+                picking_id=move.picking_id.id)
             lines.append(vals)
         if not lines:
             raise except_orm(
@@ -746,8 +747,15 @@ class StockLandedCostLines(models.Model):
     @api.v7
     def onchange_product_id(self, cr, uid, ids, product_id=False,
                             context=None):
-        # We first load products calling super() method
+        # We first load products calling super() method.
         res = super(StockLandedCostLines, self).onchange_product_id(
             cr, uid, ids, product_id, context=context)
         res['value'].update({'split_method': 'by_current_cost_price'})
         return res
+
+
+class StockValuationAdjustmentLines(models.Model):
+    _inherit = 'stock.valuation.adjustment.lines'
+
+    picking_id = fields.Many2one('stock.picking', string='Pickings',
+                                 copy=False)
