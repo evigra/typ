@@ -109,4 +109,4 @@ class ResPartner(models.Model):
 
     @api.depends('credit_overloaded', 'overdue_credit', 'credit_limit')
     def get_allowed_sale(self):
-        super(ResPartner, self).get_allowed_sale()
+        return super(ResPartner, self).get_allowed_sale()

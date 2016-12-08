@@ -28,6 +28,7 @@
         'views/sale_order_view.xml',
         'views/account_invoice_view.xml',
         'views/account_voucher_tax_view.xml',
+        'views/account_bank_statement_view.xml',
     ],
     # only loaded in demonstration mode
     'demo': [
