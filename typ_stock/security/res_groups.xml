@@ -18,7 +18,11 @@
 
         <record id="res_group_cancel_picking" model="res.groups">
           <field name="name">Users that can cancel a picking</field>
-          <field name="comment">This group can cancel the pickings.</field>
+          <field name="comment">This group can cancel the pickings</field>
+        </record>
+        <record id="res_group_reverse_transfer" model="res.groups">
+          <field name="name">Users that can reverse transfer in picking</field>
+          <field name="comment">This group can reverse transfer in pickings</field>
         </record>
     </data>
 </openerp>
