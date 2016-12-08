@@ -22,7 +22,7 @@ msgstr ""
 "X-Generator: Weblate 2.9\n"
 
 #. module: typ_landed_costs
-#: code:addons/typ_landed_costs/models/stock_landed_costs.py:544
+#: code:addons/typ_landed_costs/models/stock_landed_costs.py:545
 #, python-format
 msgid "\n"
 "- Check '%s' into '%s'"
@@ -149,7 +149,7 @@ msgstr "Borrador"
 
 #. module: typ_landed_costs
 #: code:addons/typ_landed_costs/models/stock_landed_costs.py:180
-#: code:addons/typ_landed_costs/models/stock_landed_costs.py:461
+#: code:addons/typ_landed_costs/models/stock_landed_costs.py:462
 #, python-format
 msgid "Error!"
 msgstr "¡Error!"
@@ -390,14 +390,14 @@ msgid "No Guide Lines!"
 msgstr "¡No hay Líneas de la Guía!"
 
 #. module: typ_landed_costs
-#: code:addons/typ_landed_costs/models/stock_landed_costs.py:478
-#: code:addons/typ_landed_costs/models/stock_landed_costs.py:555
+#: code:addons/typ_landed_costs/models/stock_landed_costs.py:479
+#: code:addons/typ_landed_costs/models/stock_landed_costs.py:556
 #, python-format
 msgid "Only draft landed costs can be validated"
 msgstr "Solo prorrateos en borrador pueden ser validados"
 
 #. module: typ_landed_costs
-#: code:addons/typ_landed_costs/models/stock_landed_costs.py:548
+#: code:addons/typ_landed_costs/models/stock_landed_costs.py:549
 #, python-format
 msgid "Only valid guides can be added to a landed cost"
 msgstr "Sólo guías validadas pueden ser agregadas a un costo en destino"
@@ -424,6 +424,11 @@ msgid "Period"
 msgstr "Período"
 
 #. module: typ_landed_costs
+#: field:stock.valuation.adjustment.lines,picking_id:0
+msgid "Pickings"
+msgstr "Pickings"
+
+#. module: typ_landed_costs
 #: code:addons/typ_landed_costs/models/stock_landed_costs.py:186
 #, python-format
 msgid "Please create some guide lines."
@@ -442,7 +447,7 @@ msgid "Please define sequence on the journal related to this guide."
 msgstr "Por favor defina una secuencia en el diario relacionado a esta guía."
 
 #. module: typ_landed_costs
-#: code:addons/typ_landed_costs/models/stock_landed_costs.py:488
+#: code:addons/typ_landed_costs/models/stock_landed_costs.py:489
 #, python-format
 msgid "Please fill the segmentation field in Cost Lines"
 msgstr "Favor de llenar el campo de segmentación en la lineas de costeo"
@@ -533,6 +538,11 @@ msgid "Stock Move"
 msgstr "Movimiento de Inventario"
 
 #. module: typ_landed_costs
+#: model:ir.model,name:typ_landed_costs.model_stock_valuation_adjustment_lines
+msgid "Stock Valuation Adjustment Lines"
+msgstr "Stock Valuation Adjustment Lines"
+
+#. module: typ_landed_costs
 #: selection:stock.discrete,segmentation_cost:0
 msgid "Subcontracting Cost"
 msgstr "Costo de Subcontratación"
@@ -544,7 +554,7 @@ msgid "The guide(s) "
 msgstr "La(s) guía(s) "
 
 #. module: typ_landed_costs
-#: code:addons/typ_landed_costs/models/stock_landed_costs.py:462
+#: code:addons/typ_landed_costs/models/stock_landed_costs.py:463
 #, python-format
 msgid "The selected picking does not contain any move that would be impacted by landed costs. Landed costs are only possible for products configured in real time valuation. Please make sure it is the case, or you selected the correct picking."
 msgstr "El albarán seleccionado no contiene ningún movimiento que pudiera ser impactado por costos en destino. Los costos en destino son solo posible en productos configurados con valoración en tiempo real. Por favor asegúrese que este sea el caso, o seleccione un albarán correcto."
@@ -619,8 +629,8 @@ msgstr "No puedes reiniciar esta guía a borrador mientras esté asociada a un D
 "- %s"
 
 #. module: typ_landed_costs
-#: code:addons/typ_landed_costs/models/stock_landed_costs.py:482
-#: code:addons/typ_landed_costs/models/stock_landed_costs.py:559
+#: code:addons/typ_landed_costs/models/stock_landed_costs.py:483
+#: code:addons/typ_landed_costs/models/stock_landed_costs.py:560
 #, python-format
 msgid "You cannot validate a landed cost which has no valid valuation adjustments lines. Did you click on Compute?"
 msgstr "No puede validar un costo en destino el cual no tiene líneas de ajustes de valoración válidas. ¿Usted hizo clic en Calcular?"
