@@ -209,6 +209,18 @@ class StockPicking(models.Model):
                             _('The return of the product %s, exceeds the '
                               'amount invoiced') % (move.product_id.name))
 
+    @api.multi
+    def action_cancel(self):
+        """Validate that only origin picking can be cancel when exist linked
+        pickings
+        """
+        if self.move_lines[0].move_orig_ids:
+            raise exceptions.Warning(
+                _('Warning!'),
+                _('This picking can not be cancel. Only origin picking can be '
+                  'cancel.'))
+        return super(StockPicking, self).action_cancel()
+
 
 class StockWarehouse(models.Model):
 
