@@ -67,6 +67,9 @@
                 <field name="origin" position="before">
                     <field name="picking_shipment_date"/>
                 </field>
+                <xpath expr="//button[@string='Reverse Transfer']" position="attributes">
+                    <attribute name="groups">typ_stock.res_group_reverse_transfer</attribute>
+                </xpath>
             </field>
         </record>
         <record id="view_stock_picking_tree_inherit" model="ir.ui.view">
@@ -79,16 +82,6 @@
                 </xpath>
                 <xpath expr="//field[@name='date']" position="after">
                     <field name="picking_shipment_date"/>
-                </xpath>
-            </field>
-        </record>
-        <record id="view_stock_picking_form_inherit" model="ir.ui.view">
-            <field name="name">stock.picking.form.inherit</field>
-            <field name="model">stock.picking</field>
-            <field name="inherit_id" ref="stock.view_picking_form"/>
-            <field name="arch" type="xml">
-                <xpath expr="//button[@string='Reverse Transfer']" position="attributes">
-                    <attribute name="groups">typ_stock.res_group_reverse_transfer</attribute>
                 </xpath>
             </field>
         </record>
