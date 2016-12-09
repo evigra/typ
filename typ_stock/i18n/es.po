@@ -51,7 +51,7 @@ msgid "Barcode"
 msgstr "Código de barras"
 
 #. module: typ_stock
-#: code:addons/typ_stock/models/stock.py:171
+#: code:addons/typ_stock/models/stock.py:183
 #, python-format
 msgid "Both locations must be internal type or location source type internal and location destination type inventory"
 msgstr "Ambas locaciones deben ser del tipo interno o su destino interno y el lugar de destino tipo inventario"
@@ -135,6 +135,11 @@ msgid "Picking List"
 msgstr "Albarán"
 
 #. module: typ_stock
+#: field:stock.picking,picking_shipment_date:0
+msgid "Picking shipment date"
+msgstr "Picking shipment date"
+
+#. module: typ_stock
 #: model:ir.model,name:typ_stock.model_procurement_order
 msgid "Procurement"
 msgstr "Abastecimiento"
@@ -194,6 +199,11 @@ msgstr "Fecha programada para el envío de este movimiento"
 #, python-format
 msgid "Serial number %s not found"
 msgstr "El número serial %s no ha sido encontrado"
+
+#. module: typ_stock
+#: help:stock.picking,picking_shipment_date:0
+msgid "Shipment date of the picking"
+msgstr "Shipment date of the picking"
 
 #. module: typ_stock
 #: view:website:stock.report_picking
@@ -262,7 +272,7 @@ msgid "The Serial number %s already captured"
 msgstr "El número de Serie %s ya se capturó"
 
 #. module: typ_stock
-#: code:addons/typ_stock/models/stock.py:197
+#: code:addons/typ_stock/models/stock.py:209
 #: code:addons/typ_stock/models/stock_return_picking.py:38
 #, python-format
 msgid "The return of the product %s, exceeds the amount invoiced"
@@ -395,8 +405,8 @@ msgstr "Advertencia"
 #: code:addons/typ_stock/models/stock.py:47
 #: code:addons/typ_stock/models/stock.py:63
 #: code:addons/typ_stock/models/stock.py:84
-#: code:addons/typ_stock/models/stock.py:170
-#: code:addons/typ_stock/models/stock.py:196
+#: code:addons/typ_stock/models/stock.py:182
+#: code:addons/typ_stock/models/stock.py:208
 #: code:addons/typ_stock/models/stock_return_picking.py:37
 #, python-format
 msgid "Warning!"
@@ -413,7 +423,7 @@ msgid "Wireless Headphones custon"
 msgstr "Audífonos Inalámbricos personalizados"
 
 #. module: typ_stock
-#: code:addons/typ_stock/models/stock.py:214
+#: code:addons/typ_stock/models/stock.py:226
 #, python-format
 msgid "You can not inactivate a warehouse with products on it, please adjust your inventories first and then come back and inactivate it."
 msgstr "No puede inactivar un almacén con productos en él, por favor, ajuste primero sus inventarios y luego vuelva a desactivarlo."
