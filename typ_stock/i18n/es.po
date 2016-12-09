@@ -319,6 +319,12 @@ msgid "This group can see price cost of product."
 msgstr "Este grupo puede ver el precio de costo del producto."
 
 #. module: typ_stock
+#: code:addons/typ_stock/models/stock.py:220
+#, python-format
+msgid "This picking can not be cancel. Only origin picking can be cancel."
+msgstr "This picking can not be cancel. Only origin picking can be cancel."
+
+#. module: typ_stock
 #: model:procurement.rule,name:typ_stock.pull_rule_test_2_4
 msgid "Transit Stock"
 msgstr "Stock de Tránsito"
@@ -407,6 +413,7 @@ msgstr "Advertencia"
 #: code:addons/typ_stock/models/stock.py:84
 #: code:addons/typ_stock/models/stock.py:182
 #: code:addons/typ_stock/models/stock.py:208
+#: code:addons/typ_stock/models/stock.py:219
 #: code:addons/typ_stock/models/stock_return_picking.py:37
 #, python-format
 msgid "Warning!"
@@ -423,7 +430,7 @@ msgid "Wireless Headphones custon"
 msgstr "Audífonos Inalámbricos personalizados"
 
 #. module: typ_stock
-#: code:addons/typ_stock/models/stock.py:226
+#: code:addons/typ_stock/models/stock.py:238
 #, python-format
 msgid "You can not inactivate a warehouse with products on it, please adjust your inventories first and then come back and inactivate it."
 msgstr "No puede inactivar un almacén con productos en él, por favor, ajuste primero sus inventarios y luego vuelva a desactivarlo."
