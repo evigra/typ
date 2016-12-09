@@ -42,6 +42,12 @@ the general supply.
 
 The methods inherit original path is: 
 
+**Tracking pickings via shipment_date**
+- You can track the picking with a shipment date that comes from the purchase order
+- You can change the shipment date in stock picking move lines changing the picking
+shipment date
+- Picking shipment date added to stock picking tree view
+
 Credits
 =======
 
@@ -51,6 +57,7 @@ Credits
 * Yennifer Santiago <yennifer@vauxoo.com (Developer)
 * Jorge Escalona <jorge@vauxoo.com> (Developer)
 * Deivis Laya <deivis@vauxoo.com> (Developer)
+* Carlos Mexia <cmexia@typrefrigeracion.com(Developer)
 
 Maintainer
 ==========

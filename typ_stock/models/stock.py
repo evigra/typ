@@ -127,6 +127,18 @@ class StockPicking(models.Model):
 
     _inherit = "stock.picking"
 
+    picking_shipment_date = fields.Date(
+        'Picking shipment date',
+        default=fields.Date.context_today, index=True,
+        states={'done': [('readonly', True)]},
+        help="Shipment date of the picking")
+
+    @api.multi
+    @api.onchange('picking_shipment_date')
+    def _onchange_picking_date(self):
+        for line in self.move_lines:
+            line.update({'shipment_date': self.picking_shipment_date})
+
     @api.multi
     def name_get(self):
 

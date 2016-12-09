@@ -11,6 +11,8 @@ class PurchaseOrder(models.Model):
     def action_picking_create(self):
         for order in self:
             res = super(PurchaseOrder, order).action_picking_create()
+            self.env['stock.picking'].browse(res).write(
+                {'picking_shipment_date': order.shipment_date})
             if self.origin:
                 new_origin = self.origin + ':' + self.name
                 self.env['stock.picking'].browse(res).write(
