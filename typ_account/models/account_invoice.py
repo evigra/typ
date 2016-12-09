@@ -8,6 +8,10 @@ class AccountInvoice(models.Model):
 
     _inherit = 'account.invoice'
 
+    user_id = fields.Many2one('res.users', string='Salesperson',
+                              track_visibility='onchange', readonly=False,
+                              default=lambda self: self.env.user)
+
     validation_date = fields.Date('Invoice validation date',
                                   help="This date indicate "
                                   "when the invoice was validated")
