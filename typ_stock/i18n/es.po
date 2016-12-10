@@ -13,8 +13,8 @@ msgstr ""
 "Project-Id-Version: Odoo Server 8.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-11-24 22:20+0000\n"
-"PO-Revision-Date: 2016-12-09 23:56+0000\n"
-"Last-Translator: Erick Birbe <erickcion@gmail.com>\n"
+"PO-Revision-Date: 2016-12-10 17:42+0000\n"
+"Last-Translator: cmexiatyp <cmexia@typrefrigeracion.com>\n"
 "Language-Team: Spanish "
 "<http://weblate.vauxoo.com/projects/typ-8-0/typ_stock/es/>\n"
 "Language: es\n"
@@ -137,7 +137,7 @@ msgstr "Albarán"
 #. module: typ_stock
 #: field:stock.picking,picking_shipment_date:0
 msgid "Picking shipment date"
-msgstr "Fecha de envío del picking"
+msgstr "Fecha de embarque del picking"
 
 #. module: typ_stock
 #: model:ir.model,name:typ_stock.model_procurement_order
@@ -162,7 +162,7 @@ msgstr "Id del Producto"
 #. module: typ_stock
 #: field:stock.move,shipment_date:0
 msgid "Product shipment date"
-msgstr "Fecha de envío del producto"
+msgstr "Fecha de embarque del producto"
 
 #. module: typ_stock
 #: model:ir.actions.server,name:typ_stock.server_action_propagate_picking_transfer
@@ -203,7 +203,7 @@ msgstr "El número serial %s no ha sido encontrado"
 #. module: typ_stock
 #: help:stock.picking,picking_shipment_date:0
 msgid "Shipment date of the picking"
-msgstr "Fecha de envío del picking"
+msgstr "Fecha de embarque del picking"
 
 #. module: typ_stock
 #: view:website:stock.report_picking
