@@ -104,10 +104,10 @@
         <field name='inherit_id' ref='purchase.purchase_order_tree'/>
         <field name='type'>tree</field>
         <field name='arch' type='xml'>
-<!--            <xpath expr="/tree/field[@name='date_order']" position="replace">
-                       <field name="create_date" />
-                </xpath> direct replace-->
             <field name="minimum_planned_date" position="replace">
+            </field>
+            <field name="name" position="after">
+                <field name="partner_ref"/>
             </field>
             <field name="date_order" position="before">
                 <field name="create_date"/>
