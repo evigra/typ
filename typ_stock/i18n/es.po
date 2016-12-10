@@ -322,9 +322,7 @@ msgstr "Este grupo puede ver el precio de costo del producto."
 #: code:addons/typ_stock/models/stock.py:220
 #, python-format
 msgid "This picking can not be cancel. Only origin picking can be cancel."
-msgstr ""
-"Este picking no puede ser cancelado. Sólo se puede cancelar el picking de "
-"origen."
+msgstr "Este picking no puede ser cancelado. Sólo se puede cancelar el picking de origen."
 
 #. module: typ_stock
 #: model:procurement.rule,name:typ_stock.pull_rule_test_2_4
