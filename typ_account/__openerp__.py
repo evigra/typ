@@ -26,6 +26,7 @@
     'data': [
         'data/account_data.xml',
         'views/sale_order_view.xml',
+        'views/account_move_line.xml',
         'views/account_invoice_view.xml',
         'views/account_voucher_tax_view.xml',
         'views/account_bank_statement_view.xml',
