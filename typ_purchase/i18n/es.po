@@ -11,10 +11,10 @@ msgstr ""
 "Project-Id-Version: Odoo Server 8.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-11-24 22:20+0000\n"
-"PO-Revision-Date: 2016-12-03 06:23+0000\n"
-"Last-Translator: Humberto <hbto@vauxoo.com>\n"
+"PO-Revision-Date: 2016-12-10 17:42+0000\n"
+"Last-Translator: cmexiatyp <cmexia@typrefrigeracion.com>\n"
 "Language-Team: Spanish "
-"<http://weblate.vauxoo.com/projects/typ-80/typ_purchase/es/>\n"
+"<http://weblate.vauxoo.com/projects/typ-8-0/typ_purchase/es/>\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -144,7 +144,7 @@ msgstr "Código de Producto"
 #. module: typ_purchase
 #: field:purchase.order.line,shipment_date:0
 msgid "Product shipment date"
-msgstr "Fecha de envío del producto"
+msgstr "Fecha de embarque del producto"
 
 #. module: typ_purchase
 #: view:website:purchase.report_purchaseorder_document
