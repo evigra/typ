@@ -98,6 +98,11 @@ msgid "Partner"
 msgstr "Empresa"
 
 #. module: typ_account
+#: view:account.move.line:typ_account.view_account_move_line_filter_inherit
+msgid "Product"
+msgstr "Product"
+
+#. module: typ_account
 #: model:ir.model,name:typ_account.model_sale_order
 msgid "Sales Order"
 msgstr "Pedido de venta"
