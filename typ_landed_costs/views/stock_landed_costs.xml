@@ -10,12 +10,19 @@
                     <header>
                         <button name="action_draft" type="object"
                             string="Reset to draft"
-                            states="valid"
-                            groups="typ_landed_cost.group_landed_guide_manager"/>
+                            states="valid,cancel"
+                            groups="typ_landed_costs.group_landed_guide_manager"/>
                         <button name="action_valid" type="object"
                             string="Validate"
                             states="draft"
                             class="oe_highlight"/>
+                        <button name="action_cancel" type="object"
+                            string="Cancel"
+                            states="valid"
+                            attrs="{'invisible':[
+                                ('landed_cost_id', '=', False),
+                            ]}"
+                            groups="typ_landed_costs.group_landed_guide_manager"/>
                         <field name="state" widget="statusbar"/>
                     </header>
                     <sheet string="Guide">

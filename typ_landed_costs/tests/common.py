@@ -20,6 +20,8 @@ class TestTypLandedCosts(common.TransactionCase):
         self.currency_2 = self.env.ref('base.USD')
         self.wizard_create_invoice = self.env['invoice.guides']
         self.journal = self.env.ref('account.check_journal')
+        # Allowing Cancelling Entries
+        self.journal.update_posted = True
 
     def create_guide(self, values=False, product=False):
 

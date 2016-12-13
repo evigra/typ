@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 
+from openerp.exceptions import ValidationError
 from .common import TestTypLandedCosts
 
 
@@ -75,3 +76,33 @@ class TestGuides(TestTypLandedCosts):
         self.assertEqual(debit_line.debit, comp_cost)
         self.assertEqual(debit_line.credit, 0)
         self.assertEqual(debit_line.amount_currency, cost)
+
+    def test_20_remove_guide(self):
+        """Remove a guide that is not in a landed cost document"""
+        guide = self.create_guide()
+        res = guide.unlink()
+        self.assertTrue(res)
+
+    def test_21_remove_guide_validated(self):
+        """Remove a guide that is associated to a landed cost document"""
+        guide = self.create_guide()
+        msg = "You are trying to delete guides you can not delete"
+        # Valid guides cannot be removed
+        guide.action_valid()
+        with self.assertRaisesRegexp(ValidationError, msg):
+            guide.unlink()
+        # Guides that were valid cannot be removed
+        guide.action_cancel()
+        with self.assertRaisesRegexp(ValidationError, msg):
+            guide.unlink()
+
+    def test_22_use_same_move_sequence(self):
+        """Check if the same name of sequence is used when Guide is reset"""
+        guide = self.create_guide()
+        guide.action_valid()
+        move_name_orig = guide.move_id.name
+        # Reset and Validate the guide again
+        guide.action_draft()
+        guide.action_valid()
+        # Check if the guide used the original name
+        self.assertEqual(guide.move_id.name, move_name_orig)

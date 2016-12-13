@@ -95,6 +95,13 @@ class StockLandedGuides (models.Model):
         ondelete='restrict',
         copy=False,
         help="Link to the automatically generated Journal Items.")
+    account_move_name = fields.Char(
+        readonly=True,
+        help='Stores the name of the Journal Entry the first time the Guide is'
+        ' validated, so if the user cancel or reset the guide and then create'
+        ' it again, it will not create a new Journal Entry Sequence, it will'
+        ' use always the same'
+    )
     period_id = fields.Many2one(
         'account.period',
         string='Period',
@@ -103,7 +110,8 @@ class StockLandedGuides (models.Model):
         readonly=True)
     state = fields.Selection(
         [('draft', 'Draft'),
-         ('valid', 'Valid')],
+         ('valid', 'Valid'),
+         ('cancel', 'Cancelled')],
         string='Status',
         default='draft',
         help='Guide status')
@@ -139,6 +147,29 @@ class StockLandedGuides (models.Model):
         return self.env.user.company_id
 
     @api.multi
+    def unlink(self):
+        details = ""
+        for guide in self:
+            if guide.account_move_name:
+                details += _("Guide '%s' cannot be removed when it is/was"
+                             " validated\n") % (guide.name)
+        if details:
+            msg = _('You are trying to delete guides you can not delete:'
+                    '\n\n%s\nPlease solve this errors before continue.'
+                    ) % details
+            raise ValidationError(msg)
+        return super(StockLandedGuides, self).unlink()
+
+    @api.multi
+    def action_cancel(self):
+        """Move the guide to Cancelled state, it's used when the Guide is
+        associated to a Landed Cost Document because in this condition the
+        guide can not be removed"""
+        for guide in self:
+            self._cancel_moves()
+            guide.state = 'cancel'
+
+    @api.multi
     def action_draft(self):
         for guide in self:
             if guide.landed_cost_id:
@@ -151,17 +182,17 @@ class StockLandedGuides (models.Model):
 
     @api.model
     def _cancel_moves(self):
+        if not self.move_id:
+            return True
         moves = self.move_id
-        # First, set the guides as cancelled and detach the move ids
+        # First, detach the move ids
         self.write({'move_id': False})
-        if moves:
-            # second, invalidate the move(s)
-            moves.button_cancel()
-            # delete the move this guide was pointing to
-            # Note that the corresponding move_lines and move_reconciles
-            # will be automatically deleted too
-            moves.unlink()
-        # TODO: self._log_event(-1.0, 'Cancel Invoice')
+        # second, invalidate the move(s)
+        moves.button_cancel()
+        # delete the move this guide was pointing to
+        # Note that the corresponding move_lines and move_reconciles
+        # will be automatically deleted too
+        moves.unlink()
         return True
 
     @api.multi
@@ -221,6 +252,8 @@ class StockLandedGuides (models.Model):
                 'date': date,
                 'company_id': guide_brw.company_id.id,
             }
+            if guide_brw.account_move_name:
+                move_vals['name'] = guide_brw.account_move_name
             ctx['company_id'] = guide_brw.company_id.id
             period = guide_brw.period_id.with_context(ctx).find(date)[:1]
             if period:
@@ -243,7 +276,7 @@ class StockLandedGuides (models.Model):
             # account move reference when creating the same guide after a
             # cancelled one:
             move.post()
-        # TODO self._log_event()
+            guide_brw.account_move_name = move.name
         return True
 
     @api.multi
