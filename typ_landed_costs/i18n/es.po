@@ -212,6 +212,7 @@ msgstr "Guía"
 msgid "Guide '%s' cannot be removed when it is/was validated\n"
 ""
 msgstr "Las guias '%s' no pueden ser eliminadas cuando estan validadas\n"
+""
 
 #. module: typ_landed_costs
 #: view:stock.landed.cost.guide.line:typ_landed_costs.guide_line_tree_view
@@ -563,11 +564,7 @@ msgstr "Líneas de Ajuste de Valoración de Inventario"
 #. module: typ_landed_costs
 #: help:stock.landed.cost.guide,account_move_name:0
 msgid "Stores the name of the Journal Entry the first time the Guide is validated, so if the user cancel or reset the guide and then create it again, it will not create a new Journal Entry Sequence, it will use always the same"
-msgstr ""
-"Guarda el nombre de la Entrada de Diario la primera vez que se valida la "
-"Guía, por lo que si el usuario cancela o restablece la guía y luego la crea "
-"de nuevo, no creará una nueva Secuencia de Entrada de Diario, utilizará "
-"siempre la misma"
+msgstr "Guarda el nombre de la Entrada de Diario la primera vez que se valida la Guía, por lo que si el usuario cancela o restablece la guía y luego la crea de nuevo, no creará una nueva Secuencia de Entrada de Diario, utilizará siempre la misma"
 
 #. module: typ_landed_costs
 #: selection:stock.discrete,segmentation_cost:0
@@ -646,8 +643,7 @@ msgid "You are trying to delete guides you can not delete:\n"
 "\n"
 "%s\n"
 "Please solve this errors before continue."
-msgstr ""
-"Estás intentando eliminar guías que no puedes eliminar:\n"
+msgstr "Estás intentando eliminar guías que no puedes eliminar:\n"
 "\n"
 "%s\n"
 "Por favor solucione estos errores antes de continuar."
