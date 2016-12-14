@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from __future__ import division
+from datetime import timedelta
 from openerp import api, fields, models, _
 from openerp.exceptions import Warning as UserError
 from openerp.exceptions import except_orm, ValidationError
@@ -418,12 +419,164 @@ class StockLandedGuidesLine (models.Model):
 
 class StockLandedCost(models.Model):
     _inherit = 'stock.landed.cost'
+
     guide_ids = fields.One2many(
         'stock.landed.cost.guide',
         'landed_cost_id',
         string='Guides',
         help='Guides which contain items to be used as landed costs',
         copy=False)
+
+    exchange_landed_ids = fields.Many2many(
+        'stock.landed.cost',
+        'adjust_landed_import_landed_rel'
+        'main_landed_id',
+        'adjust_landed_id',
+        string='Exchange Differential Adjust',
+        help='Landed created to adjust '
+        'the cost of the product by '
+        'exchange differential')
+
+    def adjust_exchange_rate(method):
+        """Method used like decorator to choose method depending of the object
+        sent at the moment to do the adjustments
+        """
+        def wrapper(self, *args, **kwargs):
+            model = args and args[0]
+            move_lines = self.env['stock.move']
+            vals = {
+                'stock.picking': ('move_lines',),
+                'account.invoice': ('invoice_line', 'move_id'),
+                'account.move': ('line_id', 'sm_id'),
+                'account.move.line': ('sm_id', 0, 0),
+                'stock.move': ()
+            }
+            if model._name not in vals:
+                raise UserError('Not implement yet for this model %s'
+                                % model._name)
+            val = vals[model._name]
+            move_lines += (
+                len(val) == 0 and model or
+                len(val) == 1 and model[val[0]] or
+                len(val) == 2 and model[val[0]].mapped(val[1]) or
+                len(val) == 3 and model.mapped(val[0])
+                )
+
+            return method(self, move_lines, args[1])
+        return wrapper
+
+    @api.model
+    def _get_result_diff_rate(self, line, date, days=0):
+        """When the partner is foreign is needed compute the debit of the
+        journal items but using a rate of a date ago
+
+        :param move_lines: Move that we need to adjust to set the correct cost
+        in the products with the real rate
+        :type move_lines: recordset
+        :param date: Date to compute the real cost with the correct rate
+        :type date: str
+        :param days: Number of day that we need to reduce the date sent to
+        compute the rate
+        :type days: int
+        :return The new total compute with the needed date
+        :rtype float
+        """
+        new_date = (fields.Date.from_string(date) -
+                    timedelta(days=days))
+        currency_obj = self.env['res.currency']
+        currency_obj = currency_obj.with_context({'date': new_date})
+        from_currency = line.purchase_line_id.order_id.currency_id
+        to_currency = self.env.user.company_id.currency_id
+        price_unit = (line.purchase_line_id.price_unit *
+                      line.purchase_line_id.product_qty)
+        new_total = (line.product_id and price_unit and
+                     currency_obj._compute(from_currency, to_currency,
+                                           price_unit) or 0)
+        return new_total
+
+    @api.model
+    def _get_landed_values(self, diff, picking, journal, date):
+        """Generate dict with the values needed for create the landed to adjust costs
+
+        :param picking: Picking that generated the invoice
+        :type picking: recordset
+        :param diff: Value to adjust
+        :type diff: float
+        :param date: Date of the document to create
+        :type date: str
+
+        :return Values for the new landed
+        :rtype dict
+        """
+        product = self.env.ref('typ_landed_costs.'
+                               'landed_exchange_differential_product')
+        account = (diff > 0 and
+                   self.env.user.company_id.
+                   income_currency_exchange_account_id or
+                   self.env.user.company_id.
+                   expense_currency_exchange_account_id)
+        if not account:
+            raise UserError(_('Insufficient Configuration!'),
+                            _("You should configure the 'Exchange Rate "
+                              "Account' in the accounting settings, "
+                              "to manage automatically the booking "
+                              "of accounting entries related to "
+                              "differences between exchange rates."))
+        cost_line = {
+            'product_id': product.id,
+            'name': product.name,
+            'account_id': account.id,
+            'split_method': 'by_current_cost_price',
+            'price_unit': diff,
+            'segmentation_cost': 'material_cost'
+
+        }
+        values = {
+            'date': date,
+            'account_journal_id': journal,
+            'picking_ids': [(4, picking.id)],
+            'cost_lines': [(0, 0,
+                            cost_line)]
+        }
+        return values
+
+    @adjust_exchange_rate
+    @api.model
+    def adjust_cost_for_exchange_differential(self, move_lines, date):
+        """Overwritten to create a new landed to update the valuation of the
+        products using the rate according to the date invoice.
+        If the partner is foreign the date used will be a day before invoice
+        data at the moment to validate it
+
+        :return The landed created to adjust the costs
+        :rtype stock.landed.cost()
+        """
+        total_in_move = 0
+        diff = 0
+        picking = move_lines and move_lines[0].picking_id
+        filtered_moves = move_lines.filtered(lambda a:
+                                             a.product_id.
+                                             cost_method == 'average' and
+                                             a.product_id.
+                                             valuation == 'real_time')
+        for line in filtered_moves:
+            aml = line.aml_all_ids[0]
+            total_in_move += (aml.debit or aml.credit)
+            diff += self._get_result_diff_rate(line, date)
+
+        total_diff = (diff - total_in_move)
+
+        if not total_diff:
+            return self.env['stock.landed.cost']
+
+        journal = aml.journal_id.section_id.journal_landed_id.id
+        landed_values = self._get_landed_values(total_diff,
+                                                picking, journal, date)
+        landed_id = self.create(landed_values)
+        landed_id.compute_landed_cost()
+        landed_id.button_validate()
+
+        return landed_id
 
     @api.model
     def _get_discrete_values(self, line_id, diff):

@@ -147,6 +147,11 @@
                         ('state', '!=', 'draft'),
                     ]"
                     />
+                <field
+                    name="exchange_landed_ids"
+                    widget="many2many_tags"
+                    readonly="1"
+                    />
             </xpath>
             <xpath expr='//field[@name="cost_line_id"]' position='after'>
                 <field name="picking_id" readonly="True"/>

@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<openerp>
+    <data noupdate="1">
+
+        <record id="automated_action_adjust_exchange_differential" model="base.action.rule">
+            <field name="name">Exchange Differential Adjust</field>
+            <field name="model_id" model="ir.model" search="[('model', '=', 'stock.landed.cost')]"/>
+            <field name="active">1</field>
+            <field name="sequence">5</field>
+            <field name="kind">on_write</field>
+            <field name="server_action_ids" eval="[(6, 0, [ref('typ_landed_costs.server_action_adjust_exchange_differential_landed')])]"/>
+        </record>
+
+    </data>
+</openerp>

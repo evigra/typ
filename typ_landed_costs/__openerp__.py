@@ -12,11 +12,17 @@
         "stock_landed_costs_segmentation",
     ],
     "demo": [
+        'demo/pricelist_demo.xml',
+        'demo/purchase_order_demo.xml',
     ],
     "data": [
         "data/res_groups.xml",
+        "data/product_exchange.xml",
+        "data/ir_actions_server.xml",
+        "data/base_action_rule.xml",
         "security/ir.model.access.csv",
         "views/stock_landed_costs.xml",
+        "views/account_invoice_view.xml",
         "wizards/invoice_from_guides_view.xml",
     ],
     "installable": True,
