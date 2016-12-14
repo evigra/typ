@@ -24,5 +24,9 @@
           <field name="name">Users that can reverse transfer in picking</field>
           <field name="comment">This group can reverse transfer in pickings</field>
         </record>
+        <record id="res_group_stock_manager" model="res.groups">
+          <field name="name">Users that can define pedimentos serial and lot</field>
+          <field name="comment">This group can define pedimentos serial and lot</field>
+        </record>
     </data>
 </openerp>

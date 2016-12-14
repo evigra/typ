@@ -48,6 +48,13 @@ The methods inherit original path is:
 shipment date
 - Picking shipment date added to stock picking tree view
 
+**Writing Wizard Pedimentos and Serial lote in quant**
+- You can write information about the quants which will allow you to follow up and
+control the inventories in detail, this allows you to visualize the quantity of
+products that move in each picking to and from your company.
+
+
+
 Credits
 =======
 
