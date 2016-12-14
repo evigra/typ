@@ -2,8 +2,38 @@
 
 from __future__ import division
 
+import re
 from openerp import api, fields, models, _
 from openerp import exceptions
+from openerp.tools.safe_eval import safe_eval
+
+
+class StockQuant(models.Model):
+
+    _inherit = "stock.quant"
+
+    def quants_get_prefered_domain(self, cr, uid, location, product, qty,
+                                   domain=None, prefered_domain_list=None,
+                                   restrict_lot_id=False,
+                                   restrict_partner_id=False, context=None):
+        '''Overwrite the method to avoid pass a domain used to force the
+        reservation even if the quants are already reserved
+        '''
+        prefered_domain_list = prefered_domain_list or []
+        pat = (r"\['\&', \('reservation_id', '!=', [0-9]+\), "
+               r"\('reservation_id', '!=', False\)\]")
+        force_dom = re.search(pat, str(prefered_domain_list))
+        if force_dom:
+            prefered_domain_list.remove(safe_eval(force_dom.group()))
+        res = (super(StockQuant, self).
+               quants_get_prefered_domain(
+                   cr, uid, location, product, qty,
+                   domain=domain,
+                   prefered_domain_list=prefered_domain_list,
+                   restrict_lot_id=restrict_lot_id,
+                   restrict_partner_id=restrict_partner_id,
+                   context=context))
+        return res
 
 
 class StockMove(models.Model):

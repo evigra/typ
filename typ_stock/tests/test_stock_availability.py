@@ -9,6 +9,7 @@ class TestStockAvailability(TransactionCase):
     def setUp(self):
         super(TestStockAvailability, self).setUp()
         self.transfer_obj = self.env['stock.transfer_details']
+        self.picking_obj = self.env['stock.picking']
         self.sale_obj = self.env['sale.order']
         self.company = self.env.ref('base.main_company')
         self.partner = self.env.ref('base.res_partner_9')
@@ -241,3 +242,125 @@ class TestStockAvailability(TransactionCase):
             (self.product.name)
         with self.assertRaisesRegexp(UserError, msg):
             wizard_return_id.sudo(demo_user).create_returns()
+
+    def create_picking(self, picking_type, source_location, dest_location,
+                       qty):
+        """Create picking for receipt and delivery product
+
+        :param picking_type: Type of the picking to create
+        :type picking_type: stock.picking.type()
+        :param source_location: Origin of the products to move
+        :type source_location: stock.location()
+        :param dest_location: stock.location()
+        :param qty: Quantity of the product to move
+        :type qty: float
+
+        :return: All required fields to create a picking
+        :rtype: dict
+        """
+        move = {
+            'product_uom_qty': qty,
+            'product_id': self.product.id,
+            'location_id': source_location.id,
+            'location_dest_id': dest_location.id,
+            'product_uom': self.product.uom_id.id,
+            'name': 'Test Move',
+            'state': 'confirmed',
+        }
+        picking = {
+            'picking_type_id': picking_type.id,
+            'state': 'confirmed',
+            'warehouse_id': self.test_wh.id,
+            'move_type': 'direct',
+            'invoice_state': 'none',
+            'move_lines': [(0, 0, move)],
+        }
+
+        pick = self.picking_obj.create(picking)
+        # Confirm Pickings
+        pick.action_confirm()
+        # Reserving lines
+        pick.action_assign()
+        return pick
+
+    def test_50_validate_quant_reservation(self):
+        """Validate the correct creation and reservation of the quants avoiding
+        reserve quants if theses are already reserved
+        """
+
+        self.product.write({'type': 'product'})
+        v_qty = self.product.virtual_available
+        source = self.env.ref('stock.stock_location_suppliers')
+        dest = self.env.ref('stock.stock_location_stock')
+        ptype = self.env.ref('stock.picking_type_in')
+        # Receipt product
+        pick = self.create_picking(ptype, source, dest, 100)
+        value = self.transfer_obj.\
+            with_context({'active_model': 'stock.picking',
+                          'active_id': pick.id,
+                          'active_ids': [pick.id]}).\
+            default_get([])
+        line = []
+        for ope in value.get('item_ids', []):
+            line.append((0, 0, ope))
+
+        value['item_ids'] = line
+        value['picking_id'] = pick.id
+        # Creating an object of the pack window
+        trans_id = self.transfer_obj.create(value)
+        # Validating wizard
+        trans_id.do_detailed_transfer()
+        self.assertEqual(pick.state, 'done', 'The pick was not validated')
+        # Check qty
+        vqty = v_qty + 100
+        self.assertEqual(vqty, self.product.virtual_available,
+                         'The virtual available is wrong')
+        # Reserve and Delivery
+        qty = vqty - 10
+
+        source = self.env.ref('stock.stock_location_stock')
+        dest = self.env.ref('stock.stock_location_customers')
+        ptype = self.env.ref('stock.picking_type_out')
+        # Create picking with qty available
+        pick1 = self.create_picking(ptype, source, dest, qty)
+        # Check qty
+        self.assertEqual(10, self.product.virtual_available,
+                         'The virtual available is wrong')
+        # Create picking with more thant available
+        pick2 = self.create_picking(ptype, source, dest, 10)
+
+        value = self.transfer_obj.\
+            with_context({'active_model': 'stock.picking',
+                          'active_id': pick2.id,
+                          'active_ids': [pick2.id]}).\
+            default_get([])
+        line = []
+        for ope in value.get('item_ids', []):
+            ope.update({'quantity': 15})
+            line.append((0, 0, ope))
+
+        value['item_ids'] = line
+        value['picking_id'] = pick2.id
+        # Creating an object of the pack window
+        trans_id = self.transfer_obj.create(value)
+        msg = 'Negative Quant creation error. Contact personnel ' \
+            'Vauxoo immediately'
+        # The picking cannot be validated
+        with self.assertRaisesRegexp(UserError, msg):
+            trans_id.do_detailed_transfer()
+
+        value = self.transfer_obj.\
+            with_context({'active_model': 'stock.picking',
+                          'active_id': pick1.id,
+                          'active_ids': [pick1.id]}).\
+            default_get([])
+        line = []
+        for ope in value.get('item_ids', []):
+            line.append((0, 0, ope))
+
+        value['item_ids'] = line
+        value['picking_id'] = pick1.id
+        # Creating an object of the pack windontw
+        trans_id = self.transfer_obj.create(value)
+        # Validating wizard
+        trans_id.do_detailed_transfer()
