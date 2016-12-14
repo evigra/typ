@@ -11,24 +11,26 @@ msgstr ""
 "Project-Id-Version: Odoo Server 8.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-11-24 22:20+0000\n"
-"PO-Revision-Date: 2016-11-24 22:20+0000\n"
-"Last-Translator: Antonio Rogel <arogel@typrefrigeracion.com>, 2016\n"
-"Language-Team: Spanish (https://www.transifex.com/Vauxoo/teams/69438/es/)\n"
+"PO-Revision-Date: 2016-12-14 14:37+0000\n"
+"Last-Translator: Yennnifer Santiago <yennifer@vauxoo.com>\n"
+"Language-Team: Spanish <http://weblate.vauxoo.com/projects/typ-8-0/typ_defaul"
+"t_warehouse_from_sale_team/es/>\n"
+"Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
-"Language: es\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 2.9\n"
 
 #. module: typ_default_warehouse_from_sale_team
 #: field:crm.case.section,purchase_pricelist_id:0
 msgid "Default purchase pricelist"
-msgstr "Default purchase pricelist"
+msgstr "Tarifa de compra por defecto"
 
 #. module: typ_default_warehouse_from_sale_team
 #: field:crm.case.section,sale_pricelist_id:0
 msgid "Default sale pricelist"
-msgstr "Default sale pricelist"
+msgstr "Tarifa de venta por defecto"
 
 #. module: typ_default_warehouse_from_sale_team
 #: help:crm.case.section,journal_guide_id:0
@@ -43,12 +45,12 @@ msgstr "Indica el diario que se debe usar cuando el costo en destino se crea"
 #. module: typ_default_warehouse_from_sale_team
 #: help:crm.case.section,purchase_pricelist_id:0
 msgid "It indicates the purchase pricelist to be used when partner is created"
-msgstr "It indicates the purchase pricelist to be used when partner is created"
+msgstr "Tarifa de compras que se utilizará al crear un nuevo cliente"
 
 #. module: typ_default_warehouse_from_sale_team
 #: help:crm.case.section,sale_pricelist_id:0
 msgid "It indicates the sale pricelist to be used when partner is created"
-msgstr "It indicates the sale pricelist to be used when partner is created"
+msgstr "Tarifa de ventas que se utilizará al crear un nuevo cliente"
 
 #. module: typ_default_warehouse_from_sale_team
 #: field:crm.case.section,journal_landed_id:0
