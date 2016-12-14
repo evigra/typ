@@ -21,6 +21,16 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #. module: typ_default_warehouse_from_sale_team
+#: field:crm.case.section,purchase_pricelist_id:0
+msgid "Default purchase pricelist"
+msgstr "Default purchase pricelist"
+
+#. module: typ_default_warehouse_from_sale_team
+#: field:crm.case.section,sale_pricelist_id:0
+msgid "Default sale pricelist"
+msgstr "Default sale pricelist"
+
+#. module: typ_default_warehouse_from_sale_team
 #: help:crm.case.section,journal_guide_id:0
 msgid "It indicates journal to be used when landed cost guide is created"
 msgstr "Indica el diario que se debe usar cuando una guía de costo en destino se crea"
@@ -29,6 +39,16 @@ msgstr "Indica el diario que se debe usar cuando una guía de costo en destino s
 #: help:crm.case.section,journal_landed_id:0
 msgid "It indicates journal to be used when landed cost is created"
 msgstr "Indica el diario que se debe usar cuando el costo en destino se crea"
+
+#. module: typ_default_warehouse_from_sale_team
+#: help:crm.case.section,purchase_pricelist_id:0
+msgid "It indicates the purchase pricelist to be used when partner is created"
+msgstr "It indicates the purchase pricelist to be used when partner is created"
+
+#. module: typ_default_warehouse_from_sale_team
+#: help:crm.case.section,sale_pricelist_id:0
+msgid "It indicates the sale pricelist to be used when partner is created"
+msgstr "It indicates the sale pricelist to be used when partner is created"
 
 #. module: typ_default_warehouse_from_sale_team
 #: field:crm.case.section,journal_landed_id:0
