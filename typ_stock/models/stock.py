@@ -214,7 +214,7 @@ class StockPicking(models.Model):
         """Validate that only origin picking can be cancel when exist linked
         pickings
         """
-        if self.move_lines[0].move_orig_ids:
+        if self.move_lines and self.move_lines[0].move_orig_ids:
             raise exceptions.Warning(
                 _('Warning!'),
                 _('This picking can not be cancel. Only origin picking can be '
