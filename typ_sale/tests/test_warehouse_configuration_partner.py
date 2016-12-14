@@ -22,6 +22,7 @@ class TestWarehouseConfigurationPartner(TransactionCase):
         self.user_2 = self.env['res.users'].create({
             'name': 'User_2', 'login': 'user_2@test.com',
             'password': '123456'})
+        self.pricelist = self.env.ref('product.list0')
 
     def test_00_constraint_repeat_warehouse(self):
         """Test that raise is generate when it try to create a warehouse
@@ -51,6 +52,7 @@ class TestWarehouseConfigurationPartner(TransactionCase):
             'partner_id': self.partner_1.id,
             'partner_invoice_id': self.partner_1.id,
             'partner_shipping_id': self.partner_1.id,
+            'pricelist_id': self.pricelist.id,
             'warehouse_id': self.warehouse_1.id})
         sale_order.get_salesman_from_warehouse_config()
         self.assertEqual(sale_order.user_id, self.user_1)
@@ -74,6 +76,7 @@ class TestWarehouseConfigurationPartner(TransactionCase):
             'partner_id': self.partner_1.id,
             'partner_invoice_id': self.partner_1.id,
             'partner_shipping_id': self.partner_1.id,
+            'pricelist_id': self.pricelist.id,
             'warehouse_id': self.warehouse_1.id})
         sale_order.get_salesman_from_warehouse_config()
         self.assertEqual(sale_order.user_id, self.user_1)

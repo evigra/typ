@@ -11,6 +11,7 @@ class TestSaleTypePaymentTerm(TransactionCase):
             'payment_term_type.payment_term_credit')
         self.payment_term_cash = self.env.ref(
             'account.account_payment_term_immediate')
+        self.pricelist = self.env.ref('product.list0')
         self.partner = self.env['res.partner'].create({
             'name': 'Partner test',
             'property_payment_term': self.payment_term_credit.id})
@@ -21,6 +22,7 @@ class TestSaleTypePaymentTerm(TransactionCase):
             'partner_invoice_id': self.partner.id,
             'partner_shipping_id': self.partner.id,
             'warehouse_id': self.warehouse.id,
+            'pricelist_id': self.pricelist.id,
             'type_payment_term': 'credit', }
 
     def test_00_type_payment_term_credit(self):

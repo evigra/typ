@@ -25,6 +25,7 @@ class TestTypAccount(common.TransactionCase):
         self.conf_warehouse = self.env.ref('typ_sale.res_partner_wh_01')
         self.acc_bank_stmt_model = self.env['account.bank.statement']
         self.acc_bank_stmt_line_model = self.env['account.bank.statement.line']
+        self.pricelist = self.env.ref('product.list0')
 
         # Create an invoice to have a pending payment
         self.dict_vals = {
@@ -44,6 +45,7 @@ class TestTypAccount(common.TransactionCase):
             'partner_invoice_id': self.partner.id,
             'partner_shipping_id': self.partner.id,
             'warehouse_id': self.warehouse.id,
+            'pricelist_id': self.pricelist.id,
             'order_line': [
                 (0, 0,
                  {'name': self.product.name, 'product_id': self.product.id,
