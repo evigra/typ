@@ -22,7 +22,7 @@ msgstr ""
 "X-Generator: Weblate 2.9\n"
 
 #. module: typ_landed_costs
-#: code:addons/typ_landed_costs/models/stock_landed_costs.py:578
+#: code:addons/typ_landed_costs/models/stock_landed_costs.py:731
 #, python-format
 msgid "\n"
 "- Check '%s' into '%s'"
@@ -45,6 +45,11 @@ msgstr "Todas las guías seleccionadas deben tener la misma moneda"
 #, python-format
 msgid "All guides selected must have the same partner"
 msgstr "Todas las guías seleccionadas deben tener el mismo cliente/proveedor"
+
+#. module: typ_landed_costs
+#: model:product.template,name:typ_landed_costs.product_adjusts_landed_cost_1_product_template
+msgid "Average Product to Adjust with Landed Costs"
+msgstr "Average Product to Adjust with Landed Costs"
 
 #. module: typ_landed_costs
 #: view:invoice.guides:typ_landed_costs.view_invoice_from_guides_form
@@ -131,6 +136,11 @@ msgid "Date which want to create the invoice"
 msgstr "Fecha con la que desea crear la factura"
 
 #. module: typ_landed_costs
+#: model:product.pricelist.version,name:typ_landed_costs.ver0
+msgid "Default Purchase Pricelist Version"
+msgstr "Default Purchase Pricelist Version"
+
+#. module: typ_landed_costs
 #: view:stock.move:typ_landed_costs.stock_move_discrete_form
 msgid "Discrete"
 msgstr "Discreto"
@@ -159,11 +169,28 @@ msgid "Draft"
 msgstr "Borrador"
 
 #. module: typ_landed_costs
-#: code:addons/typ_landed_costs/models/stock_landed_costs.py:211
-#: code:addons/typ_landed_costs/models/stock_landed_costs.py:495
+#: code:addons/typ_landed_costs/models/stock_landed_costs.py:212
+#: code:addons/typ_landed_costs/models/stock_landed_costs.py:648
 #, python-format
 msgid "Error!"
 msgstr "¡Error!"
+
+#. module: typ_landed_costs
+#: model:product.template,name:typ_landed_costs.landed_exchange_differential_product_product_template
+msgid "Exchange Differential"
+msgstr "Exchange Differential"
+
+#. module: typ_landed_costs
+#: view:account.invoice:typ_landed_costs.view_invoice_form_partner_onchange
+#: model:ir.actions.server,name:typ_landed_costs.server_action_adjust_exchange_differential_landed
+#: field:stock.landed.cost,exchange_landed_ids:0
+msgid "Exchange Differential Adjust"
+msgstr "Exchange Differential Adjust"
+
+#. module: typ_landed_costs
+#: field:account.invoice,exchange_landed_ids:0
+msgid "Exchange Differential Landed"
+msgstr "Exchange Differential Landed"
 
 #. module: typ_landed_costs
 #: selection:stock.landed.cost.guide.line,freight_type:0
@@ -207,7 +234,7 @@ msgid "Guide"
 msgstr "Guía"
 
 #. module: typ_landed_costs
-#: code:addons/typ_landed_costs/models/stock_landed_costs.py:154
+#: code:addons/typ_landed_costs/models/stock_landed_costs.py:155
 #, python-format
 msgid "Guide '%s' cannot be removed when it is/was validated\n"
 ""
@@ -281,6 +308,12 @@ msgid "ID"
 msgstr "ID"
 
 #. module: typ_landed_costs
+#: code:addons/typ_landed_costs/models/stock_landed_costs.py:519
+#, python-format
+msgid "Insufficient Configuration!"
+msgstr "Insufficient Configuration!"
+
+#. module: typ_landed_costs
 #: model:ir.model,name:typ_landed_costs.model_account_invoice
 #: view:stock.landed.cost.guide:typ_landed_costs.guide_search_view
 #: field:stock.landed.cost.guide,invoice_id:0
@@ -320,7 +353,7 @@ msgid "Journal Entry"
 msgstr "Entrada del Diario"
 
 #. module: typ_landed_costs
-#: code:addons/typ_landed_costs/models/stock_landed_costs.py:350
+#: code:addons/typ_landed_costs/models/stock_landed_costs.py:351
 #: model:ir.model,name:typ_landed_costs.model_account_move_line
 #, python-format
 msgid "Journal Items"
@@ -352,6 +385,12 @@ msgstr "Guías de Coste en Destino"
 #: help:stock.landed.cost.guide,landed_cost_id:0
 msgid "Landed cost document where this guide is added"
 msgstr "Documento de coste en destino donde la guía está agregada"
+
+#. module: typ_landed_costs
+#: help:account.invoice,exchange_landed_ids:0
+#: help:stock.landed.cost,exchange_landed_ids:0
+msgid "Landed created to adjust the cost of the product by exchange differential"
+msgstr "Landed created to adjust the cost of the product by exchange differential"
 
 #. module: typ_landed_costs
 #: field:invoice.guides,__last_update:0
@@ -403,20 +442,20 @@ msgid "Name to identify the guide"
 msgstr "Nombre para identificar la guía"
 
 #. module: typ_landed_costs
-#: code:addons/typ_landed_costs/models/stock_landed_costs.py:216
+#: code:addons/typ_landed_costs/models/stock_landed_costs.py:217
 #, python-format
 msgid "No Guide Lines!"
 msgstr "¡No hay Líneas de la Guía!"
 
 #. module: typ_landed_costs
-#: code:addons/typ_landed_costs/models/stock_landed_costs.py:512
-#: code:addons/typ_landed_costs/models/stock_landed_costs.py:589
+#: code:addons/typ_landed_costs/models/stock_landed_costs.py:665
+#: code:addons/typ_landed_costs/models/stock_landed_costs.py:742
 #, python-format
 msgid "Only draft landed costs can be validated"
 msgstr "Solo prorrateos en borrador pueden ser validados"
 
 #. module: typ_landed_costs
-#: code:addons/typ_landed_costs/models/stock_landed_costs.py:582
+#: code:addons/typ_landed_costs/models/stock_landed_costs.py:735
 #, python-format
 msgid "Only valid guides can be added to a landed cost"
 msgstr "Sólo guías validadas pueden ser agregadas a un costo en destino"
@@ -448,7 +487,7 @@ msgid "Pickings"
 msgstr "Albaranes"
 
 #. module: typ_landed_costs
-#: code:addons/typ_landed_costs/models/stock_landed_costs.py:217
+#: code:addons/typ_landed_costs/models/stock_landed_costs.py:218
 #, python-format
 msgid "Please create some guide lines."
 msgstr "Por favor cree algunas líneas de guía."
@@ -460,13 +499,13 @@ msgid "Please define expense account for this product: \"%s\""
 msgstr "Por favor, defina la cuenta de gastos del producto: \"%s\""
 
 #. module: typ_landed_costs
-#: code:addons/typ_landed_costs/models/stock_landed_costs.py:212
+#: code:addons/typ_landed_costs/models/stock_landed_costs.py:213
 #, python-format
 msgid "Please define sequence on the journal related to this guide."
 msgstr "Por favor defina una secuencia en el diario relacionado a esta guía."
 
 #. module: typ_landed_costs
-#: code:addons/typ_landed_costs/models/stock_landed_costs.py:522
+#: code:addons/typ_landed_costs/models/stock_landed_costs.py:675
 #, python-format
 msgid "Please fill the segmentation field in Cost Lines"
 msgstr "Favor de llenar el campo de segmentación en la lineas de costeo"
@@ -495,6 +534,11 @@ msgstr "Lineas de producto asociadas a este guía"
 #: selection:stock.discrete,segmentation_cost:0
 msgid "Production Cost"
 msgstr "Coste de producción"
+
+#. module: typ_landed_costs
+#: model:product.pricelist,name:typ_landed_costs.landed_price
+msgid "Purchase Pricelist"
+msgstr "Purchase Pricelist"
 
 #. module: typ_landed_costs
 #: field:stock.landed.cost.guide,reference:0
@@ -578,7 +622,7 @@ msgid "The guide(s) "
 msgstr "La(s) guía(s) "
 
 #. module: typ_landed_costs
-#: code:addons/typ_landed_costs/models/stock_landed_costs.py:496
+#: code:addons/typ_landed_costs/models/stock_landed_costs.py:649
 #, python-format
 msgid "The selected picking does not contain any move that would be impacted by landed costs. Landed costs are only possible for products configured in real time valuation. Please make sure it is the case, or you selected the correct picking."
 msgstr "El albarán seleccionado no contiene ningún movimiento que pudiera ser impactado por costos en destino. Los costos en destino son solo posible en productos configurados con valoración en tiempo real. Por favor asegúrese que este sea el caso, o seleccione un albarán correcto."
@@ -605,7 +649,7 @@ msgid "Total"
 msgstr "Total"
 
 #. module: typ_landed_costs
-#: code:addons/typ_landed_costs/models/stock_landed_costs.py:224
+#: code:addons/typ_landed_costs/models/stock_landed_costs.py:225
 #, python-format
 msgid "User Error!"
 msgstr "¡Error de Usuario!"
@@ -637,7 +681,7 @@ msgid "When the guide has been invoiced, this field is True, otherwise False"
 msgstr "Cuando la guía ya ha sido facturada, este campo es Verdadero, de lo contrario es Falso"
 
 #. module: typ_landed_costs
-#: code:addons/typ_landed_costs/models/stock_landed_costs.py:157
+#: code:addons/typ_landed_costs/models/stock_landed_costs.py:158
 #, python-format
 msgid "You are trying to delete guides you can not delete:\n"
 "\n"
@@ -649,13 +693,13 @@ msgstr "Estás intentando eliminar guías que no puedes eliminar:\n"
 "Por favor solucione estos errores antes de continuar."
 
 #. module: typ_landed_costs
-#: code:addons/typ_landed_costs/models/stock_landed_costs.py:225
+#: code:addons/typ_landed_costs/models/stock_landed_costs.py:226
 #, python-format
 msgid "You cannot create a guide on a centralized journal. Uncheck the centralized counterpart box in the related journal from the configuration menu."
 msgstr "No puede crear una guía en un diario centralizado. Desmarque la casilla contrapartida centralizada en el diario relacionado desde el menú de configuración."
 
 #. module: typ_landed_costs
-#: code:addons/typ_landed_costs/models/stock_landed_costs.py:177
+#: code:addons/typ_landed_costs/models/stock_landed_costs.py:178
 #, python-format
 msgid "You cannot reset this guide to draft while it is associated to a Landed Cost Document:\n"
 "\n"
@@ -665,11 +709,17 @@ msgstr "No puedes reiniciar esta guía a borrador mientras esté asociada a un D
 "- %s"
 
 #. module: typ_landed_costs
-#: code:addons/typ_landed_costs/models/stock_landed_costs.py:516
-#: code:addons/typ_landed_costs/models/stock_landed_costs.py:593
+#: code:addons/typ_landed_costs/models/stock_landed_costs.py:669
+#: code:addons/typ_landed_costs/models/stock_landed_costs.py:746
 #, python-format
 msgid "You cannot validate a landed cost which has no valid valuation adjustments lines. Did you click on Compute?"
 msgstr "No puede validar un costo en destino el cual no tiene líneas de ajustes de valoración válidas. ¿Usted hizo clic en Calcular?"
+
+#. module: typ_landed_costs
+#: code:addons/typ_landed_costs/models/stock_landed_costs.py:520
+#, python-format
+msgid "You should configure the 'Exchange Rate Account' in the accounting settings, to manage automatically the booking of accounting entries related to differences between exchange rates."
+msgstr "You should configure the 'Exchange Rate Account' in the accounting settings, to manage automatically the booking of accounting entries related to differences between exchange rates."
 
 #. module: typ_landed_costs
 #: code:addons/typ_landed_costs/wizards/invoice_from_guides.py:49
