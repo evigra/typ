@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: Odoo Server 8.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-11-28 20:23+0000\n"
-"PO-Revision-Date: 2016-12-08 23:06+0000\n"
+"PO-Revision-Date: 2016-12-14 14:46+0000\n"
 "Last-Translator: Yennnifer Santiago <yennifer@vauxoo.com>\n"
 "Language-Team: Spanish "
 "<http://weblate.vauxoo.com/projects/typ-8-0/typ_landed_costs/es/>\n"
@@ -32,7 +32,7 @@ msgstr "\n"
 #. module: typ_landed_costs
 #: field:stock.landed.cost.guide,account_move_name:0
 msgid "Account move name"
-msgstr "Account move name"
+msgstr "Nombre de la entrada contable"
 
 #. module: typ_landed_costs
 #: code:addons/typ_landed_costs/wizards/invoice_from_guides.py:30
@@ -55,7 +55,7 @@ msgstr "Cancelar"
 #. module: typ_landed_costs
 #: selection:stock.landed.cost.guide,state:0
 msgid "Cancelled"
-msgstr "Cancelled"
+msgstr "Cancelado"
 
 #. module: typ_landed_costs
 #: field:stock.landed.cost.guide,company_id:0
@@ -211,8 +211,7 @@ msgstr "Guía"
 #, python-format
 msgid "Guide '%s' cannot be removed when it is/was validated\n"
 ""
-msgstr "Guide '%s' cannot be removed when it is/was validated\n"
-""
+msgstr "Las guias '%s' no pueden ser eliminadas cuando estan validadas\n"
 
 #. module: typ_landed_costs
 #: view:stock.landed.cost.guide.line:typ_landed_costs.guide_line_tree_view
@@ -564,7 +563,11 @@ msgstr "Líneas de Ajuste de Valoración de Inventario"
 #. module: typ_landed_costs
 #: help:stock.landed.cost.guide,account_move_name:0
 msgid "Stores the name of the Journal Entry the first time the Guide is validated, so if the user cancel or reset the guide and then create it again, it will not create a new Journal Entry Sequence, it will use always the same"
-msgstr "Stores the name of the Journal Entry the first time the Guide is validated, so if the user cancel or reset the guide and then create it again, it will not create a new Journal Entry Sequence, it will use always the same"
+msgstr ""
+"Guarda el nombre de la Entrada de Diario la primera vez que se valida la "
+"Guía, por lo que si el usuario cancela o restablece la guía y luego la crea "
+"de nuevo, no creará una nueva Secuencia de Entrada de Diario, utilizará "
+"siempre la misma"
 
 #. module: typ_landed_costs
 #: selection:stock.discrete,segmentation_cost:0
@@ -643,10 +646,11 @@ msgid "You are trying to delete guides you can not delete:\n"
 "\n"
 "%s\n"
 "Please solve this errors before continue."
-msgstr "You are trying to delete guides you can not delete:\n"
+msgstr ""
+"Estás intentando eliminar guías que no puedes eliminar:\n"
 "\n"
 "%s\n"
-"Please solve this errors before continue."
+"Por favor solucione estos errores antes de continuar."
 
 #. module: typ_landed_costs
 #: code:addons/typ_landed_costs/models/stock_landed_costs.py:225
