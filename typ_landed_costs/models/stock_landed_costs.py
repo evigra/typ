@@ -487,8 +487,7 @@ class StockLandedCost(models.Model):
         currency_obj = currency_obj.with_context({'date': new_date})
         from_currency = line.purchase_line_id.order_id.currency_id
         to_currency = self.env.user.company_id.currency_id
-        price_unit = (line.purchase_line_id.price_unit *
-                      line.purchase_line_id.product_qty)
+        price_unit = (line.purchase_line_id.price_unit * line.product_qty)
         new_total = (line.product_id and price_unit and
                      currency_obj._compute(from_currency, to_currency,
                                            price_unit) or 0)
