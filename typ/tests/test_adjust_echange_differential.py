@@ -133,11 +133,18 @@ class TestAdjustExchangeDifferential(common.TestTypLandedCosts):
         inv_brw = self.env['account.invoice'].browse(inv_id[0])
         mock_values.return_value = self.get_landed_values(2000, pick, False)
         inv_brw.signal_workflow('invoice_open')
+        rule = self.env.ref(
+            'typ_landed_costs.'
+            'automated_action_adjust_exchange_differential_invoice')
+        rule._process(rule, [inv_brw.id])
         # Costs
         self.assertEqual(self.prod.standard_price, 1000,
                          'The cost of the product is not correctly updated')
         # Validated that the adjust landed was created and assigned
         self.assertTrue(inv_brw.exchange_landed_ids)
+        # Validating that only one adjust is created
+        rule._process(rule, [inv_brw.id])
+        self.assertTrue(len(inv_brw.exchange_landed_ids) == 1)
 
     @mock.patch('openerp.addons.typ_landed_costs.models.'
                 'stock_landed_costs.StockLandedCost._get_landed_values')

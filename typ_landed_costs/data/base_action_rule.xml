@@ -11,5 +11,14 @@
             <field name="server_action_ids" eval="[(6, 0, [ref('typ_landed_costs.server_action_adjust_exchange_differential_landed')])]"/>
         </record>
 
+        <record id="automated_action_adjust_exchange_differential_invoice" model="base.action.rule">
+            <field name="name">Exchange Differential Adjust Invoice</field>
+            <field name="model_id" model="ir.model" search="[('model', '=', 'account.invoice')]"/>
+            <field name="active">1</field>
+            <field name="sequence">5</field>
+            <field name="kind">on_write</field>
+            <field name="server_action_ids" eval="[(6, 0, [ref('typ_landed_costs.server_action_adjust_exchange_differential_invoice')])]"/>
+        </record>
+
     </data>
 </openerp>

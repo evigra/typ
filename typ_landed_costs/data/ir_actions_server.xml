@@ -3,7 +3,7 @@
     <data noupdate="1">
 
         <record id="server_action_adjust_exchange_differential_landed" model="ir.actions.server">
-            <field name="name">Exchange Differential Adjust</field>
+            <field name="name">Exchange Differential Adjust Landed</field>
             <field name="model_id" model="ir.model" search="[('model', '=', 'stock.landed.cost')]"/>
             <field name="state">code</field>
             <field name="code">
@@ -12,6 +12,18 @@ if object.state == 'done' and object.is_pedimento == True:
     for pick in object.picking_ids:
         new = landed.adjust_cost_for_exchange_differential(pick, object.date)
         object.write({'exchange_landed_ids': [(6, 0, [new.id])]})
+            </field>
+        </record>
+
+        <record id="server_action_adjust_exchange_differential_invoice" model="ir.actions.server">
+            <field name="name">Exchange Differential Adjust Invoice</field>
+            <field name="model_id" model="ir.model" search="[('model', '=', 'account.invoice')]"/>
+            <field name="state">code</field>
+            <field name="code">
+landed = env['stock.landed.cost']
+if (object.currency_id != object.company_id.currency_id and object.partner_id.country_id == object.company_id.country_id and object.type == 'in_invoice' and not object.exchange_landed_ids):
+    new = landed.adjust_cost_for_exchange_differential(object, object.date_invoice)
+    object.write({'exchange_landed_ids': [(6, 0, [new.id])]})
             </field>
         </record>
     </data>
