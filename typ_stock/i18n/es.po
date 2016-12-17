@@ -238,7 +238,6 @@ msgstr "Cantidad"
 
 #. module: typ_stock
 #: model:ir.model,name:typ_stock.model_stock_quant
-#, fuzzy
 msgid "Quants"
 msgstr "Quants"
 
@@ -509,9 +508,8 @@ msgstr "Audífonos Inalámbricos personalizados"
 
 #. module: typ_stock
 #: view:pedimento.product:typ_stock.view_pedimento_product_wizard
-#, fuzzy
 msgid "Wizard / write selected lot or quant"
-msgstr "Asistente / Escribir lote o quant seleccionado"
+msgstr "Wizard / write selected lot or quant"
 
 #. module: typ_stock
 #: model:ir.actions.act_window,name:typ_stock.pedimento_product_action

@@ -182,10 +182,19 @@ msgstr "Exchange Differential"
 
 #. module: typ_landed_costs
 #: view:account.invoice:typ_landed_costs.view_invoice_form_partner_onchange
-#: model:ir.actions.server,name:typ_landed_costs.server_action_adjust_exchange_differential_landed
 #: field:stock.landed.cost,exchange_landed_ids:0
 msgid "Exchange Differential Adjust"
 msgstr "Exchange Differential Adjust"
+
+#. module: typ_landed_costs
+#: model:ir.actions.server,name:typ_landed_costs.server_action_adjust_exchange_differential_invoice
+msgid "Exchange Differential Adjust Invoice"
+msgstr "Exchange Differential Adjust Invoice"
+
+#. module: typ_landed_costs
+#: model:ir.actions.server,name:typ_landed_costs.server_action_adjust_exchange_differential_landed
+msgid "Exchange Differential Adjust Landed"
+msgstr "Exchange Differential Adjust Landed"
 
 #. module: typ_landed_costs
 #: field:account.invoice,exchange_landed_ids:0
