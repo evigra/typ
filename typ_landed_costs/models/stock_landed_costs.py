@@ -6,7 +6,7 @@ from openerp import api, fields, models, _
 from openerp.exceptions import Warning as UserError
 from openerp.exceptions import except_orm, ValidationError
 import openerp.addons.decimal_precision as dp
-from openerp.tools import float_is_zero
+from openerp.tools import float_is_zero, float_round
 
 
 class StockLandedGuides (models.Model):
@@ -481,6 +481,7 @@ class StockLandedCost(models.Model):
         :return The new total compute with the needed date
         :rtype float
         """
+        precision_obj = self.env['decimal.precision'].precision_get('Account')
         new_date = (fields.Date.from_string(date) -
                     timedelta(days=days))
         currency_obj = self.env['res.currency']
@@ -491,7 +492,7 @@ class StockLandedCost(models.Model):
         new_total = (line.product_id and price_unit and
                      currency_obj._compute(from_currency, to_currency,
                                            price_unit) or 0)
-        return new_total
+        return float_round(new_total, precision_rounding=precision_obj)
 
     @api.model
     def _get_landed_values(self, diff, picking, journal, date):
@@ -550,6 +551,7 @@ class StockLandedCost(models.Model):
         :return The landed created to adjust the costs
         :rtype stock.landed.cost()
         """
+        precision_obj = self.env['decimal.precision'].precision_get('Account')
         total_in_move = 0
         diff = 0
         picking = move_lines and move_lines[0].picking_id
@@ -559,13 +561,12 @@ class StockLandedCost(models.Model):
                                              a.product_id.
                                              valuation == 'real_time')
         for line in filtered_moves:
-            aml = line.aml_all_ids[0]
-            total_in_move += (aml.debit or aml.credit)
+            total_in_move += sum([aml.debit for aml in line.aml_all_ids])
             diff += self._get_result_diff_rate(line, date)
 
         total_diff = (diff - total_in_move)
 
-        if not total_diff:
+        if float_is_zero(total_diff, precision_obj):
             return self.env['stock.landed.cost']
 
         journal = aml.journal_id.section_id.journal_landed_id.id
