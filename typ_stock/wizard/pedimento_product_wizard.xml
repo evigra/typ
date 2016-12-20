@@ -12,7 +12,7 @@
                     </group>
                     <group>
                         <field name="product_id" invisible="True" />
-                        <field name="lot_id" style="width: 40%" string="Serial" domain="['|',('product_id', '=', product_id)('quant_ids', '!=', False)]"/>
+                        <field name="lot_id" style="width: 40%" string="Serial" domain="[('product_id', '=', product_id), ('quant_ids', '!=', False)]"/>
                         <field name="landed_id" style="width: 40%" string="Pedimento" domain="[('is_pedimento', '=', 1)]"/>
                     </group>
                     <footer>
