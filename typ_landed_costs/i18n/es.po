@@ -10,8 +10,8 @@ msgstr ""
 "Project-Id-Version: Odoo Server 8.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-11-28 20:23+0000\n"
-"PO-Revision-Date: 2016-12-15 15:01+0000\n"
-"Last-Translator: Jorge Escalona <jorge@vauxoo.com>\n"
+"PO-Revision-Date: 2016-12-22 03:51+0000\n"
+"Last-Translator: José <jose@vauxoo.com>\n"
 "Language-Team: Spanish "
 "<http://weblate.vauxoo.com/projects/typ-8-0/typ_landed_costs/es/>\n"
 "Language: es\n"
@@ -49,7 +49,7 @@ msgstr "Todas las guías seleccionadas deben tener el mismo cliente/proveedor"
 #. module: typ_landed_costs
 #: model:product.template,name:typ_landed_costs.product_adjusts_landed_cost_1_product_template
 msgid "Average Product to Adjust with Landed Costs"
-msgstr "Average Product to Adjust with Landed Costs"
+msgstr "Producto para ajustar con costos de aterrizaje"
 
 #. module: typ_landed_costs
 #: view:invoice.guides:typ_landed_costs.view_invoice_from_guides_form
@@ -138,7 +138,7 @@ msgstr "Fecha con la que desea crear la factura"
 #. module: typ_landed_costs
 #: model:product.pricelist.version,name:typ_landed_costs.ver0
 msgid "Default Purchase Pricelist Version"
-msgstr "Default Purchase Pricelist Version"
+msgstr "Versión de lista de precio de compra por defecto"
 
 #. module: typ_landed_costs
 #: view:stock.move:typ_landed_costs.stock_move_discrete_form
@@ -178,28 +178,28 @@ msgstr "¡Error!"
 #. module: typ_landed_costs
 #: model:product.template,name:typ_landed_costs.landed_exchange_differential_product_product_template
 msgid "Exchange Differential"
-msgstr "Exchange Differential"
+msgstr "Diferencial Cambiario"
 
 #. module: typ_landed_costs
 #: view:account.invoice:typ_landed_costs.view_invoice_form_partner_onchange
 #: field:stock.landed.cost,exchange_landed_ids:0
 msgid "Exchange Differential Adjust"
-msgstr "Exchange Differential Adjust"
+msgstr "Ajuste por diferencial cambiario"
 
 #. module: typ_landed_costs
 #: model:ir.actions.server,name:typ_landed_costs.server_action_adjust_exchange_differential_invoice
 msgid "Exchange Differential Adjust Invoice"
-msgstr "Exchange Differential Adjust Invoice"
+msgstr "Factura por diferencial cambiario"
 
 #. module: typ_landed_costs
 #: model:ir.actions.server,name:typ_landed_costs.server_action_adjust_exchange_differential_landed
 msgid "Exchange Differential Adjust Landed"
-msgstr "Exchange Differential Adjust Landed"
+msgstr "Aterrizaje por diferencial cambiario"
 
 #. module: typ_landed_costs
 #: field:account.invoice,exchange_landed_ids:0
 msgid "Exchange Differential Landed"
-msgstr "Exchange Differential Landed"
+msgstr "Aterrizaje por diferencial cambiario"
 
 #. module: typ_landed_costs
 #: selection:stock.landed.cost.guide.line,freight_type:0
@@ -320,7 +320,7 @@ msgstr "ID"
 #: code:addons/typ_landed_costs/models/stock_landed_costs.py:519
 #, python-format
 msgid "Insufficient Configuration!"
-msgstr "Insufficient Configuration!"
+msgstr "Configuración Insuficiente!"
 
 #. module: typ_landed_costs
 #: model:ir.model,name:typ_landed_costs.model_account_invoice
@@ -399,7 +399,9 @@ msgstr "Documento de coste en destino donde la guía está agregada"
 #: help:account.invoice,exchange_landed_ids:0
 #: help:stock.landed.cost,exchange_landed_ids:0
 msgid "Landed created to adjust the cost of the product by exchange differential"
-msgstr "Landed created to adjust the cost of the product by exchange differential"
+msgstr ""
+"Aterrizaje creado para ajustar el costo del producto por diferencial "
+"cambiario"
 
 #. module: typ_landed_costs
 #: field:invoice.guides,__last_update:0
@@ -547,7 +549,7 @@ msgstr "Coste de producción"
 #. module: typ_landed_costs
 #: model:product.pricelist,name:typ_landed_costs.landed_price
 msgid "Purchase Pricelist"
-msgstr "Purchase Pricelist"
+msgstr "Lista de precio de compra"
 
 #. module: typ_landed_costs
 #: field:stock.landed.cost.guide,reference:0
@@ -728,7 +730,10 @@ msgstr "No puede validar un costo en destino el cual no tiene líneas de ajustes
 #: code:addons/typ_landed_costs/models/stock_landed_costs.py:520
 #, python-format
 msgid "You should configure the 'Exchange Rate Account' in the accounting settings, to manage automatically the booking of accounting entries related to differences between exchange rates."
-msgstr "You should configure the 'Exchange Rate Account' in the accounting settings, to manage automatically the booking of accounting entries related to differences between exchange rates."
+msgstr ""
+"Debe configurar la \"Cuenta de tipo de cambio\" en los ajustes de "
+"contabilidad, para gestionar automáticamente la contabilización de las "
+"entradas contables relacionadas con las diferencias entre tipos de cambio."
 
 #. module: typ_landed_costs
 #: code:addons/typ_landed_costs/wizards/invoice_from_guides.py:49
