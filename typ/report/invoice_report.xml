@@ -80,7 +80,8 @@
                             </div>
                             <div class="col-xs-3" style="padding-right: 0.0em; padding-left: 0.2em;">
                                 <div class="text-center" style="border-bottom-right-radius: 0.4em; border-bottom-left-radius: 0.4em; border: 2px solid #deeff5; padding-top: 0.0em; font-size: 10;">
-                                    <span t-esc="get_type_payment_term(invoice_obj)"/>
+                                    <span t-esc="invoice_obj.with_context({'lang': o.report_lang}).get_human_value('type_payment_term', invoice_obj.type_payment_term)"/>
+                                    <!-- <span t-esc="invoice_obj.type_payment_term"/> -->
                                 </div>
                             </div>
                         </div>

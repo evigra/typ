@@ -4,10 +4,11 @@
 
 import logging
 from datetime import datetime
-from openerp.osv import osv
 from openerp import _
+from openerp.osv import osv
 from openerp.addons.l10n_mx_facturae_report.report.invoice_facturae_html \
     import InvoiceFacturaeHtml as Parser
+from openerp.tools.safe_eval import safe_eval
 
 
 _logger = logging.getLogger(__name__)
@@ -18,14 +19,12 @@ class InvoiceReport(Parser):
     def __init__(self, cr, uid, name, context):
         super(InvoiceReport, self).__init__(cr, uid, name, context=context)
         self.localcontext.update({
-            'eval': eval,
+            'eval': safe_eval,
             'datetime': datetime,
             'get_model_object': self._get_model_object,
             'get_sale_order': self._get_sale_order,
-            'get_type_payment_term': self._get_type_payment_term,
             '_': _,
         })
-        self.context = context
 
     def _get_model_object(self, o):
         """Returns the Record related to the source model object. For example,
@@ -46,12 +45,6 @@ class InvoiceReport(Parser):
             order_obj = self.pool.get('sale.order').browse(
                 self.cr, self.uid, id_order)
         return order_obj
-
-    def _get_type_payment_term(self, invoice):
-        """Returns the type payment term in readable form"""
-        tpt = invoice.type_payment_term
-        selection = dict(invoice._columns['type_payment_term'].selection)
-        return _(selection[tpt])
 
 
 class InvoiceReportPDF(osv.AbstractModel):
