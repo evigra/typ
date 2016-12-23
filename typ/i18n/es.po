@@ -138,6 +138,11 @@ msgid "ID"
 msgstr "ID"
 
 #. module: typ
+#: model:ir.model,name:typ.model_account_invoice
+msgid "Invoice"
+msgstr "Factura"
+
+#. module: typ
 #: view:website:typ.report_electronic_invoice_document
 msgid "Invoice:"
 msgstr "Factura:"
