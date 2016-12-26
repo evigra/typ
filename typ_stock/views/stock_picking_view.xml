@@ -57,6 +57,10 @@
                 <xpath expr="//field[@name='location_dest_id']" position="attributes">
                     <attribute name="attrs">{'readonly': [('state', '!=', 'draft')]}</attribute>
                 </xpath>
+                <xpath expr="//field[@name='location_dest_id']" position="after">
+                    <field name="move_dest_id" readonly="1"/>
+                    <field name="move_orig_ids" readonly="1"/>
+                </xpath>
             </field>
         </record>
         <record id="view_stock_picking_form_inherit" model="ir.ui.view">
