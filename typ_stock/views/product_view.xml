@@ -15,7 +15,7 @@
                     <attribute name="groups">typ_stock.res_group_standard_price</attribute>
                 </field>
                 <button name="%(stock_account.action_view_change_standard_price)d" position="attributes">
-                    <attribute name="invisible">1</attribute>
+                    <attribute name="groups">typ_stock.res_group_standard_price_button</attribute>
                 </button>
             </field>
         </record>

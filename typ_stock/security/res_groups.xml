@@ -28,5 +28,10 @@
           <field name="name">Users that can define pedimentos serial and lot</field>
           <field name="comment">This group can define pedimentos serial and lot</field>
         </record>
+
+        <record id="res_group_standard_price_button" model="res.groups">
+          <field name="name">Users that can see standard price button</field>
+          <field name="comment">This group can update cost standard of product.</field>
+        </record>
     </data>
 </openerp>
