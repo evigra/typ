@@ -605,7 +605,8 @@ class StockLandedCost(models.Model):
             move_id
             for picking in picking_obj.browse(picking_ids)
             for move_id in picking.move_lines
-            if move_id.product_id.valuation == 'real_time'
+            if move_id.product_id.valuation == 'real_time' and
+            move_id.state == 'done' and move_id.product_uom_qty > 0.0
         ]
 
         move_ids += [
