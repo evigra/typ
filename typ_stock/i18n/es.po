@@ -391,6 +391,11 @@ msgid "This group can see price cost of product."
 msgstr "Este grupo puede ver el precio de costo del producto."
 
 #. module: typ_stock
+#: model:res.groups,comment:typ_stock.res_group_standard_price_button
+msgid "This group can update cost standard of product."
+msgstr "This group can update cost standard of product."
+
+#. module: typ_stock
 #: code:addons/typ_stock/models/stock.py:250
 #, python-format
 msgid "This picking can not be cancel. Only origin picking can be cancel."
@@ -435,6 +440,11 @@ msgstr "Usuarios que pueden ver el botón de código de barra"
 #: model:res.groups,name:typ_stock.res_group_standard_price
 msgid "Users that can see standard price"
 msgstr "Usuarios que pueden ver el precio estándar"
+
+#. module: typ_stock
+#: model:res.groups,name:typ_stock.res_group_standard_price_button
+msgid "Users that can see standard price button"
+msgstr "Users that can see standard price button"
 
 #. module: typ_stock
 #: view:website:stock.report_picking
@@ -583,6 +593,11 @@ msgstr "typ_stock.res_group_reverse_transfer"
 #: view:product.template:typ_stock.view_product_template_stock_property_inherit
 msgid "typ_stock.res_group_standard_price"
 msgstr "typ_stock.res_group_standard_price"
+
+#. module: typ_stock
+#: view:product.template:typ_stock.view_product_template_stock_property_inherit
+msgid "typ_stock.res_group_standard_price_button"
+msgstr "typ_stock.res_group_standard_price_button"
 
 #. module: typ_stock
 #: view:pedimento.product:typ_stock.view_pedimento_product_wizard
