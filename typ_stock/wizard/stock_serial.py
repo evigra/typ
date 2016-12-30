@@ -11,8 +11,7 @@ def domain_str_append(old_domain_str, subdomain_str):
         return old_domain_str.replace(
             "]",
             ", " + subdomain_str + "]")
-    else:
-        return "[" + subdomain_str + "]"
+    return "[" + subdomain_str + "]"
 
 
 def apply_modifiers(node, dict_modifiers):

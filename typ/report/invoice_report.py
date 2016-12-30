@@ -39,7 +39,7 @@ class InvoiceReport(Parser):
         """Returns the sale object Record associated to the invoice"""
         order_brw = self.pool.get('sale.order').search(
             self.cr, self.uid, [('invoice_ids', 'in', [id_invoice])])
-        id_order = order_brw[0] if len(order_brw) else False
+        id_order = order_brw[0] if order_brw else False
         order_obj = None
         if id_order:
             order_obj = self.pool.get('sale.order').browse(
