@@ -262,7 +262,7 @@ msgid "Serial"
 msgstr "Serial"
 
 #. module: typ_stock
-#: code:addons/typ_stock/wizard/stock_serial.py:143
+#: code:addons/typ_stock/wizard/stock_serial.py:142
 #, python-format
 msgid "Serial number %s not found"
 msgstr "El número serial %s no ha sido encontrado"
@@ -333,7 +333,7 @@ msgid "Test Warehouse 2: stock"
 msgstr "Almacen de Prueba 2: stock"
 
 #. module: typ_stock
-#: code:addons/typ_stock/wizard/stock_serial.py:87
+#: code:addons/typ_stock/wizard/stock_serial.py:86
 #, python-format
 msgid "The Serial number %s already captured"
 msgstr "El número de Serie %s ya se capturó"
@@ -346,26 +346,26 @@ msgid "The return of the product %s, exceeds the amount invoiced"
 msgstr "El producto devuelto %s, excede la cantidad facturada"
 
 #. module: typ_stock
-#: code:addons/typ_stock/wizard/stock_serial.py:203
+#: code:addons/typ_stock/wizard/stock_serial.py:202
 #, python-format
 msgid "The serial number %s is already in stock"
 msgstr "El número de serie %s ya está en stock"
 
 #. module: typ_stock
-#: code:addons/typ_stock/wizard/stock_serial.py:146
+#: code:addons/typ_stock/wizard/stock_serial.py:145
 #, python-format
 msgid "The serial number %s is already reserved in another move"
 msgstr "El número serial %s está reservado en otro movimiento"
 
 #. module: typ_stock
-#: code:addons/typ_stock/wizard/stock_serial.py:126
-#: code:addons/typ_stock/wizard/stock_serial.py:138
+#: code:addons/typ_stock/wizard/stock_serial.py:125
+#: code:addons/typ_stock/wizard/stock_serial.py:137
 #, python-format
 msgid "The serial number %s is already stock"
 msgstr "El número serial %s ya se encuentra en existencia"
 
 #. module: typ_stock
-#: code:addons/typ_stock/wizard/stock_serial.py:108
+#: code:addons/typ_stock/wizard/stock_serial.py:107
 #, python-format
 msgid "The serial numbers loaded cannot be greater than the requested quantity of the product"
 msgstr "Los números seriales cargados no pueden ser mayores que la cantidad de productos requerida"
@@ -488,8 +488,8 @@ msgid "Warehouse Address:"
 msgstr "Dirección de Almacén:"
 
 #. module: typ_stock
-#: code:addons/typ_stock/wizard/stock_serial.py:85
-#: code:addons/typ_stock/wizard/stock_serial.py:201
+#: code:addons/typ_stock/wizard/stock_serial.py:84
+#: code:addons/typ_stock/wizard/stock_serial.py:200
 #, python-format
 msgid "Warning"
 msgstr "Advertencia"
