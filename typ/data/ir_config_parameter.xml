@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data noupdate="1">
+        <!-- Parameter to Define price to product -->
+        <record model="ir.config_parameter" id="price_list_config">
+            <field name="key">True</field>
+            <field name="value">price_rule_zero_continue</field>
+        </record>
+    </data>
+</openerp>
