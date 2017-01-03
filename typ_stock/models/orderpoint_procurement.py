@@ -35,11 +35,12 @@ class StockWarehouseOrderpoint(models.Model):
         ('aa', 'AA'), ('a', 'A'), ('b', 'B'), ('c', 'C'), ('d', 'D')])
 
     @api.model
-    def search(self, domain):
+    def search(self, domain, limit, order, offset):
         ctx = self._context
         if ctx.get('order_point_domain'):
             domain.extend(self._context['order_point_domain'])
-        return super(StockWarehouseOrderpoint, self).search(domain)
+        return super(StockWarehouseOrderpoint, self).search(
+            domain, limit, order, offset)
 
 
 class ProcurementOrder(models.Model):
