@@ -152,6 +152,10 @@ class StockMove(models.Model):
                       pick_type.use_existing_lots])]):
                 move.lot_unique = True
 
+    @api.model
+    def _push_apply(self, moves):
+        return super(StockMove, self)._push_apply(moves.sudo())
+
 
 class StockPicking(models.Model):
 
