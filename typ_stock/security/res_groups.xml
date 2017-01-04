@@ -33,5 +33,9 @@
           <field name="name">Users that can see standard price button</field>
           <field name="comment">This group can update cost standard of product.</field>
         </record>
+        <record id="group_cancel_picking_with_move_not_in_transit_loc" model="res.groups">
+          <field name="name">Users that can cancel pickings that have not moves in transit locations</field>
+          <field name="comment">This group can cancel pickings that have not moves in transit locations</field>
+        </record>
     </data>
 </openerp>

@@ -19,6 +19,9 @@ class TestTypStock(common.TransactionCase):
         self.picking_type_out = self.env.ref('stock.picking_type_out')
         self.transfer_obj = self.env['stock.transfer_details']
         self.lot = self.env['stock.production.lot']
+        self.group_cancel_picking = self.env.ref(
+            'typ_stock.group_cancel_picking_with_move_not_in_transit_loc')
+        self.env.user.write({'groups_id': [(4, self.group_cancel_picking.id)]})
 
         self.dict_vals_line = {
             'name': self.product.name,

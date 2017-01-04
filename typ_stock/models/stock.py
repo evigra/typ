@@ -241,14 +241,18 @@ class StockPicking(models.Model):
 
     @api.multi
     def action_cancel(self):
-        """Validate that only origin picking can be cancel when exist linked
-        pickings
+        """Validate that pickings cannot be cancelled with moves in transit
         """
-        if self.move_lines and self.move_lines[0].move_orig_ids:
+        transit_loc = self.move_lines.filtered(
+            lambda mv: mv.location_id.usage == 'transit')
+        group_cancel_picking = bool(
+            self.env.user.groups_id &
+            self.env.ref(
+                'typ_stock.group_cancel_picking_with_move_not_in_transit_loc'))
+        if transit_loc or not group_cancel_picking:
             raise exceptions.Warning(
                 _('Warning!'),
-                _('This picking can not be cancel. Only origin picking can be '
-                  'cancel.'))
+                _('This picking cannot be cancelled.'))
         return super(StockPicking, self).action_cancel()
 
 
