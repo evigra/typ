@@ -75,8 +75,9 @@ class StockMove(models.Model):
                         move.qty < 0:
                     raise exceptions.Warning(
                         _('Warning!'),
-                        _('Negative Quant creation error. Contact personnel '
-                          'Vauxoo immediately')
+                        _('Negative Quant creation error of the product %s. '
+                          'Contact Vauxoo personnel immediately') %
+                        (move.product_id.name)
                     )
 
     @api.multi
