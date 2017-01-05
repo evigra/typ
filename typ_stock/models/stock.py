@@ -247,16 +247,18 @@ class StockPicking(models.Model):
     def action_cancel(self):
         """Validate that pickings cannot be cancelled with moves in transit
         """
-        transit_loc = self.move_lines.filtered(
-            lambda mv: mv.location_id.usage == 'transit')
-        group_cancel_picking = bool(
-            self.env.user.groups_id &
-            self.env.ref(
-                'typ_stock.group_cancel_picking_with_move_not_in_transit_loc'))
-        if transit_loc or not group_cancel_picking:
-            raise exceptions.Warning(
-                _('Warning!'),
-                _('This picking cannot be cancelled.'))
+        for pick in self:
+            transit_loc = pick.move_lines.filtered(
+                lambda mv: mv.location_id.usage == 'transit')
+            group_cancel_picking = bool(
+                self.env.user.groups_id &
+                self.env.ref(
+                    'typ_stock.'
+                    'group_cancel_picking_with_move_not_in_transit_loc'))
+            if transit_loc or not group_cancel_picking:
+                raise exceptions.Warning(
+                    _('Warning!'),
+                    _('This picking cannot be cancelled.'))
         return super(StockPicking, self).action_cancel()
 
 
