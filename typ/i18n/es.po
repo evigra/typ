@@ -133,6 +133,11 @@ msgid "Fiscal Regime"
 msgstr "Régimen Fiscal"
 
 #. module: typ
+#: model:ir.actions.server,name:typ.facturae_fix_encoding_action
+msgid "Fix encoding on signed XML"
+msgstr "Fix encoding on signed XML"
+
+#. module: typ
 #: field:report.account.invoice.qweb.report,id:0
 msgid "ID"
 msgstr "ID"
