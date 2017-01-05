@@ -373,9 +373,7 @@ msgstr "Los números seriales cargados no pueden ser mayores que la cantidad de 
 #. module: typ_stock
 #: model:res.groups,comment:typ_stock.group_cancel_picking_with_move_not_in_transit_loc
 msgid "This group can cancel pickings that have not moves in transit locations"
-msgstr ""
-"Este grupo puede cancelar albaranes que no tienen movimientos en ubicaciones "
-"de tránsito"
+msgstr "Este grupo puede cancelar albaranes que no tienen movimientos en ubicaciones de tránsito"
 
 #. module: typ_stock
 #: model:res.groups,comment:typ_stock.res_group_cancel_picking
@@ -421,9 +419,7 @@ msgstr "Usuarios que pueden cancelar un albarán"
 #. module: typ_stock
 #: model:res.groups,name:typ_stock.group_cancel_picking_with_move_not_in_transit_loc
 msgid "Users that can cancel pickings that have not moves in transit locations"
-msgstr ""
-"Usuarios que pueden cancelar albaranes que no tienen movimientos en "
-"ubicaciones de tránsito"
+msgstr "Usuarios que pueden cancelar albaranes que no tienen movimientos en ubicaciones de tránsito"
 
 #. module: typ_stock
 #: model:res.groups,name:typ_stock.res_group_stock_manager
