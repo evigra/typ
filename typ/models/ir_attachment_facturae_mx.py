@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 import base64
-import xml.dom.minidom
+from lxml import objectify, etree
 
 from openerp import models, fields, api
 
@@ -30,15 +30,10 @@ class IrAttachmentFacturaeMx(models.Model):
         goes through XML files and write the encoding attribute where
         necessary"""
         for attach in self:
-            if not attach.file_xml_sign:
-                continue
             file_signed = attach.file_xml_sign
-            data = base64.decodestring(file_signed.datas)
-            if data[20:36] == 'encoding="utf-8"':
-                continue
-            document = xml.dom.minidom.parseString(data).toxml(
-                encoding='utf-8').decode('utf-8').encode(
-                    'ascii', 'xmlcharrefreplace').encode('base64')
+            xml = objectify.fromstring(base64.decodestring(file_signed.datas))
+            xml = etree.tostring(xml, xml_declaration=True, encoding='utf-8')
             file_signed.write({
-                'datas': document,
+                'datas': base64.encodestring(
+                    xml.decode('UTF-8').encode('UTF-8')),
             })
