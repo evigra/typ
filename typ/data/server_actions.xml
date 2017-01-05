@@ -30,8 +30,8 @@ procuement_ids.cancel()
             <field name="name">Fix encoding on signed XML</field>
             <field name="model_id" ref="l10n_mx_ir_attachment_facturae.model_ir_attachment_facturae_mx"/>
             <field name="code">
-ids = context.get('active_ids')
-self.fix_xml_encoding(cr, uid, ids, context=context)
+ids = context['active_ids'] if context.get('active_ids', False) else object.ids
+env['ir.attachment.facturae.mx'].browse(ids).filtered('file_xml_sign').fix_xml_encoding()
             </field>
         </record>
     </data>
