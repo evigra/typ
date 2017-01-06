@@ -8,7 +8,7 @@
     'website': 'http://www.vauxoo.com',
     'license': 'AGPL-3',
     'category': 'Installer',
-    'version': '8.0.0.1.0',
+    'version': '8.0.0.1.1',
     'depends': [
         'account_aged_partner_balance_vw',
         'account_anglo_saxon',
@@ -78,4 +78,5 @@
     ],
     "installable": True,
     "application": True,
+    "post_init_hook": "_auto_install_stock_account_unfuck",
 }
