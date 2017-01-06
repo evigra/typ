@@ -60,8 +60,8 @@ class TestStockAvailability(TransactionCase):
             {"picking_id": pickings.ids[0], }
             )
 
-        msg = 'Negative Quant creation error. Contact personnel ' \
-            'Vauxoo immediately'
+        msg = 'Negative Quant creation error of the product %s. ' \
+            'Contact Vauxoo personnel immediately' % (self.product.name)
         with self.assertRaisesRegexp(UserError, msg):
             wizard_transfer_id.do_detailed_transfer()
 
@@ -109,8 +109,8 @@ class TestStockAvailability(TransactionCase):
             {"picking_id": pickings.ids[0], }
             )
         wizard_transfer_id.item_ids[0].write({'quantity': 10})
-        msg = 'Negative Quant creation error. Contact personnel ' \
-            'Vauxoo immediately'
+        msg = 'Negative Quant creation error of the product %s. ' \
+            'Contact Vauxoo personnel immediately' % (self.product.name)
         with self.assertRaisesRegexp(UserError, msg):
             wizard_transfer_id.do_detailed_transfer()
 
@@ -343,8 +343,8 @@ class TestStockAvailability(TransactionCase):
         value['picking_id'] = pick2.id
         # Creating an object of the pack window
         trans_id = self.transfer_obj.create(value)
-        msg = 'Negative Quant creation error. Contact personnel ' \
-            'Vauxoo immediately'
+        msg = 'Negative Quant creation error of the product %s. ' \
+            'Contact Vauxoo personnel immediately' % (self.product.name)
         # The picking cannot be validated
         with self.assertRaisesRegexp(UserError, msg):
             trans_id.do_detailed_transfer()
