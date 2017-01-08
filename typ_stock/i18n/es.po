@@ -401,7 +401,7 @@ msgid "This group can update cost standard of product."
 msgstr "Este grupo puede actualizar el costo estándar del producto."
 
 #. module: typ_stock
-#: code:addons/typ_stock/models/stock.py:260
+#: code:addons/typ_stock/models/stock.py:262
 #, python-format
 msgid "This picking cannot be cancelled."
 msgstr "Este albarán no puede ser cancelado."
@@ -510,7 +510,7 @@ msgstr "Advertencia"
 #: code:addons/typ_stock/models/stock.py:115
 #: code:addons/typ_stock/models/stock.py:217
 #: code:addons/typ_stock/models/stock.py:243
-#: code:addons/typ_stock/models/stock.py:259
+#: code:addons/typ_stock/models/stock.py:261
 #: code:addons/typ_stock/models/stock_return_picking.py:37
 #, python-format
 msgid "Warning!"
@@ -537,7 +537,7 @@ msgid "Wizard Pedimento Product"
 msgstr "Asistente Pedimento Producto"
 
 #. module: typ_stock
-#: code:addons/typ_stock/models/stock.py:277
+#: code:addons/typ_stock/models/stock.py:279
 #, python-format
 msgid "You can not inactivate a warehouse with products on it, please adjust your inventories first and then come back and inactivate it."
 msgstr "No puede inactivar un almacén con productos en él, por favor, ajuste primero sus inventarios y luego vuelva a desactivarlo."
