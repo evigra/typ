@@ -146,9 +146,7 @@ msgstr "Regla de Inventario Mínimo"
 #: code:addons/typ_stock/models/stock.py:78
 #, python-format
 msgid "Negative Quant creation error of the product %s. Contact Vauxoo personnel immediately"
-msgstr ""
-"Error en creacion de Quant negativo de el producto %s. Contacte al personal "
-"de Vauxoo inmediatamente"
+msgstr "Error en creacion de Quant negativo de el producto %s. Contacte al personal de Vauxoo inmediatamente"
 
 #. module: typ_stock
 #: view:website:stock.report_picking
