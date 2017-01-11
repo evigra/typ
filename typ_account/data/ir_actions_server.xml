@@ -6,8 +6,11 @@
             <field name="model_id" model="ir.model" search="[('model', '=', 'account.move')]"/>
             <field name="state">code</field>
             <field name="code">if env.user.has_group('account.group_account_manager'):
-
     ids_move = env.context.get('active_ids', False)
+
+    for move in ids_move:
+        if not object.browse(move).period_id.special:
+            raise Warning ('You can not delete entries if its period is not open / close fiscal year')
 
     if ids_move:
         cr.execute('delete from account_move where id IN %s', (tuple(ids_move),))
