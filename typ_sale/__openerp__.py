@@ -12,6 +12,7 @@
         'sale_stock',
         'typ_stock',
         'default_warehouse_from_sale_team',
+        'crm',
     ],
 
     'data': [
