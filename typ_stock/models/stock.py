@@ -75,8 +75,9 @@ class StockMove(models.Model):
                         move.qty < 0:
                     raise exceptions.Warning(
                         _('Warning!'),
-                        _('Negative Quant creation error. Contact personnel '
-                          'Vauxoo immediately')
+                        _('Negative Quant creation error of the product %s. '
+                          'Contact Vauxoo personnel immediately') %
+                        (move.product_id.name)
                     )
 
     @api.multi
@@ -247,13 +248,15 @@ class StockPicking(models.Model):
     def action_cancel(self):
         """Validate that pickings cannot be cancelled with moves in transit
         """
+        moves_with_orig = self.move_lines.filtered(
+            lambda mv: mv.move_orig_ids.id is not False)
         transit_loc = self.move_lines.filtered(
             lambda mv: mv.location_id.usage == 'transit')
         group_cancel_picking = bool(
             self.env.user.groups_id &
             self.env.ref(
                 'typ_stock.group_cancel_picking_with_move_not_in_transit_loc'))
-        if transit_loc or not group_cancel_picking:
+        if moves_with_orig and (transit_loc or not group_cancel_picking):
             raise exceptions.Warning(
                 _('Warning!'),
                 _('This picking cannot be cancelled.'))
