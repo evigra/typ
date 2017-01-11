@@ -34,13 +34,16 @@ class StockWarehouseOrderpoint(models.Model):
     importance = fields.Selection([
         ('aa', 'AA'), ('a', 'A'), ('b', 'B'), ('c', 'C'), ('d', 'D')])
 
-    @api.model
-    def search(self, domain, limit=None, order=None, offset=0, count=False):
-        ctx = self._context
-        if ctx.get('order_point_domain'):
-            domain.extend(self._context['order_point_domain'])
+    @api.v7
+    def search(self, cr, uid, domain, limit=None, order=None, offset=0,
+               count=False, context=None):
+        if not context:
+            context = {}
+        if context.get('order_point_domain'):
+            domain.extend(context['order_point_domain'])
         return super(StockWarehouseOrderpoint, self).search(
-            domain, limit=limit, order=order, offset=offset, count=count)
+            cr, uid, domain, limit=limit, order=order, offset=offset,
+            count=count, context=context)
 
 
 class ProcurementOrder(models.Model):
