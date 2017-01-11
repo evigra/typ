@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<openerp>
+    <data noupdate="1">
+        <record id="server_action_delete_entries_open_close_fiscalyear" model="ir.actions.server">
+            <field name="name">Delete entries open/close fiscal year</field>
+            <field name="model_id" model="ir.model" search="[('model', '=', 'account.move')]"/>
+            <field name="state">code</field>
+            <field name="code">if env.user.has_group('account.group_account_manager'):
+    ids_move = env.context.get('active_ids', False)
+
+    for move in ids_move:
+        if not object.browse(move).period_id.special:
+            raise Warning ('You can not delete entries if its period is not open / close fiscal year')
+
+    if ids_move:
+        cr.execute('delete from account_move where id IN %s', (tuple(ids_move),))
+else:
+    raise Warning ('Permission denied only Accounting and Finance / Financial Manager group. Contact personnel Vauxoo immediately')
+            </field>
+        </record>
+
+        <function
+            model="ir.actions.server"
+            name="create_action"
+            eval="[[ref('server_action_delete_entries_open_close_fiscalyear')]]"/>
+    </data>
+</openerp>

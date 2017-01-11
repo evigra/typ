@@ -25,6 +25,7 @@
     # always loaded
     'data': [
         'data/account_data.xml',
+        'data/ir_actions_server.xml',
         'views/sale_order_view.xml',
         'views/account_move_line.xml',
         'views/account_invoice_view.xml',
