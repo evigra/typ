@@ -12,6 +12,7 @@
         'sale_stock',
         'typ_stock',
         'default_warehouse_from_sale_team',
+        'crm',
     ],
 
     'data': [
@@ -28,6 +29,7 @@
         'views/res_company_view.xml',
         'views/res_config_view.xml',
         'views/res_partner_classification_view.xml',
+        'views/crm_lead_view.xml',
     ],
     'demo': [
         'demo/sale_data_demo.xml',
