@@ -596,6 +596,11 @@ msgid "Total"
 msgstr "Total"
 
 #. module: typ_sale
+#: view:crm.lead:typ_sale.view_crm_lead_form_inherit
+msgid "True"
+msgstr "True"
+
+#. module: typ_sale
 #: help:sale.order.line,special_sale:0
 msgid "True if there is a buy type procurement rule within the chosen route, otherwise false"
 msgstr "Verdadero si hay una regla de abastecimiento de tipo compra dentro de la ruta escogida, en caso contrario falso"

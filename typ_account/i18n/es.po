@@ -77,6 +77,11 @@ msgstr "No se puede validar la Factura porque el Cliente tiene pagos atrasados o
 "Límite de Crédito : %s"
 
 #. module: typ_account
+#: model:ir.actions.server,name:typ_account.server_action_delete_entries_open_close_fiscalyear
+msgid "Delete entries open/close fiscal year"
+msgstr "Delete entries open/close fiscal year"
+
+#. module: typ_account
 #: model:account.payment.term,name:typ_account.typ_account_payment_term_immediate
 #: model:account.payment.term,note:typ_account.typ_account_payment_term_immediate
 msgid "Immediate Payment"

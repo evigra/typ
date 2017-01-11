@@ -549,6 +549,11 @@ msgid "You must assign a serial number for the product [%s] %s"
 msgstr "Debe asignar un número de serial para el producto [%s] %s"
 
 #. module: typ_stock
+#: view:stock.inventory:typ_stock.view_inventory_filter_inherit
+msgid "location"
+msgstr "location"
+
+#. module: typ_stock
 #: view:pedimento.product:typ_stock.view_pedimento_product_wizard
 msgid "or"
 msgstr "o"
