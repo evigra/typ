@@ -154,15 +154,17 @@ class TestReorderingRule(TestTypStock):
     def test_20_validate_importance_supply_tw3(self):
         """Validate the wizard supply only orderpoint like importance selected
         """
+        order_point_obj = self.registry('stock.warehouse.orderpoint')
         dom = [('product_id', '=', self.product_id.id),
                ('warehouse_id', '=', self.warehouse_id4.id)]
         self.reset_data(dom)
         self.write_data({'importance': self.importance})
         procurement = self.proc.search(dom, limit=1)
-        order_rule = self.order_rule.search([
+        order_point_srch = order_point_obj.search(self.cr, self.uid, [
             ('product_id', '=', self.product_id.id),
             ('importance', '=', self.importance),
             ('warehouse_id', '=', self.warehouse_id4.id)])
+        order_rule = self.order_rule.browse(order_point_srch)
         self.assertEqual(procurement.state, 'running')
         self.assertEqual(order_rule.name, procurement.name)
         self.assertEqual(order_rule.id, procurement.orderpoint_id.id)
