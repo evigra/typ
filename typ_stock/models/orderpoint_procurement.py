@@ -35,15 +35,15 @@ class StockWarehouseOrderpoint(models.Model):
         ('aa', 'AA'), ('a', 'A'), ('b', 'B'), ('c', 'C'), ('d', 'D')])
 
     @api.v7
-    def search(self, cr, uid, domain, limit=None, order=None, offset=0,
-               count=False, context=None):
-        if not context:
+    def search(self, cr, uid, domain, offset=0, limit=None, order=None,
+               context=None, count=False):
+        if context is None:
             context = {}
         if context.get('order_point_domain'):
             domain.extend(context['order_point_domain'])
         return super(StockWarehouseOrderpoint, self).search(
-            cr, uid, domain, limit=limit, order=order, offset=offset,
-            count=count, context=context)
+            cr, uid, domain, offset=offset, limit=limit, order=order,
+            context=context, count=count)
 
 
 class ProcurementOrder(models.Model):
