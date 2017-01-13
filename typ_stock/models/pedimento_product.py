@@ -31,7 +31,7 @@ class PedimentoProduct(models.TransientModel):
         quant_obj_id = self._context['active_id']
         quant = quant_obj.browse(quant_obj_id)
         if self.lot_id:
-            quant.write({'lot_id': self.lot_id.id})
+            quant.sudo().write({'lot_id': self.lot_id.id})
         if self.landed_id:
-            quant.write({'landed_id': self.landed_id.id})
+            quant.sudo().write({'landed_id': self.landed_id.id})
         return {}
