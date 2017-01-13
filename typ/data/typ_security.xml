@@ -64,5 +64,14 @@
             <field name="perm_unlink" eval="True"/>
             <field name="perm_create" eval="True"/>
         </record>
+        <record model="ir.rule" id="ir_typ_crm_lead_rule">
+            <field name="name">crm lead from sale team</field>
+            <field name="model_id" search="[('model', '=', 'crm.lead')]" model='ir.model'/>
+            <field name="domain_force">[('section_id', 'in', [team.id  for team in user.sale_team_ids])]</field>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_unlink" eval="True"/>
+            <field name="perm_create" eval="True"/>
+        </record>
     </data>
 </openerp>
