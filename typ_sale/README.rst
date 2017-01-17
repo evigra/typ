@@ -91,6 +91,9 @@ Region : Customer’s location
 **Margin on sale orders**
 - Porcent (%) of Margin allowed to be modified on sale order
 
+**search by origin document**
+- Track the sales by the search document like an oportunity
+
 Credits
 =======
 

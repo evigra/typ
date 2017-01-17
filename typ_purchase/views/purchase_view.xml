@@ -6,7 +6,7 @@
             <field name="model">purchase.order</field>
             <field name="inherit_id" ref="purchase.view_purchase_order_filter"/>
             <field name="arch" type="xml">
-                <xpath expr="//field[@name='name']" position="before">
+                <xpath expr="//field[@name='name']" position="after">
                     <field name="origin"/>
                 </xpath>
             </field>

@@ -10,7 +10,7 @@ This module adding the follow functionalities.
 **Tracking of purchase orders**
 
 - Modify search request for quotation view and sales orders, adding the option 
-  to search for "source document" to be located as first choice search
+  to search for "source document"
 - Adding the create date of the purchase order to form and tree view
   to perform a better tracking of Purchases. also this date is on Readonly mode.
 - Creating a search view to be able of group by state purchase orders
