@@ -77,3 +77,32 @@ class ProcurementOrder(models.Model):
                 ('importance', '=', context['importance']))
         return super(ProcurementOrder, self)._procure_orderpoint_confirm(
             cr, uid, use_new_cursor, company_id, context=ctx)
+
+    @api.model
+    def automatic_procurement_cancel(self):
+        """This function is executed from a ir_cron to cancel procurements in
+        exception state"""
+        procurement_ids = self.search(
+            [('state', '=', 'exception')])
+        procurement_ids = procurement_ids.filtered(
+            lambda proc: (not proc.purchase_id or
+                          proc.purchase_id.state == 'cancel') and
+            proc.rule_id.action == 'buy')
+        # TODO When a puschase is canceled, its procurement are canceled
+        # as well, that makes that relation between procurement and purchase
+        # it is erased, because the purchase order line is eliminated with
+        # the cancellation of the procurement
+        procurement_ids.cancel()
+
+
+class PurchaseOrderLine(models.Model):
+
+    _inherit = "purchase.order.line"
+
+    @api.multi
+    def unlink(self):
+        proc_ids = self.mapped('procurement_ids')
+        res = super(PurchaseOrderLine, self).unlink()
+        if proc_ids:
+            proc_ids.write({'state': 'cancel'})
+        return res

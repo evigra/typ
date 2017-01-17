@@ -17,14 +17,6 @@
                 self._parent_store_compute(cr)
             </field>
         </record>
-        <record id="procurement_cancel_action" model="ir.actions.server">
-            <field name="name">Procurement exception to cancel</field>
-            <field name="model_id" ref="typ_stock.model_procurement_order"/>
-            <field name="code">
-procuement_ids = env['procurement.order'].search([('state', '=', 'exception'), ('purchase_id', '!=', False)])
-procuement_ids.cancel()
-            </field>
-        </record>
         <!-- FacturaE -->
         <record id="facturae_fix_encoding_action" model="ir.actions.server">
             <field name="name">Fix encoding on signed XML</field>

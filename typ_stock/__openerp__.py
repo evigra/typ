@@ -25,6 +25,7 @@
     'data': [
         'data/ir_actions_server.xml',
         'data/base_action_rule.xml',
+        'data/ir_cron.xml',
         'views/procurement_rule_view.xml',
         'views/stock_view.xml',
         'views/stock_warehouse_view.xml',
