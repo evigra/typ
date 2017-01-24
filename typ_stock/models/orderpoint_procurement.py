@@ -44,6 +44,24 @@ class StockWarehouseOrderpoint(models.Model):
             cr, user, domain, offset=offset, limit=limit, order=order,
             context=context, count=count)
 
+    @api.model
+    def subtract_procurements(self, orderpoint):
+        """This function returns quantity of product that needs to be
+        deducted from the orderpoint computed quantity because there's
+        already a procurement created with aim with aim to fulfill it.
+        """
+        qty = super(StockWarehouseOrderpoint, self).subtract_procurements(
+            orderpoint)
+        for procurement in orderpoint.procurement_ids:
+            if procurement.state in ('cancel', 'done'):
+                continue
+            for move in procurement.move_ids:
+                if move.state == 'cancel':
+                    # It is necesary add in total qty moves in state canceled
+                    # which were deducted in SUPER function
+                    qty += move.product_qty
+        return qty
+
 
 class ProcurementOrder(models.Model):
     """Executes the procurement orders and assigns selected values for the
