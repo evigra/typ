@@ -119,6 +119,8 @@ class PurchaseOrderLine(models.Model):
 
     @api.multi
     def unlink(self):
+        if self._context.get('not_delete_purchase_line', False):
+            return True
         proc_ids = self.mapped('procurement_ids')
         res = super(PurchaseOrderLine, self).unlink()
         if proc_ids:

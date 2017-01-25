@@ -23,6 +23,8 @@ class TestTypStock(common.TransactionCase):
             'typ_stock.group_cancel_picking_with_move_not_in_transit_loc')
         self.env.user.write({'groups_id': [(4, self.group_cancel_picking.id)]})
 
+        self.purchase_order = self.env.ref('purchase.purchase_order_5')
+
         self.dict_vals_line = {
             'name': self.product.name,
             'product_id': self.product.id,

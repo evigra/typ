@@ -55,9 +55,10 @@
             <field name="name">Action procurement cancel</field>
             <field name="model_id" model="ir.model" search="[('model', '=', 'procurement.order')]"/>
             <field name="state">code</field>
-            <field name="code">for proc in model.browse(context.get('active_ids')):
+            <field name="code">
+for proc in model.browse(context.get('active_ids')):
     if proc.state == 'exception' and (not proc.purchase_id or proc.purchase_id.state == 'cancel') and proc.rule_id.action == 'buy':
-            proc.cancel()
+            proc.with_context(dict(context, not_delete_purchase_line=True)).cancel()
             </field>
         </record>
     </data>
