@@ -104,8 +104,7 @@
 <template id="typ_sale.external_layout_footer">
     <div class="footer" style="border-top: 1px solid #ccc; padding-top: 10px;">
         <div class="text-center">
-            <span>Phone</span>: <span t-field="company.phone"/>
-            | <span>Email</span>: <span t-field="company.email"/>
+            <span>Phone</span>: <span t-field="o.section_id.sale_phone"/>
             | <span>Website</span>: <span t-field="company.website"/>
             <br/>
             <span>Contact</span>: <span t-field="user.name"/>

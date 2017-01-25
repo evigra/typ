@@ -7,6 +7,9 @@
             <field name="model">crm.case.section</field>
             <field name="inherit_id" ref="default_warehouse_from_sale_team.view_crm_case_section_form_inherit"/>
             <field name="arch" type="xml">
+                <field name="alias_contact" position="after">
+                    <field name="sale_phone"/>
+                </field>
                 <xpath expr="//group[@name='conf_journal']" position="inside">
                     <field name="journal_guide_id" modifiers="{}"/>
                     <field name="journal_landed_id" modifiers="{}"/>
