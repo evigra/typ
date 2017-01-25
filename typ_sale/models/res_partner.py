@@ -10,6 +10,7 @@ IMPORTANCE = [
     ('A', 'A'),
     ('B', 'B'),
     ('C', 'C'),
+    ('X', 'X'),
     ('NEW', 'NEW'),
     ('NEGOTIATION', 'NEGOTIATION'),
     ('EMPLOYEE', 'EMPLOYEE'),
@@ -21,6 +22,7 @@ POTENTIAL = [
     ('A', 'A'),
     ('B', 'B'),
     ('C', 'C'),
+    ('X', 'X'),
     ('NEW', 'NEW'),
     ('NEGOTIATION', 'NEGOTIATION'),
     ('EMPLOYEE', 'EMPLOYEE'),
@@ -32,7 +34,8 @@ BUSINESS_ACTIVITY = [
     ('COMPANY', 'COM'),
     ('WHOLESALERS', 'WHO'),
     ('NOT CLASSIFIED', 'NOT CLASSIFIED'),
-    ('EMPLOYEE', 'EMPLOYEE')
+    ('EMPLOYEE', 'EMPLOYEE'),
+    ('PUBLIC', 'PUBLIC')
 ]
 
 CLIENT_TYPE = [
@@ -49,8 +52,8 @@ CLIENT_TYPE = [
     ('WW', 'WW'),
     ('WI', 'WI'),
     ('NOT CLASSIFIED', 'NOT CLASSIFIED'),
-    ('EMPLOYEE', 'EMPLOYEE')
-
+    ('EMPLOYEE', 'EMPLOYEE'),
+    ('PUBLIC', 'PUBLIC')
 ]
 DEALER_TYPE = [
     ('PD', 'PD'),
