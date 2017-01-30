@@ -31,24 +31,60 @@ class SaleOrderLine(models.Model):
         """Verify margin minimum in sale order line.
         """
         self.ensure_one()
+        warning = self.check_margin_qty(self.price_subtotal)
+        if warning:
+            raise exceptions.Warning(warning.get('title'),
+                                     warning.get('message'))
+
+    @api.onchange('price_unit')
+    def onchange_check_margin(self):
+        """Verify margin minimum in sale order line by change in field.
+        """
+        return {'warning': self.check_margin_qty()}
+
+    def check_price_subtotal(self):
+        """Calculated price_subtotal based in base_price for onchange
+        """
+        tax_obj = self.env['account.tax']
+        cur = self.order_id.pricelist_id.currency_id
+        price = self._calc_line_base_price(self)
+        qty = self._calc_line_quantity(self)
+        taxes = tax_obj.compute_all(price, qty, self.product_id.id,
+                                    self.order_id.partner_id.id)
+        price_subtotal = cur.round(taxes['total'])
+        return price_subtotal
+
+    def check_margin_qty(self, price_subtotal=False):
+        """Verify quantity of margin minimum in sale order line for onchange.
+        """
+        res = {'title': _('The product %s' % (self.product_id.name)),
+               'message': _('You can not be sold below permitted '
+                            'margin\nContact Manager')}
         if self.env.user.has_group(
                 'typ_sale.res_group_can_sell_below_minimum_margin'):
             return
-        warning_title = _('The product %s' % (self.product_id.name))
-        warning_message = _('You can not be sold below permitted '
-                            'margin \n Contact Manager')
-        if self.price_subtotal <= 0:
-            raise exceptions.Warning(warning_title, warning_message)
-        margin = self.env.user.company_id.margin_allowed
+        if not price_subtotal:
+            price_subtotal = self.check_price_subtotal()
+
+        if price_subtotal == 0 and not self.product_id:
+            return
+
+        if price_subtotal <= 0 and self.product_id:
+            return res
+
         cur = self.order_id.pricelist_id.currency_id
-        tmp_standard_price = self.env.user.company_id.currency_id.compute(
-            self.product_id.standard_price,
-            cur)
-        tmp_margin = self.price_subtotal - (
-            (tmp_standard_price if self.product_id.standard_price
-             else self.purchase_price) * self.product_uom_qty)
+        margin = self.env.user.company_id.margin_allowed
+        if self.product_id and self.product_id.standard_price:
+            tmp_standard_price = self.env.user.company_id.currency_id.compute(
+                self.product_id.standard_price, cur)
+            tmp_margin = price_subtotal - (tmp_standard_price *
+                                           self.product_uom_qty)
+        else:
+            tmp_margin = price_subtotal - (self.purchase_price *
+                                           self.product_uom_qty)
+
         purchase_sale = cur.round(tmp_margin)
 
-        margin_sale = (purchase_sale / self.price_subtotal) * 100
+        margin_sale = (purchase_sale / price_subtotal) * 100
         if margin_sale < margin:
-            raise exceptions.Warning(warning_title, warning_message)
+            return res

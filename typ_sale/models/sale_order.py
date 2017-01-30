@@ -1,6 +1,6 @@
 # coding: utf-8
 
-from openerp import api, fields, models
+from openerp import api, fields, models, _
 
 
 class SaleOrder(models.Model):
@@ -55,3 +55,15 @@ class SaleOrder(models.Model):
             elif self.type_payment_term in ('cash', 'postdated_check') and \
                     self.payment_term.payment_type == 'credit':
                 self.type_payment_term = 'credit'
+
+    @api.onchange('order_line')
+    def check_margin(self):
+        """Verify margin minimum in sale order by change in field.
+        """
+        for line in self.order_line:
+            warning = line.check_margin_qty()
+            if warning:
+                warning['title'] = _('Sale of product below margin')
+                return {
+                    'warning': warning,
+                }
