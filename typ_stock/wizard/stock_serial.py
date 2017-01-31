@@ -72,6 +72,19 @@ class StockSerial(models.TransientModel):
                     'tree']['arch'] = etree.tostring(doc)
         return res
 
+    @api.model
+    def default_get(self, field_list):
+        res = super(StockSerial, self).default_get(field_list)
+        move_obj = self.env['stock.move']
+        move_ids = self._context.get('active_id', [])
+        move_id = move_obj.browse(move_ids)
+        product_id = move_id.product_id.id
+        res['product_qty'] = sum(
+            move_id.picking_id.move_lines.
+            filtered(lambda mov: mov.product_id.id == product_id).
+            mapped('product_uom_qty'))
+        return res
+
     @api.onchange('serial_ids')
     def onchange_serial(self):
         move = self.env['stock.move'].browse(self._context['active_id'])
@@ -102,7 +115,12 @@ class StockSerial(models.TransientModel):
             move_id.picking_id.pack_operation_ids.filtered(
                 lambda dat: dat.product_id.id == product_id).unlink()
 
-            if len(move.serial_ids) > move_id.product_uom_qty:
+            total_product_uom_qty = sum(
+                move_id.picking_id.move_lines.
+                filtered(lambda mov: mov.product_id.id == product_id).
+                mapped('product_uom_qty'))
+
+            if len(move.serial_ids) > total_product_uom_qty:
                 raise ValidationError(
                     _('The serial numbers loaded cannot be greater'
                       ' than the requested quantity of the product'))
