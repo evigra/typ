@@ -112,6 +112,8 @@ class StockSerial(models.TransientModel):
         for move in self:
             move_id = move.move_id
             product_id = move_id.product_id.id
+            if not move_id.picking_id.pack_operation_ids:
+                move_id.picking_id.do_prepare_partial()
             move_id.picking_id.pack_operation_ids.filtered(
                 lambda dat: dat.product_id.id == product_id).unlink()
 
