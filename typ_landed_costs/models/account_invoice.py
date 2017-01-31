@@ -10,6 +10,7 @@ class AccountInvoice(models.Model):
         'stock.landed.cost',
         'landed_invoice_rel',
         'invoice_id', 'landed_id',
+        copy=False,
         string='Exchange Differential Landed',
         help='Landed created to adjust '
         'the cost of the product by '

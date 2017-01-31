@@ -432,6 +432,7 @@ class StockLandedCost(models.Model):
         'adjust_landed_import_landed_rel'
         'main_landed_id',
         'adjust_landed_id',
+        copy=False,
         string='Exchange Differential Adjust',
         help='Landed created to adjust '
         'the cost of the product by '
@@ -492,7 +493,7 @@ class StockLandedCost(models.Model):
         new_total = (line.product_id and price_unit and
                      currency_obj._compute(from_currency, to_currency,
                                            price_unit) or 0)
-        return float_round(new_total, precision_rounding=precision_obj)
+        return float_round(new_total, precision_digits=precision_obj)
 
     @api.model
     def _get_landed_values(self, diff, picking, journal, date):
