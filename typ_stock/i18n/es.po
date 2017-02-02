@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: Odoo Server 8.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-11-24 22:20+0000\n"
-"PO-Revision-Date: 2017-01-31 18:53+0000\n"
+"PO-Revision-Date: 2017-02-02 22:39+0000\n"
 "Last-Translator: cmexiatyp <cmexia@typrefrigeracion.com>\n"
 "Language-Team: Spanish "
 "<http://weblate.vauxoo.com/projects/typ-8-0/typ_stock/es/>\n"
@@ -193,7 +193,7 @@ msgstr "Albarán"
 #. module: typ_stock
 #: field:stock.picking,picking_shipment_date:0
 msgid "Picking shipment date"
-msgstr "Fecha de embarque del picking"
+msgstr "Fecha de embarque"
 
 #. module: typ_stock
 #: model:ir.model,name:typ_stock.model_procurement_order
@@ -219,7 +219,7 @@ msgstr "Id del Producto"
 #. module: typ_stock
 #: field:stock.move,shipment_date:0
 msgid "Product shipment date"
-msgstr "Fecha de embarque del producto"
+msgstr "Fecha de embarque"
 
 #. module: typ_stock
 #: model:ir.actions.server,name:typ_stock.server_action_propagate_picking_transfer
