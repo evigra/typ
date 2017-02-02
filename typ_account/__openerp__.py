@@ -21,6 +21,7 @@
         'partner_credit_limit',
         'account_voucher_tax',
         'typ_sale',
+        'l10n_mx_payment_method',
     ],
     # always loaded
     'data': [

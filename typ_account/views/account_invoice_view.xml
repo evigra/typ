@@ -56,5 +56,15 @@
                 </xpath>
             </field>
         </record>
+        <record id="view_invoice_pay_method" model="ir.ui.view">
+            <field name="name">invoice.pay.method</field>
+            <field name="model">account.invoice</field>
+            <field name="inherit_id" ref="l10n_mx_payment_method.view_account_invoice_form_inh_payment_method_22"/>
+            <field name="arch" type="xml">
+                <field name="pay_method_id" position="attributes">
+                    <attribute name="attrs">{'required': 1}</attribute>
+                </field>
+            </field>
+        </record>
     </data>
 </openerp>
