@@ -21,7 +21,7 @@ if object.state == 'done' and object.is_pedimento == True:
             <field name="state">code</field>
             <field name="code">
 landed = env['stock.landed.cost']
-if (object.currency_id != object.company_id.currency_id and object.partner_id.country_id == object.company_id.country_id and object.type == 'in_invoice' and not object.exchange_landed_ids):
+if (object.state == 'open' and object.currency_id != object.company_id.currency_id and object.partner_id.country_id == object.company_id.country_id and object.type == 'in_invoice' and not object.exchange_landed_ids):
     new = landed.adjust_cost_for_exchange_differential(object, object.date_invoice)
     object.write({'exchange_landed_ids': [(6, 0, [new.id])]})
             </field>
