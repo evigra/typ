@@ -639,7 +639,7 @@ class StockLandedCost(models.Model):
             vals = dict(
                 product_id=move.product_id.id,
                 move_id=move.id,
-                quantity=move.product_uom_qty,
+                quantity=move.product_qty,
                 former_cost=total_cost,
                 weight=weight,
                 volume=volume,
