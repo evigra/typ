@@ -163,7 +163,6 @@ class StockPicking(models.Model):
     _inherit = "stock.picking"
 
     picking_shipment_date = fields.Date(
-        'Picking shipment date',
         default=fields.Date.context_today, index=True,
         states={'done': [('readonly', True)]},
         help="Shipment date of the picking")

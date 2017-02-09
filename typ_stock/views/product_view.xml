@@ -8,14 +8,14 @@
             <field name="inherit_id" ref="stock_account.view_template_property_form"/>
             <field name="arch" type="xml">
                 <label for="standard_price" position="attributes">
-                    <attribute name="groups">typ_stock.res_group_standard_price</attribute>
+                    <attribute name="groups" translation="off">typ_stock.res_group_standard_price</attribute>
                 </label>
                 <field name="standard_price" position="attributes">
-                    <attribute name="readonly">1</attribute>
-                    <attribute name="groups">typ_stock.res_group_standard_price</attribute>
+                    <attribute name="readonly" translation="off">1</attribute>
+                    <attribute name="groups" translation="off">typ_stock.res_group_standard_price</attribute>
                 </field>
                 <button name="%(stock_account.action_view_change_standard_price)d" position="attributes">
-                    <attribute name="groups">typ_stock.res_group_standard_price_button</attribute>
+                    <attribute name="groups" translation="off">typ_stock.res_group_standard_price_button</attribute>
                 </button>
             </field>
         </record>

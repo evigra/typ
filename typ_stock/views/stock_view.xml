@@ -8,13 +8,13 @@
             <field name="inherit_id" ref="stock.view_picking_form"/>
             <field name="arch" type="xml">
                 <xpath expr="//button[@name='force_assign']" position="attributes">
-                    <attribute name="groups">typ_stock.res_group_force_stock_move</attribute>
+                    <attribute name="groups" translation="off">typ_stock.res_group_force_stock_move</attribute>
                 </xpath>
                 <xpath expr="//button[@name='do_unreserve']" position="attributes">
-                    <attribute name="groups">typ_stock.res_group_force_stock_move</attribute>
+                    <attribute name="groups" translation="off">typ_stock.res_group_force_stock_move</attribute>
                 </xpath>
                 <xpath expr="//button[@name='do_partial_open_barcode']" position="attributes">
-                    <attribute name="groups">typ_stock.res_group_can_see_barcode_button</attribute>
+                    <attribute name="groups" translation="off">typ_stock.res_group_can_see_barcode_button</attribute>
                 </xpath>
             </field>
         </record>
@@ -25,7 +25,7 @@
             <field name="inherit_id" ref="stock.view_move_picking_form"/>
             <field name="arch" type="xml">
                 <xpath expr="//button[@name='force_assign']" position="attributes">
-                    <attribute name="groups">typ_stock.res_group_force_stock_move</attribute>
+                    <attribute name="groups" translation="off">typ_stock.res_group_force_stock_move</attribute>
                 </xpath>
             </field>
         </record>

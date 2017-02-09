@@ -8,7 +8,7 @@
             <field name="inherit_id" ref="product_unique_serial.view_stock_serial"/>
             <field name="arch" type="xml">
                 <xpath expr="//field[@name='lot_id']" position="attributes">
-                    <attribute name="invisible">0</attribute>
+                    <attribute name="invisible" translation="off">0</attribute>
                 </xpath>
                 <xpath expr="//field[@name='lot_id']" position="after">
                     <field name="product_id" invisible="1"/>

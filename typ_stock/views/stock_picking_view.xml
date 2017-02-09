@@ -30,7 +30,7 @@
             <field name="inherit_id" ref="stock.view_picking_form"/>
             <field name="arch" type="xml">
                <button name="action_cancel" position="attributes">
-                    <attribute name="groups">typ_stock.res_group_cancel_picking</attribute>
+                    <attribute name="groups" translation="off">typ_stock.res_group_cancel_picking</attribute>
                </button>
             </field>
         </record>
@@ -40,22 +40,22 @@
             <field name="inherit_id" ref="stock.view_move_picking_form"/>
             <field name="arch" type="xml">
                 <xpath expr="//field[@name='product_id']" position="attributes">
-                    <attribute name="attrs">{'readonly': [('state', '!=', 'draft')]}</attribute>
+                    <attribute name="attrs" translation="off">{'readonly': [('state', '!=', 'draft')]}</attribute>
                 </xpath>
                 <xpath expr="//field[@name='product_uom_qty']" position="attributes">
-                    <attribute name="attrs">{'readonly': [('state', '!=', 'draft')]}</attribute>
+                    <attribute name="attrs" translation="off">{'readonly': [('state', '!=', 'draft')]}</attribute>
                 </xpath>
                 <xpath expr="//field[@name='name']" position="attributes">
-                    <attribute name="attrs">{'readonly': [('state', '!=', 'draft')]}</attribute>
+                    <attribute name="attrs" translation="off">{'readonly': [('state', '!=', 'draft')]}</attribute>
                 </xpath>
                 <xpath expr="//field[@name='product_uom']" position="attributes">
-                    <attribute name="attrs">{'readonly': [('state', '!=', 'draft')]}</attribute>
+                    <attribute name="attrs" translation="off">{'readonly': [('state', '!=', 'draft')]}</attribute>
                 </xpath>
                 <xpath expr="//field[@name='location_id']" position="attributes">
-                    <attribute name="attrs">{'readonly': [('state', '!=', 'draft')]}</attribute>
+                    <attribute name="attrs" translation="off">{'readonly': [('state', '!=', 'draft')]}</attribute>
                 </xpath>
                 <xpath expr="//field[@name='location_dest_id']" position="attributes">
-                    <attribute name="attrs">{'readonly': [('state', '!=', 'draft')]}</attribute>
+                    <attribute name="attrs" translation="off">{'readonly': [('state', '!=', 'draft')]}</attribute>
                 </xpath>
                 <xpath expr="//field[@name='location_dest_id']" position="after">
                     <field name="move_dest_id" readonly="1"/>
@@ -72,7 +72,7 @@
                     <field name="picking_shipment_date"/>
                 </field>
                 <xpath expr="//button[@string='Reverse Transfer']" position="attributes">
-                    <attribute name="groups">typ_stock.res_group_reverse_transfer</attribute>
+                    <attribute name="groups" translation="off">typ_stock.res_group_reverse_transfer</attribute>
                 </xpath>
             </field>
         </record>
@@ -82,7 +82,7 @@
             <field name="inherit_id" ref="stock.vpicktree"/>
             <field name="arch" type="xml">
                 <xpath expr="//field[@name='min_date']" position="attributes">
-                    <attribute name="invisible">0</attribute>
+                    <attribute name="invisible" translation="off">0</attribute>
                 </xpath>
                 <xpath expr="//field[@name='date']" position="after">
                     <field name="picking_shipment_date"/>

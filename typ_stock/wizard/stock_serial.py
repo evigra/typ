@@ -196,7 +196,7 @@ class StockSerialLine(models.TransientModel):
                                  default=_compute_default_partner_id)
     source_loc_id = fields.Many2one('stock.location',
                                     default=_compute_default_location_id)
-    serial = fields.Char('Serial', required=False)
+    serial = fields.Char(required=False)
 
     @api.onchange('serial', 'lot_id')
     def onchange_lot_id(self):
