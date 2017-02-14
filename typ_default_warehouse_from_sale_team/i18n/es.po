@@ -63,6 +63,21 @@ msgid "Journal landed cost guide"
 msgstr "Diario de guía de costo en destino"
 
 #. module: typ_default_warehouse_from_sale_team
+#: field:crm.case.section,sale_phone:0
+msgid "Phone"
+msgstr "Phone"
+
+#. module: typ_default_warehouse_from_sale_team
+#: help:crm.case.section,sale_phone:0
+msgid "Phone for contact sale team"
+msgstr "Phone for contact sale team"
+
+#. module: typ_default_warehouse_from_sale_team
+#: model:ir.model,name:typ_default_warehouse_from_sale_team.model_product_template
+msgid "Product Template"
+msgstr "Product Template"
+
+#. module: typ_default_warehouse_from_sale_team
 #: model:ir.model,name:typ_default_warehouse_from_sale_team.model_crm_case_section
 msgid "Sales Teams"
 msgstr "Equipos de ventas"

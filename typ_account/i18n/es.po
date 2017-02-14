@@ -148,3 +148,8 @@ msgstr "{'readonly': 0}"
 #: view:account.invoice:typ_account.account_invoice_form
 msgid "{'readonly':[('state', '!=', 'draft')]}"
 msgstr "{'readonly':[('state', '!=', 'draft')]}"
+
+#. module: typ_account
+#: view:account.invoice:typ_account.view_invoice_pay_method
+msgid "{'required': 1}"
+msgstr "{'required': 1}"

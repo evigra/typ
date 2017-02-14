@@ -198,11 +198,6 @@ msgid "Pedimento"
 msgstr "Pedimento"
 
 #. module: typ
-#: model:ir.actions.server,name:typ.procurement_cancel_action
-msgid "Procurement exception to cancel"
-msgstr "Excepción de Abastecimiento a cancelar"
-
-#. module: typ
 #: view:website:typ.report_electronic_invoice_document
 msgid "Quantity"
 msgstr "Cantidad"

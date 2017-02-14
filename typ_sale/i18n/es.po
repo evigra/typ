@@ -361,6 +361,12 @@ msgstr "DP - Dealer premier\n"
 "DE - Dealer esporadico"
 
 #. module: typ_sale
+#: selection:res.partner,business_activity:0
+#: selection:res.partner,partner_type:0
+msgid "PUBLIC"
+msgstr "PUBLIC"
+
+#. module: typ_sale
 #: view:website:typ_sale.external_layout_footer
 msgid "Page:"
 msgstr "Página:"
@@ -560,7 +566,7 @@ msgid "The product %s"
 msgstr "El producto %s"
 
 #. module: typ_sale
-#: code:addons/typ_sale/models/res_partner.py:114
+#: code:addons/typ_sale/models/res_partner.py:117
 #, python-format
 msgid "There is more than one configuration for warehouse %s. It must have only one configuration for each warehouse"
 msgstr "Hay más de una configuración para el almacén %s. It must have only one configuración para cada almacén"

@@ -22,7 +22,7 @@ msgstr ""
 "X-Generator: Weblate 2.9\n"
 
 #. module: typ_landed_costs
-#: code:addons/typ_landed_costs/models/stock_landed_costs.py:732
+#: code:addons/typ_landed_costs/models/stock_landed_costs.py:733
 #, python-format
 msgid "\n"
 "- Check '%s' into '%s'"
@@ -170,7 +170,7 @@ msgstr "Borrador"
 
 #. module: typ_landed_costs
 #: code:addons/typ_landed_costs/models/stock_landed_costs.py:212
-#: code:addons/typ_landed_costs/models/stock_landed_costs.py:649
+#: code:addons/typ_landed_costs/models/stock_landed_costs.py:650
 #, python-format
 msgid "Error!"
 msgstr "¡Error!"
@@ -317,7 +317,7 @@ msgid "ID"
 msgstr "ID"
 
 #. module: typ_landed_costs
-#: code:addons/typ_landed_costs/models/stock_landed_costs.py:519
+#: code:addons/typ_landed_costs/models/stock_landed_costs.py:520
 #, python-format
 msgid "Insufficient Configuration!"
 msgstr "Configuración Insuficiente!"
@@ -457,14 +457,14 @@ msgid "No Guide Lines!"
 msgstr "¡No hay Líneas de la Guía!"
 
 #. module: typ_landed_costs
-#: code:addons/typ_landed_costs/models/stock_landed_costs.py:666
-#: code:addons/typ_landed_costs/models/stock_landed_costs.py:743
+#: code:addons/typ_landed_costs/models/stock_landed_costs.py:667
+#: code:addons/typ_landed_costs/models/stock_landed_costs.py:744
 #, python-format
 msgid "Only draft landed costs can be validated"
 msgstr "Solo prorrateos en borrador pueden ser validados"
 
 #. module: typ_landed_costs
-#: code:addons/typ_landed_costs/models/stock_landed_costs.py:736
+#: code:addons/typ_landed_costs/models/stock_landed_costs.py:737
 #, python-format
 msgid "Only valid guides can be added to a landed cost"
 msgstr "Sólo guías validadas pueden ser agregadas a un costo en destino"
@@ -514,7 +514,7 @@ msgid "Please define sequence on the journal related to this guide."
 msgstr "Por favor defina una secuencia en el diario relacionado a esta guía."
 
 #. module: typ_landed_costs
-#: code:addons/typ_landed_costs/models/stock_landed_costs.py:676
+#: code:addons/typ_landed_costs/models/stock_landed_costs.py:677
 #, python-format
 msgid "Please fill the segmentation field in Cost Lines"
 msgstr "Favor de llenar el campo de segmentación en la lineas de costeo"
@@ -631,7 +631,7 @@ msgid "The guide(s) "
 msgstr "La(s) guía(s) "
 
 #. module: typ_landed_costs
-#: code:addons/typ_landed_costs/models/stock_landed_costs.py:650
+#: code:addons/typ_landed_costs/models/stock_landed_costs.py:651
 #, python-format
 msgid "The selected picking does not contain any move that would be impacted by landed costs. Landed costs are only possible for products configured in real time valuation. Please make sure it is the case, or you selected the correct picking."
 msgstr "El albarán seleccionado no contiene ningún movimiento que pudiera ser impactado por costos en destino. Los costos en destino son solo posible en productos configurados con valoración en tiempo real. Por favor asegúrese que este sea el caso, o seleccione un albarán correcto."
@@ -718,14 +718,14 @@ msgstr "No puedes reiniciar esta guía a borrador mientras esté asociada a un D
 "- %s"
 
 #. module: typ_landed_costs
-#: code:addons/typ_landed_costs/models/stock_landed_costs.py:670
-#: code:addons/typ_landed_costs/models/stock_landed_costs.py:747
+#: code:addons/typ_landed_costs/models/stock_landed_costs.py:671
+#: code:addons/typ_landed_costs/models/stock_landed_costs.py:748
 #, python-format
 msgid "You cannot validate a landed cost which has no valid valuation adjustments lines. Did you click on Compute?"
 msgstr "No puede validar un costo en destino el cual no tiene líneas de ajustes de valoración válidas. ¿Usted hizo clic en Calcular?"
 
 #. module: typ_landed_costs
-#: code:addons/typ_landed_costs/models/stock_landed_costs.py:520
+#: code:addons/typ_landed_costs/models/stock_landed_costs.py:521
 #, python-format
 msgid "You should configure the 'Exchange Rate Account' in the accounting settings, to manage automatically the booking of accounting entries related to differences between exchange rates."
 msgstr "Debe configurar la \"Cuenta de tipo de cambio\" en los ajustes de contabilidad, para gestionar automáticamente la contabilización de las entradas contables relacionadas con las diferencias entre tipos de cambio."

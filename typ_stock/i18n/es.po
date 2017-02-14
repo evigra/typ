@@ -31,6 +31,11 @@ msgid "AA"
 msgstr "AA"
 
 #. module: typ_stock
+#: model:ir.actions.server,name:typ_stock.server_action_procurement_cancel
+msgid "Action procurement cancel"
+msgstr "Action procurement cancel"
+
+#. module: typ_stock
 #: field:stock.warehouse,active:0
 msgid "Active"
 msgstr "Activo"
@@ -51,7 +56,7 @@ msgid "Barcode"
 msgstr "Código de barras"
 
 #. module: typ_stock
-#: code:addons/typ_stock/models/stock.py:218
+#: code:addons/typ_stock/models/stock.py:217
 #, python-format
 msgid "Both locations must be internal type or location source type internal and location destination type inventory"
 msgstr "Ambas locaciones deben ser del tipo interno o su destino interno y el lugar de destino tipo inventario"
@@ -232,6 +237,11 @@ msgid "Propagate transfer"
 msgstr "Propagar transferencia"
 
 #. module: typ_stock
+#: model:ir.model,name:typ_stock.model_purchase_order_line
+msgid "Purchase Order Line"
+msgstr "Línea del Pedido de Compra"
+
+#. module: typ_stock
 #: view:website:stock.report_picking
 msgid "Quantity"
 msgstr "Cantidad"
@@ -262,7 +272,7 @@ msgid "Serial"
 msgstr "Serial"
 
 #. module: typ_stock
-#: code:addons/typ_stock/wizard/stock_serial.py:142
+#: code:addons/typ_stock/wizard/stock_serial.py:162
 #, python-format
 msgid "Serial number %s not found"
 msgstr "El número serial %s no ha sido encontrado"
@@ -333,39 +343,39 @@ msgid "Test Warehouse 2: stock"
 msgstr "Almacen de Prueba 2: stock"
 
 #. module: typ_stock
-#: code:addons/typ_stock/wizard/stock_serial.py:86
+#: code:addons/typ_stock/wizard/stock_serial.py:99
 #, python-format
 msgid "The Serial number %s already captured"
 msgstr "El número de Serie %s ya se capturó"
 
 #. module: typ_stock
-#: code:addons/typ_stock/models/stock.py:244
+#: code:addons/typ_stock/models/stock.py:243
 #: code:addons/typ_stock/models/stock_return_picking.py:38
 #, python-format
 msgid "The return of the product %s, exceeds the amount invoiced"
 msgstr "El producto devuelto %s, excede la cantidad facturada"
 
 #. module: typ_stock
-#: code:addons/typ_stock/wizard/stock_serial.py:202
+#: code:addons/typ_stock/wizard/stock_serial.py:222
 #, python-format
 msgid "The serial number %s is already in stock"
 msgstr "El número de serie %s ya está en stock"
 
 #. module: typ_stock
-#: code:addons/typ_stock/wizard/stock_serial.py:145
+#: code:addons/typ_stock/wizard/stock_serial.py:165
 #, python-format
 msgid "The serial number %s is already reserved in another move"
 msgstr "El número serial %s está reservado en otro movimiento"
 
 #. module: typ_stock
-#: code:addons/typ_stock/wizard/stock_serial.py:125
-#: code:addons/typ_stock/wizard/stock_serial.py:137
+#: code:addons/typ_stock/wizard/stock_serial.py:145
+#: code:addons/typ_stock/wizard/stock_serial.py:157
 #, python-format
 msgid "The serial number %s is already stock"
 msgstr "El número serial %s ya se encuentra en existencia"
 
 #. module: typ_stock
-#: code:addons/typ_stock/wizard/stock_serial.py:107
+#: code:addons/typ_stock/wizard/stock_serial.py:127
 #, python-format
 msgid "The serial numbers loaded cannot be greater than the requested quantity of the product"
 msgstr "Los números seriales cargados no pueden ser mayores que la cantidad de productos requerida"
@@ -401,7 +411,7 @@ msgid "This group can update cost standard of product."
 msgstr "Este grupo puede actualizar el costo estándar del producto."
 
 #. module: typ_stock
-#: code:addons/typ_stock/models/stock.py:262
+#: code:addons/typ_stock/models/stock.py:261
 #, python-format
 msgid "This picking cannot be cancelled."
 msgstr "Este albarán no puede ser cancelado."
@@ -498,8 +508,8 @@ msgid "Warehouse Address:"
 msgstr "Dirección de Almacén:"
 
 #. module: typ_stock
-#: code:addons/typ_stock/wizard/stock_serial.py:84
-#: code:addons/typ_stock/wizard/stock_serial.py:200
+#: code:addons/typ_stock/wizard/stock_serial.py:97
+#: code:addons/typ_stock/wizard/stock_serial.py:220
 #, python-format
 msgid "Warning"
 msgstr "Advertencia"
@@ -508,9 +518,9 @@ msgstr "Advertencia"
 #: code:addons/typ_stock/models/stock.py:77
 #: code:addons/typ_stock/models/stock.py:94
 #: code:addons/typ_stock/models/stock.py:115
-#: code:addons/typ_stock/models/stock.py:217
-#: code:addons/typ_stock/models/stock.py:243
-#: code:addons/typ_stock/models/stock.py:261
+#: code:addons/typ_stock/models/stock.py:216
+#: code:addons/typ_stock/models/stock.py:242
+#: code:addons/typ_stock/models/stock.py:260
 #: code:addons/typ_stock/models/stock_return_picking.py:37
 #, python-format
 msgid "Warning!"
@@ -537,7 +547,7 @@ msgid "Wizard Pedimento Product"
 msgstr "Asistente Pedimento Producto"
 
 #. module: typ_stock
-#: code:addons/typ_stock/models/stock.py:279
+#: code:addons/typ_stock/models/stock.py:278
 #, python-format
 msgid "You can not inactivate a warehouse with products on it, please adjust your inventories first and then come back and inactivate it."
 msgstr "No puede inactivar un almacén con productos en él, por favor, ajuste primero sus inventarios y luego vuelva a desactivarlo."
@@ -584,42 +594,6 @@ msgid "select warehouse to running schedulers"
 msgstr "seleccione el almacén para ejecutar los programadores"
 
 #. module: typ_stock
-#: view:stock.picking:typ_stock.view_stock_picking_force_assign
-msgid "typ_stock.res_group_can_see_barcode_button"
-msgstr "typ_stock.res_group_can_see_barcode_button"
-
-#. module: typ_stock
-#: view:stock.picking:typ_stock.view_typ_picking_button_cancel_inherit
-msgid "typ_stock.res_group_cancel_picking"
-msgstr "typ_stock.res_group_cancel_picking"
-
-#. module: typ_stock
-#: view:stock.move:typ_stock.view_stock_move_picking_force_assign
-#: view:stock.picking:typ_stock.view_stock_picking_force_assign
-msgid "typ_stock.res_group_force_stock_move"
-msgstr "typ_stock.res_group_force_stock_move"
-
-#. module: typ_stock
-#: view:stock.picking:typ_stock.view_stock_picking_form_inherit
-msgid "typ_stock.res_group_reverse_transfer"
-msgstr "typ_stock.res_group_reverse_transfer"
-
-#. module: typ_stock
-#: view:product.template:typ_stock.view_product_template_stock_property_inherit
-msgid "typ_stock.res_group_standard_price"
-msgstr "typ_stock.res_group_standard_price"
-
-#. module: typ_stock
-#: view:product.template:typ_stock.view_product_template_stock_property_inherit
-msgid "typ_stock.res_group_standard_price_button"
-msgstr "typ_stock.res_group_standard_price_button"
-
-#. module: typ_stock
 #: view:pedimento.product:typ_stock.view_pedimento_product_wizard
 msgid "write data"
 msgstr "Escribir datos"
-
-#. module: typ_stock
-#: view:stock.move:typ_stock.view_move_picking_form_inherit
-msgid "{'readonly': [('state', '!=', 'draft')]}"
-msgstr "{'readonly': [('state', '!=', 'draft')]}"
