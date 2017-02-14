@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: Odoo Server 8.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-11-24 22:20+0000\n"
-"PO-Revision-Date: 2016-12-14 14:37+0000\n"
+"PO-Revision-Date: 2017-02-14 16:51+0000\n"
 "Last-Translator: Yennnifer Santiago <yennifer@vauxoo.com>\n"
 "Language-Team: Spanish <http://weblate.vauxoo.com/projects/typ-8-0/typ_defaul"
 "t_warehouse_from_sale_team/es/>\n"
@@ -20,7 +20,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 2.9\n"
+"X-Generator: Weblate 2.10\n"
 
 #. module: typ_default_warehouse_from_sale_team
 #: field:crm.case.section,purchase_pricelist_id:0
@@ -75,7 +75,7 @@ msgstr "Phone for contact sale team"
 #. module: typ_default_warehouse_from_sale_team
 #: model:ir.model,name:typ_default_warehouse_from_sale_team.model_product_template
 msgid "Product Template"
-msgstr "Product Template"
+msgstr "Plantilla de Producto"
 
 #. module: typ_default_warehouse_from_sale_team
 #: model:ir.model,name:typ_default_warehouse_from_sale_team.model_crm_case_section
