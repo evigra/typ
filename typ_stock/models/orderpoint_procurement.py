@@ -126,3 +126,15 @@ class PurchaseOrderLine(models.Model):
         if proc_ids:
             proc_ids.write({'state': 'cancel'})
         return res
+
+    @api.multi
+    def write(self, vals):
+        if all([self._context.get('not_delete_purchase_line', False),
+               'price_unit' in vals, 'product_qty' in vals]):
+            # When a purchase order is canceled, must not be changed the
+            # price_unit and product_qty of purchase order line
+            if len(vals) == 2:
+                return True
+            else:
+                del vals['price_unit'], vals['product_qty']
+        return super(PurchaseOrderLine, self).write(vals)

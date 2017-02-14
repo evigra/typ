@@ -36,8 +36,14 @@ class TestProcurementActionServer(TestTypStock):
         self.assertEqual(proc_state, 'cancel')
 
         # Relation between procurements and purchase lines must be preserved
-        self.assertEqual(order_lines,
-                         procurement.mapped('purchase_line_id'))
+        order_lines_after_cancel = procurement.mapped('purchase_line_id')
+        self.assertEqual(order_lines, order_lines_after_cancel)
+
+        # product_qty and proce_unit values must not have changed
+        self.assertEqual(order_lines.mapped('product_qty'),
+                         order_lines_after_cancel.mapped('product_qty'))
+        self.assertEqual(order_lines.mapped('price_unit'),
+                         order_lines_after_cancel.mapped('price_unit'))
 
     def test_20_cancel_procurement(self):
         """When procurements are canceled, their purchase line related must
