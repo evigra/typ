@@ -8,7 +8,7 @@
             <field name="inherit_id" ref="sale_stock.view_order_form_inherit"/>
             <field name="arch" type="xml">
                 <xpath expr="//field[@name='warehouse_id']" position="attributes">
-                    <attribute name="on_change" eval="1"/>
+                    <attribute name="on_change" eval="1" translation="off"/>
                 </xpath>
             </field>
         </record>
@@ -33,7 +33,7 @@
                     <field name="type_payment_term" attrs="{'readonly': [('state', '!=', 'draft')],'required': [('state', '=', 'draft')],}"/>
                 </xpath>
                 <xpath expr="//field[@name='payment_term']" position="attributes">
-                    <attribute name="groups">typ_sale.group_sale_order_invoice_payment_term_manager</attribute>
+                    <attribute name="groups" translation="off">typ_sale.group_sale_order_invoice_payment_term_manager</attribute>
                 </xpath>
             </field>
         </record>
@@ -44,10 +44,10 @@
             <field name="inherit_id" ref="sale.view_order_form"/>
             <field name="arch" type="xml">
                <field name="client_order_ref" position="attributes">
-                    <attribute name="string">Reference/Customer</attribute>
+                    <attribute name="string" translation="off">Reference/Customer</attribute>
                </field>
                <field name="project_id" position="attributes">
-                    <attribute name="invisible">1</attribute>
+                    <attribute name="invisible" translation="off">1</attribute>
                </field>
             </field>
         </record>
@@ -58,7 +58,7 @@
             <field name="inherit_id" ref="sale_margin.sale_margin_sale_order"/>
             <field name="arch" type="xml">
                <field name="margin" position="attributes">
-                    <attribute name="groups">typ_sale.res_group_margin_sale_order</attribute>
+                    <attribute name="groups" translation="off">typ_sale.res_group_margin_sale_order</attribute>
                </field>
             </field>
         </record>
@@ -69,11 +69,22 @@
             <field name="inherit_id" ref="sale.view_order_form"/>
             <field name="arch" type="xml">
                <button name="cancel" position="attributes">
-                    <attribute name="groups">typ_sale.res_group_cancel_sale_order</attribute>
+                    <attribute name="groups" translation="off">typ_sale.res_group_cancel_sale_order</attribute>
                </button>
                <button name="action_cancel" position="attributes">
-                    <attribute name="groups">typ_sale.res_group_cancel_sale_order</attribute>
+                    <attribute name="groups" translation="off">ptyp_sale.res_group_cancel_sale_order</attribute>
                </button>
+            </field>
+        </record>
+
+        <record id="view_sale_order_form_date_order" model="ir.ui.view">
+            <field name="name">sale.order.date_order</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="arch" type="xml">
+               <xpath expr="//field[@name='date_order']" position="attributes">
+                    <attribute name="readonly" translation="off">1</attribute>
+               </xpath>
             </field>
         </record>
 

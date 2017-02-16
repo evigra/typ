@@ -8,7 +8,7 @@
             <field name="inherit_id" ref="crm.crm_case_form_view_oppor"/>
             <field name="arch" type="xml">
                 <xpath expr="//field[@name='categ_ids']" position="attributes">
-                    <attribute name="required">True</attribute>
+                    <attribute name="required" translation="off">True</attribute>
                 </xpath>
             </field>
         </record>

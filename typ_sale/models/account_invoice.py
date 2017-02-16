@@ -9,8 +9,7 @@ class AccountInvoice(models.Model):
 
     type_payment_term = fields.Selection(
         [('credit', 'Credit'), ('cash', 'Cash'),
-         ('postdated_check', 'Postdated check')], default='credit',
-        string='Type payment term')
+         ('postdated_check', 'Postdated check')], default='credit')
 
     @api.onchange('type_payment_term', 'partner_id')
     def get_payment_term(self):
