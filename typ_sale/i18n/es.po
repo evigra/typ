@@ -465,11 +465,6 @@ msgid "RFC:"
 msgstr "RFC:"
 
 #. module: typ_sale
-#: view:sale.order:typ_sale.view_sale_order_form_project
-msgid "Reference/Customer"
-msgstr "Referencia/Cliente"
-
-#. module: typ_sale
 #: field:res.partner,region:0
 msgid "Region"
 msgstr "Región"
@@ -602,11 +597,6 @@ msgid "Total"
 msgstr "Total"
 
 #. module: typ_sale
-#: view:crm.lead:typ_sale.view_crm_lead_form_inherit
-msgid "True"
-msgstr "True"
-
-#. module: typ_sale
 #: help:sale.order.line,special_sale:0
 msgid "True if there is a buy type procurement rule within the chosen route, otherwise false"
 msgstr "Verdadero si hay una regla de abastecimiento de tipo compra dentro de la ruta escogida, en caso contrario falso"
@@ -709,25 +699,3 @@ msgstr "No puede Venderse por debajo del Margen Permitido\n"
 #: view:website:sale.report_saleorder_document
 msgid "Your reference:"
 msgstr "Su referencia:"
-
-#. module: typ_sale
-#: view:account.invoice:typ_sale.view_account_invoice_form_type_payment_term
-#: view:sale.order:typ_sale.view_sale_order_form_type_payment_term
-msgid "typ_sale.group_sale_order_invoice_payment_term_manager"
-msgstr "typ_sale.group_sale_order_invoice_payment_term_manager"
-
-#. module: typ_sale
-#: view:sale.order:typ_sale.view_sale_order_button_cancel
-msgid "typ_sale.res_group_cancel_sale_order"
-msgstr "typ_sale.res_group_cancel_sale_order"
-
-#. module: typ_sale
-#: view:sale.order:typ_sale.view_sale_order_form_margin
-msgid "typ_sale.res_group_margin_sale_order"
-msgstr "typ_sale.res_group_margin_sale_order"
-
-#. module: typ_sale
-#: view:sale.order:typ_sale.sale_standard_price_sale_order_line
-#: view:sale.order:typ_sale.sale_standard_price_sale_order_line_form
-msgid "typ_stock.res_group_standard_price"
-msgstr "typ_stock.res_group_standard_price"
