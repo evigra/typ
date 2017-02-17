@@ -209,14 +209,12 @@ class StockPicking(models.Model):
         """
         if self.picking_type_id.code == 'internal' and self.state == 'done':
             for move in self.move_lines:
-                if move.location_id.usage != 'internal' or \
-                        move.location_dest_id.usage not in (
-                            'internal', 'inventory'):
+                if move.location_id.usage in ('customer', 'supplier') or \
+                   move.location_dest_id.usage in ('customer', 'supplier'):
                     raise exceptions.Warning(
                         _('Warning!'),
-                        _('Both locations must be internal type or location '
-                          'source type internal and location destination type '
-                          'inventory')
+                        _("Internal movements don't allow locations in "
+                          "supplier or customer")
                         )
 
     @api.multi
