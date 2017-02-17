@@ -56,12 +56,6 @@ msgid "Barcode"
 msgstr "Código de barras"
 
 #. module: typ_stock
-#: code:addons/typ_stock/models/stock.py:217
-#, python-format
-msgid "Both locations must be internal type or location source type internal and location destination type inventory"
-msgstr "Ambas locaciones deben ser del tipo interno o su destino interno y el lugar de destino tipo inventario"
-
-#. module: typ_stock
 #: view:pedimento.product:typ_stock.view_pedimento_product_wizard
 msgid "Cancel"
 msgstr "Cancelar"
@@ -116,6 +110,12 @@ msgstr "ID"
 #: field:stock.warehouse.orderpoint,importance:0
 msgid "Importance"
 msgstr "Importancia"
+
+#. module: typ_stock
+#: code:addons/typ_stock/models/stock.py:216
+#, python-format
+msgid "Internal movements don't allow locations in supplier or customer"
+msgstr "Internal movements don't allow locations in supplier or customer"
 
 #. module: typ_stock
 #: field:pedimento.product,__last_update:0
@@ -349,7 +349,7 @@ msgid "The Serial number %s already captured"
 msgstr "El número de Serie %s ya se capturó"
 
 #. module: typ_stock
-#: code:addons/typ_stock/models/stock.py:243
+#: code:addons/typ_stock/models/stock.py:241
 #: code:addons/typ_stock/models/stock_return_picking.py:38
 #, python-format
 msgid "The return of the product %s, exceeds the amount invoiced"
@@ -411,7 +411,7 @@ msgid "This group can update cost standard of product."
 msgstr "Este grupo puede actualizar el costo estándar del producto."
 
 #. module: typ_stock
-#: code:addons/typ_stock/models/stock.py:261
+#: code:addons/typ_stock/models/stock.py:259
 #, python-format
 msgid "This picking cannot be cancelled."
 msgstr "Este albarán no puede ser cancelado."
@@ -518,9 +518,9 @@ msgstr "Advertencia"
 #: code:addons/typ_stock/models/stock.py:77
 #: code:addons/typ_stock/models/stock.py:94
 #: code:addons/typ_stock/models/stock.py:115
-#: code:addons/typ_stock/models/stock.py:216
-#: code:addons/typ_stock/models/stock.py:242
-#: code:addons/typ_stock/models/stock.py:260
+#: code:addons/typ_stock/models/stock.py:215
+#: code:addons/typ_stock/models/stock.py:240
+#: code:addons/typ_stock/models/stock.py:258
 #: code:addons/typ_stock/models/stock_return_picking.py:37
 #, python-format
 msgid "Warning!"
@@ -547,7 +547,7 @@ msgid "Wizard Pedimento Product"
 msgstr "Asistente Pedimento Producto"
 
 #. module: typ_stock
-#: code:addons/typ_stock/models/stock.py:278
+#: code:addons/typ_stock/models/stock.py:276
 #, python-format
 msgid "You can not inactivate a warehouse with products on it, please adjust your inventories first and then come back and inactivate it."
 msgstr "No puede inactivar un almacén con productos en él, por favor, ajuste primero sus inventarios y luego vuelva a desactivarlo."
