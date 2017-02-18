@@ -490,6 +490,12 @@ msgid "SUP"
 msgstr "SUP"
 
 #. module: typ_sale
+#: code:addons/typ_sale/models/sale_order.py:66
+#, python-format
+msgid "Sale of product below margin"
+msgstr "Sale of product below margin"
+
+#. module: typ_sale
 #: model:res.groups,name:typ_sale.group_sale_order_invoice_payment_term_manager
 msgid "Sale order - Invoice - payment term manager"
 msgstr "Administrador de plazo de pago - Orden de venta - Factura"
@@ -555,7 +561,7 @@ msgid "Supplier for purchase"
 msgstr "Proveedor para la orden de compra"
 
 #. module: typ_sale
-#: code:addons/typ_sale/models/sale_order_line.py:37
+#: code:addons/typ_sale/models/sale_order_line.py:60
 #, python-format
 msgid "The product %s"
 msgstr "El producto %s"
@@ -688,12 +694,12 @@ msgid "When buying equipment on credit, consider additional 2%, that will be cre
 msgstr "En la compra de equipo a crédito, considere un adicional de 2%, que será bonificado si se realiza el pago dentro del tiempo concedido."
 
 #. module: typ_sale
-#: code:addons/typ_sale/models/sale_order_line.py:38
+#: code:addons/typ_sale/models/sale_order_line.py:61
 #, python-format
-msgid "You can not be sold below permitted margin \n"
-" Contact Manager"
-msgstr "No puede Venderse por debajo del Margen Permitido\n"
-" Contacta al Administrador"
+msgid "You can not be sold below permitted margin\n"
+"Contact Manager"
+msgstr "You can not be sold below permitted margin\n"
+"Contact Manager"
 
 #. module: typ_sale
 #: view:website:sale.report_saleorder_document
