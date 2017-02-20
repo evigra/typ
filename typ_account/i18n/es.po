@@ -132,24 +132,3 @@ msgstr "Esta fecha indica cuándo se validó la factura"
 #, python-format
 msgid "Warning!"
 msgstr "¡Advertencia!"
-
-#. module: typ_account
-#: view:account.voucher:typ_account.view_account_voucher_lines_dr_payment_tax
-#: view:account.voucher:typ_account.view_account_voucher_lines_dr_tax
-msgid "bottom"
-msgstr "bottom"
-
-#. module: typ_account
-#: view:account.invoice:typ_account.account_invoice_form_group
-msgid "{'readonly': 0}"
-msgstr "{'readonly': 0}"
-
-#. module: typ_account
-#: view:account.invoice:typ_account.account_invoice_form
-msgid "{'readonly':[('state', '!=', 'draft')]}"
-msgstr "{'readonly':[('state', '!=', 'draft')]}"
-
-#. module: typ_account
-#: view:account.invoice:typ_account.view_invoice_pay_method
-msgid "{'required': 1}"
-msgstr "{'required': 1}"
