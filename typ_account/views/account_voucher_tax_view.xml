@@ -9,12 +9,12 @@
                 <field name="priority">100</field>
                 <field name="arch" type="xml">
                     <xpath expr="//field[@name='line_cr_ids']/tree" position="attributes">
-                        <attribute name="editable">bottom</attribute>
+                        <attribute name="editable" translation="off">bottom</attribute>
                     </xpath>
                     <xpath expr="//field[@name='line_cr_ids']/tree/field[@name='tax_line_ids']" position="replace">
                     </xpath>
                     <xpath expr="//field[@name='line_dr_ids']/tree" position="attributes">
-                        <attribute name="editable">bottom</attribute>
+                        <attribute name="editable" translation="off">bottom</attribute>
                     </xpath>
                     <xpath expr="//field[@name='line_dr_ids']/tree/field[@name='tax_line_ids']" position="replace">
                     </xpath>
@@ -28,7 +28,7 @@
                 <field name="priority">100</field>
                 <field name="arch" type="xml">
                     <xpath expr="//field[@name='line_dr_ids']/tree" position="attributes">
-                        <attribute name="editable">bottom</attribute>
+                        <attribute name="editable" translation="off">bottom</attribute>
                     </xpath>
                     <xpath expr="//field[@name='line_dr_ids']/tree/field[@name='tax_line_ids']" position="replace">
                     </xpath>
