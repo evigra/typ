@@ -349,7 +349,7 @@ msgid "The Serial number %s already captured"
 msgstr "El número de Serie %s ya se capturó"
 
 #. module: typ_stock
-#: code:addons/typ_stock/models/stock.py:241
+#: code:addons/typ_stock/models/stock.py:245
 #: code:addons/typ_stock/models/stock_return_picking.py:38
 #, python-format
 msgid "The return of the product %s, exceeds the amount invoiced"
@@ -411,7 +411,7 @@ msgid "This group can update cost standard of product."
 msgstr "Este grupo puede actualizar el costo estándar del producto."
 
 #. module: typ_stock
-#: code:addons/typ_stock/models/stock.py:259
+#: code:addons/typ_stock/models/stock.py:302
 #, python-format
 msgid "This picking cannot be cancelled."
 msgstr "Este albarán no puede ser cancelado."
@@ -519,9 +519,10 @@ msgstr "Advertencia"
 #: code:addons/typ_stock/models/stock.py:94
 #: code:addons/typ_stock/models/stock.py:115
 #: code:addons/typ_stock/models/stock.py:215
-#: code:addons/typ_stock/models/stock.py:240
-#: code:addons/typ_stock/models/stock.py:258
+#: code:addons/typ_stock/models/stock.py:244
+#: code:addons/typ_stock/models/stock.py:301
 #: code:addons/typ_stock/models/stock_return_picking.py:37
+#: code:addons/typ_stock/models/stock_return_picking.py:54
 #, python-format
 msgid "Warning!"
 msgstr "¡Advertencia!"
@@ -530,6 +531,11 @@ msgstr "¡Advertencia!"
 #: help:procurement.rule,propagate_transfer:0
 msgid "When this field is check, the first stock move which is transferred triggers automatically the transfer to the other stock move related"
 msgstr "Cuando este campo está marcado, el primer movimiento de inventario que se transfiere dispara automáticamente la transferencia de otro movimiento de inventario relacionado"
+
+#. module: typ_stock
+#: model:product.template,name:typ_stock.product_product_whead_deluxe_product_template
+msgid "Wireless Headphones custom Deluxe"
+msgstr "Wireless Headphones custom Deluxe"
 
 #. module: typ_stock
 #: model:product.template,name:typ_stock.product_product_whead_product_template
@@ -547,10 +553,16 @@ msgid "Wizard Pedimento Product"
 msgstr "Asistente Pedimento Producto"
 
 #. module: typ_stock
-#: code:addons/typ_stock/models/stock.py:276
+#: code:addons/typ_stock/models/stock.py:319
 #, python-format
 msgid "You can not inactivate a warehouse with products on it, please adjust your inventories first and then come back and inactivate it."
 msgstr "No puede inactivar un almacén con productos en él, por favor, ajuste primero sus inventarios y luego vuelva a desactivarlo."
+
+#. module: typ_stock
+#: code:addons/typ_stock/models/stock_return_picking.py:55
+#, python-format
+msgid "You may only return one picking at a time!"
+msgstr "You may only return one picking at a time!"
 
 #. module: typ_stock
 #: code:addons/typ_stock/models/stock.py:116
