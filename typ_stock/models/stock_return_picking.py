@@ -39,3 +39,42 @@ class StockReturnPicking(models.TransientModel):
                         'invoiced') % (line.move_id.product_id.name)
                 )
         return super(StockReturnPicking, self).create_returns()
+
+    @api.model
+    def default_get(self, fields):
+        """To get default values for the product to be returned. Include
+        product, qty and move related
+        :param fields List of fields for which we want default values
+        :return A dictionary with default values for all field in ``fields``
+        """
+        result = []
+        context = self._context
+        if len(context.get('active_ids', [])) > 1:
+            raise exceptions.Warning(
+                _('Warning!'),
+                _("You may only return one picking at a time!"))
+        res = super(StockReturnPicking, self).default_get(fields)
+        if 'product_return_moves' not in fields:
+            return res
+        record_id = context.get('active_id', False)
+        pick_obj = self.env['stock.picking']
+        uom = self.env['product.uom']
+        pick = pick_obj.browse(record_id)
+
+        for move in pick.move_lines:
+            qty = pick_obj.validate_return_customer_qty(move)
+
+            move_qty = uom._compute_qty(
+                move.product_id.uom_id.id,
+                qty,
+                move.product_uom.id,
+            )
+
+            result.append(
+                {'product_id': move.product_id.id,
+                 'quantity': move_qty,
+                 'move_id': move.id})
+
+        res.update({'product_return_moves': result})
+
+        return res

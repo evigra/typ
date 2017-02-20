@@ -14,6 +14,8 @@ class TestStockAvailability(TransactionCase):
         self.company = self.env.ref('base.main_company')
         self.partner = self.env.ref('base.res_partner_9')
         self.product = self.env.ref('typ_stock.product_product_whead')
+        self.product_deluxe = self.env.ref(
+            'typ_stock.product_product_whead_deluxe')
         self.test_wh = self.env.ref(
             'default_warehouse_from_sale_team.stock_warehouse_default_team'
         )
@@ -364,3 +366,142 @@ class TestStockAvailability(TransactionCase):
         trans_id = self.transfer_obj.create(value)
         # Validating wizard
         trans_id.do_detailed_transfer()
+
+    def test_60_validation_return_customer_distinct_sale(self):
+        """Restrict the returned quantity, when a sale is made, a return, then
+        makes another sale of that same product and then returns the first sale
+        again
+        """
+        self.return_obj = self.env['stock.return.picking']
+        demo_user = self.env.ref('base.user_demo')
+
+        # Stockable Product
+        self.product.write({'type': 'product'})
+
+        sale = self.sale_obj.sudo(demo_user).create({
+            'name': 'Tests Main Sale Order',
+            'company_id': self.company.id,
+            'partner_id': self.partner.id,
+            'warehouse_id': self.test_wh.id,
+            'order_line': [(0, 0, {
+                'product_id': self.product.id,
+                'product_uom_qty': 7.0,
+                'price_unit': 100.0,
+                'product_uom': self.product.uom_id.id, }),
+                (0, 0, {
+                    'product_id': self.product_deluxe.id,
+                    'product_uom_qty': 1.0,
+                    'price_unit': 200.0,
+                    'product_uom': self.product_deluxe.uom_id.id,
+                })],
+            'payment_term': self.payment_term.id,
+        })
+
+        # Confirm sale order
+        sale.sudo(demo_user).action_button_confirm()
+
+        pickings = sale.picking_ids.filtered(
+            lambda picking: 'OUT' in picking.name)
+
+        # Adding availability 7 products
+        self.quant = self.env['stock.quant'].create({
+            'location_id': pickings[0].location_id.id,
+            'product_id': self.product.id,
+            'qty': 7.0,
+        })
+
+        # Adding availability 1 product
+        self.quant = self.env['stock.quant'].create({
+            'location_id': pickings[0].location_id.id,
+            'product_id': self.product_deluxe.id,
+            'qty': 1.0,
+        })
+
+        # Assign availability
+        pickings[0].sudo(demo_user).action_assign()
+
+        context = {
+            'active_model': "stock.picking",
+            'active_ids': [pickings[0].id],
+            'active_id': pickings[0].id,
+            }
+
+        wizard_transfer_id = self.transfer_obj.with_context(context).create(
+            {"picking_id": pickings.ids[0], }
+            )
+
+        # Done picking out customer
+        wizard_transfer_id.sudo(demo_user).do_detailed_transfer()
+
+        # Start return
+        wizard_return_id = self.return_obj.with_context(
+            context).sudo(demo_user).create({})
+
+        wizard_return_id.create_returns()
+
+        pickings_returned = sale.picking_ids.filtered(
+            lambda picking: 'IN' in picking.name)
+
+        # Assign availability to picking returned
+        pickings_returned[0].sudo(demo_user).action_assign()
+
+        context = {
+            'active_model': "stock.picking",
+            'active_ids': [pickings_returned[0].id],
+            'active_id': pickings_returned[0].id,
+            }
+
+        wizard_transfer_id = self.transfer_obj.with_context(context).create(
+            {"picking_id": pickings_returned.ids[0], }
+            )
+
+        # Done picking returned
+        wizard_transfer_id.sudo(demo_user).do_detailed_transfer()
+
+        # Create second sale order
+        sale_second = self.sale_obj.sudo(demo_user).create({
+            'name': 'Tests Main Sale Order duplicated',
+            'company_id': self.company.id,
+            'partner_id': self.partner.id,
+            'warehouse_id': self.test_wh.id,
+            'order_line': [(0, 0, {
+                'product_id': self.product.id,
+                'product_uom_qty': 7.0,
+                'price_unit': 100.0,
+                'product_uom': self.product.uom_id.id, }),
+                (0, 0, {
+                    'product_id': self.product_deluxe.id,
+                    'product_uom_qty': 1.0,
+                    'price_unit': 200.0,
+                    'product_uom': self.product_deluxe.uom_id.id,
+                })],
+            'payment_term': self.payment_term.id,
+        })
+
+        # Confirm second sale order
+        sale_second.sudo(demo_user).action_button_confirm()
+
+        pickings_second = sale_second.picking_ids.filtered(
+            lambda picking: 'OUT' in picking.name)
+
+        # Assign availability in picking of sale second
+        pickings_second[0].sudo(demo_user).action_assign()
+
+        context = {
+            'active_model': "stock.picking",
+            'active_ids': [pickings_second[0].id],
+            'active_id': pickings_second[0].id,
+            }
+
+        wizard_transfer_id = self.transfer_obj.with_context(context).create(
+            {"picking_id": pickings_second.ids[0], }
+            )
+
+        # Done picking out customer
+        wizard_transfer_id.sudo(demo_user).do_detailed_transfer()
+
+        # Return picking of first sale order again
+        msg = "The return of the product %s, exceeds the amount invoiced" % \
+            (self.product.name)
+        with self.assertRaisesRegexp(UserError, msg):
+            wizard_return_id.create_returns()

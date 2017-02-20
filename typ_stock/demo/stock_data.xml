@@ -193,6 +193,16 @@
             <field name="uom_po_id" ref="product.product_uom_unit"/>
             <field name="default_code">HEADPHONE-01</field>
         </record>
+        <record id="product_product_whead_deluxe" model="product.product">
+            <field name="name">Wireless Headphones custom Deluxe</field>
+            <field name="categ_id" ref="product.product_category_7"/>
+            <field name="standard_price">180.0</field>
+            <field name="list_price">170.0</field>
+            <field name="type">consu</field>
+            <field name="uom_id" ref="product.product_uom_unit"/>
+            <field name="uom_po_id" ref="product.product_uom_unit"/>
+            <field name="default_code">HEADPHONE-LUX</field>
+        </record>
 
         <!-- Locations Scrapped -->
         <record id="location_scrapped_test" model="stock.location">

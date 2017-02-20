@@ -222,24 +222,67 @@ class StockPicking(models.Model):
         """Restricts the quantity of products by return of a sale does not
         exceed more than invoiced
         """
-        if self.picking_type_id.code == 'incoming' and \
-                self.state == 'confirmed':
-            uom = self.env['product.uom']
-            for move in self.move_lines:
-                if move.location_id.usage == 'customer':
-                    total_move_qty = uom._compute_qty(
-                        move.product_uom.id,
-                        move.product_uom_qty,
-                        move.product_id.uom_id.id,
-                    )
-                    total_origin_move_qty = sum(move.origin_returned_move_id.
-                                                quant_ids.mapped('qty'))
+        uom = self.env['product.uom']
 
-                    if total_move_qty > total_origin_move_qty:
-                        raise exceptions.Warning(
-                            _('Warning!'),
-                            _('The return of the product %s, exceeds the '
-                              'amount invoiced') % (move.product_id.name))
+        for move in self.mapped('move_lines'):
+            if not all(
+                [move.picking_id.picking_type_id.code == 'incoming',
+                 move.picking_id.state == 'confirmed',
+                 move.location_id.usage == 'customer']):
+                continue
+            orig_ret_mov_id = move.origin_returned_move_id
+            total_move_qty = self.validate_return_customer_qty(orig_ret_mov_id)
+
+            total_return_move_qty = uom._compute_qty(
+                move.product_uom.id,
+                move.product_uom_qty,
+                move.product_id.uom_id.id,
+            )
+
+            if total_return_move_qty > total_move_qty:
+                raise exceptions.Warning(
+                    _('Warning!'),
+                    _('The return of the product %s, exceeds the '
+                      'amount invoiced') % (move.product_id.name))
+
+    def validate_return_customer_qty(self, move):
+        uom = self.env['product.uom']
+        qty = 0
+        return_client_qty = 0
+        return_stock_qty = 0
+        returned_move_ids = move.returned_move_ids.filtered(
+            lambda r: r.id != move.id and
+            r.state in ('assigned', 'done'))
+
+        for returned_move in returned_move_ids:
+            return_client_qty += returned_move.product_uom_qty
+            return_stock_qty += sum(
+                returned_move.returned_move_ids.filtered(
+                    lambda r: r.state in ('assigned', 'done')).
+                mapped('product_uom_qty'))
+        total_return_client_qty = uom._compute_qty(
+            move.product_uom.id,
+            return_client_qty,
+            move.product_id.uom_id.id,
+        )
+
+        total_return_stock_qty = uom._compute_qty(
+            move.product_uom.id,
+            return_stock_qty,
+            move.product_id.uom_id.id,
+        )
+
+        move_wrk = move.origin_returned_move_id or move
+        total_origin_move_qty = uom._compute_qty(
+            move_wrk.product_uom.id,
+            move_wrk.product_uom_qty,
+            move_wrk.product_id.uom_id.id,
+        )
+
+        qty = (total_origin_move_qty - total_return_client_qty +
+               total_return_stock_qty)
+
+        return qty
 
     @api.multi
     def action_cancel(self):
