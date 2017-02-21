@@ -49,8 +49,10 @@ class ResPartner(models.Model):
             # We have to search only move line related with journals in sale
             # team with current_warehouse as default warehouse to calculate
             # partner credit
+            acc_partner = self.env['res.partner']._find_accounting_partner(
+                partner)
             move_lines = self.env['account.move.line'].search([
-                ('partner_id', '=', partner.id),
+                ('partner_id', '=', acc_partner.id),
                 ('account_id.type', '=', 'receivable'),
                 ('state', '!=', 'draft'), ('reconcile_id', '=', False),
                 ('journal_id', 'in', journals_sale_team),
@@ -84,8 +86,10 @@ class ResPartner(models.Model):
                 current_warehouse = default_sale_team.default_warehouse.id
             warehouse_config = partner.res_warehouse_ids.filtered(
                 lambda wh_conf: wh_conf.warehouse_id.id == current_warehouse)
+            acc_partner = self.env['res.partner']._find_accounting_partner(
+                partner)
             movelines = self.env['account.move.line'].search([
-                ('partner_id', '=', partner.id),
+                ('partner_id', '=', acc_partner.id),
                 ('account_id.type', '=', 'receivable'),
                 ('state', '!=', 'draft'), ('reconcile_id', '=', False),
                 ('journal_id', 'in', journals_sale_team)])
