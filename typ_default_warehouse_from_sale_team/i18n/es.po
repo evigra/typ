@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: Odoo Server 8.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-11-24 22:20+0000\n"
-"PO-Revision-Date: 2017-02-14 16:51+0000\n"
+"PO-Revision-Date: 2017-02-21 15:28+0000\n"
 "Last-Translator: Yennnifer Santiago <yennifer@vauxoo.com>\n"
 "Language-Team: Spanish <http://weblate.vauxoo.com/projects/typ-8-0/typ_defaul"
 "t_warehouse_from_sale_team/es/>\n"
@@ -65,12 +65,12 @@ msgstr "Diario de guía de costo en destino"
 #. module: typ_default_warehouse_from_sale_team
 #: field:crm.case.section,sale_phone:0
 msgid "Phone"
-msgstr "Phone"
+msgstr "Teléfono"
 
 #. module: typ_default_warehouse_from_sale_team
 #: help:crm.case.section,sale_phone:0
 msgid "Phone for contact sale team"
-msgstr "Phone for contact sale team"
+msgstr "Teléfono de contacto del equipo de ventas"
 
 #. module: typ_default_warehouse_from_sale_team
 #: model:ir.model,name:typ_default_warehouse_from_sale_team.model_product_template
