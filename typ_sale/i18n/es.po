@@ -10,8 +10,8 @@ msgstr ""
 "Project-Id-Version: Odoo Server 8.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-11-28 20:23+0000\n"
-"PO-Revision-Date: 2016-12-15 14:55+0000\n"
-"Last-Translator: Jorge Escalona <jorge@vauxoo.com>\n"
+"PO-Revision-Date: 2017-02-21 15:27+0000\n"
+"Last-Translator: Yennnifer Santiago <yennifer@vauxoo.com>\n"
 "Language-Team: Spanish "
 "<http://weblate.vauxoo.com/projects/typ-8-0/typ_sale/es/>\n"
 "Language: es\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 2.9\n"
+"X-Generator: Weblate 2.10\n"
 
 #. module: typ_sale
 #: view:website:sale.report_saleorder_document
@@ -493,7 +493,7 @@ msgstr "SUP"
 #: code:addons/typ_sale/models/sale_order.py:66
 #, python-format
 msgid "Sale of product below margin"
-msgstr "Sale of product below margin"
+msgstr "Venta de producto por debajo del margen"
 
 #. module: typ_sale
 #: model:res.groups,name:typ_sale.group_sale_order_invoice_payment_term_manager
@@ -698,8 +698,9 @@ msgstr "En la compra de equipo a crédito, considere un adicional de 2%, que ser
 #, python-format
 msgid "You can not be sold below permitted margin\n"
 "Contact Manager"
-msgstr "You can not be sold below permitted margin\n"
-"Contact Manager"
+msgstr ""
+"No se puede vender por debajo del margen permitido\n"
+"Contacte al Gerente"
 
 #. module: typ_sale
 #: view:website:sale.report_saleorder_document
