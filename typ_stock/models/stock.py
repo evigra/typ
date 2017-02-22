@@ -157,6 +157,16 @@ class StockMove(models.Model):
     def _push_apply(self, moves):
         return super(StockMove, self)._push_apply(moves.sudo())
 
+    @api.model
+    def _prepare_picking_assign(self, move):
+        """Update note in picking from sales order
+        """
+        values = super(StockMove, self)._prepare_picking_assign(move)
+        if move.procurement_id.sale_line_id:
+            sale = move.procurement_id.sale_line_id.order_id
+            values['note'] = sale.note
+        return values
+
 
 class StockPicking(models.Model):
 
