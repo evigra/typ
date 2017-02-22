@@ -112,11 +112,10 @@ msgid "Importance"
 msgstr "Importancia"
 
 #. module: typ_stock
-#: code:addons/typ_stock/models/stock.py:216
+#: code:addons/typ_stock/models/stock.py:226
 #, python-format
 msgid "Internal movements don't allow locations in supplier or customer"
-msgstr ""
-"Los movimientos internos no permiten ubicaciones de proveedores o clientes"
+msgstr "Los movimientos internos no permiten ubicaciones de proveedores o clientes"
 
 #. module: typ_stock
 #: field:pedimento.product,__last_update:0
@@ -350,7 +349,7 @@ msgid "The Serial number %s already captured"
 msgstr "El número de Serie %s ya se capturó"
 
 #. module: typ_stock
-#: code:addons/typ_stock/models/stock.py:245
+#: code:addons/typ_stock/models/stock.py:255
 #: code:addons/typ_stock/models/stock_return_picking.py:38
 #, python-format
 msgid "The return of the product %s, exceeds the amount invoiced"
@@ -412,7 +411,7 @@ msgid "This group can update cost standard of product."
 msgstr "Este grupo puede actualizar el costo estándar del producto."
 
 #. module: typ_stock
-#: code:addons/typ_stock/models/stock.py:302
+#: code:addons/typ_stock/models/stock.py:312
 #, python-format
 msgid "This picking cannot be cancelled."
 msgstr "Este albarán no puede ser cancelado."
@@ -519,9 +518,9 @@ msgstr "Advertencia"
 #: code:addons/typ_stock/models/stock.py:77
 #: code:addons/typ_stock/models/stock.py:94
 #: code:addons/typ_stock/models/stock.py:115
-#: code:addons/typ_stock/models/stock.py:215
-#: code:addons/typ_stock/models/stock.py:244
-#: code:addons/typ_stock/models/stock.py:301
+#: code:addons/typ_stock/models/stock.py:225
+#: code:addons/typ_stock/models/stock.py:254
+#: code:addons/typ_stock/models/stock.py:311
 #: code:addons/typ_stock/models/stock_return_picking.py:37
 #: code:addons/typ_stock/models/stock_return_picking.py:54
 #, python-format
@@ -554,7 +553,7 @@ msgid "Wizard Pedimento Product"
 msgstr "Asistente Pedimento Producto"
 
 #. module: typ_stock
-#: code:addons/typ_stock/models/stock.py:319
+#: code:addons/typ_stock/models/stock.py:329
 #, python-format
 msgid "You can not inactivate a warehouse with products on it, please adjust your inventories first and then come back and inactivate it."
 msgstr "No puede inactivar un almacén con productos en él, por favor, ajuste primero sus inventarios y luego vuelva a desactivarlo."

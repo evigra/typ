@@ -698,8 +698,7 @@ msgstr "En la compra de equipo a crédito, considere un adicional de 2%, que ser
 #, python-format
 msgid "You can not be sold below permitted margin\n"
 "Contact Manager"
-msgstr ""
-"No se puede vender por debajo del margen permitido\n"
+msgstr "No se puede vender por debajo del margen permitido\n"
 "Contacte al Gerente"
 
 #. module: typ_sale
