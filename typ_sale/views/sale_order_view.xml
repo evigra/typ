@@ -72,7 +72,7 @@
                     <attribute name="groups" translation="off">typ_sale.res_group_cancel_sale_order</attribute>
                </button>
                <button name="action_cancel" position="attributes">
-                    <attribute name="groups" translation="off">ptyp_sale.res_group_cancel_sale_order</attribute>
+                    <attribute name="groups" translation="off">typ_sale.res_group_cancel_sale_order</attribute>
                </button>
             </field>
         </record>
