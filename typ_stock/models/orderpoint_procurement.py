@@ -112,6 +112,21 @@ class ProcurementOrder(models.Model):
         # the cancellation of the procurement
         procurement_ids.cancel()
 
+    @api.model
+    def _check(self, procurement):
+        if procurement.purchase_line_id and procurement.move_ids:
+            if all(move.state in ('done', 'cancel') for move in
+                   procurement.move_ids):
+                return True
+        return super(ProcurementOrder, self)._check(procurement)
+
+    @api.model
+    def automatic_procurement_done(self):
+        """This function is executed from a ir_cron to pass procurements in
+        running state to done when their moves are all in done or canceled"""
+        procurement_ids = self.search([('state', '=', 'running')])
+        procurement_ids.check(False)
+
 
 class PurchaseOrderLine(models.Model):
 
