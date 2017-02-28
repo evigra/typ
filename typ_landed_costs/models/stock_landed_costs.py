@@ -460,7 +460,8 @@ class StockLandedCost(models.Model):
                 len(val) == 0 and model or
                 len(val) == 1 and model[val[0]] or
                 len(val) == 2 and model[val[0]].mapped(val[1]) or
-                len(val) == 3 and model.mapped(val[0])
+                len(val) == 3 and model.mapped(val[0]) or
+                self.env['stock.move']
                 )
 
             return method(self, move_lines, args[1])
