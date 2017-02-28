@@ -16,6 +16,11 @@ class StockPicking(models.Model):
             res.update({
                 'payment_term': sale.payment_term.id,
                 'type_payment_term': sale.type_payment_term, })
+        if 'payment_term' in res:
+            date_due = (self.env['account.invoice'].
+                        onchange_payment_term_date_invoice(
+                            res['payment_term'], False))
+            res.update({'date_due': date_due['value']['date_due']})
         return res
 
 
