@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+
+        <record id="project_issue_attribute_01" model="project.issue.attribute">
+            <field name="name">SERVICIO</field>
+        </record>
+        <record id="project_issue_attribute_02" model="project.issue.attribute">
+            <field name="name">ASESORIA</field>
+        </record>
+        <record id="project_issue_attribute_03" model="project.issue.attribute">
+            <field name="name">LOGISTICA Y DISTRIBUCION</field>
+        </record>
+        <record id="project_issue_attribute_04" model="project.issue.attribute">
+            <field name="name">DISPONIBILIDAD</field>
+        </record>
+        <record id="project_issue_attribute_05" model="project.issue.attribute">
+            <field name="name">D2E</field>
+        </record>
+
+        <record id="project_issue_attribute_type_01" model="project.issue.attribute_type">
+            <field name="name">GARANTIA NO RESUELTA</field>
+            <field name="attribute_id" ref="project_issue_attribute_01"/>      
+        </record>
+        <record id="project_issue_attribute_type_02" model="project.issue.attribute_type">
+            <field name="name">FALLA DEL SISTEMA</field>
+            <field name="attribute_id" ref="project_issue_attribute_01"/>            
+        </record>
+        <record id="project_issue_attribute_type_03" model="project.issue.attribute_type">
+            <field name="name">CREDITO SUSPENDIDO</field>
+            <field name="attribute_id" ref="project_issue_attribute_01"/>      
+        </record>
+        <record id="project_issue_attribute_type_04" model="project.issue.attribute_type">
+            <field name="name">ATENCION  AL CLIENTE</field>
+            <field name="attribute_id" ref="project_issue_attribute_01"/>            
+        </record>
+
+        <record id="project_issue_attribute_type_05" model="project.issue.attribute_type">
+            <field name="name">FALTA DE CAPACITACION</field>
+            <field name="attribute_id" ref="project_issue_attribute_02"/>      
+        </record>
+        <record id="project_issue_attribute_type_06" model="project.issue.attribute_type">
+            <field name="name">SOPORTE TECNICO</field>
+            <field name="attribute_id" ref="project_issue_attribute_02"/>            
+        </record>
+
+        <record id="project_issue_attribute_type_07" model="project.issue.attribute_type">
+            <field name="name">PRODUCTOS DAÑADOS</field>
+            <field name="attribute_id" ref="project_issue_attribute_03"/>      
+        </record>
+        <record id="project_issue_attribute_type_08" model="project.issue.attribute_type">
+            <field name="name">PRODUCTOS ERRONEOS</field>
+            <field name="attribute_id" ref="project_issue_attribute_03"/>            
+        </record>        
+        <record id="project_issue_attribute_type_09" model="project.issue.attribute_type">
+            <field name="name">ENTREGA ATRASADA</field>
+            <field name="attribute_id" ref="project_issue_attribute_03"/>      
+        </record>
+        <record id="project_issue_attribute_type_10" model="project.issue.attribute_type">
+            <field name="name">PRODUCTOS NO ENVIADOS</field>
+            <field name="attribute_id" ref="project_issue_attribute_03"/>            
+        </record>
+
+        <record id="project_issue_attribute_type_11" model="project.issue.attribute_type">
+            <field name="name">VENTA EN FIRME NO ATENDIDA</field>
+            <field name="attribute_id" ref="project_issue_attribute_04"/>      
+        </record>
+        <record id="project_issue_attribute_type_12" model="project.issue.attribute_type">
+            <field name="name">RESURTIDOS NO ENVIADOS</field>
+            <field name="attribute_id" ref="project_issue_attribute_04"/>            
+        </record>
+        <record id="project_issue_attribute_type_13" model="project.issue.attribute_type">
+            <field name="name">PEDIDOS ESPECIALES ATRASADOS</field>
+            <field name="attribute_id" ref="project_issue_attribute_04"/>      
+        </record>
+        <record id="project_issue_attribute_type_14" model="project.issue.attribute_type">
+            <field name="name">PRODUCTOS NEGADOS</field>
+            <field name="attribute_id" ref="project_issue_attribute_04"/>            
+        </record>
+        <record id="project_issue_attribute_type_15" model="project.issue.attribute_type">
+            <field name="name">SOPORTE</field>
+            <field name="attribute_id" ref="project_issue_attribute_04"/>      
+        </record>
+        <record id="project_issue_attribute_type_16" model="project.issue.attribute_type">
+            <field name="name">VENTA DIRECTA </field>
+            <field name="attribute_id" ref="project_issue_attribute_05"/>            
+        </record>  
+                        
+    </data>
+</openerp>

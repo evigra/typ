@@ -1,0 +1,213 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<openerp>
+    <data>
+        <record id="project_issue_form_view_inherit" model="ir.ui.view">
+            <field name="name">Project Issue Tracker Form Inherit</field>
+            <field name="model">project.issue</field>
+            <field name="inherit_id" ref="project_issue.project_issue_form_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='categ_ids']" position="attributes"> 
+                    <attribute name="invisible" translation="off">True</attribute>
+                </xpath>
+                <xpath expr="//label[@for='categ_ids']" position="attributes">
+                    <attribute name="invisible" translation="off">True</attribute>     
+                </xpath>
+                <xpath expr="//field[@name='partner_id']" position="attributes"> 
+                    <attribute name="invisible" translation="off">True</attribute>
+                </xpath>
+                <xpath expr="//field[@name='email_from']" position="attributes"> 
+                    <attribute name="invisible" translation="off">True</attribute>
+                </xpath>
+                <xpath expr="//field[@name='version_id']" position="attributes"> 
+                    <attribute name="invisible" translation="off">True</attribute>
+                </xpath>
+                <xpath expr="//field[@name='project_id']" position="attributes"> 
+                    <attribute name="required" translation="off">True</attribute>
+                </xpath>
+                <xpath expr="//field[@name='user_id']" position="before">
+                    <field name="attribute_id" required="1" options="{'no_create_edit': True}"/>
+                    <field name="attribute_type_id" required="1" options="{'no_create_edit': True}"/>
+                    <field name="section_id" options="{'no_create_edit': True}"/>
+                </xpath>
+                <xpath expr="//field[@name='user_id']" position="after">
+                    <field name="customer_id" options="{'no_create_edit': True}"/>
+                    <field name="supplier_id" options="{'no_create_edit': True}"/>
+                </xpath>    
+                <xpath expr="//field[@name='priority']" position="before">
+                    <field name="create_uid" readonly="1"/>
+                    <field name="create_date"/>
+                    <field name="date_closed"/>
+                    <field name="date_deadline"/>
+                </xpath>
+                <xpath expr="//field[@name='description']" position="after">
+                    <notebook>
+                        <page string="Corrective action">
+                            <field 
+                                name="corrective_action" 
+                                placeholder="Add an corrective action note..."/>
+                        </page>
+                         <page string="Preventive proposal">
+                            <field 
+                                name="preventive_proposal" 
+                                placeholder="Add an preventive proposal note..."/>
+                        </page>
+                        <page string="Solution">
+                            <field 
+                                name="solution" 
+                                placeholder="Add an solution note..."/>
+                        </page>
+                    </notebook>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="project_issue_kanban_view_inherit" model="ir.ui.view">
+            <field name="name">Project Issue Kanban Inherit</field>
+            <field name="model">project.issue</field>
+            <field name="inherit_id" ref="project_issue.project_issue_kanban_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//div[contains(@class, 'oe_kanban_content')]//field[@name='name']" position="before"> 
+                     <li><b><font color="#0575A1">[ID:<field name="id"/>] <field name="section_id"/></font></b></li>
+                     <li><font color="#999B9C"><field name="attribute_id"/></font></li>
+                     <li><field name="attribute_type_id"/></li>
+                </xpath>
+                <xpath expr="//div[contains(@class, 'oe_kanban_bottom_right')]//field[@name='priority']" position="after"> 
+                    <br/><field name="project_id"/>
+                </xpath>
+                <xpath expr="//div[contains(@class, 'oe_kanban_content')]//field[@name='partner_id']" position="attributes"> 
+                    <attribute name="invisible" translation="off">True</attribute>
+                </xpath>
+                <xpath expr="//div[contains(@class, 'oe_kanban_content')]//field[@name='kanban_state']" position="attributes"> 
+                    <attribute name="invisible" translation="off">True</attribute>
+                </xpath>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="project_issue_attribute_tree_view">
+            <field name="name">Project Issue Attribute Tree</field>
+            <field name="model">project.issue.attribute</field>
+            <field name="arch" type="xml">
+                <tree string="Issue Attribute Tree">
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="project_issue_tree_view_inherit">
+            <field name="name">Project Issue Tracker Tree Inherit</field>
+            <field name="model">project.issue</field>
+            <field name="inherit_id" ref="project_issue.project_issue_tree_view"/>
+            <field name="arch" type="xml">
+                <tree position="attributes">
+                    <attribute name="colors" translation="off">red:current_date&gt;date_deadline</attribute>
+                </tree>
+                <xpath expr="//field[@name='partner_id']" position="attributes">
+                    <attribute name="invisible" translation="off">True</attribute>     
+                </xpath>
+                <xpath expr="//field[@name='project_id']" position="attributes">
+                    <attribute name="invisible" translation="off">True</attribute>     
+                </xpath>
+                <xpath expr="//field[@name='version_id']" position="attributes">
+                    <attribute name="invisible" translation="off">True</attribute>     
+                </xpath>    
+                <xpath expr="//field[@name='progress']" position="attributes">
+                    <attribute name="invisible" translation="off">True</attribute>     
+                </xpath>        
+                <xpath expr="//field[@name='name']" position="before">
+                    <field name="attribute_id"/> 
+                    <field name="attribute_type_id"/>
+                    <field name="section_id"/>
+                </xpath>
+                <xpath expr="//field[@name='create_date']" position="after">
+                    <field name="date_deadline"/>
+                    <field name="date_closed"/>
+                    <field name="project_id"/>
+                </xpath>    
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="view_project_issue_filter_inherit">
+            <field name="name">Project Issue Tracker Search Inherit</field>
+            <field name="model">project.issue</field>
+            <field name="inherit_id" ref="project_issue.view_project_issue_filter"/>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="attribute_id"/>
+                    <field name="attribute_type_id"/>
+                    <field name="project_id"/>
+                    <field name="section_id"/>
+                </search>
+                <xpath expr='//group[@string="Group By"]' position="inside">
+                    <filter name="by_Attribute" string="Attribute" domain="[]"
+                        context="{'group_by': 'attribute_id'}"/>
+                    <filter name="by_AttributeType" string="Attribute type" domain="[]"
+                        context="{'group_by': 'attribute_type_id'}"/>
+                    <filter name="by_project" string="Responsible Area" domain="[]"
+                        context="{'group_by': 'project_id'}"/>       
+                    <filter name="by_section_id" string="Sales team" domain="[]"
+                        context="{'group_by': 'section_id'}"/>
+                </xpath>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="project_issue_attribute_form_view">
+            <field name="name">Project Issue Attribute Form</field>
+            <field name="model">project.issue.attribute</field>
+            <field name="arch" type="xml">
+                <form string="Issue Attribute">
+                    <group col="2">
+                        <field name="name"/>
+                    </group>
+                </form>
+            </field>
+        </record>
+
+        <record id="project_issue_attribute_action" model="ir.actions.act_window">
+            <field name="name">Attributes</field>
+            <field name="res_model">project.issue.attribute</field>
+            <field name="view_type">form</field>
+            <field name="help" type="html">
+              <p class="oe_view_nocontent_create">
+                Click to add a new attribute.
+              </p><p>
+                Define here the different attributes of your issues.
+              </p>
+            </field>
+        </record>
+        <menuitem 
+            action="project_issue_attribute_action" 
+            id="menu_project_issue_attribute_act" 
+            parent="project_issue.menu_project_confi" 
+            groups="base.group_no_one"/>
+
+        <record model="ir.ui.view" id="project_issue_attribute_type_tree_view">
+            <field name="name">project.issue.attribute_type.tree</field>
+            <field name="model">project.issue.attribute_type</field>
+            <field name="arch" type="xml">
+                <tree string="Issue Attribute Type Tree">
+                    <field name="name"/>
+                    <field name="attribute_id"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="project_issue_attribute_type_action" model="ir.actions.act_window">
+            <field name="name">Attributes type</field>
+            <field name="res_model">project.issue.attribute_type</field>
+            <field name="view_type">form</field>
+            <field name="help" type="html">
+              <p class="oe_view_nocontent_create">
+                Click to add a new attribute type.
+              </p><p>
+                Define here the different attributes type of your issues.
+              </p>
+            </field>
+        </record>
+        <menuitem 
+            action="project_issue_attribute_type_action" 
+            id="menu_project_issue_attribute_type_act" 
+            parent="project_issue.menu_project_confi" 
+            groups="base.group_no_one"/>
+
+    </data>
+</openerp>
