@@ -77,6 +77,11 @@ msgstr "No se puede validar la Factura porque el Cliente tiene pagos atrasados o
 "Límite de Crédito : %s"
 
 #. module: typ_account
+#: view:account.invoice:typ_account.view_date_invoiced_account_invoice_search_inherit
+msgid "Date invoice"
+msgstr "Date invoice"
+
+#. module: typ_account
 #: model:ir.actions.server,name:typ_account.server_action_delete_entries_open_close_fiscalyear
 msgid "Delete entries open/close fiscal year"
 msgstr "Borrar asientos de apertura / cierre de año fiscal"

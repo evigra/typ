@@ -25,6 +25,18 @@ msgstr ""
 "X-Generator: Weblate 2.10\n"
 
 #. module: typ_stock
+#: code:addons/typ_stock/models/stock.py:192
+#, python-format
+msgid "<ul><li>shipment confirmed --> <b>Canceled</b></li></ul>"
+msgstr "<ul><li>shipment confirmed --> <b>Canceled</b></li></ul>"
+
+#. module: typ_stock
+#: code:addons/typ_stock/models/stock.py:190
+#, python-format
+msgid "<ul><li>shipment confirmed --> <b>ok</b></li></ul>"
+msgstr "<ul><li>shipment confirmed --> <b>ok</b></li></ul>"
+
+#. module: typ_stock
 #: selection:procurement.orderpoint.compute,importance:0
 #: selection:stock.warehouse.orderpoint,importance:0
 msgid "AA"
@@ -112,10 +124,15 @@ msgid "Importance"
 msgstr "Importancia"
 
 #. module: typ_stock
-#: code:addons/typ_stock/models/stock.py:226
+#: code:addons/typ_stock/models/stock.py:242
 #, python-format
 msgid "Internal movements don't allow locations in supplier or customer"
 msgstr "Los movimientos internos no permiten ubicaciones de proveedores o clientes"
+
+#. module: typ_stock
+#: field:stock.picking,invoiced:0
+msgid "Invoiced complete"
+msgstr "Invoiced complete"
 
 #. module: typ_stock
 #: field:pedimento.product,__last_update:0
@@ -349,7 +366,7 @@ msgid "The Serial number %s already captured"
 msgstr "El número de Serie %s ya se capturó"
 
 #. module: typ_stock
-#: code:addons/typ_stock/models/stock.py:255
+#: code:addons/typ_stock/models/stock.py:271
 #: code:addons/typ_stock/models/stock_return_picking.py:38
 #, python-format
 msgid "The return of the product %s, exceeds the amount invoiced"
@@ -411,7 +428,12 @@ msgid "This group can update cost standard of product."
 msgstr "Este grupo puede actualizar el costo estándar del producto."
 
 #. module: typ_stock
-#: code:addons/typ_stock/models/stock.py:312
+#: help:stock.picking,invoiced:0
+msgid "This must be checked only when the supplier have invoiced the whole order and there isn't a backorder. This activate a green highlight on tree view "
+msgstr "This must be checked only when the supplier have invoiced the whole order and there isn't a backorder. This activate a green highlight on tree view "
+
+#. module: typ_stock
+#: code:addons/typ_stock/models/stock.py:328
 #, python-format
 msgid "This picking cannot be cancelled."
 msgstr "Este albarán no puede ser cancelado."
@@ -518,9 +540,9 @@ msgstr "Advertencia"
 #: code:addons/typ_stock/models/stock.py:77
 #: code:addons/typ_stock/models/stock.py:94
 #: code:addons/typ_stock/models/stock.py:115
-#: code:addons/typ_stock/models/stock.py:225
-#: code:addons/typ_stock/models/stock.py:254
-#: code:addons/typ_stock/models/stock.py:311
+#: code:addons/typ_stock/models/stock.py:241
+#: code:addons/typ_stock/models/stock.py:270
+#: code:addons/typ_stock/models/stock.py:327
 #: code:addons/typ_stock/models/stock_return_picking.py:37
 #: code:addons/typ_stock/models/stock_return_picking.py:54
 #, python-format
@@ -553,7 +575,7 @@ msgid "Wizard Pedimento Product"
 msgstr "Asistente Pedimento Producto"
 
 #. module: typ_stock
-#: code:addons/typ_stock/models/stock.py:329
+#: code:addons/typ_stock/models/stock.py:345
 #, python-format
 msgid "You can not inactivate a warehouse with products on it, please adjust your inventories first and then come back and inactivate it."
 msgstr "No puede inactivar un almacén con productos en él, por favor, ajuste primero sus inventarios y luego vuelva a desactivarlo."
@@ -604,6 +626,11 @@ msgstr "seleccionar pedimento"
 #: help:procurement.orderpoint.compute,warehouse_id:0
 msgid "select warehouse to running schedulers"
 msgstr "seleccione el almacén para ejecutar los programadores"
+
+#. module: typ_stock
+#: view:stock.picking:typ_stock.view_stock_picking_form_inherit
+msgid "shipped ok"
+msgstr "shipped ok"
 
 #. module: typ_stock
 #: view:pedimento.product:typ_stock.view_pedimento_product_wizard
