@@ -43,10 +43,11 @@ the general supply.
 The methods inherit original path is: 
 
 **Tracking pickings via shipment_date**
+
 - You can track the picking with a shipment date that comes from the purchase order
-- You can change the shipment date in stock picking move lines changing the picking
-shipment date
+- You can change the shipment date in stock picking move lines changing the picking shipment date
 - Picking shipment date added to stock picking tree view
+- Tree view change the color of the pickings already in transit
 
 **Writing Wizard Pedimentos and Serial lote in quant**
 - You can write information about the quants which will allow you to follow up and

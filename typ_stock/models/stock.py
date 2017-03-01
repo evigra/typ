@@ -176,6 +176,22 @@ class StockPicking(models.Model):
         default=fields.Date.context_today, index=True,
         states={'done': [('readonly', True)]},
         help="Shipment date of the picking")
+    invoiced = fields.Boolean(
+        'Invoiced complete', copy=False,
+        help="This must be checked only when the supplier have invoiced "
+        "the whole order and there isn't a backorder. This activate a "
+        "green highlight on tree view ")
+
+    @api.multi
+    def action_confirm_trafic(self):
+        """This fill the invoiced field automatically"""
+        self.ensure_one()
+        self.invoiced = not self.invoiced
+        data = _("<ul><li>shipment confirmed --> <b>ok</b></li></ul>")
+        if not self.invoiced:
+            data = _(
+                "<ul><li>shipment confirmed --> <b>Canceled</b></li></ul>")
+        self.message_post(body=data)
 
     @api.multi
     @api.onchange('picking_shipment_date')
