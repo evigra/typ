@@ -9,7 +9,7 @@
             <field name="groups_id" eval="[(6, 0, [ref('typ_purchase.partner_group_hidden_create_button')])]"/>
             <field name="arch" type="xml">
                 <xpath expr="//form" position="attributes">
-                    <attribute name="create">false</attribute>
+                    <attribute name="create" translation="off">false</attribute>
                 </xpath>
             </field>
         </record>
@@ -20,7 +20,7 @@
             <field name="groups_id" eval="[(6, 0, [ref('typ_purchase.partner_group_hidden_create_button')])]"/>
             <field name="arch" type="xml">
                 <xpath expr="//tree" position="attributes">
-                    <attribute name="create">false</attribute>
+                    <attribute name="create" translation="off">false</attribute>
                 </xpath>
             </field>
         </record>
@@ -31,7 +31,7 @@
             <field name="groups_id" eval="[(6, 0, [ref('typ_purchase.partner_group_hidden_create_button')])]"/>
             <field name="arch" type="xml">
                 <xpath expr="//kanban" position="attributes">
-                    <attribute name="create">false</attribute>
+                    <attribute name="create" translation="off">false</attribute>
                 </xpath>
             </field>
         </record>
