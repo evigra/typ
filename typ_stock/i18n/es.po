@@ -435,11 +435,7 @@ msgstr "Este grupo puede actualizar el costo estándar del producto."
 #. module: typ_stock
 #: help:stock.picking,invoiced:0
 msgid "This must be checked only when the supplier have invoiced the whole order and there isn't a backorder. This activate a green highlight on tree view "
-msgstr ""
-"Este check debera ser activado solamente cuando el proveedor haya facturado "
-"la orden completa indicando así que no hay un backorder. Esto activara en la "
-"vista de arbol el color verde para este picking indicando que la orden esta "
-"embarcada sin ningún problema. "
+msgstr "Este check debera ser activado solamente cuando el proveedor haya facturado la orden completa indicando así que no hay un backorder. Esto activara en la vista de arbol el color verde para este picking indicando que la orden esta embarcada sin ningún problema. "
 
 #. module: typ_stock
 #: code:addons/typ_stock/models/stock.py:328

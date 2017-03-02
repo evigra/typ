@@ -14,3 +14,196 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: \n"
+#. module: typ_project_issue
+#: model:ir.actions.act_window,help:typ_project_issue.project_issue_attribute_type_action
+msgid "<p class=\"oe_view_nocontent_create\">\n"
+"                Click to add a new attribute type.\n"
+"              </p><p>\n"
+"                Define here the different attributes type of your issues.\n"
+"              </p>\n"
+"            "
+msgstr "<p class=\"oe_view_nocontent_create\">\n"
+"                Click to add a new attribute type.\n"
+"              </p><p>\n"
+"                Define here the different attributes type of your issues.\n"
+"              </p>\n"
+"            "
+
+#. module: typ_project_issue
+#: model:ir.actions.act_window,help:typ_project_issue.project_issue_attribute_action
+msgid "<p class=\"oe_view_nocontent_create\">\n"
+"                Click to add a new attribute.\n"
+"              </p><p>\n"
+"                Define here the different attributes of your issues.\n"
+"              </p>\n"
+"            "
+msgstr "<p class=\"oe_view_nocontent_create\">\n"
+"                Click to add a new attribute.\n"
+"              </p><p>\n"
+"                Define here the different attributes of your issues.\n"
+"              </p>\n"
+"            "
+
+#. module: typ_project_issue
+#: view:project.issue:typ_project_issue.project_issue_form_view_inherit
+msgid "Add an corrective action note..."
+msgstr "Add an corrective action note..."
+
+#. module: typ_project_issue
+#: view:project.issue:typ_project_issue.project_issue_form_view_inherit
+msgid "Add an preventive proposal note..."
+msgstr "Add an preventive proposal note..."
+
+#. module: typ_project_issue
+#: view:project.issue:typ_project_issue.project_issue_form_view_inherit
+msgid "Add an solution note..."
+msgstr "Add an solution note..."
+
+#. module: typ_project_issue
+#: view:project.issue:typ_project_issue.view_project_issue_filter_inherit
+#: field:project.issue.attribute,name:0
+msgid "Attribute"
+msgstr "Attribute"
+
+#. module: typ_project_issue
+#: field:project.issue.attribute_type,name:0
+msgid "Attribute Type"
+msgstr "Attribute Type"
+
+#. module: typ_project_issue
+#: field:project.issue,attribute_id:0
+#: field:project.issue.attribute_type,attribute_id:0
+msgid "Attribute id"
+msgstr "Attribute id"
+
+#. module: typ_project_issue
+#: view:project.issue:typ_project_issue.view_project_issue_filter_inherit
+msgid "Attribute type"
+msgstr "Attribute type"
+
+#. module: typ_project_issue
+#: field:project.issue,attribute_type_id:0
+msgid "Attribute type id"
+msgstr "Attribute type id"
+
+#. module: typ_project_issue
+#: model:ir.actions.act_window,name:typ_project_issue.project_issue_attribute_action
+#: model:ir.ui.menu,name:typ_project_issue.menu_project_issue_attribute_act
+msgid "Attributes"
+msgstr "Attributes"
+
+#. module: typ_project_issue
+#: model:ir.actions.act_window,name:typ_project_issue.project_issue_attribute_type_action
+#: model:ir.ui.menu,name:typ_project_issue.menu_project_issue_attribute_type_act
+msgid "Attributes type"
+msgstr "Attributes type"
+
+#. module: typ_project_issue
+#: view:project.issue:typ_project_issue.project_issue_form_view_inherit
+#: field:project.issue,corrective_action:0
+msgid "Corrective action"
+msgstr "Corrective action"
+
+#. module: typ_project_issue
+#: field:project.issue.attribute,create_uid:0
+#: field:project.issue.attribute_type,create_uid:0
+msgid "Created by"
+msgstr "Created by"
+
+#. module: typ_project_issue
+#: field:project.issue.attribute,create_date:0
+#: field:project.issue.attribute_type,create_date:0
+msgid "Created on"
+msgstr "Created on"
+
+#. module: typ_project_issue
+#: field:project.issue,customer_id:0
+msgid "Customer id"
+msgstr "Customer id"
+
+#. module: typ_project_issue
+#: field:project.issue.attribute,display_name:0
+#: field:project.issue.attribute_type,display_name:0
+msgid "Display Name"
+msgstr "Display Name"
+
+#. module: typ_project_issue
+#: field:project.issue.attribute,id:0
+#: field:project.issue.attribute_type,id:0
+msgid "ID"
+msgstr "ID"
+
+#. module: typ_project_issue
+#: view:project.issue.attribute:typ_project_issue.project_issue_attribute_form_view
+msgid "Issue Attribute"
+msgstr "Issue Attribute"
+
+#. module: typ_project_issue
+#: view:project.issue.attribute:typ_project_issue.project_issue_attribute_tree_view
+msgid "Issue Attribute Tree"
+msgstr "Issue Attribute Tree"
+
+#. module: typ_project_issue
+#: view:project.issue.attribute_type:typ_project_issue.project_issue_attribute_type_tree_view
+msgid "Issue Attribute Type Tree"
+msgstr "Issue Attribute Type Tree"
+
+#. module: typ_project_issue
+#: field:project.issue.attribute,__last_update:0
+#: field:project.issue.attribute_type,__last_update:0
+msgid "Last Modified on"
+msgstr "Last Modified on"
+
+#. module: typ_project_issue
+#: field:project.issue.attribute,write_uid:0
+#: field:project.issue.attribute_type,write_uid:0
+msgid "Last Updated by"
+msgstr "Last Updated by"
+
+#. module: typ_project_issue
+#: field:project.issue.attribute,write_date:0
+#: field:project.issue.attribute_type,write_date:0
+msgid "Last Updated on"
+msgstr "Last Updated on"
+
+#. module: typ_project_issue
+#: view:project.issue:typ_project_issue.project_issue_form_view_inherit
+#: field:project.issue,preventive_proposal:0
+msgid "Preventive proposal"
+msgstr "Preventive proposal"
+
+#. module: typ_project_issue
+#: model:ir.model,name:typ_project_issue.model_project_issue
+msgid "Project Issue"
+msgstr "Project Issue"
+
+#. module: typ_project_issue
+#: model:res.groups,name:typ_project_issue.project_issue_typ_group_manager
+msgid "Project Issue TYP / Manager"
+msgstr "Project Issue TYP / Manager"
+
+#. module: typ_project_issue
+#: view:project.issue:typ_project_issue.view_project_issue_filter_inherit
+msgid "Responsible Area"
+msgstr "Responsible Area"
+
+#. module: typ_project_issue
+#: view:project.issue:typ_project_issue.view_project_issue_filter_inherit
+msgid "Sales team"
+msgstr "Sales team"
+
+#. module: typ_project_issue
+#: view:project.issue:typ_project_issue.project_issue_form_view_inherit
+#: field:project.issue,solution:0
+msgid "Solution"
+msgstr "Solution"
+
+#. module: typ_project_issue
+#: field:project.issue,supplier_id:0
+msgid "Supplier id"
+msgstr "Supplier id"
+
+#. module: typ_project_issue
+#: view:project.issue:typ_project_issue.project_issue_kanban_view_inherit
+msgid "[ID:"
+msgstr "[ID:"
