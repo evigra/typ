@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from openerp import models, api, fields, _
-from openerp import exceptions
+from openerp import exceptions, models, api, fields, _
 
 
 class AccountInvoice(models.Model):
@@ -98,3 +97,23 @@ class AccountInvoice(models.Model):
         validation_date = fields.Date.context_today(self)
         self.write({'validation_date': validation_date})
         return res
+
+    def create_ir_attachment_facturae(self):
+        """Make the Electronic Invoice confirmed and signed automatically"""
+        res = super(AccountInvoice, self).create_ir_attachment_facturae()
+        if not isinstance(res, dict):
+            return res
+        attach_obj = self.env['ir.attachment.facturae.mx']
+        attach = attach_obj.search([
+            ('model_source', '=', self._name), ('id_source', '=', self.id)])[0]
+
+        if not attach.create_ir_attachment_facturae():
+            return False
+
+        result = attach.signal_send_customer()
+        view_id = self.env.ref('mail.email_compose_message_wizard_form').id
+        result.update({
+            'views': [(view_id, 'form')],
+            'view_id': view_id,
+        })
+        return result
