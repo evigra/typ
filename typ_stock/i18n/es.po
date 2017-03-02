@@ -315,6 +315,11 @@ msgid "State"
 msgstr "Estado"
 
 #. module: typ_stock
+#: model:ir.model,name:typ_stock.model_stock_invoice_onshipping
+msgid "Stock Invoice Onshipping"
+msgstr "Stock Invoice Onshipping"
+
+#. module: typ_stock
 #: model:ir.model,name:typ_stock.model_stock_move
 msgid "Stock Move"
 msgstr "Movimiento de Inventario"
