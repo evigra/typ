@@ -13,8 +13,8 @@ msgstr ""
 "Project-Id-Version: Odoo Server 8.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-11-24 22:20+0000\n"
-"PO-Revision-Date: 2017-02-21 15:25+0000\n"
-"Last-Translator: Yennnifer Santiago <yennifer@vauxoo.com>\n"
+"PO-Revision-Date: 2017-03-02 19:14+0000\n"
+"Last-Translator: cmexiatyp <cmexia@typrefrigeracion.com>\n"
 "Language-Team: Spanish "
 "<http://weblate.vauxoo.com/projects/typ-8-0/typ_stock/es/>\n"
 "Language: es\n"
@@ -28,13 +28,13 @@ msgstr ""
 #: code:addons/typ_stock/models/stock.py:192
 #, python-format
 msgid "<ul><li>shipment confirmed --> <b>Canceled</b></li></ul>"
-msgstr "<ul><li>shipment confirmed --> <b>Canceled</b></li></ul>"
+msgstr "<ul><li>Embarque Confirmado --> <b>Cancelado</b></li></ul>"
 
 #. module: typ_stock
 #: code:addons/typ_stock/models/stock.py:190
 #, python-format
 msgid "<ul><li>shipment confirmed --> <b>ok</b></li></ul>"
-msgstr "<ul><li>shipment confirmed --> <b>ok</b></li></ul>"
+msgstr "<ul><li>Embarque Confirmado --> <b>ok</b></li></ul>"
 
 #. module: typ_stock
 #: selection:procurement.orderpoint.compute,importance:0
@@ -132,7 +132,7 @@ msgstr "Los movimientos internos no permiten ubicaciones de proveedores o client
 #. module: typ_stock
 #: field:stock.picking,invoiced:0
 msgid "Invoiced complete"
-msgstr "Invoiced complete"
+msgstr "Factura Completa"
 
 #. module: typ_stock
 #: field:pedimento.product,__last_update:0
