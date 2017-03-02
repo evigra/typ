@@ -75,6 +75,11 @@ msgid "Expected Date"
 msgstr "Fecha prevista"
 
 #. module: typ_purchase
+#: view:purchase.order.line:typ_purchase.purchase_order_line_search_inherit
+msgid "Hide lines in cancelled orders"
+msgstr "Hide lines in cancelled orders"
+
+#. module: typ_purchase
 #: help:purchase.order.line,shipment_date:0
 msgid "Indicate when product ships from supplier's warehouse"
 msgstr "Indica cuando los productos se envían desde el almacén del proveedor"
@@ -266,11 +271,6 @@ msgid "Total"
 msgstr "Total"
 
 #. module: typ_purchase
-#: view:purchase.order:typ_purchase.view_create_date_purchase_order_form
-msgid "True"
-msgstr "Verdadero"
-
-#. module: typ_purchase
 #: view:website:purchase.report_purchaseorder_document
 msgid "Unit Price"
 msgstr "Precio Unidad"
@@ -307,27 +307,3 @@ msgstr "Validado por:"
 #: view:website:typ_purchase.external_layout_footer
 msgid "Website"
 msgstr "Sitio web"
-
-#. module: typ_purchase
-#: view:purchase.order:typ_purchase.purchase_order_form_inherit
-msgid "[('code', '=', 'incoming'), ('default_location_src_id.usage', '=', 'supplier')]"
-msgstr "[('code', '=', 'incoming'), ('default_location_src_id.usage', '=', 'supplier')]"
-
-#. module: typ_purchase
-#: view:purchase.order:typ_purchase.purchase_order_hide_button_form
-#: view:purchase.order:typ_purchase.purchase_order_hide_button_tree
-#: view:res.partner:typ_purchase.partner_hidden_button_form
-#: view:res.partner:typ_purchase.partner_hidden_button_kanban
-#: view:res.partner:typ_purchase.partner_hidden_button_tree
-msgid "false"
-msgstr "false"
-
-#. module: typ_purchase
-#: view:purchase.requisition:typ_purchase.view_requisition_budget_form
-msgid "typ_purchase.group_purchase_budget_manager"
-msgstr "typ_purchase.group_purchase_budget_manager"
-
-#. module: typ_purchase
-#: view:purchase.order:typ_purchase.view_create_date_purchase_order_form
-msgid "{'shipment_date': shipment_date}"
-msgstr "{'shipment_date': shipment_date}"
