@@ -4,3 +4,4 @@ from . import orderpoint_procurement
 from . import stock
 from . import stock_return_picking
 from . import pedimento_product
+from . import stock_invoice_onshipping

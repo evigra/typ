@@ -10,3 +10,4 @@ from . import test_active_warehouse
 from . import test_cancel_picking
 from . import test_pedimento_product_wizard
 from . import test_procurement_action_server
+from . import test_stock_onshiping_view_form
