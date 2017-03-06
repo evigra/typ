@@ -94,6 +94,7 @@
                 </xpath>
                 <xpath expr="//field[@name='date']" position="after">
                     <field name="picking_shipment_date"/>
+                    <field name="date_done"/>
                     <field name="invoiced" invisible="1"/>
                 </xpath>
                 <xpath expr="//tree" position="attributes">
