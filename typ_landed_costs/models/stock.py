@@ -33,14 +33,21 @@ class StockMove(models.Model):
 class StockCardProduct(models.TransientModel):
     _inherit = 'stock.card.product'
 
+    def _get_discrete_values(self, move_id):
+        query = ('''
+                 SELECT
+                    cost, segmentation_cost
+                 FROM stock_discrete AS sd
+                 WHERE sd.move_id = %(move_id)s
+                 ''') % dict(move_id=move_id)
+        self._cr.execute(query)
+        return self._cr.dictfetchall()
+
     def _get_price_on_customer_return(self, row, vals, qntval):
         vals['product_qty'] += (vals['direction'] * row['product_qty'])
-        sm_obj = self.env['stock.move']
-        move_id = row['move_id']
-        move_brw = sm_obj.browse(move_id)
+        dqnt_val = self._get_discrete_values(row['move_id'])
         # NOTE: Identify the originating move_id of returning move
-        origin_id = move_brw.origin_returned_move_id or move_brw.move_dest_id
-        origin_id = origin_id.id
+        origin_id = row['origin_returned_move_id'] or row['move_dest_id']
         # NOTE: Falling back to average in case customer return is
         # orphan, i.e., return was created from scratch
         old_average = (
@@ -49,8 +56,8 @@ class StockCardProduct(models.TransientModel):
         # /!\ NOTE: Normalize this computation
         vals['move_valuation'] = sum(
             [old_average * qnt['qty'] for qnt in qntval] +
-            [dquant.cost * move_brw.product_qty
-             for dquant in move_brw.discrete_ids])
+            [dquant['cost'] * row['product_qty']
+             for dquant in dqnt_val])
 
         for sgmnt in SEGMENTATION:
             old_average = (
@@ -63,7 +70,7 @@ class StockCardProduct(models.TransientModel):
 
             vals['%s_valuation' % sgmnt] = sum(
                 [old_average * qnt['qty'] for qnt in qntval] +
-                [dquant.cost * move_brw.product_qty
-                 for dquant in move_brw.discrete_ids
-                 if dquant.segmentation_cost == '%s_cost' % sgmnt])
+                [dquant['cost'] * row['product_qty']
+                 for dquant in dqnt_val
+                 if dquant['segmentation_cost'] == '%s_cost' % sgmnt])
         return True
