@@ -13,8 +13,8 @@ msgstr ""
 "Project-Id-Version: Odoo Server 8.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-11-24 22:20+0000\n"
-"PO-Revision-Date: 2017-03-02 19:23+0000\n"
-"Last-Translator: cmexiatyp <cmexia@typrefrigeracion.com>\n"
+"PO-Revision-Date: 2017-03-07 16:02+0000\n"
+"Last-Translator: AntonioRogel <arogel@typrefrigeracion.com>\n"
 "Language-Team: Spanish "
 "<http://weblate.vauxoo.com/projects/typ-8-0/typ_stock/es/>\n"
 "Language: es\n"
@@ -90,7 +90,7 @@ msgstr "Creado por"
 #. module: typ_stock
 #: field:pedimento.product,create_date:0
 msgid "Created on"
-msgstr "Creado el"
+msgstr "Fecha creado"
 
 #. module: typ_stock
 #: view:website:stock.report_picking
@@ -110,7 +110,7 @@ msgstr "Destino"
 #. module: typ_stock
 #: field:pedimento.product,display_name:0
 msgid "Display Name"
-msgstr "Nombre a Mostrar"
+msgstr "Nombre"
 
 #. module: typ_stock
 #: field:pedimento.product,id:0
@@ -137,17 +137,17 @@ msgstr "Factura Completa"
 #. module: typ_stock
 #: field:pedimento.product,__last_update:0
 msgid "Last Modified on"
-msgstr "Última Modificación el"
+msgstr "Última modificación"
 
 #. module: typ_stock
 #: field:pedimento.product,write_uid:0
 msgid "Last Updated by"
-msgstr "Ultima actualización por"
+msgstr "Última actualización por"
 
 #. module: typ_stock
 #: field:pedimento.product,write_date:0
 msgid "Last Updated on"
-msgstr "Ultima actualización en"
+msgstr "Última actualización en"
 
 #. module: typ_stock
 #: model:stock.location,name:typ_stock.location_scrapped_test
