@@ -7,13 +7,17 @@ msgstr ""
 "Project-Id-Version: Odoo Server 8.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-03-06 15:51+0000\n"
-"PO-Revision-Date: 2017-03-06 15:51+0000\n"
-"Last-Translator: <>\n"
-"Language-Team: \n"
+"PO-Revision-Date: 2017-03-07 16:02+0000\n"
+"Last-Translator: AntonioRogel <arogel@typrefrigeracion.com>\n"
+"Language-Team: Spanish "
+"<http://weblate.vauxoo.com/projects/typ-8-0/typ_project_issue/es/>\n"
+"Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
-"Plural-Forms: \n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 2.10\n"
+
 #. module: typ_project_issue
 #: model:ir.actions.act_window,help:typ_project_issue.project_issue_attribute_type_action
 msgid "<p class=\"oe_view_nocontent_create\">\n"
@@ -22,10 +26,12 @@ msgid "<p class=\"oe_view_nocontent_create\">\n"
 "                Define here the different attributes type of your issues.\n"
 "              </p>\n"
 "            "
-msgstr "<p class=\"oe_view_nocontent_create\">\n"
-"                Click to add a new attribute type.\n"
+msgstr ""
+"<p class=\"oe_view_nocontent_create\">\n"
+"                Clic para agregar un nuevo tipo de atributo.\n"
 "              </p><p>\n"
-"                Define here the different attributes type of your issues.\n"
+"                Defina aquí los diferentes tipos de atributo para las "
+"incidencias.\n"
 "              </p>\n"
 "            "
 
@@ -37,27 +43,28 @@ msgid "<p class=\"oe_view_nocontent_create\">\n"
 "                Define here the different attributes of your issues.\n"
 "              </p>\n"
 "            "
-msgstr "<p class=\"oe_view_nocontent_create\">\n"
-"                Click to add a new attribute.\n"
+msgstr ""
+"<p class=\"oe_view_nocontent_create\">\n"
+"                Clic para agregar un nuevo atributo.\n"
 "              </p><p>\n"
-"                Define here the different attributes of your issues.\n"
+"                Defina aquí los diferentes atributos para incidencias.\n"
 "              </p>\n"
 "            "
 
 #. module: typ_project_issue
 #: view:project.issue:typ_project_issue.project_issue_form_view_inherit
 msgid "Add an corrective action note..."
-msgstr "Add an corrective action note..."
+msgstr "Agregar una nota de acción correctiva..."
 
 #. module: typ_project_issue
 #: view:project.issue:typ_project_issue.project_issue_form_view_inherit
 msgid "Add an preventive proposal note..."
-msgstr "Add an preventive proposal note..."
+msgstr "Agregar una nota de propuesta preventiva..."
 
 #. module: typ_project_issue
 #: view:project.issue:typ_project_issue.project_issue_form_view_inherit
 msgid "Add an solution note..."
-msgstr "Add an solution note..."
+msgstr "Agregar una nota de solución..."
 
 #. module: typ_project_issue
 #: view:project.issue:typ_project_issue.view_project_issue_filter_inherit
@@ -90,42 +97,42 @@ msgstr "Attribute type id"
 #: model:ir.actions.act_window,name:typ_project_issue.project_issue_attribute_action
 #: model:ir.ui.menu,name:typ_project_issue.menu_project_issue_attribute_act
 msgid "Attributes"
-msgstr "Attributes"
+msgstr "Atributos"
 
 #. module: typ_project_issue
 #: model:ir.actions.act_window,name:typ_project_issue.project_issue_attribute_type_action
 #: model:ir.ui.menu,name:typ_project_issue.menu_project_issue_attribute_type_act
 msgid "Attributes type"
-msgstr "Attributes type"
+msgstr "Tipos de atributo"
 
 #. module: typ_project_issue
 #: view:project.issue:typ_project_issue.project_issue_form_view_inherit
 #: field:project.issue,corrective_action:0
 msgid "Corrective action"
-msgstr "Corrective action"
+msgstr "Acción correctiva"
 
 #. module: typ_project_issue
 #: field:project.issue.attribute,create_uid:0
 #: field:project.issue.attribute_type,create_uid:0
 msgid "Created by"
-msgstr "Created by"
+msgstr "Creado por"
 
 #. module: typ_project_issue
 #: field:project.issue.attribute,create_date:0
 #: field:project.issue.attribute_type,create_date:0
 msgid "Created on"
-msgstr "Created on"
+msgstr "Fecha creado"
 
 #. module: typ_project_issue
 #: field:project.issue,customer_id:0
 msgid "Customer id"
-msgstr "Customer id"
+msgstr "Cliente"
 
 #. module: typ_project_issue
 #: field:project.issue.attribute,display_name:0
 #: field:project.issue.attribute_type,display_name:0
 msgid "Display Name"
-msgstr "Display Name"
+msgstr "Nombre"
 
 #. module: typ_project_issue
 #: field:project.issue.attribute,id:0
@@ -136,72 +143,72 @@ msgstr "ID"
 #. module: typ_project_issue
 #: view:project.issue.attribute:typ_project_issue.project_issue_attribute_form_view
 msgid "Issue Attribute"
-msgstr "Issue Attribute"
+msgstr "Atributo de incidencia"
 
 #. module: typ_project_issue
 #: view:project.issue.attribute:typ_project_issue.project_issue_attribute_tree_view
 msgid "Issue Attribute Tree"
-msgstr "Issue Attribute Tree"
+msgstr "Atributo de invidencia"
 
 #. module: typ_project_issue
 #: view:project.issue.attribute_type:typ_project_issue.project_issue_attribute_type_tree_view
 msgid "Issue Attribute Type Tree"
-msgstr "Issue Attribute Type Tree"
+msgstr "Tipo de atributo de invidencia"
 
 #. module: typ_project_issue
 #: field:project.issue.attribute,__last_update:0
 #: field:project.issue.attribute_type,__last_update:0
 msgid "Last Modified on"
-msgstr "Last Modified on"
+msgstr "Última modificación"
 
 #. module: typ_project_issue
 #: field:project.issue.attribute,write_uid:0
 #: field:project.issue.attribute_type,write_uid:0
 msgid "Last Updated by"
-msgstr "Last Updated by"
+msgstr "Última actualización por"
 
 #. module: typ_project_issue
 #: field:project.issue.attribute,write_date:0
 #: field:project.issue.attribute_type,write_date:0
 msgid "Last Updated on"
-msgstr "Last Updated on"
+msgstr "Última actualización en"
 
 #. module: typ_project_issue
 #: view:project.issue:typ_project_issue.project_issue_form_view_inherit
 #: field:project.issue,preventive_proposal:0
 msgid "Preventive proposal"
-msgstr "Preventive proposal"
+msgstr "Propuesta preventiva"
 
 #. module: typ_project_issue
 #: model:ir.model,name:typ_project_issue.model_project_issue
 msgid "Project Issue"
-msgstr "Project Issue"
+msgstr "Proyecto de inciencias"
 
 #. module: typ_project_issue
 #: model:res.groups,name:typ_project_issue.project_issue_typ_group_manager
 msgid "Project Issue TYP / Manager"
-msgstr "Project Issue TYP / Manager"
+msgstr "Proyecto de incidencias TYP / Administrador"
 
 #. module: typ_project_issue
 #: view:project.issue:typ_project_issue.view_project_issue_filter_inherit
 msgid "Responsible Area"
-msgstr "Responsible Area"
+msgstr "Área responsable"
 
 #. module: typ_project_issue
 #: view:project.issue:typ_project_issue.view_project_issue_filter_inherit
 msgid "Sales team"
-msgstr "Sales team"
+msgstr "Sucursal"
 
 #. module: typ_project_issue
 #: view:project.issue:typ_project_issue.project_issue_form_view_inherit
 #: field:project.issue,solution:0
 msgid "Solution"
-msgstr "Solution"
+msgstr "Solución"
 
 #. module: typ_project_issue
 #: field:project.issue,supplier_id:0
 msgid "Supplier id"
-msgstr "Supplier id"
+msgstr "Proveedor"
 
 #. module: typ_project_issue
 #: view:project.issue:typ_project_issue.project_issue_kanban_view_inherit
