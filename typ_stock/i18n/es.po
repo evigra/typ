@@ -449,6 +449,11 @@ msgid "Transit Stock"
 msgstr "Stock de Tránsito"
 
 #. module: typ_stock
+#: model:res.groups,name:typ_stock.res_group_can_unreserve
+msgid "Users than can unreserve"
+msgstr "Users than can unreserve"
+
+#. module: typ_stock
 #: model:res.groups,name:typ_stock.res_group_cancel_picking
 msgid "Users that can cancel a picking"
 msgstr "Usuarios que pueden cancelar un albarán"
@@ -467,6 +472,11 @@ msgstr "Usuarios que pueden definir pedimentos, serial y lotes"
 #: model:res.groups,name:typ_stock.res_group_force_stock_move
 msgid "Users that can force availability and unassign"
 msgstr "Usuarios que pueden forzar disponibilidad y cancelar asignación"
+
+#. module: typ_stock
+#: model:res.groups,name:typ_stock.res_group_can_not_create_picking
+msgid "Users that can not create picking"
+msgstr "Users that can not create picking"
 
 #. module: typ_stock
 #: model:res.groups,name:typ_stock.res_group_reverse_transfer
