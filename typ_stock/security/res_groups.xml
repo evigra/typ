@@ -4,6 +4,9 @@
         <record id="res_group_force_stock_move" model="res.groups">
           <field name="name">Users that can force availability and unassign</field>
         </record>
+        <record id="res_group_can_unreserve" model="res.groups">
+          <field name="name">Users than can unreserve</field>
+        </record>
         <record id="res_group_can_run_scheduler" model="res.groups">
           <field name="name">Users that can run schedulers warehouse</field>
         </record>

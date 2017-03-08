@@ -11,7 +11,7 @@
                     <attribute name="groups" translation="off">typ_stock.res_group_force_stock_move</attribute>
                 </xpath>
                 <xpath expr="//button[@name='do_unreserve']" position="attributes">
-                    <attribute name="groups" translation="off">typ_stock.res_group_force_stock_move</attribute>
+                    <attribute name="groups" translation="off">typ_stock.res_group_force_stock_move,typ_stock.res_group_can_unreserve</attribute>
                 </xpath>
                 <xpath expr="//button[@name='do_partial_open_barcode']" position="attributes">
                     <attribute name="groups" translation="off">typ_stock.res_group_can_see_barcode_button</attribute>
