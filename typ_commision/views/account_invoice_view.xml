@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <record id="view_invoice_line_tree" model="ir.ui.view">
+            <field name="name">account.invoice.line.tree</field>
+            <field name="model">account.invoice.line</field>
+            <field name="priority">20</field>
+            <field name="arch" type="xml">
+                <tree string="Invoice Line">
+                    <field name="product_id"/>
+                    <field name="name"/>
+                    <field name="account_id" groups="account.group_account_user"/>
+                    <field name="quantity"/>
+                    <field name="uos_id" groups="product.group_uom"/>
+                    <field name="price_unit"/>
+                    <field name="price_subtotal"/>
+                    <field name="inv_name"/>
+                    <field name="origin"/>
+                    <field name="partner_id"/>
+                    <field name="type_payment_term"/>
+                    <field name="categ_id"/>
+                    <field name="currency"/>
+                    <field name="currency_rate"/>
+                    <field name="price_cost"/>
+                    <field name="sale_margin"/>
+                    <field name="cost_transaction"/>
+                    <field name="user_id"/>
+                    <field name="puser_id"/>
+                    <field name="date_invoice"/>
+                    <field name="date_due"/>
+                    <field name="payment_date"/>
+                    <field name="period_id"/>
+                    <field name="section_id"/>
+                    <field name="state"/>
+                    <field name="type"/>
+                    <field name="credit_note_type"/>
+                    <field name="parent_invoice_id"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_account_invoice_line_filter" model="ir.ui.view">
+            <field name="name">account.invoice.line.select</field>
+            <field name="model">account.invoice.line</field>
+            <field name="arch" type="xml">
+                <search string="Search Invoice">
+                    <field name="inv_name" string="Invoice" filter_domain="['|', ('inv_name','ilike',self), ('partner_id', 'child_of', self)]"/>
+                    <filter name="proforma" string="Proforma" domain="[('state','=','proforma2')]" help="Proforma Invoices" groups="account.group_proforma_invoices"/>
+                    <filter name="invoices" string="Invoices" domain="[('state','not in',['draft','cancel'])]" help="Proforma/Open/Paid Invoices"/>
+                    <filter name="unpaid" string="Unpaid" domain="[('state','=','open')]" help="Unpaid Invoices"/>
+                    <filter name="paid" string="Paid" domain="[('state','=','paid')]" help="Paid Invoices"/>
+                    <separator/>
+                    <field name="partner_id" operator="child_of"/>
+                    <field name="user_id" string="Salesperson"/>
+                    <field name="product_id" string="Product"/>
+                    <separator/>
+                    <filter domain="[('user_id','=',uid)]" help="My Invoices"/>
+                    <group expand="0" string="Group By">
+                        <filter name="group_by_partner_id" string="Partner" context="{'group_by':'partner_id'}"/>
+                        <filter string="Salesperson" context="{'group_by':'user_id'}"/>
+                        <filter string="Sales Team" context="{'group_by':'section_id'}"/>
+                        <filter string="Status" context="{'group_by':'state'}"/>
+                        <separator/>
+                        <filter string="Invoice" context="{'group_by':'inv_name'}"/>
+                        <filter string="Origin" context="{'group_by':'origin'}"/>
+                        <filter string="Due Month" context="{'group_by':'date_due'}"/>
+                        <filter string="Month" context="{'group_by':'date_invoice'}"/>
+                        <filter string="Payment Date" context="{'group_by':'payment_date'}"/>
+                        <separator/>
+                        <filter string="Category" context="{'group_by':'categ_id'}"/>
+                        <filter string="Product" context="{'group_by':'product_id'}"/>
+                    </group>
+               </search>
+            </field>
+        </record>
+
+        <record id="invoice_form" model="ir.ui.view">
+            <field name="name">invoice.form.partner.credit.note.fields</field>
+            <field name="model">account.invoice</field>
+            <field name="inherit_id" ref="account.invoice_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='fiscal_position']" position="after">
+                    <field name="credit_note_type" string="Type" attrs="{'invisible': [('type', '!=', 'out_refund')], 'required': [('type', '=', 'out_refund')]}"/>
+                </xpath>
+
+                <xpath expr="//field[@name='move_id']" position="before">
+                    <field name="parent_invoice_id" domain="[('type', '=', 'out_invoice'), ('partner_id', '=', partner_id)]" options="{'no_create_edit': True}" attrs="{'invisible': [('type', '!=', 'out_refund')]}"/>
+                </xpath>
+            </field>
+        </record>
+
+
+    </data>
+</openerp>

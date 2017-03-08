@@ -61,6 +61,7 @@
         'typ_landed_costs',
         'typ_purchase',
         'typ_default_warehouse_from_sale_team',
+        'typ_commision',
         'web_export_view',
     ],
     'test': [

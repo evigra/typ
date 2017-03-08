@@ -1,0 +1,2 @@
+id,name,model_id/id,group_id/id,perm_read,perm_write,perm_create,perm_unlink
+access_commision_report_base,access_commision_reports_base,model_commision_reports_base,,1,1,1,1
