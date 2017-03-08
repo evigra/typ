@@ -182,6 +182,17 @@ class StockPicking(models.Model):
         "the whole order and there isn't a backorder. This activate a "
         "green highlight on tree view ")
 
+    @api.model
+    def _get_invoice_vals(self, key, inv_type, journal_id, moves):
+        res = super(StockPicking, self)._get_invoice_vals(
+            key, inv_type, journal_id, moves)
+        for move in moves:
+            new_origin = "%s : %s" % (move.picking_id.origin,
+                                      move.picking_id.name)
+            res.update(
+                {'origin': new_origin})
+        return res
+
     @api.multi
     def action_confirm_trafic(self):
         """This fill the invoiced field automatically"""
