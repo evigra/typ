@@ -24,6 +24,8 @@
     # always loaded
     'data': [
         'data/ir_actions_server.xml',
+        'security/res_groups.xml',
+        'security/ir.model.access.csv',
         'data/base_action_rule.xml',
         'data/ir_cron.xml',
         'views/procurement_rule_view.xml',
@@ -32,7 +34,6 @@
         'views/stock_picking_view.xml',
         'views/product_view.xml',
         'views/stock_quant_view.xml',
-        'security/res_groups.xml',
         'wizard/view_procurement_compute_wizard_inh.xml',
         'wizard/stock_serial_view.xml',
         'wizard/pedimento_product_wizard.xml',
