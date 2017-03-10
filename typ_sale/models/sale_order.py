@@ -1,6 +1,7 @@
 # coding: utf-8
 
 from openerp import api, fields, models, _
+from openerp.exceptions import ValidationError
 
 
 class SaleOrder(models.Model):
@@ -67,3 +68,13 @@ class SaleOrder(models.Model):
                 return {
                     'warning': warning,
                 }
+
+    @api.multi
+    def action_cancel(self):
+        picking_done = self.picking_ids.filtered(
+            lambda pick: pick.state == 'done')
+        if picking_done:
+            raise ValidationError(_('This order can not be canceled because '
+                                    'some of their pickings already have been '
+                                    'transfered.'))
+        return super(SaleOrder, self).action_cancel()
