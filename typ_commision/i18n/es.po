@@ -225,9 +225,7 @@ msgstr "Llenar Campos Requeridos"
 #. module: typ_commision
 #: view:commision.reports.base:typ_commision.view_reports_base_form
 msgid "Fill required fields in the invoice lines selected by the filter used"
-msgstr ""
-"Llenar los campos requeridos in las líneas de factura seleccionadas por el "
-"filtro usado"
+msgstr "Llenar los campos requeridos in las líneas de factura seleccionadas por el filtro usado"
 
 #. module: typ_commision
 #: field:commision.reports.base,filter_id:0
@@ -239,9 +237,7 @@ msgstr "Filtro"
 #: help:commision.reports.base,filter_id:0
 #: help:commision.reports.base,filter_inv_id:0
 msgid "Filter should be by date, group_by is ignored, the model which the filter should belong to invoice line"
-msgstr ""
-"Los filtros deben ser por fecha, los agrupamientos son ignorados, el modelo "
-"al cual el filtro debe pertenecer son las líneas de factura"
+msgstr "Los filtros deben ser por fecha, los agrupamientos son ignorados, el modelo al cual el filtro debe pertenecer son las líneas de factura"
 
 #. module: typ_commision
 #: field:commision.reports.base,message_follower_ids:0
@@ -262,10 +258,7 @@ msgstr "Agrupar por"
 #. module: typ_commision
 #: help:commision.reports.base,message_summary:0
 msgid "Holds the Chatter summary (number of messages, ...). This summary is directly in html format in order to be inserted in kanban views."
-msgstr ""
-"Contiene el resumen Chatter (número de mensajes, ...). Este resumen está "
-"directamente en formato html para poder ser insertado en las vistas de "
-"kanban."
+msgstr "Contiene el resumen Chatter (número de mensajes, ...). Este resumen está directamente en formato html para poder ser insertado en las vistas de kanban."
 
 #. module: typ_commision
 #: field:commision.reports.base,id:0
@@ -485,10 +478,7 @@ msgstr "Rate usando para calcular el precio en la factura"
 #. module: typ_commision
 #: help:account.invoice.line,cost_transaction:0
 msgid "Real cost of the transaction. This cost is computed considering landed costs added after the validation of this order but created before this"
-msgstr ""
-"Costo real de la transacción. Este costo es calculado considerando costos de "
-"aterrizaje agregados después de la validación de la orden, pero creada antes "
-"de esta"
+msgstr "Costo real de la transacción. Este costo es calculado considerando costos de aterrizaje agregados después de la validación de la orden, pero creada antes de esta"
 
 #. module: typ_commision
 #: selection:account.invoice,credit_note_type:0
@@ -607,9 +597,7 @@ msgstr "Usado para identificar la razón de esta nota de crédito"
 #. module: typ_commision
 #: help:commision.reports.base,custom:0
 msgid "Used to specify custom filter and allow use the date to search by payments "
-msgstr ""
-"Usado para especificar filtros personalizados y permitir usar la fecha para "
-"buscar los pagos "
+msgstr "Usado para especificar filtros personalizados y permitir usar la fecha para buscar los pagos "
 
 #. module: typ_commision
 #: help:commision.reports.base,lines:0

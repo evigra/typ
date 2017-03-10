@@ -490,7 +490,7 @@ msgid "SUP"
 msgstr "SUP"
 
 #. module: typ_sale
-#: code:addons/typ_sale/models/sale_order.py:66
+#: code:addons/typ_sale/models/sale_order.py:67
 #, python-format
 msgid "Sale of product below margin"
 msgstr "Venta de producto por debajo del margen"
@@ -596,6 +596,12 @@ msgstr "Este grupo puede ver el margen en el pedido de venta."
 #: model:res.groups,comment:typ_sale.group_sale_order_invoice_payment_term_manager
 msgid "This group has access to modify field payment term in Sale Orders and Invoices."
 msgstr "Este grupo tiene acceso a modificar campos de plazo de pago en Ordenes de Venta y Facturas."
+
+#. module: typ_sale
+#: code:addons/typ_sale/models/sale_order.py:77
+#, python-format
+msgid "This order can not be canceled because some of their pickings already have been transfered."
+msgstr "This order can not be canceled because some of their pickings already have been transfered."
 
 #. module: typ_sale
 #: view:website:sale.report_saleorder_document
