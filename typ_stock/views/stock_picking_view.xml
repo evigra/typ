@@ -67,11 +67,7 @@
             <field name="name">stock.picking.form.inherit</field>
             <field name="model">stock.picking</field>
             <field name="inherit_id" ref="stock.view_picking_form"/>
-            <field name="groups_id" eval="[(6, 0, [ref('typ_stock.res_group_can_not_create_picking')])]"/>
             <field name="arch" type="xml">
-                <xpath expr="//form" position="attributes">
-                    <attribute name="create" translation="off">false</attribute>
-                </xpath>
                 <field name="origin" position="before">
                     <field name="picking_shipment_date"/>
                 </field>
@@ -92,11 +88,7 @@
             <field name="name">stock.picking.tree.inherit</field>
             <field name="model">stock.picking</field>
             <field name="inherit_id" ref="stock.vpicktree"/>
-            <field name="groups_id" eval="[(6, 0, [ref('typ_stock.res_group_can_not_create_picking')])]"/>
             <field name="arch" type="xml">
-                <xpath expr="//tree[@string='Picking list']" position="attributes">
-                    <attribute name="create" translation="off">false</attribute>
-                </xpath>
                 <xpath expr="//field[@name='min_date']" position="attributes">
                     <attribute name="invisible" translation="off">0</attribute>
                 </xpath>
@@ -113,6 +105,29 @@
                     </attribute>
                 </xpath>
                 </field>
+        </record>
+        <!-- Hide create button to a group -->
+        <record id="stock_picking_hide_button_form" model="ir.ui.view">
+            <field name="name">stock.picking.hide.button.form</field>
+            <field name="model">stock.picking</field>
+            <field name="inherit_id" ref="stock.view_picking_form"/>
+            <field name="groups_id" eval="[(6, 0, [ref('typ_stock.res_group_can_not_create_picking')])]"/>
+            <field name="arch" type="xml">
+                <xpath expr="//form" position="attributes">
+                    <attribute name="create" translation="off">false</attribute>
+                </xpath>
+            </field>
+        </record>
+        <record id="stock_picking_hide_button_tree" model="ir.ui.view">
+            <field name="name">stock.picking.hide_button.tree</field>
+            <field name="model">stock.picking</field>
+            <field name="inherit_id" ref="stock.vpicktree"/>
+            <field name="groups_id" eval="[(6, 0, [ref('typ_stock.res_group_can_not_create_picking')])]"/>
+            <field name="arch" type="xml">
+                <xpath expr="//tree[@string='Picking list']" position="attributes">
+                     <attribute name="create" translation="off">false</attribute>
+                </xpath>
+            </field>
         </record>
     </data>
 </openerp>
