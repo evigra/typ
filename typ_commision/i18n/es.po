@@ -7,206 +7,209 @@ msgstr ""
 "Project-Id-Version: Odoo Server 8.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-03-07 15:30+0000\n"
-"PO-Revision-Date: 2017-03-07 15:30+0000\n"
-"Last-Translator: <>\n"
-"Language-Team: \n"
+"PO-Revision-Date: 2017-03-10 14:08+0000\n"
+"Last-Translator: José <jose@vauxoo.com>\n"
+"Language-Team: Spanish "
+"<http://weblate.vauxoo.com/projects/typ-8-0/typ_commision/es/>\n"
+"Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
-"Plural-Forms: \n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 2.10\n"
 
 #. module: typ_commision
 #: selection:account.invoice,credit_note_type:0
 #: selection:account.invoice.line,credit_note_type:0
 msgid "Advance"
-msgstr "Advance"
+msgstr "Avanzar"
 
 #. module: typ_commision
 #: selection:account.invoice.line,state:0
 msgid "Cancelled"
-msgstr "Cancelled"
+msgstr "Cancelado"
 
 #. module: typ_commision
 #: selection:account.invoice.line,type_payment_term:0
 msgid "Cash"
-msgstr "Cash"
+msgstr "Efectivo"
 
 #. module: typ_commision
 #: view:account.invoice.line:typ_commision.view_account_invoice_line_filter
 msgid "Category"
-msgstr "Category"
+msgstr "Categoría"
 
 #. module: typ_commision
 #: help:account.invoice.line,categ_id:0
 msgid "Category of the product in the order"
-msgstr "Category of the product in the order"
+msgstr "Categoría del producto en la orden"
 
 #. module: typ_commision
 #: field:commision.reports.base,comment_commisions:0
 msgid "Comment about Commisions"
-msgstr "Comment about Commisions"
+msgstr "Comentario sobre las comisiones"
 
 #. module: typ_commision
 #: view:commision.reports.base:typ_commision.view_reports_base_form
 msgid "Commisions Comments"
-msgstr "Commisions Comments"
+msgstr "Comentarios de Comisiones"
 
 #. module: typ_commision
 #: model:ir.actions.act_window,name:typ_commision.action_hr_report_base_tree
 #: model:ir.ui.menu,name:typ_commision.menu_action_commision_reports
 msgid "Commisions Reports"
-msgstr "Commisions Reports"
+msgstr "Reportes de Comisiones"
 
 #. module: typ_commision
 #: view:commision.reports.base:typ_commision.view_reports_base_form
 msgid "Commisions Section"
-msgstr "Commisions Section"
+msgstr "Sección de Comisiones"
 
 #. module: typ_commision
 #: field:commision.reports.base,company_id:0
 msgid "Company"
-msgstr "Company"
+msgstr "Compañía"
 
 #. module: typ_commision
 #: help:commision.reports.base,company_id:0
 msgid "Company which this report belongs to"
-msgstr "Company which this report belongs to"
+msgstr "Compañía a la cual este reporte pertenece"
 
 #. module: typ_commision
 #: field:account.invoice.line,price_cost:0
 msgid "Cost"
-msgstr "Cost"
+msgstr "Costo"
 
 #. module: typ_commision
 #: help:account.invoice.line,price_cost:0
 msgid "Cost of the product at the moment of the sale"
-msgstr "Cost of the product at the moment of the sale"
+msgstr "Costo del producto al momento de la venta"
 
 #. module: typ_commision
 #: field:commision.reports.base,create_uid:0
 msgid "Created by"
-msgstr "Created by"
+msgstr "Creado por"
 
 #. module: typ_commision
 #: field:commision.reports.base,create_date:0
 msgid "Created on"
-msgstr "Created on"
+msgstr "Creado en"
 
 #. module: typ_commision
 #: selection:account.invoice.line,type_payment_term:0
 msgid "Credit"
-msgstr "Credit"
+msgstr "Crédito"
 
 #. module: typ_commision
 #: field:account.invoice.line,credit_note_type:0
 msgid "Credit note type"
-msgstr "Credit note type"
+msgstr "Tipo de Nota de Crédito"
 
 #. module: typ_commision
 #: field:account.invoice.line,currency:0
 msgid "Currency"
-msgstr "Currency"
+msgstr "Moneda"
 
 #. module: typ_commision
 #: field:commision.reports.base,custom:0
 msgid "Custom Filter"
-msgstr "Custom Filter"
+msgstr "Filtro Personal"
 
 #. module: typ_commision
 #: field:commision.reports.base,partner_id:0
 msgid "Customer"
-msgstr "Customer"
+msgstr "Cliente"
 
 #. module: typ_commision
 #: selection:account.invoice.line,type:0
 msgid "Customer Invoice"
-msgstr "Customer Invoice"
+msgstr "Factura de Cliente"
 
 #. module: typ_commision
 #: selection:account.invoice.line,type:0
 msgid "Customer Refund"
-msgstr "Customer Refund"
+msgstr "Devolución de Cliente"
 
 #. module: typ_commision
 #: field:account.invoice.line,puser_id:0
 msgid "Customer Salesperson"
-msgstr "Customer Salesperson"
+msgstr "Vendedor del Cliente"
 
 #. module: typ_commision
 #: help:commision.reports.base,partner_id:0
 msgid "Customer owner of the invoice"
-msgstr "Customer owner of the invoice"
+msgstr "Cliente dueño de la  factura"
 
 #. module: typ_commision
 #: view:commision.reports.base:typ_commision.view_reports_base_form
 msgid "Date Range"
-msgstr "Date Range"
+msgstr "Rango de fechas"
 
 #. module: typ_commision
 #: help:account.invoice.line,date_due:0
 msgid "Date due of the invoice"
-msgstr "Date due of the invoice"
+msgstr "Fecha de Vencimiento de la Factura"
 
 #. module: typ_commision
 #: help:account.invoice.line,date_invoice:0
 msgid "Date in the invoice"
-msgstr "Date in the invoice"
+msgstr "Fecha en la Factura"
 
 #. module: typ_commision
 #: help:commision.reports.base,message_last_post:0
 msgid "Date of the last message posted on the record."
-msgstr "Date of the last message posted on the record."
+msgstr "Fecha de el ultimo mensaje creado en el registro"
 
 #. module: typ_commision
 #: help:account.invoice.line,payment_date:0
 msgid "Date of the last payment of the invoice"
-msgstr "Date of the last payment of the invoice"
+msgstr "Fecha de el ultimo pago de la factura"
 
 #. module: typ_commision
 #: help:commision.reports.base,date_end:0
 msgid "Date where the range ends"
-msgstr "Date where the range ends"
+msgstr "Fecha donde el rango termina"
 
 #. module: typ_commision
 #: help:commision.reports.base,date_start:0
 msgid "Date where the range starts"
-msgstr "Date where the range starts"
+msgstr "Fecha donde el rango inicia"
 
 #. module: typ_commision
 #: field:commision.reports.base,display_name:0
 msgid "Display Name"
-msgstr "Display Name"
+msgstr "Nombre"
 
 #. module: typ_commision
 #: selection:commision.reports.base,state:0
 msgid "Done"
-msgstr "Done"
+msgstr "Hecho"
 
 #. module: typ_commision
 #: selection:account.invoice.line,state:0
 #: selection:commision.reports.base,state:0
 msgid "Draft"
-msgstr "Draft"
+msgstr "Borrador"
 
 #. module: typ_commision
 #: field:account.invoice.line,date_due:0
 msgid "Due Date"
-msgstr "Due Date"
+msgstr "Fecha de Vencimiento"
 
 #. module: typ_commision
 #: view:account.invoice.line:typ_commision.view_account_invoice_line_filter
 msgid "Due Month"
-msgstr "Due Month"
+msgstr "Mes de Vencimiento"
 
 #. module: typ_commision
 #: model:ir.model,name:typ_commision.model_commision_reports_base
 msgid "Email Thread"
-msgstr "Email Thread"
+msgstr "Correo Electrónico"
 
 #. module: typ_commision
 #: field:commision.reports.base,date_end:0
 msgid "End Date"
-msgstr "End Date"
+msgstr "Fecha Final"
 
 #. module: typ_commision
 #: selection:account.invoice,credit_note_type:0
@@ -217,18 +220,20 @@ msgstr "Error"
 #. module: typ_commision
 #: view:commision.reports.base:typ_commision.view_reports_base_form
 msgid "Fill required fields"
-msgstr "Fill required fields"
+msgstr "Llenar Campos Requeridos"
 
 #. module: typ_commision
 #: view:commision.reports.base:typ_commision.view_reports_base_form
 msgid "Fill required fields in the invoice lines selected by the filter used"
-msgstr "Fill required fields in the invoice lines selected by the filter used"
+msgstr ""
+"Llenar los campos requeridos in las líneas de factura seleccionadas por el "
+"filtro usado"
 
 #. module: typ_commision
 #: field:commision.reports.base,filter_id:0
 #: field:commision.reports.base,filter_inv_id:0
 msgid "Filter"
-msgstr "Filter"
+msgstr "Filtro"
 
 #. module: typ_commision
 #: help:commision.reports.base,filter_id:0
