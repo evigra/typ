@@ -239,7 +239,9 @@ msgstr "Filtro"
 #: help:commision.reports.base,filter_id:0
 #: help:commision.reports.base,filter_inv_id:0
 msgid "Filter should be by date, group_by is ignored, the model which the filter should belong to invoice line"
-msgstr "Filter should be by date, group_by is ignored, the model which the filter should belong to invoice line"
+msgstr ""
+"Los filtros deben ser por fecha, los agrupamientos son ignorados, el modelo "
+"al cual el filtro debe pertenecer son las líneas de factura"
 
 #. module: typ_commision
 #: field:commision.reports.base,message_follower_ids:0
@@ -445,7 +447,7 @@ msgstr "Pro-forma"
 #. module: typ_commision
 #: view:account.invoice.line:typ_commision.view_account_invoice_line_filter
 msgid "Product"
-msgstr "Product"
+msgstr "Producto"
 
 #. module: typ_commision
 #: field:account.invoice.line,categ_id:0
