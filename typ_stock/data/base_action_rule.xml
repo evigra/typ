@@ -56,5 +56,14 @@
             <field name="server_action_ids" eval="[(6, 0, [ref('typ_stock.server_action_procurement_cancel')])]"/>
         </record>
 
+        <record id="automated_action_compute_seller_code" model="base.action.rule">
+            <field name="name">Automatic compute supplier ref</field>
+            <field name="model_id" model="ir.model" search="[('model', '=', 'stock.move')]"/>
+            <field name="active">1</field>
+            <field name="sequence">5</field>
+            <field name="kind">on_create_or_write</field>
+            <field name="server_action_ids" eval="[(6, 0, [ref('typ_stock.server_action_product_supplier_ref')])]"/>
+        </record>
+
     </data>
 </openerp>

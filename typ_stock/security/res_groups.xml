@@ -40,5 +40,9 @@
           <field name="name">Users that can cancel pickings that have not moves in transit locations</field>
           <field name="comment">This group can cancel pickings that have not moves in transit locations</field>
         </record>
+        <record id="group_reception_picking_attributes" model="res.groups">
+          <field name="name">Users who see picking reception attributes</field>
+          <field name="comment">This group can see the reception attributes of the pickings</field>
+        </record>
     </data>
 </openerp>

@@ -49,6 +49,10 @@ The methods inherit original path is:
 - Picking shipment date added to stock picking tree view
 - Tree view change the color of the pickings already in transit
 
+**Compare pickings vs supplier invoice**
+- adding the supplier code of the product to the picking making more easy to locate
+products when you are reviewing the supplier invoice
+
 **Writing Wizard Pedimentos and Serial lote in quant**
 - You can write information about the quants which will allow you to follow up and
 control the inventories in detail, this allows you to visualize the quantity of

@@ -61,5 +61,12 @@ for proc in model.browse(context.get('active_ids')):
             proc.with_context(dict(context, not_delete_purchase_line=True)).cancel()
             </field>
         </record>
+
+        <record id="server_action_product_supplier_ref" model="ir.actions.server">
+             <field name="name">Action compute supplier ref</field>
+             <field name="model_id" model="ir.model" search="[('model', '=', 'stock.move')]"/>
+             <field name="state">code</field>
+             <field name="code">object.compute_seller_code()</field>
+        </record>
     </data>
 </openerp>

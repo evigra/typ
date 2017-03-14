@@ -46,6 +46,8 @@ class StockMove(models.Model):
         states={'done': [('readonly', True)]},
         help="Scheduled date for the shipment of this move")
 
+    product_supplier_ref = fields.Char(string='Supplier Code')
+
     @api.multi
     def propagate_picking_transfer(self):
         """If stock_move is done verify if it have to propagate transfer to
@@ -79,6 +81,12 @@ class StockMove(models.Model):
                           'Contact Vauxoo personnel immediately') %
                         (move.product_id.name)
                     )
+
+    @api.multi
+    def compute_seller_code(self):
+        supplier = self.product_id.seller_ids.filtered(
+            lambda r: r.name == self.picking_id.partner_id)
+        self.write({'product_supplier_ref': supplier.product_code})
 
     @api.multi
     def verify_user_scrap(self):
