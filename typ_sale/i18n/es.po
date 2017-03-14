@@ -546,6 +546,11 @@ msgid "Special sale"
 msgstr "Venta especial"
 
 #. module: typ_sale
+#: view:sale.order:typ_sale.view_state_sale_order_filter_inherit
+msgid "State"
+msgstr "State"
+
+#. module: typ_sale
 #: model:ir.model,name:typ_sale.model_stock_move
 msgid "Stock Move"
 msgstr "Movimiento de Inventario"
