@@ -88,5 +88,17 @@
             </field>
         </record>
 
+        <record id="view_state_sale_order_filter_inherit" model="ir.ui.view">
+            <field name="name">state.sale.order.filter.inherit</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_sales_order_filter"/>
+            <field name="arch" type="xml">
+                <xpath expr="//group[@string='Group By']" position="inside">
+                    <filter string="State" domain="[]" context="{'group_by':'state'}"/>
+                </xpath>
+            </field>
+        </record>
+
+
     </data>
 </openerp>
