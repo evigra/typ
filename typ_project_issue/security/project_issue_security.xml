@@ -25,13 +25,11 @@
             <field name="perm_create" eval="0"/>
             <field name="perm_unlink" eval="0"/>
             <field name="domain_force">
-                ['|', 
-                    '|', 
-                    ('user_id', '=', False),
-                    ('user_id', '=', user.id),
-                    '|', 
-                    ('create_uid', '=', False),
-                    ('create_uid', '=', user.id)]
+                ['|',
+                 '|',('project_id.user_id','=',False),('project_id.user_id','=',user.id),
+                 '|',
+                 '|',('user_id', '=', False),('user_id', '=', user.id),
+                 '|',('create_uid', '=', False),('create_uid', '=', user.id)]
             </field>
         </record>        
     </data>
