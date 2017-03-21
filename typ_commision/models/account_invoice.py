@@ -13,7 +13,8 @@ class AccountInvoice(models.Model):
          ('return', 'Return'),
          ('warranty', 'Warranty'),
          ('gift', 'Gift'),
-         ('rebilling', 'Rebilling')],
+         ('rebilling', 'Rebilling'),
+         ('financing', 'Financing')],
         'Type',
         help='Used to identify the reason of this credit note')
 
@@ -33,7 +34,8 @@ class AccountInvoiceLine(models.Model):
          ('return', 'Return'),
          ('warranty', 'Warranty'),
          ('gift', 'Gift'),
-         ('rebilling', 'Rebilling')],
+         ('rebilling', 'Rebilling'),
+         ('financing', 'Financing')],
         help='Used to identify the reason of this credit note')
 
     parent_invoice_id = fields.Many2one('account.invoice', 'Invoice',
