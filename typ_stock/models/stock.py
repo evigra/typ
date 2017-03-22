@@ -149,6 +149,14 @@ class StockMove(models.Model):
         return super(StockMove, self).get_price_unit(move)
 
     @api.multi
+    def product_price_update_before_done(self):
+        for move in self:
+            price_unit = move.get_price_unit(move)
+            if move.price_unit != price_unit:
+                move.write({'price_unit': price_unit})
+        return super(StockMove, self.sudo()).product_price_update_before_done()
+
+    @api.multi
     def _compute_move_lot_unique(self):
         for move in self:
             pick_type = move.picking_id.picking_type_id
