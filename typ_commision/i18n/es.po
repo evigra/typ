@@ -240,6 +240,12 @@ msgid "Filter should be by date, group_by is ignored, the model which the filter
 msgstr "Los filtros deben ser por fecha, los agrupamientos son ignorados, el modelo al cual el filtro debe pertenecer son las líneas de factura"
 
 #. module: typ_commision
+#: selection:account.invoice,credit_note_type:0
+#: selection:account.invoice.line,credit_note_type:0
+msgid "Financing"
+msgstr "Financing"
+
+#. module: typ_commision
 #: field:commision.reports.base,message_follower_ids:0
 msgid "Followers"
 msgstr "Seguidores"
