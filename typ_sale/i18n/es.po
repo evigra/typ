@@ -223,6 +223,12 @@ msgid "Invoice address:"
 msgstr "Dirección de facturación:"
 
 #. module: typ_sale
+#: code:addons/typ_sale/models/stock.py:38
+#, python-format
+msgid "It is necessary register a pedimento in entry quant before continue. This is not from a mexican supplier."
+msgstr "It is necessary register a pedimento in entry quant before continue. This is not from a mexican supplier."
+
+#. module: typ_sale
 #: field:res.partner.warehouse,__last_update:0
 msgid "Last Modified on"
 msgstr "Última modificación"
@@ -588,6 +594,11 @@ msgid "This group can cancel the sale orders."
 msgstr "Este grupo puede cancelar las órdenes de venta."
 
 #. module: typ_sale
+#: model:res.groups,comment:typ_sale.group_invoiced_without_pedimento
+msgid "This group can invoiced a sale order without pedimento in entry quants."
+msgstr "This group can invoiced a sale order without pedimento in entry quants."
+
+#. module: typ_sale
 #: model:res.groups,comment:typ_sale.group_res_partner_warehouse_manager
 msgid "This group can register partner warehouse configurations."
 msgstr "Este grupo puede registrar configuraciones de almacén del cliente."
@@ -633,6 +644,11 @@ msgstr "Precio Unidad"
 #: model:res.groups,name:typ_sale.res_group_cancel_sale_order
 msgid "Users that can cancel a sale order"
 msgstr "Los usuarios que pueden cancelar una orden de venta"
+
+#. module: typ_sale
+#: model:res.groups,name:typ_sale.group_invoiced_without_pedimento
+msgid "Users that can invoiced a sale order without pedimento in entry quants"
+msgstr "Users that can invoiced a sale order without pedimento in entry quants"
 
 #. module: typ_sale
 #: model:res.groups,name:typ_sale.res_group_margin_sale_order

@@ -25,13 +25,13 @@ msgstr ""
 "X-Generator: Weblate 2.10\n"
 
 #. module: typ_stock
-#: code:addons/typ_stock/models/stock.py:211
+#: code:addons/typ_stock/models/stock.py:219
 #, python-format
 msgid "<ul><li>shipment confirmed --> <b>Canceled</b></li></ul>"
 msgstr "<ul><li>Embarque Confirmado --> <b>Cancelado</b></li></ul>"
 
 #. module: typ_stock
-#: code:addons/typ_stock/models/stock.py:209
+#: code:addons/typ_stock/models/stock.py:217
 #, python-format
 msgid "<ul><li>shipment confirmed --> <b>ok</b></li></ul>"
 msgstr "<ul><li>Embarque Confirmado --> <b>ok</b></li></ul>"
@@ -129,7 +129,7 @@ msgid "Importance"
 msgstr "Importancia"
 
 #. module: typ_stock
-#: code:addons/typ_stock/models/stock.py:261
+#: code:addons/typ_stock/models/stock.py:269
 #, python-format
 msgid "Internal movements don't allow locations in supplier or customer"
 msgstr "Los movimientos internos no permiten ubicaciones de proveedores o clientes"
@@ -381,7 +381,7 @@ msgid "The Serial number %s already captured"
 msgstr "El número de Serie %s ya se capturó"
 
 #. module: typ_stock
-#: code:addons/typ_stock/models/stock.py:290
+#: code:addons/typ_stock/models/stock.py:298
 #: code:addons/typ_stock/models/stock_return_picking.py:38
 #, python-format
 msgid "The return of the product %s, exceeds the amount invoiced"
@@ -453,7 +453,7 @@ msgid "This must be checked only when the supplier have invoiced the whole order
 msgstr "Este check debera ser activado solamente cuando el proveedor haya facturado la orden completa indicando así que no hay un backorder. Esto activara en la vista de arbol el color verde para este picking indicando que la orden esta embarcada sin ningún problema. "
 
 #. module: typ_stock
-#: code:addons/typ_stock/models/stock.py:347
+#: code:addons/typ_stock/models/stock.py:355
 #, python-format
 msgid "This picking cannot be cancelled."
 msgstr "Este albarán no puede ser cancelado."
@@ -575,9 +575,9 @@ msgstr "Advertencia"
 #: code:addons/typ_stock/models/stock.py:79
 #: code:addons/typ_stock/models/stock.py:102
 #: code:addons/typ_stock/models/stock.py:123
-#: code:addons/typ_stock/models/stock.py:260
-#: code:addons/typ_stock/models/stock.py:289
-#: code:addons/typ_stock/models/stock.py:346
+#: code:addons/typ_stock/models/stock.py:268
+#: code:addons/typ_stock/models/stock.py:297
+#: code:addons/typ_stock/models/stock.py:354
 #: code:addons/typ_stock/models/stock_return_picking.py:37
 #: code:addons/typ_stock/models/stock_return_picking.py:54
 #, python-format
@@ -610,7 +610,7 @@ msgid "Wizard Pedimento Product"
 msgstr "Asistente Pedimento Producto"
 
 #. module: typ_stock
-#: code:addons/typ_stock/models/stock.py:364
+#: code:addons/typ_stock/models/stock.py:372
 #, python-format
 msgid "You can not inactivate a warehouse with products on it, please adjust your inventories first and then come back and inactivate it."
 msgstr "No puede inactivar un almacén con productos en él, por favor, ajuste primero sus inventarios y luego vuelva a desactivarlo."
