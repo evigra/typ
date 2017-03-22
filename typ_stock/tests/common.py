@@ -22,6 +22,8 @@ class TestTypStock(common.TransactionCase):
         self.group_cancel_picking = self.env.ref(
             'typ_stock.group_cancel_picking_with_move_not_in_transit_loc')
         self.env.user.write({'groups_id': [(4, self.group_cancel_picking.id)]})
+        self.country_mx = self.env.ref('base.mx')
+        self.partner.write({'country_id': self.country_mx.id})
 
         self.purchase_order = self.env.ref('purchase.purchase_order_5')
 
