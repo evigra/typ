@@ -223,6 +223,16 @@ msgid "Picking shipment date"
 msgstr "Fecha de embarque"
 
 #. module: typ_stock
+#: model:ir.model,name:typ_stock.model_stock_transfer_details
+msgid "Picking wizard"
+msgstr "Picking wizard"
+
+#. module: typ_stock
+#: model:ir.model,name:typ_stock.model_stock_transfer_details_items
+msgid "Picking wizard items"
+msgstr "Picking wizard items"
+
+#. module: typ_stock
 #: model:ir.model,name:typ_stock.model_procurement_order
 msgid "Procurement"
 msgstr "Abastecimiento"
@@ -338,6 +348,11 @@ msgstr "Dirección del Proveedor:"
 #: field:stock.move,product_supplier_ref:0
 msgid "Supplier Code"
 msgstr "Código de Proveedor"
+
+#. module: typ_stock
+#: field:stock.transfer_details_items,supplier_code:0
+msgid "Supplier code"
+msgstr "Supplier code"
 
 #. module: typ_stock
 #: model:stock.location.route,name:typ_stock.stock_location_route_test_1

@@ -226,9 +226,7 @@ msgstr "Dirección de facturación:"
 #: code:addons/typ_sale/models/stock.py:38
 #, python-format
 msgid "It is necessary register a pedimento in entry quant before continue. This is not from a mexican supplier."
-msgstr ""
-"Es necesario registrar un pedimento en los quant de entrada para continuar. "
-"Este no proviene de un proveedor mexicano."
+msgstr "Es necesario registrar un pedimento en los quant de entrada para continuar. Este no proviene de un proveedor mexicano."
 
 #. module: typ_sale
 #: field:res.partner.warehouse,__last_update:0
@@ -598,9 +596,7 @@ msgstr "Este grupo puede cancelar las órdenes de venta."
 #. module: typ_sale
 #: model:res.groups,comment:typ_sale.group_invoiced_without_pedimento
 msgid "This group can invoiced a sale order without pedimento in entry quants."
-msgstr ""
-"Este grupo puede facturar ventas sin registrar pedimentos en los quant de "
-"entrada."
+msgstr "Este grupo puede facturar ventas sin registrar pedimentos en los quant de entrada."
 
 #. module: typ_sale
 #: model:res.groups,comment:typ_sale.group_res_partner_warehouse_manager
@@ -621,9 +617,7 @@ msgstr "Este grupo tiene acceso a modificar campos de plazo de pago en Ordenes d
 #: code:addons/typ_sale/models/sale_order.py:77
 #, python-format
 msgid "This order can not be canceled because some of their pickings already have been transfered."
-msgstr ""
-"Esta venta no puede ser cancelada ya que alguno de sus albaranes ya ha sido "
-"transferido."
+msgstr "Esta venta no puede ser cancelada ya que alguno de sus albaranes ya ha sido transferido."
 
 #. module: typ_sale
 #: view:website:sale.report_saleorder_document
@@ -654,9 +648,7 @@ msgstr "Los usuarios que pueden cancelar una orden de venta"
 #. module: typ_sale
 #: model:res.groups,name:typ_sale.group_invoiced_without_pedimento
 msgid "Users that can invoiced a sale order without pedimento in entry quants"
-msgstr ""
-"Usuarios que pueden facturar ventas sin registrar pedimentos en los quant de "
-"entrada"
+msgstr "Usuarios que pueden facturar ventas sin registrar pedimentos en los quant de entrada"
 
 #. module: typ_sale
 #: model:res.groups,name:typ_sale.res_group_margin_sale_order
