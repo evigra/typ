@@ -31,13 +31,22 @@ class StockPicking(models.Model):
                 if quant.landed_id:
                     continue
                 origin = quant.history_ids.sorted(key=lambda mv: mv.date)
-                if (origin and not
-                        origin[0].picking_id.partner_id.country_id.code ==
-                        'MX'):
+                origin = origin and origin[0]
+                company_country_id = self.env.user.company_id.country_id
+                country_id = origin.picking_id.partner_id.country_id
+                if (country_id and country_id != company_country_id or
+                    not country_id and
+                    origin.product_id.seller_ids.filtered(
+                        lambda sel:
+                        sel.name.country_id != company_country_id)):
+                    product = origin[0].product_id
+                    picking = origin[0].picking_id
                     raise ValidationError(
                         _('It is necessary register a pedimento in entry '
-                          'quant before continue. This is not from a mexican '
-                          'supplier.'))
+                          'quant of the product %s in picking %s before '
+                          'continue. The supplier %s is not a mexican '
+                          'supplier.' % (product.name, picking.name,
+                                         picking.partner_id.name)))
         return True
 
     @api.model
@@ -47,7 +56,8 @@ class StockPicking(models.Model):
         group_inv_without_ped = bool(
             self.env.user.groups_id &
             self.env.ref('typ_sale.group_invoiced_without_pedimento'))
-        if picking.sale_id and not group_inv_without_ped:
+        if all([vals.get('type') == 'out_invoice',
+                not group_inv_without_ped]):
             self.check_pedimento(picking)
         return super(StockPicking, self)._create_invoice_from_picking(
             picking, vals)
