@@ -223,10 +223,10 @@ msgid "Invoice address:"
 msgstr "Dirección de facturación:"
 
 #. module: typ_sale
-#: code:addons/typ_sale/models/stock.py:38
+#: code:addons/typ_sale/models/stock.py:48
 #, python-format
-msgid "It is necessary register a pedimento in entry quant before continue. This is not from a mexican supplier."
-msgstr "Es necesario registrar un pedimento en los quant de entrada para continuar. Este no proviene de un proveedor mexicano."
+msgid "It is necessary register a pedimento in entry quant of the product %s in picking %s before continue. The supplier %s is not a mexican supplier."
+msgstr "It is necessary register a pedimento in entry quant of the product %s in picking %s before continue. The supplier %s is not a mexican supplier."
 
 #. module: typ_sale
 #: field:res.partner.warehouse,__last_update:0
