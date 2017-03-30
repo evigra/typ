@@ -84,9 +84,12 @@ class StockMove(models.Model):
 
     @api.multi
     def compute_seller_code(self):
-        supplier = self.product_id.seller_ids.filtered(
+        suppliers = self.product_id.seller_ids.filtered(
             lambda r: r.name == self.picking_id.partner_id)
-        self.write({'product_supplier_ref': supplier.product_code})
+        for supplier in suppliers:
+            if supplier.product_code:
+                self.write({'product_supplier_ref': supplier.product_code})
+        return
 
     @api.multi
     def verify_user_scrap(self):
