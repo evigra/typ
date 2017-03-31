@@ -210,7 +210,7 @@ class CommisionReportsBase(models.Model):
             'currency': inv.currency_id.id or None,
             'type': inv.type,
             'credit_note_type': inv.credit_note_type or None,
-            'parent_invoice_id': inv.parent_invoice_id or None,
+            'parent_invoice_id': inv.parent_invoice_id.id or None,
         }
 
         return vals
