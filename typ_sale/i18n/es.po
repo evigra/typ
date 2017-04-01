@@ -10,8 +10,8 @@ msgstr ""
 "Project-Id-Version: Odoo Server 8.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-11-28 20:23+0000\n"
-"PO-Revision-Date: 2017-03-22 20:42+0000\n"
-"Last-Translator: Yennnifer Santiago <yennifer@vauxoo.com>\n"
+"PO-Revision-Date: 2017-04-01 10:32+0000\n"
+"Last-Translator: Jorge Escalona <jorge@vauxoo.com>\n"
 "Language-Team: Spanish "
 "<http://weblate.vauxoo.com/projects/typ-8-0/typ_sale/es/>\n"
 "Language: es\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 2.10\n"
+"X-Generator: Weblate 2.12\n"
 
 #. module: typ_sale
 #: view:website:sale.report_saleorder_document
@@ -60,7 +60,7 @@ msgstr "EMB"
 #. module: typ_sale
 #: field:res.partner,business_activity:0
 msgid "Business activity"
-msgstr "Giro"
+msgstr "Actividad de Negocios"
 
 #. module: typ_sale
 #: selection:res.partner,region:0
@@ -147,7 +147,7 @@ msgstr "Moneda:"
 #. module: typ_sale
 #: field:res.partner,dealer:0
 msgid "Dealer type"
-msgstr "Tipo dealer"
+msgstr "Tipo de proveedor"
 
 #. module: typ_sale
 #: view:website:sale.report_saleorder_document
@@ -157,7 +157,7 @@ msgstr "Descripción"
 #. module: typ_sale
 #: field:res.partner.warehouse,display_name:0
 msgid "Display Name"
-msgstr "Nombre"
+msgstr "Nombre a mostrar"
 
 #. module: typ_sale
 #: selection:res.partner,business_activity:0
@@ -231,7 +231,10 @@ msgstr "Dirección de facturación:"
 #: code:addons/typ_sale/models/stock.py:48
 #, python-format
 msgid "It is necessary register a pedimento in entry quant of the product %s in picking %s before continue. The supplier %s is not a mexican supplier."
-msgstr "It is necessary register a pedimento in entry quant of the product %s in picking %s before continue. The supplier %s is not a mexican supplier."
+msgstr ""
+"Es necesario registrar un pedimento en el quant de entrada del producto %s "
+"en el albarán %s antes de continuar. El proveedor %s no es un proveedor "
+"mexicano."
 
 #. module: typ_sale
 #: field:res.partner.warehouse,__last_update:0
@@ -375,7 +378,7 @@ msgstr "DP - Dealer premier\n"
 #: selection:res.partner,business_activity:0
 #: selection:res.partner,partner_type:0
 msgid "PUBLIC"
-msgstr "PUBLIC"
+msgstr "PUBLICO"
 
 #. module: typ_sale
 #: view:website:typ_sale.external_layout_footer
@@ -417,7 +420,7 @@ msgstr "Teléfono"
 #. module: typ_sale
 #: model:ir.model,name:typ_sale.model_stock_picking
 msgid "Picking List"
-msgstr "Albarán"
+msgstr "Lista de Albaranes"
 
 #. module: typ_sale
 #: selection:account.invoice,type_payment_term:0
@@ -617,7 +620,9 @@ msgstr "El producto %s"
 #: code:addons/typ_sale/models/res_partner.py:117
 #, python-format
 msgid "There is more than one configuration for warehouse %s. It must have only one configuration for each warehouse"
-msgstr "Hay más de una configuración para el almacén %s. It must have only one configuración para cada almacén"
+msgstr ""
+"Hay más de una configuración para el almacén %s. debe poseer solo una "
+"configuración para cada almacén"
 
 #. module: typ_sale
 #: model:res.groups,comment:typ_sale.res_group_can_sell_below_minimum_margin
@@ -709,7 +714,7 @@ msgstr "Vigencia:"
 #. module: typ_sale
 #: selection:res.partner,region:0
 msgid "WEST"
-msgstr "OCCIDENTE"
+msgstr "OESTE"
 
 #. module: typ_sale
 #: selection:res.partner,partner_type:0
