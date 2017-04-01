@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: Odoo Server 8.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-03-07 15:30+0000\n"
-"PO-Revision-Date: 2017-03-27 17:46+0000\n"
-"Last-Translator: José <jose@vauxoo.com>\n"
+"PO-Revision-Date: 2017-04-01 10:22+0000\n"
+"Last-Translator: Jorge Escalona <jorge@vauxoo.com>\n"
 "Language-Team: Spanish "
 "<http://weblate.vauxoo.com/projects/typ-8-0/typ_commision/es/>\n"
 "Language: es\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 2.10\n"
+"X-Generator: Weblate 2.12\n"
 
 #. module: typ_commision
 #: selection:account.invoice,credit_note_type:0
@@ -178,7 +178,7 @@ msgstr "Fecha donde el rango inicia"
 #. module: typ_commision
 #: field:commision.reports.base,display_name:0
 msgid "Display Name"
-msgstr "Nombre"
+msgstr "Nombre a mostrar"
 
 #. module: typ_commision
 #: selection:commision.reports.base,state:0
