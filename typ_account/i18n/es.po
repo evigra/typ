@@ -52,9 +52,46 @@ msgid ". Please request payment or sell cash!"
 msgstr ". ¡Favor solicitar pago o vender de contado!"
 
 #. module: typ_account
+#: selection:account.invoice.report,importance:0
+#: selection:account.invoice.report,potential_importance:0
+msgid "AA"
+msgstr "AA"
+
+#. module: typ_account
+#: selection:account.invoice.report,dealer:0
+msgid "AD"
+msgstr "AD"
+
+#. module: typ_account
+#: selection:account.invoice.report,partner_type:0
+msgid "BOT"
+msgstr "BOT"
+
+#. module: typ_account
 #: model:ir.model,name:typ_account.model_account_bank_statement_line
 msgid "Bank Statement Line"
 msgstr "Línea de extracto bancario"
+
+#. module: typ_account
+#: view:account.invoice.report:typ_account.view_account_invoice_report_search_inh
+#: field:account.invoice.report,business_activity:0
+msgid "Business activity"
+msgstr "Business activity"
+
+#. module: typ_account
+#: selection:account.invoice.report,region:0
+msgid "CENTER"
+msgstr "CENTER"
+
+#. module: typ_account
+#: selection:account.invoice.report,business_activity:0
+msgid "COM"
+msgstr "COM"
+
+#. module: typ_account
+#: selection:account.invoice.report,business_activity:0
+msgid "CON"
+msgstr "CON"
 
 #. module: typ_account
 #: code:addons/typ_account/models/sale_order.py:70
@@ -82,15 +119,50 @@ msgid "Date invoice"
 msgstr "Fecha Factura"
 
 #. module: typ_account
+#: field:account.invoice.report,date_month:0
+msgid "Date month"
+msgstr "Date month"
+
+#. module: typ_account
+#: view:account.invoice.report:typ_account.view_account_invoice_report_search_inh
+#: field:account.invoice.report,dealer:0
+msgid "Dealer"
+msgstr "Dealer"
+
+#. module: typ_account
 #: model:ir.actions.server,name:typ_account.server_action_delete_entries_open_close_fiscalyear
 msgid "Delete entries open/close fiscal year"
 msgstr "Borrar asientos de apertura / cierre de año fiscal"
+
+#. module: typ_account
+#: selection:account.invoice.report,business_activity:0
+#: selection:account.invoice.report,importance:0
+#: selection:account.invoice.report,partner_type:0
+#: selection:account.invoice.report,potential_importance:0
+msgid "EMPLOYEE"
+msgstr "EMPLOYEE"
+
+#. module: typ_account
+#: selection:account.invoice.report,partner_type:0
+msgid "ESP"
+msgstr "ESP"
+
+#. module: typ_account
+#: selection:account.invoice.report,partner_type:0
+msgid "FSC"
+msgstr "FSC"
 
 #. module: typ_account
 #: model:account.payment.term,name:typ_account.typ_account_payment_term_immediate
 #: model:account.payment.term,note:typ_account.typ_account_payment_term_immediate
 msgid "Immediate Payment"
 msgstr "Pago Inmediato"
+
+#. module: typ_account
+#: view:account.invoice.report:typ_account.view_account_invoice_report_search_inh
+#: field:account.invoice.report,importance:0
+msgid "Importance"
+msgstr "Importance"
 
 #. module: typ_account
 #: model:ir.model,name:typ_account.model_account_invoice
@@ -103,14 +175,132 @@ msgid "Invoice validation date"
 msgstr "Fecha de validación de la factura"
 
 #. module: typ_account
+#: model:ir.model,name:typ_account.model_account_invoice_report
+msgid "Invoices Statistics"
+msgstr "Invoices Statistics"
+
+#. module: typ_account
+#: view:account.invoice.report:typ_account.view_account_invoice_report_search_inh
+msgid "Last week"
+msgstr "Last week"
+
+#. module: typ_account
+#: selection:account.invoice.report,partner_type:0
+msgid "NC"
+msgstr "NC"
+
+#. module: typ_account
+#: selection:account.invoice.report,importance:0
+#: selection:account.invoice.report,potential_importance:0
+msgid "NEGOTIATION"
+msgstr "NEGOTIATION"
+
+#. module: typ_account
+#: selection:account.invoice.report,importance:0
+#: selection:account.invoice.report,potential_importance:0
+msgid "NEW"
+msgstr "NEW"
+
+#. module: typ_account
+#: selection:account.invoice.report,region:0
+msgid "NORTHEAST"
+msgstr "NORTHEAST"
+
+#. module: typ_account
+#: selection:account.invoice.report,region:0
+msgid "NORTHWEST"
+msgstr "NORTHWEST"
+
+#. module: typ_account
+#: selection:account.invoice.report,business_activity:0
+#: selection:account.invoice.report,importance:0
+#: selection:account.invoice.report,partner_type:0
+#: selection:account.invoice.report,potential_importance:0
+msgid "NOT CLASSIFIED"
+msgstr "NOT CLASSIFIED"
+
+#. module: typ_account
+#: selection:account.invoice.report,partner_type:0
+msgid "OC"
+msgstr "OC"
+
+#. module: typ_account
+#: selection:account.invoice.report,partner_type:0
+msgid "OTH"
+msgstr "OTH"
+
+#. module: typ_account
+#: selection:account.invoice.report,partner_type:0
+msgid "PC"
+msgstr "PC"
+
+#. module: typ_account
+#: selection:account.invoice.report,dealer:0
+msgid "PD"
+msgstr "PD"
+
+#. module: typ_account
+#: selection:account.invoice.report,business_activity:0
+#: selection:account.invoice.report,partner_type:0
+msgid "PUBLIC"
+msgstr "PUBLIC"
+
+#. module: typ_account
 #: model:ir.model,name:typ_account.model_res_partner
 msgid "Partner"
 msgstr "Empresa"
 
 #. module: typ_account
+#: view:account.invoice.report:typ_account.view_account_invoice_report_search_inh
+#: field:account.invoice.report,partner_type:0
+msgid "Partner type"
+msgstr "Partner type"
+
+#. module: typ_account
+#: view:account.invoice.report:typ_account.view_account_invoice_report_search_inh
+msgid "Potential Importance"
+msgstr "Potential Importance"
+
+#. module: typ_account
+#: field:account.invoice.report,potential_importance:0
+msgid "Potential importance"
+msgstr "Potential importance"
+
+#. module: typ_account
 #: view:account.move.line:typ_account.view_account_move_line_filter_inherit
 msgid "Product"
 msgstr "Producto"
+
+#. module: typ_account
+#: selection:account.invoice.report,partner_type:0
+msgid "RC"
+msgstr "RC"
+
+#. module: typ_account
+#: view:account.invoice.report:typ_account.view_account_invoice_report_search_inh
+#: field:account.invoice.report,region:0
+msgid "Region"
+msgstr "Region"
+
+#. module: typ_account
+#: selection:account.invoice.report,dealer:0
+msgid "SD"
+msgstr "SD"
+
+#. module: typ_account
+#: selection:account.invoice.report,region:0
+msgid "SOUTH"
+msgstr "SOUTH"
+
+#. module: typ_account
+#: selection:account.invoice.report,region:0
+msgid "SOUTHEAST"
+msgstr "SOUTHEAST"
+
+#. module: typ_account
+#: selection:account.invoice.report,partner_type:0
+msgid "SUP"
+msgstr "SUP"
 
 #. module: typ_account
 #: model:ir.model,name:typ_account.model_sale_order
@@ -125,9 +315,39 @@ msgid "The partner "
 msgstr "El cliente "
 
 #. module: typ_account
+#: view:account.invoice.report:typ_account.view_account_invoice_report_search_inh
+msgid "This Month"
+msgstr "This Month"
+
+#. module: typ_account
 #: help:account.invoice,validation_date:0
 msgid "This date indicate when the invoice was validated"
 msgstr "Esta fecha indica cuándo se validó la factura"
+
+#. module: typ_account
+#: selection:account.invoice.report,region:0
+msgid "WEST"
+msgstr "WEST"
+
+#. module: typ_account
+#: selection:account.invoice.report,partner_type:0
+msgid "WHC"
+msgstr "WHC"
+
+#. module: typ_account
+#: selection:account.invoice.report,business_activity:0
+msgid "WHO"
+msgstr "WHO"
+
+#. module: typ_account
+#: selection:account.invoice.report,partner_type:0
+msgid "WI"
+msgstr "WI"
+
+#. module: typ_account
+#: selection:account.invoice.report,partner_type:0
+msgid "WW"
+msgstr "WW"
 
 #. module: typ_account
 #: code:addons/typ_account/models/account_invoice.py:53
@@ -137,3 +357,8 @@ msgstr "Esta fecha indica cuándo se validó la factura"
 #, python-format
 msgid "Warning!"
 msgstr "¡Advertencia!"
+
+#. module: typ_account
+#: view:account.invoice.report:typ_account.view_account_invoice_report_search_inh
+msgid "Yesterday"
+msgstr "Yesterday"

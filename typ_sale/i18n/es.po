@@ -436,6 +436,31 @@ msgid "Procurement"
 msgstr "Abastecimiento"
 
 #. module: typ_sale
+#: view:product.price.history:typ_sale.product_price_history_view_search
+msgid "Product"
+msgstr "Product"
+
+#. module: typ_sale
+#: model:ir.actions.act_window,name:typ_sale.action_product_price_history
+msgid "Product Price History"
+msgstr "Product Price History"
+
+#. module: typ_sale
+#: view:product.price.history:typ_sale.product_price_history_form_view
+msgid "Product Price History Form"
+msgstr "Product Price History Form"
+
+#. module: typ_sale
+#: view:product.price.history:typ_sale.product_price_history_tree_view
+msgid "Product Price History List"
+msgstr "Product Price History List"
+
+#. module: typ_sale
+#: view:product.price.history:typ_sale.product_price_history_view_search
+msgid "Product Price History Search"
+msgstr "Product Price History Search"
+
+#. module: typ_sale
 #: model:ir.model,name:typ_sale.model_purchase_order
 msgid "Purchase Order"
 msgstr "Pedido de Compra"
@@ -659,6 +684,11 @@ msgstr "Usuarios que pueden ver el margen en el pedido de venta"
 #: model:res.groups,name:typ_sale.res_group_can_sell_below_minimum_margin
 msgid "Users that can sell below the minimum margin"
 msgstr "Usuarios que pueden vender por debajo del margen mínimo"
+
+#. module: typ_sale
+#: model:res.groups,name:typ_sale.res_group_cost_audit
+msgid "Users who can audit costs"
+msgstr "Users who can audit costs"
 
 #. module: typ_sale
 #: view:website:sale.report_saleorder_document
