@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: Odoo Server 8.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-11-14 14:30+0000\n"
-"PO-Revision-Date: 2017-03-01 19:13+0000\n"
-"Last-Translator: cmexiatyp <cmexia@typrefrigeracion.com>\n"
+"PO-Revision-Date: 2017-04-01 10:26+0000\n"
+"Last-Translator: Jorge Escalona <jorge@vauxoo.com>\n"
 "Language-Team: Spanish "
 "<http://weblate.vauxoo.com/projects/typ-8-0/typ_account/es/>\n"
 "Language: es\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 2.10\n"
+"X-Generator: Weblate 2.12\n"
 
 #. module: typ_account
 #: code:addons/typ_account/models/sale_order.py:41
@@ -76,17 +76,17 @@ msgstr "Línea de extracto bancario"
 #: view:account.invoice.report:typ_account.view_account_invoice_report_search_inh
 #: field:account.invoice.report,business_activity:0
 msgid "Business activity"
-msgstr "Business activity"
+msgstr "Actividad de Negocios"
 
 #. module: typ_account
 #: selection:account.invoice.report,region:0
 msgid "CENTER"
-msgstr "CENTER"
+msgstr "CENTRO"
 
 #. module: typ_account
 #: selection:account.invoice.report,business_activity:0
 msgid "COM"
-msgstr "COM"
+msgstr "EMP"
 
 #. module: typ_account
 #: selection:account.invoice.report,business_activity:0
@@ -140,7 +140,7 @@ msgstr "Borrar asientos de apertura / cierre de año fiscal"
 #: selection:account.invoice.report,partner_type:0
 #: selection:account.invoice.report,potential_importance:0
 msgid "EMPLOYEE"
-msgstr "EMPLOYEE"
+msgstr "EMPLEADO"
 
 #. module: typ_account
 #: selection:account.invoice.report,partner_type:0
@@ -162,7 +162,7 @@ msgstr "Pago Inmediato"
 #: view:account.invoice.report:typ_account.view_account_invoice_report_search_inh
 #: field:account.invoice.report,importance:0
 msgid "Importance"
-msgstr "Importance"
+msgstr "Importancia"
 
 #. module: typ_account
 #: model:ir.model,name:typ_account.model_account_invoice
@@ -193,23 +193,23 @@ msgstr "NC"
 #: selection:account.invoice.report,importance:0
 #: selection:account.invoice.report,potential_importance:0
 msgid "NEGOTIATION"
-msgstr "NEGOTIATION"
+msgstr "NEGOCIACION"
 
 #. module: typ_account
 #: selection:account.invoice.report,importance:0
 #: selection:account.invoice.report,potential_importance:0
 msgid "NEW"
-msgstr "NEW"
+msgstr "NUEVO"
 
 #. module: typ_account
 #: selection:account.invoice.report,region:0
 msgid "NORTHEAST"
-msgstr "NORTHEAST"
+msgstr "NORESTE"
 
 #. module: typ_account
 #: selection:account.invoice.report,region:0
 msgid "NORTHWEST"
-msgstr "NORTHWEST"
+msgstr "NOROESTE"
 
 #. module: typ_account
 #: selection:account.invoice.report,business_activity:0
@@ -217,7 +217,7 @@ msgstr "NORTHWEST"
 #: selection:account.invoice.report,partner_type:0
 #: selection:account.invoice.report,potential_importance:0
 msgid "NOT CLASSIFIED"
-msgstr "NOT CLASSIFIED"
+msgstr "NO CLASIFICADO"
 
 #. module: typ_account
 #: selection:account.invoice.report,partner_type:0
@@ -243,7 +243,7 @@ msgstr "PD"
 #: selection:account.invoice.report,business_activity:0
 #: selection:account.invoice.report,partner_type:0
 msgid "PUBLIC"
-msgstr "PUBLIC"
+msgstr "PUBLICO"
 
 #. module: typ_account
 #: model:ir.model,name:typ_account.model_res_partner
@@ -254,7 +254,7 @@ msgstr "Empresa"
 #: view:account.invoice.report:typ_account.view_account_invoice_report_search_inh
 #: field:account.invoice.report,partner_type:0
 msgid "Partner type"
-msgstr "Partner type"
+msgstr "Tipo cliente"
 
 #. module: typ_account
 #: view:account.invoice.report:typ_account.view_account_invoice_report_search_inh
@@ -264,7 +264,7 @@ msgstr "Potential Importance"
 #. module: typ_account
 #: field:account.invoice.report,potential_importance:0
 msgid "Potential importance"
-msgstr "Potential importance"
+msgstr "Importancia potencial"
 
 #. module: typ_account
 #: view:account.move.line:typ_account.view_account_move_line_filter_inherit
@@ -280,7 +280,7 @@ msgstr "RC"
 #: view:account.invoice.report:typ_account.view_account_invoice_report_search_inh
 #: field:account.invoice.report,region:0
 msgid "Region"
-msgstr "Region"
+msgstr "Región"
 
 #. module: typ_account
 #: selection:account.invoice.report,dealer:0
@@ -290,12 +290,12 @@ msgstr "SD"
 #. module: typ_account
 #: selection:account.invoice.report,region:0
 msgid "SOUTH"
-msgstr "SOUTH"
+msgstr "SUR"
 
 #. module: typ_account
 #: selection:account.invoice.report,region:0
 msgid "SOUTHEAST"
-msgstr "SOUTHEAST"
+msgstr "SURESTE"
 
 #. module: typ_account
 #: selection:account.invoice.report,partner_type:0
@@ -327,7 +327,7 @@ msgstr "Esta fecha indica cuándo se validó la factura"
 #. module: typ_account
 #: selection:account.invoice.report,region:0
 msgid "WEST"
-msgstr "WEST"
+msgstr "OESTE"
 
 #. module: typ_account
 #: selection:account.invoice.report,partner_type:0
