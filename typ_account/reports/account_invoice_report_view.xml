@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+<data>
+    <record id="view_account_invoice_report_search_inh" model="ir.ui.view">
+        <field name="name">account.invoice.report.search</field>
+        <field name="model">account.invoice.report</field>
+        <field name="inherit_id" ref="account.view_account_invoice_report_search"/>
+        <field name="arch" type="xml">
+            <xpath expr="//search[@string='Invoices Analysis']" position="inside">
+                <filter string="Last week"
+                    domain="[('date', '&gt;=', ((context_today()+relativedelta(weeks=-2,days=1, weekday=0)).strftime('%Y-%m-%d'))),('date', '&lt;=', ((context_today()+relativedelta(weeks=-1,weekday=6)).strftime('%Y-%m-%d')))]"/>
+                <filter string="This Month" name="month"
+                    domain="['|', ('date', '=', False), '&amp;',('date','&lt;=', time.strftime('%Y-%m-%d')),('date','&gt;=',time.strftime('%Y-%m-01'))]"/>
+                <filter string="Yesterday" name="yesterday"
+                    domain="[('date','&gt;=', ((context_today()-datetime.timedelta(days=1)).strftime('%Y-%m-%d 00:00:00'))), ('date','&lt;=', ((context_today()+datetime.timedelta(days=0)).strftime('%Y-%m-%d 00:00:00')))]"/>
+            </xpath>
+            <xpath expr="//filter[@string='Due Month']" position="after">
+                <filter string="Importance" name="importance" context="{'group_by': 'importance'}"/>
+                <filter string="Potential Importance" name="potential_importance"
+                    context="{'group_by': 'potential_importance'}"/>
+                <filter string="Business activity" name="business_activity"
+                    context="{'group_by': 'business_activity'}"/>
+                <filter string="Partner type" name="partner_type" context="{'group_by': 'partner_type'}"/>
+                <filter string="Dealer" name="dealer" context="{'group_by': 'dealer'}"/>
+                <filter string="Region" name="region" context="{'group_by': 'region'}"/>
+            </xpath>
+        </field>
+    </record>
+    <record id="account.action_account_invoice_report_all" model="ir.actions.act_window">
+        <field name="name">Invoices Analysis</field>
+        <field name="res_model">account.invoice.report</field>
+        <field name="context">{'search_default_current':1, 'search_default_customer':1, 'group_by':[], 'group_by_no_leaf':1, 'search_default_yesterday': 1}</field>
+    </record>
+</data>
+</openerp>
