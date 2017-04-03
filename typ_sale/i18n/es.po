@@ -10,8 +10,8 @@ msgstr ""
 "Project-Id-Version: Odoo Server 8.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-11-28 20:23+0000\n"
-"PO-Revision-Date: 2017-04-01 10:32+0000\n"
-"Last-Translator: Jorge Escalona <jorge@vauxoo.com>\n"
+"PO-Revision-Date: 2017-04-03 21:19+0000\n"
+"Last-Translator: Yennnifer Santiago <yennifer@vauxoo.com>\n"
 "Language-Team: Spanish "
 "<http://weblate.vauxoo.com/projects/typ-8-0/typ_sale/es/>\n"
 "Language: es\n"
@@ -185,7 +185,7 @@ msgstr "Salvo previa venta."
 #. module: typ_sale
 #: selection:res.partner,partner_type:0
 msgid "FSC"
-msgstr "ALI"
+msgstr "FSC"
 
 #. module: typ_sale
 #: view:website:sale.report_saleorder_document
@@ -260,7 +260,7 @@ msgstr "Margen permitido en Pedido de Venta"
 #. module: typ_sale
 #: selection:res.partner,partner_type:0
 msgid "NC"
-msgstr "CN"
+msgstr "NC"
 
 #. module: typ_sale
 #: selection:res.partner,importance:0
@@ -311,7 +311,7 @@ msgstr "Notas:"
 #. module: typ_sale
 #: selection:res.partner,partner_type:0
 msgid "OC"
-msgstr "CO"
+msgstr "OC"
 
 #. module: typ_sale
 #: help:res.partner,partner_type:0
@@ -343,7 +343,7 @@ msgstr "CO - Contratista operador\n"
 #. module: typ_sale
 #: selection:res.partner,partner_type:0
 msgid "OTH"
-msgstr "OTR"
+msgstr "OTH"
 
 #. module: typ_sale
 #: view:website:sale.report_saleorder_document
@@ -358,12 +358,12 @@ msgstr "Pedido Nº"
 #. module: typ_sale
 #: selection:res.partner,partner_type:0
 msgid "PC"
-msgstr "CP"
+msgstr "PC"
 
 #. module: typ_sale
 #: selection:res.partner,dealer:0
 msgid "PD"
-msgstr "DP"
+msgstr "PD"
 
 #. module: typ_sale
 #: help:res.partner,dealer:0
@@ -497,7 +497,7 @@ msgstr "Presupuesto Nº"
 #. module: typ_sale
 #: selection:res.partner,partner_type:0
 msgid "RC"
-msgstr "CR"
+msgstr "RC"
 
 #. module: typ_sale
 #: view:website:typ_sale.external_layout_header
@@ -517,7 +517,7 @@ msgstr "Región"
 #. module: typ_sale
 #: selection:res.partner,dealer:0
 msgid "SD"
-msgstr "DE"
+msgstr "SD"
 
 #. module: typ_sale
 #: selection:res.partner,region:0
@@ -719,22 +719,22 @@ msgstr "OESTE"
 #. module: typ_sale
 #: selection:res.partner,partner_type:0
 msgid "WHC"
-msgstr "MC"
+msgstr "WHC"
 
 #. module: typ_sale
 #: selection:res.partner,business_activity:0
 msgid "WHO"
-msgstr "MAY"
+msgstr "WHO"
 
 #. module: typ_sale
 #: selection:res.partner,partner_type:0
 msgid "WI"
-msgstr "MF"
+msgstr "WI"
 
 #. module: typ_sale
 #: selection:res.partner,partner_type:0
 msgid "WW"
-msgstr "MM"
+msgstr "WW"
 
 #. module: typ_sale
 #: field:res.partner.warehouse,warehouse_id:0
