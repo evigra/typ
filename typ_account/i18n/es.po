@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: Odoo Server 8.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-11-14 14:30+0000\n"
-"PO-Revision-Date: 2017-04-01 10:26+0000\n"
-"Last-Translator: Jorge Escalona <jorge@vauxoo.com>\n"
+"PO-Revision-Date: 2017-04-03 21:18+0000\n"
+"Last-Translator: Yennnifer Santiago <yennifer@vauxoo.com>\n"
 "Language-Team: Spanish "
 "<http://weblate.vauxoo.com/projects/typ-8-0/typ_account/es/>\n"
 "Language: es\n"
@@ -60,12 +60,12 @@ msgstr "AA"
 #. module: typ_account
 #: selection:account.invoice.report,dealer:0
 msgid "AD"
-msgstr "AD"
+msgstr "DA"
 
 #. module: typ_account
 #: selection:account.invoice.report,partner_type:0
 msgid "BOT"
-msgstr "BOT"
+msgstr "EMB"
 
 #. module: typ_account
 #: model:ir.model,name:typ_account.model_account_bank_statement_line
@@ -121,13 +121,13 @@ msgstr "Fecha Factura"
 #. module: typ_account
 #: field:account.invoice.report,date_month:0
 msgid "Date month"
-msgstr "Date month"
+msgstr "Fecha del mes"
 
 #. module: typ_account
 #: view:account.invoice.report:typ_account.view_account_invoice_report_search_inh
 #: field:account.invoice.report,dealer:0
 msgid "Dealer"
-msgstr "Dealer"
+msgstr "Negociante"
 
 #. module: typ_account
 #: model:ir.actions.server,name:typ_account.server_action_delete_entries_open_close_fiscalyear
@@ -177,12 +177,12 @@ msgstr "Fecha de validación de la factura"
 #. module: typ_account
 #: model:ir.model,name:typ_account.model_account_invoice_report
 msgid "Invoices Statistics"
-msgstr "Invoices Statistics"
+msgstr "Estadísticas de Facturas"
 
 #. module: typ_account
 #: view:account.invoice.report:typ_account.view_account_invoice_report_search_inh
 msgid "Last week"
-msgstr "Last week"
+msgstr "Ultima semana"
 
 #. module: typ_account
 #: selection:account.invoice.report,partner_type:0
@@ -259,7 +259,7 @@ msgstr "Tipo cliente"
 #. module: typ_account
 #: view:account.invoice.report:typ_account.view_account_invoice_report_search_inh
 msgid "Potential Importance"
-msgstr "Potential Importance"
+msgstr "Potencial Importancia"
 
 #. module: typ_account
 #: field:account.invoice.report,potential_importance:0
@@ -317,7 +317,7 @@ msgstr "El cliente "
 #. module: typ_account
 #: view:account.invoice.report:typ_account.view_account_invoice_report_search_inh
 msgid "This Month"
-msgstr "This Month"
+msgstr "Este Mes"
 
 #. module: typ_account
 #: help:account.invoice,validation_date:0
@@ -361,4 +361,4 @@ msgstr "¡Advertencia!"
 #. module: typ_account
 #: view:account.invoice.report:typ_account.view_account_invoice_report_search_inh
 msgid "Yesterday"
-msgstr "Yesterday"
+msgstr "Ayer"
