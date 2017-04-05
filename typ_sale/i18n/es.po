@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: Odoo Server 8.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-11-28 20:23+0000\n"
-"PO-Revision-Date: 2017-04-05 16:51+0000\n"
+"PO-Revision-Date: 2017-04-05 23:09+0000\n"
 "Last-Translator: Julio [Vauxoo] <julio@vauxoo.com>\n"
 "Language-Team: Spanish "
 "<http://weblate.vauxoo.com/projects/typ-8-0/typ_sale/es/>\n"
@@ -442,7 +442,9 @@ msgstr "Precio"
 #: code:addons/typ_sale/wizard/stock_change_standard_price.py:21
 #, python-format
 msgid "Price has been modified, previous price:                                    %s , new price: %s"
-msgstr "Price has been modified, previous price:                                    %s , new price: %s"
+msgstr ""
+"El costo ha sido modificado, costo anterior:"
+"                                    %s , costo nuevo: %s"
 
 #. module: typ_sale
 #: model:ir.model,name:typ_sale.model_procurement_order
@@ -452,12 +454,12 @@ msgstr "Abastecimiento"
 #. module: typ_sale
 #: view:product.price.history:typ_sale.product_price_history_view_search
 msgid "Product"
-msgstr "Product"
+msgstr "Producto"
 
 #. module: typ_sale
 #: model:ir.actions.act_window,name:typ_sale.action_product_price_history
 msgid "Product Price History"
-msgstr "Product Price History"
+msgstr "Historial de precio del producto"
 
 #. module: typ_sale
 #: view:product.price.history:typ_sale.product_price_history_form_view
@@ -704,7 +706,7 @@ msgstr "Usuarios que pueden vender por debajo del margen mínimo"
 #. module: typ_sale
 #: model:res.groups,name:typ_sale.res_group_cost_audit
 msgid "Users who can audit costs"
-msgstr "Users who can audit costs"
+msgstr "Usuarios que pueden modificar el costo"
 
 #. module: typ_sale
 #: view:website:sale.report_saleorder_document
