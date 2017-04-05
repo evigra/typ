@@ -7,8 +7,8 @@
             <field name="model">purchase.order</field>
             <field name="inherit_id" ref="purchase.purchase_order_form"/>
             <field name="arch" type="xml">
-                <xpath expr="//field[@name='partner_id']" position="attributes">
-                    <attribute name="on_change" eval="1"/>
+                <xpath expr="//field[@name='pricelist_id']" position="attributes">
+                    <attribute name="domain" translation="off">[('partner_ids', 'in', partner_id), ('type', '=', 'purchase')]</attribute>
                 </xpath>
            </field>
         </record>

@@ -5,10 +5,11 @@
         <record id="view_sale_order_form_onchange_partner" model="ir.ui.view">
             <field name="name">sale.order.form.onchange.partner</field>
             <field name="model">sale.order</field>
+            <field name="priority">110</field>
             <field name="inherit_id" ref="sale.view_order_form"/>
             <field name="arch" type="xml">
-                <xpath expr="//field[@name='partner_id']" position="attributes">
-                    <attribute name="on_change" eval="1"/>
+                <xpath expr="//field[@name='pricelist_id']" position="attributes">
+                    <attribute name="domain" translation="off">[('partner_ids', 'in', partner_id), ('type', '=', 'sale')]</attribute>
                 </xpath>
             </field>
         </record>
