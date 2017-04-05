@@ -58,7 +58,8 @@ class StockPicking(models.Model):
             self.env.ref('typ_sale.group_invoiced_without_pedimento'))
         if all([vals.get('type') == 'out_invoice',
                 not group_inv_without_ped]):
-            self.check_pedimento(picking)
+            for pick in self.browse(self._context.get('active_ids')):
+                self.check_pedimento(pick)
         return super(StockPicking, self)._create_invoice_from_picking(
             picking, vals)
 
