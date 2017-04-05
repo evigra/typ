@@ -84,6 +84,11 @@ msgid "Cash"
 msgstr "Efectivo"
 
 #. module: typ_sale
+#: model:ir.model,name:typ_sale.model_stock_change_standard_price
+msgid "Change Standard Price"
+msgstr "Change Standard Price"
+
+#. module: typ_sale
 #: view:website:sale.report_saleorder_document
 msgid "Client:"
 msgstr "Cliente:"
@@ -429,6 +434,12 @@ msgstr "Importancia potencial"
 #: view:website:sale.report_saleorder_document
 msgid "Price"
 msgstr "Precio"
+
+#. module: typ_sale
+#: code:addons/typ_sale/wizard/stock_change_standard_price.py:21
+#, python-format
+msgid "Price has been modified, previous price:                                    %s , new price: %s"
+msgstr "Price has been modified, previous price:                                    %s , new price: %s"
 
 #. module: typ_sale
 #: model:ir.model,name:typ_sale.model_procurement_order
