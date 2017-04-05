@@ -27,6 +27,7 @@ msgid "Buyer"
 msgstr "Comprador"
 
 #. module: typ_partner
+#: help:product.pricelist,partner_ids:0
 #: help:res.partner,pricelist_ids:0
 msgid "Choose the Pricelist that partner can see"
 msgstr "Selección de las tarifas que se pueden ver con el cliente/proveedor"
@@ -37,20 +38,16 @@ msgid "Partner"
 msgstr "Empresa"
 
 #. module: typ_partner
+#: model:ir.model,name:typ_partner.model_product_pricelist
+msgid "Pricelist"
+msgstr "Pricelist"
+
+#. module: typ_partner
+#: field:product.pricelist,partner_ids:0
 #: view:res.partner:typ_partner.view_partner_form_pricelists_available
 #: field:res.partner,pricelist_ids:0
 msgid "Pricelist's partner"
 msgstr "Tarifas disponibles"
-
-#. module: typ_partner
-#: model:ir.model,name:typ_partner.model_purchase_order
-msgid "Purchase Order"
-msgstr "Pedido de Compra"
-
-#. module: typ_partner
-#: model:ir.model,name:typ_partner.model_sale_order
-msgid "Sales Order"
-msgstr "Pedido de venta"
 
 #. module: typ_partner
 #: view:res.partner:typ_partner.view_res_partner_filter_buyer
