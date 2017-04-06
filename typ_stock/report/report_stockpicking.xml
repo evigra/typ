@@ -145,6 +145,7 @@
                             </tr>
                         </tbody>
                         </table>
+                        <p><strong>Notes</strong>: <span t-field="o.note"/></p>
                     </div>
                 </t>
             </t>
