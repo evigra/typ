@@ -177,6 +177,11 @@ msgstr "Error en creacion de Quant negativo de el producto %s. Contacte al perso
 
 #. module: typ_stock
 #: view:website:stock.report_picking
+msgid "Notes"
+msgstr "Notes"
+
+#. module: typ_stock
+#: view:website:stock.report_picking
 msgid "Order (Origin)"
 msgstr "Orden (Origen)"
 
