@@ -175,7 +175,7 @@ msgstr "Última modificación"
 #. module: typ
 #: view:website:typ.report_electronic_invoice_document
 msgid "Notes"
-msgstr "Notas"
+msgstr "Notes"
 
 #. module: typ
 #: view:website:typ.report_electronic_invoice_document
