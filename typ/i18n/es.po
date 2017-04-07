@@ -12,8 +12,8 @@ msgstr ""
 "Project-Id-Version: Odoo Server 8.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-11-24 22:20+0000\n"
-"PO-Revision-Date: 2017-04-01 10:21+0000\n"
-"Last-Translator: Jorge Escalona <jorge@vauxoo.com>\n"
+"PO-Revision-Date: 2017-04-07 21:33+0000\n"
+"Last-Translator: Weblate Admin <noreply@vauxoo.com>\n"
 "Language-Team: Spanish <http://weblate.vauxoo.com/projects/typ-8-0/typ/es/>\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
@@ -175,7 +175,7 @@ msgstr "Última modificación"
 #. module: typ
 #: view:website:typ.report_electronic_invoice_document
 msgid "Notes"
-msgstr "Notes"
+msgstr "Notas"
 
 #. module: typ
 #: view:website:typ.report_electronic_invoice_document
