@@ -35,8 +35,9 @@ class ResPartner(models.Model):
         """
         res = super(ResPartner, self).default_get(field)
         res.update({
-            'property_product_pricelist': self._get_sale_pricelist_id(),
+            'property_product_pricelist':
+            self._get_sale_pricelist_id() or None,
             'property_product_pricelist_purchase':
-            self._get_purchase_pricelist_id()
+            self._get_purchase_pricelist_id() or None
         })
         return res
