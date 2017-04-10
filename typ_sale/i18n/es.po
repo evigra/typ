@@ -231,10 +231,7 @@ msgstr "Dirección de facturación:"
 #: code:addons/typ_sale/models/stock.py:48
 #, python-format
 msgid "It is necessary register a pedimento in entry quant of the product %s in picking %s before continue. The supplier %s is not a mexican supplier."
-msgstr ""
-"Es necesario registrar un pedimento en el quant de entrada del producto %s "
-"en el albarán %s antes de continuar. El proveedor %s no es un proveedor "
-"mexicano."
+msgstr "Es necesario registrar un pedimento en el quant de entrada del producto %s en el albarán %s antes de continuar. El proveedor %s no es un proveedor mexicano."
 
 #. module: typ_sale
 #: field:res.partner.warehouse,__last_update:0
@@ -442,9 +439,7 @@ msgstr "Precio"
 #: code:addons/typ_sale/wizard/stock_change_standard_price.py:21
 #, python-format
 msgid "Price has been modified, previous price:                                    %s , new price: %s"
-msgstr ""
-"El costo ha sido modificado, costo anterior:"
-"                                    %s , costo nuevo: %s"
+msgstr "El costo ha sido modificado, costo anterior:                                    %s , costo nuevo: %s"
 
 #. module: typ_sale
 #: model:ir.model,name:typ_sale.model_procurement_order
@@ -622,9 +617,7 @@ msgstr "El producto %s"
 #: code:addons/typ_sale/models/res_partner.py:117
 #, python-format
 msgid "There is more than one configuration for warehouse %s. It must have only one configuration for each warehouse"
-msgstr ""
-"Hay más de una configuración para el almacén %s. debe poseer solo una "
-"configuración para cada almacén"
+msgstr "Hay más de una configuración para el almacén %s. debe poseer solo una configuración para cada almacén"
 
 #. module: typ_sale
 #: model:res.groups,comment:typ_sale.res_group_can_sell_below_minimum_margin
