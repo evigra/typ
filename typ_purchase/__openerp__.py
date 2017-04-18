@@ -20,6 +20,7 @@
     'depends': [
         'purchase',
         'purchase_requisition',
+        'typ_partner',
     ],
 
     # always loaded
