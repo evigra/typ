@@ -395,6 +395,12 @@ msgid "Origin"
 msgstr "Origen"
 
 #. module: typ_commision
+#: selection:account.invoice,credit_note_type:0
+#: selection:account.invoice.line,credit_note_type:0
+msgid "Other"
+msgstr "Other"
+
+#. module: typ_commision
 #: view:account.invoice.line:typ_commision.view_account_invoice_line_filter
 #: selection:account.invoice.line,state:0
 msgid "Paid"
