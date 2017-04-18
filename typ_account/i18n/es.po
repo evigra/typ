@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: Odoo Server 8.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-11-14 14:30+0000\n"
-"PO-Revision-Date: 2017-04-03 21:18+0000\n"
-"Last-Translator: Yennnifer Santiago <yennifer@vauxoo.com>\n"
+"PO-Revision-Date: 2017-04-18 18:11+0000\n"
+"Last-Translator: omejia26 <omejia@typrefrigeracion.com>\n"
 "Language-Team: Spanish "
 "<http://weblate.vauxoo.com/projects/typ-8-0/typ_account/es/>\n"
 "Language: es\n"
@@ -76,7 +76,7 @@ msgstr "Línea de extracto bancario"
 #: view:account.invoice.report:typ_account.view_account_invoice_report_search_inh
 #: field:account.invoice.report,business_activity:0
 msgid "Business activity"
-msgstr "Actividad de Negocios"
+msgstr "Giro"
 
 #. module: typ_account
 #: selection:account.invoice.report,region:0
@@ -150,7 +150,7 @@ msgstr "ESP"
 #. module: typ_account
 #: selection:account.invoice.report,partner_type:0
 msgid "FSC"
-msgstr "FSC"
+msgstr "ALI"
 
 #. module: typ_account
 #: model:account.payment.term,name:typ_account.typ_account_payment_term_immediate
@@ -187,7 +187,7 @@ msgstr "Ultima semana"
 #. module: typ_account
 #: selection:account.invoice.report,partner_type:0
 msgid "NC"
-msgstr "NC"
+msgstr "CN"
 
 #. module: typ_account
 #: selection:account.invoice.report,importance:0
@@ -222,17 +222,17 @@ msgstr "NO CLASIFICADO"
 #. module: typ_account
 #: selection:account.invoice.report,partner_type:0
 msgid "OC"
-msgstr "OC"
+msgstr "CO"
 
 #. module: typ_account
 #: selection:account.invoice.report,partner_type:0
 msgid "OTH"
-msgstr "OTH"
+msgstr "OTR"
 
 #. module: typ_account
 #: selection:account.invoice.report,partner_type:0
 msgid "PC"
-msgstr "PC"
+msgstr "CP"
 
 #. module: typ_account
 #: selection:account.invoice.report,dealer:0
@@ -274,7 +274,7 @@ msgstr "Producto"
 #. module: typ_account
 #: selection:account.invoice.report,partner_type:0
 msgid "RC"
-msgstr "RC"
+msgstr "CR"
 
 #. module: typ_account
 #: view:account.invoice.report:typ_account.view_account_invoice_report_search_inh
@@ -285,7 +285,7 @@ msgstr "Región"
 #. module: typ_account
 #: selection:account.invoice.report,dealer:0
 msgid "SD"
-msgstr "SD"
+msgstr "DE"
 
 #. module: typ_account
 #: selection:account.invoice.report,region:0
@@ -332,22 +332,22 @@ msgstr "OESTE"
 #. module: typ_account
 #: selection:account.invoice.report,partner_type:0
 msgid "WHC"
-msgstr "WHC"
+msgstr "MC"
 
 #. module: typ_account
 #: selection:account.invoice.report,business_activity:0
 msgid "WHO"
-msgstr "WHO"
+msgstr "MAY"
 
 #. module: typ_account
 #: selection:account.invoice.report,partner_type:0
 msgid "WI"
-msgstr "WI"
+msgstr "MF"
 
 #. module: typ_account
 #: selection:account.invoice.report,partner_type:0
 msgid "WW"
-msgstr "WW"
+msgstr "MM"
 
 #. module: typ_account
 #: code:addons/typ_account/models/account_invoice.py:53
