@@ -10,8 +10,8 @@ msgstr ""
 "Project-Id-Version: Odoo Server 8.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-11-28 20:23+0000\n"
-"PO-Revision-Date: 2017-04-05 23:09+0000\n"
-"Last-Translator: Julio [Vauxoo] <julio@vauxoo.com>\n"
+"PO-Revision-Date: 2017-04-18 18:12+0000\n"
+"Last-Translator: omejia26 <omejia@typrefrigeracion.com>\n"
 "Language-Team: Spanish "
 "<http://weblate.vauxoo.com/projects/typ-8-0/typ_sale/es/>\n"
 "Language: es\n"
@@ -60,7 +60,7 @@ msgstr "EMB"
 #. module: typ_sale
 #: field:res.partner,business_activity:0
 msgid "Business activity"
-msgstr "Actividad de Negocios"
+msgstr "Giro"
 
 #. module: typ_sale
 #: selection:res.partner,region:0
@@ -147,7 +147,7 @@ msgstr "Moneda:"
 #. module: typ_sale
 #: field:res.partner,dealer:0
 msgid "Dealer type"
-msgstr "Tipo de proveedor"
+msgstr "Tipo dealer"
 
 #. module: typ_sale
 #: view:website:sale.report_saleorder_document
@@ -185,7 +185,7 @@ msgstr "Salvo previa venta."
 #. module: typ_sale
 #: selection:res.partner,partner_type:0
 msgid "FSC"
-msgstr "FSC"
+msgstr "ALI"
 
 #. module: typ_sale
 #: view:website:sale.report_saleorder_document
@@ -257,7 +257,7 @@ msgstr "Margen permitido en Pedido de Venta"
 #. module: typ_sale
 #: selection:res.partner,partner_type:0
 msgid "NC"
-msgstr "NC"
+msgstr "CN"
 
 #. module: typ_sale
 #: selection:res.partner,importance:0
@@ -308,7 +308,7 @@ msgstr "Notas:"
 #. module: typ_sale
 #: selection:res.partner,partner_type:0
 msgid "OC"
-msgstr "OC"
+msgstr "CO"
 
 #. module: typ_sale
 #: help:res.partner,partner_type:0
@@ -324,10 +324,11 @@ msgid "OC - Operator contractor\n"
 "WHC - Wholesaler contractor\n"
 "WW - Wholesaler wholesaler\n"
 "WI - Wholesaler ironmonger"
-msgstr "CO - Contratista operador\n"
+msgstr ""
+"CO - Contratista operador\n"
 "CN - Contratista obra nueva\n"
 "CP - Contratista profesional\n"
-"RC - Contratista refrigeracion\n"
+"CR - Contratista refrigeracion\n"
 "ESP - Especificador\n"
 "ALI - Empresa de alimentos\n"
 "SUP - Empresa supermercado\n"
@@ -340,7 +341,7 @@ msgstr "CO - Contratista operador\n"
 #. module: typ_sale
 #: selection:res.partner,partner_type:0
 msgid "OTH"
-msgstr "OTH"
+msgstr "OTR"
 
 #. module: typ_sale
 #: view:website:sale.report_saleorder_document
@@ -355,7 +356,7 @@ msgstr "Pedido Nº"
 #. module: typ_sale
 #: selection:res.partner,partner_type:0
 msgid "PC"
-msgstr "PC"
+msgstr "CP"
 
 #. module: typ_sale
 #: selection:res.partner,dealer:0
@@ -494,7 +495,7 @@ msgstr "Presupuesto Nº"
 #. module: typ_sale
 #: selection:res.partner,partner_type:0
 msgid "RC"
-msgstr "RC"
+msgstr "CR"
 
 #. module: typ_sale
 #: view:website:typ_sale.external_layout_header
@@ -514,7 +515,7 @@ msgstr "Región"
 #. module: typ_sale
 #: selection:res.partner,dealer:0
 msgid "SD"
-msgstr "SD"
+msgstr "DE"
 
 #. module: typ_sale
 #: selection:res.partner,region:0
@@ -714,22 +715,22 @@ msgstr "OESTE"
 #. module: typ_sale
 #: selection:res.partner,partner_type:0
 msgid "WHC"
-msgstr "WHC"
+msgstr "MC"
 
 #. module: typ_sale
 #: selection:res.partner,business_activity:0
 msgid "WHO"
-msgstr "WHO"
+msgstr "MAY"
 
 #. module: typ_sale
 #: selection:res.partner,partner_type:0
 msgid "WI"
-msgstr "WI"
+msgstr "MF"
 
 #. module: typ_sale
 #: selection:res.partner,partner_type:0
 msgid "WW"
-msgstr "WW"
+msgstr "MM"
 
 #. module: typ_sale
 #: field:res.partner.warehouse,warehouse_id:0
