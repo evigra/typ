@@ -35,6 +35,26 @@ class StockQuant(models.Model):
                    context=context))
         return res
 
+    def _quant_create(self, cr, uid, qty, move, lot_id=False, owner_id=False,
+                      src_package_id=False, dest_package_id=False,
+                      force_location_from=False, force_location_to=False,
+                      context=None):
+        """Cannot move from transit location without availability
+        """
+        if move.location_id.usage == 'transit':
+            raise exceptions.Warning(
+                _('Warning!'),
+                _('There are not availability in this location for the product'
+                  ' %s. Contact Vauxoo personnel immediately') %
+                (move.product_id.name)
+            )
+        res = (super(StockQuant, self).
+               _quant_create(
+                   cr, uid, qty, move, lot_id, owner_id, src_package_id,
+                   dest_package_id, force_location_from,
+                   force_location_to, context))
+        return res
+
 
 class StockMove(models.Model):
 
