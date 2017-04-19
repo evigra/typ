@@ -25,13 +25,13 @@ msgstr ""
 "X-Generator: Weblate 2.12\n"
 
 #. module: typ_stock
-#: code:addons/typ_stock/models/stock.py:222
+#: code:addons/typ_stock/models/stock.py:242
 #, python-format
 msgid "<ul><li>shipment confirmed --> <b>Canceled</b></li></ul>"
 msgstr "<ul><li>embarque confirmado --> <b>Cancelado</b></li></ul>"
 
 #. module: typ_stock
-#: code:addons/typ_stock/models/stock.py:220
+#: code:addons/typ_stock/models/stock.py:240
 #, python-format
 msgid "<ul><li>shipment confirmed --> <b>ok</b></li></ul>"
 msgstr "<ul><li>embarque confirmado --> <b>ok</b></li></ul>"
@@ -129,7 +129,7 @@ msgid "Importance"
 msgstr "Importancia"
 
 #. module: typ_stock
-#: code:addons/typ_stock/models/stock.py:272
+#: code:addons/typ_stock/models/stock.py:292
 #, python-format
 msgid "Internal movements don't allow locations in supplier or customer"
 msgstr "Los movimientos internos no permiten ubicaciones de proveedores o clientes"
@@ -170,7 +170,7 @@ msgid "Minimum Inventory Rule"
 msgstr "Regla de Inventario Mínimo"
 
 #. module: typ_stock
-#: code:addons/typ_stock/models/stock.py:80
+#: code:addons/typ_stock/models/stock.py:100
 #, python-format
 msgid "Negative Quant creation error of the product %s. Contact Vauxoo personnel immediately"
 msgstr "Error en creacion de Quant negativo de el producto %s. Contacte al personal de Vauxoo inmediatamente"
@@ -212,7 +212,7 @@ msgid "Pedimento/Serial-Product"
 msgstr "Pedimento/Serial-Producto"
 
 #. module: typ_stock
-#: code:addons/typ_stock/models/stock.py:106
+#: code:addons/typ_stock/models/stock.py:126
 #, python-format
 msgid "Permission denied only manager/warehouse group. Contact personnel Vauxoo immediately"
 msgstr "Permiso denegado solamente el grupo administrador/almacenes. Contacte al personal de Vauxoo inmediatamente"
@@ -401,7 +401,7 @@ msgid "The Serial number %s already captured"
 msgstr "El número de Serie %s ya se capturó"
 
 #. module: typ_stock
-#: code:addons/typ_stock/models/stock.py:301
+#: code:addons/typ_stock/models/stock.py:321
 #: code:addons/typ_stock/models/stock_return_picking.py:38
 #, python-format
 msgid "The return of the product %s, exceeds the amount invoiced"
@@ -431,6 +431,12 @@ msgstr "El número serial %s ya se encuentra en existencia"
 #, python-format
 msgid "The serial numbers loaded cannot be greater than the requested quantity of the product"
 msgstr "Los números seriales cargados no pueden ser mayores que la cantidad de productos requerida"
+
+#. module: typ_stock
+#: code:addons/typ_stock/models/stock.py:47
+#, python-format
+msgid "There are not availability in this location for the product %s. Contact Vauxoo personnel immediately"
+msgstr "There are not availability in this location for the product %s. Contact Vauxoo personnel immediately"
 
 #. module: typ_stock
 #: model:res.groups,comment:typ_stock.group_cancel_picking_with_move_not_in_transit_loc
@@ -473,7 +479,7 @@ msgid "This must be checked only when the supplier have invoiced the whole order
 msgstr "Este check debera ser activado solamente cuando el proveedor haya facturado la orden completa indicando así que no hay un backorder. Esto activara en la vista de arbol el color verde para este picking indicando que la orden esta embarcada sin ningún problema "
 
 #. module: typ_stock
-#: code:addons/typ_stock/models/stock.py:358
+#: code:addons/typ_stock/models/stock.py:378
 #, python-format
 msgid "This picking cannot be cancelled."
 msgstr "Este albarán no puede ser cancelado."
@@ -592,12 +598,13 @@ msgid "Warning"
 msgstr "Advertencia"
 
 #. module: typ_stock
-#: code:addons/typ_stock/models/stock.py:79
-#: code:addons/typ_stock/models/stock.py:105
-#: code:addons/typ_stock/models/stock.py:126
-#: code:addons/typ_stock/models/stock.py:271
-#: code:addons/typ_stock/models/stock.py:300
-#: code:addons/typ_stock/models/stock.py:357
+#: code:addons/typ_stock/models/stock.py:46
+#: code:addons/typ_stock/models/stock.py:99
+#: code:addons/typ_stock/models/stock.py:125
+#: code:addons/typ_stock/models/stock.py:146
+#: code:addons/typ_stock/models/stock.py:291
+#: code:addons/typ_stock/models/stock.py:320
+#: code:addons/typ_stock/models/stock.py:377
 #: code:addons/typ_stock/models/stock_return_picking.py:37
 #: code:addons/typ_stock/models/stock_return_picking.py:54
 #, python-format
@@ -630,7 +637,7 @@ msgid "Wizard Pedimento Product"
 msgstr "Asistente Pedimento Producto"
 
 #. module: typ_stock
-#: code:addons/typ_stock/models/stock.py:375
+#: code:addons/typ_stock/models/stock.py:395
 #, python-format
 msgid "You can not inactivate a warehouse with products on it, please adjust your inventories first and then come back and inactivate it."
 msgstr "No puede inactivar un almacén con productos en él, por favor, ajuste primero sus inventarios y luego vuelva a desactivarlo."
@@ -642,7 +649,7 @@ msgid "You may only return one picking at a time!"
 msgstr "Debes retornar una albarán a la vez!"
 
 #. module: typ_stock
-#: code:addons/typ_stock/models/stock.py:127
+#: code:addons/typ_stock/models/stock.py:147
 #, python-format
 msgid "You must assign a serial number for the product [%s] %s"
 msgstr "Debe asignar un número de serial para el producto [%s] %s"
