@@ -33,6 +33,16 @@ msgid "Choose the Pricelist that partner can see"
 msgstr "Selección de las tarifas que se pueden ver con el cliente/proveedor"
 
 #. module: typ_partner
+#: help:res.partner,is_employee:0
+msgid "If user belongs to employee group return True"
+msgstr "If user belongs to employee group return True"
+
+#. module: typ_partner
+#: field:res.partner,is_employee:0
+msgid "Is Employee?"
+msgstr "Is Employee?"
+
+#. module: typ_partner
 #: model:ir.model,name:typ_partner.model_res_partner
 msgid "Partner"
 msgstr "Empresa"
