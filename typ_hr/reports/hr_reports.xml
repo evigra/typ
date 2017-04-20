@@ -1,0 +1,13 @@
+<openerp>
+<data>
+<report
+    id="hr_employee_expedient"
+    model="hr.employee"
+    string="Expedient Report"
+    report_type="qweb-pdf"
+    name="typ_hr.report_expedient"
+    file="typ_hr.report_expedient"
+    groups="base.group_hr_manager"
+    />
+</data>
+</openerp>

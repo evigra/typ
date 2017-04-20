@@ -41,3 +41,18 @@ class ResPartner(models.Model):
             self._get_purchase_pricelist_id() or None
         })
         return res
+
+    @api.multi
+    @api.depends('user_ids.groups_id')
+    def _compute_is_employee(self):
+        for partner in self:
+            partner_id = self.env['res.users'].search(
+                [('partner_id', '=', partner.id),
+                 ('share', '=', False)])
+            if partner_id:
+                partner.is_employee = partner_id.has_group('base.group_user')
+
+    is_employee = fields.Boolean(
+        compute='_compute_is_employee', string='Is Employee?',
+        readonly=True, store=True,
+        help="If user belongs to employee group return True",)

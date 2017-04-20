@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="res_partner_accounting_employee_contact" model="res.groups">
+          <field name="name">Users that can see contact employee in partner</field>
+          <field name="comment">This group can see contact employee, but not see their address</field>
+        </record>
+    </data>
+</openerp>

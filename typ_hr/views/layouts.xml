@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<openerp>
+    <data>
+        <template id="external_layout_expedient">
+            <t t-name="typ_hr.external_layout_expedient">
+                <t t-if="o and 'company_id' in o" >
+                <t t-set="company" t-value ="o.company_id"/>
+            </t>
+        <t t-if="not o or not 'company_id' in o" >
+            <t t-set="company" t-value="res_company"/>
+        </t>
+        <t t-call="typ_hr.external_layout_expedient_header"/>
+        <t t-raw="0"/>
+    </t>
+</template>
+
+    <template id="external_layout_expedient_header">
+        <t t-name="typ_hr.external_layout_header">
+            <div class="header">
+                <div class="row">
+                    <div class="col-xs-6">
+                        <img class="img img-responsive" t-if="company.logo" t-att-src="'data:image/png;base64,%s' % company.logo" style="max-width: 100px;"/>
+                    </div>
+                    <div class="col-xs-6">
+                        <h4 class="text-right" style="padding-top: 45px;">
+                         <span>Employee Expedient No</span>
+                        <span t-field="o.number"/>
+                        </h4>
+                    </div>
+                </div>
+            </div>
+        </t>
+</template>
+
+</data>
+</openerp>
