@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: Odoo Server 8.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-03-07 15:30+0000\n"
-"PO-Revision-Date: 2017-04-18 18:45+0000\n"
+"PO-Revision-Date: 2017-04-24 17:20+0000\n"
 "Last-Translator: omejia26 <omejia@typrefrigeracion.com>\n"
 "Language-Team: Spanish "
 "<http://weblate.vauxoo.com/projects/typ-8-0/typ_commision/es/>\n"
@@ -269,7 +269,7 @@ msgstr "Contiene el resumen Chatter (número de mensajes, ...). Este resumen est
 #. module: typ_commision
 #: field:commision.reports.base,id:0
 msgid "ID"
-msgstr "ID"
+msgstr "N° Empleado"
 
 #. module: typ_commision
 #: help:commision.reports.base,message_unread:0
@@ -342,12 +342,12 @@ msgstr "Última modificación"
 #. module: typ_commision
 #: field:commision.reports.base,write_uid:0
 msgid "Last Updated by"
-msgstr "Ultima actualización por"
+msgstr "Última actualización por"
 
 #. module: typ_commision
 #: field:commision.reports.base,write_date:0
 msgid "Last Updated on"
-msgstr "Ultima actualización en"
+msgstr "Última actualización en"
 
 #. module: typ_commision
 #: field:account.invoice.line,sale_margin:0
