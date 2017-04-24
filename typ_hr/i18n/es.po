@@ -7,26 +7,29 @@ msgstr ""
 "Project-Id-Version: Odoo Server 8.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-04-08 00:21+0000\n"
-"PO-Revision-Date: 2017-04-08 00:21+0000\n"
-"Last-Translator: <>\n"
-"Language-Team: \n"
+"PO-Revision-Date: 2017-04-24 17:32+0000\n"
+"Last-Translator: omejia26 <omejia@typrefrigeracion.com>\n"
+"Language-Team: Spanish "
+"<http://weblate.vauxoo.com/projects/typ-8-0/typ_hr/es/>\n"
+"Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
-"Plural-Forms: \n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 2.12\n"
 
 #. module: typ_hr
 #: field:hr.employee.auxiliar,address:0
 #: field:hr.employee.beneficiary,address:0
 #: view:website:typ_hr.hr_employee_expedient_report_pdf
 msgid "Address"
-msgstr "Address"
+msgstr "Dirección"
 
 #. module: typ_hr
 #: field:hr.employee,age:0
 #: view:website:typ_hr.hr_employee_expedient_report_pdf
 msgid "Age"
-msgstr "Age"
+msgstr "Edad"
 
 #. module: typ_hr
 #: view:hr.employee:typ_hr.view_hr_employee_form_inherit
@@ -43,23 +46,23 @@ msgstr "Bank Account Number"
 #: view:hr.employee:typ_hr.view_hr_employee_form_inherit
 #: view:website:typ_hr.hr_employee_expedient_report_pdf
 msgid "Beneficiaries"
-msgstr "Beneficiaries"
+msgstr "Beneficiarios"
 
 #. module: typ_hr
 #: field:hr.employee,hr_beneficiary_ids:0
 msgid "Beneficiary"
-msgstr "Beneficiary"
+msgstr "Beneficiario"
 
 #. module: typ_hr
 #: view:website:typ_hr.hr_employee_expedient_report_pdf
 msgid "Birthday"
-msgstr "Birthday"
+msgstr "Fecha de nacimiento"
 
 #. module: typ_hr
 #: field:hr.employee,blood_type:0
 #: view:website:typ_hr.hr_employee_expedient_report_pdf
 msgid "Blood type"
-msgstr "Blood type"
+msgstr "Tipo de sangre"
 
 #. module: typ_hr
 #: field:hr.employee,curp:0
@@ -70,28 +73,28 @@ msgstr "CURP"
 #. module: typ_hr
 #: field:hr.employee,hr_employee_check_ids:0
 msgid "Checks"
-msgstr "Checks"
+msgstr "Verificaciones"
 
 #. module: typ_hr
 #: view:website:typ_hr.hr_employee_expedient_report_pdf
 msgid "Colony"
-msgstr "Colony"
+msgstr "Colonia"
 
 #. module: typ_hr
 #: view:website:typ_hr.hr_employee_expedient_report_pdf
 msgid "Company Information"
-msgstr "Company Information"
+msgstr "Información de empresa"
 
 #. module: typ_hr
 #: selection:hr.employee.check,doc_type:0
 #: view:website:typ_hr.hr_employee_expedient_report_pdf
 msgid "Company documents"
-msgstr "Company documents"
+msgstr "Documentos de empresa"
 
 #. module: typ_hr
 #: model:ir.model,name:typ_hr.model_hr_contract
 msgid "Contract"
-msgstr "Contract"
+msgstr "Contrato"
 
 #. module: typ_hr
 #: field:hr.employee.auxiliar,create_uid:0
@@ -99,7 +102,7 @@ msgstr "Contract"
 #: field:hr.employee.check,create_uid:0
 #: field:hr.employee.reference,create_uid:0
 msgid "Created by"
-msgstr "Created by"
+msgstr "Creado por"
 
 #. module: typ_hr
 #: field:hr.employee.auxiliar,create_date:0
@@ -107,18 +110,18 @@ msgstr "Created by"
 #: field:hr.employee.check,create_date:0
 #: field:hr.employee.reference,create_date:0
 msgid "Created on"
-msgstr "Created on"
+msgstr "Creado en"
 
 #. module: typ_hr
 #: field:hr.contract,daily_salary:0
 #: view:website:typ_hr.hr_employee_expedient_report_pdf
 msgid "Daily salary"
-msgstr "Daily salary"
+msgstr "Salario diario"
 
 #. module: typ_hr
 #: view:hr.employee:typ_hr.view_hr_employee_form_inherit
 msgid "Deregister"
-msgstr "Deregister"
+msgstr "Baja"
 
 #. module: typ_hr
 #: field:hr.employee.auxiliar,display_name:0
@@ -126,27 +129,27 @@ msgstr "Deregister"
 #: field:hr.employee.check,display_name:0
 #: field:hr.employee.reference,display_name:0
 msgid "Display Name"
-msgstr "Display Name"
+msgstr "Nombre a mostrar"
 
 #. module: typ_hr
 #: field:hr.employee.check,doc_type:0
 msgid "Doc type"
-msgstr "Doc type"
+msgstr "Tipo doc"
 
 #. module: typ_hr
 #: selection:hr.employee,last_degree:0
 msgid "Doctorade"
-msgstr "Doctorade"
+msgstr "Doctorado"
 
 #. module: typ_hr
 #: view:hr.employee:typ_hr.view_employee_form_hr_checklist
 msgid "Documents"
-msgstr "Documents"
+msgstr "Documentos"
 
 #. module: typ_hr
 #: view:website:typ_hr.hr_employee_expedient_report_pdf
 msgid "Documents Checklist"
-msgstr "Documents Checklist"
+msgstr "Verificación de documentos"
 
 #. module: typ_hr
 #: view:website:typ_hr.hr_employee_expedient_report_pdf
@@ -159,59 +162,59 @@ msgstr "Correo electrónico"
 #: field:hr.employee.reference,hr_employee_reference_id:0
 #: model:ir.model,name:typ_hr.model_hr_employee
 msgid "Employee"
-msgstr "Employee"
+msgstr "Empleado"
 
 #. module: typ_hr
 #: view:website:typ_hr.external_layout_expedient_header
 msgid "Employee Expedient No"
-msgstr "Employee Expedient No"
+msgstr "Expediente del empleado N°"
 
 #. module: typ_hr
 #: field:hr.employee,entry_date:0
 #: view:website:typ_hr.hr_employee_expedient_report_pdf
 msgid "Entry date"
-msgstr "Entry date"
+msgstr "Fecha de ingreso"
 
 #. module: typ_hr
 #: view:hr.employee:typ_hr.view_hr_employee_form_inherit
 msgid "Expedient"
-msgstr "Expedient"
+msgstr "Expediente"
 
 #. module: typ_hr
 #: model:ir.actions.report.xml,name:typ_hr.hr_employee_expedient
 msgid "Expedient Report"
-msgstr "Expedient Report"
+msgstr "Reporte de Expediente"
 
 #. module: typ_hr
 #: view:hr.employee:typ_hr.view_hr_employee_form_inherit
 #: view:website:typ_hr.hr_employee_expedient_report_pdf
 msgid "Family references"
-msgstr "Family references"
+msgstr "Referencias familiares"
 
 #. module: typ_hr
 #: field:hr.employee.reference,friendly:0
 msgid "Friendly"
-msgstr "Friendly"
+msgstr "Relación"
 
 #. module: typ_hr
 #: view:website:typ_hr.hr_employee_expedient_report_pdf
 msgid "Full Name"
-msgstr "Full Name"
+msgstr "Nombre completo"
 
 #. module: typ_hr
 #: view:website:typ_hr.hr_employee_expedient_report_pdf
 msgid "Full name"
-msgstr "Full name"
+msgstr "Nombre completo"
 
 #. module: typ_hr
 #: view:website:typ_hr.hr_employee_expedient_report_pdf
 msgid "Gender"
-msgstr "Gender"
+msgstr "Género"
 
 #. module: typ_hr
 #: selection:hr.employee,last_degree:0
 msgid "High school"
-msgstr "High school"
+msgstr "Secundaria"
 
 #. module: typ_hr
 #: field:hr.employee.auxiliar,id:0
@@ -219,34 +222,34 @@ msgstr "High school"
 #: field:hr.employee.check,id:0
 #: field:hr.employee.reference,id:0
 msgid "ID"
-msgstr "ID"
+msgstr "N° Empleado"
 
 #. module: typ_hr
 #: view:website:typ_hr.hr_employee_expedient_report_pdf
 msgid "In case of accident"
-msgstr "In case of accident"
+msgstr "En caso de accidente"
 
 #. module: typ_hr
 #: field:hr.employee,infonavit_credit:0
 #: view:website:typ_hr.hr_employee_expedient_report_pdf
 msgid "Infonavit credit"
-msgstr "Infonavit credit"
+msgstr "Crédito Infonavit"
 
 #. module: typ_hr
 #: field:hr.contract,integrate_daily_salary:0
 #: view:website:typ_hr.hr_employee_expedient_report_pdf
 msgid "Integrate daily salary"
-msgstr "Integrate daily salary"
+msgstr "Salario diario integrado"
 
 #. module: typ_hr
 #: view:website:typ_hr.hr_employee_expedient_report_pdf
 msgid "Job title"
-msgstr "Job title"
+msgstr "Titulo del trabajo"
 
 #. module: typ_hr
 #: view:website:typ_hr.hr_employee_expedient_report_pdf
 msgid "Last Degree"
-msgstr "Last Degree"
+msgstr "Último grado de estudio"
 
 #. module: typ_hr
 #: field:hr.employee.auxiliar,__last_update:0
@@ -254,7 +257,7 @@ msgstr "Last Degree"
 #: field:hr.employee.check,__last_update:0
 #: field:hr.employee.reference,__last_update:0
 msgid "Last Modified on"
-msgstr "Last Modified on"
+msgstr "Última modificación"
 
 #. module: typ_hr
 #: field:hr.employee.auxiliar,write_uid:0
@@ -262,7 +265,7 @@ msgstr "Last Modified on"
 #: field:hr.employee.check,write_uid:0
 #: field:hr.employee.reference,write_uid:0
 msgid "Last Updated by"
-msgstr "Last Updated by"
+msgstr "Última actualización por"
 
 #. module: typ_hr
 #: field:hr.employee.auxiliar,write_date:0
@@ -270,37 +273,37 @@ msgstr "Last Updated by"
 #: field:hr.employee.check,write_date:0
 #: field:hr.employee.reference,write_date:0
 msgid "Last Updated on"
-msgstr "Last Updated on"
+msgstr "Última actualización en"
 
 #. module: typ_hr
 #: field:hr.employee,last_degree:0
 msgid "Last degree"
-msgstr "Last degree"
+msgstr "Último grado de estudio"
 
 #. module: typ_hr
 #: field:hr.employee,leaving_date:0
 msgid "Leaving date"
-msgstr "Leaving date"
+msgstr "Fecha de baja"
 
 #. module: typ_hr
 #: view:website:typ_hr.hr_employee_expedient_report_pdf
 msgid "Leyend"
-msgstr "Leyend"
+msgstr "Leyenda"
 
 #. module: typ_hr
 #: view:website:typ_hr.hr_employee_expedient_report_pdf
 msgid "Marital"
-msgstr "Marital"
+msgstr "Estado civil"
 
 #. module: typ_hr
 #: selection:hr.employee,last_degree:0
 msgid "Master degree"
-msgstr "Master degree"
+msgstr "Maestría"
 
 #. module: typ_hr
 #: view:website:typ_hr.hr_employee_expedient_report_pdf
 msgid "Municipality"
-msgstr "Municipality"
+msgstr "Municipio"
 
 #. module: typ_hr
 #: view:website:typ_hr.hr_employee_expedient_report_pdf
@@ -314,33 +317,33 @@ msgstr "N/A"
 #: field:hr.employee.reference,name:0
 #: view:website:typ_hr.hr_employee_expedient_report_pdf
 msgid "Name"
-msgstr "Name"
+msgstr "Nombre"
 
 #. module: typ_hr
 #: view:website:typ_hr.hr_employee_expedient_report_pdf
 msgid "Number"
-msgstr "Number"
+msgstr "Número"
 
 #. module: typ_hr
 #: field:hr.employee,number:0
 msgid "Number employee"
-msgstr "Number employee"
+msgstr "Número de empleado"
 
 #. module: typ_hr
 #: field:hr.employee.beneficiary,percentage:0
 #: view:website:typ_hr.hr_employee_expedient_report_pdf
 msgid "Percentage"
-msgstr "Percentage"
+msgstr "Porcentaje"
 
 #. module: typ_hr
 #: view:website:typ_hr.hr_employee_expedient_report_pdf
 msgid "Personal Information"
-msgstr "Personal Information"
+msgstr "Información personal"
 
 #. module: typ_hr
 #: view:website:typ_hr.hr_employee_expedient_report_pdf
 msgid "Place of birth"
-msgstr "Place of birth"
+msgstr "Lugar de nacimiento"
 
 #. module: typ_hr
 #: field:hr.employee.beneficiary,rfc:0
@@ -350,69 +353,71 @@ msgstr "RFC"
 #. module: typ_hr
 #: field:hr.employee,reason_leaving:0
 msgid "Reason for leaving"
-msgstr "Reason for leaving"
+msgstr "Motivo de baja"
 
 #. module: typ_hr
 #: selection:hr.employee.check,doc_type:0
 #: view:website:typ_hr.hr_employee_expedient_report_pdf
 msgid "Recruitment documents"
-msgstr "Recruitment documents"
+msgstr "Documentos de reclutamiento"
 
 #. module: typ_hr
 #: field:hr.employee,hr_reference_ids:0
 msgid "Reference"
-msgstr "Reference"
+msgstr "Referencias"
 
 #. module: typ_hr
 #: view:website:typ_hr.hr_employee_expedient_report_pdf
 msgid "SSN No"
-msgstr "SSN No"
+msgstr "NSS"
 
 #. module: typ_hr
 #: view:website:typ_hr.hr_employee_expedient_report_pdf
 msgid "Salary"
-msgstr "Salary"
+msgstr "Salario"
 
 #. module: typ_hr
 #: field:hr.employee,skype_user:0
 msgid "Skype user"
-msgstr "Skype user"
+msgstr "Skype"
 
 #. module: typ_hr
 #: view:website:typ_hr.hr_employee_expedient_report_pdf
 msgid "Street"
-msgstr "Street"
+msgstr "Calle"
 
 #. module: typ_hr
 #: field:hr.employee.auxiliar,telephone:0
 #: view:website:typ_hr.hr_employee_expedient_report_pdf
 msgid "Telephone"
-msgstr "Telephone"
+msgstr "Teléfono"
 
 #. module: typ_hr
 #: model:res.groups,comment:typ_hr.res_partner_accounting_employee_contact
 msgid "This group can see contact employee, but not see their address"
-msgstr "This group can see contact employee, but not see their address"
+msgstr ""
+"Este grupo puede ver el contacto del empleado, pero no puede ver sus "
+"direcciones"
 
 #. module: typ_hr
 #: view:website:typ_hr.hr_employee_expedient_report_pdf
 msgid "Type"
-msgstr "Type"
+msgstr "Tipo"
 
 #. module: typ_hr
 #: selection:hr.employee,last_degree:0
 msgid "University degree"
-msgstr "University degree"
+msgstr "Titulo universitario"
 
 #. module: typ_hr
 #: field:hr.employee,user_boolean:0
 msgid "User boolean"
-msgstr "User boolean"
+msgstr "Usuario booleano"
 
 #. module: typ_hr
 #: model:res.groups,name:typ_hr.res_partner_accounting_employee_contact
 msgid "Users that can see contact employee in partner"
-msgstr "Users that can see contact employee in partner"
+msgstr "Usuarios que pueden ver los contactos del empleado en los clientes"
 
 #. module: typ_hr
 #: view:website:typ_hr.hr_employee_expedient_report_pdf
