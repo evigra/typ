@@ -10,8 +10,8 @@ msgstr ""
 "Project-Id-Version: Odoo Server 8.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-11-28 20:23+0000\n"
-"PO-Revision-Date: 2017-04-01 10:22+0000\n"
-"Last-Translator: Jorge Escalona <jorge@vauxoo.com>\n"
+"PO-Revision-Date: 2017-04-24 17:26+0000\n"
+"Last-Translator: omejia26 <omejia@typrefrigeracion.com>\n"
 "Language-Team: Spanish "
 "<http://weblate.vauxoo.com/projects/typ-8-0/typ_landed_costs/es/>\n"
 "Language: es\n"
@@ -314,7 +314,7 @@ msgstr "Guías las cuales contienen elementos a ser usados como costos en destin
 #: field:stock.landed.cost.guide,id:0
 #: field:stock.landed.cost.guide.line,id:0
 msgid "ID"
-msgstr "ID"
+msgstr "N° Empleado"
 
 #. module: typ_landed_costs
 #: code:addons/typ_landed_costs/models/stock_landed_costs.py:521
@@ -415,7 +415,7 @@ msgstr "Última modificación"
 #: field:stock.landed.cost.guide,write_uid:0
 #: field:stock.landed.cost.guide.line,write_uid:0
 msgid "Last Updated by"
-msgstr "Ultima actualización por"
+msgstr "Última actualización por"
 
 #. module: typ_landed_costs
 #: field:invoice.guides,write_date:0
@@ -423,7 +423,7 @@ msgstr "Ultima actualización por"
 #: field:stock.landed.cost.guide,write_date:0
 #: field:stock.landed.cost.guide.line,write_date:0
 msgid "Last Updated on"
-msgstr "Ultima actualización en"
+msgstr "Última actualización en"
 
 #. module: typ_landed_costs
 #: help:stock.landed.cost.guide,move_id:0
@@ -552,7 +552,7 @@ msgstr "Lista de precio de compra"
 #. module: typ_landed_costs
 #: field:stock.landed.cost.guide,reference:0
 msgid "Reference"
-msgstr "Referencia"
+msgstr "Referencias"
 
 #. module: typ_landed_costs
 #: help:stock.landed.cost.guide,reference:0
