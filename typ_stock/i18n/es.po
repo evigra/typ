@@ -118,6 +118,11 @@ msgid "Display Name"
 msgstr "Nombre a mostrar"
 
 #. module: typ_stock
+#: field:stock.transfer_details_items,expected_quantity:0
+msgid "Expected quantity"
+msgstr "Expected quantity"
+
+#. module: typ_stock
 #: field:pedimento.product,id:0
 msgid "ID"
 msgstr "N° Empleado"

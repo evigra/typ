@@ -395,9 +395,7 @@ msgstr "Teléfono"
 #. module: typ_hr
 #: model:res.groups,comment:typ_hr.res_partner_accounting_employee_contact
 msgid "This group can see contact employee, but not see their address"
-msgstr ""
-"Este grupo puede ver el contacto del empleado, pero no puede ver sus "
-"direcciones"
+msgstr "Este grupo puede ver el contacto del empleado, pero no puede ver sus direcciones"
 
 #. module: typ_hr
 #: view:website:typ_hr.hr_employee_expedient_report_pdf
