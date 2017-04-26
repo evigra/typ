@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 from openerp import api, fields, models
+import openerp.addons.decimal_precision as dp
 
 
 class StockTransferDetails(models.TransientModel):
@@ -14,6 +15,11 @@ class StockTransferDetails(models.TransientModel):
         for item in res.get('item_ids', []):
             item['supplier_code'] = self.get_supplier_code(
                 picking, item['product_id'])
+            item['expected_quantity'] = item['quantity']
+            if picking.location_id.usage == "supplier" \
+                    and picking.location_dest_id.usage == 'internal'\
+                    and not item['lot_id']:
+                item['quantity'] = 0.0
         return res
 
     @api.multi
@@ -31,3 +37,6 @@ class StockTransferDetailsItems(models.TransientModel):
     _inherit = 'stock.transfer_details_items'
 
     supplier_code = fields.Char()
+    expected_quantity = fields.Float(digits=dp.get_precision
+                                     ('Product Unit of Measure'), default=0.0,
+                                     readonly=True)

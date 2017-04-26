@@ -22,6 +22,8 @@ class TestLandedCost(TestTypStock):
         wizard_transfer_id = self.transfer_obj.with_context(context).create(
             {"picking_id": picking.id, }
             )
+        for item in wizard_transfer_id.item_ids:
+            item.quantity = item.expected_quantity
         wizard_transfer_id.do_detailed_transfer()
         picking_origin = self.stock_picking.name_search(name=picking.origin)
         self.assertTrue(len(picking_origin) == 1, 'The picking no found')

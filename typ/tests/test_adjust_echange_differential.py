@@ -95,6 +95,8 @@ class TestAdjustExchangeDifferential(common.TestTypLandedCosts):
         value['picking_id'] = pick.id
         # Creating an object of the pack window
         trans_id = self.trans.create(value)
+        for item in trans_id.item_ids:
+            item.quantity = item.expected_quantity
         # Validating wizard
         trans_id.do_detailed_transfer()
         self.assertEqual(pick.state, 'done', 'The pick was not validated')
