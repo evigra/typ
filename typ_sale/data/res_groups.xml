@@ -15,6 +15,7 @@
         <record id="res_group_can_sell_below_minimum_margin" model="res.groups">
           <field name="name">Users that can sell below the minimum margin</field>
           <field name="comment">This group allow sale order bellow the minimum margin.</field>
+          <field name="users" eval="[(4, ref('base.user_root'))]"/>
         </record>
 
         <record id="res_group_margin_sale_order" model="res.groups">
