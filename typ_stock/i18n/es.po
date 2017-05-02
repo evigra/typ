@@ -441,9 +441,7 @@ msgstr "Los números seriales cargados no pueden ser mayores que la cantidad de 
 #: code:addons/typ_stock/models/stock.py:47
 #, python-format
 msgid "There are not availability in this location for the product %s. Contact Vauxoo personnel immediately"
-msgstr ""
-"No hay disponibilidad en esta ubicación para el producto %s. Contacte al "
-"personal de Vauxoo inmediatamente"
+msgstr "No hay disponibilidad en esta ubicación para el producto %s. Contacte al personal de Vauxoo inmediatamente"
 
 #. module: typ_stock
 #: model:res.groups,comment:typ_stock.group_cancel_picking_with_move_not_in_transit_loc
