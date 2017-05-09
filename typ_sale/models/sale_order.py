@@ -11,6 +11,7 @@ class SaleOrder(models.Model):
     type_payment_term = fields.Selection(
         [('credit', 'Credit'), ('cash', 'Cash'),
          ('postdated_check', 'Postdated check')], default='credit')
+    procurement_group_id = fields.Many2one('procurement.group', select=True)
 
     @api.onchange('warehouse_id', 'partner_id')
     def get_salesman_from_warehouse_config(self):

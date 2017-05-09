@@ -26,13 +26,19 @@ class StockPicking(models.Model):
 
     @api.model
     def check_pedimento(self, picking):
+        move_obj = self.env['stock.move']
+        company_country_id = self.env.user.company_id.country_id
         for move in picking.move_lines:
             for quant in move.quant_ids:
                 if quant.landed_id:
                     continue
-                origin = quant.history_ids.sorted(key=lambda mv: mv.date)
-                origin = origin and origin[0]
-                company_country_id = self.env.user.company_id.country_id
+                self._cr.execute(
+                    """SELECT MIN(move_id) AS move_id
+                    FROM stock_quant_move_rel
+                    WHERE quant_id=%s""", (quant.id,))
+                dat = self._cr.dictfetchall()
+                move_id = dat[0] if dat else {}
+                origin = move_obj.browse(move_id.get('move_id'))
                 country_id = origin.picking_id.partner_id.country_id
                 if (country_id and country_id != company_country_id or
                     not country_id and

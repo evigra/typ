@@ -222,14 +222,12 @@ class StockPicking(models.Model):
         "green highlight on tree view ")
 
     @api.model
-    def _get_invoice_vals(self, key, inv_type, journal_id, moves):
+    def _get_invoice_vals(self, key, inv_type, journal_id, move):
         res = super(StockPicking, self)._get_invoice_vals(
-            key, inv_type, journal_id, moves)
-        for move in moves:
-            new_origin = "%s : %s" % (move.picking_id.origin,
-                                      move.picking_id.name)
-            res.update(
-                {'origin': new_origin})
+            key, inv_type, journal_id, move)
+        new_origin = "%s : %s" % (move.picking_id.origin,
+                                  move.picking_id.name)
+        res.update({'origin': new_origin})
         return res
 
     @api.multi
