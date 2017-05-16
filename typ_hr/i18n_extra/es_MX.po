@@ -197,3 +197,10 @@ msgstr "nuevo(s) colaboradore(s) esperado(s)"
 #: field:hr.employee,ssnid:0
 msgid "SSN No"
 msgstr "NSS"
+
+#. module: hr
+#: field:hr.department,manager_id:0
+#: view:hr.employee:hr.view_employee_filter
+#: field:hr.employee,parent_id:0
+msgid "Manager"
+msgstr "Jefe inmediato"

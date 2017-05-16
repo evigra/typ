@@ -4,6 +4,8 @@
 from openerp import models, fields, api
 
 GRADES = [
+    ('elementary school', 'Elementary school'),
+    ('middle school', 'Middle school'),
     ('high school', 'High school'),
     ('university degree', 'University degree'),
     ('master degree', 'Master degree'),
@@ -27,6 +29,7 @@ class HrEmployee(models.Model):
     hr_auxiliar_ids = fields.One2many('hr.employee.auxiliar',
                                       'hr_employee_auxiliar_id',
                                       'Auxiliar')
+    marital = fields.Selection(selection_add=[('cohabiting', 'Cohabiting')])
 
     @api.depends('user_id')
     def _compute_get_perm(self):
