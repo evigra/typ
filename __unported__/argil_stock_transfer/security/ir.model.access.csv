@@ -1,7 +1,0 @@
-id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_stock_transfer,stock.transfer,model_stock_transfer,group_stock_transfer_in,1,1,1,0
-access_stock_transfer,stock.transfer,model_stock_transfer,group_stock_transfer_out,1,1,1,0
-access_stock_transfer_line,stock.transfer.line,model_stock_transfer_line,group_stock_transfer_in,1,1,1,1
-access_stock_transfer_line,stock.transfer.line,model_stock_transfer_line,group_stock_transfer_out,1,1,1,1
-access_stock_transfer_expense,stock.transfer.expense,model_stock_transfer_expense,group_stock_transfer_in,1,1,1,1
-access_stock_transfer_expense,stock.transfer.expense,model_stock_transfer_expense,group_stock_transfer_out,1,1,1,1

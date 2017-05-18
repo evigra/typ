@@ -1,1 +1,0 @@
-# argil_content_location_filters

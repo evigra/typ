@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<openerp>
-    <data>
-        <report auto="False"  id="reporte_ubicaciones_refacciones" model="stock.location" name="lot.stock.refacciones" string="Refacciones Soporte" rml="argil_content_location_filters/report/refacciones.rml"/>
-    </data>
-</openerp>

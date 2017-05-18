@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<openerp>
-	<data>
-		<function name="reload_procurement_data" model="procurement.order"/>
-	</data>
-	</openerp>

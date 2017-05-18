@@ -1,4 +1,0 @@
-id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_stock_prorate,access_stock_prorate,model_stock_prorate,purchase.group_purchase_user,1,1,1,1
-access_stock_prorate_service_line,access_stock_prorate_service_line,model_stock_prorate_service_line,purchase.group_purchase_user,1,1,1,1
-access_stock_prorate_stock_line,access_stock_prorate_stock_line,model_stock_prorate_stock_line,purchase.group_purchase_user,1,1,1,1

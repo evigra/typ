@@ -1,1 +1,0 @@
-# typ_reclamaciones
