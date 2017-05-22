@@ -70,6 +70,7 @@ Credits
 * Jorge Escalona <jorge@vauxoo.com> (Developer)
 * Deivis Laya <deivis@vauxoo.com> (Developer)
 * Carlos Mexia <cmexia@typrefrigeracion.com(Developer)
+* Antonio Rogel <arogel@typrefrigeracion.com> (Developer)
 
 Maintainer
 ==========

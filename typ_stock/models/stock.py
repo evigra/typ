@@ -220,6 +220,7 @@ class StockPicking(models.Model):
         help="This must be checked only when the supplier have invoiced "
         "the whole order and there isn't a backorder. This activate a "
         "green highlight on tree view ")
+    number_landing = fields.Char(copy=False)
 
     @api.model
     def _get_invoice_vals(self, key, inv_type, journal_id, move):
