@@ -39,6 +39,7 @@
         'wizard/pedimento_product_wizard.xml',
         'wizard/stock_transfer_details.xml',
         'report/report_stockpicking.xml',
+        'report/report_product_label.xml',
     ],
     # only loaded in demonstration mode
     'demo': [

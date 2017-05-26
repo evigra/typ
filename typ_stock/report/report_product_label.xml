@@ -1,0 +1,150 @@
+<?xml version='1.0' encoding='utf-8'?>
+<openerp>
+    <data>
+        <report id="product_label_large"
+            model="product.product"
+            string="large Label"
+            name="typ_stock.product_label_large_view"
+            file="typ_stock.product_label_large"
+            report_type="qweb-pdf"
+            />
+
+        <report id="product_label_medium"
+            model="product.product"
+            string="Medium Label"
+            name="typ_stock.product_label_medium_view"
+            file="typ_stock.product_label_medium"
+            report_type="qweb-pdf"
+            />
+
+        <report id="product_label_small"
+            model="product.product"
+            string="Small Label"
+            name="typ_stock.product_label_small_view"
+            file="typ_stock.product_label_small"
+            report_type="qweb-pdf"
+            />
+
+        <template id="product_label_large_view">
+            <t t-call="report.html_container">
+                <t t-foreach="docs" t-as="doc">
+                    <div class="page">
+                        <h3 class="text-center" t-field="doc.default_code"/>
+                        <h6 class="text-left" t-field="doc.categ_id.name"/>
+                        <h6 class="text-left" t-field="doc.name"/>
+                        <p class="text-center" t-field="doc.ean13"
+                         t-field-options='
+                         {
+                         "widget": "barcode",
+                         "type": "Code128"
+                         }'/>
+                         <h6 class="text-center" t-field="doc.ean13"/>
+                    </div>
+                </t>
+            </t>
+        </template>
+
+        <template id="product_label_medium_view">
+            <t t-call="report.html_container">
+                <t t-foreach="docs" t-as="doc">
+                    <div class="page">
+                        <h6>
+                            [<span t-field="doc.default_code"/>]
+                             <span t-field="doc.categ_id.name"/> -
+                             <span t-field="doc.name" />
+                        </h6>
+                        <p class="text-center" t-field="doc.ean13"
+                         t-field-options='
+                         {
+                         "widget": "barcode",
+                         "type": "Code128"
+                         }'/>
+                         <h6 class="text-center" t-field="doc.ean13"/>
+                    </div>
+                </t>
+            </t>
+        </template>
+
+        <template id="product_label_small_view">
+            <t t-call="report.html_container">
+                <t t-foreach="docs" t-as="doc">
+                    <div class="page">
+                        <h6 class="text-center" t-field="doc.default_code"/>
+                        <h6 class="text-left" t-field="doc.name"/>
+                        <p class="text-center" t-field="doc.ean13"
+                         t-field-options='
+                         {
+                         "widget": "barcode",
+                         "type": "Code128"
+                         }'/>
+                         <h6 class="text-center" t-field="doc.ean13"/>
+                    </div>
+                </t>
+            </t>
+        </template>
+
+        <record id="label_large_paperformat" 
+            model="report.paperformat">
+            <field name="name">Product Label large</field>
+            <field name="default" eval="True"/>
+            <field name="format">custom</field>
+            <field name="page_height">50</field>
+            <field name="page_width">100</field>
+            <field name="orientation">Portrait</field>
+            <field name="margin_top">1</field>
+            <field name="margin_bottom">1</field>
+            <field name="margin_left">1</field>
+            <field name="margin_right">1</field>
+            <field name="header_line" eval="False"/>
+            <field name="header_spacing">1</field>
+            <field name="dpi">90</field>
+        </record>
+
+        <record id="label_medium_paperformat" 
+            model="report.paperformat">
+            <field name="name">Product Label Medium</field>
+            <field name="default" eval="True"/>
+            <field name="format">custom</field>
+            <field name="page_height">25</field>
+            <field name="page_width">63</field>
+            <field name="orientation">Portrait</field>
+            <field name="margin_top">0</field>
+            <field name="margin_bottom">0</field>
+            <field name="margin_left">0</field>
+            <field name="margin_right">0</field>
+            <field name="header_line" eval="False"/>
+            <field name="header_spacing">0</field>
+            <field name="dpi">90</field>
+        </record>
+
+        <record id="label_small_paperformat" 
+            model="report.paperformat">
+            <field name="name">Product Label Small</field>
+            <field name="default" eval="True"/>
+            <field name="format">custom</field>
+            <field name="page_height">25</field>
+            <field name="page_width">38</field>
+            <field name="orientation">Portrait</field>
+            <field name="margin_top">1</field>
+            <field name="margin_bottom">1</field>
+            <field name="margin_left">1</field>
+            <field name="margin_right">1</field>
+            <field name="header_line" eval="False"/>
+            <field name="header_spacing">1</field>
+            <field name="dpi">90</field>
+        </record>
+
+        <record id="product_label_large" model="ir.actions.report.xml">
+            <field name="paperformat_id" ref="label_large_paperformat" />
+        </record>
+
+        <record id="product_label_medium" model="ir.actions.report.xml">
+            <field name="paperformat_id" ref="label_medium_paperformat" />
+        </record>
+
+        <record id="product_label_small" model="ir.actions.report.xml">
+            <field name="paperformat_id" ref="label_small_paperformat" />
+        </record>
+
+    </data>
+</openerp>
