@@ -6,17 +6,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 8.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-04-08 00:21+0000\n"
-"PO-Revision-Date: 2017-04-24 17:32+0000\n"
-"Last-Translator: omejia26 <omejia@typrefrigeracion.com>\n"
-"Language-Team: Spanish "
-"<http://weblate.vauxoo.com/projects/typ-8-0/typ_hr/es/>\n"
-"Language: es\n"
+"POT-Creation-Date: 2017-06-01 14:09+0000\n"
+"PO-Revision-Date: 2017-06-01 14:09+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 2.12\n"
+"Plural-Forms: \n"
 
 #. module: typ_hr
 #: field:hr.employee.auxiliar,address:0
@@ -35,12 +32,12 @@ msgstr "Edad"
 #: view:hr.employee:typ_hr.view_hr_employee_form_inherit
 #: field:hr.employee,hr_auxiliar_ids:0
 msgid "Auxiliar"
-msgstr "Auxiliar"
+msgstr ""
 
 #. module: typ_hr
 #: view:website:typ_hr.hr_employee_expedient_report_pdf
 msgid "Bank Account Number"
-msgstr "Bank Account Number"
+msgstr ""
 
 #. module: typ_hr
 #: view:hr.employee:typ_hr.view_hr_employee_form_inherit
@@ -68,7 +65,7 @@ msgstr "Tipo de sangre"
 #: field:hr.employee,curp:0
 #: view:website:typ_hr.hr_employee_expedient_report_pdf
 msgid "CURP"
-msgstr "CURP"
+msgstr ""
 
 #. module: typ_hr
 #: field:hr.employee,hr_employee_check_ids:0
@@ -150,6 +147,11 @@ msgstr "Documentos"
 #: view:website:typ_hr.hr_employee_expedient_report_pdf
 msgid "Documents Checklist"
 msgstr "Verificación de documentos"
+
+#. module: typ_hr
+#: selection:hr.employee,last_degree:0
+msgid "Elementary school"
+msgstr ""
 
 #. module: typ_hr
 #: view:website:typ_hr.hr_employee_expedient_report_pdf
@@ -301,6 +303,11 @@ msgid "Master degree"
 msgstr "Maestría"
 
 #. module: typ_hr
+#: selection:hr.employee,last_degree:0
+msgid "Middle school"
+msgstr ""
+
+#. module: typ_hr
 #: view:website:typ_hr.hr_employee_expedient_report_pdf
 msgid "Municipality"
 msgstr "Municipio"
@@ -308,7 +315,7 @@ msgstr "Municipio"
 #. module: typ_hr
 #: view:website:typ_hr.hr_employee_expedient_report_pdf
 msgid "N/A"
-msgstr "N/A"
+msgstr ""
 
 #. module: typ_hr
 #: field:hr.employee.auxiliar,name:0
@@ -348,7 +355,7 @@ msgstr "Lugar de nacimiento"
 #. module: typ_hr
 #: field:hr.employee.beneficiary,rfc:0
 msgid "RFC"
-msgstr "RFC"
+msgstr ""
 
 #. module: typ_hr
 #: field:hr.employee,reason_leaving:0
@@ -425,4 +432,5 @@ msgstr "RFC"
 #. module: typ_hr
 #: view:website:typ_hr.hr_employee_expedient_report_pdf
 msgid "ZIP"
-msgstr "ZIP"
+msgstr ""
+

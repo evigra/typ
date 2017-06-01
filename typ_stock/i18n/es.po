@@ -1,37 +1,28 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
-# * typ_stock
-# 
-# Translators:
-# Coward Vassal Vauxoo <coward@vauxoo.com>, 2016
-# Julio [Vauxoo] <julio@vauxoo.com>, 2016
-# jorge escalona <escajorge@gmail.com>, 2016
-# Edgar Rivero <edgar@vauxoo.com>, 2016
-# Humberto Arocha <hbto@vauxoo.com>, 2016
+#	* typ_stock
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 8.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-11-24 22:20+0000\n"
-"PO-Revision-Date: 2017-04-26 15:27+0000\n"
-"Last-Translator: AntonioRogel <arogel@typrefrigeracion.com>\n"
-"Language-Team: Spanish "
-"<http://weblate.vauxoo.com/projects/typ-8-0/typ_stock/es/>\n"
-"Language: es\n"
+"POT-Creation-Date: 2017-06-01 14:10+0000\n"
+"PO-Revision-Date: 2017-06-01 14:10+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 2.12\n"
+"Plural-Forms: \n"
 
 #. module: typ_stock
-#: code:addons/typ_stock/models/stock.py:242
+#: code:addons/typ_stock/models/stock.py:241
 #, python-format
 msgid "<ul><li>shipment confirmed --> <b>Canceled</b></li></ul>"
 msgstr "<ul><li>embarque confirmado --> <b>Cancelado</b></li></ul>"
 
 #. module: typ_stock
-#: code:addons/typ_stock/models/stock.py:240
+#: code:addons/typ_stock/models/stock.py:239
 #, python-format
 msgid "<ul><li>shipment confirmed --> <b>ok</b></li></ul>"
 msgstr "<ul><li>embarque confirmado --> <b>ok</b></li></ul>"
@@ -40,7 +31,7 @@ msgstr "<ul><li>embarque confirmado --> <b>ok</b></li></ul>"
 #: selection:procurement.orderpoint.compute,importance:0
 #: selection:stock.warehouse.orderpoint,importance:0
 msgid "AA"
-msgstr "AA"
+msgstr ""
 
 #. module: typ_stock
 #: model:ir.actions.server,name:typ_stock.server_action_product_supplier_ref
@@ -134,7 +125,7 @@ msgid "Importance"
 msgstr "Importancia"
 
 #. module: typ_stock
-#: code:addons/typ_stock/models/stock.py:292
+#: code:addons/typ_stock/models/stock.py:291
 #, python-format
 msgid "Internal movements don't allow locations in supplier or customer"
 msgstr "Los movimientos internos no permiten ubicaciones de proveedores o clientes"
@@ -170,6 +161,11 @@ msgid "Lot"
 msgstr "Lote"
 
 #. module: typ_stock
+#: model:ir.actions.report.xml,name:typ_stock.product_label_medium
+msgid "Medium Label"
+msgstr ""
+
+#. module: typ_stock
 #: model:ir.model,name:typ_stock.model_stock_warehouse_orderpoint
 msgid "Minimum Inventory Rule"
 msgstr "Regla de Inventario Mínimo"
@@ -186,6 +182,11 @@ msgid "Notes"
 msgstr "Notas"
 
 #. module: typ_stock
+#: field:stock.picking,number_landing:0
+msgid "Number landing"
+msgstr ""
+
+#. module: typ_stock
 #: view:website:stock.report_picking
 msgid "Order (Origin)"
 msgstr "Orden (Origen)"
@@ -198,7 +199,7 @@ msgstr "Salida al cliente"
 #. module: typ_stock
 #: model:stock.location.route,name:typ_stock.stock_location_route_test_2
 msgid "PE TW1 - TW2"
-msgstr "PE TW1 - TW2"
+msgstr ""
 
 #. module: typ_stock
 #: view:stock.picking:typ_stock.view_origin_picking_internal_search_inherit
@@ -209,7 +210,7 @@ msgstr "Empresa"
 #: view:pedimento.product:typ_stock.view_pedimento_product_wizard
 #: field:pedimento.product,landed_id:0
 msgid "Pedimento"
-msgstr "Pedimento"
+msgstr ""
 
 #. module: typ_stock
 #: view:pedimento.product:typ_stock.view_pedimento_product_wizard
@@ -311,7 +312,7 @@ msgstr "Fecha programada para el envío de este movimiento"
 #. module: typ_stock
 #: view:pedimento.product:typ_stock.view_pedimento_product_wizard
 msgid "Serial"
-msgstr "Serial"
+msgstr ""
 
 #. module: typ_stock
 #: code:addons/typ_stock/wizard/stock_serial.py:162
@@ -323,6 +324,11 @@ msgstr "El número serial %s no ha sido encontrado"
 #: help:stock.picking,picking_shipment_date:0
 msgid "Shipment date of the picking"
 msgstr "Fecha de embarque del picking"
+
+#. module: typ_stock
+#: model:ir.actions.report.xml,name:typ_stock.product_label_small
+msgid "Small Label"
+msgstr ""
 
 #. module: typ_stock
 #: view:website:stock.report_picking
@@ -382,7 +388,7 @@ msgstr "TW2: compra -> stock"
 #. module: typ_stock
 #: model:procurement.rule,name:typ_stock.pull_rule_test_2_3
 msgid "TW2: stock -> cliente"
-msgstr "TW2: stock -> cliente"
+msgstr ""
 
 #. module: typ_stock
 #: model:procurement.rule,name:typ_stock.pull_rule_test_1
@@ -406,7 +412,7 @@ msgid "The Serial number %s already captured"
 msgstr "El número de Serie %s ya se capturó"
 
 #. module: typ_stock
-#: code:addons/typ_stock/models/stock.py:321
+#: code:addons/typ_stock/models/stock.py:320
 #: code:addons/typ_stock/models/stock_return_picking.py:38
 #, python-format
 msgid "The return of the product %s, exceeds the amount invoiced"
@@ -484,7 +490,7 @@ msgid "This must be checked only when the supplier have invoiced the whole order
 msgstr "Este check debera ser activado solamente cuando el proveedor haya facturado la orden completa indicando así que no hay un backorder. Esto activara en la vista de arbol el color verde para este picking indicando que la orden esta embarcada sin ningún problema "
 
 #. module: typ_stock
-#: code:addons/typ_stock/models/stock.py:378
+#: code:addons/typ_stock/models/stock.py:377
 #, python-format
 msgid "This picking cannot be cancelled."
 msgstr "Este albarán no puede ser cancelado."
@@ -497,7 +503,7 @@ msgstr "Stock de Tránsito"
 #. module: typ_stock
 #: model:res.groups,name:typ_stock.res_group_can_unreserve
 msgid "Users than can unreserve"
-msgstr "Usuarios que pueden reversar"
+msgstr "Usuarios que pueden anular reserva"
 
 #. module: typ_stock
 #: model:res.groups,name:typ_stock.res_group_cancel_picking
@@ -607,9 +613,9 @@ msgstr "Advertencia"
 #: code:addons/typ_stock/models/stock.py:99
 #: code:addons/typ_stock/models/stock.py:125
 #: code:addons/typ_stock/models/stock.py:146
-#: code:addons/typ_stock/models/stock.py:291
-#: code:addons/typ_stock/models/stock.py:320
-#: code:addons/typ_stock/models/stock.py:377
+#: code:addons/typ_stock/models/stock.py:290
+#: code:addons/typ_stock/models/stock.py:319
+#: code:addons/typ_stock/models/stock.py:376
 #: code:addons/typ_stock/models/stock_return_picking.py:37
 #: code:addons/typ_stock/models/stock_return_picking.py:54
 #, python-format
@@ -624,7 +630,7 @@ msgstr "Cuando este campo está marcado, el primer movimiento de inventario que 
 #. module: typ_stock
 #: model:product.template,name:typ_stock.product_product_whead_deluxe_product_template
 msgid "Wireless Headphones custom Deluxe"
-msgstr "Wireless Headphones custom Deluxe"
+msgstr ""
 
 #. module: typ_stock
 #: model:product.template,name:typ_stock.product_product_whead_product_template
@@ -634,7 +640,7 @@ msgstr "Audífonos Inalámbricos personalizados"
 #. module: typ_stock
 #: view:pedimento.product:typ_stock.view_pedimento_product_wizard
 msgid "Wizard / write selected lot or quant"
-msgstr "Wizard / write selected lot or quant"
+msgstr ""
 
 #. module: typ_stock
 #: model:ir.actions.act_window,name:typ_stock.pedimento_product_action
@@ -642,7 +648,7 @@ msgid "Wizard Pedimento Product"
 msgstr "Asistente Pedimento Producto"
 
 #. module: typ_stock
-#: code:addons/typ_stock/models/stock.py:395
+#: code:addons/typ_stock/models/stock.py:394
 #, python-format
 msgid "You can not inactivate a warehouse with products on it, please adjust your inventories first and then come back and inactivate it."
 msgstr "No puede inactivar un almacén con productos en él, por favor, ajuste primero sus inventarios y luego vuelva a desactivarlo."
@@ -660,6 +666,11 @@ msgid "You must assign a serial number for the product [%s] %s"
 msgstr "Debe asignar un número de serial para el producto [%s] %s"
 
 #. module: typ_stock
+#: model:ir.actions.report.xml,name:typ_stock.product_label_large
+msgid "large Label"
+msgstr ""
+
+#. module: typ_stock
 #: view:stock.inventory:typ_stock.view_inventory_filter_inherit
 msgid "location"
 msgstr "ubicacion"
@@ -672,12 +683,12 @@ msgstr "o"
 #. module: typ_stock
 #: view:stock.quant:typ_stock.view_stock_quant_inherit
 msgid "pedimento/serial"
-msgstr "pedimento/serial"
+msgstr ""
 
 #. module: typ_stock
 #: model:product.template,name:typ_stock.product_test_01_product_template
 msgid "prueba 3"
-msgstr "prueba 3"
+msgstr ""
 
 #. module: typ_stock
 #: help:pedimento.product,lot_id:0
@@ -703,3 +714,4 @@ msgstr "embarque ok"
 #: view:pedimento.product:typ_stock.view_pedimento_product_wizard
 msgid "write data"
 msgstr "Escribir datos"
+

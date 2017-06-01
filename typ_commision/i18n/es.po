@@ -6,17 +6,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 8.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-03-07 15:30+0000\n"
-"PO-Revision-Date: 2017-04-24 17:20+0000\n"
-"Last-Translator: omejia26 <omejia@typrefrigeracion.com>\n"
-"Language-Team: Spanish "
-"<http://weblate.vauxoo.com/projects/typ-8-0/typ_commision/es/>\n"
-"Language: es\n"
+"POT-Creation-Date: 2017-06-01 14:09+0000\n"
+"PO-Revision-Date: 2017-06-01 14:09+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 2.12\n"
+"Plural-Forms: \n"
 
 #. module: typ_commision
 #: selection:account.invoice,credit_note_type:0
@@ -215,7 +212,7 @@ msgstr "Fecha Final"
 #: selection:account.invoice,credit_note_type:0
 #: selection:account.invoice.line,credit_note_type:0
 msgid "Error"
-msgstr "Error"
+msgstr ""
 
 #. module: typ_commision
 #: view:commision.reports.base:typ_commision.view_reports_base_form
@@ -465,7 +462,7 @@ msgstr "Categoría de Producto"
 #. module: typ_commision
 #: view:account.invoice.line:typ_commision.view_account_invoice_line_filter
 msgid "Proforma"
-msgstr "Proforma"
+msgstr ""
 
 #. module: typ_commision
 #: view:account.invoice.line:typ_commision.view_account_invoice_line_filter
@@ -626,3 +623,4 @@ msgstr "Utilizado para utilizar el filtro aplicado en las facturas"
 #: selection:account.invoice.line,credit_note_type:0
 msgid "Warranty"
 msgstr "Garantía"
+

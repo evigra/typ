@@ -1,25 +1,19 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
-# * typ_sale
-# 
-# Translators:
-# Coward Vassal Vauxoo <coward@vauxoo.com>, 2016
-# omejia26 <omejia@typrefrigeracion.com>, 2016
+#	* typ_sale
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 8.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-11-28 20:23+0000\n"
-"PO-Revision-Date: 2017-04-24 17:20+0000\n"
-"Last-Translator: omejia26 <omejia@typrefrigeracion.com>\n"
-"Language-Team: Spanish "
-"<http://weblate.vauxoo.com/projects/typ-8-0/typ_sale/es/>\n"
-"Language: es\n"
+"POT-Creation-Date: 2017-06-01 14:10+0000\n"
+"PO-Revision-Date: 2017-06-01 14:10+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 2.12\n"
+"Plural-Forms: \n"
 
 #. module: typ_sale
 #: view:website:sale.report_saleorder_document
@@ -35,7 +29,7 @@ msgstr "15 días en refacciones y 30 días en equipos."
 #: selection:res.partner,importance:0
 #: selection:res.partner,potential_importance:0
 msgid "AA"
-msgstr "AA"
+msgstr ""
 
 #. module: typ_sale
 #: selection:res.partner,dealer:0
@@ -75,7 +69,7 @@ msgstr "EMP"
 #. module: typ_sale
 #: selection:res.partner,business_activity:0
 msgid "CON"
-msgstr "CON"
+msgstr ""
 
 #. module: typ_sale
 #: selection:account.invoice,type_payment_term:0
@@ -86,7 +80,7 @@ msgstr "Contado"
 #. module: typ_sale
 #: model:ir.model,name:typ_sale.model_stock_change_standard_price
 msgid "Change Standard Price"
-msgstr "Change Standard Price"
+msgstr ""
 
 #. module: typ_sale
 #: view:website:sale.report_saleorder_document
@@ -170,7 +164,7 @@ msgstr "EMPLEADO"
 #. module: typ_sale
 #: selection:res.partner,partner_type:0
 msgid "ESP"
-msgstr "ESP"
+msgstr ""
 
 #. module: typ_sale
 #: view:website:typ_sale.external_layout_footer
@@ -200,7 +194,7 @@ msgstr "N° Empleado"
 #. module: typ_sale
 #: view:website:sale.report_saleorder_document
 msgid "IVA 16%"
-msgstr "IVA 16%"
+msgstr ""
 
 #. module: typ_sale
 #: view:website:sale.report_saleorder_document
@@ -228,7 +222,7 @@ msgid "Invoice address:"
 msgstr "Dirección de facturación:"
 
 #. module: typ_sale
-#: code:addons/typ_sale/models/stock.py:48
+#: code:addons/typ_sale/models/stock.py:54
 #, python-format
 msgid "It is necessary register a pedimento in entry quant of the product %s in picking %s before continue. The supplier %s is not a mexican supplier."
 msgstr "Es necesario registrar un pedimento en el quant de entrada del producto %s en el albarán %s antes de continuar. El proveedor %s no es un proveedor mexicano."
@@ -360,7 +354,7 @@ msgstr "CP"
 #. module: typ_sale
 #: selection:res.partner,dealer:0
 msgid "PD"
-msgstr "PD"
+msgstr ""
 
 #. module: typ_sale
 #: help:res.partner,dealer:0
@@ -459,17 +453,17 @@ msgstr "Historial de precio del producto"
 #. module: typ_sale
 #: view:product.price.history:typ_sale.product_price_history_form_view
 msgid "Product Price History Form"
-msgstr "Product Price History Form"
+msgstr ""
 
 #. module: typ_sale
 #: view:product.price.history:typ_sale.product_price_history_tree_view
 msgid "Product Price History List"
-msgstr "Product Price History List"
+msgstr ""
 
 #. module: typ_sale
 #: view:product.price.history:typ_sale.product_price_history_view_search
 msgid "Product Price History Search"
-msgstr "Product Price History Search"
+msgstr ""
 
 #. module: typ_sale
 #: model:ir.model,name:typ_sale.model_purchase_order
@@ -499,12 +493,12 @@ msgstr "CR"
 #. module: typ_sale
 #: view:website:typ_sale.external_layout_header
 msgid "RFC"
-msgstr "RFC"
+msgstr ""
 
 #. module: typ_sale
 #: view:website:sale.report_saleorder_document
 msgid "RFC:"
-msgstr "RFC:"
+msgstr ""
 
 #. module: typ_sale
 #: field:res.partner,region:0
@@ -529,10 +523,10 @@ msgstr "SURESTE"
 #. module: typ_sale
 #: selection:res.partner,partner_type:0
 msgid "SUP"
-msgstr "SUP"
+msgstr ""
 
 #. module: typ_sale
-#: code:addons/typ_sale/models/sale_order.py:67
+#: code:addons/typ_sale/models/sale_order.py:68
 #, python-format
 msgid "Sale of product below margin"
 msgstr "Venta de producto por debajo del margen"
@@ -600,7 +594,7 @@ msgstr "Movimiento de Inventario"
 #. module: typ_sale
 #: view:website:sale.report_saleorder_document
 msgid "SubTotal"
-msgstr "SubTotal"
+msgstr ""
 
 #. module: typ_sale
 #: field:sale.order.line,purchase_partner_id:0
@@ -650,7 +644,7 @@ msgid "This group has access to modify field payment term in Sale Orders and Inv
 msgstr "Este grupo tiene acceso a modificar campos de plazo de pago en Ordenes de Venta y Facturas."
 
 #. module: typ_sale
-#: code:addons/typ_sale/models/sale_order.py:77
+#: code:addons/typ_sale/models/sale_order.py:78
 #, python-format
 msgid "This order can not be canceled because some of their pickings already have been transfered."
 msgstr "Esta venta no puede ser cancelada ya que alguno de sus albaranes ya ha sido transferido."
@@ -658,7 +652,7 @@ msgstr "Esta venta no puede ser cancelada ya que alguno de sus albaranes ya ha s
 #. module: typ_sale
 #: view:website:sale.report_saleorder_document
 msgid "Total"
-msgstr "Total"
+msgstr ""
 
 #. module: typ_sale
 #: help:sale.order.line,special_sale:0
@@ -709,7 +703,7 @@ msgstr "Vigencia:"
 #. module: typ_sale
 #: selection:res.partner,region:0
 msgid "WEST"
-msgstr "OESTE"
+msgstr "OCCIDENTE"
 
 #. module: typ_sale
 #: selection:res.partner,partner_type:0
@@ -773,3 +767,4 @@ msgstr "No se puede vender por debajo del margen permitido\n"
 #: view:website:sale.report_saleorder_document
 msgid "Your reference:"
 msgstr "Su referencia:"
+
