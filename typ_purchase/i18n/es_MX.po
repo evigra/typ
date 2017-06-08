@@ -6,239 +6,236 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 8.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-06-01 14:09+0000\n"
-"PO-Revision-Date: 2017-06-08 21:39+0000\n"
-"Last-Translator: Julio [Vauxoo] <julio@vauxoo.com>\n"
-"Language-Team: Spanish <http://weblate.vauxoo.com/projects/github_com_Vauxoo_"
-"typ_8_0/typ_purchase/es/>\n"
-"Language: es\n"
+"POT-Creation-Date: 2017-06-08 22:26+0000\n"
+"PO-Revision-Date: 2017-06-08 22:26+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 2.12\n"
+"Plural-Forms: \n"
 
 #. module: typ_purchase
 #: field:purchase.order,broker_id:0
 msgid "Broker"
-msgstr "Agente aduanal"
+msgstr ""
 
 #. module: typ_purchase
 #: help:purchase.order,broker_id:0
 msgid "Broker for imported products"
-msgstr "Agente aduanal para productos importados"
+msgstr ""
 
 #. module: typ_purchase
 #: view:purchase.order:typ_purchase.view_buyer_purchase_order_filter
 #: field:purchase.order,buyer:0
 msgid "Buyer"
-msgstr "Comprador"
+msgstr ""
 
 #. module: typ_purchase
 #: view:website:typ_purchase.external_layout_footer
 msgid "Contact"
-msgstr "Contacto"
+msgstr ""
 
 #. module: typ_purchase
 #: view:website:purchase.report_purchaseorder_document
 msgid "Created on:"
-msgstr "Creado en:"
+msgstr ""
 
 #. module: typ_purchase
 #: view:website:purchase.report_purchaseorder_document
 msgid "Currency:"
-msgstr "Moneda:"
+msgstr ""
 
 #. module: typ_purchase
 #: view:website:purchase.report_purchasequotation_document
 msgid "Description"
-msgstr "Descripción"
+msgstr ""
 
 #. module: typ_purchase
 #: code:addons/typ_purchase/models/procurement_order.py:81
 #, python-format
 msgid "Draft Purchase Order created"
-msgstr "Orden de Compra en Borrador creada"
+msgstr ""
 
 #. module: typ_purchase
 #: view:website:typ_purchase.external_layout_footer
 msgid "Email"
-msgstr "Correo electrónico"
+msgstr ""
 
 #. module: typ_purchase
 #: view:website:purchase.report_purchasequotation_document
 msgid "Expected Date"
-msgstr "Fecha prevista"
+msgstr ""
 
 #. module: typ_purchase
 #: view:purchase.order.line:typ_purchase.purchase_order_line_search_inherit
 msgid "Hide lines in cancelled orders"
-msgstr "Ocultar lineas de ordenes canceladas"
+msgstr ""
 
 #. module: typ_purchase
 #: help:purchase.order.line,shipment_date:0
 msgid "Indicate when product ships from supplier's warehouse"
-msgstr "Indica cuando los productos se envían desde el almacén del proveedor"
+msgstr ""
 
 #. module: typ_purchase
 #: view:website:purchase.report_purchaseorder_document
 msgid "Invoice address:"
-msgstr "Dirección de facturación:"
+msgstr ""
 
 #. module: typ_purchase
 #: view:website:purchase.report_purchaseorder_document
 msgid "Net Price"
-msgstr "Precio Neto"
+msgstr ""
 
 #. module: typ_purchase
 #: view:website:purchase.report_purchaseorder_document
 msgid "Notes:"
-msgstr "Notas:"
+msgstr ""
 
 #. module: typ_purchase
 #: field:purchase.order,shipment_date:0
 msgid "Order shipment date"
-msgstr "Fecha de embarque"
+msgstr ""
 
 #. module: typ_purchase
 #: view:purchase.order:typ_purchase.view_state_purchase_order_search_inherit
 msgid "Orders"
-msgstr "Ordenes"
+msgstr ""
 
 #. module: typ_purchase
 #: view:website:purchase.report_purchaseorder_document
 msgid "Our Order Reference:"
-msgstr "Nuestra Referencia de Pedido:"
+msgstr ""
 
 #. module: typ_purchase
 #: code:addons/typ_purchase/models/procurement_order.py:49
 #, python-format
 msgid "PO: %s"
-msgstr "OC: %s"
+msgstr ""
 
 #. module: typ_purchase
 #: view:website:typ_purchase.external_layout_footer
 msgid "Page:"
-msgstr "Página:"
+msgstr ""
 
 #. module: typ_purchase
 #: model:res.groups,name:typ_purchase.partner_group_hidden_create_button
 msgid "Partner restricted users"
-msgstr "Usuarios con restricción en las Empresas"
+msgstr ""
 
 #. module: typ_purchase
 #: view:website:purchase.report_purchaseorder_document
 #: view:website:purchase.report_purchasequotation_document
 msgid "Partner:"
-msgstr "Proveedor:"
+msgstr ""
 
 #. module: typ_purchase
 #: view:website:typ_purchase.external_layout_footer
 msgid "Phone"
-msgstr "Teléfono"
+msgstr ""
 
 #. module: typ_purchase
 #: model:ir.model,name:typ_purchase.model_procurement_order
 msgid "Procurement"
-msgstr "Abastecimiento"
+msgstr ""
 
 #. module: typ_purchase
 #: view:website:purchase.report_purchaseorder_document
 msgid "Product Code"
-msgstr "Código de Producto"
+msgstr ""
 
 #. module: typ_purchase
 #: field:purchase.order.line,shipment_date:0
 msgid "Product shipment date"
-msgstr "Fecha de embarque"
+msgstr ""
 
 #. module: typ_purchase
 #: view:website:purchase.report_purchaseorder_document
 msgid "Provider Code / Description"
-msgstr "Código de Proveedor / Descripción"
+msgstr ""
 
 #. module: typ_purchase
 #: model:res.groups,name:typ_purchase.group_purchase_budget_manager
 msgid "Purchase Budget Manager"
-msgstr "Administrador de Presupuesto de Compra"
+msgstr ""
 
 #. module: typ_purchase
 #: model:ir.model,name:typ_purchase.model_purchase_order
 msgid "Purchase Order"
-msgstr "Pedido de Compra"
+msgstr ""
 
 #. module: typ_purchase
 #: model:ir.model,name:typ_purchase.model_purchase_order_line
 msgid "Purchase Order Line"
-msgstr "Línea del Pedido de Compra"
+msgstr ""
 
 #. module: typ_purchase
 #: view:website:purchase.report_purchaseorder_document
 msgid "Purchase Order N°"
-msgstr "Pedido de Compra N°"
+msgstr ""
 
 #. module: typ_purchase
 #: model:res.groups,name:typ_purchase.purchase_group_hidden_create_button
 msgid "Purchase restricted users"
-msgstr "Usuarios con restricción a compras"
+msgstr ""
 
 #. module: typ_purchase
 #: view:website:purchase.report_purchaseorder_document
 #: view:website:purchase.report_purchasequotation_document
 msgid "Quantity"
-msgstr "Cantidad"
+msgstr ""
 
 #. module: typ_purchase
 #: view:website:purchase.report_purchasequotation_document
 msgid "Regards,"
-msgstr "Saludos cordiales,"
+msgstr ""
 
 #. module: typ_purchase
 #: field:purchase.order,report_lang:0
 msgid "Report Language"
-msgstr "Idioma del Reporte"
+msgstr ""
 
 #. module: typ_purchase
 #: view:website:purchase.report_purchasequotation_document
 msgid "Request for Quotation"
-msgstr "Solicitud de Presupuesto"
+msgstr ""
 
 #. module: typ_purchase
 #: view:website:purchase.report_purchaseorder_document
 msgid "Shipment Date"
-msgstr "Fecha de Embarque"
+msgstr ""
 
 #. module: typ_purchase
 #: view:website:purchase.report_purchaseorder_document
 #: view:website:purchase.report_purchasequotation_document
 msgid "Shipping address:"
-msgstr "Dirección de envío:"
+msgstr ""
 
 #. module: typ_purchase
 #: view:purchase.order:typ_purchase.view_state_purchase_order_search_inherit
 msgid "State"
-msgstr "Estado"
+msgstr ""
 
 #. module: typ_purchase
 #: view:website:purchase.report_purchaseorder_document
 msgid "Subtotal"
-msgstr "Subtotal"
+msgstr ""
 
 #. module: typ_purchase
 #: view:website:purchase.report_purchaseorder_document
 msgid "Taxes"
-msgstr "Impuestos"
+msgstr ""
 
 #. module: typ_purchase
 #: code:addons/typ_purchase/models/procurement_order.py:37
 #, python-format
 msgid "There is no supplier associated to product %s"
-msgstr "No hay un proveedor asociado al producto %s"
+msgstr ""
 
 #. module: typ_purchase
 #: help:purchase.order,report_lang:0
 msgid "This field is automatically set from partner or broker language if exists"
-msgstr "Este campo es automáticamente configurado a partir del lenguaje del proveedor o el broker si existe"
+msgstr ""
 
 #. module: typ_purchase
 #: model:res.groups,comment:typ_purchase.group_purchase_budget_manager
@@ -246,60 +243,55 @@ msgid "This group is for Managers of Budget.\n"
 "\n"
 "They can:\n"
 "- Make budget requests."
-msgstr "Este grupo es para Administradores de Presupuesto.\n"
-"\n"
-"Ellos pueden:\n"
-"- Hacer peticiones de presupuesto."
+msgstr ""
 
 #. module: typ_purchase
 #: help:purchase.order,buyer:0
 msgid "This is the buyer in charge of the order's supplier"
-msgstr "Este es el comprador a cargo del proveedor de la orden"
+msgstr ""
 
 #. module: typ_purchase
 #: help:purchase.order,shipment_date:0
 msgid "This is used to indicate when products ships from supplier warehouse"
-msgstr "Se usa para indicar cuando los productos son enviados desde el almacén del proveedor"
+msgstr ""
 
 #. module: typ_purchase
 #: view:website:purchase.report_purchaseorder_document
 msgid "Total"
-msgstr "Total"
+msgstr ""
 
 #. module: typ_purchase
 #: view:website:purchase.report_purchaseorder_document
 msgid "Unit Price"
-msgstr "Precio Unidad"
+msgstr ""
 
 #. module: typ_purchase
 #: model:res.groups,comment:typ_purchase.partner_group_hidden_create_button
 msgid "Users of this group:\n"
 "- Do not see the \"Create\" button on the partner."
-msgstr "Los usuarios de este grupo:\n"
-"- No ven el botón \"Crear\" en la empresa."
+msgstr ""
 
 #. module: typ_purchase
 #: model:res.groups,comment:typ_purchase.purchase_group_hidden_create_button
 msgid "Users of this group:\n"
 "- Do not see the \"Create\" button on the purchase order.\n"
 "- Do not see the \"Confirm\" button on the purchase order."
-msgstr "Los usuarios de este grupo:\n"
-"- No ven el botón \"Crear\" en la orden de compra.\n"
-"- No ven el botón \"Confirmar\" en la orden de compra."
+msgstr ""
 
 #. module: typ_purchase
 #: view:website:purchase.report_purchaseorder_document
 #: view:website:purchase.report_purchasequotation_document
 #: view:website:typ_purchase.external_layout_header_with_address
 msgid "VAT"
-msgstr "RFC"
+msgstr ""
 
 #. module: typ_purchase
 #: view:website:purchase.report_purchaseorder_document
 msgid "Validated By:"
-msgstr "Validado por:"
+msgstr ""
 
 #. module: typ_purchase
 #: view:website:typ_purchase.external_layout_footer
 msgid "Website"
-msgstr "Sitio web"
+msgstr ""
+

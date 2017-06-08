@@ -1,0 +1,358 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* typ_account
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 8.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-06-08 22:26+0000\n"
+"PO-Revision-Date: 2017-06-08 22:26+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: typ_account
+#: code:addons/typ_account/models/sale_order.py:41
+#, python-format
+msgid " and credit overloaded"
+msgstr ""
+
+#. module: typ_account
+#: code:addons/typ_account/models/account_invoice.py:83
+#, python-format
+msgid " and has overdue invoices"
+msgstr ""
+
+#. module: typ_account
+#: code:addons/typ_account/models/account_invoice.py:81
+#: code:addons/typ_account/models/sale_order.py:43
+#, python-format
+msgid "%s has credit overloaded"
+msgstr ""
+
+#. module: typ_account
+#: code:addons/typ_account/models/account_invoice.py:85
+#: code:addons/typ_account/models/sale_order.py:39
+#, python-format
+msgid "%s has overdue invoices"
+msgstr ""
+
+#. module: typ_account
+#: code:addons/typ_account/models/account_invoice.py:86
+#: code:addons/typ_account/models/sale_order.py:44
+#, python-format
+msgid ". Please request payment or sell cash!"
+msgstr ""
+
+#. module: typ_account
+#: selection:account.invoice.report,importance:0
+#: selection:account.invoice.report,potential_importance:0
+msgid "AA"
+msgstr ""
+
+#. module: typ_account
+#: selection:account.invoice.report,dealer:0
+msgid "AD"
+msgstr ""
+
+#. module: typ_account
+#: selection:account.invoice.report,partner_type:0
+msgid "BOT"
+msgstr ""
+
+#. module: typ_account
+#: model:ir.model,name:typ_account.model_account_bank_statement_line
+msgid "Bank Statement Line"
+msgstr ""
+
+#. module: typ_account
+#: view:account.invoice.report:typ_account.view_account_invoice_report_search_inh
+#: field:account.invoice.report,business_activity:0
+msgid "Business activity"
+msgstr ""
+
+#. module: typ_account
+#: selection:account.invoice.report,region:0
+msgid "CENTER"
+msgstr ""
+
+#. module: typ_account
+#: selection:account.invoice.report,business_activity:0
+msgid "COM"
+msgstr ""
+
+#. module: typ_account
+#: selection:account.invoice.report,business_activity:0
+msgid "CON"
+msgstr ""
+
+#. module: typ_account
+#: code:addons/typ_account/models/sale_order.py:70
+#, python-format
+msgid "Can not confirm the Sale Order because Partner has late payments or has exceeded the credit limit.\n"
+"Please cover the late payment or check credit limit\n"
+"Credit Limit : %s"
+msgstr ""
+
+#. module: typ_account
+#: code:addons/typ_account/models/account_invoice.py:48
+#, python-format
+msgid "Can not validate the Invoice because Partner has late payments or has exceeded the credit limit.\n"
+"Please cover the late payment or check credit limit\n"
+"Credit Limit : %s"
+msgstr ""
+
+#. module: typ_account
+#: view:account.invoice:typ_account.view_date_invoiced_account_invoice_search_inherit
+msgid "Date invoice"
+msgstr ""
+
+#. module: typ_account
+#: field:account.invoice.report,date_month:0
+msgid "Date month"
+msgstr ""
+
+#. module: typ_account
+#: view:account.invoice.report:typ_account.view_account_invoice_report_search_inh
+#: field:account.invoice.report,dealer:0
+msgid "Dealer"
+msgstr ""
+
+#. module: typ_account
+#: model:ir.actions.server,name:typ_account.server_action_delete_entries_open_close_fiscalyear
+msgid "Delete entries open/close fiscal year"
+msgstr ""
+
+#. module: typ_account
+#: selection:account.invoice.report,business_activity:0
+#: selection:account.invoice.report,importance:0
+#: selection:account.invoice.report,partner_type:0
+#: selection:account.invoice.report,potential_importance:0
+msgid "EMPLOYEE"
+msgstr ""
+
+#. module: typ_account
+#: selection:account.invoice.report,partner_type:0
+msgid "ESP"
+msgstr ""
+
+#. module: typ_account
+#: selection:account.invoice.report,partner_type:0
+msgid "FSC"
+msgstr ""
+
+#. module: typ_account
+#: model:account.payment.term,name:typ_account.typ_account_payment_term_immediate
+#: model:account.payment.term,note:typ_account.typ_account_payment_term_immediate
+msgid "Immediate Payment"
+msgstr ""
+
+#. module: typ_account
+#: view:account.invoice.report:typ_account.view_account_invoice_report_search_inh
+#: field:account.invoice.report,importance:0
+msgid "Importance"
+msgstr ""
+
+#. module: typ_account
+#: model:ir.model,name:typ_account.model_account_invoice
+msgid "Invoice"
+msgstr ""
+
+#. module: typ_account
+#: field:account.invoice,validation_date:0
+msgid "Invoice validation date"
+msgstr ""
+
+#. module: typ_account
+#: model:ir.model,name:typ_account.model_account_invoice_report
+msgid "Invoices Statistics"
+msgstr ""
+
+#. module: typ_account
+#: view:account.invoice.report:typ_account.view_account_invoice_report_search_inh
+msgid "Last week"
+msgstr ""
+
+#. module: typ_account
+#: selection:account.invoice.report,partner_type:0
+msgid "NC"
+msgstr ""
+
+#. module: typ_account
+#: selection:account.invoice.report,importance:0
+#: selection:account.invoice.report,potential_importance:0
+msgid "NEGOTIATION"
+msgstr ""
+
+#. module: typ_account
+#: selection:account.invoice.report,importance:0
+#: selection:account.invoice.report,potential_importance:0
+msgid "NEW"
+msgstr ""
+
+#. module: typ_account
+#: selection:account.invoice.report,region:0
+msgid "NORTHEAST"
+msgstr ""
+
+#. module: typ_account
+#: selection:account.invoice.report,region:0
+msgid "NORTHWEST"
+msgstr ""
+
+#. module: typ_account
+#: selection:account.invoice.report,business_activity:0
+#: selection:account.invoice.report,importance:0
+#: selection:account.invoice.report,partner_type:0
+#: selection:account.invoice.report,potential_importance:0
+msgid "NOT CLASSIFIED"
+msgstr ""
+
+#. module: typ_account
+#: selection:account.invoice.report,partner_type:0
+msgid "OC"
+msgstr ""
+
+#. module: typ_account
+#: selection:account.invoice.report,partner_type:0
+msgid "OTH"
+msgstr ""
+
+#. module: typ_account
+#: selection:account.invoice.report,partner_type:0
+msgid "PC"
+msgstr ""
+
+#. module: typ_account
+#: selection:account.invoice.report,dealer:0
+msgid "PD"
+msgstr ""
+
+#. module: typ_account
+#: selection:account.invoice.report,business_activity:0
+#: selection:account.invoice.report,partner_type:0
+msgid "PUBLIC"
+msgstr ""
+
+#. module: typ_account
+#: model:ir.model,name:typ_account.model_res_partner
+msgid "Partner"
+msgstr ""
+
+#. module: typ_account
+#: view:account.invoice.report:typ_account.view_account_invoice_report_search_inh
+#: field:account.invoice.report,partner_type:0
+msgid "Partner type"
+msgstr ""
+
+#. module: typ_account
+#: view:account.invoice.report:typ_account.view_account_invoice_report_search_inh
+msgid "Potential Importance"
+msgstr ""
+
+#. module: typ_account
+#: field:account.invoice.report,potential_importance:0
+msgid "Potential importance"
+msgstr ""
+
+#. module: typ_account
+#: view:account.move.line:typ_account.view_account_move_line_filter_inherit
+msgid "Product"
+msgstr ""
+
+#. module: typ_account
+#: selection:account.invoice.report,partner_type:0
+msgid "RC"
+msgstr ""
+
+#. module: typ_account
+#: view:account.invoice.report:typ_account.view_account_invoice_report_search_inh
+#: field:account.invoice.report,region:0
+msgid "Region"
+msgstr ""
+
+#. module: typ_account
+#: selection:account.invoice.report,dealer:0
+msgid "SD"
+msgstr ""
+
+#. module: typ_account
+#: selection:account.invoice.report,region:0
+msgid "SOUTH"
+msgstr ""
+
+#. module: typ_account
+#: selection:account.invoice.report,region:0
+msgid "SOUTHEAST"
+msgstr ""
+
+#. module: typ_account
+#: selection:account.invoice.report,partner_type:0
+msgid "SUP"
+msgstr ""
+
+#. module: typ_account
+#: model:ir.model,name:typ_account.model_sale_order
+msgid "Sales Order"
+msgstr ""
+
+#. module: typ_account
+#: code:addons/typ_account/models/account_invoice.py:79
+#: code:addons/typ_account/models/sale_order.py:37
+#, python-format
+msgid "The partner "
+msgstr ""
+
+#. module: typ_account
+#: view:account.invoice.report:typ_account.view_account_invoice_report_search_inh
+msgid "This Month"
+msgstr ""
+
+#. module: typ_account
+#: help:account.invoice,validation_date:0
+msgid "This date indicate when the invoice was validated"
+msgstr ""
+
+#. module: typ_account
+#: selection:account.invoice.report,region:0
+msgid "WEST"
+msgstr ""
+
+#. module: typ_account
+#: selection:account.invoice.report,partner_type:0
+msgid "WHC"
+msgstr ""
+
+#. module: typ_account
+#: selection:account.invoice.report,business_activity:0
+msgid "WHO"
+msgstr ""
+
+#. module: typ_account
+#: selection:account.invoice.report,partner_type:0
+msgid "WI"
+msgstr ""
+
+#. module: typ_account
+#: selection:account.invoice.report,partner_type:0
+msgid "WW"
+msgstr ""
+
+#. module: typ_account
+#: code:addons/typ_account/models/account_invoice.py:53
+#: code:addons/typ_account/models/account_invoice.py:88
+#: code:addons/typ_account/models/sale_order.py:46
+#: code:addons/typ_account/models/sale_order.py:74
+#, python-format
+msgid "Warning!"
+msgstr ""
+
+#. module: typ_account
+#: view:account.invoice.report:typ_account.view_account_invoice_report_search_inh
+msgid "Yesterday"
+msgstr ""
+

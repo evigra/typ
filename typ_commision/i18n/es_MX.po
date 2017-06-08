@@ -1,0 +1,626 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* typ_commision
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 8.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-06-08 22:26+0000\n"
+"PO-Revision-Date: 2017-06-08 22:26+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: typ_commision
+#: selection:account.invoice,credit_note_type:0
+#: selection:account.invoice.line,credit_note_type:0
+msgid "Advance"
+msgstr ""
+
+#. module: typ_commision
+#: selection:account.invoice.line,state:0
+msgid "Cancelled"
+msgstr ""
+
+#. module: typ_commision
+#: selection:account.invoice.line,type_payment_term:0
+msgid "Cash"
+msgstr ""
+
+#. module: typ_commision
+#: view:account.invoice.line:typ_commision.view_account_invoice_line_filter
+msgid "Category"
+msgstr ""
+
+#. module: typ_commision
+#: help:account.invoice.line,categ_id:0
+msgid "Category of the product in the order"
+msgstr ""
+
+#. module: typ_commision
+#: field:commision.reports.base,comment_commisions:0
+msgid "Comment about Commisions"
+msgstr ""
+
+#. module: typ_commision
+#: view:commision.reports.base:typ_commision.view_reports_base_form
+msgid "Commisions Comments"
+msgstr ""
+
+#. module: typ_commision
+#: model:ir.actions.act_window,name:typ_commision.action_hr_report_base_tree
+#: model:ir.ui.menu,name:typ_commision.menu_action_commision_reports
+msgid "Commisions Reports"
+msgstr ""
+
+#. module: typ_commision
+#: view:commision.reports.base:typ_commision.view_reports_base_form
+msgid "Commisions Section"
+msgstr ""
+
+#. module: typ_commision
+#: field:commision.reports.base,company_id:0
+msgid "Company"
+msgstr ""
+
+#. module: typ_commision
+#: help:commision.reports.base,company_id:0
+msgid "Company which this report belongs to"
+msgstr ""
+
+#. module: typ_commision
+#: field:account.invoice.line,price_cost:0
+msgid "Cost"
+msgstr ""
+
+#. module: typ_commision
+#: help:account.invoice.line,price_cost:0
+msgid "Cost of the product at the moment of the sale"
+msgstr ""
+
+#. module: typ_commision
+#: field:commision.reports.base,create_uid:0
+msgid "Created by"
+msgstr ""
+
+#. module: typ_commision
+#: field:commision.reports.base,create_date:0
+msgid "Created on"
+msgstr ""
+
+#. module: typ_commision
+#: selection:account.invoice.line,type_payment_term:0
+msgid "Credit"
+msgstr ""
+
+#. module: typ_commision
+#: field:account.invoice.line,credit_note_type:0
+msgid "Credit note type"
+msgstr ""
+
+#. module: typ_commision
+#: field:account.invoice.line,currency:0
+msgid "Currency"
+msgstr ""
+
+#. module: typ_commision
+#: field:commision.reports.base,custom:0
+msgid "Custom Filter"
+msgstr ""
+
+#. module: typ_commision
+#: field:commision.reports.base,partner_id:0
+msgid "Customer"
+msgstr ""
+
+#. module: typ_commision
+#: selection:account.invoice.line,type:0
+msgid "Customer Invoice"
+msgstr ""
+
+#. module: typ_commision
+#: selection:account.invoice.line,type:0
+msgid "Customer Refund"
+msgstr ""
+
+#. module: typ_commision
+#: field:account.invoice.line,puser_id:0
+msgid "Customer Salesperson"
+msgstr ""
+
+#. module: typ_commision
+#: help:commision.reports.base,partner_id:0
+msgid "Customer owner of the invoice"
+msgstr ""
+
+#. module: typ_commision
+#: view:commision.reports.base:typ_commision.view_reports_base_form
+msgid "Date Range"
+msgstr ""
+
+#. module: typ_commision
+#: help:account.invoice.line,date_due:0
+msgid "Date due of the invoice"
+msgstr ""
+
+#. module: typ_commision
+#: help:account.invoice.line,date_invoice:0
+msgid "Date in the invoice"
+msgstr ""
+
+#. module: typ_commision
+#: help:commision.reports.base,message_last_post:0
+msgid "Date of the last message posted on the record."
+msgstr ""
+
+#. module: typ_commision
+#: help:account.invoice.line,payment_date:0
+msgid "Date of the last payment of the invoice"
+msgstr ""
+
+#. module: typ_commision
+#: help:commision.reports.base,date_end:0
+msgid "Date where the range ends"
+msgstr ""
+
+#. module: typ_commision
+#: help:commision.reports.base,date_start:0
+msgid "Date where the range starts"
+msgstr ""
+
+#. module: typ_commision
+#: field:commision.reports.base,display_name:0
+msgid "Display Name"
+msgstr ""
+
+#. module: typ_commision
+#: selection:commision.reports.base,state:0
+msgid "Done"
+msgstr ""
+
+#. module: typ_commision
+#: selection:account.invoice.line,state:0
+#: selection:commision.reports.base,state:0
+msgid "Draft"
+msgstr ""
+
+#. module: typ_commision
+#: field:account.invoice.line,date_due:0
+msgid "Due Date"
+msgstr ""
+
+#. module: typ_commision
+#: view:account.invoice.line:typ_commision.view_account_invoice_line_filter
+msgid "Due Month"
+msgstr ""
+
+#. module: typ_commision
+#: model:ir.model,name:typ_commision.model_commision_reports_base
+msgid "Email Thread"
+msgstr ""
+
+#. module: typ_commision
+#: field:commision.reports.base,date_end:0
+msgid "End Date"
+msgstr ""
+
+#. module: typ_commision
+#: selection:account.invoice,credit_note_type:0
+#: selection:account.invoice.line,credit_note_type:0
+msgid "Error"
+msgstr ""
+
+#. module: typ_commision
+#: view:commision.reports.base:typ_commision.view_reports_base_form
+msgid "Fill required fields"
+msgstr ""
+
+#. module: typ_commision
+#: view:commision.reports.base:typ_commision.view_reports_base_form
+msgid "Fill required fields in the invoice lines selected by the filter used"
+msgstr ""
+
+#. module: typ_commision
+#: field:commision.reports.base,filter_id:0
+#: field:commision.reports.base,filter_inv_id:0
+msgid "Filter"
+msgstr ""
+
+#. module: typ_commision
+#: help:commision.reports.base,filter_id:0
+#: help:commision.reports.base,filter_inv_id:0
+msgid "Filter should be by date, group_by is ignored, the model which the filter should belong to invoice line"
+msgstr ""
+
+#. module: typ_commision
+#: selection:account.invoice,credit_note_type:0
+#: selection:account.invoice.line,credit_note_type:0
+msgid "Financing"
+msgstr ""
+
+#. module: typ_commision
+#: field:commision.reports.base,message_follower_ids:0
+msgid "Followers"
+msgstr ""
+
+#. module: typ_commision
+#: selection:account.invoice,credit_note_type:0
+#: selection:account.invoice.line,credit_note_type:0
+msgid "Gift"
+msgstr ""
+
+#. module: typ_commision
+#: view:account.invoice.line:typ_commision.view_account_invoice_line_filter
+msgid "Group By"
+msgstr ""
+
+#. module: typ_commision
+#: help:commision.reports.base,message_summary:0
+msgid "Holds the Chatter summary (number of messages, ...). This summary is directly in html format in order to be inserted in kanban views."
+msgstr ""
+
+#. module: typ_commision
+#: field:commision.reports.base,id:0
+msgid "ID"
+msgstr ""
+
+#. module: typ_commision
+#: help:commision.reports.base,message_unread:0
+msgid "If checked new messages require your attention."
+msgstr ""
+
+#. module: typ_commision
+#: field:commision.reports.base,date_start:0
+msgid "Initial Date"
+msgstr ""
+
+#. module: typ_commision
+#: field:account.invoice,parent_invoice_id:0
+#: view:account.invoice.line:typ_commision.view_account_invoice_line_filter
+#: field:account.invoice.line,inv_name:0
+#: field:account.invoice.line,parent_invoice_id:0
+#: field:commision.reports.base,invoice:0
+#: model:ir.model,name:typ_commision.model_account_invoice
+msgid "Invoice"
+msgstr ""
+
+#. module: typ_commision
+#: field:account.invoice.line,date_invoice:0
+msgid "Invoice Date"
+msgstr ""
+
+#. module: typ_commision
+#: view:account.invoice.line:typ_commision.view_invoice_line_tree
+#: view:commision.reports.base:typ_commision.view_reports_base_form
+#: view:commision.reports.base:typ_commision.view_reports_base_tree
+#: model:ir.model,name:typ_commision.model_account_invoice_line
+msgid "Invoice Line"
+msgstr ""
+
+#. module: typ_commision
+#: field:commision.reports.base,lines:0
+msgid "Invoice Lines"
+msgstr ""
+
+#. module: typ_commision
+#: view:commision.reports.base:typ_commision.view_reports_base_form
+msgid "Invoice Lines with this filter"
+msgstr ""
+
+#. module: typ_commision
+#: view:account.invoice.line:typ_commision.view_account_invoice_line_filter
+msgid "Invoices"
+msgstr ""
+
+#. module: typ_commision
+#: field:commision.reports.base,message_is_follower:0
+msgid "Is a Follower"
+msgstr ""
+
+#. module: typ_commision
+#: help:commision.reports.base,comment_commisions:0
+msgid "It will appear just above list of commisions."
+msgstr ""
+
+#. module: typ_commision
+#: field:commision.reports.base,message_last_post:0
+msgid "Last Message Date"
+msgstr ""
+
+#. module: typ_commision
+#: field:commision.reports.base,__last_update:0
+msgid "Last Modified on"
+msgstr ""
+
+#. module: typ_commision
+#: field:commision.reports.base,write_uid:0
+msgid "Last Updated by"
+msgstr ""
+
+#. module: typ_commision
+#: field:commision.reports.base,write_date:0
+msgid "Last Updated on"
+msgstr ""
+
+#. module: typ_commision
+#: field:account.invoice.line,sale_margin:0
+msgid "Margin"
+msgstr ""
+
+#. module: typ_commision
+#: help:account.invoice.line,sale_margin:0
+msgid "Margin of the product at the moment to sale"
+msgstr ""
+
+#. module: typ_commision
+#: field:commision.reports.base,message_ids:0
+msgid "Messages"
+msgstr ""
+
+#. module: typ_commision
+#: help:commision.reports.base,message_ids:0
+msgid "Messages and communication history"
+msgstr ""
+
+#. module: typ_commision
+#: view:account.invoice.line:typ_commision.view_account_invoice_line_filter
+msgid "Month"
+msgstr ""
+
+#. module: typ_commision
+#: view:account.invoice.line:typ_commision.view_account_invoice_line_filter
+msgid "My Invoices"
+msgstr ""
+
+#. module: typ_commision
+#: selection:account.invoice.line,state:0
+msgid "Open"
+msgstr ""
+
+#. module: typ_commision
+#: model:ir.filters,name:typ_commision.filter_01
+msgid "Open Invoice Lines"
+msgstr ""
+
+#. module: typ_commision
+#: view:account.invoice.line:typ_commision.view_account_invoice_line_filter
+msgid "Origin"
+msgstr ""
+
+#. module: typ_commision
+#: selection:account.invoice,credit_note_type:0
+#: selection:account.invoice.line,credit_note_type:0
+msgid "Other"
+msgstr ""
+
+#. module: typ_commision
+#: view:account.invoice.line:typ_commision.view_account_invoice_line_filter
+#: selection:account.invoice.line,state:0
+msgid "Paid"
+msgstr ""
+
+#. module: typ_commision
+#: view:account.invoice.line:typ_commision.view_account_invoice_line_filter
+msgid "Paid Invoices"
+msgstr ""
+
+#. module: typ_commision
+#: help:account.invoice,parent_invoice_id:0
+#: help:account.invoice.line,parent_invoice_id:0
+msgid "Parent invoice that generates this credit note"
+msgstr ""
+
+#. module: typ_commision
+#: view:account.invoice.line:typ_commision.view_account_invoice_line_filter
+msgid "Partner"
+msgstr ""
+
+#. module: typ_commision
+#: view:account.invoice.line:typ_commision.view_account_invoice_line_filter
+msgid "Payment Date"
+msgstr ""
+
+#. module: typ_commision
+#: field:account.invoice.line,period_id:0
+msgid "Payment Period"
+msgstr ""
+
+#. module: typ_commision
+#: field:account.invoice.line,payment_date:0
+msgid "Payment date"
+msgstr ""
+
+#. module: typ_commision
+#: help:account.invoice.line,period_id:0
+msgid "Period of the last payment"
+msgstr ""
+
+#. module: typ_commision
+#: selection:account.invoice.line,type_payment_term:0
+msgid "Postdated check"
+msgstr ""
+
+#. module: typ_commision
+#: selection:account.invoice.line,state:0
+msgid "Pro-forma"
+msgstr ""
+
+#. module: typ_commision
+#: view:account.invoice.line:typ_commision.view_account_invoice_line_filter
+msgid "Product"
+msgstr ""
+
+#. module: typ_commision
+#: field:account.invoice.line,categ_id:0
+msgid "Product Category"
+msgstr ""
+
+#. module: typ_commision
+#: view:account.invoice.line:typ_commision.view_account_invoice_line_filter
+msgid "Proforma"
+msgstr ""
+
+#. module: typ_commision
+#: view:account.invoice.line:typ_commision.view_account_invoice_line_filter
+msgid "Proforma Invoices"
+msgstr ""
+
+#. module: typ_commision
+#: view:account.invoice.line:typ_commision.view_account_invoice_line_filter
+msgid "Proforma/Open/Paid Invoices"
+msgstr ""
+
+#. module: typ_commision
+#: field:account.invoice.line,currency_rate:0
+msgid "Rate"
+msgstr ""
+
+#. module: typ_commision
+#: help:account.invoice.line,currency_rate:0
+msgid "Rate used to compute the price in the invoice"
+msgstr ""
+
+#. module: typ_commision
+#: help:account.invoice.line,cost_transaction:0
+msgid "Real cost of the transaction. This cost is computed considering landed costs added after the validation of this order but created before this"
+msgstr ""
+
+#. module: typ_commision
+#: selection:account.invoice,credit_note_type:0
+#: selection:account.invoice.line,credit_note_type:0
+msgid "Rebilling"
+msgstr ""
+
+#. module: typ_commision
+#: field:commision.reports.base,name:0
+msgid "Report Title"
+msgstr ""
+
+#. module: typ_commision
+#: selection:account.invoice,credit_note_type:0
+#: selection:account.invoice.line,credit_note_type:0
+msgid "Return"
+msgstr ""
+
+#. module: typ_commision
+#: view:account.invoice.line:typ_commision.view_account_invoice_line_filter
+#: field:account.invoice.line,section_id:0
+msgid "Sales Team"
+msgstr ""
+
+#. module: typ_commision
+#: help:account.invoice.line,puser_id:0
+msgid "Salesman in the partner"
+msgstr ""
+
+#. module: typ_commision
+#: help:account.invoice.line,user_id:0
+msgid "Salesman in the sale order"
+msgstr ""
+
+#. module: typ_commision
+#: view:account.invoice.line:typ_commision.view_account_invoice_line_filter
+#: field:account.invoice.line,user_id:0
+msgid "Salesperson"
+msgstr ""
+
+#. module: typ_commision
+#: help:account.invoice.line,section_id:0
+msgid "Salesteam of the salesman for this order"
+msgstr ""
+
+#. module: typ_commision
+#: view:account.invoice.line:typ_commision.view_account_invoice_line_filter
+msgid "Search Invoice"
+msgstr ""
+
+#. module: typ_commision
+#: view:account.invoice.line:typ_commision.view_account_invoice_line_filter
+#: field:account.invoice.line,state:0
+#: field:commision.reports.base,state:0
+msgid "Status"
+msgstr ""
+
+#. module: typ_commision
+#: help:commision.reports.base,state:0
+msgid "Status of the report"
+msgstr ""
+
+#. module: typ_commision
+#: field:commision.reports.base,message_summary:0
+msgid "Summary"
+msgstr ""
+
+#. module: typ_commision
+#: selection:account.invoice.line,type:0
+msgid "Supplier Invoice"
+msgstr ""
+
+#. module: typ_commision
+#: selection:account.invoice.line,type:0
+msgid "Supplier Refund"
+msgstr ""
+
+#. module: typ_commision
+#: field:account.invoice.line,cost_transaction:0
+msgid "Transaction Cost"
+msgstr ""
+
+#. module: typ_commision
+#: view:account.invoice:typ_commision.invoice_form
+#: field:account.invoice,credit_note_type:0
+#: field:account.invoice.line,type:0
+msgid "Type"
+msgstr ""
+
+#. module: typ_commision
+#: field:account.invoice.line,type_payment_term:0
+msgid "Type payment term"
+msgstr ""
+
+#. module: typ_commision
+#: view:account.invoice.line:typ_commision.view_account_invoice_line_filter
+msgid "Unpaid"
+msgstr ""
+
+#. module: typ_commision
+#: view:account.invoice.line:typ_commision.view_account_invoice_line_filter
+msgid "Unpaid Invoices"
+msgstr ""
+
+#. module: typ_commision
+#: field:commision.reports.base,message_unread:0
+msgid "Unread Messages"
+msgstr ""
+
+#. module: typ_commision
+#: help:account.invoice,credit_note_type:0
+#: help:account.invoice.line,credit_note_type:0
+msgid "Used to identify the reason of this credit note"
+msgstr ""
+
+#. module: typ_commision
+#: help:commision.reports.base,custom:0
+msgid "Used to specify custom filter and allow use the date to search by payments "
+msgstr ""
+
+#. module: typ_commision
+#: help:commision.reports.base,lines:0
+msgid "Used to use filter applied in invoice lines"
+msgstr ""
+
+#. module: typ_commision
+#: help:commision.reports.base,invoice:0
+msgid "Used to use filter applied in invoices"
+msgstr ""
+
+#. module: typ_commision
+#: selection:account.invoice,credit_note_type:0
+#: selection:account.invoice.line,credit_note_type:0
+msgid "Warranty"
+msgstr ""
+
