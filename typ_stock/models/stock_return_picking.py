@@ -78,3 +78,15 @@ class StockReturnPicking(models.TransientModel):
         res.update({'product_return_moves': result})
 
         return res
+
+    @api.multi
+    def _create_returns(self):
+        """When picking is return, the value of field purchase_line_id in
+        moves is lost, here this value is set in all picking move.
+        """
+        res = super(StockReturnPicking, self)._create_returns()
+        new_picking = self.env['stock.picking'].browse(res[0])
+        for move in new_picking.move_lines:
+            move.write({'purchase_line_id':
+                        move.origin_returned_move_id.purchase_line_id.id})
+        return res
