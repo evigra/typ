@@ -58,6 +58,9 @@ products when you are reviewing the supplier invoice
 control the inventories in detail, this allows you to visualize the quantity of
 products that move in each picking to and from your company.
 
+**Adding Report locations stocks & reording rules**
+This report sum all product quants and group by locations to get locations stocks, it has
+standard price, Minimum and Maximum qty by reording rules.
 
 
 Credits
@@ -71,6 +74,7 @@ Credits
 * Deivis Laya <deivis@vauxoo.com> (Developer)
 * Carlos Mexia <cmexia@typrefrigeracion.com(Developer)
 * Antonio Rogel <arogel@typrefrigeracion.com> (Developer)
+* Omar Mejia <omejia@typrefrigeracion.com(Developer)
 
 Maintainer
 ==========

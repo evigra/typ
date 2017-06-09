@@ -7,3 +7,4 @@ account-invoicing git@github.com:vauxoo/account-invoicing.git
 stock-logistics-workflow git@github.com:Vauxoo/stock-logistics-workflow.git
 odoo-afr git@github.com:Vauxoo/odoo-afr.git
 web https://github.com/Vauxoo/web.git
+stock-logistics-reporting git@github.com:Vauxoo/stock-logistics-reporting.git

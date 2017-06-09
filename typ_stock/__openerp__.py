@@ -20,6 +20,7 @@
         'delivery',
         'typ_purchase',
         'product_unique_serial',
+        'stock_analysis',
     ],
     # always loaded
     'data': [
@@ -40,6 +41,7 @@
         'wizard/stock_transfer_details.xml',
         'report/report_stockpicking.xml',
         'report/report_product_label.xml',
+        'report/stock_analysis_view.xml',
     ],
     # only loaded in demonstration mode
     'demo': [
