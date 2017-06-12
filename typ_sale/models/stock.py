@@ -1,6 +1,6 @@
 # coding: utf-8
 
-from openerp import _, api, models
+from openerp import _, api, models, fields
 from openerp.exceptions import ValidationError
 
 
@@ -8,15 +8,23 @@ class StockPicking(models.Model):
 
     _inherit = 'stock.picking'
 
+    order_id = fields.Many2one('sale.order')
+
     @api.model
     def _get_invoice_vals(self, key, inv_type, journal_id, move):
         res = super(StockPicking, self)._get_invoice_vals(
             key, inv_type, journal_id, move)
-        sale = move.picking_id.sale_id
+        sale = move.sale_order_line_id.order_id or move.picking_id.sale_id
         if sale and inv_type in ('out_invoice', 'out_refund'):
             res.update({
                 'payment_term': sale.payment_term.id,
-                'type_payment_term': sale.type_payment_term, })
+                'type_payment_term': sale.type_payment_term,
+                'fiscal_position': sale.fiscal_position.id,
+                'user_id': sale.user_id.id,
+                'section_id': sale.section_id.id,
+                'name': sale.client_order_ref or '',
+                'comment': sale.note
+            })
         if 'payment_term' in res:
             date_due = (self.env['account.invoice'].
                         onchange_payment_term_date_invoice(
@@ -68,17 +76,3 @@ class StockPicking(models.Model):
                 self.check_pedimento(pick)
         return super(StockPicking, self)._create_invoice_from_picking(
             picking, vals)
-
-
-class StockMove(models.Model):
-
-    _inherit = 'stock.move'
-
-    @api.model
-    def _prepare_procurement_from_move(self, move):
-        """Inherit to reassign origin field in procurement order"""
-        res = super(StockMove, self)._prepare_procurement_from_move(move)
-        order = move.procurement_id._get_sale_line_id().order_id
-        if order:
-            res.update({'origin': order.name})
-        return res

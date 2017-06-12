@@ -19,6 +19,15 @@ class SaleOrderLine(models.Model):
         help='True if there is a buy type procurement rule within the chosen'
         ' route, otherwise false')
 
+    @api.multi
+    def button_cancel(self):
+        res = super(SaleOrderLine, self).button_cancel()
+        for sale_line in self.filtered('order_id.pos'):
+            move_ids = self.env['stock.move'].search([
+                ('sale_order_line_id', '=', sale_line.id)])
+            move_ids.action_cancel()
+        return res
+
     @api.depends('route_id')
     def _compute_is_special_sale(self):
         for rec in self:

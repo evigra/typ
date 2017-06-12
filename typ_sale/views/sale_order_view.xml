@@ -31,6 +31,7 @@
             <field name="arch" type="xml">
                 <xpath expr="//field[@name='pricelist_id']" position="after">
                     <field name="type_payment_term" attrs="{'readonly': [('state', '!=', 'draft')],'required': [('state', '=', 'draft')],}"/>
+                    <field name="pos" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
                 </xpath>
                 <xpath expr="//field[@name='payment_term']" position="attributes">
                     <attribute name="groups" translation="off">typ_sale.group_sale_order_invoice_payment_term_manager</attribute>

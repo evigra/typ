@@ -1,11 +1,13 @@
 # coding: utf-8
 
-from openerp import api, models
+from openerp import api, models, fields
 
 
 class ProcurementOrder(models.Model):
 
     _inherit = 'procurement.order'
+
+    sale_line_id = fields.Many2one('sale.order.line', select=True)
 
     @api.model
     def _get_sale_line_id(self):
