@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 8.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-06-08 22:27+0000\n"
-"PO-Revision-Date: 2017-06-08 22:27+0000\n"
+"POT-Creation-Date: 2017-06-13 01:40+0000\n"
+"PO-Revision-Date: 2017-06-13 01:40+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -29,6 +29,7 @@ msgstr ""
 
 #. module: typ_stock
 #: selection:procurement.orderpoint.compute,importance:0
+#: selection:stock.analysis,importance:0
 #: selection:stock.warehouse.orderpoint,importance:0
 msgid "AA"
 msgstr ""
@@ -56,6 +57,11 @@ msgstr ""
 #. module: typ_stock
 #: model:stock.picking.type,name:typ_stock.stock_picking_type_test_2
 msgid "Automatic transit"
+msgstr ""
+
+#. module: typ_stock
+#: field:stock.analysis,balanced:0
+msgid "Balanced"
 msgstr ""
 
 #. module: typ_stock
@@ -109,6 +115,11 @@ msgid "Display Name"
 msgstr ""
 
 #. module: typ_stock
+#: selection:stock.analysis,state:0
+msgid "End of Lifecycle"
+msgstr ""
+
+#. module: typ_stock
 #: field:stock.transfer_details_items,expected_quantity:0
 msgid "Expected quantity"
 msgstr ""
@@ -120,6 +131,8 @@ msgstr ""
 
 #. module: typ_stock
 #: field:procurement.orderpoint.compute,importance:0
+#: view:stock.analysis:typ_stock.stock_analysis_graph_search_inherit
+#: field:stock.analysis,importance:0
 #: field:stock.warehouse.orderpoint,importance:0
 msgid "Importance"
 msgstr ""
@@ -161,6 +174,11 @@ msgid "Lot"
 msgstr ""
 
 #. module: typ_stock
+#: field:stock.analysis,product_max_qty:0
+msgid "Maximum Quantity"
+msgstr ""
+
+#. module: typ_stock
 #: model:ir.actions.report.xml,name:typ_stock.product_label_medium
 msgid "Medium Label"
 msgstr ""
@@ -171,9 +189,24 @@ msgid "Minimum Inventory Rule"
 msgstr ""
 
 #. module: typ_stock
+#: field:stock.analysis,product_min_qty:0
+msgid "Minimum Quantity"
+msgstr ""
+
+#. module: typ_stock
 #: code:addons/typ_stock/models/stock.py:100
 #, python-format
 msgid "Negative Quant creation error of the product %s. Contact Vauxoo personnel immediately"
+msgstr ""
+
+#. module: typ_stock
+#: selection:stock.analysis,state:0
+msgid "Normal"
+msgstr ""
+
+#. module: typ_stock
+#: view:stock.analysis:typ_stock.stock_analysis_graph_search_inherit
+msgid "Not Balanced"
 msgstr ""
 
 #. module: typ_stock
@@ -184,6 +217,11 @@ msgstr ""
 #. module: typ_stock
 #: field:stock.picking,number_landing:0
 msgid "Number landing"
+msgstr ""
+
+#. module: typ_stock
+#: selection:stock.analysis,state:0
+msgid "Obsolete"
 msgstr ""
 
 #. module: typ_stock
@@ -202,6 +240,8 @@ msgid "PE TW1 - TW2"
 msgstr ""
 
 #. module: typ_stock
+#: view:stock.analysis:typ_stock.stock_analysis_graph_search_inherit
+#: field:stock.analysis,partner_id:0
 #: view:stock.picking:typ_stock.view_origin_picking_internal_search_inherit
 msgid "Partner"
 msgstr ""
@@ -341,8 +381,19 @@ msgid "Source loc id"
 msgstr ""
 
 #. module: typ_stock
+#: field:stock.analysis,standard_price:0
+msgid "Standard price"
+msgstr ""
+
+#. module: typ_stock
 #: view:website:stock.report_picking
 msgid "State"
+msgstr ""
+
+#. module: typ_stock
+#: view:stock.analysis:typ_stock.stock_analysis_graph_search_inherit
+#: field:stock.analysis,state:0
+msgid "Status"
 msgstr ""
 
 #. module: typ_stock
@@ -593,12 +644,18 @@ msgstr ""
 #. module: typ_stock
 #: model:ir.model,name:typ_stock.model_stock_warehouse
 #: field:procurement.orderpoint.compute,warehouse_id:0
+#: view:stock.analysis:typ_stock.stock_analysis_graph_search_inherit
 msgid "Warehouse"
 msgstr ""
 
 #. module: typ_stock
 #: view:website:stock.report_picking
 msgid "Warehouse Address:"
+msgstr ""
+
+#. module: typ_stock
+#: field:stock.analysis,warehouse_id:0
+msgid "Warehouse id"
 msgstr ""
 
 #. module: typ_stock

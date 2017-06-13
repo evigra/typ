@@ -7,13 +7,17 @@ msgstr ""
 "Project-Id-Version: Odoo Server 8.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-06-01 14:10+0000\n"
-"PO-Revision-Date: 2017-06-01 14:10+0000\n"
-"Last-Translator: <>\n"
-"Language-Team: \n"
+"PO-Revision-Date: 2017-06-08 22:45+0000\n"
+"Last-Translator: AntonioRogel <arogel@typrefrigeracion.com>\n"
+"Language-Team: Spanish "
+"<http://weblate.vauxoo.com/projects/github_com_Vauxoo_typ_8_0/typ_stock/es/>"
+"\n"
+"Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
-"Plural-Forms: \n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 2.12\n"
 
 #. module: typ_stock
 #: code:addons/typ_stock/models/stock.py:241
@@ -163,7 +167,7 @@ msgstr "Lote"
 #. module: typ_stock
 #: model:ir.actions.report.xml,name:typ_stock.product_label_medium
 msgid "Medium Label"
-msgstr ""
+msgstr "Etiqueta mediana"
 
 #. module: typ_stock
 #: model:ir.model,name:typ_stock.model_stock_warehouse_orderpoint
@@ -184,7 +188,7 @@ msgstr "Notas"
 #. module: typ_stock
 #: field:stock.picking,number_landing:0
 msgid "Number landing"
-msgstr ""
+msgstr "Pedimento"
 
 #. module: typ_stock
 #: view:website:stock.report_picking
@@ -312,7 +316,7 @@ msgstr "Fecha programada para el envío de este movimiento"
 #. module: typ_stock
 #: view:pedimento.product:typ_stock.view_pedimento_product_wizard
 msgid "Serial"
-msgstr ""
+msgstr "No. Serie"
 
 #. module: typ_stock
 #: code:addons/typ_stock/wizard/stock_serial.py:162
@@ -328,7 +332,7 @@ msgstr "Fecha de embarque del picking"
 #. module: typ_stock
 #: model:ir.actions.report.xml,name:typ_stock.product_label_small
 msgid "Small Label"
-msgstr ""
+msgstr "Etiqueta pequeña"
 
 #. module: typ_stock
 #: view:website:stock.report_picking
@@ -668,7 +672,7 @@ msgstr "Debe asignar un número de serial para el producto [%s] %s"
 #. module: typ_stock
 #: model:ir.actions.report.xml,name:typ_stock.product_label_large
 msgid "large Label"
-msgstr ""
+msgstr "Etiqueta grande"
 
 #. module: typ_stock
 #: view:stock.inventory:typ_stock.view_inventory_filter_inherit
@@ -683,7 +687,7 @@ msgstr "o"
 #. module: typ_stock
 #: view:stock.quant:typ_stock.view_stock_quant_inherit
 msgid "pedimento/serial"
-msgstr ""
+msgstr "pedimento/no. serie"
 
 #. module: typ_stock
 #: model:product.template,name:typ_stock.product_test_01_product_template
@@ -714,4 +718,3 @@ msgstr "embarque ok"
 #: view:pedimento.product:typ_stock.view_pedimento_product_wizard
 msgid "write data"
 msgstr "Escribir datos"
-
