@@ -6,18 +6,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 8.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-06-01 14:10+0000\n"
-"PO-Revision-Date: 2017-06-08 22:45+0000\n"
-"Last-Translator: AntonioRogel <arogel@typrefrigeracion.com>\n"
-"Language-Team: Spanish "
-"<http://weblate.vauxoo.com/projects/github_com_Vauxoo_typ_8_0/typ_stock/es/>"
-"\n"
-"Language: es\n"
+"POT-Creation-Date: 2017-06-14 00:48+0000\n"
+"PO-Revision-Date: 2017-06-14 00:48+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 2.12\n"
+"Plural-Forms: \n"
 
 #. module: typ_stock
 #: code:addons/typ_stock/models/stock.py:241
@@ -33,6 +29,7 @@ msgstr "<ul><li>embarque confirmado --> <b>ok</b></li></ul>"
 
 #. module: typ_stock
 #: selection:procurement.orderpoint.compute,importance:0
+#: selection:stock.analysis,importance:0
 #: selection:stock.warehouse.orderpoint,importance:0
 msgid "AA"
 msgstr ""
@@ -61,6 +58,11 @@ msgstr "Salida automatica"
 #: model:stock.picking.type,name:typ_stock.stock_picking_type_test_2
 msgid "Automatic transit"
 msgstr "Transito automático"
+
+#. module: typ_stock
+#: field:stock.analysis,balanced:0
+msgid "Balanced"
+msgstr ""
 
 #. module: typ_stock
 #: view:website:stock.report_picking
@@ -113,6 +115,11 @@ msgid "Display Name"
 msgstr "Nombre a mostrar"
 
 #. module: typ_stock
+#: selection:stock.analysis,state:0
+msgid "End of Lifecycle"
+msgstr ""
+
+#. module: typ_stock
 #: field:stock.transfer_details_items,expected_quantity:0
 msgid "Expected quantity"
 msgstr "Cantidad esperada"
@@ -124,6 +131,8 @@ msgstr "N° Empleado"
 
 #. module: typ_stock
 #: field:procurement.orderpoint.compute,importance:0
+#: view:stock.analysis:typ_stock.stock_analysis_graph_search_inherit
+#: field:stock.analysis,importance:0
 #: field:stock.warehouse.orderpoint,importance:0
 msgid "Importance"
 msgstr "Importancia"
@@ -165,6 +174,11 @@ msgid "Lot"
 msgstr "Lote"
 
 #. module: typ_stock
+#: field:stock.analysis,product_max_qty:0
+msgid "Maximum Quantity"
+msgstr ""
+
+#. module: typ_stock
 #: model:ir.actions.report.xml,name:typ_stock.product_label_medium
 msgid "Medium Label"
 msgstr "Etiqueta mediana"
@@ -175,10 +189,25 @@ msgid "Minimum Inventory Rule"
 msgstr "Regla de Inventario Mínimo"
 
 #. module: typ_stock
+#: field:stock.analysis,product_min_qty:0
+msgid "Minimum Quantity"
+msgstr ""
+
+#. module: typ_stock
 #: code:addons/typ_stock/models/stock.py:100
 #, python-format
 msgid "Negative Quant creation error of the product %s. Contact Vauxoo personnel immediately"
 msgstr "Error en creacion de Quant negativo de el producto %s. Contacte al personal de Vauxoo inmediatamente"
+
+#. module: typ_stock
+#: selection:stock.analysis,state:0
+msgid "Normal"
+msgstr ""
+
+#. module: typ_stock
+#: view:stock.analysis:typ_stock.stock_analysis_graph_search_inherit
+msgid "Not Balanced"
+msgstr ""
 
 #. module: typ_stock
 #: view:website:stock.report_picking
@@ -189,6 +218,11 @@ msgstr "Notas"
 #: field:stock.picking,number_landing:0
 msgid "Number landing"
 msgstr "Pedimento"
+
+#. module: typ_stock
+#: selection:stock.analysis,state:0
+msgid "Obsolete"
+msgstr ""
 
 #. module: typ_stock
 #: view:website:stock.report_picking
@@ -206,6 +240,8 @@ msgid "PE TW1 - TW2"
 msgstr ""
 
 #. module: typ_stock
+#: view:stock.analysis:typ_stock.stock_analysis_graph_search_inherit
+#: field:stock.analysis,partner_id:0
 #: view:stock.picking:typ_stock.view_origin_picking_internal_search_inherit
 msgid "Partner"
 msgstr "Empresa"
@@ -345,9 +381,20 @@ msgid "Source loc id"
 msgstr "Fuente loc id"
 
 #. module: typ_stock
+#: field:stock.analysis,standard_price:0
+msgid "Standard price"
+msgstr ""
+
+#. module: typ_stock
 #: view:website:stock.report_picking
 msgid "State"
 msgstr "Estado"
+
+#. module: typ_stock
+#: view:stock.analysis:typ_stock.stock_analysis_graph_search_inherit
+#: field:stock.analysis,state:0
+msgid "Status"
+msgstr ""
 
 #. module: typ_stock
 #: model:ir.model,name:typ_stock.model_stock_invoice_onshipping
@@ -597,6 +644,7 @@ msgstr "Verificar usuario de desecho"
 #. module: typ_stock
 #: model:ir.model,name:typ_stock.model_stock_warehouse
 #: field:procurement.orderpoint.compute,warehouse_id:0
+#: view:stock.analysis:typ_stock.stock_analysis_graph_search_inherit
 msgid "Warehouse"
 msgstr "Almacén"
 
@@ -604,6 +652,11 @@ msgstr "Almacén"
 #: view:website:stock.report_picking
 msgid "Warehouse Address:"
 msgstr "Dirección de Almacén:"
+
+#. module: typ_stock
+#: field:stock.analysis,warehouse_id:0
+msgid "Warehouse id"
+msgstr ""
 
 #. module: typ_stock
 #: code:addons/typ_stock/wizard/stock_serial.py:97
@@ -718,3 +771,4 @@ msgstr "embarque ok"
 #: view:pedimento.product:typ_stock.view_pedimento_product_wizard
 msgid "write data"
 msgstr "Escribir datos"
+
