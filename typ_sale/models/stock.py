@@ -19,6 +19,8 @@ class StockPicking(models.Model):
             res.update({
                 'payment_term': sale.payment_term.id,
                 'type_payment_term': sale.type_payment_term,
+                'acc_payment': sale.acc_payment.id,
+                'pay_method_id': sale.pay_method_id.id,
                 'fiscal_position': sale.fiscal_position.id,
                 'user_id': sale.user_id.id,
                 'section_id': sale.section_id.id,
