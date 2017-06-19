@@ -10,6 +10,10 @@
                 <xpath expr="//field[@name='number']" position="before">
                     <field name="origin"/>
                 </xpath>
+                <xpath expr="//group[@string='Group By']" position="inside">
+                    <filter string="Date invoice" context="{'group_by':'date_invoice'}"/>
+                    <filter string="Created by" context="{'group_by':'create_uid'}"/>
+                </xpath>
             </field>
         </record>
         <record id="view_invoice_form_partner_onchange" model="ir.ui.view">
@@ -65,16 +69,6 @@
                     <attribute name="attrs" translation="off">{'required': 1}</attribute>
                 </field>
             </field>
-        </record>
-        <record id="view_date_invoiced_account_invoice_search_inherit" model="ir.ui.view">
-            <field name="name">date.invoiced.account.invoice.search.inherit</field>
-            <field name="model">account.invoice</field>
-            <field name="inherit_id" ref="account.view_account_invoice_filter"/>
-            <field name="arch" type="xml">
-                <xpath expr="//group[@string='Group By']" position="inside">
-                    <filter string="Date invoice" context="{'group_by':'date_invoice'}"/>
-                </xpath>
-                </field>
         </record>
     </data>
 </openerp>
