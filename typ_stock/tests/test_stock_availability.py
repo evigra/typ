@@ -503,6 +503,10 @@ class TestStockAvailability(TransactionCase):
         wizard_transfer_id.sudo(demo_user).do_detailed_transfer()
 
         # Return picking of first sale order again
+
+        wizard_return_id.product_return_moves.filtered(
+            lambda dat: dat.product_id == self.product_deluxe).unlink()
+
         msg = "The return of the product %s, exceeds the amount invoiced" % \
             (self.product.name)
         with self.assertRaisesRegexp(UserError, msg):
