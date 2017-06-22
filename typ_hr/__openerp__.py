@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 {
     'name': "Typ Human Capital",
-    'author': "omejia",
+    'author': "TyP refrigeracion",
     'website': "http://www.typrefrigeracion.com",
     'license': 'LGPL-3',
     'category': '',

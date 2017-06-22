@@ -4,11 +4,13 @@
 from openerp import models, fields, api
 
 GRADES = [
-    ('elementary school', 'Elementary school'),
-    ('middle school', 'Middle school'),
-    ('high school', 'High school'),
-    ('university degree', 'University degree'),
-    ('master degree', 'Master degree'),
+    ('elementary_school', 'Elementary school'),
+    ('middle_school', 'Middle school'),
+    ('high_school', 'High school'),
+    ('university_degree', 'University degree'),
+    ('truncated_career', 'Truncated career'),
+    ('transcript_letter', 'Transcript letter'),
+    ('master_degree', 'Master degree'),
     ('doctorade ', 'Doctorade')
 ]
 
