@@ -19,6 +19,7 @@
         'data/res_groups.xml',
         'data/ir_actions_server.xml',
         'data/base_action_rule.xml',
+        'data/ir_cron.xml',
         'reports/sale_order.xml',
         'reports/layout.xml',
         'security/res_groups.xml',

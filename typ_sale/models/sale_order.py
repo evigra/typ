@@ -165,6 +165,25 @@ class SaleOrder(models.Model):
             # picking_obj.action_done()
         return True
 
+    @api.multi
+    def check_picking_done(self):
+        """Function that validates whether a picking delivered"""
+        self.ensure_one()
+        picking_valid = not self.env['stock.picking'].search([
+            ('id', 'in', self.picking_ids.ids),
+            ('state', 'not in', ['cancel', 'done'])], limit=1)
+        return picking_valid
+
+    @api.model
+    def automatic_sale_pos_done(self):
+        """Look for sales orders of type pos in progress status changing to
+        done status"""
+        sale_ids = self.search([
+            ('state', '=', 'progress'), ('pos', '=', True)])
+        sale_ids.filtered(
+            lambda r: r.check_picking_done()).write({'state': 'done'})
+        return True
+
 
 class StockMove(models.Model):
 

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data noupdate="1">
+
+        <record id="ir_cron_sale_pos_done" model="ir.cron">
+            <field name="name">Sale Pos to done state</field>
+            <field name="interval_number">7</field>
+            <field name="interval_type">days</field>
+            <field name="numbercall">-1</field>
+            <field name="model" eval="'sale.order'"/>
+            <field name="function" eval="'automatic_sale_pos_done'"/>
+            <field name="args" eval="'()'"/>
+            <field name="active" eval="True"/>
+        </record>
+
+    </data>
+</openerp>
