@@ -53,7 +53,6 @@
         'stock_landed_costs_segmentation',
         'warning',
         'stock_dropshipping',
-        'product_customer_code',
         'typ_account',
         'typ_stock',
         'typ_partner',
