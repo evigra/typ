@@ -111,6 +111,8 @@ class AccountInvoice(models.Model):
             return False
 
         result = attach.signal_send_customer()
+        if not result:
+            return False
         view_id = self.env.ref('mail.email_compose_message_wizard_form').id
         result.update({
             'views': [(view_id, 'form')],
