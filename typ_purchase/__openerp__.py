@@ -18,7 +18,6 @@
 
     # any module necessary for this one to work correctly
     'depends': [
-        'purchase',
         'purchase_requisition',
         'typ_partner',
     ],

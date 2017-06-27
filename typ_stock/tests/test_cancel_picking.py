@@ -12,6 +12,7 @@ class TestCancelPicking(TestTypStock):
         """
         self.dict_vals_line.update({'route_id': self.route_2.id})
         self.dict_vals.update({
+            'name': 'Test cancel not origin picking',
             'warehouse_id': self.warehouse_2.id,
             'order_line': [(0, 0, self.dict_vals_line)], })
 
@@ -30,6 +31,7 @@ class TestCancelPicking(TestTypStock):
         """
         self.dict_vals_line.update({'route_id': self.route_2.id})
         self.dict_vals.update({
+            'name': 'Test cancel origin picking',
             'warehouse_id': self.warehouse_2.id,
             'order_line': [(0, 0, self.dict_vals_line)], })
 

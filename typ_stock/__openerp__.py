@@ -17,10 +17,12 @@
     'website': 'http://www.vauxoo.com/',
     # any module necessary for this one to work correctly
     'depends': [
-        'delivery',
+        'default_warehouse_from_sale_team',
         'typ_purchase',
+        'l10n_mx_landing',
         'product_unique_serial',
         'stock_analysis',
+        'stock_move_entries',
     ],
     # always loaded
     'data': [

@@ -9,10 +9,9 @@
 
     'depends': [
         'sale_margin',
-        'sale_stock',
         'typ_stock',
-        'default_warehouse_from_sale_team',
         'crm',
+        'payment_term_type',
     ],
 
     'data': [
@@ -33,6 +32,7 @@
         'views/res_config_view.xml',
         'views/res_partner_classification_view.xml',
         'views/crm_lead_view.xml',
+        'views/sales_team_view.xml',
     ],
     'demo': [
         'demo/sale_data_demo.xml',

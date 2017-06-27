@@ -22,6 +22,3 @@ class CrmCaseSection(models.Model):
         'product.pricelist', 'Default purchase pricelist',
         domain=[('type', '=', 'purchase')], help='It indicates the purchase '
         'pricelist to be used when partner is created')
-    sale_phone = fields.Char(
-        string="Phone",
-        help="Phone for contact sale team")

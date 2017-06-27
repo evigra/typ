@@ -21,7 +21,7 @@
         'partner_credit_limit',
         'account_voucher_tax',
         'typ_sale',
-        'l10n_mx_payment_method',
+        'typ_default_warehouse_from_sale_team',
     ],
     # always loaded
     'data': [

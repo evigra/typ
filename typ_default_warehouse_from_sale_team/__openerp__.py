@@ -9,7 +9,6 @@
 
     'depends': [
         'typ_landed_costs',
-        'default_warehouse_from_sale_team',
     ],
 
     'data': [

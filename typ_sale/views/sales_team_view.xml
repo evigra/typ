@@ -1,0 +1,17 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<openerp>
+    <data>
+
+       <record model="ir.ui.view" id="view_typ_sale_from_sale_team_form_inherit">
+            <field name="name">typ.sale.from.sale.team.form.inherit</field>
+            <field name="model">crm.case.section</field>
+            <field name="inherit_id" ref="default_warehouse_from_sale_team.view_crm_case_section_form_inherit"/>
+            <field name="arch" type="xml">
+                <field name="alias_contact" position="after">
+                    <field name="sale_phone"/>
+                </field>
+            </field>
+        </record>
+
+    </data>
+</openerp>

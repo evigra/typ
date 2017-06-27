@@ -18,8 +18,7 @@
 
     # any module necessary for this one to work correctly
     'depends': [
-        'account',
-        'typ_sale',
+        'typ_account',
     ],
     # always loaded
     'data': [
