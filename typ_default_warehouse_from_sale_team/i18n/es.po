@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 8.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-06-01 14:09+0000\n"
-"PO-Revision-Date: 2017-06-01 14:09+0000\n"
+"POT-Creation-Date: 2017-06-28 18:05+0000\n"
+"PO-Revision-Date: 2017-06-28 18:05+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -54,16 +54,6 @@ msgstr "Diario de costo en destino"
 #: field:crm.case.section,journal_guide_id:0
 msgid "Journal landed cost guide"
 msgstr "Diario de guía de costo en destino"
-
-#. module: typ_default_warehouse_from_sale_team
-#: field:crm.case.section,sale_phone:0
-msgid "Phone"
-msgstr "Teléfono"
-
-#. module: typ_default_warehouse_from_sale_team
-#: help:crm.case.section,sale_phone:0
-msgid "Phone for contact sale team"
-msgstr "Teléfono de contacto del equipo de ventas"
 
 #. module: typ_default_warehouse_from_sale_team
 #: model:ir.model,name:typ_default_warehouse_from_sale_team.model_product_template
