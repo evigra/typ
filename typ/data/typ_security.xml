@@ -82,5 +82,14 @@
             <field name="perm_unlink" eval="True"/>
             <field name="perm_create" eval="True"/>
         </record>
+        <record model="ir.rule" id="ir_typ_stock_manual_transfer_rule">
+            <field name="name">manual transfer from sale team</field>
+            <field name="model_id" search="[('model', '=', 'stock.manual_transfer')]" model='ir.model'/>
+            <field name="domain_force">[('warehouse_id', 'in', [team.default_warehouse.id  for team in user.sale_team_ids])]</field>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_unlink" eval="True"/>
+            <field name="perm_create" eval="True"/>
+        </record>
     </data>
 </openerp>

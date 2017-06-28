@@ -14,6 +14,7 @@ class TestTypStock(common.TransactionCase):
         self.warehouse_2 = self.env.ref('typ_stock.whr_test_02')
         self.route = self.env.ref('typ_stock.stock_location_route_test_1')
         self.route_2 = self.env.ref('typ_stock.stock_location_route_test_2')
+        self.route_3 = self.env.ref('typ_stock.stock_location_route_test_3')
         self.stock_picking = self.env['stock.picking']
         self.picking_type = self.env.ref('stock.picking_type_in')
         self.picking_type_out = self.env.ref('stock.picking_type_out')

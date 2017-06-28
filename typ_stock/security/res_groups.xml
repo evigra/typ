@@ -44,5 +44,9 @@
           <field name="name">Users who see picking reception attributes</field>
           <field name="comment">This group can see the reception attributes of the pickings</field>
         </record>
+        <record id="group_stock_manual_transfer" model="res.groups">
+          <field name="name">Users that can make manual transfers</field>
+          <field name="comment">This group can make manual transfers</field>
+        </record>
     </data>
 </openerp>

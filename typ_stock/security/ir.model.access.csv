@@ -1,2 +1,4 @@
 id,name,model_id/id,group_id/id,perm_read,perm_write,perm_create,perm_unlink
 stock_cant_create_picking,stock_cant_create_picking,stock.model_stock_picking,typ_stock.res_group_can_not_create_picking,1,1,0,1
+acces_stock_can_stock_manual_transfer,stock_can_stock_manual_transfer,typ_stock.model_stock_manual_transfer,typ_stock.group_stock_manual_transfer,1,1,1,1
+acces_stock_can_stock_manual_transfer_line,stock_can_stock_manual_transfer_line,typ_stock.model_stock_manual_transfer_line,typ_stock.group_stock_manual_transfer,1,1,1,1
