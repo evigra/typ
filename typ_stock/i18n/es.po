@@ -6,14 +6,22 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 8.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-06-16 00:20+0000\n"
-"PO-Revision-Date: 2017-06-16 00:20+0000\n"
+"POT-Creation-Date: 2017-06-28 19:03+0000\n"
+"PO-Revision-Date: 2017-06-28 19:03+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: \n"
+
+#. module: typ_stock
+#: model:ir.actions.act_window,help:typ_stock.stock_manual_transfer_action
+msgid "<p class=\"oe_view_nocontent_create\">\n"
+"                Click to add a new manual transfer.\n"
+"              </p>\n"
+"            "
+msgstr ""
 
 #. module: typ_stock
 #: code:addons/typ_stock/models/stock.py:241
@@ -48,6 +56,11 @@ msgstr "Accion para cancelar abastecimientos"
 #: field:stock.warehouse,active:0
 msgid "Active"
 msgstr "Activo"
+
+#. module: typ_stock
+#: field:stock.location.route,manual_transfer_selectable:0
+msgid "Applicable on manual transfer"
+msgstr ""
 
 #. module: typ_stock
 #: model:stock.picking.type,name:typ_stock.stock_picking_type_test_1
@@ -86,11 +99,15 @@ msgstr "Reglas de Cálculo de Stock Mínimo"
 
 #. module: typ_stock
 #: field:pedimento.product,create_uid:0
+#: field:stock.manual_transfer,create_uid:0
+#: field:stock.manual_transfer_line,create_uid:0
 msgid "Created by"
 msgstr "Creado por"
 
 #. module: typ_stock
 #: field:pedimento.product,create_date:0
+#: field:stock.manual_transfer,create_date:0
+#: field:stock.manual_transfer_line,create_date:0
 msgid "Created on"
 msgstr "Creado en"
 
@@ -98,6 +115,11 @@ msgstr "Creado en"
 #: view:website:stock.report_picking
 msgid "Customer Address:"
 msgstr "Dirección del Cliente:"
+
+#. module: typ_stock
+#: help:stock.manual_transfer,message_last_post:0
+msgid "Date of the last message posted on the record."
+msgstr ""
 
 #. module: typ_stock
 #: view:website:stock.report_picking
@@ -111,8 +133,20 @@ msgstr "Destino"
 
 #. module: typ_stock
 #: field:pedimento.product,display_name:0
+#: field:stock.manual_transfer,display_name:0
+#: field:stock.manual_transfer_line,display_name:0
 msgid "Display Name"
 msgstr "Nombre a mostrar"
+
+#. module: typ_stock
+#: selection:stock.manual_transfer,state:0
+msgid "Draft"
+msgstr ""
+
+#. module: typ_stock
+#: model:ir.model,name:typ_stock.model_stock_manual_transfer
+msgid "Email Thread"
+msgstr ""
 
 #. module: typ_stock
 #: selection:stock.analysis,state:0
@@ -125,9 +159,26 @@ msgid "Expected quantity"
 msgstr "Cantidad esperada"
 
 #. module: typ_stock
+#: field:stock.manual_transfer,message_follower_ids:0
+msgid "Followers"
+msgstr ""
+
+#. module: typ_stock
+#: help:stock.manual_transfer,message_summary:0
+msgid "Holds the Chatter summary (number of messages, ...). This summary is directly in html format in order to be inserted in kanban views."
+msgstr ""
+
+#. module: typ_stock
 #: field:pedimento.product,id:0
+#: field:stock.manual_transfer,id:0
+#: field:stock.manual_transfer_line,id:0
 msgid "ID"
 msgstr "N° Empleado"
+
+#. module: typ_stock
+#: help:stock.manual_transfer,message_unread:0
+msgid "If checked new messages require your attention."
+msgstr ""
 
 #. module: typ_stock
 #: field:procurement.orderpoint.compute,importance:0
@@ -144,22 +195,43 @@ msgid "Internal movements don't allow locations in supplier or customer"
 msgstr "Los movimientos internos no permiten ubicaciones de proveedores o clientes"
 
 #. module: typ_stock
+#: model:ir.model,name:typ_stock.model_stock_location_route
+msgid "Inventory Routes"
+msgstr ""
+
+#. module: typ_stock
 #: field:stock.picking,invoiced:0
 msgid "Invoiced complete"
 msgstr "Factura completa"
 
 #. module: typ_stock
+#: field:stock.manual_transfer,message_is_follower:0
+msgid "Is a Follower"
+msgstr ""
+
+#. module: typ_stock
+#: field:stock.manual_transfer,message_last_post:0
+msgid "Last Message Date"
+msgstr ""
+
+#. module: typ_stock
 #: field:pedimento.product,__last_update:0
+#: field:stock.manual_transfer,__last_update:0
+#: field:stock.manual_transfer_line,__last_update:0
 msgid "Last Modified on"
 msgstr "Última modificación"
 
 #. module: typ_stock
 #: field:pedimento.product,write_uid:0
+#: field:stock.manual_transfer,write_uid:0
+#: field:stock.manual_transfer_line,write_uid:0
 msgid "Last Updated by"
 msgstr "Última actualización por"
 
 #. module: typ_stock
 #: field:pedimento.product,write_date:0
+#: field:stock.manual_transfer,write_date:0
+#: field:stock.manual_transfer_line,write_date:0
 msgid "Last Updated on"
 msgstr "Última actualización en"
 
@@ -174,6 +246,24 @@ msgid "Lot"
 msgstr "Lote"
 
 #. module: typ_stock
+#: view:stock.manual_transfer:typ_stock.stock_manual_transfer_form_view
+msgid "Make transfer"
+msgstr ""
+
+#. module: typ_stock
+#: model:ir.actions.act_window,name:typ_stock.stock_manual_transfer_action
+#: model:ir.ui.menu,name:typ_stock.menu_stock_manual_transfer_act
+#: view:stock.manual_transfer:typ_stock.stock_manual_transfer_form_view
+#: view:stock.manual_transfer:typ_stock.stock_manual_transfer_tree_view
+msgid "Manual Transfer"
+msgstr ""
+
+#. module: typ_stock
+#: view:stock.location.route:typ_stock.stock_location_route_form_view_inherit
+msgid "Manual transfers"
+msgstr ""
+
+#. module: typ_stock
 #: field:stock.analysis,product_max_qty:0
 msgid "Maximum Quantity"
 msgstr "Maximo"
@@ -182,6 +272,16 @@ msgstr "Maximo"
 #: model:ir.actions.report.xml,name:typ_stock.product_label_medium
 msgid "Medium Label"
 msgstr "Etiqueta mediana"
+
+#. module: typ_stock
+#: field:stock.manual_transfer,message_ids:0
+msgid "Messages"
+msgstr ""
+
+#. module: typ_stock
+#: help:stock.manual_transfer,message_ids:0
+msgid "Messages and communication history"
+msgstr ""
 
 #. module: typ_stock
 #: model:ir.model,name:typ_stock.model_stock_warehouse_orderpoint
@@ -194,10 +294,20 @@ msgid "Minimum Quantity"
 msgstr "Mínimo"
 
 #. module: typ_stock
+#: field:stock.manual_transfer,name:0
+msgid "Name"
+msgstr ""
+
+#. module: typ_stock
 #: code:addons/typ_stock/models/stock.py:100
 #, python-format
 msgid "Negative Quant creation error of the product %s. Contact Vauxoo personnel immediately"
 msgstr "Error en creacion de Quant negativo de el producto %s. Contacte al personal de Vauxoo inmediatamente"
+
+#. module: typ_stock
+#: view:stock.manual_transfer:typ_stock.stock_manual_transfer_form_view
+msgid "New Manual Transfer"
+msgstr ""
 
 #. module: typ_stock
 #: selection:stock.analysis,state:0
@@ -269,6 +379,11 @@ msgid "Picking List"
 msgstr "Lista de Albaranes"
 
 #. module: typ_stock
+#: field:stock.manual_transfer,picking_ids:0
+msgid "Picking ids"
+msgstr ""
+
+#. module: typ_stock
 #: field:stock.picking,picking_shipment_date:0
 msgid "Picking shipment date"
 msgstr "Fecha de embarque"
@@ -284,9 +399,24 @@ msgid "Picking wizard items"
 msgstr "Items de asistente de albarán"
 
 #. module: typ_stock
+#: field:stock.manual_transfer,date_planned:0
+msgid "Planned Date"
+msgstr ""
+
+#. module: typ_stock
+#: field:stock.manual_transfer,route_id:0
+msgid "Preferred Routes"
+msgstr ""
+
+#. module: typ_stock
 #: model:ir.model,name:typ_stock.model_procurement_order
 msgid "Procurement"
 msgstr "Abastecimiento"
+
+#. module: typ_stock
+#: field:stock.manual_transfer,procurement_group_id:0
+msgid "Procurement Group"
+msgstr ""
 
 #. module: typ_stock
 #: model:ir.model,name:typ_stock.model_procurement_rule
@@ -294,6 +424,7 @@ msgid "Procurement Rule"
 msgstr "Regla de Procura"
 
 #. module: typ_stock
+#: field:stock.manual_transfer_line,product_id:0
 #: view:website:stock.report_picking
 msgid "Product"
 msgstr "Producto"
@@ -325,6 +456,7 @@ msgid "Purchase Order Line"
 msgstr "Línea del Pedido de Compra"
 
 #. module: typ_stock
+#: field:stock.manual_transfer_line,product_uom_qty:0
 #: view:website:stock.report_picking
 msgid "Quantity"
 msgstr "Cantidad"
@@ -386,6 +518,7 @@ msgid "Standard price"
 msgstr "Costo promedio"
 
 #. module: typ_stock
+#: field:stock.manual_transfer,state:0
 #: view:website:stock.report_picking
 msgid "State"
 msgstr "Estado"
@@ -405,6 +538,11 @@ msgstr "Factura desde Almacén en el envio"
 #: model:ir.model,name:typ_stock.model_stock_move
 msgid "Stock Move"
 msgstr "Movimiento de Inventario"
+
+#. module: typ_stock
+#: field:stock.manual_transfer,message_summary:0
+msgid "Summary"
+msgstr ""
 
 #. module: typ_stock
 #: view:website:stock.report_picking
@@ -427,9 +565,29 @@ msgid "TW1 Supply from TW2"
 msgstr "Suministro TW1 desde TW2"
 
 #. module: typ_stock
+#: model:stock.picking.type,name:typ_stock.stock_picking_type_test_4
+msgid "TW1-Transit"
+msgstr ""
+
+#. module: typ_stock
+#: model:procurement.rule,name:typ_stock.pull_rule_test_3_1
+msgid "TW1: Stock -> Transit"
+msgstr ""
+
+#. module: typ_stock
 #: model:procurement.rule,name:typ_stock.pull_rule_test_2_1
 msgid "TW1: purchase -> stock"
 msgstr "TW1: compra -> stock"
+
+#. module: typ_stock
+#: model:stock.location.route,name:typ_stock.stock_location_route_test_3
+msgid "TW2 Supply from TW1"
+msgstr ""
+
+#. module: typ_stock
+#: model:procurement.rule,name:typ_stock.pull_rule_test_3_2
+msgid "TW2: Transit -> Stock"
+msgstr ""
 
 #. module: typ_stock
 #: model:procurement.rule,name:typ_stock.pull_rule_test_2_2
@@ -516,6 +674,11 @@ msgid "This group can define pedimentos serial and lot"
 msgstr "Este grupo puede definir pedimentos, seriales y lotes"
 
 #. module: typ_stock
+#: model:res.groups,comment:typ_stock.group_stock_manual_transfer
+msgid "This group can make manual transfers"
+msgstr ""
+
+#. module: typ_stock
 #: model:res.groups,comment:typ_stock.res_group_reverse_transfer
 msgid "This group can reverse transfer in pickings"
 msgstr "Este grupo puede revertir transferencias en albaranes"
@@ -547,9 +710,40 @@ msgid "This picking cannot be cancelled."
 msgstr "Este albarán no puede ser cancelado."
 
 #. module: typ_stock
+#: view:stock.manual_transfer_line:typ_stock.stock_manual_transfer_line_tree_view
+msgid "Transfer Line"
+msgstr ""
+
+#. module: typ_stock
+#: view:stock.manual_transfer:typ_stock.stock_manual_transfer_form_view
+#: field:stock.manual_transfer,transfer_line:0
+msgid "Transfer Lines"
+msgstr ""
+
+#. module: typ_stock
+#: field:stock.manual_transfer_line,transfer_id:0
+msgid "Transfer Reference"
+msgstr ""
+
+#. module: typ_stock
 #: model:procurement.rule,name:typ_stock.pull_rule_test_2_4
 msgid "Transit Stock"
 msgstr "Stock de Tránsito"
+
+#. module: typ_stock
+#: model:stock.picking.type,name:typ_stock.stock_picking_type_test_5
+msgid "Transit-TW2"
+msgstr ""
+
+#. module: typ_stock
+#: field:stock.manual_transfer_line,product_uom:0
+msgid "Unit of Measure"
+msgstr ""
+
+#. module: typ_stock
+#: field:stock.manual_transfer,message_unread:0
+msgid "Unread Messages"
+msgstr ""
 
 #. module: typ_stock
 #: model:res.groups,name:typ_stock.res_group_can_unreserve
@@ -575,6 +769,11 @@ msgstr "Usuarios que pueden definir pedimentos, serial y lotes"
 #: model:res.groups,name:typ_stock.res_group_force_stock_move
 msgid "Users that can force availability and unassign"
 msgstr "Usuarios que pueden forzar disponibilidad y cancelar asignación"
+
+#. module: typ_stock
+#: model:res.groups,name:typ_stock.group_stock_manual_transfer
+msgid "Users that can make manual transfers"
+msgstr ""
 
 #. module: typ_stock
 #: model:res.groups,name:typ_stock.res_group_can_not_create_picking
@@ -617,6 +816,11 @@ msgid "VAT:"
 msgstr "RFC:"
 
 #. module: typ_stock
+#: selection:stock.manual_transfer,state:0
+msgid "Valid"
+msgstr ""
+
+#. module: typ_stock
 #: model:ir.actions.server,name:typ_stock.server_action_validate_move_internal
 msgid "Validate move internal locations"
 msgstr "Validar movimientos en ubicaciones internas"
@@ -642,9 +846,15 @@ msgid "Verify user scrap"
 msgstr "Verificar usuario de desecho"
 
 #. module: typ_stock
+#: view:stock.manual_transfer:typ_stock.stock_manual_transfer_form_view
+msgid "View Pickings"
+msgstr ""
+
+#. module: typ_stock
 #: model:ir.model,name:typ_stock.model_stock_warehouse
 #: field:procurement.orderpoint.compute,warehouse_id:0
 #: view:stock.analysis:typ_stock.stock_analysis_graph_search_inherit
+#: field:stock.manual_transfer,warehouse_id:0
 msgid "Warehouse"
 msgstr "Almacén"
 
@@ -703,6 +913,12 @@ msgstr ""
 #: model:ir.actions.act_window,name:typ_stock.pedimento_product_action
 msgid "Wizard Pedimento Product"
 msgstr "Asistente Pedimento Producto"
+
+#. module: typ_stock
+#: code:addons/typ_stock/models/stock_manual_transfer.py:70
+#, python-format
+msgid "You can not delete a valid transaction! (%s)"
+msgstr ""
 
 #. module: typ_stock
 #: code:addons/typ_stock/models/stock.py:394
