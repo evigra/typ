@@ -6,15 +6,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 8.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-06-30 18:16+0000\n"
-"PO-Revision-Date: 2017-06-30 18:16+0000\n"
+"POT-Creation-Date: 2017-06-30 20:37+0000\n"
+"PO-Revision-Date: 2017-06-30 20:37+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 2.12\n"
+"Plural-Forms: \n"
 
 #. module: typ_stock
 #: model:ir.actions.act_window,help:typ_stock.stock_manual_transfer_action
@@ -22,7 +21,10 @@ msgid "<p class=\"oe_view_nocontent_create\">\n"
 "                Click to add a new manual transfer.\n"
 "              </p>\n"
 "            "
-msgstr ""
+msgstr "<p class=\"oe_view_nocontent_create\">\n"
+"                Click para generar una transferencia manual.\n"
+"              </p>\n"
+"            "
 
 #. module: typ_stock
 #: code:addons/typ_stock/models/stock.py:241
@@ -41,7 +43,7 @@ msgstr "<ul><li>embarque confirmado --> <b>ok</b></li></ul>"
 #: selection:stock.analysis,importance:0
 #: selection:stock.warehouse.orderpoint,importance:0
 msgid "AA"
-msgstr "AA"
+msgstr ""
 
 #. module: typ_stock
 #: model:ir.actions.server,name:typ_stock.server_action_product_supplier_ref
@@ -819,7 +821,7 @@ msgstr "RFC:"
 #. module: typ_stock
 #: selection:stock.manual_transfer,state:0
 msgid "Valid"
-msgstr ""
+msgstr "Validado"
 
 #. module: typ_stock
 #: model:ir.actions.server,name:typ_stock.server_action_validate_move_internal
@@ -849,7 +851,7 @@ msgstr "Verificar usuario de desecho"
 #. module: typ_stock
 #: view:stock.manual_transfer:typ_stock.stock_manual_transfer_form_view
 msgid "View Pickings"
-msgstr ""
+msgstr "Ver pickings"
 
 #. module: typ_stock
 #: model:ir.model,name:typ_stock.model_stock_warehouse
@@ -898,7 +900,7 @@ msgstr "Cuando este campo está marcado, el primer movimiento de inventario que 
 #. module: typ_stock
 #: model:product.template,name:typ_stock.product_product_whead_deluxe_product_template
 msgid "Wireless Headphones custom Deluxe"
-msgstr ""
+msgstr "Auriculares inalámbricos personalizados Deluxe"
 
 #. module: typ_stock
 #: model:product.template,name:typ_stock.product_product_whead_product_template
@@ -919,7 +921,7 @@ msgstr "Asistente Pedimento Producto"
 #: code:addons/typ_stock/models/stock_manual_transfer.py:70
 #, python-format
 msgid "You can not delete a valid transaction! (%s)"
-msgstr ""
+msgstr "No se puede borrar una transferencia en borrador! (%s 1)"
 
 #. module: typ_stock
 #: code:addons/typ_stock/models/stock.py:394
@@ -988,3 +990,4 @@ msgstr "embarque ok"
 #: view:pedimento.product:typ_stock.view_pedimento_product_wizard
 msgid "write data"
 msgstr "Escribir datos"
+
