@@ -63,6 +63,7 @@
             <field name="perm_write" eval="True"/>
             <field name="perm_unlink" eval="True"/>
             <field name="perm_create" eval="True"/>
+            <field name="groups" eval="[(4, ref('base.group_user'))]"/>
         </record>
         <record model="ir.rule" id="ir_typ_crm_lead_rule">
             <field name="name">crm lead from sale team</field>

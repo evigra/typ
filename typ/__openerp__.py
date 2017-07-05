@@ -49,6 +49,7 @@
         'typ_commision',
         'web_export_view',
         'typ_hr',
+        'typ_portal',
     ],
     'test': [
     ],
@@ -60,6 +61,7 @@
         'data/typ_security.xml',
         'report/invoice_report.xml',
         'report/report_invoice.xml',
+        'security/ir.model.access.csv',
     ],
     'demo': [
     ],
