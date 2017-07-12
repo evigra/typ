@@ -1,7 +1,7 @@
 # coding: utf-8
 
 from openerp import _, api, models, fields
-from openerp.exceptions import ValidationError
+from openerp.exceptions import ValidationError, Warning as UserError
 
 
 class StockPicking(models.Model):
@@ -78,3 +78,35 @@ class StockPicking(models.Model):
                 self.check_pedimento(pick)
         return super(StockPicking, self)._create_invoice_from_picking(
             picking, vals)
+
+    @api.multi
+    def create_picking_pos(self):
+        """Validate picking and advance its status automatically, to where it
+        is allowed taking into consideration backorder_id, product traceability
+        and product availability"""
+        self.ensure_one()
+        try:
+            with self.env.cr.savepoint():
+                self.action_confirm()
+            with self.env.cr.savepoint():
+                self.action_assign()
+            with self.env.cr.savepoint():
+                self.action_done()
+        except UserError:
+            return False
+        return True
+
+    @api.multi
+    def automatic_invoiced_from_picking(self):
+        """Create invoice from picking if it is allowed for sale pos"""
+        self.ensure_one()
+        try:
+            with self.env.cr.savepoint():
+                invoice_onshipping = self.env['stock.invoice.onshipping']
+                inv_shipping = invoice_onshipping.with_context(
+                    active_model="stock.picking",
+                    active_ids=self.ids).create({})
+                inv_shipping.create_invoice()
+        except ValidationError:
+            return False
+        return True

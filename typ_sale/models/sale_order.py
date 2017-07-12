@@ -104,6 +104,8 @@ class SaleOrder(models.Model):
         picking in order to save extra click to go to picking view"""
         res = super(SaleOrder, self).action_button_confirm()
         for order in self.filtered('pos'):
+            if order.invoice_exists:
+                return order.action_view_invoice()
             return order.action_view_delivery()
         return res
 
@@ -159,10 +161,11 @@ class SaleOrder(models.Model):
                     'location_dest_id': destination_id,
                     'sale_order_line_id': line.id,
                 })
-            # we confirm the picking and reserve
-            picking_id.action_confirm()
-            picking_id.action_assign()
-            # picking_obj.action_done()
+            # we confirm the picking, reserve and transfer if it is allowed
+            if not picking_id.create_picking_pos():
+                return True
+            # Invoice from picking if it is allowed
+            picking_id.automatic_invoiced_from_picking()
         return True
 
     @api.multi
