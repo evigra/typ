@@ -14,7 +14,8 @@ class TestSaleOrderPos(common.TransactionCase):
         self.partner = self.env.ref('base.res_partner_9')
         self.product = self.env.ref('product.product_product_35')
         self.warehouse = self.env.ref('typ_sale.wh_01')
-        self.location = self.env.ref('stock.stock_location_company')
+        self.transfer_obj = self.env['stock.transfer_details']
+        self.invoice_onshipping_obj = self.env['stock.invoice.onshipping']
         self.pay_method_id = self.env.ref(
             'l10n_mx_payment_method.pay_method_efectivo')
         self.acc_payment = self.env.ref('account_payment.partner_bank_1')
@@ -140,3 +141,106 @@ class TestSaleOrderPos(common.TransactionCase):
         # Check invoice from sale order pos
         self.assertEqual(sale_pos.invoice_ids.state, 'draft',
                          'Invoice not created from picking')
+
+    def test_06_sale_classic_equal_sale_pos(self):
+        """Values of the sales invoice pos, compared to conventional sales"""
+
+        # Associate group to test user
+        self.env.user.write({
+            'groups_id': [(4, self.group_inv_without_ped.id)]})
+
+        # Availability 3 products
+        self.quant.qty = 3
+
+        # Create Order Pos
+        sale_pos = self.create_sale()
+
+        # Change location of quant
+        self.quant.location_id = self.warehouse.lot_stock_id.id
+
+        # Create Order Conventional
+        self.dict_vals.update({'pos': False, 'name': 'Test Sale Classic'})
+        sale = self.create_sale()
+
+        sale.picking_ids.action_assign()
+
+        context = {
+            'active_model': "stock.picking",
+            'active_ids': sale.picking_ids.ids,
+        }
+
+        wizard_transfer_id = self.transfer_obj.with_context(context).create(
+            {"picking_id": sale.picking_ids.id})
+        wizard_transfer_id.do_detailed_transfer()
+
+        inv_shipping = self.invoice_onshipping_obj.with_context(
+            active_model="stock.picking",
+            active_ids=sale.picking_ids.ids).create({})
+        inv_shipping.create_invoice()
+
+        # Invoice from sale order pos
+        invoice_pos = sale_pos.invoice_ids
+
+        # Invoice from sale order conventional
+        invoice = sale.invoice_ids
+
+        # Check journal on invoice from pos
+        self.assertEqual(invoice_pos.journal_id,
+                         invoice.journal_id,
+                         'Journal on invoice not set by default')
+
+        # Check type journal on invoice from pos
+        self.assertEqual(invoice_pos.journal_id.type,
+                         invoice.journal_id.type,
+                         'Journal type on invoice not set by default')
+
+        # Check type payment term on invoice from pos
+        self.assertEqual(invoice_pos.type_payment_term,
+                         invoice.type_payment_term,
+                         'Type of payment term on invoice not set by default')
+
+        # Check address on invoice from pos
+        self.assertEqual(invoice_pos.address_issued_id,
+                         invoice.address_issued_id,
+                         'Address on invoice not set by partner correct')
+
+        # Check amount total on invoice from pos
+        self.assertEqual(
+            invoice_pos.amount_total, invoice.amount_total,
+            'Amount Total on invoice not set correct with sale pos')
+
+        # Check products on invoice from pos
+        self.assertEqual(
+            invoice_pos.invoice_line.product_id,
+            invoice.invoice_line.product_id,
+            'The products invoiced deferred the order pos')
+
+        # Check pay method on invoice from pos
+        self.assertEqual(
+            invoice_pos.pay_method_id, invoice.pay_method_id,
+            'Payment method on invoice not set correct with sale pos')
+
+        # Check account number on invoice from pos
+        self.assertEqual(
+            invoice_pos.acc_payment, invoice.acc_payment,
+            'Account Number on invoice not set correct with sale pos')
+
+        # Check amount untaxed on invoice from pos
+        self.assertEqual(
+            invoice_pos.amount_untaxed, invoice.amount_untaxed,
+            'Subtotal on invoice not set correct with sale pos')
+
+        # Check amount tax on invoice from pos
+        self.assertEqual(
+            invoice_pos.amount_tax, invoice.amount_tax,
+            'Tax on invoice not set correct with sale pos')
+
+        # Check salesperson on invoice from pos
+        self.assertEqual(
+            invoice_pos.user_id, invoice.user_id,
+            'Salesperson on invoice not set correct with sale pos')
+
+        # Check sales team on invoice from pos
+        self.assertEqual(
+            invoice_pos.section_id, invoice.section_id,
+            'Sales Team on invoice not set correct with sale pos')
