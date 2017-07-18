@@ -20,6 +20,7 @@
         'account_ledger_report',
         'account_payment',
         'account_currency_tools',
+        'aging_due_report',
         'claim_from_delivery',
         'contacts',
         'crm_helpdesk',
