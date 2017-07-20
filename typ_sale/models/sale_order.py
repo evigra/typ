@@ -10,7 +10,9 @@ class SaleOrder(models.Model):
 
     procurement_group_id = fields.Many2one('procurement.group', select=True)
     picking_ids = fields.One2many(compute='_get_picking_ids') # noqa pylint: disable=method-compute
-    pos = fields.Boolean('Is PoS?')
+    pos = fields.Boolean('Is PoS?', readonly=True,
+                         states={'draft': [('readonly', False)]},
+                         track_visibility='onchange')
 
     type_payment_term = fields.Selection(
         [('credit', 'Credit'), ('cash', 'Cash'),
