@@ -123,5 +123,7 @@
             </field>
         </record>
 
+        <menuitem action="stock.action_orderpoint_form" id="stock.menu_stock_order_points" parent="stock.menu_traceability" sequence="10"/>
+
     </data>
 </openerp>
