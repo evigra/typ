@@ -6,12 +6,28 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 8.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-07-18 23:12+0000\n"
-"PO-Revision-Date: 2017-07-18 23:12+0000\n"
+"POT-Creation-Date: 2017-07-20 00:24+0000\n"
+"PO-Revision-Date: 2017-07-20 00:24+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: \n"
+
+#. module: typ_portal
+#: model:res.groups,name:typ_portal.portal_group_manager
+msgid "Portal / Manager"
+msgstr ""
+
+#. module: typ_portal
+#: model:ir.actions.act_window,name:typ_portal.portal_action_refunds
+#: model:ir.ui.menu,name:typ_portal.portal_refunds
+msgid "Refunds"
+msgstr ""
+
+#. module: typ_portal
+#: model:ir.actions.act_window,help:typ_portal.portal_action_refunds
+msgid "We haven't sent you any refund."
+msgstr ""
 
