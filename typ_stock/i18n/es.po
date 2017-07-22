@@ -6,14 +6,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 8.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-07-06 00:32+0000\n"
-"PO-Revision-Date: 2017-07-06 00:32+0000\n"
+"POT-Creation-Date: 2017-07-22 00:28+0000\n"
+"PO-Revision-Date: 2017-07-22 00:28+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
-"Plural-Forms: \n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 2.12\n"
 
 #. module: typ_stock
 #: model:ir.actions.act_window,help:typ_stock.stock_manual_transfer_action
@@ -43,7 +44,7 @@ msgstr "<ul><li>embarque confirmado --> <b>ok</b></li></ul>"
 #: selection:stock.analysis,importance:0
 #: selection:stock.warehouse.orderpoint,importance:0
 msgid "AA"
-msgstr ""
+msgstr "AA"
 
 #. module: typ_stock
 #: model:ir.actions.server,name:typ_stock.server_action_product_supplier_ref
@@ -315,7 +316,7 @@ msgstr "Nueva transferencia manual"
 #. module: typ_stock
 #: selection:stock.analysis,state:0
 msgid "Normal"
-msgstr ""
+msgstr "Normal"
 
 #. module: typ_stock
 #: view:stock.analysis:typ_stock.stock_analysis_graph_search_inherit
@@ -350,7 +351,7 @@ msgstr "Salida al cliente"
 #. module: typ_stock
 #: model:stock.location.route,name:typ_stock.stock_location_route_test_2
 msgid "PE TW1 - TW2"
-msgstr ""
+msgstr "PE TW1 - TW2"
 
 #. module: typ_stock
 #: view:stock.analysis:typ_stock.stock_analysis_graph_search_inherit
@@ -363,7 +364,7 @@ msgstr "Empresa"
 #: view:pedimento.product:typ_stock.view_pedimento_product_wizard
 #: field:pedimento.product,landed_id:0
 msgid "Pedimento"
-msgstr ""
+msgstr "Pedimento"
 
 #. module: typ_stock
 #: view:pedimento.product:typ_stock.view_pedimento_product_wizard
@@ -383,8 +384,9 @@ msgstr "Lista de Albaranes"
 
 #. module: typ_stock
 #: field:stock.manual_transfer,picking_ids:0
+#, fuzzy
 msgid "Picking ids"
-msgstr ""
+msgstr "Picking ids"
 
 #. module: typ_stock
 #: field:stock.picking,picking_shipment_date:0
@@ -600,7 +602,7 @@ msgstr "TW2: compra -> stock"
 #. module: typ_stock
 #: model:procurement.rule,name:typ_stock.pull_rule_test_2_3
 msgid "TW2: stock -> cliente"
-msgstr ""
+msgstr "TW2: stock -> cliente"
 
 #. module: typ_stock
 #: model:procurement.rule,name:typ_stock.pull_rule_test_1
@@ -963,8 +965,9 @@ msgstr "pedimento/no. serie"
 
 #. module: typ_stock
 #: model:product.template,name:typ_stock.product_test_01_product_template
+#, fuzzy
 msgid "prueba 3"
-msgstr ""
+msgstr "prueba 3"
 
 #. module: typ_stock
 #: help:pedimento.product,lot_id:0
@@ -990,4 +993,3 @@ msgstr "embarque ok"
 #: view:pedimento.product:typ_stock.view_pedimento_product_wizard
 msgid "write data"
 msgstr "Escribir datos"
-

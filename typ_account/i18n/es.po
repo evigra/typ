@@ -6,14 +6,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 8.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-07-13 00:30+0000\n"
-"PO-Revision-Date: 2017-07-13 00:30+0000\n"
+"POT-Creation-Date: 2017-07-22 00:26+0000\n"
+"PO-Revision-Date: 2017-07-22 00:26+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
-"Plural-Forms: \n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 2.12\n"
 
 #. module: typ_account
 #: code:addons/typ_account/models/sale_order.py:41
@@ -52,7 +53,7 @@ msgstr ". ¡Favor solicitar pago o vender de contado!"
 #: selection:account.invoice.report,importance:0
 #: selection:account.invoice.report,potential_importance:0
 msgid "AA"
-msgstr ""
+msgstr "AA"
 
 #. module: typ_account
 #: selection:account.invoice.report,dealer:0
@@ -87,8 +88,9 @@ msgstr "EMP"
 
 #. module: typ_account
 #: selection:account.invoice.report,business_activity:0
+#, fuzzy
 msgid "CON"
-msgstr ""
+msgstr "CON"
 
 #. module: typ_account
 #: code:addons/typ_account/models/sale_order.py:70
@@ -129,7 +131,7 @@ msgstr "Fecha del mes"
 #: view:account.invoice.report:typ_account.view_account_invoice_report_search_inh
 #: field:account.invoice.report,dealer:0
 msgid "Dealer"
-msgstr ""
+msgstr "Comerciante"
 
 #. module: typ_account
 #: model:ir.actions.server,name:typ_account.server_action_delete_entries_open_close_fiscalyear
@@ -146,8 +148,9 @@ msgstr "EMPLEADO"
 
 #. module: typ_account
 #: selection:account.invoice.report,partner_type:0
+#, fuzzy
 msgid "ESP"
-msgstr ""
+msgstr "ESP"
 
 #. module: typ_account
 #: selection:account.invoice.report,partner_type:0
@@ -238,8 +241,9 @@ msgstr "CP"
 
 #. module: typ_account
 #: selection:account.invoice.report,dealer:0
+#, fuzzy
 msgid "PD"
-msgstr ""
+msgstr "PD"
 
 #. module: typ_account
 #: selection:account.invoice.report,business_activity:0
@@ -301,8 +305,9 @@ msgstr "SURESTE"
 
 #. module: typ_account
 #: selection:account.invoice.report,partner_type:0
+#, fuzzy
 msgid "SUP"
-msgstr ""
+msgstr "SUP"
 
 #. module: typ_account
 #: model:ir.model,name:typ_account.model_sale_order
@@ -364,4 +369,3 @@ msgstr "¡Advertencia!"
 #: view:account.invoice.report:typ_account.view_account_invoice_report_search_inh
 msgid "Yesterday"
 msgstr "Ayer"
-
