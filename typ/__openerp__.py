@@ -46,6 +46,7 @@
         'stock_invoice_directly',
         'warning',
         'stock_dropshipping',
+        'product_barcode_generator',
         'typ_project_issue',
         'typ_commision',
         'web_export_view',
