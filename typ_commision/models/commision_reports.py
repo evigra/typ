@@ -46,6 +46,22 @@ class CommisionReportsBase(models.Model):
         'res.partner', 'Customer', help='Customer owner of the invoice')
     company_id = fields.Many2one(
         'res.company', 'Company', help='Company which this report belongs to')
+    update = fields.Boolean('Is update?', help='Used to indicate that the '
+                            'report has already been generated and is being '
+                            'updated')
+
+    @api.multi
+    def get_invoice_domain(self):
+        domain = []
+        if self.partner_id:
+            domain += [('partner_id', '=', self.partner_id.id)]
+        domain += ['&', '&', '|', '&',
+                   ('date_invoice', '>=', self.date_start),
+                   ('date_invoice', '<=', self.date_end),
+                   ('state', '!=', 'cancel'),
+                   ('date_paid', '>=', self.date_start),
+                   ('date_paid', '<=', self.date_end)]
+        return domain
 
     @api.multi
     def go_to_invoice_lines(self):
@@ -60,24 +76,8 @@ class CommisionReportsBase(models.Model):
             domain = [('invoice_id', 'in', invoices),
                       ('type', 'in', ('out_invoice', 'out_refund'))]
         elif self.custom:
-            domain = []
-            domain += (('partner_id', '=', self.partner_id.id)
-                       if self.partner_id else ())
-            domain += [('date', '>=', self.date_start),
-                       ('date', '<=', self.date_end),
-                       ('account_id.type', '=', 'receivable'),
-                       ('reconcile_id', '!=', False)]
-            aml_ids = self.env['account.move.line'].search(domain)
-            reconcile = aml_ids.mapped('reconcile_id').mapped(
-                'line_id.move_id')
-            invoices = self.env['account.invoice'].sudo()._search(
-                [
-                    '&', '&', '|',
-                    ('date_invoice', '>=', self.date_start),
-                    ('date_invoice', '<=', self.date_end),
-                    ('state', '!=', 'cancel'),
-                    ('move_id', 'in', reconcile.ids),
-                ])
+            domain = self.get_invoice_domain()
+            invoices = self.env['account.invoice'].sudo()._search(domain)
             domain = [
                 ('product_id', '!=', False),
                 ('invoice_id', 'in', invoices)]
@@ -94,36 +94,6 @@ class CommisionReportsBase(models.Model):
             'view_id': view.id,
             'domain': domain,
             'context': self.filter_id.context or '{}'}
-
-    @api.multi
-    @tools.ormcache(skiparg=1)
-    def _get_payment_values(self, inv):
-        """Used to get the date and period of a payment related with the
-        journal item
-
-        :param inv: Invoice which you want to know its payments
-        :type inv: account.invoice()
-
-        :return: Period and date when the invoice was paid
-        :rtype: (int, account.period())
-        """
-        payment = inv.move_id.line_id.filtered(
-            lambda a: (
-                a.account_id.id ==
-                inv.commercial_partner_id.property_account_receivable.id and
-                a.reconcile_id.id is not False))
-        date = None
-        period = None
-        if payment:
-            line_id = self.env['account.move.line'].search(
-                [('id', '!=', payment[0].id),
-                 ('reconcile_id', '=', payment[0].reconcile_id.id)],
-                order='date DESC',
-                limit=1)
-            date = line_id.date if line_id else None
-            period = line_id.period_id if line_id else None
-
-        return date, period
 
     @api.multi
     def _get_journal_values(self, line, inv):
@@ -158,7 +128,8 @@ class CommisionReportsBase(models.Model):
                          inv.currency_id.rounding) / income) * 100
             if income > 0 else 0)
 
-        date, period = self._get_payment_values(inv)
+        date = inv.date_paid or None
+        period = self.env['account.period'].find(date) if date else None
 
         vals.update(
             {'rate': rate,
@@ -298,6 +269,7 @@ class CommisionReportsBase(models.Model):
                 WHERE
                     id=%(id)s
                              ''', vals)
+        self.clear_caches()
 
     @api.multi
     def fill_required_fields(self):
@@ -312,24 +284,8 @@ class CommisionReportsBase(models.Model):
                       ('period_id', '=', False),
                       ('product_id', '!=', False)]
         elif self.custom:
-            domain = []
-            domain += (('partner_id', '=', self.partner_id.id)
-                       if self.partner_id else ())
-            domain += [('date', '>=', self.date_start),
-                       ('date', '<=', self.date_end),
-                       ('account_id.type', '=', 'receivable'),
-                       ('reconcile_id', '!=', False)]
-            aml_ids = self.env['account.move.line'].search(domain)
-            reconcile = aml_ids.mapped('reconcile_id').mapped(
-                'line_id.move_id')
-            invoices = self.env['account.invoice'].sudo()._search(
-                [
-                    '&', '&', '|',
-                    ('date_invoice', '>=', self.date_start),
-                    ('date_invoice', '<=', self.date_end),
-                    ('state', '!=', 'cancel'),
-                    ('move_id', 'in', reconcile.ids),
-                ])
+            domain = self.get_invoice_domain()
+            invoices = self.env['account.invoice'].sudo()._search(domain)
             domain = [
                 ('product_id', '!=', False),
                 ('period_id', '=', False),
@@ -340,5 +296,7 @@ class CommisionReportsBase(models.Model):
                 ('invoice_id.type', 'in', ('out_invoice', 'out_refund')),
                 ('product_id', '!=', False),
                 ('period_id', '=', False)]
+        if self.update:
+            del domain[-2]
 
         self.execute_update(domain)

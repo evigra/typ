@@ -14,7 +14,7 @@
     'author': 'Vauxoo',
     'website': 'http://www.vauxoo.com/',
     'category': '',
-    'version': '8.0.0.1.0',
+    'version': '8.0.0.1.1',
 
     # any module necessary for this one to work correctly
     'depends': [
@@ -27,6 +27,7 @@
     'data': [
         'data/account_data.xml',
         'data/ir_actions_server.xml',
+        'data/account_invoice_workflow.xml',
         'views/sale_order_view.xml',
         'views/account_move_line.xml',
         'views/account_invoice_view.xml',

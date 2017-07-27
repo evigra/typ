@@ -10,10 +10,12 @@ class AccountInvoice(models.Model):
     user_id = fields.Many2one('res.users', string='Salesperson',
                               track_visibility='onchange', readonly=False,
                               default=lambda self: self.env.user)
-
     validation_date = fields.Date('Invoice validation date',
                                   help="This date indicate "
                                   "when the invoice was validated")
+    date_paid = fields.Date('Payment date', index=True,
+                            help="This date indicate when the invoice "
+                            "was paid")
 
     @api.multi
     def need_verify_limit_credit(self):
@@ -119,3 +121,10 @@ class AccountInvoice(models.Model):
             'view_id': view_id,
         })
         return result
+
+    @api.multi
+    def confirm_paid(self):
+        res = super(AccountInvoice, self).confirm_paid()
+        date_paid = fields.Date.context_today(self)
+        self.write({'date_paid': date_paid})
+        return res

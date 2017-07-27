@@ -31,6 +31,9 @@
                             <field name="lines" attrs="{'invisible': ['|', ('invoice', '=', True), ('custom', '=', True)]}"/>
                             <field name="custom" attrs="{'invisible': ['|', ('lines', '=', True), ('invoice', '=', True)]}"/>
                         </group>
+                        <group>
+                            <field name="update"/>
+                        </group>
                         <separator string="Commisions Section"/>
                         <group>
                             <field name="filter_id" attrs="{'invisible': ['|', ('lines', '=', False), '|', ('invoice', '=', True), ('custom', '=', True)], 'required': [('lines', '=', True)]}" context="{'default_model_id': 'account.invoice.line'}"/>

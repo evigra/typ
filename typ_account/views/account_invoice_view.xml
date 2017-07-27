@@ -27,6 +27,9 @@
                 <xpath expr="//field[@name='journal_id']" position="attributes">
                     <attribute name="on_change" translation="off" eval="1"/>
                 </xpath>
+                <xpath expr="//field[@name='date_due']" position="after">
+                    <field name="date_paid" readonly="1"/>
+                </xpath>
             </field>
         </record>
         <record id="view_invoice_validation_date" model="ir.ui.view">
