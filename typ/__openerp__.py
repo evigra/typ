@@ -40,6 +40,7 @@
         'note',
         'product_available_by_warehouse',
         'product_extended_variants',
+        'product_supplierinfo_for_customer_sale',
         'product_unique_serial',
         'purchase_double_validation',
         'sale_service',
