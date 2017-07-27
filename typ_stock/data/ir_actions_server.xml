@@ -68,5 +68,21 @@ for proc in model.browse(context.get('active_ids')):
              <field name="state">code</field>
              <field name="code">object.compute_seller_code()</field>
         </record>
+
+        <record id="server_action_product_manager_follower" model="ir.actions.server">
+             <field name="name">Action follower product manager</field>
+             <field name="model_id" model="ir.model" search="[('model', '=', 'product.template')]"/>
+             <field name="state">code</field>
+             <field name="code">if object.product_manager.partner_id.id:
+                self.message_subscribe(cr, uid, [object.id], [object.product_manager.partner_id.id], context=context)</field>
+        </record>
+
+        <record id="server_action_product_manager_send_email" model="ir.actions.server">
+             <field name="name">Send email product manager</field>
+             <field name="model_id" model="ir.model" search="[('model', '=', 'product.template')]"/>
+             <field name="state">email</field>
+             <field name="template_id" ref="typ_stock.email_template_product_manager"/>
+        </record>
+
     </data>
 </openerp>

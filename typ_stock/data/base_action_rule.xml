@@ -65,5 +65,14 @@
             <field name="server_action_ids" eval="[(6, 0, [ref('typ_stock.server_action_product_supplier_ref')])]"/>
         </record>
 
+        <record id="automated_action_product_manager_follower" model="base.action.rule">
+            <field name="name">Automatic add product manager as follower </field>
+            <field name="model_id" model="ir.model" search="[('model', '=', 'product.template')]"/>
+            <field name="active">1</field>
+            <field name="sequence">5</field>
+            <field name="kind">on_create</field>
+            <field name="server_action_ids" eval="[(6, 0, [ref('typ_stock.server_action_product_manager_follower'), ref('typ_stock.server_action_product_manager_send_email')])]"/>
+        </record>
+
     </data>
 </openerp>
