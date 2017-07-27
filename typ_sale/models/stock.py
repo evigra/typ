@@ -43,9 +43,10 @@ class StockPicking(models.Model):
                 if quant.landed_id:
                     continue
                 self._cr.execute(
-                    """SELECT MIN(move_id) AS move_id
-                    FROM stock_quant_move_rel
-                    WHERE quant_id=%s""", (quant.id,))
+                    """SELECT s.move_id FROM stock_quant_move_rel s
+                    INNER JOIN stock_move sm on sm.id = s.move_id
+                    WHERE s.quant_id=%s ORDER BY sm.date LIMIT 1""",
+                    (quant.id,))
                 dat = self._cr.dictfetchall()
                 move_id = dat[0] if dat else {}
                 origin = move_obj.browse(move_id.get('move_id'))
