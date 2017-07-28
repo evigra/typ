@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 8.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-07-26 00:24+0000\n"
-"PO-Revision-Date: 2017-07-26 00:24+0000\n"
+"POT-Creation-Date: 2017-07-28 00:28+0000\n"
+"PO-Revision-Date: 2017-07-28 00:28+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -22,27 +22,27 @@ msgid " and credit overloaded"
 msgstr " y ha excedido el límite de crédito"
 
 #. module: typ_account
-#: code:addons/typ_account/models/account_invoice.py:83
+#: code:addons/typ_account/models/account_invoice.py:85
 #, python-format
 msgid " and has overdue invoices"
 msgstr " y tiene facturas vencidas"
 
 #. module: typ_account
-#: code:addons/typ_account/models/account_invoice.py:81
+#: code:addons/typ_account/models/account_invoice.py:83
 #: code:addons/typ_account/models/sale_order.py:43
 #, python-format
 msgid "%s has credit overloaded"
 msgstr "%s ha excedido el límite de crédito"
 
 #. module: typ_account
-#: code:addons/typ_account/models/account_invoice.py:85
+#: code:addons/typ_account/models/account_invoice.py:87
 #: code:addons/typ_account/models/sale_order.py:39
 #, python-format
 msgid "%s has overdue invoices"
 msgstr "%s tiene facturas vencidas"
 
 #. module: typ_account
-#: code:addons/typ_account/models/account_invoice.py:86
+#: code:addons/typ_account/models/account_invoice.py:88
 #: code:addons/typ_account/models/sale_order.py:44
 #, python-format
 msgid ". Please request payment or sell cash!"
@@ -101,7 +101,7 @@ msgstr "No se puede confirmar la Orden de Venta porque el Cliente tiene pagos at
 "Límite de Crédito : %s"
 
 #. module: typ_account
-#: code:addons/typ_account/models/account_invoice.py:48
+#: code:addons/typ_account/models/account_invoice.py:50
 #, python-format
 msgid "Can not validate the Invoice because Partner has late payments or has exceeded the credit limit.\n"
 "Please cover the late payment or check credit limit\n"
@@ -259,6 +259,11 @@ msgid "Partner type"
 msgstr "Tipo cliente"
 
 #. module: typ_account
+#: field:account.invoice,date_paid:0
+msgid "Payment date"
+msgstr ""
+
+#. module: typ_account
 #: view:account.invoice.report:typ_account.view_account_invoice_report_search_inh
 msgid "Potential Importance"
 msgstr "Potencial Importancia"
@@ -310,7 +315,7 @@ msgid "Sales Order"
 msgstr "Pedido de venta"
 
 #. module: typ_account
-#: code:addons/typ_account/models/account_invoice.py:79
+#: code:addons/typ_account/models/account_invoice.py:81
 #: code:addons/typ_account/models/sale_order.py:37
 #, python-format
 msgid "The partner "
@@ -320,6 +325,11 @@ msgstr "El cliente "
 #: view:account.invoice.report:typ_account.view_account_invoice_report_search_inh
 msgid "This Month"
 msgstr "Este Mes"
+
+#. module: typ_account
+#: help:account.invoice,date_paid:0
+msgid "This date indicate when the invoice was paid"
+msgstr ""
 
 #. module: typ_account
 #: help:account.invoice,validation_date:0
@@ -352,8 +362,8 @@ msgid "WW"
 msgstr "MM"
 
 #. module: typ_account
-#: code:addons/typ_account/models/account_invoice.py:53
-#: code:addons/typ_account/models/account_invoice.py:88
+#: code:addons/typ_account/models/account_invoice.py:55
+#: code:addons/typ_account/models/account_invoice.py:90
 #: code:addons/typ_account/models/sale_order.py:46
 #: code:addons/typ_account/models/sale_order.py:74
 #, python-format

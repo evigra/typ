@@ -6,14 +6,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 8.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-07-26 00:26+0000\n"
-"PO-Revision-Date: 2017-07-26 00:26+0000\n"
+"POT-Creation-Date: 2017-07-28 00:31+0000\n"
+"PO-Revision-Date: 2017-07-28 00:31+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
-"Plural-Forms: \n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 2.12\n"
 
 #. module: typ_stock
 #: model:ir.actions.act_window,help:typ_stock.stock_manual_transfer_action
@@ -49,6 +50,11 @@ msgstr ""
 #: model:ir.actions.server,name:typ_stock.server_action_product_supplier_ref
 msgid "Action compute supplier ref"
 msgstr "Accion para calcular codigo de proveedor"
+
+#. module: typ_stock
+#: model:ir.actions.server,name:typ_stock.server_action_product_manager_follower
+msgid "Action follower product manager"
+msgstr ""
 
 #. module: typ_stock
 #: model:ir.actions.server,name:typ_stock.server_action_procurement_cancel
@@ -165,6 +171,13 @@ msgstr "Cantidad esperada"
 #: field:stock.manual_transfer,message_follower_ids:0
 msgid "Followers"
 msgstr "Seguidores"
+
+#. module: typ_stock
+#: model:email.template,body_html:typ_stock.email_template_product_manager
+msgid "Hi ${(object.product_manager.partner_id.name)}, there is new product\n"
+"            that needs check it.\n"
+"            "
+msgstr ""
 
 #. module: typ_stock
 #: help:stock.manual_transfer,message_summary:0
@@ -315,7 +328,7 @@ msgstr "Nueva transferencia manual"
 #. module: typ_stock
 #: selection:stock.analysis,state:0
 msgid "Normal"
-msgstr ""
+msgstr "Normal"
 
 #. module: typ_stock
 #: view:stock.analysis:typ_stock.stock_analysis_graph_search_inherit
@@ -350,7 +363,7 @@ msgstr "Salida al cliente"
 #. module: typ_stock
 #: model:stock.location.route,name:typ_stock.stock_location_route_test_2
 msgid "PE TW1 - TW2"
-msgstr ""
+msgstr "PE TW1 - TW2"
 
 #. module: typ_stock
 #: view:stock.analysis:typ_stock.stock_analysis_graph_search_inherit
@@ -363,7 +376,7 @@ msgstr "Empresa"
 #: view:pedimento.product:typ_stock.view_pedimento_product_wizard
 #: field:pedimento.product,landed_id:0
 msgid "Pedimento"
-msgstr ""
+msgstr "Pedimento"
 
 #. module: typ_stock
 #: view:pedimento.product:typ_stock.view_pedimento_product_wizard
@@ -384,7 +397,7 @@ msgstr "Lista de Albaranes"
 #. module: typ_stock
 #: field:stock.manual_transfer,picking_ids:0
 msgid "Picking ids"
-msgstr ""
+msgstr "id de picking"
 
 #. module: typ_stock
 #: field:stock.picking,picking_shipment_date:0
@@ -470,6 +483,11 @@ msgid "Quants"
 msgstr "Cuantos"
 
 #. module: typ_stock
+#: model:email.template,subject:typ_stock.email_template_product_manager
+msgid "Responsable del producto"
+msgstr ""
+
+#. module: typ_stock
 #: model:ir.model,name:typ_stock.model_stock_return_picking
 msgid "Return Picking"
 msgstr "Devolver Albarán"
@@ -483,6 +501,11 @@ msgstr "Fecha Programada"
 #: help:stock.move,shipment_date:0
 msgid "Scheduled date for the shipment of this move"
 msgstr "Fecha programada para el envío de este movimiento"
+
+#. module: typ_stock
+#: model:ir.actions.server,name:typ_stock.server_action_product_manager_send_email
+msgid "Send email product manager"
+msgstr ""
 
 #. module: typ_stock
 #: view:pedimento.product:typ_stock.view_pedimento_product_wizard
@@ -600,7 +623,7 @@ msgstr "TW2: compra -> stock"
 #. module: typ_stock
 #: model:procurement.rule,name:typ_stock.pull_rule_test_2_3
 msgid "TW2: stock -> cliente"
-msgstr ""
+msgstr "TW2: stock -> cliente"
 
 #. module: typ_stock
 #: model:procurement.rule,name:typ_stock.pull_rule_test_1
@@ -963,6 +986,7 @@ msgstr "pedimento/no. serie"
 
 #. module: typ_stock
 #: model:product.template,name:typ_stock.product_test_01_product_template
+#, fuzzy
 msgid "prueba 3"
 msgstr ""
 
@@ -990,4 +1014,3 @@ msgstr "embarque ok"
 #: view:pedimento.product:typ_stock.view_pedimento_product_wizard
 msgid "write data"
 msgstr "Escribir datos"
-
