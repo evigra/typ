@@ -20,6 +20,8 @@ addons:
       - openssl
       - poppler-utils
       - antiword
+      - cups
+      - libcups2-dev
 
 python:
   - "2.7"

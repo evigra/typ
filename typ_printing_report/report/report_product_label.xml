@@ -1,0 +1,59 @@
+<?xml version='1.0' encoding='utf-8'?>
+<openerp>
+    <data>
+        <report id="rack_label_zebra"
+            model="product.product"
+            string="rack zebra Label"
+            name="typ_printing_report.rack_label_zebra_view"
+            file="typ_printing_report.rack_label_zebra_view"
+            report_type="qweb-pdf"
+            usage="zebra"
+            />
+        <report id="product_label_zebra"
+            model="product.product"
+            string="product zebra Label"
+            name="typ_printing_report.product_label_zebra_view"
+            file="typ_printing_report.product_label_zebra_view"
+            report_type="qweb-pdf"
+            usage="zebra"
+            />
+
+        <template id="product_label_zebra_view">
+            <t t-call="report.html_container">
+                <div class="page">
+                    <p>
+                        Este es el codigo enviado a la zebra
+                    </p>
+                    <div class="code">
+                    <t t-foreach="docs" t-as="product">
+N
+A270,50,0,4,1,1,N,"<t t-raw='product.default_code.upper()'/>"
+B270,100,0,1,2,6,40,B,<t t-if="product.ean13">"<t t-raw="product.ean13"/>"</t><t t-if="not product.ean13">"<t t-raw='product.default_code.upper()'/>"</t>
+P<t t-esc="qty"/>
+                    </t>
+                    </div>
+                </div>
+            </t>
+        </template>
+        
+        <template id="rack_label_zebra_view">
+            <t t-call="report.html_container">
+                <div class="page">
+                    <p>
+                        Este es el codigo enviado a la zebra
+                    </p>
+                    <div class="code">
+                    <t t-foreach="docs" t-as="product">
+N
+A50,10,0,5,1,1,N,"<t t-raw='product.default_code.upper()'/>"
+A50,80,0,3,1,1,N,"<t t-raw='product.categ_id.name.upper()'/>"
+A50,120,0,3,1,1,N,"<t t-raw='product.name.upper()'/>"
+B50,200,0,1,2,6,40,B,<t t-if="product.ean13">"<t t-raw="product.ean13"/>"</t><t t-if="not product.ean13">"<t t-raw='product.default_code.upper()'/>"</t>
+P<t t-esc="qty"/>
+                    </t>
+                    </div>
+                </div>
+            </t>
+        </template>
+    </data>
+</openerp>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="view_print_move_picking_tree_inherit" model="ir.ui.view">
+            <field name="name">move.picking.tree.inherit</field>
+            <field name="model">stock.move</field>
+            <field name="inherit_id" ref="stock.view_move_picking_tree"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='state']" position="after">
+                    <field name="normalized_barcode" invisible="1"/>
+                    <field name="location_usage" invisible="1" />
+                    <button name="%(print_label_action)d"
+                       string="Print Label" 
+                       type="action"
+                       icon="gtk-print"
+                       groups="stock.group_stock_user" 
+                       attrs="{'invisible': ['|', 
+                       ('normalized_barcode','=',True), 
+                       ('location_usage','!=','supplier')]}"/>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</openerp>
