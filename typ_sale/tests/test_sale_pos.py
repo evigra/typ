@@ -12,7 +12,6 @@ class TestSaleOrderPos(common.TransactionCase):
         super(TestSaleOrderPos, self).setUp()
         # get the objects
         self.partner = self.env.ref('base.res_partner_9')
-        self.product = self.env.ref('product.product_product_35')
         self.warehouse = self.env.ref('typ_sale.wh_01')
         self.transfer_obj = self.env['stock.transfer_details']
         self.invoice_onshipping_obj = self.env['stock.invoice.onshipping']
@@ -22,6 +21,10 @@ class TestSaleOrderPos(common.TransactionCase):
         self.sale_team = self.env.ref('typ_sale.sale_team_01')
         self.group_inv_without_ped = self.env.ref(
             'typ_sale.group_invoiced_without_pedimento')
+        self.products = {
+            'product_order': self.env.ref('product.product_product_35'),
+            'serv_order': self.env.ref('product.product_product_consultant'),
+        }
 
         # setting values to sale order
         self.dict_vals = {
@@ -36,19 +39,19 @@ class TestSaleOrderPos(common.TransactionCase):
             'section_id': self.sale_team.id,
             'carrier_id': False}
 
-        self.dict_vals_line = {
-            'name': self.product.name, 'product_id': self.product.id,
-            'product_uom_qty': 1, 'product_uom': self.product.uom_id.id,
-            'price_unit': 100, }
+        self.dict_vals_line = [{
+            'name': p.name, 'product_id': p.id, 'product_uom_qty': 1,
+            'product_uom': p.uom_id.id, 'price_unit': p.list_price
+            } for (_, p) in self.products.items()]
 
         self.dict_vals.update({
-            'order_line': [(0, 0, self.dict_vals_line)],
+            'order_line':  [(0, 0, ope) for ope in self.dict_vals_line]
         })
 
         # Availability 3 products
         self.quant = self.env['stock.quant'].create({
             'location_id': self.warehouse.wh_input_stock_loc_id.id,
-            'product_id': self.product.id,
+            'product_id': self.products['product_order'].id,
             'qty': 0,
         })
 
@@ -79,7 +82,9 @@ class TestSaleOrderPos(common.TransactionCase):
         self.quant.qty = 3
 
         # Quantity of 5 product sold
-        self.dict_vals_line.update({'product_uom_qty': 5})
+        for product in self.dict_vals_line:
+            if product['product_id'] == self.products['product_order'].id:
+                product['product_uom_qty'] = 5
 
         # Create Order Pos
         sale_pos = self.create_sale()
@@ -92,7 +97,7 @@ class TestSaleOrderPos(common.TransactionCase):
         """Picking in state assigned for unset lot number"""
 
         # Traceability activate
-        self.product.track_all = True
+        self.products['product_order'].track_all = True
 
         # Availability 3 products
         self.quant.qty = 3
@@ -211,8 +216,7 @@ class TestSaleOrderPos(common.TransactionCase):
 
         # Check products on invoice from pos
         self.assertEqual(
-            invoice_pos.invoice_line.product_id,
-            invoice.invoice_line.product_id,
+            len(invoice_pos.invoice_line), len(invoice.invoice_line),
             'The products invoiced deferred the order pos')
 
         # Check pay method on invoice from pos

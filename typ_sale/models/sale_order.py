@@ -211,6 +211,14 @@ class StockMove(models.Model):
             sale_line.write({'invoice_lines': [(4, invoice_line_id)]})
             sale_line.order_id.write(
                 {'invoice_ids': [(4, invoice_line_vals['invoice_id'])]})
+            sale_line_ids = sale_line.search([
+                ('order_id', '=', sale_line.order_id.id),
+                ('product_id.type', '=', 'service')])
+            if sale_line_ids:
+                created_lines = sale_line_ids.invoice_line_create()
+                self.env['account.invoice.line'].browse(
+                    created_lines).write(
+                        {'invoice_id': invoice_line_vals['invoice_id']})
         return invoice_line_id
 
     @api.model
