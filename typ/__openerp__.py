@@ -8,7 +8,7 @@
     'website': 'http://www.vauxoo.com',
     'license': 'AGPL-3',
     'category': 'Installer',
-    'version': '8.0.0.1.1',
+    'version': '8.0.0.1.2',
     'depends': [
         'account_aged_partner_balance_vw',
         'account_asset',
