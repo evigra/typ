@@ -6,14 +6,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 8.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-07-28 00:30+0000\n"
-"PO-Revision-Date: 2017-07-28 00:30+0000\n"
+"POT-Creation-Date: 2017-08-15 00:28+0000\n"
+"PO-Revision-Date: 2017-08-15 00:28+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
-"Plural-Forms: \n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 2.14.1\n"
 
 #. module: typ_sale
 #: view:website:sale.report_saleorder_document
@@ -509,12 +510,12 @@ msgstr "CR"
 #. module: typ_sale
 #: view:website:typ_sale.external_layout_header
 msgid "RFC"
-msgstr ""
+msgstr "RFC"
 
 #. module: typ_sale
 #: view:website:sale.report_saleorder_document
 msgid "RFC:"
-msgstr ""
+msgstr "RFC:"
 
 #. module: typ_sale
 #: field:res.partner,region:0
@@ -620,7 +621,7 @@ msgstr "Movimiento de Inventario"
 #. module: typ_sale
 #: view:website:sale.report_saleorder_document
 msgid "SubTotal"
-msgstr ""
+msgstr "Sub Total"
 
 #. module: typ_sale
 #: field:sale.order.line,purchase_partner_id:0
@@ -678,7 +679,7 @@ msgstr "Esta venta no puede ser cancelada ya que alguno de sus albaranes ya ha s
 #. module: typ_sale
 #: view:website:sale.report_saleorder_document
 msgid "Total"
-msgstr ""
+msgstr "Total"
 
 #. module: typ_sale
 #: help:sale.order.line,special_sale:0
@@ -793,4 +794,3 @@ msgstr "No se puede vender por debajo del margen permitido\n"
 #: view:website:sale.report_saleorder_document
 msgid "Your reference:"
 msgstr "Su referencia:"
-

@@ -1,0 +1,244 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* typ_printing_report
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 8.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-08-15 00:28+0000\n"
+"PO-Revision-Date: 2017-08-15 00:28+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: typ_printing_report
+#: view:website:typ_printing_report.rack_label_zebra_view
+msgid "\"\n"
+"A50,120,0,3,1,1,N,\""
+msgstr ""
+
+#. module: typ_printing_report
+#: view:website:typ_printing_report.rack_label_zebra_view
+msgid "\"\n"
+"A50,80,0,3,1,1,N,\""
+msgstr ""
+
+#. module: typ_printing_report
+#: view:website:typ_printing_report.product_label_zebra_view
+msgid "\"\n"
+"B270,100,0,1,2,6,40,B,"
+msgstr ""
+
+#. module: typ_printing_report
+#: view:website:typ_printing_report.rack_label_zebra_view
+msgid "\"\n"
+"B50,200,0,1,2,6,40,B,"
+msgstr ""
+
+#. module: typ_printing_report
+#: help:stock.move,location_usage:0
+msgid "* Supplier Location: Virtual location representing the source location for products coming from your suppliers\n"
+"                       \n"
+"* View: Virtual location used to create a hierarchical structures for your warehouse, aggregating its child locations ; can't directly contain products\n"
+"                       \n"
+"* Internal Location: Physical locations inside your own warehouses,\n"
+"                       \n"
+"* Customer Location: Virtual location representing the destination location for products sent to your customers\n"
+"                       \n"
+"* Inventory: Virtual location serving as counterpart for inventory operations used to correct stock levels (Physical inventories)\n"
+"                       \n"
+"* Procurement: Virtual location serving as temporary counterpart for procurement operations when the source (supplier or production) is not known yet. This location should be empty when the procurement scheduler has finished running.\n"
+"                       \n"
+"* Production: Virtual counterpart location for production operations: this location consumes the raw material and produces finished products\n"
+"                       \n"
+"* Transit Location: Counterpart location that should be used in inter-companies or inter-warehouses operations\n"
+"                      "
+msgstr ""
+
+#. module: typ_printing_report
+#: view:stock.print_label:typ_printing_report.print_label_form_view
+msgid "Cancel"
+msgstr ""
+
+#. module: typ_printing_report
+#: model:ir.model,name:typ_printing_report.model_res_company
+msgid "Companies"
+msgstr ""
+
+#. module: typ_printing_report
+#: field:stock.print_label,create_uid:0
+msgid "Created by"
+msgstr ""
+
+#. module: typ_printing_report
+#: field:stock.print_label,create_date:0
+msgid "Created on"
+msgstr ""
+
+#. module: typ_printing_report
+#: field:report.typ_printing_report.product_label_zebra_view,display_name:0
+#: field:stock.print_label,display_name:0
+msgid "Display Name"
+msgstr ""
+
+#. module: typ_printing_report
+#: view:website:typ_printing_report.product_label_zebra_view
+#: view:website:typ_printing_report.rack_label_zebra_view
+msgid "Este es el codigo enviado a la zebra"
+msgstr ""
+
+#. module: typ_printing_report
+#: field:report.typ_printing_report.product_label_zebra_view,id:0
+#: field:stock.print_label,id:0
+msgid "ID"
+msgstr ""
+
+#. module: typ_printing_report
+#: view:res.company:typ_printing_report.label_report_company_form_view_inherit
+msgid "Label Report"
+msgstr ""
+
+#. module: typ_printing_report
+#: field:product.category,report_id:0
+#: field:product.product,report_id:0
+#: field:res.company,report_id:0
+#: field:stock.print_label,report_id:0
+msgid "Label report"
+msgstr ""
+
+#. module: typ_printing_report
+#: field:report.typ_printing_report.product_label_zebra_view,__last_update:0
+#: field:stock.print_label,__last_update:0
+msgid "Last Modified on"
+msgstr ""
+
+#. module: typ_printing_report
+#: field:stock.print_label,write_uid:0
+msgid "Last Updated by"
+msgstr ""
+
+#. module: typ_printing_report
+#: field:stock.print_label,write_date:0
+msgid "Last Updated on"
+msgstr ""
+
+#. module: typ_printing_report
+#: field:stock.move,location_usage:0
+msgid "Location Type"
+msgstr ""
+
+#. module: typ_printing_report
+#: field:product.product,purchase_line_warn_msg:0
+msgid "Message for Purchase Order Line"
+msgstr ""
+
+#. module: typ_printing_report
+#: field:product.product,sale_line_warn_msg:0
+msgid "Message for Sales Order Line"
+msgstr ""
+
+#. module: typ_printing_report
+#: view:website:typ_printing_report.product_label_zebra_view
+msgid "N\n"
+"A270,50,0,4,1,1,N,\""
+msgstr ""
+
+#. module: typ_printing_report
+#: view:website:typ_printing_report.rack_label_zebra_view
+msgid "N\n"
+"A50,10,0,5,1,1,N,\""
+msgstr ""
+
+#. module: typ_printing_report
+#: field:stock.move,normalized_barcode:0
+msgid "Normalized"
+msgstr ""
+
+#. module: typ_printing_report
+#: model:ir.actions.act_window,name:typ_printing_report.print_label_action
+#: view:stock.move:typ_printing_report.view_print_move_picking_tree_inherit
+#: view:stock.print_label:typ_printing_report.print_label_form_view
+msgid "Print Label"
+msgstr ""
+
+#. module: typ_printing_report
+#: view:stock.print_label:typ_printing_report.print_label_form_view
+msgid "Print label(s)"
+msgstr ""
+
+#. module: typ_printing_report
+#: model:ir.model,name:typ_printing_report.model_stock_print_label
+msgid "Print product label"
+msgstr ""
+
+#. module: typ_printing_report
+#: model:ir.model,name:typ_printing_report.model_product_product
+#: field:stock.print_label,product_id:0
+msgid "Product"
+msgstr ""
+
+#. module: typ_printing_report
+#: model:ir.model,name:typ_printing_report.model_product_category
+msgid "Product Category"
+msgstr ""
+
+#. module: typ_printing_report
+#: view:res.company:typ_printing_report.label_report_company_form_view_inherit
+msgid "Product Label Report"
+msgstr ""
+
+#. module: typ_printing_report
+#: field:product.product,purchase_line_warn:0
+msgid "Purchase Order Line"
+msgstr ""
+
+#. module: typ_printing_report
+#: field:stock.print_label,qty:0
+msgid "Quantity"
+msgstr ""
+
+#. module: typ_printing_report
+#: help:stock.print_label,qty:0
+msgid "Quantity of labels to print"
+msgstr ""
+
+#. module: typ_printing_report
+#: field:product.product,sale_line_warn:0
+msgid "Sales Order Line"
+msgstr ""
+
+#. module: typ_printing_report
+#: help:product.product,purchase_line_warn:0
+#: help:product.product,sale_line_warn:0
+msgid "Selecting the \"Warning\" option will notify user with the message, Selecting \"Blocking Message\" will throw an exception with the message and block the flow. The Message has to be written in the next field."
+msgstr ""
+
+#. module: typ_printing_report
+#: model:ir.model,name:typ_printing_report.model_stock_move
+msgid "Stock Move"
+msgstr ""
+
+#. module: typ_printing_report
+#: help:stock.move,normalized_barcode:0
+msgid "The supplier will provide a proper barcode if True if not then you can generate your own barcode"
+msgstr ""
+
+#. module: typ_printing_report
+#: view:stock.print_label:typ_printing_report.print_label_form_view
+msgid "or"
+msgstr ""
+
+#. module: typ_printing_report
+#: model:ir.actions.report.xml,name:typ_printing_report.product_label_zebra
+msgid "product zebra Label"
+msgstr ""
+
+#. module: typ_printing_report
+#: model:ir.actions.report.xml,name:typ_printing_report.rack_label_zebra
+msgid "rack zebra Label"
+msgstr ""
+

@@ -6,15 +6,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 8.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-07-28 00:31+0000\n"
-"PO-Revision-Date: 2017-07-28 00:31+0000\n"
+"POT-Creation-Date: 2017-08-15 00:28+0000\n"
+"PO-Revision-Date: 2017-08-15 00:28+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 2.12\n"
+"Plural-Forms: \n"
 
 #. module: typ_stock
 #: model:ir.actions.act_window,help:typ_stock.stock_manual_transfer_action
@@ -328,7 +327,7 @@ msgstr "Nueva transferencia manual"
 #. module: typ_stock
 #: selection:stock.analysis,state:0
 msgid "Normal"
-msgstr "Normal"
+msgstr ""
 
 #. module: typ_stock
 #: view:stock.analysis:typ_stock.stock_analysis_graph_search_inherit
@@ -363,7 +362,7 @@ msgstr "Salida al cliente"
 #. module: typ_stock
 #: model:stock.location.route,name:typ_stock.stock_location_route_test_2
 msgid "PE TW1 - TW2"
-msgstr "PE TW1 - TW2"
+msgstr ""
 
 #. module: typ_stock
 #: view:stock.analysis:typ_stock.stock_analysis_graph_search_inherit
@@ -376,7 +375,7 @@ msgstr "Empresa"
 #: view:pedimento.product:typ_stock.view_pedimento_product_wizard
 #: field:pedimento.product,landed_id:0
 msgid "Pedimento"
-msgstr "Pedimento"
+msgstr ""
 
 #. module: typ_stock
 #: view:pedimento.product:typ_stock.view_pedimento_product_wizard
@@ -623,7 +622,7 @@ msgstr "TW2: compra -> stock"
 #. module: typ_stock
 #: model:procurement.rule,name:typ_stock.pull_rule_test_2_3
 msgid "TW2: stock -> cliente"
-msgstr "TW2: stock -> cliente"
+msgstr ""
 
 #. module: typ_stock
 #: model:procurement.rule,name:typ_stock.pull_rule_test_1
@@ -986,7 +985,6 @@ msgstr "pedimento/no. serie"
 
 #. module: typ_stock
 #: model:product.template,name:typ_stock.product_test_01_product_template
-#, fuzzy
 msgid "prueba 3"
 msgstr ""
 
@@ -1014,3 +1012,4 @@ msgstr "embarque ok"
 #: view:pedimento.product:typ_stock.view_pedimento_product_wizard
 msgid "write data"
 msgstr "Escribir datos"
+
