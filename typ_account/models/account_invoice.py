@@ -13,7 +13,7 @@ class AccountInvoice(models.Model):
     validation_date = fields.Date('Invoice validation date',
                                   help="This date indicate "
                                   "when the invoice was validated")
-    date_paid = fields.Date('Payment date', index=True,
+    date_paid = fields.Date('Payment date', index=True, copy=False,
                             help="This date indicate when the invoice "
                             "was paid")
 
