@@ -14,7 +14,7 @@
     'author': 'Vauxoo',
     'website': 'http://www.vauxoo.com/',
     'category': '',
-    'version': '8.0.0.1.1',
+    'version': '8.0.0.1.2',
 
     # any module necessary for this one to work correctly
     'depends': [
