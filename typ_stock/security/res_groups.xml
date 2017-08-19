@@ -48,5 +48,14 @@
           <field name="name">Users that can make manual transfers</field>
           <field name="comment">This group can make manual transfers</field>
         </record>
+        <record id="res_group_stock_move_button" model="res.groups">
+          <field name="name">Shows buttons in movements of stock</field>
+          <field name="comment">This group can display buttons hidden of move
+            Buttons Hidden:
+                - Cancel Availability: In view move from picking
+                - Confirm: In view move from picking
+                - Scrap: In view move from picking
+          </field>
+        </record>
     </data>
 </openerp>
