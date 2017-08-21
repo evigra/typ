@@ -49,18 +49,22 @@ class CommisionReportsBase(models.Model):
     update = fields.Boolean('Is update?', help='Used to indicate that the '
                             'report has already been generated and is being '
                             'updated')
+    type = fields.Selection(
+        [('commision', 'Commision'), ('sale', 'Sale')], 'Report type',
+        default=lambda self: self._context.get('type', 'commision'),
+        help='Type of the report')
 
     @api.multi
     def get_invoice_domain(self):
         domain = []
         if self.partner_id:
             domain += [('partner_id', '=', self.partner_id.id)]
-        domain += ['&', '&', '|', '&',
-                   ('date_invoice', '>=', self.date_start),
-                   ('date_invoice', '<=', self.date_end),
-                   ('state', '!=', 'cancel'),
+        domain += ['&', '|', '&', '&',
                    ('date_paid', '>=', self.date_start),
-                   ('date_paid', '<=', self.date_end)]
+                   ('date_paid', '<=', self.date_end),
+                   ('state', 'not in', ['draft', 'cancel']),
+                   ('date_invoice', '>=', self.date_start),
+                   ('date_invoice', '<=', self.date_end)]
         return domain
 
     @api.multi
@@ -88,7 +92,7 @@ class CommisionReportsBase(models.Model):
         return {
             'type': 'ir.actions.act_window',
             'res_model': 'account.invoice.line',
-            'name': 'Commission Report',
+            'name': 'Report Information',
             'view_type': 'form',
             'view_mode': 'tree',
             'view_id': view.id,
@@ -96,7 +100,7 @@ class CommisionReportsBase(models.Model):
             'context': self.filter_id.context or '{}'}
 
     @api.multi
-    def _get_journal_values(self, line, inv):
+    def _get_journal_values(self, line, inv, cost_trans):
         """Get the values related with the line in the journal items, this to
         compute accounting margin and the rate used at the momento to create
         the journal item
@@ -124,7 +128,7 @@ class CommisionReportsBase(models.Model):
         income = income and income[0]
         rate = 1/(abs(amount_currency)/income) if amount_currency < 0 else 1
         margin = (
-            (float_round((income - expense),
+            (float_round((income - cost_trans),
                          inv.currency_id.rounding) / income) * 100
             if income > 0 else 0)
 
@@ -153,7 +157,8 @@ class CommisionReportsBase(models.Model):
         :rtype: pandas.Dataframe()
         """
         stock_card = self.env['stock.card.product']
-        costs = stock_card.get_stock_card_date_range(product_id)
+        costs = (stock_card.get_stock_card_date_range(product_id)
+                 if product_id else 0)
         return costs
 
     @api.multi
@@ -182,6 +187,14 @@ class CommisionReportsBase(models.Model):
             'type': inv.type,
             'credit_note_type': inv.credit_note_type or None,
             'parent_invoice_id': inv.parent_invoice_id.id or None,
+            'origin': inv.origin,
+            'partner_importance': inv.partner_id.importance or None,
+            'partner_potential_import':
+            inv.partner_id.potential_importance or None,
+            'partner_business_act': inv.partner_id.business_activity or None,
+            'partner_type': inv.partner_id.partner_type or None,
+            'partner_dealer': inv.partner_id.dealer or None,
+            'partner_region': inv.partner_id.region or None,
         }
 
         return vals
@@ -229,7 +242,9 @@ class CommisionReportsBase(models.Model):
                 costs['average'][:date_to_use][-1]
                 if date_to_use and costs.empty is False and
                 costs['average'][:date_to_use].empty is False else 0.0)
-            journal_values = self._get_journal_values(line, inv)
+            cost_transaction = average * line.quantity
+            journal_values = self._get_journal_values(line, inv,
+                                                      cost_transaction)
             vals = self._get_invoice_values(inv)
             vals.update({
                 'sale_margin': journal_values.get('margin'),
@@ -239,8 +254,8 @@ class CommisionReportsBase(models.Model):
                 'currency_rate': journal_values.get('rate'),
                 'price_cost': journal_values.get('cost'),
                 'id': line.id,
-                'cost_transaction': average * line.quantity,
-
+                'cost_transaction': cost_transaction,
+                'product_default_code': line.product_id.default_code,
             })
             self._cr.execute(
                 '''
@@ -257,6 +272,7 @@ class CommisionReportsBase(models.Model):
                     period_id=%(period_id)s,
                     state=%(state)s,
                     inv_name=%(inv_name)s,
+                    origin=%(origin)s,
                     type_payment_term=%(type_payment_term)s,
                     categ_id=%(categ_id)s,
                     currency=%(currency)s,
@@ -265,7 +281,14 @@ class CommisionReportsBase(models.Model):
                     type=%(type)s,
                     credit_note_type=%(credit_note_type)s,
                     parent_invoice_id=%(parent_invoice_id)s,
-                    cost_transaction=%(cost_transaction)s
+                    cost_transaction=%(cost_transaction)s,
+                    product_default_code=%(product_default_code)s,
+                    partner_importance=%(partner_importance)s,
+                    partner_potential_import=%(partner_potential_import)s,
+                    partner_business_act=%(partner_business_act)s,
+                    partner_type=%(partner_type)s,
+                    partner_dealer=%(partner_dealer)s,
+                    partner_region=%(partner_region)s
                 WHERE
                     id=%(id)s
                              ''', vals)
@@ -294,8 +317,8 @@ class CommisionReportsBase(models.Model):
             domain = safe_eval(self.filter_id.domain or '[]')
             domain += [
                 ('invoice_id.type', 'in', ('out_invoice', 'out_refund')),
-                ('product_id', '!=', False),
-                ('period_id', '=', False)]
+                ('period_id', '=', False),
+                ('product_id', '!=', False)]
         if self.update:
             del domain[-2]
 

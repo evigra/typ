@@ -99,3 +99,59 @@ class AccountInvoiceLine(models.Model):
         ('out_refund', 'Customer Refund'),
         ('in_refund', 'Supplier Refund'),
         ], copy=False)
+    product_default_code = fields.Char(string='Product Internal Reference',
+                                       copy=False)
+    partner_importance = fields.Selection([
+        ('AA', 'AA'),
+        ('A', 'A'),
+        ('B', 'B'),
+        ('C', 'C'),
+        ('X', 'X'),
+        ('NEW', 'NEW'),
+        ('NEGOTIATION', 'NEGOTIATION'),
+        ('EMPLOYEE', 'EMPLOYEE'),
+        ('NOT CLASSIFIED', 'NOT CLASSIFIED')], copy=False)
+    partner_potential_import = fields.Selection([
+        ('AA', 'AA'),
+        ('A', 'A'),
+        ('B', 'B'),
+        ('C', 'C'),
+        ('X', 'X'),
+        ('NEW', 'NEW'),
+        ('NEGOTIATION', 'NEGOTIATION'),
+        ('EMPLOYEE', 'EMPLOYEE'),
+        ('NOT CLASSIFIED', 'NOT CLASSIFIED')], copy=False)
+    partner_business_act = fields.Selection([
+        ('CONTRACTORS', 'CON'),
+        ('COMPANY', 'COM'),
+        ('WHOLESALERS', 'WHO'),
+        ('NOT CLASSIFIED', 'NOT CLASSIFIED'),
+        ('EMPLOYEE', 'EMPLOYEE'),
+        ('PUBLIC', 'PUBLIC')], copy=False)
+    partner_type = fields.Selection([
+        ('OC', 'OC'),
+        ('NC', 'NC'),
+        ('PC', 'PC'),
+        ('RC', 'RC'),
+        ('ESP', 'ESP'),
+        ('FSC', 'FSC'),
+        ('SUP', 'SUP'),
+        ('BOT', 'BOT'),
+        ('OTH', 'OTH'),
+        ('WHC', 'WHC'),
+        ('WW', 'WW'),
+        ('WI', 'WI'),
+        ('NOT CLASSIFIED', 'NOT CLASSIFIED'),
+        ('EMPLOYEE', 'EMPLOYEE'),
+        ('PUBLIC', 'PUBLIC')], copy=False)
+    partner_dealer = fields.Selection([
+        ('PD', 'PD'),
+        ('AD', 'AD'),
+        ('SD', 'SD')], copy=False)
+    partner_region = fields.Selection([
+        ('NORTHWEST', 'NORTHWEST'),
+        ('WEST', 'WEST'),
+        ('CENTER', 'CENTER'),
+        ('NORTHEAST', 'NORTHEAST'),
+        ('SOUTHEAST', 'SOUTHEAST'),
+        ('SOUTH', 'SOUTH')], copy=False)

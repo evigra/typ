@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="res_group_commision_report" model="res.groups">
+          <field name="name">Users that can generate commision reports</field>
+          <field name="users" eval="[(4, ref('base.user_root'))]"/>
+        </record>
+        <record id="res_group_sales_report" model="res.groups">
+          <field name="name">Users than can generate sales reports</field>
+          <field name="users" eval="[(4, ref('base.user_root'))]"/>
+        </record>
+    </data>
+</openerp>
+

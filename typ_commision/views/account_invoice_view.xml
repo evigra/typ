@@ -10,30 +10,37 @@
                 <tree string="Invoice Line">
                     <field name="product_id"/>
                     <field name="name"/>
+                    <field name="product_default_code"/>
+                    <field name="categ_id"/>
                     <field name="account_id" groups="account.group_account_user"/>
                     <field name="quantity"/>
                     <field name="uos_id" groups="product.group_uom"/>
                     <field name="price_unit"/>
                     <field name="price_subtotal"/>
-                    <field name="inv_name"/>
-                    <field name="origin"/>
-                    <field name="partner_id"/>
-                    <field name="type_payment_term"/>
-                    <field name="categ_id"/>
-                    <field name="currency"/>
-                    <field name="currency_rate"/>
                     <field name="price_cost"/>
-                    <field name="sale_margin"/>
                     <field name="cost_transaction"/>
+                    <field name="sale_margin"/>
+                    <field name="partner_id"/>
                     <field name="user_id"/>
                     <field name="puser_id"/>
+                    <field name="inv_name"/>
+                    <field name="type"/>
+                    <field name="currency"/>
                     <field name="date_invoice"/>
                     <field name="date_due"/>
                     <field name="payment_date"/>
                     <field name="period_id"/>
                     <field name="section_id"/>
+                    <field name="origin"/>
+                    <field name="type_payment_term"/>
                     <field name="state"/>
-                    <field name="type"/>
+                    <field name="partner_importance"/>
+                    <field name="partner_potential_import"/>
+                    <field name="partner_business_act"/>
+                    <field name="partner_type"/>
+                    <field name="partner_dealer"/>
+                    <field name="partner_region"/>
+                    <field name="currency_rate"/>
                     <field name="credit_note_type"/>
                     <field name="parent_invoice_id"/>
                 </tree>
