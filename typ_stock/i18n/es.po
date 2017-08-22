@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 8.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-08-15 00:28+0000\n"
-"PO-Revision-Date: 2017-08-15 00:28+0000\n"
+"POT-Creation-Date: 2017-08-22 00:26+0000\n"
+"PO-Revision-Date: 2017-08-22 00:26+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -523,6 +523,11 @@ msgid "Shipment date of the picking"
 msgstr "Fecha de embarque del picking"
 
 #. module: typ_stock
+#: model:res.groups,name:typ_stock.res_group_stock_move_button
+msgid "Shows buttons in movements of stock"
+msgstr ""
+
+#. module: typ_stock
 #: model:ir.actions.report.xml,name:typ_stock.product_label_small
 msgid "Small Label"
 msgstr "Etiqueta pequeña"
@@ -697,6 +702,16 @@ msgstr "Este grupo tiene el privilegio de cancelar albaranes"
 #: model:res.groups,comment:typ_stock.res_group_stock_manager
 msgid "This group can define pedimentos serial and lot"
 msgstr "Este grupo puede definir pedimentos, seriales y lotes"
+
+#. module: typ_stock
+#: model:res.groups,comment:typ_stock.res_group_stock_move_button
+msgid "This group can display buttons hidden of move\n"
+"            Buttons Hidden:\n"
+"                - Cancel Availability: In view move from picking\n"
+"                - Confirm: In view move from picking\n"
+"                - Scrap: In view move from picking\n"
+"          "
+msgstr ""
 
 #. module: typ_stock
 #: model:res.groups,comment:typ_stock.group_stock_manual_transfer

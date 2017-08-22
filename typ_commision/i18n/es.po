@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 8.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-08-15 00:27+0000\n"
-"PO-Revision-Date: 2017-08-15 00:27+0000\n"
+"POT-Creation-Date: 2017-08-22 00:25+0000\n"
+"PO-Revision-Date: 2017-08-22 00:25+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -16,10 +16,41 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. module: typ_commision
+#: selection:account.invoice.line,partner_importance:0
+#: selection:account.invoice.line,partner_potential_import:0
+msgid "AA"
+msgstr ""
+
+#. module: typ_commision
+#: selection:account.invoice.line,partner_dealer:0
+msgid "AD"
+msgstr ""
+
+#. module: typ_commision
 #: selection:account.invoice,credit_note_type:0
 #: selection:account.invoice.line,credit_note_type:0
 msgid "Advance"
 msgstr "Anticipo"
+
+#. module: typ_commision
+#: selection:account.invoice.line,partner_type:0
+msgid "BOT"
+msgstr ""
+
+#. module: typ_commision
+#: selection:account.invoice.line,partner_region:0
+msgid "CENTER"
+msgstr ""
+
+#. module: typ_commision
+#: selection:account.invoice.line,partner_business_act:0
+msgid "COM"
+msgstr ""
+
+#. module: typ_commision
+#: selection:account.invoice.line,partner_business_act:0
+msgid "CON"
+msgstr ""
 
 #. module: typ_commision
 #: selection:account.invoice.line,state:0
@@ -48,19 +79,19 @@ msgstr "Comentario sobre las comisiones"
 
 #. module: typ_commision
 #: view:commision.reports.base:typ_commision.view_reports_base_form
-msgid "Commisions Comments"
-msgstr "Comentarios de Comisiones"
+msgid "Comments"
+msgstr ""
+
+#. module: typ_commision
+#: selection:commision.reports.base,type:0
+msgid "Commision"
+msgstr ""
 
 #. module: typ_commision
 #: model:ir.actions.act_window,name:typ_commision.action_hr_report_base_tree
 #: model:ir.ui.menu,name:typ_commision.menu_action_commision_reports
 msgid "Commisions Reports"
 msgstr "Reportes de Comisiones"
-
-#. module: typ_commision
-#: view:commision.reports.base:typ_commision.view_reports_base_form
-msgid "Commisions Section"
-msgstr "Sección de Comisiones"
 
 #. module: typ_commision
 #: field:commision.reports.base,company_id:0
@@ -199,6 +230,19 @@ msgid "Due Month"
 msgstr "Mes de Vencimiento"
 
 #. module: typ_commision
+#: selection:account.invoice.line,partner_business_act:0
+#: selection:account.invoice.line,partner_importance:0
+#: selection:account.invoice.line,partner_potential_import:0
+#: selection:account.invoice.line,partner_type:0
+msgid "EMPLOYEE"
+msgstr ""
+
+#. module: typ_commision
+#: selection:account.invoice.line,partner_type:0
+msgid "ESP"
+msgstr ""
+
+#. module: typ_commision
 #: model:ir.model,name:typ_commision.model_commision_reports_base
 msgid "Email Thread"
 msgstr "Hilo Correo"
@@ -212,6 +256,11 @@ msgstr "Fecha Final"
 #: selection:account.invoice,credit_note_type:0
 #: selection:account.invoice.line,credit_note_type:0
 msgid "Error"
+msgstr ""
+
+#. module: typ_commision
+#: selection:account.invoice.line,partner_type:0
+msgid "FSC"
 msgstr ""
 
 #. module: typ_commision
@@ -235,6 +284,11 @@ msgstr "Filtro"
 #: help:commision.reports.base,filter_inv_id:0
 msgid "Filter should be by date, group_by is ignored, the model which the filter should belong to invoice line"
 msgstr "Los filtros deben ser por fecha, los agrupamientos son ignorados, el modelo al cual el filtro debe pertenecer son las líneas de factura"
+
+#. module: typ_commision
+#: view:commision.reports.base:typ_commision.view_reports_base_form
+msgid "Filters Section"
+msgstr ""
 
 #. module: typ_commision
 #: selection:account.invoice,credit_note_type:0
@@ -382,6 +436,51 @@ msgid "My Invoices"
 msgstr "Mis Facturas"
 
 #. module: typ_commision
+#: selection:account.invoice.line,partner_type:0
+msgid "NC"
+msgstr ""
+
+#. module: typ_commision
+#: selection:account.invoice.line,partner_importance:0
+#: selection:account.invoice.line,partner_potential_import:0
+msgid "NEGOTIATION"
+msgstr ""
+
+#. module: typ_commision
+#: selection:account.invoice.line,partner_importance:0
+#: selection:account.invoice.line,partner_potential_import:0
+msgid "NEW"
+msgstr ""
+
+#. module: typ_commision
+#: selection:account.invoice.line,partner_region:0
+msgid "NORTHEAST"
+msgstr ""
+
+#. module: typ_commision
+#: selection:account.invoice.line,partner_region:0
+msgid "NORTHWEST"
+msgstr ""
+
+#. module: typ_commision
+#: selection:account.invoice.line,partner_business_act:0
+#: selection:account.invoice.line,partner_importance:0
+#: selection:account.invoice.line,partner_potential_import:0
+#: selection:account.invoice.line,partner_type:0
+msgid "NOT CLASSIFIED"
+msgstr ""
+
+#. module: typ_commision
+#: selection:account.invoice.line,partner_type:0
+msgid "OC"
+msgstr ""
+
+#. module: typ_commision
+#: selection:account.invoice.line,partner_type:0
+msgid "OTH"
+msgstr ""
+
+#. module: typ_commision
 #: selection:account.invoice.line,state:0
 msgid "Open"
 msgstr "Abierto"
@@ -401,6 +500,22 @@ msgstr "Origen"
 #: selection:account.invoice.line,credit_note_type:0
 msgid "Other"
 msgstr "Otro Adm"
+
+#. module: typ_commision
+#: selection:account.invoice.line,partner_type:0
+msgid "PC"
+msgstr ""
+
+#. module: typ_commision
+#: selection:account.invoice.line,partner_dealer:0
+msgid "PD"
+msgstr ""
+
+#. module: typ_commision
+#: selection:account.invoice.line,partner_business_act:0
+#: selection:account.invoice.line,partner_type:0
+msgid "PUBLIC"
+msgstr ""
 
 #. module: typ_commision
 #: view:account.invoice.line:typ_commision.view_account_invoice_line_filter
@@ -423,6 +538,36 @@ msgstr "Factura padre que generó esta nota de crédito"
 #: view:account.invoice.line:typ_commision.view_account_invoice_line_filter
 msgid "Partner"
 msgstr "Empresa"
+
+#. module: typ_commision
+#: field:account.invoice.line,partner_business_act:0
+msgid "Partner business act"
+msgstr ""
+
+#. module: typ_commision
+#: field:account.invoice.line,partner_dealer:0
+msgid "Partner dealer"
+msgstr ""
+
+#. module: typ_commision
+#: field:account.invoice.line,partner_importance:0
+msgid "Partner importance"
+msgstr ""
+
+#. module: typ_commision
+#: field:account.invoice.line,partner_potential_import:0
+msgid "Partner potential import"
+msgstr ""
+
+#. module: typ_commision
+#: field:account.invoice.line,partner_region:0
+msgid "Partner region"
+msgstr ""
+
+#. module: typ_commision
+#: field:account.invoice.line,partner_type:0
+msgid "Partner type"
+msgstr ""
 
 #. module: typ_commision
 #: view:account.invoice.line:typ_commision.view_account_invoice_line_filter
@@ -465,6 +610,11 @@ msgid "Product Category"
 msgstr "Categoría de Producto"
 
 #. module: typ_commision
+#: field:account.invoice.line,product_default_code:0
+msgid "Product Internal Reference"
+msgstr ""
+
+#. module: typ_commision
 #: view:account.invoice.line:typ_commision.view_account_invoice_line_filter
 msgid "Proforma"
 msgstr ""
@@ -478,6 +628,11 @@ msgstr "Facturas Proforma"
 #: view:account.invoice.line:typ_commision.view_account_invoice_line_filter
 msgid "Proforma/Open/Paid Invoices"
 msgstr "Proforma/Abierta/Facturas pagadas"
+
+#. module: typ_commision
+#: selection:account.invoice.line,partner_type:0
+msgid "RC"
+msgstr ""
 
 #. module: typ_commision
 #: field:account.invoice.line,currency_rate:0
@@ -506,10 +661,46 @@ msgid "Report Title"
 msgstr "Título del reporte"
 
 #. module: typ_commision
+#: field:commision.reports.base,type:0
+msgid "Report type"
+msgstr ""
+
+#. module: typ_commision
 #: selection:account.invoice,credit_note_type:0
 #: selection:account.invoice.line,credit_note_type:0
 msgid "Return"
 msgstr "Devolución"
+
+#. module: typ_commision
+#: selection:account.invoice.line,partner_dealer:0
+msgid "SD"
+msgstr ""
+
+#. module: typ_commision
+#: selection:account.invoice.line,partner_region:0
+msgid "SOUTH"
+msgstr ""
+
+#. module: typ_commision
+#: selection:account.invoice.line,partner_region:0
+msgid "SOUTHEAST"
+msgstr ""
+
+#. module: typ_commision
+#: selection:account.invoice.line,partner_type:0
+msgid "SUP"
+msgstr ""
+
+#. module: typ_commision
+#: selection:commision.reports.base,type:0
+msgid "Sale"
+msgstr ""
+
+#. module: typ_commision
+#: model:ir.actions.act_window,name:typ_commision.action_sales_report_base_tree
+#: model:ir.ui.menu,name:typ_commision.menu_action_sales_reports
+msgid "Sales Reports"
+msgstr ""
 
 #. module: typ_commision
 #: view:account.invoice.line:typ_commision.view_account_invoice_line_filter
@@ -583,6 +774,11 @@ msgid "Type"
 msgstr "Tipo"
 
 #. module: typ_commision
+#: help:commision.reports.base,type:0
+msgid "Type of the report"
+msgstr ""
+
+#. module: typ_commision
 #: field:account.invoice.line,type_payment_term:0
 msgid "Type payment term"
 msgstr "Tipo de termino de pago"
@@ -627,6 +823,41 @@ msgstr "Se utiliza para utilizar el filtro aplicado en líneas de factura"
 #: help:commision.reports.base,invoice:0
 msgid "Used to use filter applied in invoices"
 msgstr "Utilizado para utilizar el filtro aplicado en las facturas"
+
+#. module: typ_commision
+#: model:res.groups,name:typ_commision.res_group_sales_report
+msgid "Users than can generate sales reports"
+msgstr ""
+
+#. module: typ_commision
+#: model:res.groups,name:typ_commision.res_group_commision_report
+msgid "Users that can generate commision reports"
+msgstr ""
+
+#. module: typ_commision
+#: selection:account.invoice.line,partner_region:0
+msgid "WEST"
+msgstr ""
+
+#. module: typ_commision
+#: selection:account.invoice.line,partner_type:0
+msgid "WHC"
+msgstr ""
+
+#. module: typ_commision
+#: selection:account.invoice.line,partner_business_act:0
+msgid "WHO"
+msgstr ""
+
+#. module: typ_commision
+#: selection:account.invoice.line,partner_type:0
+msgid "WI"
+msgstr ""
+
+#. module: typ_commision
+#: selection:account.invoice.line,partner_type:0
+msgid "WW"
+msgstr ""
 
 #. module: typ_commision
 #: selection:account.invoice,credit_note_type:0
