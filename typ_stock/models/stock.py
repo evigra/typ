@@ -3,7 +3,7 @@
 from __future__ import division
 
 import re
-from openerp import api, fields, models, _
+from openerp import api, fields, models, SUPERUSER_ID, _
 from openerp import exceptions
 from openerp.tools.safe_eval import safe_eval
 
@@ -221,6 +221,29 @@ class StockPicking(models.Model):
         "the whole order and there isn't a backorder. This activate a "
         "green highlight on tree view ")
     number_landing = fields.Char(copy=False)
+
+    def _check_allow_write(self, vals):
+        """ Validate which fields the user can write when warehouse of the
+        picking is not the same of the sale team of the user"""
+
+        if vals is None:
+            vals = {}
+
+        allow_fields = safe_eval(self.env['ir.config_parameter'].get_param(
+            'stock_picking_allow_fields'))
+
+        if set(vals.keys()).difference(allow_fields):
+            raise exceptions.ValidationError(
+                _('You are not allowed to do this change'))
+
+    @api.multi
+    def write(self, vals):
+        # check if the user can modify the fields depending of the sales team
+        for picking in self.filtered(lambda dat: dat.warehouse_id not in (
+                dat.env.user.sale_team_ids.mapped('default_warehouse')) and
+                dat.env.user.id != SUPERUSER_ID):
+            picking._check_allow_write(vals)
+        return super(StockPicking, self).write(vals)
 
     @api.model
     def _get_invoice_vals(self, key, inv_type, journal_id, move):

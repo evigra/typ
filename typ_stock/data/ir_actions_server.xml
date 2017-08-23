@@ -84,5 +84,10 @@ for proc in model.browse(context.get('active_ids')):
              <field name="template_id" ref="typ_stock.email_template_product_manager"/>
         </record>
 
+
+        <record id="stock_picking_allow_fields" model="ir.config_parameter">
+             <field name="key">stock_picking_allow_fields</field>
+             <field name="value">['date_done', 'recompute_pack_op']</field>
+        </record>
     </data>
 </openerp>

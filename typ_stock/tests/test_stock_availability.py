@@ -22,6 +22,11 @@ class TestStockAvailability(TransactionCase):
 
         self.payment_term = self.env.ref(
             'account.account_payment_term_immediate')
+        self.sale_team = self.env.ref(
+            'default_warehouse_from_sale_team.section_sales_default_team')
+        self.env.ref('base.user_demo').write({
+            'sale_team_ids': [(6, 0, [self.sale_team.id])],
+            'default_section_id': self.sale_team.id})
 
     def test_10_validation_not_allow_negative_numbers(self):
         """Validate to warehouses to not allow negative numbers in product
