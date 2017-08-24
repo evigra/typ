@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 8.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-08-22 00:26+0000\n"
-"PO-Revision-Date: 2017-08-22 00:26+0000\n"
+"POT-Creation-Date: 2017-08-24 00:37+0000\n"
+"PO-Revision-Date: 2017-08-24 00:37+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -27,13 +27,13 @@ msgstr "<p class=\"oe_view_nocontent_create\">\n"
 "            "
 
 #. module: typ_stock
-#: code:addons/typ_stock/models/stock.py:241
+#: code:addons/typ_stock/models/stock.py:264
 #, python-format
 msgid "<ul><li>shipment confirmed --> <b>Canceled</b></li></ul>"
 msgstr "<ul><li>embarque confirmado --> <b>Cancelado</b></li></ul>"
 
 #. module: typ_stock
-#: code:addons/typ_stock/models/stock.py:239
+#: code:addons/typ_stock/models/stock.py:262
 #, python-format
 msgid "<ul><li>shipment confirmed --> <b>ok</b></li></ul>"
 msgstr "<ul><li>embarque confirmado --> <b>ok</b></li></ul>"
@@ -204,7 +204,7 @@ msgid "Importance"
 msgstr "Importancia"
 
 #. module: typ_stock
-#: code:addons/typ_stock/models/stock.py:291
+#: code:addons/typ_stock/models/stock.py:314
 #, python-format
 msgid "Internal movements don't allow locations in supplier or customer"
 msgstr "Los movimientos internos no permiten ubicaciones de proveedores o clientes"
@@ -651,7 +651,7 @@ msgid "The Serial number %s already captured"
 msgstr "El número de Serie %s ya se capturó"
 
 #. module: typ_stock
-#: code:addons/typ_stock/models/stock.py:320
+#: code:addons/typ_stock/models/stock.py:343
 #: code:addons/typ_stock/models/stock_return_picking.py:38
 #, python-format
 msgid "The return of the product %s, exceeds the amount invoiced"
@@ -744,10 +744,15 @@ msgid "This must be checked only when the supplier have invoiced the whole order
 msgstr "Este check debera ser activado solamente cuando el proveedor haya facturado la orden completa indicando así que no hay un backorder. Esto activara en la vista de arbol el color verde para este picking indicando que la orden esta embarcada sin ningún problema "
 
 #. module: typ_stock
-#: code:addons/typ_stock/models/stock.py:377
+#: code:addons/typ_stock/models/stock.py:400
 #, python-format
 msgid "This picking cannot be cancelled."
 msgstr "Este albarán no puede ser cancelado."
+
+#. module: typ_stock
+#: model:res.groups,name:typ_stock.group_traffic
+msgid "Traffic"
+msgstr ""
 
 #. module: typ_stock
 #: view:stock.manual_transfer_line:typ_stock.stock_manual_transfer_line_tree_view
@@ -920,9 +925,9 @@ msgstr "Advertencia"
 #: code:addons/typ_stock/models/stock.py:99
 #: code:addons/typ_stock/models/stock.py:125
 #: code:addons/typ_stock/models/stock.py:146
-#: code:addons/typ_stock/models/stock.py:290
-#: code:addons/typ_stock/models/stock.py:319
-#: code:addons/typ_stock/models/stock.py:376
+#: code:addons/typ_stock/models/stock.py:313
+#: code:addons/typ_stock/models/stock.py:342
+#: code:addons/typ_stock/models/stock.py:399
 #: code:addons/typ_stock/models/stock_return_picking.py:37
 #: code:addons/typ_stock/models/stock_return_picking.py:54
 #, python-format
@@ -955,13 +960,19 @@ msgid "Wizard Pedimento Product"
 msgstr "Asistente Pedimento Producto"
 
 #. module: typ_stock
+#: code:addons/typ_stock/models/stock.py:237
+#, python-format
+msgid "You are not allowed to do this change"
+msgstr ""
+
+#. module: typ_stock
 #: code:addons/typ_stock/models/stock_manual_transfer.py:70
 #, python-format
 msgid "You can not delete a valid transaction! (%s)"
 msgstr "No se puede borrar una transferencia en borrador! (%s 1)"
 
 #. module: typ_stock
-#: code:addons/typ_stock/models/stock.py:394
+#: code:addons/typ_stock/models/stock.py:417
 #, python-format
 msgid "You can not inactivate a warehouse with products on it, please adjust your inventories first and then come back and inactivate it."
 msgstr "No puede inactivar un almacén con productos en él, por favor, ajuste primero sus inventarios y luego vuelva a desactivarlo."
