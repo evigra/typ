@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<openerp>
+    <data noupdate="1">
+
+        <record id="server_action_stage_new" model="ir.actions.server">
+            <field name="name">Action stage avoid changing stage new </field>
+            <field name="model_id" model="ir.model" search="[('model', '=', 'crm.claim')]"/>
+            <field name="state">code</field>
+            <field name="code">
+                if not env.user.has_group('typ_portal.portal_group_manager') and object.stage_id.name != 'New':
+                    raise Warning("You can't change to another stage")
+            </field>
+        </record>
+    </data>
+</openerp>

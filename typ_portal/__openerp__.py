@@ -14,6 +14,8 @@
 
     'data': [
         'views/portal_inherit_view.xml',
-        'views/account_invoice_view.xml'
+        'views/account_invoice_view.xml',
+        'data/ir_actions_server.xml',
+        'data/base_action_rule.xml',
     ],
 }
