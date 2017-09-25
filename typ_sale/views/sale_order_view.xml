@@ -100,6 +100,8 @@
             </field>
         </record>
 
+        <menuitem id="sale_order_traffic_menu" parent="base.menu_base_partner" name="Traffic"/>
+        <menuitem id="sale_order_traffic" parent="typ_sale.sale_order_traffic_menu" name="Traffic" action="stock.action_picking_type_form" sequence="10"/>
 
     </data>
 </openerp>
