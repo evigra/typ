@@ -37,6 +37,16 @@ msgstr "Cantidad en Letras"
 
 #. module: typ
 #: view:website:typ.report_electronic_invoice_document
+msgid "Amount Paid"
+msgstr "Monto Pagado"
+
+#. module: typ
+#: view:website:typ.report_electronic_invoice_document
+msgid "Balance"
+msgstr "Saldo pendiente"
+
+#. module: typ
+#: view:website:typ.report_electronic_invoice_document
 msgid "Certificate Link"
 msgstr "Link del Certificado"
 
@@ -49,6 +59,11 @@ msgstr "Referencia del Cliente"
 #: view:website:typ.report_electronic_invoice_document
 msgid "Credit note"
 msgstr "Nota de crédito"
+
+#. module: typ
+#: view:website:typ.report_electronic_invoice_document
+msgid "Currency"
+msgstr "Moneda"
 
 #. module: typ
 #: view:website:typ.report_electronic_invoice_document
@@ -137,6 +152,7 @@ msgstr "N° Empleado"
 
 #. module: typ
 #: model:ir.model,name:typ.model_account_invoice
+#: view:website:typ.report_electronic_invoice_document
 msgid "Invoice"
 msgstr "Factura"
 
@@ -177,8 +193,23 @@ msgstr "Cadena Original"
 
 #. module: typ
 #: view:website:typ.report_electronic_invoice_document
+msgid "Partiality"
+msgstr "Parcialidad"
+
+#. module: typ
+#: view:website:typ.report_electronic_invoice_document
 msgid "Payment Method"
 msgstr "Método de Pago"
+
+#. module: typ
+#: field:account.invoice,date_paid:0
+msgid "Payment date"
+msgstr "Fecha de pago"
+
+#. module: typ
+#: view:website:typ.report_electronic_invoice_document
+msgid "Payment:"
+msgstr "Pago:"
 
 #. module: typ
 #: view:website:typ.report_electronic_invoice_document
@@ -189,6 +220,11 @@ msgstr "Nómina"
 #: view:website:typ.report_electronic_invoice_document
 msgid "Pedimento"
 msgstr ""
+
+#. module: typ
+#: view:website:typ.report_electronic_invoice_document
+msgid "Previous balance"
+msgstr "Balance Previo"
 
 #. module: typ
 #: view:website:typ.report_electronic_invoice_document
@@ -216,6 +252,11 @@ msgid "Sub Total"
 msgstr ""
 
 #. module: typ
+#: help:account.invoice,date_paid:0
+msgid "This date indicate when the invoice was paid"
+msgstr "Esta fecha indica cuando la factura ha sido pagada"
+
+#. module: typ
 #: view:website:typ.report_electronic_invoice_document
 msgid "This document is a printed representation of a CFDI"
 msgstr "Este documento es una representación impresa de un CFDI"
@@ -232,6 +273,11 @@ msgstr "Tipo de Plazo de Pago"
 
 #. module: typ
 #: view:website:typ.report_electronic_invoice_document
+msgid "UUID"
+msgstr "UUID"
+
+#. module: typ
+#: view:website:typ.report_electronic_invoice_document
 msgid "Unit"
 msgstr "Unidad"
 
@@ -244,4 +290,3 @@ msgstr "Precio Unidad"
 #: view:website:typ.report_electronic_invoice_document
 msgid "WITHOUT FOLIO OR INVALID STATUS"
 msgstr "SIN FOLIO O ESTATUS NO VALIDO"
-

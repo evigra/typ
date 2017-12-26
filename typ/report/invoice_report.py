@@ -24,6 +24,8 @@ class InvoiceReport(Parser):
             'get_model_object': self._get_model_object,
             'get_sale_order': self._get_sale_order,
             '_': _,
+            'get_payment_method': self._get_payment_method,
+            'get_invoice_by_uuid': self._get_invoice_by_uuid,
         })
 
     def _get_model_object(self, o):
@@ -45,6 +47,25 @@ class InvoiceReport(Parser):
             order_obj = self.pool.get('sale.order').browse(
                 self.cr, self.uid, id_order)
         return order_obj
+
+    def _get_payment_method(self, payment_method):
+        """Return the name of payment method"""
+        payment_obj = self.pool.get('pay.method')
+        payment = payment_obj.search(
+            self.cr, self.uid, [('code', '=', payment_method)], limit=1)
+        payment = payment_obj.browse(self.cr, self.uid, payment)
+        return '%s %s' % (
+            payment.code, payment.name) if payment else payment_method
+
+    def _get_invoice_by_uuid(self, uuid):
+        """Search the invoice that have the UUID provided"""
+        if not uuid:
+            return ''
+        invoice_obj = self.pool.get('account.invoice')
+        inv = invoice_obj.search(self.cr, self.uid,
+                                 [('cfdi_folio_fiscal', '=', uuid)])
+        inv = invoice_obj.browse(self.cr, self.uid, inv)
+        return inv.number if inv else ''
 
 
 class InvoiceReportPDF(osv.AbstractModel):
