@@ -13,7 +13,7 @@ def remove_warning(cr):
         for i in env['ir.model'].search([]):
             try:
                 env[i.model]
-            except:
+            except Exception:
                 ids.append(i.id)
         if ids:
             env.cr.execute(
