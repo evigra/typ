@@ -106,8 +106,15 @@ class ResPartner(models.Model):
                     if limit_day <= fields.Date.today():
                         # credit and debit maturity sums all aml
                         # with late payments
-                        debit_maturity += line.debit
-                    credit_maturity += line.credit
+                        debit_maturity += (line.amount_residual if
+                                           line.debit else 0.0)
+                    if line.credit and (line.reconcile_partial_id or
+                                        line.reconcile_id):
+                        credit_maturity += (line.amount_residual if
+                                            line.amount_residual > 0.0 else
+                                            0.0)
+                    else:
+                        credit_maturity += line.credit
             balance_maturity = debit_maturity - credit_maturity
             partner.overdue_credit = balance_maturity > 0.0
 
