@@ -19,5 +19,12 @@ They can:
             <field name="comment">Users of this group:
 - Do not see the "Create" button on the partner.</field>
         </record>
+        <record model="res.groups" id="purchase_group_approve_order_button">
+            <field name="name">Approve purchase order users</field>
+            <field name="users" eval="[(4, ref('base.user_root'))]"/>
+            <field name="comment">Users of this group:
+They can:
+- Approve Purchase Order with restriction.</field>
+        </record>
     </data>
 </openerp>

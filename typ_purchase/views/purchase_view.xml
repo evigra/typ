@@ -17,6 +17,9 @@
             <field name="model">purchase.order</field>
             <field name="inherit_id" ref="purchase.purchase_order_form"/>
             <field name="arch" type="xml">
+                <xpath expr="//button[@name='purchase_approve']" position="attributes">
+                    <attribute name="groups" translation="off">purchase.group_purchase_manager,typ_purchase.purchase_group_approve_order_button</attribute>
+                </xpath>
                 <xpath expr="//field[@name='picking_type_id']" position="attributes">
                     <attribute name="domain" translation="off">[('code', '=', 'incoming'), ('default_location_src_id.usage', '=', 'supplier')]</attribute>
                 </xpath>
