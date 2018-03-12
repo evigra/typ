@@ -6,14 +6,19 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 8.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-08-17 21:19+0000\n"
-"PO-Revision-Date: 2017-08-17 21:19+0000\n"
+"POT-Creation-Date: 2018-03-12 17:15+0000\n"
+"PO-Revision-Date: 2018-03-12 17:15+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: \n"
+
+#. module: typ_purchase
+#: model:res.groups,name:typ_purchase.purchase_group_approve_order_button
+msgid "Approve purchase order users"
+msgstr ""
 
 #. module: typ_purchase
 #: field:purchase.order,broker_id:0
@@ -293,6 +298,13 @@ msgid "Users of this group:\n"
 msgstr "Los usuarios de este grupo:\n"
 "- No ven el botón \"Crear\" en la orden de compra.\n"
 "- No ven el botón \"Confirmar\" en la orden de compra."
+
+#. module: typ_purchase
+#: model:res.groups,comment:typ_purchase.purchase_group_approve_order_button
+msgid "Users of this group:\n"
+"They can:\n"
+"- Approve Purchase Order with restriction."
+msgstr ""
 
 #. module: typ_purchase
 #: view:website:purchase.report_purchaseorder_document

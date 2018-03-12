@@ -6,17 +6,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 8.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-03-07 20:42+0000\n"
-"PO-Revision-Date: 2018-03-07 20:53+0000\n"
-"Last-Translator: Deivis Laya <deivis@vauxoo.com>\n"
-"Language-Team: Spanish "
-"<http://weblate.vauxoo.com/projects/github_com_Vauxoo_typ_8_0/typ/es/>\n"
-"Language: es\n"
+"POT-Creation-Date: 2018-03-12 17:14+0000\n"
+"PO-Revision-Date: 2018-03-12 17:14+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 2.14.1\n"
+"Plural-Forms: \n"
 
 #. module: typ
 #: view:website:typ.report_electronic_invoice_document
@@ -232,7 +229,7 @@ msgstr "Nómina"
 #. module: typ
 #: view:website:typ.report_electronic_invoice_document
 msgid "Pedimento"
-msgstr "Pedimento"
+msgstr ""
 
 #. module: typ
 #: view:website:typ.report_electronic_invoice_document
@@ -267,7 +264,7 @@ msgstr "Cálculo de Almacenaje de Ubicación de Almacén Padre"
 #. module: typ
 #: view:website:typ.report_electronic_invoice_document
 msgid "Sub Total"
-msgstr "Sub Total"
+msgstr ""
 
 #. module: typ
 #: view:website:typ.report_electronic_invoice_document
@@ -308,3 +305,4 @@ msgstr "Uso"
 #: view:website:typ.report_electronic_invoice_document
 msgid "WITHOUT FOLIO OR INVALID STATUS"
 msgstr "SIN FOLIO O ESTATUS NO VALIDO"
+
