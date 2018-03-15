@@ -25,6 +25,7 @@
         'contacts',
         'crm_helpdesk',
         'crm_profiling',
+        'fleet',
         'hr_expense_replenishment_cancel',
         'hr_expense_replenishment_tax',
         'hr_timesheet_sheet',
