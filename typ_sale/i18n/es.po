@@ -6,15 +6,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 8.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-03-13 15:16+0000\n"
-"PO-Revision-Date: 2018-03-13 15:16+0000\n"
+"POT-Creation-Date: 2018-03-16 00:36+0000\n"
+"PO-Revision-Date: 2018-03-16 00:36+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 2.14.1\n"
+"Plural-Forms: \n"
 
 #. module: typ_sale
 #: view:website:sale.report_saleorder_document
@@ -679,7 +678,7 @@ msgstr "Esta venta no puede ser cancelada ya que alguno de sus albaranes ya ha s
 #. module: typ_sale
 #: view:website:sale.report_saleorder_document
 msgid "Total"
-msgstr "Total"
+msgstr ""
 
 #. module: typ_sale
 #: model:ir.ui.menu,name:typ_sale.sale_order_traffic
@@ -800,3 +799,4 @@ msgstr "No se puede vender por debajo del margen permitido\n"
 #: view:website:sale.report_saleorder_document
 msgid "Your reference:"
 msgstr "Su referencia:"
+
