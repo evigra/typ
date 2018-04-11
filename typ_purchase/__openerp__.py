@@ -33,6 +33,7 @@
         'views/purchase_view.xml',
         'views/partner_view.xml',
         'views/res_company_view.xml',
+        'data/purchase_double_validation_workflow.xml',
     ],
     # only loaded in demonstration mode
     'demo': [
