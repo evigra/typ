@@ -34,6 +34,7 @@ class StockWarehouseOrderpoint(models.Model):
     importance = fields.Selection([
         ('aa', 'AA'), ('a', 'A'), ('b', 'B'), ('c', 'C'), ('d', 'D')])
     note = fields.Text()
+    reorder_point = fields.Char()
 
     def search(self, cr, user, domain, offset=0, limit=None, order=None,
                context=None, count=False):
