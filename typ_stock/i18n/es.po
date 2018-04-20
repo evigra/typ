@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 8.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-03-12 17:15+0000\n"
-"PO-Revision-Date: 2018-03-12 17:15+0000\n"
+"POT-Creation-Date: 2018-04-20 23:30+0000\n"
+"PO-Revision-Date: 2018-04-20 23:30+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -490,6 +490,11 @@ msgstr "Cantidad"
 #: model:ir.model,name:typ_stock.model_stock_quant
 msgid "Quants"
 msgstr "Cuantos"
+
+#. module: typ_stock
+#: field:stock.warehouse.orderpoint,reorder_point:0
+msgid "Reorder point"
+msgstr ""
 
 #. module: typ_stock
 #: model:email.template,subject:typ_stock.email_template_product_manager
