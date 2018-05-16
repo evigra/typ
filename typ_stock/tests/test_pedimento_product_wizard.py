@@ -36,7 +36,7 @@ class TestPedimentoProductWizard(TestTypStock):
             'ref': '00003',
         })
         self.landed = self.landed_cost.create({
-            'name': 'LC/2016/0001',
+            'name': '15  48  3009  0001234',
             'is_pedimento': True,
             'account_journal_id': self.journal_id.id,
             'broker_id': self.partner_id.id,

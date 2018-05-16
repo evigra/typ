@@ -158,6 +158,7 @@ class TestAdjustExchangeDifferential(common.TestTypLandedCosts):
         inv_brw = self.env['account.invoice'].browse(inv_id[0])
         inv_brw.signal_workflow('invoice_open')
         pedimento = self.get_landed_values(100, pick, inv_brw.id)
+        pedimento.update({'name': '15  48  3009  0001234'})
         landed_id = self.env['stock.landed.cost'].create(pedimento)
         landed_id.compute_landed_cost()
         mock_values.return_value = self.get_landed_values(2000, pick, False)
