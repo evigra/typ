@@ -18,6 +18,7 @@
 
     # any module necessary for this one to work correctly
     'depends': [
+        'purchase_double_validation',
         'purchase_requisition',
         'typ_partner',
     ],
