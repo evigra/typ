@@ -1,1 +1,2 @@
-pycups==1.9.66
+ofxparse==0.14
+PyPDF2==1.26.0
