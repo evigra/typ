@@ -1,12 +1,3 @@
+enterprise git@github.com:Vauxoo/enterprise.git
 addons-vauxoo git@github.com:Vauxoo/addons-vauxoo.git
-odoo-ifrs git@github.com:Vauxoo/odoo-ifrs.git
-account-financial-tools git@github.com:Vauxoo/account-financial-tools.git
-odoo-mexico-v2 git@git.vauxoo.com:vauxoo/odoo-mexico-v2.git
-account-closing git@github.com:vauxoo/account-closing.git
-account-invoicing git@github.com:vauxoo/account-invoicing.git
-stock-logistics-workflow git@github.com:Vauxoo/stock-logistics-workflow.git
-odoo-afr git@github.com:Vauxoo/odoo-afr.git
-web https://github.com/Vauxoo/web.git
-stock-logistics-reporting git@github.com:Vauxoo/stock-logistics-reporting.git
-stock-logistics-barcode git@github.com:Vauxoo/stock-logistics-barcode.git
-report-print-send git@github.com:Vauxoo/report-print-send.git
+mexico git@git.vauxoo.com:vauxoo/mexico.git

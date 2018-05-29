@@ -3,8 +3,8 @@
 # License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl).
 
 from openerp import SUPERUSER_ID
-from . import report
-from . import models
+# from . import report
+# from . import models
 
 
 def _auto_install_stock_account_unfuck(cr, registry):
