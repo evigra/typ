@@ -35,7 +35,7 @@ env:
   - PSQL_VERSION="9.6"
   matrix:
   - LINT_CHECK="1"
-  - INCLUDE="tanner" TESTS="1"
+  - INCLUDE="typ" TESTS="1"
 
 install:
   - git clone --single-branch --depth=1 https://github.com/vauxoo/maintainer-quality-tools.git -b master ${HOME}/maintainer-quality-tools
