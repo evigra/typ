@@ -6,12 +6,12 @@ stages:
   - upload_image
 
 variables:
-    PSQL_VERSION: "9.5"
-    VERSION: "8.0"
-    TRAVIS_PYTHON_VERSION: "2.7"
+    PSQL_VERSION: "9.6"
+    VERSION: "11.0"
+    TRAVIS_PYTHON_VERSION: "3.5"
     ODOO_REPO: "vauxoo/odoo"
-    ODOO_BRANCH: "8.0"
-    BASE_IMAGE: "vauxoo/odoo-80-image"
+    ODOO_BRANCH: "11.0"
+    BASE_IMAGE: "vauxoo/odoo-110-image"
     COUNTRY: "MX"
     TEST_OTHER_PROJECTS: "${TRAVIS_BUILD_DIR}/addons-vauxoo"
     http_proxy: http://172.17.0.1:3128
