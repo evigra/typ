@@ -7,6 +7,9 @@ cache:
     - $HOME/.cache/pip
 
 addons:
+  postgresql: "9.6"
+
+addons:
   apt:
     packages:
       - expect-dev
@@ -20,25 +23,19 @@ addons:
       - openssl
       - poppler-utils
       - antiword
-      - cups
-      - libcups2-dev
 
 python:
-  - "2.7"
+  - "3.5"
 
 env:
   global:
-  - TEST_OTHER_PROJECTS="${HOME}/addons-vauxoo"
   - LINT_CHECK="0" TESTS="0"
-  - VERSION="8.0" ODOO_REPO="Vauxoo/odoo"
-  - INCLUDE="typ" LANG_ALLOWED="es"
-
+  - VERSION="11.0" ODOO_REPO="vauxoo/odoo"
+  - COUNTRY="MX"
+  - PSQL_VERSION="9.6"
   matrix:
   - LINT_CHECK="1"
-  - TESTS="1"
-
-virtualenv:
-  system_site_packages: true
+  - INCLUDE="typ" TESTS="1"
 
 install:
   - git clone --single-branch --depth=1 https://github.com/vauxoo/maintainer-quality-tools.git -b master ${HOME}/maintainer-quality-tools
