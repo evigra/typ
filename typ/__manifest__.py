@@ -10,7 +10,8 @@
     'category': 'Installer',
     'version': '11.0.0.2',
     'depends': [
-        'point_of_sale',
+        'l10n_mx_pos_cogs',
+        'l10n_mx_edi_pos',
         'l10n_mx_edi_hr_expense',
         # 'account_aged_partner_balance_vw',
         # 'account_asset',
