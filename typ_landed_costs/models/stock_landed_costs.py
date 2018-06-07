@@ -571,6 +571,10 @@ class StockLandedCost(models.Model):
         if float_is_zero(total_diff, precision_obj):
             return self.env['stock.landed.cost']
 
+        # TODO: Verificar que todos las lineas tengan aml_all_ids y si
+        # aml.journal_id es lo mismo que
+        # aml.journal_id.section_id.journal_landed_id.id
+        aml = filtered_moves.aml_all_ids[0]
         journal = aml.journal_id.section_id.journal_landed_id.id
         landed_values = self._get_landed_values(total_diff,
                                                 picking, journal, date)
@@ -656,59 +660,59 @@ class StockLandedCost(models.Model):
                   'picking.'))
         return lines
 
-    @api.multi
-    def button_validate_segmentation(self):
-        self.ensure_one()
-        quant_obj = self.env['stock.quant']
-        # ctx = dict(self._context)
+    # @api.multi
+    # def button_validate_segmentation(self):
+    #     self.ensure_one()
+    #     quant_obj = self.env['stock.quant']
+    #     # ctx = dict(self._context)
 
-        for cost in self:
-            if cost.state != 'draft':
-                raise UserError(
-                    _('Only draft landed costs can be validated'))
-            if not cost.valuation_adjustment_lines or \
-                    not self._check_sum(cost):
-                raise UserError(
-                    _('You cannot validate a landed cost which has no valid '
-                      'valuation adjustments lines. Did you click on '
-                      'Compute?'))
+    #     for cost in self:
+    #         if cost.state != 'draft':
+    #             raise UserError(
+    #                 _('Only draft landed costs can be validated'))
+    #         if not cost.valuation_adjustment_lines or \
+    #                 not self._check_sum(cost):
+    #             raise UserError(
+    #                 _('You cannot validate a landed cost which has no valid '
+    #                   'valuation adjustments lines. Did you click on '
+    #                   'Compute?'))
 
-            if not all([cl.segmentation_cost for cl in cost.cost_lines]):
-                raise UserError(
-                    _('Please fill the segmentation field in Cost Lines'))
+    #         if not all([cl.segmentation_cost for cl in cost.cost_lines]):
+    #             raise UserError(
+    #                 _('Please fill the segmentation field in Cost Lines'))
 
-            quant_dict = {}
-            for line in cost.valuation_adjustment_lines:
-                if not line.move_id or \
-                        line.move_id.location_id.usage == 'internal':
-                    continue
+    #         quant_dict = {}
+    #         for line in cost.valuation_adjustment_lines:
+    #             if not line.move_id or \
+    #                     line.move_id.location_id.usage == 'internal':
+    #                 continue
 
-                create = False
-                if line.move_id.location_id.usage not in (
-                        'supplier', 'inventory', 'production'):
-                    create = True
+    #             create = False
+    #             if line.move_id.location_id.usage not in (
+    #                     'supplier', 'inventory', 'production'):
+    #                 create = True
 
-                segment = line.cost_line_id.segmentation_cost
-                per_unit = line.final_cost / line.quantity
-                diff = per_unit - line.former_cost_per_unit
+    #             segment = line.cost_line_id.segmentation_cost
+    #             per_unit = line.final_cost / line.quantity
+    #             diff = per_unit - line.former_cost_per_unit
 
-                if create:
-                    continue
+    #             if create:
+    #                 continue
 
-                for quant in line.move_id.quant_ids:
-                    if quant.id not in quant_dict:
-                        quant_dict[quant.id] = {}
-                        quant_dict[quant.id][segment] = getattr(
-                            quant, segment) + diff
-                    else:
-                        if segment not in quant_dict[quant.id]:
-                            quant_dict[quant.id][segment] = getattr(
-                                quant, segment) + diff
-                        else:
-                            quant_dict[quant.id][segment] += diff
+    #             for quant in line.move_id.quant_ids:
+    #                 if quant.id not in quant_dict:
+    #                     quant_dict[quant.id] = {}
+    #                     quant_dict[quant.id][segment] = getattr(
+    #                         quant, segment) + diff
+    #                 else:
+    #                     if segment not in quant_dict[quant.id]:
+    #                         quant_dict[quant.id][segment] = getattr(
+    #                             quant, segment) + diff
+    #                     else:
+    #                         quant_dict[quant.id][segment] += diff
 
-            for key, pair in quant_dict.items():
-                quant_obj.sudo().browse(key).write(pair)
+    #         for key, pair in quant_dict.items():
+    #             quant_obj.sudo().browse(key).write(pair)
 
     @api.multi
     # disable=zip-builtin-not-iterating, too-complex
@@ -720,9 +724,9 @@ class StockLandedCost(models.Model):
             self._cr, self._uid, 'Account')
         quant_obj = self.env['stock.quant']
         template_obj = self.pool.get('product.template')
-        scp_obj = self.env['stock.card.product']
-        get_average = scp_obj.get_average
-        stock_card_move_get = scp_obj._stock_card_move_get
+        # scp_obj = self.env['stock.card.product']
+        # get_average = scp_obj.get_average
+        # stock_card_move_get = scp_obj._stock_card_move_get
         draft_guides = self.env['stock.landed.cost.guide']
         ctx = dict(self._context)
 
@@ -737,7 +741,7 @@ class StockLandedCost(models.Model):
             raise ValidationError(
                 _('Only valid guides can be added to a landed cost') + msj)
 
-        self.button_validate_segmentation()
+        # self.button_validate_segmentation()
 
         for cost in self:
             if cost.state != 'draft':
@@ -785,8 +789,8 @@ class StockLandedCost(models.Model):
 
                 if product_id.cost_method == 'average':
                     if product_id.id not in prod_dict:
-                        first_card = stock_card_move_get(product_id.id)
-                        prod_dict[product_id.id] = get_average(first_card)
+                        # first_card = stock_card_move_get(product_id.id)
+                        # prod_dict[product_id.id] = get_average(first_card)
                         first_lines[product_id.id] = first_card['res']
                         init_avg[product_id.id] = product_id.standard_price
                         prod_qty[product_id.id] = first_card['product_qty']
@@ -823,10 +827,10 @@ class StockLandedCost(models.Model):
 
             # /!\ NOTE: This new update is taken out of for loop to improve
             # performance
-            for prod_id in prod_dict:
-                last_card = stock_card_move_get(prod_id)
-                prod_dict[prod_id] = get_average(last_card)
-                last_lines[prod_id] = last_card['res']
+            # for prod_id in prod_dict:
+                # last_card = stock_card_move_get(prod_id)
+                # prod_dict[prod_id] = get_average(last_card)
+                # last_lines[prod_id] = last_card['res']
 
             # /!\ NOTE: COGS computation
             # NOTE: After adding value to product with landing cost products
@@ -929,7 +933,7 @@ class StockLandedCost(models.Model):
 class StockLandedCostLines(models.Model):
     _inherit = 'stock.landed.cost.lines'
 
-    segmentation_cost = fields.Selection(default='landed_cost')
+    # segmentation_cost = fields.Selection(default='landed_cost')
     split_method = fields.Selection(default="by_current_cost_price")
 
     @api.onchange('product_id')
