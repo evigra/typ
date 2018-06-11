@@ -21,7 +21,6 @@ class TestGuides(TestTypLandedCosts):
         self.assertEqual(move.journal_id, guide.journal_id)
         self.assertEqual(move.date, guide.date)
         self.assertEqual(move.company_id, guide.company_id)
-        self.assertEqual(move.period_id, guide.period_id)
 
         # Move lines for credit and debit
         self.assertEqual(len(move.line_id), 2)

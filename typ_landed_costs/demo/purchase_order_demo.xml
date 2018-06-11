@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<openerp>
-    <data noupdate="1">
-
+<odoo noupdate="1">
 
         <record id="product_adjusts_landed_cost_1" model="product.product">
             <field name="name">Average Product to Adjust with Landed Costs</field>
@@ -11,8 +9,8 @@
             <field name="type">product</field>
             <field name="weight">1</field>
             <field name="volume">1</field>
-            <field name="property_stock_account_input" ref="account.o_expense"/>
-            <field name="property_stock_account_output" ref="account.o_income"/>
+            <field name="property_stock_account_input" ref="l10n_generic_coa.1_conf_a_expense"/>
+            <field name="property_stock_account_output" ref="l10n_generic_coa.1_conf_o_income"/>
         </record>
 
 
@@ -21,7 +19,7 @@
         <record id="adjust_purchase_landed_1" model="purchase.order">
             <field name="name">Purchase Order Demo </field>
             <field name="invoice_method">picking</field>
-            <field name="partner_id" ref="base.res_partner_21"/>
+            <field name="partner_id" ref="base.res_partner_4"/>
             <field name="currency_id" ref="base.USD"/>
             <field name="pricelist_id" ref="landed_price"/>
             <field name="location_id" ref="stock.stock_location_stock"/>
@@ -38,5 +36,4 @@
             <field name="date_planned">2015-05-08</field>
         </record>
 
-    </data>
-</openerp>
+</odoo>

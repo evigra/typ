@@ -17,7 +17,8 @@
     ],
     "demo": [
         # 'demo/pricelist_demo.xml',
-        # 'demo/purchase_order_demo.xml',
+        'demo/purchase_order_demo.xml',
+        'demo/product_demo.xml',
     ],
     "data": [
         "data/res_groups.xml",

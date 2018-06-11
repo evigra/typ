@@ -8,13 +8,11 @@ class TestTypLandedCosts(common.TransactionCase):
 
     def setUp(self):
         super(TestTypLandedCosts, self).setUp()
-        self.partner_1 = self.env.ref('base.res_partner_9')
+        self.partner_1 = self.env.ref('base.res_partner_3')
         self.partner_2 = self.env.ref('base.res_partner_2')
         self.product_1 = self.env.ref(
-            'stock_landed_costs_average.'
             'service_standard_periodic_landed_cost_1')
         self.product_2 = self.env.ref(
-            'stock_landed_costs_average.'
             'service_standard_periodic_landed_cost_2')
         self.currency_1 = self.env.user.company_id.currency_id
         self.currency_2 = self.env.ref('base.USD')

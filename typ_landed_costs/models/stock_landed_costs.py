@@ -103,12 +103,6 @@ class StockLandedGuides (models.Model):
         ' it again, it will not create a new Journal Entry Sequence, it will'
         ' use always the same'
     )
-    period_id = fields.Many2one(
-        'account.period',
-        string='Period',
-        copy=False,
-        help="Guide period",
-        readonly=True)
     state = fields.Selection(
         [('draft', 'Draft'),
          ('valid', 'Valid'),
@@ -256,22 +250,13 @@ class StockLandedGuides (models.Model):
             if guide_brw.account_move_name:
                 move_vals['name'] = guide_brw.account_move_name
             ctx['company_id'] = guide_brw.company_id.id
-            period = guide_brw.period_id.with_context(ctx).find(date)[:1]
-            if period:
-                move_vals['period_id'] = period.id
-                for i in line:
-                    i[2]['period_id'] = period.id
 
             ctx_nolang = ctx.copy()
             ctx_nolang.pop('lang', None)
             move = account_move.with_context(ctx_nolang).create(move_vals)
 
             # make the guide point to that move
-            vals = {
-                'move_id': move.id,
-                'period_id': period.id,
-            }
-            guide_brw.with_context(ctx).write(vals)
+            guide_brw.with_context(ctx).write({'move_id': move.id})
             # Pass guide in context in method post: used if you want to get
             # the same
             # account move reference when creating the same guide after a
@@ -885,13 +870,44 @@ class StockLandedCost(models.Model):
 
         return True
 
-    @api.onchange('invoice_ids', 'guide_ids')
-    def onchange_invoice_ids(self):
+    # @api.onchange('invoice_ids', 'guide_ids')
+    # def onchange_invoice_ids(self):
+    #     """Inherited from stock.landed.costs in oder to add the logic necessary
+    #     to update the list with the elements extracted when guides are
+    #     added/removed"""
+    #     # We first load products from invoices calling super()
+    #     res = super(StockLandedCost, self).onchange_invoice_ids()
+    #     company_currency = self.env.user.company_id.currency_id
+    #     for landed_cost in self:
+    #         lines = landed_cost.cost_lines.mapped('id')
+    #         # Now we load the products present in guides
+    #         for guide in landed_cost.guide_ids:
+    #             for line in guide.line_ids:
+    #                 product = line.product_id
+    #                 account = product.categ_id.property_account_expense_categ
+    #                 diff_currency = guide.currency_id != company_currency
+    #                 cost = line.cost
+    #                 if diff_currency:
+    #                     cost = guide.currency_id.with_context(
+    #                         date=guide.date).compute(
+    #                             line.cost, company_currency)
+    #                 lines.append((0, False, {
+    #                     'name': product.name,
+    #                     'account_id': account,
+    #                     'product_id': product.id,
+    #                     'price_unit': cost,
+    #                     'split_method': 'by_current_cost_price',
+    #                     'segmentation_cost': 'landed_cost'
+    #                 }))
+    #         if lines:
+    #             landed_cost.update({'cost_lines': lines})
+    #     return res
+
+    @api.onchange('guide_ids')
+    def onchange_guide_ids(self):
         """Inherited from stock.landed.costs in oder to add the logic necessary
         to update the list with the elements extracted when guides are
         added/removed"""
-        # We first load products from invoices calling super()
-        res = super(StockLandedCost, self).onchange_invoice_ids()
         company_currency = self.env.user.company_id.currency_id
         for landed_cost in self:
             lines = landed_cost.cost_lines.mapped('id')
@@ -916,7 +932,6 @@ class StockLandedCost(models.Model):
                     }))
             if lines:
                 landed_cost.update({'cost_lines': lines})
-        return res
 
     def lcost_from_inv_line(self, inv_line):
         """Inherited from stock_landed_cost_average to set default value of
@@ -936,15 +951,12 @@ class StockLandedCostLines(models.Model):
     # segmentation_cost = fields.Selection(default='landed_cost')
     split_method = fields.Selection(default="by_current_cost_price")
 
+    # TODO: Verify the correct behavior
     @api.onchange('product_id')
-    @api.v7
-    def onchange_product_id(self, cr, uid, ids, product_id=False,
-                            context=None):
+    def onchange_product_id(self):
         # We first load products calling super() method.
-        res = super(StockLandedCostLines, self).onchange_product_id(
-            cr, uid, ids, product_id, context=context)
-        res['value'].update({'split_method': 'by_current_cost_price'})
-        return res
+        super(StockLandedCostLines, self).onchange_product_id()
+        self.split_method = 'by_current_cost_price'
 
 
 class StockValuationAdjustmentLines(models.Model):
