@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+
+        <record id="journal_bank_test" model="account.journal">
+            <field name="type">bank</field>
+            <field name="name">Bank (test)</field>
+            <field name="code">BNK (test)</field>
+        </record>
+
+</odoo>

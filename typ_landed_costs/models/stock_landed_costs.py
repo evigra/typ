@@ -214,12 +214,6 @@ class StockLandedGuides (models.Model):
                 continue
             ctx = dict(self._context, lang=guide_brw.partner_id.lang)
             journal = guide_brw.journal_id.with_context(ctx)
-            if journal.centralisation:
-                raise except_orm(
-                    _('User Error!'),
-                    _('You cannot create a guide on a centralized journal.'
-                      ' Uncheck the centralized counterpart box in the related'
-                      ' journal from the configuration menu.'))
 
             if not guide_brw.date:
                 guide_brw.with_context(ctx).write(
@@ -242,7 +236,7 @@ class StockLandedGuides (models.Model):
             line = guide_brw.finalize_guide_move_lines(line)
             move_vals = {
                 'ref': guide_brw.reference or guide_brw.name,
-                'line_id': line,
+                'line_ids': line,
                 'journal_id': journal.id,
                 'date': date,
                 'company_id': guide_brw.company_id.id,
@@ -292,13 +286,10 @@ class StockLandedGuides (models.Model):
             'debit': line['price'] > 0 and line['price'],
             'credit': line['price'] < 0 and -line['price'],
             'account_id': line['account_id'],
-            'analytic_lines': line.get('analytic_lines', []),
             'amount_currency': line['price'] > 0 and abs(
                 line.get('amount_currency', False)) or -abs(
                     line.get('amount_currency', False)),
             'currency_id': line.get('currency_id', False),
-            'tax_code_id': line.get('tax_code_id', False),
-            'tax_amount': line.get('tax_amount', False),
             'ref': line.get('ref', False),
             'quantity': line.get('quantity', 1.00),
             'product_id': line.get('product_id', False),
@@ -366,8 +357,8 @@ class StockLandedGuidesLine (models.Model):
         """Returns the ID for the 'stock_account_input' of the current line
         product"""
         product_tmpl = self.product_id.product_tmpl_id
-        accounts = product_tmpl.get_product_accounts(product_tmpl.id)
-        return accounts['stock_account_input']
+        accounts = product_tmpl.get_product_accounts()
+        return accounts['stock_input']
 
     @api.model
     def move_line_get(self, guide_id):
@@ -381,7 +372,7 @@ class StockLandedGuidesLine (models.Model):
             # Reverse entry line for the input account
             credit = debit.copy()
             credit.update({
-                'account_id': line.product_stock_account_in(),
+                'account_id': line.product_stock_account_in().id,
                 'price': credit['price'] * -1,
                 'guide_line_id': line.id,
             })
@@ -390,7 +381,7 @@ class StockLandedGuidesLine (models.Model):
 
     @api.model
     def move_line_get_item(self, line):
-        account = line.product_id.categ_id.property_account_expense_categ
+        account = line.product_id.categ_id.property_account_expense_categ_id
         return {
             'type': 'src',
             'name': line.product_id.name.split('\n')[0][:64],
@@ -398,7 +389,6 @@ class StockLandedGuidesLine (models.Model):
             'account_id': account.id,
             'price': line.cost,
             'product_id': line.product_id.id,
-            'uos_id': line.product_id.uos_id.id,
         }
 
 
@@ -705,13 +695,9 @@ class StockLandedCost(models.Model):
     def button_validate(self):
         """Inherited to add a validation message"""
         self.ensure_one()
-        precision_obj = self.pool.get('decimal.precision').precision_get(
-            self._cr, self._uid, 'Account')
+        precision_obj = self.env['decimal.precision'].precision_get('Account')
         quant_obj = self.env['stock.quant']
         template_obj = self.pool.get('product.template')
-        # scp_obj = self.env['stock.card.product']
-        # get_average = scp_obj.get_average
-        # stock_card_move_get = scp_obj._stock_card_move_get
         draft_guides = self.env['stock.landed.cost.guide']
         ctx = dict(self._context)
 
@@ -725,8 +711,6 @@ class StockLandedCost(models.Model):
         if draft_guides:
             raise ValidationError(
                 _('Only valid guides can be added to a landed cost') + msj)
-
-        # self.button_validate_segmentation()
 
         for cost in self:
             if cost.state != 'draft':
@@ -774,8 +758,6 @@ class StockLandedCost(models.Model):
 
                 if product_id.cost_method == 'average':
                     if product_id.id not in prod_dict:
-                        # first_card = stock_card_move_get(product_id.id)
-                        # prod_dict[product_id.id] = get_average(first_card)
                         first_lines[product_id.id] = first_card['res']
                         init_avg[product_id.id] = product_id.standard_price
                         prod_qty[product_id.id] = first_card['product_qty']
@@ -809,13 +791,6 @@ class StockLandedCost(models.Model):
             for key, value in quant_dict.items():
                 quant_obj.sudo().browse(key).write(
                     {'cost': value})
-
-            # /!\ NOTE: This new update is taken out of for loop to improve
-            # performance
-            # for prod_id in prod_dict:
-                # last_card = stock_card_move_get(prod_id)
-                # prod_dict[prod_id] = get_average(last_card)
-                # last_lines[prod_id] = last_card['res']
 
             # /!\ NOTE: COGS computation
             # NOTE: After adding value to product with landing cost products
@@ -870,38 +845,6 @@ class StockLandedCost(models.Model):
 
         return True
 
-    # @api.onchange('invoice_ids', 'guide_ids')
-    # def onchange_invoice_ids(self):
-    #     """Inherited from stock.landed.costs in oder to add the logic necessary
-    #     to update the list with the elements extracted when guides are
-    #     added/removed"""
-    #     # We first load products from invoices calling super()
-    #     res = super(StockLandedCost, self).onchange_invoice_ids()
-    #     company_currency = self.env.user.company_id.currency_id
-    #     for landed_cost in self:
-    #         lines = landed_cost.cost_lines.mapped('id')
-    #         # Now we load the products present in guides
-    #         for guide in landed_cost.guide_ids:
-    #             for line in guide.line_ids:
-    #                 product = line.product_id
-    #                 account = product.categ_id.property_account_expense_categ
-    #                 diff_currency = guide.currency_id != company_currency
-    #                 cost = line.cost
-    #                 if diff_currency:
-    #                     cost = guide.currency_id.with_context(
-    #                         date=guide.date).compute(
-    #                             line.cost, company_currency)
-    #                 lines.append((0, False, {
-    #                     'name': product.name,
-    #                     'account_id': account,
-    #                     'product_id': product.id,
-    #                     'price_unit': cost,
-    #                     'split_method': 'by_current_cost_price',
-    #                     'segmentation_cost': 'landed_cost'
-    #                 }))
-    #         if lines:
-    #             landed_cost.update({'cost_lines': lines})
-    #     return res
 
     @api.onchange('guide_ids')
     def onchange_guide_ids(self):
@@ -948,7 +891,6 @@ class StockLandedCost(models.Model):
 class StockLandedCostLines(models.Model):
     _inherit = 'stock.landed.cost.lines'
 
-    # segmentation_cost = fields.Selection(default='landed_cost')
     split_method = fields.Selection(default="by_current_cost_price")
 
     # TODO: Verify the correct behavior

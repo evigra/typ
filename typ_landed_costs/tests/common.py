@@ -10,14 +10,12 @@ class TestTypLandedCosts(common.TransactionCase):
         super(TestTypLandedCosts, self).setUp()
         self.partner_1 = self.env.ref('base.res_partner_3')
         self.partner_2 = self.env.ref('base.res_partner_2')
-        self.product_1 = self.env.ref(
-            'service_standard_periodic_landed_cost_1')
-        self.product_2 = self.env.ref(
-            'service_standard_periodic_landed_cost_2')
+        self.product_1 = self.env.ref('typ_landed_costs.service_landed_cost_1')
+        self.product_2 = self.env.ref('typ_landed_costs.service_landed_cost_2')
         self.currency_1 = self.env.user.company_id.currency_id
-        self.currency_2 = self.env.ref('base.USD')
+        self.currency_2 = self.env.ref('base.EUR')
         self.wizard_create_invoice = self.env['invoice.guides']
-        self.journal = self.env.ref('account.check_journal')
+        self.journal = self.env.ref('typ_landed_costs.journal_bank_test')
         # Allowing Cancelling Entries
         self.journal.update_posted = True
 

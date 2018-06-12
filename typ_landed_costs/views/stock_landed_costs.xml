@@ -25,7 +25,7 @@
                         <field name="state" widget="statusbar"/>
                     </header>
                     <sheet string="Guide">
-                        <div class="oe_right oe_button_box" name="buttons">
+                        <div class="oe_button_box" name="buttons">
                             <button
                                 type="object"
                                 string="Stock Accruals"
@@ -128,34 +128,6 @@
                 </tree>
             </field>
         </record>
-        <!-- Inherited Landed Cost Form View -->
-        <!-- <record id="main_form_view" model="ir.ui.view"> -->
-        <!--     <field name="name">stock.landed.cost.form</field> -->
-        <!--     <field name="model">stock.landed.cost</field> -->
-        <!--     <field -->
-        <!--         name="inherit_id" -->
-        <!--         ref="stock_landed_costs_average.view_stock_landed_cost_form" -->
-        <!--         /> -->
-        <!--     <field name="arch" type="xml"> -->
-        <!--     <xpath expr='//field[@name="invoice_ids"]' position='after'> -->
-        <!--         <field -->
-        <!--             name="guide_ids" -->
-        <!--             widget="many2many_tags" -->
-        <!--             domain="[ -->
-        <!--                 ('state', '!=', 'draft'), -->
-        <!--             ]" -->
-        <!--             /> -->
-        <!--         <field -->
-        <!--             name="exchange_landed_ids" -->
-        <!--             widget="many2many_tags" -->
-        <!--             readonly="1" -->
-        <!--             /> -->
-        <!--     </xpath> -->
-        <!--     <xpath expr='//field[@name="cost_line_id"]' position='after'> -->
-        <!--         <field name="picking_id" readonly="True"/> -->
-        <!--     </xpath> -->
-        <!--     </field> -->
-        <!-- </record> -->
         <record model="ir.actions.act_window" id="action_landed_cost_guides">
             <field name="name">Landed Cost Guides</field>
             <field name="res_model">stock.landed.cost.guide</field>
