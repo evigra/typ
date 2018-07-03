@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<openerp>
-    <data>
+<odoo>
         <record model="res.groups" id="group_landed_guide_manager">
             <field name="name">Landed Cost Guide Manager</field>
             <field name="comment">This group is for Managers of Landed Cost Guides.
@@ -8,5 +7,4 @@
 They can:
 - Reset guides to Draft state.</field>
         </record>
-    </data>
-</openerp>
+</odoo>

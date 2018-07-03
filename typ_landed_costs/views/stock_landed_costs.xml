@@ -138,21 +138,4 @@
             parent="stock_landed_costs.menu_stock_landed_cost" name="Guides"
             sequence="10"
             action="action_landed_cost_guides"/>
-
-
-        <record id="stock_move_discrete_form" model="ir.ui.view">
-            <field name="name">stock.move.discrete.form</field>
-            <field name="model">stock.move</field>
-            <field name="inherit_id" ref="stock.view_move_picking_form"/>
-            <field name="arch" type="xml">
-                <xpath expr='//field[@name="string_availability_info"]' position='after'>
-                    <field name="discrete_ids">
-                        <tree string="Discrete">
-                            <field name="segmentation_cost" readonly="True"/>
-                            <field name="cost" readonly="True"/>
-                        </tree>
-                    </field>
-                </xpath>
-            </field>
-        </record>
 </odoo>
