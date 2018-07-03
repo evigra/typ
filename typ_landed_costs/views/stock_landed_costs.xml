@@ -1,6 +1,5 @@
 <?xml version='1.0' encoding='utf-8' ?>
-<openerp>
-    <data>
+<odoo>
         <!-- Guide Form View -->
         <record id="guide_form_view" model="ir.ui.view">
             <field name="name">stock.landed.cost.guide.form</field>
@@ -26,7 +25,7 @@
                         <field name="state" widget="statusbar"/>
                     </header>
                     <sheet string="Guide">
-                        <div class="oe_right oe_button_box" name="buttons">
+                        <div class="oe_button_box" name="buttons">
                             <button
                                 type="object"
                                 string="Stock Accruals"
@@ -64,7 +63,6 @@
                                     <field name="invoiced" readonly='True'/>
                                     <field name="company_id"/>
                                     <field name="move_id"/>
-                                    <field name="period_id"/>
                                 </group>
                             </page>
                         </notebook>
@@ -131,15 +129,16 @@
             </field>
         </record>
         <!-- Inherited Landed Cost Form View -->
+
         <record id="main_form_view" model="ir.ui.view">
             <field name="name">stock.landed.cost.form</field>
             <field name="model">stock.landed.cost</field>
             <field
                 name="inherit_id"
-                ref="stock_landed_costs_average.view_stock_landed_cost_form"
+                ref="stock_landed_costs.view_stock_landed_cost_form"
                 />
             <field name="arch" type="xml">
-            <xpath expr='//field[@name="invoice_ids"]' position='after'>
+            <xpath expr='//field[@name="picking_ids"]' position='after'>
                 <field
                     name="guide_ids"
                     widget="many2many_tags"
@@ -147,17 +146,13 @@
                         ('state', '!=', 'draft'),
                     ]"
                     />
-                <field
-                    name="exchange_landed_ids"
-                    widget="many2many_tags"
-                    readonly="1"
-                    />
             </xpath>
             <xpath expr='//field[@name="cost_line_id"]' position='after'>
                 <field name="picking_id" readonly="True"/>
             </xpath>
             </field>
         </record>
+
         <record model="ir.actions.act_window" id="action_landed_cost_guides">
             <field name="name">Landed Cost Guides</field>
             <field name="res_model">stock.landed.cost.guide</field>
@@ -165,25 +160,7 @@
         </record>
         <menuitem
             id="menu_landed_cost_guides"
-            parent="stock_landed_costs.menu_stock_landed_cost_main" name="Guides"
+            parent="stock.menu_stock_warehouse_mgmt" name="Guides"
             sequence="10"
             action="action_landed_cost_guides"/>
-
-
-        <record id="stock_move_discrete_form" model="ir.ui.view">
-            <field name="name">stock.move.discrete.form</field>
-            <field name="model">stock.move</field>
-            <field name="inherit_id" ref="stock.view_move_picking_form"/>
-            <field name="arch" type="xml">
-                <xpath expr='//field[@name="quant_ids"]' position='after'>
-                    <field name="discrete_ids">
-                        <tree string="Discrete">
-                            <field name="segmentation_cost" readonly="True"/>
-                            <field name="cost" readonly="True"/>
-                        </tree>
-                    </field>
-                </xpath>
-            </field>
-        </record>
-    </data>
-</openerp>
+</odoo>

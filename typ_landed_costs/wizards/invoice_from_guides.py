@@ -54,7 +54,7 @@ class InvoiceFromGuides(models.TransientModel):
             'partner_id': partner.id,
             'date_invoice': self.date_invoice,
             'type': 'in_invoice',
-            'account_id': partner.property_account_payable.id,
+            'account_id': partner.property_account_payable_id.id,
             'currency_id': currency.id}
         if self.journal_id:
             invoice_dict.update({'journal_id': self.journal_id.id})
@@ -72,11 +72,7 @@ class InvoiceFromGuides(models.TransientModel):
                 'name': line.product_id.name,
                 'account_id': account_line.id,
                 'quantity': 1.0,
-                'uos_id': line.product_id.uom_id.id,
                 'price_unit': line.cost,
-                'invoice_line_tax_id': [
-                    (6, 0,
-                     [tax.id for tax in line.product_id.supplier_taxes_id])],
                 'invoice_id': invoice.id,
                 'guide_line_id': line.id,
             })

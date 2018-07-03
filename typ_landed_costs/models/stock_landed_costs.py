@@ -1,12 +1,9 @@
 # -*- coding: utf-8 -*-
 
 from __future__ import division
-from datetime import timedelta
 from openerp import api, fields, models, _
-from openerp.exceptions import Warning as UserError
 from openerp.exceptions import except_orm, ValidationError
 import openerp.addons.decimal_precision as dp
-from openerp.tools import float_is_zero, float_round
 
 
 class StockLandedGuides (models.Model):
@@ -103,12 +100,6 @@ class StockLandedGuides (models.Model):
         ' it again, it will not create a new Journal Entry Sequence, it will'
         ' use always the same'
     )
-    period_id = fields.Many2one(
-        'account.period',
-        string='Period',
-        copy=False,
-        help="Guide period",
-        readonly=True)
     state = fields.Selection(
         [('draft', 'Draft'),
          ('valid', 'Valid'),
@@ -116,8 +107,7 @@ class StockLandedGuides (models.Model):
         string='Status',
         default='draft',
         help='Guide status')
-    invoiced = fields.Boolean(string='Invoiced',
-                              help='When the guide has been invoiced, this'
+    invoiced = fields.Boolean(help='When the guide has been invoiced, this'
                               ' field is True, otherwise False')
     invoice_id = fields.Many2one('account.invoice', string='Invoice',
                                  help='Refers the invoice related whit'
@@ -220,19 +210,13 @@ class StockLandedGuides (models.Model):
                 continue
             ctx = dict(self._context, lang=guide_brw.partner_id.lang)
             journal = guide_brw.journal_id.with_context(ctx)
-            if journal.centralisation:
-                raise except_orm(
-                    _('User Error!'),
-                    _('You cannot create a guide on a centralized journal.'
-                      ' Uncheck the centralized counterpart box in the related'
-                      ' journal from the configuration menu.'))
 
             if not guide_brw.date:
                 guide_brw.with_context(ctx).write(
                     {'date': fields.Date.context_today(self)})
             date = guide_brw.date
 
-            ref = guide_brw.reference or guide_brw.name,
+            ref = guide_brw.reference or guide_brw.name
             company_currency = guide_brw.company_id.currency_id
             gml = self.env['stock.landed.cost.guide.line'].move_line_get(
                 self.id)
@@ -248,7 +232,7 @@ class StockLandedGuides (models.Model):
             line = guide_brw.finalize_guide_move_lines(line)
             move_vals = {
                 'ref': guide_brw.reference or guide_brw.name,
-                'line_id': line,
+                'line_ids': line,
                 'journal_id': journal.id,
                 'date': date,
                 'company_id': guide_brw.company_id.id,
@@ -256,22 +240,13 @@ class StockLandedGuides (models.Model):
             if guide_brw.account_move_name:
                 move_vals['name'] = guide_brw.account_move_name
             ctx['company_id'] = guide_brw.company_id.id
-            period = guide_brw.period_id.with_context(ctx).find(date)[:1]
-            if period:
-                move_vals['period_id'] = period.id
-                for i in line:
-                    i[2]['period_id'] = period.id
 
             ctx_nolang = ctx.copy()
             ctx_nolang.pop('lang', None)
             move = account_move.with_context(ctx_nolang).create(move_vals)
 
             # make the guide point to that move
-            vals = {
-                'move_id': move.id,
-                'period_id': period.id,
-            }
-            guide_brw.with_context(ctx).write(vals)
+            guide_brw.with_context(ctx).write({'move_id': move.id})
             # Pass guide in context in method post: used if you want to get
             # the same
             # account move reference when creating the same guide after a
@@ -307,13 +282,10 @@ class StockLandedGuides (models.Model):
             'debit': line['price'] > 0 and line['price'],
             'credit': line['price'] < 0 and -line['price'],
             'account_id': line['account_id'],
-            'analytic_lines': line.get('analytic_lines', []),
             'amount_currency': line['price'] > 0 and abs(
                 line.get('amount_currency', False)) or -abs(
                     line.get('amount_currency', False)),
             'currency_id': line.get('currency_id', False),
-            'tax_code_id': line.get('tax_code_id', False),
-            'tax_amount': line.get('tax_amount', False),
             'ref': line.get('ref', False),
             'quantity': line.get('quantity', 1.00),
             'product_id': line.get('product_id', False),
@@ -381,8 +353,8 @@ class StockLandedGuidesLine (models.Model):
         """Returns the ID for the 'stock_account_input' of the current line
         product"""
         product_tmpl = self.product_id.product_tmpl_id
-        accounts = product_tmpl.get_product_accounts(product_tmpl.id)
-        return accounts['stock_account_input']
+        accounts = product_tmpl.get_product_accounts()
+        return accounts['stock_input']
 
     @api.model
     def move_line_get(self, guide_id):
@@ -396,7 +368,7 @@ class StockLandedGuidesLine (models.Model):
             # Reverse entry line for the input account
             credit = debit.copy()
             credit.update({
-                'account_id': line.product_stock_account_in(),
+                'account_id': line.product_stock_account_in().id,
                 'price': credit['price'] * -1,
                 'guide_line_id': line.id,
             })
@@ -405,7 +377,7 @@ class StockLandedGuidesLine (models.Model):
 
     @api.model
     def move_line_get_item(self, line):
-        account = line.product_id.categ_id.property_account_expense_categ
+        account = line.product_id.categ_id.property_account_expense_categ_id
         return {
             'type': 'src',
             'name': line.product_id.name.split('\n')[0][:64],
@@ -413,7 +385,6 @@ class StockLandedGuidesLine (models.Model):
             'account_id': account.id,
             'price': line.cost,
             'product_id': line.product_id.id,
-            'uos_id': line.product_id.uos_id.id,
         }
 
 
@@ -427,467 +398,11 @@ class StockLandedCost(models.Model):
         help='Guides which contain items to be used as landed costs',
         copy=False)
 
-    exchange_landed_ids = fields.Many2many(
-        'stock.landed.cost',
-        'adjust_landed_import_landed_rel'
-        'main_landed_id',
-        'adjust_landed_id',
-        copy=False,
-        string='Exchange Differential Adjust',
-        help='Landed created to adjust '
-        'the cost of the product by '
-        'exchange differential')
-
-    def adjust_exchange_rate(method):
-        """Method used like decorator to choose method depending of the object
-        sent at the moment to do the adjustments
-        """
-        def wrapper(self, *args, **kwargs):
-            model = args and args[0]
-            move_lines = self.env['stock.move']
-            vals = {
-                'stock.picking': ('move_lines',),
-                'account.invoice': ('invoice_line', 'move_id'),
-                'account.move': ('line_id', 'sm_id'),
-                'account.move.line': ('sm_id', 0, 0),
-                'stock.move': ()
-            }
-            if model._name not in vals:
-                raise UserError('Not implement yet for this model %s'
-                                % model._name)
-            val = vals[model._name]
-            move_lines += (
-                len(val) == 0 and model or
-                len(val) == 1 and model[val[0]] or
-                len(val) == 2 and model[val[0]].mapped(val[1]) or
-                len(val) == 3 and model.mapped(val[0]) or
-                self.env['stock.move']
-                )
-
-            return method(self, move_lines, args[1])
-        return wrapper
-
-    @api.model
-    def _get_result_diff_rate(self, line, date, days=0):
-        """When the partner is foreign is needed compute the debit of the
-        journal items but using a rate of a date ago
-
-        :param move_lines: Move that we need to adjust to set the correct cost
-        in the products with the real rate
-        :type move_lines: recordset
-        :param date: Date to compute the real cost with the correct rate
-        :type date: str
-        :param days: Number of day that we need to reduce the date sent to
-        compute the rate
-        :type days: int
-        :return The new total compute with the needed date
-        :rtype float
-        """
-        precision_obj = self.env['decimal.precision'].precision_get('Account')
-        new_date = (fields.Date.from_string(date) -
-                    timedelta(days=days))
-        currency_obj = self.env['res.currency']
-        currency_obj = currency_obj.with_context({'date': new_date})
-        from_currency = line.purchase_line_id.order_id.currency_id
-        to_currency = self.env.user.company_id.currency_id
-        price_unit = (line.purchase_line_id.price_unit * line.product_qty)
-        new_total = (line.product_id and price_unit and
-                     currency_obj._compute(from_currency, to_currency,
-                                           price_unit) or 0)
-        return float_round(new_total, precision_digits=precision_obj)
-
-    @api.model
-    def _get_landed_values(self, diff, picking, journal, date):
-        """Generate dict with the values needed for create the landed to adjust costs
-
-        :param picking: Picking that generated the invoice
-        :type picking: recordset
-        :param diff: Value to adjust
-        :type diff: float
-        :param date: Date of the document to create
-        :type date: str
-
-        :return Values for the new landed
-        :rtype dict
-        """
-        product = self.env.ref('typ_landed_costs.'
-                               'landed_exchange_differential_product')
-        account = (diff > 0 and
-                   self.env.user.company_id.
-                   income_currency_exchange_account_id or
-                   self.env.user.company_id.
-                   expense_currency_exchange_account_id)
-        if not account:
-            raise UserError(_('Insufficient Configuration!'),
-                            _("You should configure the 'Exchange Rate "
-                              "Account' in the accounting settings, "
-                              "to manage automatically the booking "
-                              "of accounting entries related to "
-                              "differences between exchange rates."))
-        cost_line = {
-            'product_id': product.id,
-            'name': product.name,
-            'account_id': account.id,
-            'split_method': 'by_current_cost_price',
-            'price_unit': diff,
-            'segmentation_cost': 'material_cost'
-
-        }
-        values = {
-            'date': date,
-            'account_journal_id': journal,
-            'picking_ids': [(4, picking.id)],
-            'cost_lines': [(0, 0,
-                            cost_line)]
-        }
-        return values
-
-    @adjust_exchange_rate
-    @api.model
-    def adjust_cost_for_exchange_differential(self, move_lines, date):
-        """Overwritten to create a new landed to update the valuation of the
-        products using the rate according to the date invoice.
-        If the partner is foreign the date used will be a day before invoice
-        data at the moment to validate it
-
-        :return The landed created to adjust the costs
-        :rtype stock.landed.cost()
-        """
-        precision_obj = self.env['decimal.precision'].precision_get('Account')
-        total_in_move = 0
-        diff = 0
-        picking = move_lines and move_lines[0].picking_id
-        filtered_moves = move_lines.filtered(lambda a:
-                                             a.product_id.
-                                             cost_method == 'average' and
-                                             a.product_id.
-                                             valuation == 'real_time')
-        for line in filtered_moves:
-            total_in_move += sum([aml.debit for aml in line.aml_all_ids])
-            diff += self._get_result_diff_rate(line, date)
-
-        total_diff = (diff - total_in_move)
-
-        if float_is_zero(total_diff, precision_obj):
-            return self.env['stock.landed.cost']
-
-        journal = aml.journal_id.section_id.journal_landed_id.id
-        landed_values = self._get_landed_values(total_diff,
-                                                picking, journal, date)
-        landed_id = self.create(landed_values)
-        landed_id.compute_landed_cost()
-        landed_id.button_validate()
-
-        return landed_id
-
-    @api.model
-    def _get_discrete_values(self, line_id, diff):
-        return {
-            'move_id': line_id.move_id.id,
-            'cost': diff,
-            'segmentation_cost': line_id.cost_line_id.segmentation_cost}
-
-    @api.model
-    def create_discrete_quant(self, line_id, diff):
-        discrete_obj = self.env['stock.discrete']
-        vals = self._get_discrete_values(line_id, diff)
-        discrete_obj.create(vals)
-
-    @api.multi
-    def get_valuation_lines(self, picking_ids=None):
-        """It returns product valuations based on picking's moves
-        """
-        picking_obj = self.env['stock.picking']
-        lines = []
-        if not picking_ids and not self.move_ids:
-            return lines
-
-        # NOTE: Now it is valid for all costing methods available
-        move_ids = [
-            move_id
-            for picking in picking_obj.browse(picking_ids)
-            for move_id in picking.move_lines
-            if move_id.product_id.valuation == 'real_time' and
-            move_id.state == 'done' and move_id.product_uom_qty > 0.0
-        ]
-
-        move_ids += [
-            move_id
-            for move_id in self.move_ids
-            if move_id.product_id.valuation == 'real_time'
-        ]
-
-        for move in move_ids:
-            quants = [quant for quant in move.quant_ids]
-            ds_obj = self.env['stock.discrete']
-            for qnt in quants:
-                for move2 in qnt.history_ids:
-                    if move2.date > move.date:
-                        continue
-                    if move2.discrete_ids:
-                        ds_obj += move2.discrete_ids
-            # /!\ NOTE: Normalize this computation
-            total_cost = sum([
-                sd.cost * move.product_qty for sd in set(ds_obj)])
-
-            # total_qty = move.product_qty
-            weight = move.product_id and \
-                move.product_id.weight * move.product_qty
-            volume = move.product_id and \
-                move.product_id.volume * move.product_qty
-            for quant in move.quant_ids:
-                total_cost += quant.cost * quant.qty
-            vals = dict(
-                product_id=move.product_id.id,
-                move_id=move.id,
-                quantity=move.product_qty,
-                former_cost=total_cost,
-                weight=weight,
-                volume=volume,
-                picking_id=move.picking_id.id)
-            lines.append(vals)
-        if not lines:
-            raise except_orm(
-                _('Error!'),
-                _('The selected picking does not contain any move that would '
-                  'be impacted by landed costs. Landed costs are only possible'
-                  ' for products configured in real time valuation. Please '
-                  'make sure it is the case, or you selected the correct '
-                  'picking.'))
-        return lines
-
-    @api.multi
-    def button_validate_segmentation(self):
-        self.ensure_one()
-        quant_obj = self.env['stock.quant']
-        # ctx = dict(self._context)
-
-        for cost in self:
-            if cost.state != 'draft':
-                raise UserError(
-                    _('Only draft landed costs can be validated'))
-            if not cost.valuation_adjustment_lines or \
-                    not self._check_sum(cost):
-                raise UserError(
-                    _('You cannot validate a landed cost which has no valid '
-                      'valuation adjustments lines. Did you click on '
-                      'Compute?'))
-
-            if not all([cl.segmentation_cost for cl in cost.cost_lines]):
-                raise UserError(
-                    _('Please fill the segmentation field in Cost Lines'))
-
-            quant_dict = {}
-            for line in cost.valuation_adjustment_lines:
-                if not line.move_id or \
-                        line.move_id.location_id.usage == 'internal':
-                    continue
-
-                create = False
-                if line.move_id.location_id.usage not in (
-                        'supplier', 'inventory', 'production'):
-                    create = True
-
-                segment = line.cost_line_id.segmentation_cost
-                per_unit = line.final_cost / line.quantity
-                diff = per_unit - line.former_cost_per_unit
-
-                if create:
-                    continue
-
-                for quant in line.move_id.quant_ids:
-                    if quant.id not in quant_dict:
-                        quant_dict[quant.id] = {}
-                        quant_dict[quant.id][segment] = getattr(
-                            quant, segment) + diff
-                    else:
-                        if segment not in quant_dict[quant.id]:
-                            quant_dict[quant.id][segment] = getattr(
-                                quant, segment) + diff
-                        else:
-                            quant_dict[quant.id][segment] += diff
-
-            for key, pair in quant_dict.items():
-                quant_obj.sudo().browse(key).write(pair)
-
-    @api.multi
-    # disable=zip-builtin-not-iterating, too-complex
-    # pylint: disable=all
-    def button_validate(self):
-        """Inherited to add a validation message"""
-        self.ensure_one()
-        precision_obj = self.pool.get('decimal.precision').precision_get(
-            self._cr, self._uid, 'Account')
-        quant_obj = self.env['stock.quant']
-        template_obj = self.pool.get('product.template')
-        scp_obj = self.env['stock.card.product']
-        get_average = scp_obj.get_average
-        stock_card_move_get = scp_obj._stock_card_move_get
-        draft_guides = self.env['stock.landed.cost.guide']
-        ctx = dict(self._context)
-
-        for landed in self:
-            draft_guides += landed.guide_ids.filtered(
-                lambda dat: 'draft' in dat.state)
-        msj = ""
-        for guide in draft_guides:
-            msj += _("\n- Check '%s' into '%s'") % (
-                guide.name, guide.landed_cost_id.name)
-        if draft_guides:
-            raise ValidationError(
-                _('Only valid guides can be added to a landed cost') + msj)
-
-        self.button_validate_segmentation()
-
-        for cost in self:
-            if cost.state != 'draft':
-                raise UserError(
-                    _('Only draft landed costs can be validated'))
-            if not cost.valuation_adjustment_lines or \
-                    not self._check_sum(cost):
-                raise UserError(
-                    _('You cannot validate a landed cost which has no valid '
-                      'valuation adjustments lines. Did you click on '
-                      'Compute?'))
-
-            move_id = self._model._create_account_move(
-                self._cr, self._uid, cost, context=ctx)
-            prod_dict = {}
-            init_avg = {}
-            first_lines = {}
-            first_card = {}
-            last_lines = {}
-            prod_qty = {}
-            acc_prod = {}
-            quant_dict = {}
-            for line in cost.valuation_adjustment_lines:
-                if not line.move_id or \
-                        line.move_id.location_id.usage == 'internal':
-                    continue
-
-                create = False
-                if line.move_id.location_id.usage not in (
-                        'supplier', 'inventory', 'production'):
-                    create = True
-
-                product_id = line.product_id
-
-                if product_id.id not in acc_prod:
-                    acc_prod[product_id.id] = \
-                        template_obj.get_product_accounts(
-                        self._cr, self._uid, product_id.product_tmpl_id.id,
-                        context=ctx)
-
-                if product_id.cost_method == 'standard':
-                    self._create_standard_deviation_entries(
-                        line, move_id, acc_prod)
-                    continue
-
-                if product_id.cost_method == 'average':
-                    if product_id.id not in prod_dict:
-                        first_card = stock_card_move_get(product_id.id)
-                        prod_dict[product_id.id] = get_average(first_card)
-                        first_lines[product_id.id] = first_card['res']
-                        init_avg[product_id.id] = product_id.standard_price
-                        prod_qty[product_id.id] = first_card['product_qty']
-
-                per_unit = line.final_cost / line.quantity
-                diff = per_unit - line.former_cost_per_unit
-                quants = [quant for quant in line.move_id.quant_ids]
-                if not create:
-                    for quant in quants:
-                        if quant.id not in quant_dict:
-                            quant_dict[quant.id] = quant.cost + diff
-                        else:
-                            quant_dict[quant.id] += diff
-                else:
-                    self.create_discrete_quant(line, diff)
-
-                qty_out = 0
-                for quant in line.move_id.quant_ids:
-                    if quant.location_id.usage != 'internal':
-                        qty_out += quant.qty
-
-                if product_id.cost_method == 'average':
-                    # /!\ NOTE: Inventory valuation
-                    self._create_landed_accounting_entries(
-                        line, move_id, 0.0, acc_prod)
-
-                if product_id.cost_method == 'real':
-                    self._create_landed_accounting_entries(
-                        line, move_id, qty_out, acc_prod)
-
-            for key, value in quant_dict.items():
-                quant_obj.sudo().browse(key).write(
-                    {'cost': value})
-
-            # /!\ NOTE: This new update is taken out of for loop to improve
-            # performance
-            for prod_id in prod_dict:
-                last_card = stock_card_move_get(prod_id)
-                prod_dict[prod_id] = get_average(last_card)
-                last_lines[prod_id] = last_card['res']
-
-            # /!\ NOTE: COGS computation
-            # NOTE: After adding value to product with landing cost products
-            # with costing method `average` need to be check in order to
-            # find out the change in COGS in case of sales were performed prior
-            # to landing costs
-            to_cogs = {}
-            for prod_id in prod_dict:
-                to_cogs[prod_id] = zip(
-                    first_lines[prod_id], last_lines[prod_id])
-            for prod_id in to_cogs:
-                fst_avg = 0.0
-                lst_avg = 0.0
-                ini_avg = init_avg[prod_id]
-                diff = 0.0
-                for tpl in to_cogs[prod_id]:
-                    first_line = tpl[0]
-                    last_line = tpl[1]
-                    fst_avg = first_line['average']
-                    lst_avg = last_line['average']
-                    if first_line['qty'] >= 0:
-                        # /!\ TODO: This is not true for devolutions
-                        continue
-
-                    # NOTE: Rounding problems could arise here, this needs to
-                    # be checked
-                    diff += (lst_avg - fst_avg) * abs(first_line['qty'])
-                if not float_is_zero(diff, precision_obj):
-                    self._create_cogs_accounting_entries(
-                        prod_id, move_id, diff, acc_prod)
-
-                # TODO: Compute deviation
-                diff = 0.0
-                if prod_qty[prod_id] and fst_avg != ini_avg and \
-                        lst_avg != ini_avg:
-                    diff = (fst_avg - ini_avg) * prod_qty[prod_id]
-                    if not float_is_zero(diff, precision_obj):
-                        self._create_deviation_accounting_entries(
-                            move_id, prod_id, diff, acc_prod)
-
-            # TODO: Write latest value for average
-            cost.compute_average_cost(prod_dict)
-
-            cost.write(
-                {'state': 'done', 'account_move_id': move_id})
-
-            # Post the account move if the journal's auto post true
-            move_obj = self.env['account.move'].browse(move_id)
-            if move_obj.journal_id.entry_posted:
-                move_obj.post()
-                move_obj.validate()
-
-        return True
-
-    @api.onchange('invoice_ids', 'guide_ids')
-    def onchange_invoice_ids(self):
+    @api.onchange('guide_ids')
+    def onchange_guide_ids(self):
         """Inherited from stock.landed.costs in oder to add the logic necessary
         to update the list with the elements extracted when guides are
         added/removed"""
-        # We first load products from invoices calling super()
-        res = super(StockLandedCost, self).onchange_invoice_ids()
         company_currency = self.env.user.company_id.currency_id
         for landed_cost in self:
             lines = landed_cost.cost_lines.mapped('id')
@@ -895,7 +410,8 @@ class StockLandedCost(models.Model):
             for guide in landed_cost.guide_ids:
                 for line in guide.line_ids:
                     product = line.product_id
-                    account = product.categ_id.property_account_expense_categ
+                    account = (product.categ_id.
+                               property_account_expense_categ_id)
                     diff_currency = guide.currency_id != company_currency
                     cost = line.cost
                     if diff_currency:
@@ -912,34 +428,19 @@ class StockLandedCost(models.Model):
                     }))
             if lines:
                 landed_cost.update({'cost_lines': lines})
-        return res
-
-    def lcost_from_inv_line(self, inv_line):
-        """Inherited from stock_landed_cost_average to set default value of
-        segmentation_cost field to 'landed_cost', add default value to split
-        method"""
-        res = super(StockLandedCost, self). lcost_from_inv_line(inv_line)
-        res.update({
-            'segmentation_cost': 'landed_cost',
-            'split_method': 'by_current_cost_price',
-        })
-        return res
 
 
 class StockLandedCostLines(models.Model):
     _inherit = 'stock.landed.cost.lines'
 
-    segmentation_cost = fields.Selection(default='landed_cost')
     split_method = fields.Selection(default="by_current_cost_price")
 
+    # TODO: Verify the correct behavior
     @api.onchange('product_id')
-    @api.v7
-    def onchange_product_id(self, cr, uid, ids, product_id=False,
-                            context=None):
+    def onchange_product_id(self):
         # We first load products calling super() method.
-        res = super(StockLandedCostLines, self).onchange_product_id(
-            cr, uid, ids, product_id, context=context)
-        res['value'].update({'split_method': 'by_current_cost_price'})
+        res = super(StockLandedCostLines, self).onchange_product_id()
+        self.split_method = 'by_current_cost_price'
         return res
 
 

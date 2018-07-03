@@ -48,8 +48,8 @@ class TestCreateInvoiceFromGuides(TestTypLandedCosts):
         res = self.wizard_create_invoice.with_context(context).create_invoice()
         self.assertIn('res_id', res)
         invoice = self.env['account.invoice'].browse(res['res_id'])
-        self.assertEqual(len(invoice.invoice_line), 2)
-        products = invoice.invoice_line.mapped('product_id')
+        self.assertEqual(len(invoice.invoice_line_ids), 2)
+        products = invoice.invoice_line_ids.mapped('product_id')
         self.assertIn(self.product_1, products)
         self.assertIn(self.product_2, products)
 
