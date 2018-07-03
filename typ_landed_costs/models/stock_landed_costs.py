@@ -410,7 +410,8 @@ class StockLandedCost(models.Model):
             for guide in landed_cost.guide_ids:
                 for line in guide.line_ids:
                     product = line.product_id
-                    account = product.categ_id.property_account_expense_categ
+                    account = (product.categ_id.
+                               property_account_expense_categ_id)
                     diff_currency = guide.currency_id != company_currency
                     cost = line.cost
                     if diff_currency:
