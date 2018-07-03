@@ -8,11 +8,12 @@
     'website': 'http://www.vauxoo.com',
     'license': 'AGPL-3',
     'category': 'Installer',
-    'version': '11.0.0.2',
+    'version': '11.0.0.0.2',
     'depends': [
         'l10n_mx_pos_cogs',
         'l10n_mx_edi_pos',
         'l10n_mx_edi_hr_expense',
+        'typ_landed_costs',
         # 'account_aged_partner_balance_vw',
         # 'account_asset',
         # 'account_budget',
