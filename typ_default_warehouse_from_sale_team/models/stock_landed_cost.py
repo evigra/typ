@@ -9,7 +9,7 @@ class StockLandedCost(models.Model):
 
     @api.multi
     def _get_account_journal_id(self):
-        sale_team = self.env.user.default_section_id
+        sale_team = self.env.user.sale_team_id
         return sale_team.journal_landed_id.id
 
     account_journal_id = fields.Many2one(

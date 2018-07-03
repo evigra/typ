@@ -5,10 +5,11 @@
     'website': "http://www.vauxoo.com",
     'license': 'LGPL-3',
     'category': '',
-    'version': '8.0.1.0.0',
+    'version': '11.0.0.0.1',
 
     'depends': [
         'typ_landed_costs',
+        'default_warehouse_from_sale_team',
     ],
 
     'data': [
@@ -16,4 +17,5 @@
     ],
     'demo': [
     ],
+    'installable': True
 }

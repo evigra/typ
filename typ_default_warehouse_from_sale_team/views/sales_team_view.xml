@@ -1,11 +1,10 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<openerp>
-    <data>
+    <odoo>
 
        <record model="ir.ui.view" id="view_typ_default_warehouse_from_sale_team_form">
             <field name="name">typ.default.warehouse.from.sale.team.form</field>
-            <field name="model">crm.case.section</field>
-            <field name="inherit_id" ref="default_warehouse_from_sale_team.view_crm_case_section_form_inherit"/>
+            <field name="model">crm.team</field>
+            <field name="inherit_id" ref="default_warehouse_from_sale_team.view_crm_team_form_inherit"/>
             <field name="arch" type="xml">
                 <xpath expr="//group[@name='conf_journal']" position="inside">
                     <field name="journal_guide_id" modifiers="{}"/>
@@ -18,5 +17,4 @@
             </field>
         </record>
 
-    </data>
-</openerp>
+    </odoo>

@@ -5,7 +5,7 @@ from openerp import fields, models
 
 class CrmCaseSection(models.Model):
 
-    _inherit = "crm.case.section"
+    _inherit = "crm.team"
 
     journal_guide_id = fields.Many2one(
         'account.journal', 'Journal landed cost guide',

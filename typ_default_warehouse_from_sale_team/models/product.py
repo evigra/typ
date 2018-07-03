@@ -10,7 +10,7 @@ class ProductTemplate(models.Model):
     @api.model
     def get_product_accounts(self, product_id):
         location_obj = self.env['stock.location']
-        sale_team_obj = self.env['crm.case.section']
+        sale_team_obj = self.env['crm.team']
 
         res = super(ProductTemplate, self).get_product_accounts(product_id)
 
