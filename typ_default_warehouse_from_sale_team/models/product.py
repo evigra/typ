@@ -7,12 +7,12 @@ class ProductTemplate(models.Model):
 
     _inherit = "product.template"
 
-    @api.model
-    def get_product_accounts(self, product_id):
+    @api.multi
+    def get_product_accounts(self, fiscal_pos=None):
         location_obj = self.env['stock.location']
         sale_team_obj = self.env['crm.team']
 
-        res = super(ProductTemplate, self).get_product_accounts(product_id)
+        res = super(ProductTemplate, self).get_product_accounts(fiscal_pos)
 
         loc_id = self._context.get('location')
         if loc_id:
