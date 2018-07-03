@@ -15,7 +15,7 @@ class TestDefaultJournalLanded(TestTypSaleTeam):
             'journal_landed_id': self.journal_landed.id, })
         self.user.write({
             'sale_team_ids': [(6, 0, [self.sale_team.id])],
-            'default_section_id': self.sale_team.id, })
+            'sale_team_id': self.sale_team.id, })
         landed_cost = self.env['stock.landed.cost'].sudo(self.user).create(
             self.landed_dict_vals)
         self.assertEqual(landed_cost.account_journal_id,

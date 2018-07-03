@@ -9,7 +9,7 @@ class StockLandedCostGuides(models.Model):
 
     @api.multi
     def _get_landed_cost_warehouse_id(self):
-        sale_team = self.env.user.default_section_id
+        sale_team = self.env.user.sale_team_id
         return sale_team.default_warehouse.id
 
     @api.onchange('warehouse_id')
@@ -19,7 +19,7 @@ class StockLandedCostGuides(models.Model):
         warehouse = self.warehouse_id.id
         res = {}
         if warehouse:
-            journal_id = self.env['crm.case.section'].search([
+            journal_id = self.env['crm.team'].search([
                 ('default_warehouse', '=', warehouse)]).journal_guide_id
             self.journal_id = journal_id
         return res
