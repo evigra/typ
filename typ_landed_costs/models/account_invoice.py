@@ -7,8 +7,8 @@ class AccountInvoice(models.Model):
     _inherit = "account.invoice"
 
     @api.model
-    def line_get_convert(self, line, part, date):
-        res = super(AccountInvoice, self).line_get_convert(line, part, date)
+    def line_get_convert(self, line, part):
+        res = super(AccountInvoice, self).line_get_convert(line, part)
         res['guide_line_id'] = line.get('guide_line_id', False)
         return res
 

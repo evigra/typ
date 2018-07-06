@@ -10,7 +10,7 @@
                 <xpath expr="//label[@for='currency_id']" position="before">
                     <field name="type_payment_term" attrs="{'readonly': [('state', '!=', 'draft')],'required': [('state', '=', 'draft')],}"/>
                 </xpath>
-                <xpath expr="//field[@name='payment_term']" position="attributes">
+                <xpath expr="//field[@name='payment_term_id']" position="attributes">
                     <attribute name="groups" translation="off">typ_sale.group_sale_order_invoice_payment_term_manager</attribute>
                     <attribute name="required" translation="off">1</attribute>
                 </xpath>
