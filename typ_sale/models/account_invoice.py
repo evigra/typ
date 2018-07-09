@@ -16,19 +16,20 @@ class AccountInvoice(models.Model):
         """Get payment term depends on type payment term in invoice register.
         """
         acc_payment_term_obj = self.env['account.payment.term']
-        if self.partner_id:
-            if self.type_payment_term in ('cash', 'postdated_check'):
-                for payment_term in \
-                        acc_payment_term_obj.search([]):
-                    if payment_term.payment_type == 'cash':
-                        self.payment_term = payment_term.id
-                        break
-            else:
-                self.payment_term = self.partner_id.property_payment_term.id
-            if self.type_payment_term == 'credit' and \
-                    (not self.payment_term or
-                        self.payment_term.payment_type == 'cash'):
-                self.type_payment_term = 'cash'
-            elif self.type_payment_term in ('cash', 'postdated_check') and \
-                    self.payment_term.payment_type == 'credit':
-                self.type_payment_term = 'credit'
+        if not self.partner_id:
+            return
+
+        self.payment_term_id = self.partner_id.property_payment_term_id.id
+        if self.type_payment_term in ('cash', 'postdated_check'):
+            payment_term = acc_payment_term_obj.search([]).filtered(
+                lambda dat: dat.payment_type == 'cash')
+            self.payment_term_id = payment_term[0] if payment_term else False
+
+        if self.type_payment_term == 'credit' and (
+                not self.payment_term_id or
+                self.payment_term_id.payment_type == 'cash'):
+            self.type_payment_term = 'cash'
+
+        elif self.type_payment_term in ('cash', 'postdated_check') and \
+                self.payment_term_id.payment_type == 'credit':
+            self.type_payment_term = 'credit'

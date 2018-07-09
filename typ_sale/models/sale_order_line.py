@@ -51,18 +51,6 @@ class SaleOrderLine(models.Model):
         """
         return {'warning': self.check_margin_qty()}
 
-    def check_price_subtotal(self):
-        """Calculated price_subtotal based in base_price for onchange
-        """
-        tax_obj = self.env['account.tax']
-        cur = self.order_id.pricelist_id.currency_id
-        price = self._calc_line_base_price(self)
-        qty = self._calc_line_quantity(self)
-        taxes = tax_obj.compute_all(price, qty, self.product_id.id,
-                                    self.order_id.partner_id.id)
-        price_subtotal = cur.round(taxes['total'])
-        return price_subtotal
-
     def check_margin_qty(self, price_subtotal=False):
         """Verify quantity of margin minimum in sale order line for onchange.
         """
@@ -73,7 +61,7 @@ class SaleOrderLine(models.Model):
                 'typ_sale.res_group_can_sell_below_minimum_margin'):
             return
         if not price_subtotal:
-            price_subtotal = self.check_price_subtotal()
+            price_subtotal = self.price_subtotal
 
         if price_subtotal == 0 and not self.product_id:
             return
@@ -97,3 +85,14 @@ class SaleOrderLine(models.Model):
         margin_sale = (purchase_sale / price_subtotal) * 100
         if margin_sale < margin:
             return res
+
+
+class ProcurementRule(models.Model):
+    _inherit = 'procurement.rule'
+
+    def _make_po_get_domain(self, values, partner):
+        move = values.get('move_dest_ids')
+        if move and move.sale_line_id:
+            partner = move.sale_line_id.purchase_partner_id
+        res = super(ProcurementRule, self)._make_po_get_domain(values, partner)
+        return res

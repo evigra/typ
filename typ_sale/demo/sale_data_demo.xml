@@ -13,7 +13,7 @@
             <field name="name">Credit Payment Term</field>
         </record>
         <record id="typ_sale_payment_term_credit_line_procent" model="account.payment.term.line">
-            <field name="value">procent</field>
+            <field name="value">percent</field>
             <field name="payment_id" ref="typ_sale_payment_term_credit"/>
         </record>
         <record id="typ_sale_payment_term_credit_line_balance" model="account.payment.term.line">
@@ -22,14 +22,15 @@
         </record>
 
         <!-- Sale Team -->
-        <record id="sale_team_01" model="crm.case.section">
-            <field name="name">Sale team 01</field>
-            <field name="code">ST01</field>
-            <field name="default_warehouse" ref="typ_sale.wh_01"/>
-            <field name="journal_team_ids" eval="[(6, 0,
-                [ref('account.bank_journal'),
-                ref('account.sales_journal')])]"/>
-        </record>
+        <!-- add journal to data demo -->
+        <!-- <record id="sale_team_01" model="crm.team"> -->
+        <!--     <field name="name">Sale team 01</field> -->
+        <!--     <field name="code">ST01</field> -->
+        <!--     <field name="default_warehouse" ref="typ_sale.wh_01"/> -->
+        <!--     <field name="journal_team_ids" eval="[(6, 0, -->
+        <!--         [ref('account.bank_journal'), -->
+        <!--         ref('account.sales_journal')])]"/> -->
+        <!-- </record> -->
 
         <!-- Partner -->
         <record id="partner_01" model="res.partner">

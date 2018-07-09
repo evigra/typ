@@ -3,9 +3,9 @@
 from openerp import fields, models
 
 
-class CrmCaseSection(models.Model):
+class CrmTeam(models.Model):
 
-    _inherit = "crm.case.section"
+    _inherit = "crm.team"
 
     sale_phone = fields.Char(
         string="Phone",

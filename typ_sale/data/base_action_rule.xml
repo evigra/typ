@@ -2,13 +2,14 @@
 <openerp>
     <data noupdate="1">
 
-        <record id="automated_action_sell_below_minimum_margin" model="base.action.rule">
+        <record id="automated_action_sell_below_minimum_margin" model="base.automation">
             <field name="name">Sell below the minimum margin</field>
             <field name="model_id" model="ir.model" search="[('model', '=', 'sale.order.line')]"/>
             <field name="active">1</field>
             <field name="sequence">5</field>
-            <field name="kind">on_create_or_write</field>
-            <field name="server_action_ids" eval="[(6, 0, [ref('typ_sale.server_action_sell_below_minimum_margin')])]"/>
+            <field name="trigger">on_create_or_write</field>
+            <field name="state">code</field>
+            <field name="code">record.check_margin()</field>
         </record>
 
     </data>

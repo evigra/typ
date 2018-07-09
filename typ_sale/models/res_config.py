@@ -3,9 +3,9 @@
 from openerp import fields, models
 
 
-class SaleConfiguration(models.TransientModel):
+class ResConfiguration(models.TransientModel):
 
-    _inherit = 'sale.config.settings'
+    _inherit = 'res.config.settings'
 
     company_id = fields.Many2one(
         'res.company', string='Company', required=True,

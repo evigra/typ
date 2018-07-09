@@ -7,7 +7,7 @@
             <field name="model">crm.lead</field>
             <field name="inherit_id" ref="crm.crm_case_form_view_oppor"/>
             <field name="arch" type="xml">
-                <xpath expr="//field[@name='categ_ids']" position="attributes">
+                <xpath expr="//field[@name='tag_ids']" position="attributes">
                     <attribute name="required" translation="off">True</attribute>
                 </xpath>
             </field>
