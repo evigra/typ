@@ -14,13 +14,12 @@
     'author': 'Vauxoo',
     'website': 'http://www.vauxoo.com/',
     'category': 'Purchase',
-    'version': '8.0.0.1.0',
+    'version': '11.0.0.0.1',
 
     # any module necessary for this one to work correctly
     'depends': [
-        'purchase_double_validation',
         'purchase_requisition',
-        'typ_partner',
+        'typ_default_warehouse_from_sale_team',
     ],
 
     # always loaded
@@ -28,13 +27,12 @@
         'security/res_groups.xml',
         'security/ir.model.access.csv',
         'data/paperformat.xml',
-        'reports/layout.xml',
-        'reports/purchase_order.xml',
-        'reports/purchase_quotation.xml',
+        # 'reports/layout.xml',
+        # 'reports/purchase_order.xml',
+        # 'reports/purchase_quotation.xml',
         'views/purchase_view.xml',
         'views/partner_view.xml',
         'views/res_company_view.xml',
-        'data/purchase_double_validation_workflow.xml',
     ],
     # only loaded in demonstration mode
     'demo': [
