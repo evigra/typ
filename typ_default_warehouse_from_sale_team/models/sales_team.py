@@ -37,7 +37,7 @@ class ResPartner(models.Model):
 
     @api.model
     def _get_sale_pricelist_id(self):
-        sale_team = self.env.user.default_section_id
+        sale_team = self.env.user.sale_team_id
         return sale_team and sale_team.sale_pricelist_id.id
 
     pricelist_ids = fields.Many2many(

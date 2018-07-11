@@ -17,13 +17,13 @@
             <field name="model">purchase.order</field>
             <field name="inherit_id" ref="purchase.purchase_order_form"/>
             <field name="arch" type="xml">
-                <xpath expr="//button[@name='purchase_approve']" position="attributes">
+                <xpath expr="//button[@name='button_approve']" position="attributes">
                     <attribute name="groups" translation="off">purchase.group_purchase_manager,typ_purchase.purchase_group_approve_order_button</attribute>
                 </xpath>
                 <xpath expr="//field[@name='picking_type_id']" position="attributes">
                     <attribute name="domain" translation="off">[('code', '=', 'incoming'), ('default_location_src_id.usage', '=', 'supplier')]</attribute>
                 </xpath>
-                <field name="location_id" position="before">
+                <field name="picking_type_id" position="before">
                     <field name="broker_id"/>
                 </field>
             </field>
@@ -36,10 +36,10 @@
             <field name="inherit_id" ref="purchase.purchase_order_form"/>
             <field name="groups_id" eval="[(6, 0, [ref('typ_purchase.purchase_group_hidden_create_button')])]"/>
             <field name="arch" type="xml">
-                <xpath expr="//form[@string='Purchase Order']" position="attributes">
+                <xpath expr="//form" position="attributes">
                     <attribute name="create" translation="off">false</attribute>
                 </xpath>
-                <xpath expr="//button[@name='purchase_confirm']" position="attributes">
+                <xpath expr="//button[@name='button_confirm']" position="attributes">
                     <attribute name="invisible" translation="off">1</attribute>
                 </xpath>
             </field>
@@ -50,7 +50,7 @@
             <field name="inherit_id" ref="purchase.purchase_order_tree"/>
             <field name="groups_id" eval="[(6, 0, [ref('typ_purchase.purchase_group_hidden_create_button')])]"/>
             <field name="arch" type="xml">
-                <xpath expr="//tree[@string='Purchase Order']" position="attributes">
+                <xpath expr="//tree" position="attributes">
                     <attribute name="create" translation="off">false</attribute>
                 </xpath>
             </field>
@@ -64,7 +64,7 @@
             <xpath expr="//filter[@name='draft']" position="before">
                     <filter name="Orders" string="Orders" domain="[('state', '!=', 'cancel')]" context="{}"/>
             </xpath>
-                <xpath expr="//group[@string='Group By']" position="inside">
+                <xpath expr="//group" position="inside">
                     <filter string="State" domain="[]" context="{'group_by':'state'}"/>
                 </xpath>
             </field>
@@ -107,7 +107,7 @@
                 </field>
 
                 <xpath expr="//field[@name='origin']" position="attributes">
-                    <attribute name="attrs" translation="off">[]</attribute>
+                    <attribute name="attrs" translation="off"></attribute>
                 </xpath>
             </field>
         </record>
@@ -118,7 +118,7 @@
         <field name='inherit_id' ref='purchase.purchase_order_tree'/>
         <field name='type'>tree</field>
         <field name='arch' type='xml'>
-            <field name="minimum_planned_date" position="replace">
+            <field name="date_planned" position="replace">
             </field>
             <field name="name" position="after">
                 <field name="partner_ref"/>
@@ -126,7 +126,7 @@
             <field name="date_order" position="before">
                 <field name="create_date"/>
                 <field name="shipment_date"/>
-                <field name="minimum_planned_date"/>
+                <field name="date_planned"/>
             </field>
             <field name="date_order" position="replace">
                 <field name="date_order" invisible="1"/>
@@ -150,7 +150,7 @@
             <field name="model">purchase.order</field>
             <field name="inherit_id" ref="purchase.view_purchase_order_filter"/>
             <field name="arch" type="xml">
-                <xpath expr="//group[@string='Group By']" position="inside">
+                <xpath expr="//group" position="inside">
                     <filter string="Buyer" domain="[]" context="{'group_by':'buyer'}"/>
                 </xpath>
             </field>
@@ -161,7 +161,7 @@
             <field name="model">purchase.requisition</field>
             <field name="inherit_id" ref="purchase_requisition.view_purchase_requisition_form"/>
             <field name="arch" type="xml">
-               <button name="%(purchase_requisition.action_purchase_requisition_partner)d" position="attributes">
+               <button name="%(purchase_requisition.action_purchase_requisition_to_so)d" position="attributes">
                     <attribute name="groups" translation="off">typ_purchase.group_purchase_budget_manager</attribute>
                </button>
             </field>
