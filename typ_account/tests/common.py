@@ -9,15 +9,27 @@ class TestTypAccount(common.TransactionCase):
     def setUp(self):
         super(TestTypAccount, self).setUp()
         self.account_invoice = self.env['account.invoice']
-        self.sale_order = self.env['sale.order']
+        self.sale_order_model = self.env['sale.order']
         self.product = self.env.ref('product.product_product_6')
         self.partner = self.env.ref('typ_sale.partner_01')
         self.warehouse = self.env.ref('typ_sale.wh_01')
         self.warehouse_2 = self.env.ref('typ_stock.whr_test_01')
-        self.sale_team = self.env.ref('typ_sale.sale_team_01')
-        self.journal = self.env.ref("account.sales_journal")
-        self.journal_bank = self.env.ref("account.bank_journal")
-        self.account = self.env.ref("account.a_recv")
+        self.journal = self.journalrec = self.env['account.journal'].search(
+            [('type', '=', 'sale')], limit=1)
+        self.journal_bank = self.env['account.journal'].create(
+            {'name': 'Bank', 'type': 'bank', 'code': 'BNK67'})
+        self.sale_team = self.env['crm.team'].create({
+            'name': 'Sale team 01',
+            'default_warehouse': self.warehouse.id,
+            'journal_team_ids': [
+                (6, 0, [self.journal_bank.id, self.journal.id])]
+        })
+        self.account = self.env['account.account'].search(
+            [('user_type_id', '=', self.env.ref(
+                'account.data_account_type_receivable').id)], limit=1)
+        self.account_line_product = self.env['account.account'].search(
+            [('user_type_id', '=', self.env.ref(
+                'account.data_account_type_revenue').id)], limit=1)
         self.payment_term_credit = self.env.ref(
             'payment_term_type.payment_term_credit')
         self.payment_term_cash = self.env.ref(
@@ -26,24 +38,14 @@ class TestTypAccount(common.TransactionCase):
         self.acc_bank_stmt_model = self.env['account.bank.statement']
         self.acc_bank_stmt_line_model = self.env['account.bank.statement.line']
         self.pricelist = self.env.ref('product.list0')
-
-        # Create an invoice to have a pending payment
-        self.dict_vals = {
-            'partner_id': self.partner.id,
-            'account_id': self.account.id,
-            'payment_term': self.payment_term_credit.id,
-            'journal_id': self.journal.id,
-            'invoice_line': [
-                (0, 0,
-                 {'name': self.product.name, 'product_id': self.product.id,
-                  'quantity': 1, 'price_unit': 900, })], }
-        self.account_invoice_1 = self.account_invoice.create(self.dict_vals)
-        self.account_invoice_2 = self.account_invoice.create(self.dict_vals)
+        self.account_invoice_1 = self.create_invoice()
+        self.account_invoice_2 = self.create_invoice()
 
         self.dict_vals_sale = {
             'partner_id': self.partner.id,
             'partner_invoice_id': self.partner.id,
             'partner_shipping_id': self.partner.id,
+            'payment_term_id': self.payment_term_credit.id,
             'warehouse_id': self.warehouse.id,
             'pricelist_id': self.pricelist.id,
             'order_line': [
@@ -51,7 +53,22 @@ class TestTypAccount(common.TransactionCase):
                  {'name': self.product.name, 'product_id': self.product.id,
                   'product_uom_qty': 1, 'product_uom': self.product.uom_id.id,
                   'price_unit': 900, })], }
-        self.sale_order = self.sale_order.create(self.dict_vals_sale)
+        self.sale_order = self.sale_order_model.create(
+            self.dict_vals_sale.copy())
+
+    def create_invoice(self):
+        self.dict_vals = {
+            'partner_id': self.partner.id,
+            'account_id': self.account.id,
+            'payment_term_id': self.payment_term_credit.id,
+            'journal_id': self.journal.id,
+            'name': 'out_invoice',
+            'invoice_line_ids': [
+                (0, 0,
+                 {'name': self.product.name, 'product_id': self.product.id,
+                  'quantity': 1, 'price_unit': 900,
+                  'account_id': self.account_line_product.id})], }
+        return self.account_invoice.create(self.dict_vals.copy())
 
     def create_statement(self, partner, amount, journal=None,
                          line_invoice=None, date_bank=None, account_id=None,

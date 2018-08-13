@@ -35,17 +35,15 @@
                 <xpath expr="//field[@name='payment_term_id']" position="attributes">
                     <attribute name="groups" translation="off">typ_sale.group_sale_order_invoice_payment_term_manager</attribute>
                 </xpath>
-            </field>
-        </record>
-
-        <record id="view_sale_order_form_project" model="ir.ui.view">
-            <field name="name">sale.order.form.project</field>
-            <field name="model">sale.order</field>
-            <field name="inherit_id" ref="sale.view_order_form"/>
-            <field name="arch" type="xml">
                <field name="client_order_ref" position="attributes">
                     <attribute name="string" translation="off">Reference/Customer</attribute>
                </field>
+               <button name="action_cancel" position="attributes">
+                    <attribute name="groups" translation="off">typ_sale.res_group_cancel_sale_order</attribute>
+               </button>
+               <xpath expr="//field[@name='date_order']" position="attributes">
+                    <attribute name="readonly" translation="off">1</attribute>
+               </xpath>
             </field>
         </record>
 
@@ -57,28 +55,6 @@
                <field name="margin" position="attributes">
                     <attribute name="groups" translation="off">typ_sale.res_group_margin_sale_order</attribute>
                </field>
-            </field>
-        </record>
-
-        <record id="view_sale_order_button_cancel" model="ir.ui.view">
-            <field name="name">sale.order.button.cancel</field>
-            <field name="model">sale.order</field>
-            <field name="inherit_id" ref="sale.view_order_form"/>
-            <field name="arch" type="xml">
-               <button name="action_cancel" position="attributes">
-                    <attribute name="groups" translation="off">typ_sale.res_group_cancel_sale_order</attribute>
-               </button>
-            </field>
-        </record>
-
-        <record id="view_sale_order_form_date_order" model="ir.ui.view">
-            <field name="name">sale.order.date_order</field>
-            <field name="model">sale.order</field>
-            <field name="inherit_id" ref="sale.view_order_form"/>
-            <field name="arch" type="xml">
-               <xpath expr="//field[@name='date_order']" position="attributes">
-                    <attribute name="readonly" translation="off">1</attribute>
-               </xpath>
             </field>
         </record>
 

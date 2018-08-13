@@ -261,7 +261,7 @@
         <!-- Products -->
         <record id="product_product_whead" model="product.product">
             <field name="name">Wireless Headphones custon</field>
-            <field name="categ_id" ref="product.product_category_7"/>
+            <field name="categ_id" ref="product.product_category_4"/>
             <field name="standard_price">80.0</field>
             <field name="list_price">70.0</field>
             <field name="type">consu</field>
@@ -271,7 +271,7 @@
         </record>
         <record id="product_product_whead_deluxe" model="product.product">
             <field name="name">Wireless Headphones custom Deluxe</field>
-            <field name="categ_id" ref="product.product_category_7"/>
+            <field name="categ_id" ref="product.product_category_4"/>
             <field name="standard_price">180.0</field>
             <field name="list_price">170.0</field>
             <field name="type">consu</field>
@@ -288,9 +288,9 @@
             <field name="usage">inventory</field>
         </record>
 
-        <record id="base.user_demo" model="res.users">
-            <field name="groups_id" eval="[(4,ref('typ_stock.group_stock_manual_transfer'))]"/>
-        </record>
+        <!-- <record id="base.user_demo" model="res.users"> -->
+        <!--     <field name="groups_id" eval="[(4,ref('typ_stock.group_stock_manual_transfer'))]"/> -->
+        <!-- </record> -->
 
      </data>
 </openerp>

@@ -9,7 +9,7 @@ class TestCancelSaleOrder(TransactionCase):
     def setUp(self):
         super(TestCancelSaleOrder, self).setUp()
         self.product = self.env.ref('product.product_product_6')
-        self.partner = self.env.ref('base.res_partner_9')
+        self.partner = self.env.ref('base.res_partner_1')
         self.warehouse = self.env.ref('typ_stock.whr_test_01')
         self.route = self.env.ref('typ_stock.stock_location_route_test_1')
         self.stock_picking = self.env['stock.picking']

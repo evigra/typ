@@ -10,10 +10,6 @@
                 <xpath expr="//field[@name='number']" position="before">
                     <field name="origin"/>
                 </xpath>
-                <xpath expr="//group[@string='Group By']" position="inside">
-                    <filter string="Date invoice" context="{'group_by':'date_invoice'}"/>
-                    <filter string="Created by" context="{'group_by':'create_uid'}"/>
-                </xpath>
             </field>
         </record>
         <record id="view_invoice_form_partner_onchange" model="ir.ui.view">
@@ -21,27 +17,23 @@
             <field name="model">account.invoice</field>
             <field name="inherit_id" ref="account.invoice_form"/>
             <field name="arch" type="xml">
-                <xpath expr="//field[@name='partner_id']" position="attributes">
-                    <attribute name="on_change" translation="off" eval="1"/>
-                </xpath>
-                <xpath expr="//field[@name='journal_id']" position="attributes">
-                    <attribute name="on_change" translation="off" eval="1"/>
-                </xpath>
                 <xpath expr="//field[@name='date_due']" position="after">
                     <field name="date_paid" readonly="1"/>
                 </xpath>
             </field>
         </record>
+
         <record id="view_invoice_validation_date" model="ir.ui.view">
             <field name="name">invoice.validation.date</field>
             <field name="model">account.invoice</field>
             <field name="inherit_id" ref="account.invoice_supplier_form"/>
             <field name="arch" type="xml">
-                <field name="account_id" position="before">
-                    <field name="validation_date" readonly="1"/>
-                </field>
+                <xpath expr="//field[@name='date']" position="after">
+                    <field name="validation_date"/>
+                </xpath>
             </field>
         </record>
+
         <record id="account_invoice_form" model="ir.ui.view">
             <field name="name">account.invoice.form</field>
             <field name="model">account.invoice</field>
@@ -56,21 +48,11 @@
             <field name="name">account.invoice.form.group</field>
             <field name="model">account.invoice</field>
             <field name="inherit_id" ref="sale.account_invoice_form"/>
-            <field name="groups_id" eval="[(4, ref('base.group_sale_manager'))]"/>
+            <field name="groups_id" eval="[(4, ref('sales_team.group_sale_manager'))]"/>
             <field name="arch" type="xml">
                 <xpath expr="//field[@name='user_id']" position="attributes">
                     <attribute name="attrs" translation="off">{'readonly': 0}</attribute>
                 </xpath>
-            </field>
-        </record>
-        <record id="view_invoice_pay_method" model="ir.ui.view">
-            <field name="name">invoice.pay.method</field>
-            <field name="model">account.invoice</field>
-            <field name="inherit_id" ref="l10n_mx_payment_method.view_account_invoice_form_inh_payment_method_22"/>
-            <field name="arch" type="xml">
-                <field name="pay_method_id" position="attributes">
-                    <attribute name="attrs" translation="off">{'required': 1}</attribute>
-                </field>
             </field>
         </record>
     </data>

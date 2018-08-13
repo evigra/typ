@@ -2,7 +2,7 @@
 
 from __future__ import division
 from openerp import api, fields, models, _
-from openerp import exceptions
+from odoo.exceptions import ValidationError
 
 
 class SaleOrderLine(models.Model):
@@ -37,15 +37,14 @@ class SaleOrderLine(models.Model):
                 lambda dat: dat.action == 'buy')
             rec.special_sale = True if pull_buy else False
 
-    @api.multi
+    @api.constrains('state')
     def check_margin(self):
         """Verify margin minimum in sale order line.
         """
         self.ensure_one()
         warning = self.check_margin_qty(self.price_subtotal)
         if warning:
-            raise exceptions.Warning(warning.get('title'),
-                                     warning.get('message'))
+            raise ValidationError(warning.get('message'))
 
     @api.onchange('price_unit')
     def onchange_check_margin(self):
@@ -56,9 +55,9 @@ class SaleOrderLine(models.Model):
     def check_margin_qty(self, price_subtotal=False):
         """Verify quantity of margin minimum in sale order line for onchange.
         """
-        res = {'title': _('The product %s' % (self.product_id.name)),
-               'message': _('You can not be sold below permitted '
-                            'margin\nContact Manager')}
+        res = {
+            'message': _('You can not be sold the product %s below permitted '
+                         'margin\nContact Manager') % (self.product_id.name)}
         if self.env.user.has_group(
                 'typ_sale.res_group_can_sell_below_minimum_margin'):
             return
@@ -94,7 +93,9 @@ class ProcurementRule(models.Model):
 
     def _make_po_select_supplier(self, values, suppliers):
         move = values.get('move_dest_ids')
-        if move and move.sale_line_id:
+        while move and move.move_dest_ids:
+            move = move.move_dest_ids
+        if move and move.sale_line_id.purchase_partner_id:
             partner_id = move.sale_line_id.purchase_partner_id
             suppliers = move.product_id.seller_ids.search(
                 [('name', 'in', partner_id.ids)])

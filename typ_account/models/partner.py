@@ -8,12 +8,11 @@ class ResPartner(models.Model):
 
     @api.multi
     def sale_team_journals(self, warehouse, journal):
+        default_sale_team = self.env['account.journal'].browse(
+            journal).section_id
         if warehouse:
-            default_sale_team = self.env['crm.case.section'].search([
+            default_sale_team = self.env['crm.team'].search([
                 ('default_warehouse', '=', warehouse)])
-        else:
-            default_sale_team = self.env['account.journal'].browse(
-                journal).section_id
 
         return default_sale_team.journal_team_ids.ids
 
@@ -53,8 +52,8 @@ class ResPartner(models.Model):
                 partner)
             move_lines = self.env['account.move.line'].search([
                 ('partner_id', '=', acc_partner.id),
-                ('account_id.type', '=', 'receivable'),
-                ('state', '!=', 'draft'), ('reconcile_id', '=', False),
+                ('account_id.internal_type', '=', 'receivable'),
+                ('move_id.state', '!=', 'draft'), ('reconciled', '=', False),
                 ('journal_id', 'in', journals_sale_team),
                 ('debit', '!=', 0.0)])
             credit = sum(move_lines.mapped('amount_residual')) or 0.0
@@ -90,15 +89,15 @@ class ResPartner(models.Model):
                 partner)
             movelines = self.env['account.move.line'].search([
                 ('partner_id', '=', acc_partner.id),
-                ('account_id.type', '=', 'receivable'),
-                ('state', '!=', 'draft'), ('reconcile_id', '=', False),
+                ('account_id.internal_type', '=', 'receivable'),
+                ('move_id.state', '!=', 'draft'), ('reconciled', '=', False),
                 ('journal_id', 'in', journals_sale_team)])
             debit_maturity, credit_maturity = 0.0, 0.0
             for line in movelines:
                 # Allow sale if a partner has the warehouse configuration with
                 # allow_overdue_invoice True
-                if not warehouse_config or not \
-                        warehouse_config.allow_overdue_invoice:
+                if (not warehouse_config or not
+                        warehouse_config.allow_overdue_invoice):
                     if line.date_maturity:
                         limit_day = line.date_maturity
                     else:

@@ -36,24 +36,8 @@ class SaleOrder(models.Model):
     def get_payment_term(self):
         """Get payment term depends on type payment term.
         """
-        acc_payment_term_obj = self.env['account.payment.term']
-        if not self.partner_id:
-            return
-
-        self.payment_term_id = self.partner_id.property_payment_term_id.id
-        if self.type_payment_term in ('cash', 'postdated_check'):
-            payment_term = acc_payment_term_obj.search([]).filtered(
-                lambda dat: dat.payment_type == 'cash')
-            self.payment_term_id = payment_term[0] if payment_term else False
-
-        if self.type_payment_term == 'credit' and (
-                not self.payment_term_id or
-                self.payment_term_id.payment_type == 'cash'):
-            self.type_payment_term = 'cash'
-
-        elif self.type_payment_term in ('cash', 'postdated_check') and \
-                self.payment_term_id.payment_type == 'credit':
-            self.type_payment_term = 'credit'
+        self.env['account.invoice'].with_context(
+            {'res_id': self}).get_payment_term()
 
     @api.onchange('order_line')
     def check_margin(self):
@@ -77,3 +61,15 @@ class SaleOrder(models.Model):
                                     'transfered.'))
         return super(SaleOrder, self).action_cancel()
 
+
+class PurchaseOrder(models.Model):
+
+    _inherit = 'purchase.order'
+
+    @api.model
+    def _prepare_picking(self):
+        res = super(PurchaseOrder, self)._prepare_picking()
+        if self.origin:
+            new_origin = self.origin + ':' + self.name
+            res.update({'origin': new_origin})
+            return res

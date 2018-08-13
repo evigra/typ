@@ -7,9 +7,12 @@ class TestSeparatePurchaseFromProcurement(TransactionCase):
 
     def setUp(self):
         super(TestSeparatePurchaseFromProcurement, self).setUp()
-        self.route = self.env.ref('stock_dropshipping.route_drop_shipping')
-        self.partner = self.env.ref('base.res_partner_9')
-        self.product = self.env.ref('product.product_product_6')
+        self.route = self.env.ref('stock.route_warehouse0_mto')
+        self.route_buy = self.env.ref('purchase.route_warehouse0_buy')
+        self.route_buy.pull_ids.write(
+            {'group_propagation_option': 'propagate'})
+        self.partner = self.env.ref('base.res_partner_1')
+        self.product = self.env.ref('product.product_delivery_02')
         self.line_vals = {
             'name': self.product.name, 'product_id': self.product.id,
             'product_uom_qty': 1, 'product_uom': self.product.uom_id.id,
@@ -19,8 +22,9 @@ class TestSeparatePurchaseFromProcurement(TransactionCase):
             'partner_invoice_id': self.partner.id,
             'partner_shipping_id': self.partner.id,
             'order_line': [(0, 0, self.line_vals)], }
-        self.sale_order_1 = self.env['sale.order'].create(self.dict_vals)
-        self.sale_order_1.action_button_confirm()
+        self.sale_order_1 = self.env['sale.order'].create(
+            self.dict_vals.copy())
+        self.sale_order_1.action_confirm()
 
     def test_00_no_join_purchase_orders(self):
         """Test that when field join_po is FALSE in company, the new purchase
@@ -31,7 +35,7 @@ class TestSeparatePurchaseFromProcurement(TransactionCase):
         self.assertTrue(purchase_order)
         self.dict_vals.update({'name': 'Test Sale'})
         sale_order = self.env['sale.order'].create(self.dict_vals)
-        sale_order.action_button_confirm()
+        sale_order.action_confirm()
         # A new purchase must has been created
         self.assertTrue(self.env['purchase.order'].search(
             [('origin', '=', sale_order.name)]))

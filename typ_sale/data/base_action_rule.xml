@@ -1,11 +1,11 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <openerp>
-    <data noupdate="1">
+    <data noupdate="0">
 
         <record id="automated_action_sell_below_minimum_margin" model="base.automation">
             <field name="name">Sell below the minimum margin</field>
-            <field name="model_id" model="ir.model" search="[('model', '=', 'sale.order.line')]"/>
-            <field name="active">1</field>
+            <field name="model_id" ref="sale.model_sale_order_line"/>
+            <field name="active" eval="True"/>
             <field name="sequence">5</field>
             <field name="trigger">on_create_or_write</field>
             <field name="state">code</field>

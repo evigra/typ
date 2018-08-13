@@ -54,14 +54,14 @@ class TestWarehouseConfigurationPartner(TransactionCase):
             'partner_shipping_id': self.partner_1.id,
             'pricelist_id': self.pricelist.id,
             'warehouse_id': self.warehouse_1.id})
-        sale_order.get_salesman_from_warehouse_config()
+        sale_order._onchange_warehouse_id()
         self.assertEqual(sale_order.user_id, self.user_1)
 
         self.env['res.partner.warehouse'].create({
             'warehouse_id': self.warehouse_2.id, 'user_id': self.user_2.id,
             'credit_limit': 100.00, 'partner_id': self.partner_1.id})
         sale_order.write({'warehouse_id': self.warehouse_2.id})
-        sale_order.get_salesman_from_warehouse_config()
+        sale_order._onchange_warehouse_id()
         self.assertEqual(sale_order.user_id, self.user_2)
 
     def test_20_onchange_partner_id_sale_order(self):
@@ -78,12 +78,12 @@ class TestWarehouseConfigurationPartner(TransactionCase):
             'partner_shipping_id': self.partner_1.id,
             'pricelist_id': self.pricelist.id,
             'warehouse_id': self.warehouse_1.id})
-        sale_order.get_salesman_from_warehouse_config()
+        sale_order._onchange_warehouse_id()
         self.assertEqual(sale_order.user_id, self.user_1)
 
         self.env['res.partner.warehouse'].create({
             'warehouse_id': self.warehouse_1.id, 'user_id': self.user_2.id,
             'credit_limit': 100.00, 'partner_id': self.partner_2.id})
         sale_order.write({'partner_id': self.partner_2.id})
-        sale_order.get_salesman_from_warehouse_config()
+        sale_order._onchange_warehouse_id()
         self.assertEqual(sale_order.user_id, self.user_2)

@@ -14,9 +14,10 @@ class TestTypSaleTeam(common.TransactionCase):
         self.sale_team = self.env.ref(
             'default_warehouse_from_sale_team.section_sales_default_team')
         self.user = self.env.ref('base.user_root')
-        self.journal_landed = self.env.ref("account.sales_journal")
-        self.journal_landed_guide = self.env.ref(
-            "account.refund_sales_journal")
+        self.journal_landed = self.env['account.journal'].search(
+            [('type', '=', 'sale')], limit=1)
+        self.journal_landed_guide = self.env['account.journal'].create(
+            {'name': 'Bank', 'type': 'bank', 'code': 'BNK67'})
         self.currency = self.env.user.company_id.currency_id
 
         self.landed_dict_vals = {

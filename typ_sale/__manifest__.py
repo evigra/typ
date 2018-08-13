@@ -5,15 +5,14 @@
     'website': "http://www.vauxoo.com",
     'license': 'LGPL-3',
     'category': '',
-    'version': '8.0.1.0.0',
+    'version': '11.0.0.0.1',
 
     'depends': [
         'sale_margin',
-        'sale_stock',
-        'base_automation',
-        # 'typ_stock',
+        'typ_stock',
         'crm',
         'payment_term_type',
+        'base_automation',
     ],
 
     'data': [

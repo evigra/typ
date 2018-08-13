@@ -16,9 +16,9 @@ class AccountInvoice(models.Model):
         """Get payment term depends on type payment term in invoice register.
         """
         acc_payment_term_obj = self.env['account.payment.term']
+        self = self._context.get('res_id') or self
         if not self.partner_id:
             return
-
         self.payment_term_id = self.partner_id.property_payment_term_id.id
         if self.type_payment_term in ('cash', 'postdated_check'):
             payment_term = acc_payment_term_obj.search([]).filtered(

@@ -14,9 +14,6 @@ variables:
     BASE_IMAGE: "vauxoo/odoo-110-image"
     COUNTRY: "MX"
     TEST_OTHER_PROJECTS: "${TRAVIS_BUILD_DIR}/addons-vauxoo"
-    http_proxy: http://172.17.0.1:3128
-    https_proxy: http://172.17.0.1:3128
-    ftp_proxy: http://172.17.0.1:3128
 
 lint:
   stage: test
@@ -35,7 +32,6 @@ lint:
     - export PATH=${HOME}/maintainer-quality-tools/travis:${HOME}/gitlab_tools:${PATH}
     - travis_install_nightly
     - travis_run_tests
-
 
 test:
   stage: test
@@ -60,17 +56,32 @@ test:
     - travis_run_tests
     - travis_after_tests_success || true
     - coverage report -m --show-missing --rcfile=${TRAVIS_BUILD_DIR}/.coveragerc || true
+  artifacts:
+    paths:
+      - $CI_COMMIT_REF_SLUG
+
+publish_coverage:
+  image: quay.io/vauxoo/dockerv:latest
+  stage: test_build
+  dependencies:
+    - test
+  script:
+    - deployvcmd gitlab_tools push_coverage
+  environment:
+    name: coverage
+    url: https://coverage.vauxoo.com/${CI_COMMIT_REF_SLUG}-${CI_PROJECT_NAME}
 
 build:
   stage: build
+  image: quay.io/vauxoo/dockerv:latest
   tags:
     - build
   variables:
     INSTALL: "typ"
     CUSTOMER: "typ"
-
   script:
-    - deployvcmd gitlab_tools test_images
+    - deployvcmd gitlab_tools check_keys
+    - deployvcmd gitlab_tools test_images --push_image
 
 upload_image:
   stage: upload_image

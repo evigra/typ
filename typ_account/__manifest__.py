@@ -14,12 +14,11 @@
     'author': 'Vauxoo',
     'website': 'http://www.vauxoo.com/',
     'category': '',
-    'version': '8.0.0.1.2',
+    'version': '11.0.0.0.1',
 
     # any module necessary for this one to work correctly
     'depends': [
         'partner_credit_limit',
-        'account_voucher_tax',
         'typ_sale',
         'typ_default_warehouse_from_sale_team',
     ],
@@ -27,13 +26,9 @@
     'data': [
         'data/account_data.xml',
         'data/ir_actions_server.xml',
-        'data/account_invoice_workflow.xml',
-        'views/sale_order_view.xml',
-        'views/account_move_line.xml',
         'views/account_invoice_view.xml',
-        'views/account_voucher_tax_view.xml',
         'views/account_bank_statement_view.xml',
-        'reports/account_invoice_report_view.xml',
+        # 'reports/account_invoice_report_view.xml',
     ],
     # only loaded in demonstration mode
     'demo': [

@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <openerp>
-     <data noupdate="1">
+     <data noupdate="0">
         <!-- Warehouse -->
          <record id="wh_01" model="stock.warehouse">
              <field name="name">Warehouse 1</field>
@@ -21,22 +21,11 @@
             <field name="payment_id" ref="typ_sale_payment_term_credit"/>
         </record>
 
-        <!-- Sale Team -->
-        <!-- add journal to data demo -->
-        <!-- <record id="sale_team_01" model="crm.team"> -->
-        <!--     <field name="name">Sale team 01</field> -->
-        <!--     <field name="code">ST01</field> -->
-        <!--     <field name="default_warehouse" ref="typ_sale.wh_01"/> -->
-        <!--     <field name="journal_team_ids" eval="[(6, 0, -->
-        <!--         [ref('account.bank_journal'), -->
-        <!--         ref('account.sales_journal')])]"/> -->
-        <!-- </record> -->
-
         <!-- Partner -->
         <record id="partner_01" model="res.partner">
             <field name="name">Partner test</field>
             <field name="credit_limit">2000.0</field>
-            <field name="property_payment_term" ref="typ_sale.typ_sale_payment_term_credit"/>
+            <field name="property_payment_term_id" ref="typ_sale_payment_term_credit"/>
         </record>
 
         <!-- Res partner warehouse-->
