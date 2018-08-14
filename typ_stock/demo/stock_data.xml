@@ -150,7 +150,7 @@
              <field name="name">PE TW1 - TW2</field>
              <field name="product_selectable" eval="False"/>
              <field name="product_categ_selectable" eval="False"/>
-             <field name="warehouse_selectable" eval="False"/>
+             <!-- <field name="warehouse_selectable" eval="False"/> -->
              <field name="sale_selectable" eval="True"/>
          </record>
 
