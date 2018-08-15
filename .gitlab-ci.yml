@@ -3,7 +3,6 @@ stages:
   - test
   - test_build
   - build
-  - upload_image
 
 variables:
     PSQL_VERSION: "9.6"
@@ -13,7 +12,6 @@ variables:
     ODOO_BRANCH: "11.0"
     BASE_IMAGE: "vauxoo/odoo-110-image"
     COUNTRY: "MX"
-    TEST_OTHER_PROJECTS: "${TRAVIS_BUILD_DIR}/addons-vauxoo"
 
 lint:
   stage: test
@@ -55,6 +53,7 @@ test:
     - travis_install_nightly
     - travis_run_tests
     - travis_after_tests_success || true
+    - coverage html --rcfile=${TRAVIS_BUILD_DIR}/.coveragerc -d $CI_COMMIT_REF_SLUG
     - coverage report -m --show-missing --rcfile=${TRAVIS_BUILD_DIR}/.coveragerc || true
   artifacts:
     paths:
@@ -83,14 +82,3 @@ build:
     - deployvcmd gitlab_tools check_keys
     - deployvcmd gitlab_tools test_images --push_image
 
-upload_image:
-  stage: upload_image
-  only:
-      - 8.0@vauxoo/typ
-  when: on_success
-  tags:
-    - build
-  variables:
-    CUSTOMER: "typ"
-  script:
-    - deployvcmd gitlab_tools upload_image
