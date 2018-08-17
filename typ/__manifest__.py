@@ -60,7 +60,7 @@
         # 'typ_project_issue',
         # 'typ_commision',
         # 'web_export_view',
-        # 'typ_hr',
+        'typ_hr',
         # 'typ_portal',
         # 'typ_printing_report',
     ],

@@ -1,19 +1,17 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<openerp>
-    <data>
-        <record id="view_hr_contract_form_inherit_salaries" model="ir.ui.view">
-            <field name="name">hr.contract.form.inherit.salaries</field>
-            <field name="model">hr.contract</field>
-            <field name="inherit_id" ref="hr_contract.hr_contract_view_form"/>
-            <field name="arch" type="xml">
-                <xpath expr="//group[@name='salary_and_advantages']" position="attributes">
-                    <attribute name="groups" translation="off">base.group_hr_user</attribute>
-                </xpath>
-                <xpath expr="//group[@name='salary_and_advantages']" position="inside">
-                    <field name="daily_salary"/>
-                    <field name="integrate_daily_salary"/>
-                </xpath>
-            </field>
-        </record>
-    </data>
-</openerp>
+<odoo>
+    <record id="view_hr_contract_form_inherit_salaries" model="ir.ui.view">
+        <field name="name">hr.contract.form.inherit.salaries</field>
+        <field name="model">hr.contract</field>
+        <field name="inherit_id" ref="hr_contract.hr_contract_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//group[@name='salary_and_advantages']" position="attributes">
+                <attribute name="groups" translation="off">hr.group_hr_user</attribute>
+            </xpath>
+            <xpath expr="//group[@name='salary_and_advantages']" position="inside">
+                <field name="daily_salary"/>
+                <field name="integrate_daily_salary"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

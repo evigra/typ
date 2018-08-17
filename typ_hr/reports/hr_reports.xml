@@ -1,6 +1,5 @@
-<openerp>
-<data>
-<report
+<odoo>
+    <!--<report
     id="hr_employee_expedient"
     model="hr.employee"
     string="Expedient Report"
@@ -8,6 +7,5 @@
     name="typ_hr.report_expedient"
     file="typ_hr.report_expedient"
     groups="base.group_hr_manager"
-    />
-</data>
-</openerp>
+    />-->
+</odoo>

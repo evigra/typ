@@ -1,7 +1,7 @@
-# coding: utf-8
+# -*- coding: utf-8 -*-
 
 
-from openerp import models, fields, api
+from odoo import models, fields, api
 
 GRADES = [
     ('elementary_school', 'Elementary school'),
@@ -37,7 +37,7 @@ class HrEmployee(models.Model):
     def _compute_get_perm(self):
         for employee in self:
             employee.user_boolean = (
-                employee.env.user.has_group('base.group_hr_user') or
+                employee.env.user.has_group('hr.group_hr_user') or
                 employee.env.user.id == employee.user_id.id
             )
 

@@ -1,18 +1,17 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<openerp>
-    <data>
-        <template id="external_layout_expedient">
-            <t t-name="typ_hr.external_layout_expedient">
-                <t t-if="o and 'company_id' in o" >
-                <t t-set="company" t-value ="o.company_id"/>
-            </t>
+<odoo>
+    <template id="external_layout_expedient">
+        <t t-name="typ_hr.external_layout_expedient">
+            <t t-if="o and 'company_id' in o" >
+            <t t-set="company" t-value ="o.company_id"/>
+        </t>
         <t t-if="not o or not 'company_id' in o" >
-            <t t-set="company" t-value="res_company"/>
+        <t t-set="company" t-value="res_company"/>
         </t>
         <t t-call="typ_hr.external_layout_expedient_header"/>
         <t t-raw="0"/>
-    </t>
-</template>
+        </t>
+    </template>
 
     <template id="external_layout_expedient_header">
         <t t-name="typ_hr.external_layout_header">
@@ -30,7 +29,6 @@
                 </div>
             </div>
         </t>
-</template>
+    </template>
 
-</data>
-</openerp>
+</odoo>
