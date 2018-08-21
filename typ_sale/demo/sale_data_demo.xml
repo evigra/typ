@@ -1,44 +1,41 @@
 <?xml version="1.0"?>
-<openerp>
-     <data noupdate="0">
-        <!-- Warehouse -->
-         <record id="wh_01" model="stock.warehouse">
-             <field name="name">Warehouse 1</field>
-             <field name="code">WH01</field>
-         </record>
+<odoo noupdate="0">
+    <!-- Warehouse -->
+     <record id="wh_01" model="stock.warehouse">
+         <field name="name">Warehouse 1</field>
+         <field name="code">WH01</field>
+     </record>
 
-        <!--Payment term Credit-->
-        <record id="typ_sale_payment_term_credit" model="account.payment.term">
-            <field name="active" eval='1'/>
-            <field name="name">Credit Payment Term</field>
-        </record>
-        <record id="typ_sale_payment_term_credit_line_procent" model="account.payment.term.line">
-            <field name="value">percent</field>
-            <field name="payment_id" ref="typ_sale_payment_term_credit"/>
-        </record>
-        <record id="typ_sale_payment_term_credit_line_balance" model="account.payment.term.line">
-            <field name="value">balance</field>
-            <field name="payment_id" ref="typ_sale_payment_term_credit"/>
-        </record>
+    <!--Payment term Credit-->
+    <record id="typ_sale_payment_term_credit" model="account.payment.term">
+        <field name="active" eval='1'/>
+        <field name="name">Credit Payment Term</field>
+    </record>
+    <record id="typ_sale_payment_term_credit_line_procent" model="account.payment.term.line">
+        <field name="value">percent</field>
+        <field name="payment_id" ref="typ_sale_payment_term_credit"/>
+    </record>
+    <record id="typ_sale_payment_term_credit_line_balance" model="account.payment.term.line">
+        <field name="value">balance</field>
+        <field name="payment_id" ref="typ_sale_payment_term_credit"/>
+    </record>
 
-        <!-- Partner -->
-        <record id="partner_01" model="res.partner">
-            <field name="name">Partner test</field>
-            <field name="credit_limit">2000.0</field>
-            <field name="property_payment_term_id" ref="typ_sale_payment_term_credit"/>
-        </record>
+    <!-- Partner -->
+    <record id="partner_01" model="res.partner">
+        <field name="name">Partner test</field>
+        <field name="credit_limit">2000.0</field>
+        <field name="property_payment_term_id" ref="typ_sale_payment_term_credit"/>
+    </record>
 
-        <!-- Res partner warehouse-->
-        <record id="res_partner_wh_01" model="res.partner.warehouse">
-            <field name="warehouse_id" ref="typ_sale.wh_01"/>
-            <field name="credit_limit">2000.0</field>
-            <field name="partner_id" ref="typ_sale.partner_01"/>
-        </record>
-        <record id="res_partner_wh_02" model="res.partner.warehouse">
-            <field name="warehouse_id" ref="stock.warehouse0"/>
-            <field name="credit_limit">100.0</field>
-            <field name="partner_id" ref="typ_sale.partner_01"/>
-        </record>
-
-     </data>
-</openerp>
+    <!-- Res partner warehouse-->
+    <record id="res_partner_wh_01" model="res.partner.warehouse">
+        <field name="warehouse_id" ref="typ_sale.wh_01"/>
+        <field name="credit_limit">2000.0</field>
+        <field name="partner_id" ref="typ_sale.partner_01"/>
+    </record>
+    <record id="res_partner_wh_02" model="res.partner.warehouse">
+        <field name="warehouse_id" ref="stock.warehouse0"/>
+        <field name="credit_limit">100.0</field>
+        <field name="partner_id" ref="typ_sale.partner_01"/>
+    </record>
+</odoo>

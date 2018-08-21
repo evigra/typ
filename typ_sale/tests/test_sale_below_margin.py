@@ -24,7 +24,8 @@ class TestSaleBelowMargin(TransactionCase):
         """When sale order in create below margin minimum
         """
         self.dict_vals.update({'order_line': [(0, 0, self.dict_vals_line)]})
-        msg = ".*You can not be sold the product %s below permitted margin.*" % self.product.name
+        msg = (".*You can not be sold the product %s below "
+               "permitted margin.*") % (self.product.name)
         with self.assertRaisesRegexp(UserError, msg):
             self.env['sale.order'].sudo(self.demo_user).create(self.dict_vals)
 
@@ -33,6 +34,7 @@ class TestSaleBelowMargin(TransactionCase):
         """
         self.dict_vals_line['price_unit'] = 0
         self.dict_vals.update({'order_line': [(0, 0, self.dict_vals_line)]})
-        msg = ".*You can not be sold the product %s below permitted margin.*" % self.product.name
+        msg = (".*You can not be sold the product %s below "
+               "permitted margin.*") % self.product.name
         with self.assertRaisesRegexp(UserError, msg):
             self.env['sale.order'].sudo(self.demo_user).create(self.dict_vals)

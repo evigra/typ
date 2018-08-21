@@ -1,76 +1,72 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<openerp>
-    <data>
+<odoo>
+    <!-- <record id="view_sale_order_form_onchange_warehouse" model="ir.ui.view"> -->
+    <!--     <field name="name">sale.order.form.onchange.warehouse</field> -->
+    <!--     <field name="model">sale.order</field> -->
+    <!--     <field name="inherit_id" ref="sale_stock.view_order_form_inherit"/> -->
+    <!--     <field name="arch" type="xml"> -->
+    <!--         <xpath expr="//field[@name='warehouse_id']" position="attributes"> -->
+    <!--             <attribute name="on_change" eval="1" translation="off"/> -->
+    <!--         </xpath> -->
+    <!--     </field> -->
+    <!-- </record> -->
 
-        <!-- <record id="view_sale_order_form_onchange_warehouse" model="ir.ui.view"> -->
-        <!--     <field name="name">sale.order.form.onchange.warehouse</field> -->
-        <!--     <field name="model">sale.order</field> -->
-        <!--     <field name="inherit_id" ref="sale_stock.view_order_form_inherit"/> -->
-        <!--     <field name="arch" type="xml"> -->
-        <!--         <xpath expr="//field[@name='warehouse_id']" position="attributes"> -->
-        <!--             <attribute name="on_change" eval="1" translation="off"/> -->
-        <!--         </xpath> -->
-        <!--     </field> -->
-        <!-- </record> -->
+    <record id="view_origin_sale_order_filter_inherit" model="ir.ui.view">
+        <field name="name">origin.sale.order.filter.inherit</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_sales_order_filter"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='name']" position="after">
+                <field name="origin"/>
+            </xpath>
+        </field>
+    </record>
 
-        <record id="view_origin_sale_order_filter_inherit" model="ir.ui.view">
-            <field name="name">origin.sale.order.filter.inherit</field>
-            <field name="model">sale.order</field>
-            <field name="inherit_id" ref="sale.view_sales_order_filter"/>
-            <field name="arch" type="xml">
-                <xpath expr="//field[@name='name']" position="after">
-                    <field name="origin"/>
-                </xpath>
-            </field>
-        </record>
+    <record id="view_sale_order_form_type_payment_term" model="ir.ui.view">
+        <field name="name">sale.order.form.type.payment.term</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='pricelist_id']" position="after">
+                <field name="type_payment_term" attrs="{'readonly': [('state', '!=', 'draft')],'required': [('state', '=', 'draft')],}"/>
+            </xpath>
+            <xpath expr="//field[@name='payment_term_id']" position="attributes">
+                <attribute name="groups" translation="off">typ_sale.group_sale_order_invoice_payment_term_manager</attribute>
+            </xpath>
+           <field name="client_order_ref" position="attributes">
+                <attribute name="string" translation="off">Reference/Customer</attribute>
+           </field>
+           <button name="action_cancel" position="attributes">
+                <attribute name="groups" translation="off">typ_sale.res_group_cancel_sale_order</attribute>
+           </button>
+           <xpath expr="//field[@name='date_order']" position="attributes">
+                <attribute name="readonly" translation="off">1</attribute>
+           </xpath>
+        </field>
+    </record>
 
-        <record id="view_sale_order_form_type_payment_term" model="ir.ui.view">
-            <field name="name">sale.order.form.type.payment.term</field>
-            <field name="model">sale.order</field>
-            <field name="inherit_id" ref="sale.view_order_form"/>
-            <field name="arch" type="xml">
-                <xpath expr="//field[@name='pricelist_id']" position="after">
-                    <field name="type_payment_term" attrs="{'readonly': [('state', '!=', 'draft')],'required': [('state', '=', 'draft')],}"/>
-                </xpath>
-                <xpath expr="//field[@name='payment_term_id']" position="attributes">
-                    <attribute name="groups" translation="off">typ_sale.group_sale_order_invoice_payment_term_manager</attribute>
-                </xpath>
-               <field name="client_order_ref" position="attributes">
-                    <attribute name="string" translation="off">Reference/Customer</attribute>
-               </field>
-               <button name="action_cancel" position="attributes">
-                    <attribute name="groups" translation="off">typ_sale.res_group_cancel_sale_order</attribute>
-               </button>
-               <xpath expr="//field[@name='date_order']" position="attributes">
-                    <attribute name="readonly" translation="off">1</attribute>
-               </xpath>
-            </field>
-        </record>
+    <record id="view_sale_order_form_margin" model="ir.ui.view">
+        <field name="name">sale.order.form.margin</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale_margin.sale_margin_sale_order"/>
+        <field name="arch" type="xml">
+           <field name="margin" position="attributes">
+                <attribute name="groups" translation="off">typ_sale.res_group_margin_sale_order</attribute>
+           </field>
+        </field>
+    </record>
 
-        <record id="view_sale_order_form_margin" model="ir.ui.view">
-            <field name="name">sale.order.form.margin</field>
-            <field name="model">sale.order</field>
-            <field name="inherit_id" ref="sale_margin.sale_margin_sale_order"/>
-            <field name="arch" type="xml">
-               <field name="margin" position="attributes">
-                    <attribute name="groups" translation="off">typ_sale.res_group_margin_sale_order</attribute>
-               </field>
-            </field>
-        </record>
+    <record id="view_state_sale_order_filter_inherit" model="ir.ui.view">
+        <field name="name">state.sale.order.filter.inherit</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_sales_order_filter"/>
+        <field name="arch" type="xml">
+            <xpath expr="//group" position="inside">
+                <filter string="State" domain="[]" context="{'group_by':'state'}"/>
+            </xpath>
+        </field>
+    </record>
 
-        <record id="view_state_sale_order_filter_inherit" model="ir.ui.view">
-            <field name="name">state.sale.order.filter.inherit</field>
-            <field name="model">sale.order</field>
-            <field name="inherit_id" ref="sale.view_sales_order_filter"/>
-            <field name="arch" type="xml">
-                <xpath expr="//group" position="inside">
-                    <filter string="State" domain="[]" context="{'group_by':'state'}"/>
-                </xpath>
-            </field>
-        </record>
-
-        <menuitem id="sale_order_traffic_menu" parent="sale.sale_menu_root" name="Traffic"/>
-        <menuitem id="sale_order_traffic" parent="typ_sale.sale_order_traffic_menu" name="Traffic" action="stock.stock_picking_type_action" sequence="10"/>
-
-    </data>
-</openerp>
+    <menuitem id="sale_order_traffic_menu" parent="sale.sale_menu_root" name="Traffic"/>
+    <menuitem id="sale_order_traffic" parent="typ_sale.sale_order_traffic_menu" name="Traffic" action="stock.stock_picking_type_action" sequence="10"/>
+</odoo>

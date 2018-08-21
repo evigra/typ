@@ -1,43 +1,39 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<openerp>
-    <data>
+<odoo>
+    <record id="view_sale_order_line_purchase_partner_form" model="ir.ui.view">
+        <field name="name">sale.order.line.purchase.partner.form</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale_stock.view_order_form_inherit_sale_stock"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='order_line']/form/group/group/field[@name='route_id']" position="after">
+                <field name="purchase_partner_id" attrs="{'invisible': [('special_sale', '=', False)],
+                    'required': [('special_sale', '=', True)]}"
+                    groups="sale_stock.group_route_so_lines"/>
+                <field name="special_sale" invisible="1"/>
+            </xpath>
+       </field>
+    </record>
 
-        <record id="view_sale_order_line_purchase_partner_form" model="ir.ui.view">
-            <field name="name">sale.order.line.purchase.partner.form</field>
-            <field name="model">sale.order</field>
-            <field name="inherit_id" ref="sale_stock.view_order_form_inherit_sale_stock"/>
-            <field name="arch" type="xml">
-                <xpath expr="//field[@name='order_line']/form/group/group/field[@name='route_id']" position="after">
-                    <field name="purchase_partner_id" attrs="{'invisible': [('special_sale', '=', False)],
-                        'required': [('special_sale', '=', True)]}"
-                        groups="sale_stock.group_route_so_lines"/>
-                    <field name="special_sale" invisible="1"/>
-                </xpath>
-           </field>
-        </record>
+    <record model="ir.ui.view" id="sale_standard_price_sale_order_line">
+        <field name="name">sale.order.line.standard.price.view.form</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale_margin.sale_margin_sale_order_line"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='order_line']/form//field[@name='purchase_price']" position="attributes">
+                <attribute name="groups" translation="off">typ_stock.res_group_standard_price</attribute>
+            </xpath>
+        </field>
+    </record>
 
-        <record model="ir.ui.view" id="sale_standard_price_sale_order_line">
-            <field name="name">sale.order.line.standard.price.view.form</field>
-            <field name="model">sale.order</field>
-            <field name="inherit_id" ref="sale_margin.sale_margin_sale_order_line"/>
-            <field name="arch" type="xml">
-                <xpath expr="//field[@name='order_line']/form//field[@name='purchase_price']" position="attributes">
-                    <attribute name="groups" translation="off">typ_stock.res_group_standard_price</attribute>
-                </xpath>
-            </field>
-        </record>
-
-        <record model="ir.ui.view" id="sale_standard_price_sale_order_line_form">
-            <field name="name">sale.order.line.tree.standard.price.view.form</field>
-            <field name="model">sale.order</field>
-            <field name="inherit_id" ref="sale_margin.sale_margin_sale_order_line_form"/>
-            <field name="arch" type="xml">
-                <xpath expr="//field[@name='order_line']/tree//field[@name='purchase_price']" position="attributes">
-                    <attribute name="groups" translation="off">typ_stock.res_group_standard_price</attribute>
-                </xpath>
-            </field>
-        </record>
-
-    </data>
-</openerp>
+    <record model="ir.ui.view" id="sale_standard_price_sale_order_line_form">
+        <field name="name">sale.order.line.tree.standard.price.view.form</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale_margin.sale_margin_sale_order_line_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='order_line']/tree//field[@name='purchase_price']" position="attributes">
+                <attribute name="groups" translation="off">typ_stock.res_group_standard_price</attribute>
+            </xpath>
+        </field>
+    </record>
+</odoo>
 
