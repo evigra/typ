@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <template id='typ_purchase.report_purchaseorder_document' inherit_id="purchase.report_purchaseorder_document">
-        <xpath expr="//t[@t-call='report.external_layout']" position="replace">
-            <t t-call="typ_purchase.external_layout">
+        <xpath expr="//t[@t-call='web.external_layout']" position="replace">
+            <t t-call="typ_purchase.custom_external_layout">
+                <t t-set="o" t-value="o.with_context({'lang':o.partner_id.lang})"/>
                 <div class="page">
                     <h3 class="text-right">Purchase Order N° <span t-field="o.name"/></h3>
                     <div class="row">
@@ -11,7 +12,7 @@
                             <div t-if="o.company_id.partner_id">
                                 <div t-field="o.company_id.partner_id"
                                     t-field-options='{"widget": "contact", "fields": ["address", "name"], "no_marker": true}'/>
-                                <span>VAT</span>: <span t-field="o.company_id.partner_id.vat_split"/>
+                                <span>VAT</span>: <span t-field="o.company_id.partner_id.vat"/>
                             </div>
                         </div>
                         <div class="col-xs-4">
@@ -36,7 +37,7 @@
                             <strong>Partner:</strong>
                             <div t-field="o.partner_id"
                                 t-field-options='{"widget": "contact", "fields": ["address", "name", "phone", "fax"], "no_marker": true}'/>
-                            <p t-if="o.partner_id.vat"><span>VAT</span>: <span t-field="o.partner_id.vat_split"/></p>
+                            <p t-if="o.partner_id.vat"><span>VAT</span>: <span t-field="o.partner_id.vat"/></p>
                         </div>
                     </div>
                     <div class="row mt32 mb32 text-center">
@@ -55,12 +56,11 @@
                             <strong>Created on:</strong>
                             <p t-field="o.create_date"/>
                         </div>
-                        <div t-if="o.validator" class="col-xs-3">
+                        <!--<div t-if="o.validator" class="col-xs-3">
                             <strong>Validated By:</strong>
                             <p t-field="o.validator"/>
-                        </div>
+                        </div>-->
                     </div>
-
                     <table class="table table-condensed">
                         <thead>
                             <tr>
@@ -92,12 +92,11 @@
                                 </td>
                                 <td class="text-right">
                                     <span t-field="line.price_subtotal"
-                                        t-field-options='{"widget": "monetary", "display_currency": "o.currency_id"}'/>
+                                        t-field-options='{"widget": "monetary", "display_currency": o.currency_id}'/>
                                 </td>
                             </tr>
                         </tbody>
                     </table>
-
                     <div class="row">
                         <div class="col-xs-4 pull-right">
                             <table class="table table-condensed">
@@ -105,21 +104,21 @@
                                     <td><strong>Subtotal</strong></td>
                                     <td class="text-right">
                                         <span t-field="o.amount_untaxed"
-                                            t-field-options='{"widget": "monetary", "display_currency": "o.currency_id"}'/>
+                                            t-field-options='{"widget": "monetary", "display_currency": o.currency_id}'/>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>Taxes</td>
                                     <td class="text-right">
                                         <span t-field="o.amount_tax"
-                                            t-field-options='{"widget": "monetary", "display_currency": "o.currency_id"}'/>
+                                            t-field-options='{"widget": "monetary", "display_currency": o.currency_id}'/>
                                     </td>
                                 </tr>
                                 <tr class="border-black">
                                     <td><strong>Total</strong></td>
                                     <td class="text-right">
                                         <span t-field="o.amount_total"
-                                            t-field-options='{"widget": "monetary", "display_currency": "o.currency_id"}'/>
+                                            t-field-options='{"widget": "monetary", "display_currency": o.currency_id}'/>
                                     </td>
                                 </tr>
                             </table>
@@ -133,18 +132,13 @@
             </t>
         </xpath>
     </template>
-
-    <template id="report_purchaseorder" inherit_id="purchase.report_purchaseorder">
-        <xpath expr="//t[@t-call='report.html_container']" position="replace">
-            <t t-call="report.html_container">
-                <t t-foreach="doc_ids" t-as="doc_id">
-                    <t t-raw="translate_doc(doc_id, doc_model, 'report_lang', 'purchase.report_purchaseorder_document')"/>
+    <template id="typ_purchase.report_purchaseorder" inherit_id="purchase.report_purchaseorder">
+        <xpath expr="//t[@t-call='web.html_container']" position="replace">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="o">
+                    <t t-call="typ_purchase.report_purchaseorder_document" t-lang="o.report_lang"/>
                 </t>
             </t>
         </xpath>
     </template>
-
-    <record id="purchase.action_report_purchase_order" model="ir.actions.report.xml">
-        <field name="paperformat_id" ref="typ_purchase.paperformat_purchase_order"/>
-    </record>
 </odoo>

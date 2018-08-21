@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <template id='typ_purchase.report_purchasequotation_document' inherit_id="purchase.report_purchasequotation_document">
-        <xpath expr="//t[@t-call='report.external_layout']" position="replace">
-            <t t-call="typ_purchase.external_layout_with_address">
+        <xpath expr="//t[@t-call='web.external_layout']" position="replace">
+            <t t-call="typ_purchase.custom_external_layout_with_address">
+                <t t-set="o" t-value="o.with_context({'lang':o.partner_id.lang})"/>
                 <div class="page">
                     <div class="row mt32 mb32" style="padding-top: 20px;">
                         <div class="col-xs-6">
@@ -27,12 +28,10 @@
                             <strong>Partner:</strong>
                             <div t-field="o.partner_id"
                                 t-field-options='{"widget": "contact", "fields": ["address", "name", "phone", "fax"], "no_marker": true}'/>
-                            <p t-if="o.partner_id.vat"><span>VAT</span>: <span t-field="o.partner_id.vat_split"/></p>
+                            <p t-if="o.partner_id.vat"><span>VAT</span>: <span t-field="o.partner_id.vat"/></p>
                         </div>
                     </div>
-
                     <h2>Request for Quotation <span t-field="o.name"/></h2>
-
                     <table class="table table-condensed">
                         <thead>
                             <tr>
@@ -56,7 +55,6 @@
                             </tr>
                         </tbody>
                     </table>
-
                     <p t-field="o.notes"/>
                     <span>Regards,</span>
                     <br/>
@@ -65,12 +63,11 @@
             </t>
         </xpath>
     </template>
-
-    <template id="report_purchasequotation" inherit_id="purchase.report_purchasequotation">
-        <xpath expr="//t[@t-call='report.html_container']" position="replace">
-            <t t-call="report.html_container">
-                <t t-foreach="doc_ids" t-as="doc_id">
-                    <t t-raw="translate_doc(doc_id, doc_model, 'report_lang', 'purchase.report_purchasequotation_document')"/>
+    <template id="typ_purchase.report_purchasequotation" inherit_id="purchase.report_purchasequotation">
+        <xpath expr="//t[@t-call='web.html_container']" position="replace">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="o">
+                    <t t-call="typ_purchase.report_purchasequotation_document" t-lang="o.report_lang"/>
                 </t>
             </t>
         </xpath>
