@@ -22,6 +22,7 @@
         'account_budget',
         'account_reports_followup',
         'account_accountant',
+        'stock_by_warehouse_sale',
         # 'account_check_writing',
         # 'account_closure_preparation',
         # 'account_followup',
