@@ -41,10 +41,10 @@ class SaleOrderLine(models.Model):
     def check_margin(self):
         """Verify margin minimum in sale order line.
         """
-        self.ensure_one()
-        warning = self.check_margin_qty(self.price_subtotal)
-        if warning:
-            raise ValidationError(warning.get('message'))
+        for sale_line in self:
+            warning = sale_line.check_margin_qty(sale_line.price_subtotal)
+            if warning:
+                raise ValidationError(warning.get('message'))
 
     @api.onchange('price_unit')
     def onchange_check_margin(self):
