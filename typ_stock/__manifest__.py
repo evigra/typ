@@ -25,6 +25,8 @@
         # 'procurement_jit',
         # 'stock_move_entries',
         'sale_stock',
+        'stock_no_negative',
+        'stock_picking_show_return',
     ],
     # always loaded
     'data': [
