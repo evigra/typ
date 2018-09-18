@@ -7,34 +7,8 @@
             <field name="model">stock.picking</field>
             <field name="inherit_id" ref="stock.view_picking_form"/>
             <field name="arch" type="xml">
-                <xpath expr="//button[@name='force_assign']" position="attributes">
-                    <attribute name="groups" translation="off">typ_stock.res_group_force_stock_move</attribute>
-                </xpath>
                 <xpath expr="//button[@name='do_unreserve']" position="attributes">
                     <attribute name="groups" translation="off">typ_stock.res_group_force_stock_move,typ_stock.res_group_can_unreserve</attribute>
-                </xpath>
-                <xpath expr="//button[@name='do_partial_open_barcode']" position="attributes">
-                    <attribute name="groups" translation="off">typ_stock.res_group_can_see_barcode_button</attribute>
-                </xpath>
-            </field>
-        </record>
-
-        <record model="ir.ui.view" id="view_stock_move_picking_force_assign">
-            <field name="name">stock.move.picking.force.assign</field>
-            <field name="model">stock.move</field>
-            <field name="inherit_id" ref="stock.view_move_picking_form"/>
-            <field name="arch" type="xml">
-                <xpath expr="//button[@name='force_assign']" position="attributes">
-                    <attribute name="groups" translation="off">typ_stock.res_group_force_stock_move</attribute>
-                </xpath>
-                <xpath expr="//button[@name='action_confirm']" position="attributes">
-                    <attribute name="groups" translation="off">typ_stock.res_group_stock_move_button</attribute>
-                </xpath>
-                <xpath expr="//button[@name='do_unreserve']" position="attributes">
-                    <attribute name="groups" translation="off">typ_stock.res_group_stock_move_button</attribute>
-                </xpath>
-                <xpath expr="//button[@name='%(stock.move_scrap)d']" position="attributes">
-                    <attribute name="groups" translation="off">typ_stock.res_group_stock_move_button</attribute>
                 </xpath>
             </field>
         </record>
@@ -59,17 +33,6 @@
                     <xpath expr="//field[@name='product_max_qty']" position="after">
                         <field name="qty_multiple"/>
                     </xpath>
-            </field>
-        </record>
-
-        <record model="ir.ui.view" id="view_stock_wareohuse_active_field">
-            <field name="name">stock.warehouse.active.field</field>
-            <field name="model">stock.warehouse</field>
-            <field name="inherit_id" ref="stock.view_warehouse"/>
-            <field name="arch" type="xml">
-                <xpath expr="//field[@name='code']" position="after">
-                    <field name='active'/>
-                </xpath>
             </field>
         </record>
 
@@ -103,9 +66,6 @@
                 <field name="product_id" position="before">
                     <field name='product_supplier_ref' groups="typ_stock.group_reception_picking_attributes"/>
                 </field>
-                <xpath expr="//button[@name='%(stock.move_scrap)d']" position="attributes">
-                    <attribute name="groups" translation="off">typ_stock.res_group_stock_move_button</attribute>
-                </xpath>
             </field>
         </record>
 
@@ -129,20 +89,7 @@
                 <search>
                     <field name="location_id"/>
                 </search>
-                <xpath expr='//group[@string="Group By"]' position="inside">
-                    <filter name="by_location" string="location" domain="[]"
-                        context="{'group_by': 'location_id'}"/>
-                </xpath>
             </field>
-        </record>
-
-        <menuitem action="stock.action_orderpoint_form" id="stock.menu_stock_order_points" parent="stock.menu_traceability" sequence="10"/>
-
-        <record id="stock_current_inventory_valuation_hide" model="res.groups">
-            <field name="name">Users that can see current inventory valuation </field>
-        </record>
-        <record id="stock_account.menu_action_history_tree" model="ir.ui.menu">
-            <field name="groups_id" eval="[(6,0,[ref('stock_current_inventory_valuation_hide')])]"/>
         </record>
 
     </data>

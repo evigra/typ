@@ -9,9 +9,6 @@
                 <xpath expr="//field[@name='partner_id']" position="before">
                     <field name="origin"/>
                 </xpath>
-                <xpath expr="//filter[@string='Origin']" position="before">
-                    <filter string="Partner" domain="[]" context="{'group_by':'partner_id'}"/>
-                </xpath>
             </field>
         </record>
         <record id="view_move_picking_tree_inherit" model="ir.ui.view">
@@ -61,7 +58,6 @@
                     <attribute name="attrs" translation="off">{'readonly': [('state', '!=', 'draft')]}</attribute>
                 </xpath>
                 <xpath expr="//field[@name='location_dest_id']" position="after">
-                    <field name="move_dest_id" readonly="1"/>
                     <field name="move_orig_ids" readonly="1"/>
                 </xpath>
             </field>
@@ -74,19 +70,15 @@
                 <field name="origin" position="before">
                     <field name="picking_shipment_date"/>
                 </field>
-                <xpath expr="//field[@name='origin']" position="after">
-                    <field name="number_landing"
-                           groups="typ_stock.group_reception_picking_attributes"/>
-                </xpath>
                 <xpath expr="//field[@name='backorder_id']" position="after">
                     <field name="invoiced" readonly="1"/>
                 </xpath>
-                <xpath expr="/form/header/button[@string='Print Picking List']" position="after">
-                    <button type="object" name="action_confirm_trafic" string="shipped ok" icon="STOCK_APPLY" attrs="
-                        {'invisible':[('state','in',('draft','cancel','partial_available','done'))]}
-                        " groups="purchase.group_purchase_manager"/>
-                </xpath>
-                <xpath expr="//button[@string='Reverse Transfer']" position="attributes">
+                <!-- <xpath expr="/button[@name='button_validate']" position="after"> -->
+                <!--     <button type="object" name="action_confirm_trafic" string="shipped ok" icon="STOCK_APPLY" attrs=" -->
+                <!--         {'invisible':[('state','in',('draft','cancel','partial_available','done'))]} -->
+                <!--         " groups="purchase.group_purchase_manager"/> -->
+                <!-- </xpath> -->
+                <xpath expr="//button[@name='%(stock.act_stock_return_picking)d']" position="attributes">
                     <attribute name="groups" translation="off">typ_stock.res_group_reverse_transfer</attribute>
                 </xpath>
                 <field name="partner_id" position="attributes">
@@ -101,18 +93,10 @@
             <field name="model">stock.picking</field>
             <field name="inherit_id" ref="stock.vpicktree"/>
             <field name="arch" type="xml">
-                <xpath expr="//field[@name='min_date']" position="attributes">
-                    <attribute name="invisible" translation="off">0</attribute>
-                </xpath>
                 <xpath expr="//field[@name='date']" position="after">
                     <field name="picking_shipment_date"/>
                     <field name="invoiced" invisible="1"/>
-                </xpath>
-                <xpath expr="//field[@name='min_date']" position="after">
                     <field name="date_done"/>
-                </xpath>
-                <xpath expr="//field[@name='origin']" position="after">
-                    <field name="number_landing"/>
                 </xpath>
                 <xpath expr="//tree" position="attributes">
                     <attribute name="colors" translation="off">blue:state == 'draft';grey:state == 'cancel';
@@ -141,7 +125,7 @@
             <field name="inherit_id" ref="stock.vpicktree"/>
             <field name="groups_id" eval="[(6, 0, [ref('typ_stock.res_group_can_not_create_picking')])]"/>
             <field name="arch" type="xml">
-                <xpath expr="//tree[@string='Picking list']" position="attributes">
+                <xpath expr="//tree" position="attributes">
                      <attribute name="create" translation="off">false</attribute>
                 </xpath>
             </field>

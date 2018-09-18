@@ -5,6 +5,48 @@ from odoo.exceptions import UserError
 from odoo.tools.float_utils import float_round
 
 
+class StockPicking(models.Model):
+
+    _inherit = "stock.picking"
+
+    picking_shipment_date = fields.Date(
+        default=fields.Date.context_today, index=True,
+        states={'done': [('readonly', True)]},
+        help="Shipment date of the picking"
+    )
+    invoiced = fields.Boolean(
+        'Invoiced complete', copy=False,
+        help="This must be checked only when the supplier have invoiced "
+        "the whole order and there isn't a backorder. This activate a "
+        "green highlight on tree view "
+    )
+    number_landing = fields.Char(copy=False)
+
+    def action_confirm_trafic(self):
+        """This fill the invoiced field automatically"""
+        self.ensure_one()
+        self.invoiced = not self.invoiced
+        data = _("<ul><li>shipment confirmed --> <b>ok</b></li></ul>")
+        if not self.invoiced:
+            data = _(
+                "<ul><li>shipment confirmed --> <b>Canceled</b></li></ul>"
+            )
+        self.message_post(body=data)
+
+
+class StockMove(models.Model):
+
+    _inherit = "stock.move"
+
+    shipment_date = fields.Date(
+        'Product shipment date',
+        default=fields.Date.context_today, index=True,
+        states={'done': [('readonly', True)]},
+        help="Scheduled date for the shipment of this move"
+    )
+    product_supplier_ref = fields.Char(string='Supplier Code')
+
+
 class ReturnPicking(models.TransientModel):
     _inherit = 'stock.return.picking'
 
@@ -24,3 +66,14 @@ class ReturnPicking(models.TransientModel):
                     ' You can not return more quantity than delivered')
                     % (move.product_id.name, quantity))
         return super(ReturnPicking, self)._create_returns()
+
+
+class StockWarehouseOrderpoint(models.Model):
+    _inherit = 'stock.warehouse.orderpoint'
+
+    importance = fields.Selection([
+        ('aa', 'AA'), ('a', 'A'), ('b', 'B'), ('c', 'C'), ('d', 'D')
+    ])
+    note = fields.Text()
+    reorder_point = fields.Char()
+
