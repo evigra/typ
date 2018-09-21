@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <record model="ir.rule" id="hr_employee_edit_only_employee">
+    <!--<record model="ir.rule" id="hr_employee_edit_only_employee">
         <field name="name">Edit only user's employee</field>
         <field name="model_id" search="[('model', '=', 'hr.employee')]" model='ir.model'/>
         <field name="groups" eval="[(4,ref('base.group_user'))]"/>
@@ -9,7 +9,7 @@
         <field name="perm_unlink" eval="True"/>
         <field name="perm_create" eval="False"/>
         <field name="domain_force">[('user_id','=',user.id)]</field>
-    </record>
+    </record>-->
     <record model="ir.rule" id="res_partner_edit_own_employee_contact">
         <field name="name">Edit employee contact only</field>
         <field name="model_id" search="[('model', '=', 'res.partner')]" model='ir.model'/>
@@ -29,7 +29,7 @@
         <field name="perm_write" eval="True"/>
         <field name="perm_unlink" eval="False"/>
         <field name="perm_create" eval="False"/>
-        <!--<field name="domain_force">['|',('is_employee','=',False),('is_employee','!=', False)]</field>-->
-        <field name="domain_force">['|',('employee','=',False),('employee','!=', False)]</field>
+        <field name="domain_force">['|',('is_employee','=',False),('is_employee','!=', False)]</field>
+        <!--<field name="domain_force">['|',('employee','=',False),('employee','!=', False)]</field>-->
     </record>
 </odoo>

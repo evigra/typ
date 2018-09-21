@@ -64,7 +64,7 @@
         <field name="model">hr.employee</field>
         <field name="inherit_id" ref="hr.view_employee_form"/>
         <field name="arch" type="xml">
-            <xpath expr="//group" position="inside">
+            <xpath expr="//group/field[@name='birthday']" position="after">
                 <!--<xpath expr="//group[@string='Birth']" position="inside">-->
                 <field name="age"/>
             </xpath>
