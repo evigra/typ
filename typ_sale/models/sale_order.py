@@ -72,4 +72,4 @@ class PurchaseOrder(models.Model):
         if self.origin:
             new_origin = self.origin + ':' + self.name
             res.update({'origin': new_origin})
-            return res
+        return res

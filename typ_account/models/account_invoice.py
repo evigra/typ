@@ -59,6 +59,8 @@ class AccountInvoice(models.Model):
         """Show warning message if partner selected has no credit limit.
         """
         res = super(AccountInvoice, self)._onchange_partner_id()
+        if not self.need_verify_limit_credit():
+            return res
         ctx = {'new_amount': self.amount_total,
                'new_currency': self.currency_id.id,
                'journal_id': self.journal_id.id}
