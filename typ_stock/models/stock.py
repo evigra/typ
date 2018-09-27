@@ -47,6 +47,18 @@ class StockPicking(models.Model):
             raise UserError(_('This picking cannot be cancelled.'))
         return super().action_cancel()
 
+    def _get_overprocessed_stock_moves(self):
+        """Validate that pickings cannot be processed more than what was
+        initially planned
+        """
+        self.ensure_one()
+        res = super()._get_overprocessed_stock_moves()
+        if res:
+            raise UserError(
+                _('This picking cannot be confirmed because. You '
+                  'have processed more than what was initially planned'))
+        return res
+
 
 class StockMove(models.Model):
 
