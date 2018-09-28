@@ -59,6 +59,22 @@ class StockPicking(models.Model):
                   'have processed more than what was initially planned'))
         return res
 
+    @api.multi
+    def button_validate(self):
+        self.ensure_one()
+        """Validates internal movements so that when a movement is generated
+        do not allow to customers or suppliers
+        """
+        if self.picking_type_id.code != 'internal':
+            return super().button_validate()
+        for move in self.move_lines:
+            if (move.location_id.usage in ('customer', 'supplier') or
+                    move.location_dest_id.usage in ('customer', 'supplier')):
+                raise UserError(
+                    _("Internal movements don't allow locations in "
+                      "supplier or customer"))
+        return super().button_validate()
+
 
 class StockMove(models.Model):
 
