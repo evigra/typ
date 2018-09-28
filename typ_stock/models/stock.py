@@ -119,3 +119,20 @@ class StockWarehouseOrderpoint(models.Model):
     note = fields.Text()
     reorder_point = fields.Char()
 
+
+class StockScrap(models.Model):
+    _inherit = 'stock.scrap'
+
+    def action_validate(self):
+        self.ensure_one()
+        """Allows only users group manager/warehouse, confirm and validate
+        movements locations losses or scraped
+        """
+        if (self.location_id.usage == 'internal' and
+                self.scrap_location_id.usage == 'inventory'):
+            manager = self.env.user.has_group('stock.group_stock_manager')
+            if not manager:
+                raise UserError(
+                    _('Permission denied only manager/warehouse group.'
+                        ' Contact personnel Vauxoo immediately'))
+        return super().action_validate()
