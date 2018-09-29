@@ -43,7 +43,9 @@ class StockPicking(models.Model):
         moves_with_orig_transit_loc = self.mapped('move_lines').filtered(
             lambda mv: mv.move_orig_ids and mv.location_id.usage == 'transit')
         if moves_with_orig_transit_loc:
-            raise UserError(_('This picking cannot be cancelled.'))
+            picks = ','.join(moves_with_orig_transit_loc.mapped(
+                'picking_id.name'))
+            raise UserError(_('This picking %s cannot be cancelled.' % picks))
         return super().action_cancel()
 
     def _get_overprocessed_stock_moves(self):
