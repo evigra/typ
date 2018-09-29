@@ -40,9 +40,8 @@ class StockPicking(models.Model):
         if self.env.user.has_group(
                 'typ_stock.group_cancel_picking_with_move_not_in_transit_loc'):
             return super().action_cancel()
-        moves_with_orig_transit_loc = self.move_lines.filtered(
-            lambda mv: mv.move_orig_ids.id and
-            mv.location_id.usage == 'transit')
+        moves_with_orig_transit_loc = self.mapped('move_lines').filtered(
+            lambda mv: mv.move_orig_ids and mv.location_id.usage == 'transit')
         if moves_with_orig_transit_loc:
             raise UserError(_('This picking cannot be cancelled.'))
         return super().action_cancel()
