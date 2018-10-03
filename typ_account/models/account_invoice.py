@@ -16,6 +16,9 @@ class AccountInvoice(models.Model):
     date_paid = fields.Date('Payment date', index=True, copy=False,
                             help="This date indicate when the invoice "
                             "was paid")
+    supplier_invoice_number = fields.Char(
+        readonly=True, states={'draft': [('readonly', False)]},
+        help="The reference of this invoice is provided by the supplier")
 
     @api.multi
     def need_verify_limit_credit(self):
