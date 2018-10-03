@@ -29,6 +29,9 @@
             <field name="list_price" position="attributes">
                 <attribute name="groups" translation="off">typ_stock.res_group_standard_price</attribute>
             </field>
+            <field name="standard_price" position="attributes">
+                <attribute name="groups" translation="off">typ_stock.res_group_standard_price</attribute>
+            </field>
         </field>
     </record>
     <record id="product_template_kanban_view_inherith" model="ir.ui.view">
