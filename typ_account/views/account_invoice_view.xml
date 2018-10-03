@@ -55,5 +55,21 @@
                 </xpath>
             </field>
         </record>
+        <record id="account_invoice_customer_tree_view_inherit" model="ir.ui.view">
+            <field name="name">account.invoice.customer.tree</field>
+            <field name="model">account.invoice</field>
+            <field name="inherit_id" ref="account.invoice_tree"/>
+            <field name="arch" type="xml">
+                <field name="user_id" position="after">
+                    <field name="team_id"/>
+                </field>
+                <field name="amount_total_signed" position="before">
+                    <field name="amount_untaxed"/>
+                </field>
+                <field name="currency_id" position="attributes">
+                    <attribute name="invisible">0</attribute>
+                </field>
+            </field>
+        </record>
     </data>
 </openerp>
