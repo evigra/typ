@@ -41,7 +41,7 @@
         'views/stock_view.xml',
         # 'views/stock_warehouse_view.xml',
         'views/stock_picking_view.xml',
-        # 'views/product_view.xml',
+        'views/product_view.xml',
         # 'views/stock_quant_view.xml',
         # 'views/stock_manual_transfer_view.xml',
         # 'views/stock_location_route_view.xml',
