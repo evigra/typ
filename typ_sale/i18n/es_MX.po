@@ -1,17 +1,755 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
-#	* typ_sale
+#   * typ_sale
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 8.0\n"
+"Project-Id-Version: Odoo Server 11.0+e\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-06-08 22:27+0000\n"
-"PO-Revision-Date: 2017-06-08 22:27+0000\n"
+"POT-Creation-Date: 2018-10-18 19:36+0000\n"
+"PO-Revision-Date: 2018-10-18 14:25-0700\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: \n"
+"Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: \n"
+"Language: es\n"
+"X-Generator: Poedit 2.2\n"
 
+#. module: typ_sale
+#: model:ir.ui.view,arch_db:typ_sale.report_saleorder_document
+msgid ""
+"<br/>\n"
+"                        <span>RFC:</span>"
+msgstr ""
+"<br/>\n"
+"                        <span>RFC:</span>"
+
+#. module: typ_sale
+#: model:ir.ui.view,arch_db:typ_sale.custom_external_layout_background
+msgid ""
+"<br/>\n"
+"                <span>Contact</span>:"
+msgstr ""
+"<br/>\n"
+"                <span>Contacto</span>:"
+
+#. module: typ_sale
+#: model:ir.ui.view,arch_db:typ_sale.report_saleorder_document
+msgid "<span class=\"col-xs-4 text-left\"><strong>IVA 16%</strong>:</span>"
+msgstr "<span class=\"col-xs-4 text-left\"><strong>IVA 16%</strong>:</span>"
+
+#. module: typ_sale
+#: model:ir.ui.view,arch_db:typ_sale.report_saleorder_document
+msgid "<span class=\"col-xs-4 text-left\"><strong>SubTotal</strong>:</span>"
+msgstr "<span class=\"col-xs-4 text-left\"><strong>SubTotal</strong>:</span>"
+
+#. module: typ_sale
+#: model:ir.ui.view,arch_db:typ_sale.report_saleorder_document
+msgid "<span class=\"col-xs-4 text-left\"><strong>Total</strong>:</span>"
+msgstr "<span class=\"col-xs-4 text-left\"><strong>Total</strong>:</span>"
+
+#. module: typ_sale
+#: model:ir.ui.view,arch_db:typ_sale.report_saleorder_document
+msgid ""
+"<span><strong>Currency: </strong></span>\n"
+"                    <br/>\n"
+"                    ("
+msgstr ""
+"<span><strong>Moneda: </strong></span>\n"
+"                    <br/>\n"
+"                    ("
+
+#. module: typ_sale
+#: model:ir.ui.view,arch_db:typ_sale.report_saleorder_document
+msgid "<span><strong>Notes:</strong></span>"
+msgstr "<span><strong>Notas:</strong></span>"
+
+#. module: typ_sale
+#: model:ir.ui.view,arch_db:typ_sale.report_saleorder_document
+msgid ""
+"<span><strong>Salesman</strong>:\n"
+"                    <br/>\n"
+"                    </span>"
+msgstr ""
+"<span><strong>Vendedor</strong>:\n"
+"                    <br/>\n"
+"                    </span>"
+
+#. module: typ_sale
+#: model:ir.ui.view,arch_db:typ_sale.report_saleorder_document
+msgid ""
+"<span><strong>Your reference: </strong></span>\n"
+"                    <br/>"
+msgstr ""
+"<span><strong>Su referencia: </strong></span>\n"
+"                    <br/>"
+
+#. module: typ_sale
+#: model:ir.ui.view,arch_db:typ_sale.report_saleorder_document
+msgid "<span>Description</span>"
+msgstr "<span>Descripción</span>"
+
+#. module: typ_sale
+#: model:ir.ui.view,arch_db:typ_sale.custom_external_layout_background
+msgid "<span>Phone</span>:"
+msgstr "<span>Teléfono</span>:"
+
+#. module: typ_sale
+#: model:ir.ui.view,arch_db:typ_sale.report_saleorder_document
+msgid "<span>Price</span>"
+msgstr "<span>Precio</span>"
+
+#. module: typ_sale
+#: model:ir.ui.view,arch_db:typ_sale.report_saleorder_document
+msgid "<span>Quantity</span>"
+msgstr "<span>Cantidad</span>"
+
+#. module: typ_sale
+#: model:ir.ui.view,arch_db:typ_sale.custom_external_layout_background
+msgid "<span>RFC</span>:"
+msgstr "<span>RFC</span>:"
+
+#. module: typ_sale
+#: model:ir.ui.view,arch_db:typ_sale.report_saleorder_document
+msgid "<span>Unit Price</span>"
+msgstr "<span>Precio unitario</span>"
+
+#. module: typ_sale
+#: model:ir.ui.view,arch_db:typ_sale.report_saleorder_document
+msgid "<strong>Availability:</strong><br/> Except prior sale."
+msgstr "<strong>Disponibilidad:</strong><br/> Salvo previa venta."
+
+#. module: typ_sale
+#: model:ir.ui.view,arch_db:typ_sale.report_saleorder_document
+msgid "<strong>Client:</strong>"
+msgstr "<strong>Cliente:</strong>"
+
+#. module: typ_sale
+#: model:ir.ui.view,arch_db:typ_sale.report_saleorder_document
+msgid "<strong>Financing:</strong><br/> When buying equipment on credit, consider additional 2%, that will be credited if payment is performed within the time allowed."
+msgstr "<strong>Financiamiento:</strong><br/> En la compra de equipo a crédito, considere un adicional de 2%, que será bonificado si se realiza el pago dentro del tiempo concedido."
+
+#. module: typ_sale
+#: model:ir.ui.view,arch_db:typ_sale.report_saleorder_document
+msgid "<strong>Invoice address:</strong>"
+msgstr "<strong>Dirección de facturación:</strong>"
+
+#. module: typ_sale
+#: model:ir.ui.view,arch_db:typ_sale.report_saleorder_document
+msgid "<strong>Order Date</strong>:"
+msgstr "<strong>Fecha de cotización</strong>:"
+
+#. module: typ_sale
+#: model:ir.ui.view,arch_db:typ_sale.report_saleorder_document
+msgid "<strong>Payment method:</strong><br/> If payment is by check, consider additional 2% of the total amount for concept of check protection."
+msgstr "<strong>Método de pago:</strong><br/> Si el pago es con cheque, considere un adicional de 2% del total por concepto de protección del cheque ."
+
+#. module: typ_sale
+#: model:ir.ui.view,arch_db:typ_sale.report_saleorder_document
+msgid "<strong>Quotation Date</strong>:"
+msgstr "<strong>Fecha de cotización</strong>:"
+
+#. module: typ_sale
+#: model:ir.ui.view,arch_db:typ_sale.report_saleorder_document
+msgid "<strong>Shipping address:</strong>"
+msgstr "<strong>Dirección de envío</strong>"
+
+#. module: typ_sale
+#: model:ir.ui.view,arch_db:typ_sale.report_saleorder_document
+msgid "<strong>Validity:</strong><br/> 15 days for repairs and 30 days for equipments."
+msgstr "<strong>Vigencia:</strong><br/> 15 dias en refacciones y 30 días en equipos."
+
+#. module: typ_sale
+#: model:ir.ui.view,arch_db:typ_sale.report_saleorder_document
+msgid "<strong>Warranty:</strong><br/> 1 year for parts and 5 years for compressor in American equipment. 1 year for parts and compressor for Asian equipment. Does not apply to equipment with power failures or burns."
+msgstr "<strong>Garantía:</strong><br/> 1 año para partes y 5 años para compresor para equipos Americanos. 1 año en partes y compresor para equipos Asiáticos. No aplica para equipos con fallas eléctricas ni quemaduras."
+
+#. module: typ_sale
+#: selection:res.partner,importance:0
+#: selection:res.partner,potential_importance:0
+msgid "AA"
+msgstr "AA"
+
+#. module: typ_sale
+#: selection:res.partner,dealer:0
+msgid "AD"
+msgstr "DA"
+
+#. module: typ_sale
+#: model:ir.model.fields,field_description:typ_sale.field_res_partner_warehouse_allow_overdue_invoice
+msgid "Allow overdue invoices"
+msgstr "Permitir facturas vencidas"
+
+#. module: typ_sale
+#: selection:res.partner,partner_type:0
+msgid "BOT"
+msgstr "EMB"
+
+#. module: typ_sale
+#: model:ir.model.fields,field_description:typ_sale.field_res_partner_business_activity
+#: model:ir.model.fields,field_description:typ_sale.field_res_users_business_activity
+msgid "Business Activity"
+msgstr "Actividad de negocios"
+
+#. module: typ_sale
+#: selection:res.partner,region:0
+msgid "CENTER"
+msgstr "CENTRO"
+
+#. module: typ_sale
+#: selection:res.partner,business_activity:0
+msgid "COM"
+msgstr "EMP"
+
+#. module: typ_sale
+#: selection:res.partner,business_activity:0
+msgid "CON"
+msgstr "CON"
+
+#. module: typ_sale
+#: selection:account.invoice,type_payment_term:0
+#: selection:sale.order,type_payment_term:0
+msgid "Cash"
+msgstr "Contado"
+
+#. module: typ_sale
+#: model:ir.model,name:typ_sale.model_res_company
+msgid "Companies"
+msgstr "Compañías"
+
+#. module: typ_sale
+#: model:ir.model.fields,help:typ_sale.field_res_partner_res_warehouse_ids
+#: model:ir.model.fields,help:typ_sale.field_res_users_res_warehouse_ids
+msgid "Configurate salesman and credit limit to each warehouse"
+msgstr "Configurar vendedor y límite de crédito para cada almacén."
+
+#. module: typ_sale
+#: model:ir.model,name:typ_sale.model_res_partner
+msgid "Contact"
+msgstr "Contacto"
+
+#. module: typ_sale
+#: model:ir.model.fields,field_description:typ_sale.field_res_partner_warehouse_create_uid
+msgid "Created by"
+msgstr "Creado por"
+
+#. module: typ_sale
+#: model:ir.model.fields,field_description:typ_sale.field_res_partner_warehouse_create_date
+msgid "Created on"
+msgstr "Creado en"
+
+#. module: typ_sale
+#: selection:account.invoice,type_payment_term:0
+#: selection:sale.order,type_payment_term:0
+msgid "Credit"
+msgstr "Crédito"
+
+#. module: typ_sale
+#: model:ir.model.fields,field_description:typ_sale.field_res_partner_warehouse_credit_limit
+msgid "Credit Limit"
+msgstr "Crédito límite"
+
+#. module: typ_sale
+#: model:ir.model.fields,field_description:typ_sale.field_res_partner_dealer
+#: model:ir.model.fields,field_description:typ_sale.field_res_users_dealer
+msgid "Dealer type"
+msgstr "Tipo de distribuidor"
+
+#. module: typ_sale
+#: model:ir.model.fields,field_description:typ_sale.field_res_partner_warehouse_display_name
+msgid "Display Name"
+msgstr "Nombre mostrado"
+
+#. module: typ_sale
+#: selection:res.partner,business_activity:0 selection:res.partner,importance:0
+#: selection:res.partner,partner_type:0
+#: selection:res.partner,potential_importance:0
+msgid "EMPLOYEE"
+msgstr "EMPLEADO"
+
+#. module: typ_sale
+#: selection:res.partner,partner_type:0
+msgid "ESP"
+msgstr "ESP"
+
+#. module: typ_sale
+#: selection:res.partner,partner_type:0
+msgid "FSC"
+msgstr "ALI"
+
+#. module: typ_sale
+#: model:ir.model.fields,field_description:typ_sale.field_res_partner_warehouse_id
+msgid "ID"
+msgstr "ID (identificación)"
+
+#. module: typ_sale
+#: model:ir.model.fields,field_description:typ_sale.field_res_partner_importance
+#: model:ir.model.fields,field_description:typ_sale.field_res_users_importance
+msgid "Importance"
+msgstr "Importance"
+
+#. module: typ_sale
+#: model:ir.model.fields,help:typ_sale.field_sale_order_line_purchase_partner_id
+msgid "In this field can be defined the supplier you want to make the purchase that is generated by a special sale order."
+msgstr "In this field can be defined the supplier you want to make the purchase that is generated by a special sale order."
+
+#. module: typ_sale
+#: model:ir.model,name:typ_sale.model_account_invoice
+msgid "Invoice"
+msgstr "Factura"
+
+#. module: typ_sale
+#: model:ir.model.fields,field_description:typ_sale.field_res_partner_warehouse___last_update
+msgid "Last Modified on"
+msgstr "Última modificación en"
+
+#. module: typ_sale
+#: model:ir.model.fields,field_description:typ_sale.field_res_partner_warehouse_write_uid
+msgid "Last Updated by"
+msgstr "Última actualización de"
+
+#. module: typ_sale
+#: model:ir.model.fields,field_description:typ_sale.field_res_partner_warehouse_write_date
+msgid "Last Updated on"
+msgstr "Última actualización en"
+
+#. module: typ_sale
+#: model:ir.model.fields,field_description:typ_sale.field_res_company_margin_allowed
+#: model:ir.model.fields,field_description:typ_sale.field_res_config_settings_margin_allowed
+msgid "Margin Allowed on Sale Order"
+msgstr "Margin Allowed on Sale Order"
+
+#. module: typ_sale
+#: selection:res.partner,partner_type:0
+msgid "NC"
+msgstr "CN"
+
+#. module: typ_sale
+#: selection:res.partner,importance:0
+#: selection:res.partner,potential_importance:0
+msgid "NEGOTIATION"
+msgstr "NEGOCIACION"
+
+#. module: typ_sale
+#: selection:res.partner,importance:0
+#: selection:res.partner,potential_importance:0
+msgid "NEW"
+msgstr "NUEVO"
+
+#. module: typ_sale
+#: selection:res.partner,region:0
+msgid "NORTHEAST"
+msgstr "NORESTE"
+
+#. module: typ_sale
+#: selection:res.partner,region:0
+msgid "NORTHWEST"
+msgstr "NOROESTE"
+
+#. module: typ_sale
+#: selection:res.partner,business_activity:0 selection:res.partner,importance:0
+#: selection:res.partner,partner_type:0
+#: selection:res.partner,potential_importance:0
+msgid "NOT CLASSIFIED"
+msgstr "NO CLASIFICADO"
+
+#. module: typ_sale
+#: model:ir.model.fields,help:typ_sale.field_res_partner_business_activity
+#: model:ir.model.fields,help:typ_sale.field_res_users_business_activity
+msgid ""
+"Not classified \n"
+"CON - Contractor\n"
+"COM - Company\n"
+"WHO - Wholesaler"
+msgstr ""
+"Not classified \n"
+"CON - Contractor\n"
+"COM - Company\n"
+"WHO - Wholesaler"
+
+#. module: typ_sale
+#: selection:res.partner,partner_type:0
+msgid "OC"
+msgstr "CO"
+
+#. module: typ_sale
+#: model:ir.model.fields,help:typ_sale.field_res_partner_partner_type
+#: model:ir.model.fields,help:typ_sale.field_res_users_partner_type
+msgid ""
+"OC - Operator contractor\n"
+"NC - New work contractor\n"
+"PC - Professional contractor\n"
+"RC - Refrigeration contractor\n"
+"SP - Specifier\n"
+"FSC - Foodstuff company\n"
+"SUP - Supermarket company\n"
+"BOT - Bottler\n"
+"OTH - Others\n"
+"WHC - Wholesaler contractor\n"
+"WW - Wholesaler wholesaler\n"
+"WI - Wholesaler ironmonger"
+msgstr ""
+"OC - Operator contractor\n"
+"NC - New work contractor\n"
+"PC - Professional contractor\n"
+"RC - Refrigeration contractor\n"
+"SP - Specifier\n"
+"FSC - Foodstuff company\n"
+"SUP - Supermarket company\n"
+"BOT - Bottler\n"
+"OTH - Others\n"
+"WHC - Wholesaler contractor\n"
+"WW - Wholesaler wholesaler\n"
+"WI - Wholesaler ironmonger"
+
+#. module: typ_sale
+#: selection:res.partner,partner_type:0
+msgid "OTH"
+msgstr "OTR"
+
+#. module: typ_sale
+#: model:ir.ui.view,arch_db:typ_sale.custom_external_layout_background
+msgid "Order N°"
+msgstr "Pedido N°"
+
+#. module: typ_sale
+#: selection:res.partner,partner_type:0
+msgid "PC"
+msgstr "CP"
+
+#. module: typ_sale
+#: selection:res.partner,dealer:0
+msgid "PD"
+msgstr "PD"
+
+#. module: typ_sale
+#: model:ir.model.fields,help:typ_sale.field_res_partner_dealer
+#: model:ir.model.fields,help:typ_sale.field_res_users_dealer
+msgid ""
+"PD - Premier dealer\n"
+"AD - Authorized dealer\n"
+"SD - Sporadic dealer"
+msgstr ""
+"PD - Premier dealer\n"
+"AD - Authorized dealer\n"
+"SD - Sporadic dealer"
+
+#. module: typ_sale
+#: selection:res.partner,business_activity:0
+#: selection:res.partner,partner_type:0
+msgid "PUBLIC"
+msgstr "PUBLICO"
+
+#. module: typ_sale
+#: model:ir.ui.view,arch_db:typ_sale.custom_external_layout_background
+msgid "Page:"
+msgstr "Página:"
+
+#. module: typ_sale
+#: model:ir.model.fields,field_description:typ_sale.field_res_partner_warehouse_partner_id
+msgid "Partner"
+msgstr "Empresa"
+
+#. module: typ_sale
+#: model:ir.model.fields,field_description:typ_sale.field_res_partner_partner_type
+#: model:ir.model.fields,field_description:typ_sale.field_res_users_partner_type
+msgid "Partner Type"
+msgstr "Tipo de Empresa"
+
+#. module: typ_sale
+#: model:res.groups,name:typ_sale.group_res_partner_warehouse_manager
+msgid "Partner warehouse configuration manager"
+msgstr "Administrador de la configuración de almacén del cliente"
+
+#. module: typ_sale
+#: model:ir.model.fields,help:typ_sale.field_res_company_margin_allowed
+#: model:ir.model.fields,help:typ_sale.field_res_config_settings_margin_allowed
+msgid "Percent (%) margin allowed to be modified on sales orders"
+msgstr "Percent (%) margin allowed to be modified on sales orders"
+
+#. module: typ_sale
+#: model:ir.model.fields,field_description:typ_sale.field_crm_team_sale_phone
+msgid "Phone"
+msgstr "Teléfono"
+
+#. module: typ_sale
+#: model:ir.model.fields,help:typ_sale.field_crm_team_sale_phone
+msgid "Phone for contact sale team"
+msgstr "Teléfono para contactar con el equipo de venta"
+
+#. module: typ_sale
+#: selection:account.invoice,type_payment_term:0
+#: selection:sale.order,type_payment_term:0
+msgid "Postdated check"
+msgstr "Chequeo después de la factura"
+
+#. module: typ_sale
+#: model:ir.model.fields,field_description:typ_sale.field_res_partner_potential_importance
+#: model:ir.model.fields,field_description:typ_sale.field_res_users_potential_importance
+msgid "Potential Importance"
+msgstr "Potential Importance"
+
+#. module: typ_sale
+#: model:ir.model,name:typ_sale.model_procurement_rule
+msgid "Procurement Rule"
+msgstr "Regla de abastecimiento"
+
+#. module: typ_sale
+#: model:ir.model,name:typ_sale.model_purchase_order
+msgid "Purchase Order"
+msgstr "Pedido de Compra"
+
+#. module: typ_sale
+#: model:ir.model,name:typ_sale.model_sale_order
+msgid "Quotation"
+msgstr "Presupuesto"
+
+#. module: typ_sale
+#: model:ir.ui.view,arch_db:typ_sale.custom_external_layout_background
+msgid "Quotation N°"
+msgstr "Presupuesto N°"
+
+#. module: typ_sale
+#: selection:res.partner,partner_type:0
+msgid "RC"
+msgstr "CR"
+
+#. module: typ_sale
+#: model:ir.ui.view,arch_db:typ_sale.view_sale_order_form_type_payment_term
+msgid "Reference/Customer"
+msgstr "Referencia / Cliente"
+
+#. module: typ_sale
+#: model:ir.model.fields,field_description:typ_sale.field_res_partner_region
+#: model:ir.model.fields,field_description:typ_sale.field_res_users_region
+msgid "Region"
+msgstr "Region"
+
+#. module: typ_sale
+#: selection:res.partner,dealer:0
+msgid "SD"
+msgstr "DE"
+
+#. module: typ_sale
+#: selection:res.partner,region:0
+msgid "SOUTH"
+msgstr "SUR"
+
+#. module: typ_sale
+#: selection:res.partner,region:0
+msgid "SOUTHEAST"
+msgstr "SURESTE"
+
+#. module: typ_sale
+#: selection:res.partner,partner_type:0
+msgid "SUP"
+msgstr "SUP"
+
+#. module: typ_sale
+#: code:addons/typ_sale/models/sale_order.py:49
+#, python-format
+msgid "Sale of product below margin"
+msgstr "Venta de producto por debajo del margen"
+
+#. module: typ_sale
+#: model:res.groups,name:typ_sale.group_sale_order_invoice_payment_term_manager
+msgid "Sale order - Invoice - payment term manager"
+msgstr "Administrador de plazo de pago - Orden de venta - Factura"
+
+#. module: typ_sale
+#: model:ir.model,name:typ_sale.model_crm_team
+msgid "Sales Channel"
+msgstr "Canal de ventas"
+
+#. module: typ_sale
+#: model:ir.model,name:typ_sale.model_sale_order_line
+msgid "Sales Order Line"
+msgstr "Línea de pedido de ventas"
+
+#. module: typ_sale
+#: model:ir.model.fields,field_description:typ_sale.field_res_partner_warehouse_user_id
+msgid "Salesperson"
+msgstr "Comercial"
+
+#. module: typ_sale
+#: model:base.automation,name:typ_sale.automated_action_sell_below_minimum_margin
+#: model:ir.actions.server,name:typ_sale.automated_action_sell_below_minimum_margin_ir_actions_server
+msgid "Sell below the minimum margin"
+msgstr "Vender por debajo del margen mínimo"
+
+#. module: typ_sale
+#: model:ir.model.fields,help:typ_sale.field_res_partner_warehouse_warehouse_id
+msgid "Set the warehouse"
+msgstr "Configurar el almacén"
+
+#. module: typ_sale
+#: model:ir.model.fields,field_description:typ_sale.field_sale_order_line_special_sale
+msgid "Special Sale"
+msgstr "Venta especial"
+
+#. module: typ_sale
+#: model:ir.ui.view,arch_db:typ_sale.view_state_sale_order_filter_inherit
+msgid "State"
+msgstr "Estado"
+
+#. module: typ_sale
+#: model:ir.model.fields,field_description:typ_sale.field_sale_order_line_purchase_partner_id
+msgid "Supplier for purchase"
+msgstr "Proveedor para la compra"
+
+#. module: typ_sale
+#: code:addons/typ_sale/models/res_partner.py:117
+#, python-format
+msgid "There is more than one configuration for warehouse %s. It must have only one configuration for each warehouse"
+msgstr "Hay más de una configuración para el almacén %s. debe poseer solo una configuración para cada almacén"
+
+#. module: typ_sale
+#: model:res.groups,comment:typ_sale.res_group_can_sell_below_minimum_margin
+msgid "This group allow sale order bellow the minimum margin."
+msgstr "Este grupo permite pedidos de venta por debajo del margen mínimo."
+
+#. module: typ_sale
+#: model:res.groups,comment:typ_sale.res_group_cancel_sale_order
+msgid "This group can cancel the sale orders."
+msgstr "Este grupo puede cancelar las órdenes de venta."
+
+#. module: typ_sale
+#: model:res.groups,comment:typ_sale.group_invoiced_without_pedimento
+msgid "This group can invoiced a sale order without pedimento in entry quants."
+msgstr "Este grupo puede facturar ventas sin registrar pedimentos en los quant de entrada."
+
+#. module: typ_sale
+#: model:res.groups,comment:typ_sale.group_res_partner_warehouse_manager
+msgid "This group can register partner warehouse configurations."
+msgstr "Este grupo puede registrar configuraciones de almacén del cliente."
+
+#. module: typ_sale
+#: model:res.groups,comment:typ_sale.res_group_margin_sale_order
+msgid "This group can see margin in sale order."
+msgstr "Este grupo puede ver el margen en el pedido de venta."
+
+#. module: typ_sale
+#: model:res.groups,comment:typ_sale.group_sale_order_invoice_payment_term_manager
+msgid "This group has access to modify field payment term in Sale Orders and Invoices."
+msgstr "Este grupo tiene acceso a modificar campos de plazo de pago en Ordenes de Venta y Facturas."
+
+#. module: typ_sale
+#: code:addons/typ_sale/models/sale_order.py:59
+#, python-format
+msgid "This order can not be canceled because some of their pickings already have been transfered."
+msgstr "Esta venta no puede ser cancelada ya que alguno de sus albaranes ya ha sido transferido."
+
+#. module: typ_sale
+#: model:ir.ui.menu,name:typ_sale.sale_order_traffic
+#: model:ir.ui.menu,name:typ_sale.sale_order_traffic_menu
+msgid "Traffic"
+msgstr "Tráfico"
+
+#. module: typ_sale
+#: model:ir.model.fields,help:typ_sale.field_sale_order_line_special_sale
+msgid "True if there is a buy type procurement rule within the chosen route, otherwise false"
+msgstr "True if there is a buy type procurement rule within the chosen route, otherwise false"
+
+#. module: typ_sale
+#: model:ir.model.fields,field_description:typ_sale.field_account_invoice_type_payment_term
+#: model:ir.model.fields,field_description:typ_sale.field_sale_order_type_payment_term
+msgid "Type Payment Term"
+msgstr "Type Payment Term"
+
+#. module: typ_sale
+#: model:res.groups,name:typ_sale.res_group_cancel_sale_order
+msgid "Users that can cancel a sale order"
+msgstr "Los usuarios que pueden cancelar una orden de venta"
+
+#. module: typ_sale
+#: model:res.groups,name:typ_sale.group_invoiced_without_pedimento
+msgid "Users that can invoiced a sale order without pedimento in entry quants"
+msgstr "Usuarios que pueden facturar ventas sin registrar pedimentos en los quant de entrada"
+
+#. module: typ_sale
+#: model:res.groups,name:typ_sale.res_group_margin_sale_order
+msgid "Users that can see the margin of sale"
+msgstr "Usuarios que pueden ver el margen en el pedido de venta"
+
+#. module: typ_sale
+#: model:res.groups,name:typ_sale.res_group_can_sell_below_minimum_margin
+msgid "Users that can sell below the minimum margin"
+msgstr "Usuarios que pueden vender por debajo del margen mínimo"
+
+#. module: typ_sale
+#: model:res.groups,name:typ_sale.res_group_cost_audit
+msgid "Users who can audit costs"
+msgstr "Usuarios que pueden modificar el costo"
+
+#. module: typ_sale
+#: selection:res.partner,region:0
+msgid "WEST"
+msgstr "OCCIDENTE"
+
+#. module: typ_sale
+#: selection:res.partner,partner_type:0
+msgid "WHC"
+msgstr "MC"
+
+#. module: typ_sale
+#: selection:res.partner,business_activity:0
+msgid "WHO"
+msgstr "MAY"
+
+#. module: typ_sale
+#: selection:res.partner,partner_type:0
+msgid "WI"
+msgstr "MF"
+
+#. module: typ_sale
+#: selection:res.partner,partner_type:0
+msgid "WW"
+msgstr "MM"
+
+#. module: typ_sale
+#: model:ir.model.fields,field_description:typ_sale.field_res_partner_warehouse_warehouse_id
+msgid "Warehouse"
+msgstr "Almacén"
+
+#. module: typ_sale
+#: model:ir.model.fields,field_description:typ_sale.field_res_partner_res_warehouse_ids
+#: model:ir.model.fields,field_description:typ_sale.field_res_users_res_warehouse_ids
+msgid "Warehouse configuration"
+msgstr "Warehouse configuration"
+
+#. module: typ_sale
+#: model:ir.ui.view,arch_db:typ_sale.view_res_partner_warehouse_form
+msgid "Warehouse configurations"
+msgstr "Configuración de almacenes"
+
+#. module: typ_sale
+#: code:addons/typ_sale/models/sale_order_line.py:59
+#, python-format
+msgid ""
+"You can not be sold the product %s below permitted margin\n"
+"Contact Manager"
+msgstr ""
+"You can not be sold the product %s below permitted margin\n"
+"Contact Manager"
+
+#. module: typ_sale
+#: model:ir.model,name:typ_sale.model_res_config_settings
+msgid "res.config.settings"
+msgstr "res.config.settings"
+
+#. module: typ_sale
+#: model:ir.model,name:typ_sale.model_res_partner_warehouse
+msgid "res.partner.warehouse"
+msgstr "res.partner.warehouse"
+
+#. module: typ_sale
+#: model:ir.ui.view,arch_db:typ_sale.custom_external_layout_background
+msgid "| <span>Email</span>:"
+msgstr "| <span>Correo electrónico</span>:"
+
+#. module: typ_sale
+#: model:ir.ui.view,arch_db:typ_sale.custom_external_layout_background
+msgid "| <span>Website</span>:"
+msgstr "| <span>Sitio web</span>:"

@@ -19,6 +19,8 @@
     'data': [
         'data/res_groups.xml',
         'data/base_action_rule.xml',
+        'reports/layout.xml',
+        'reports/sale_order.xml',
         'security/res_groups.xml',
         'security/ir.model.access.csv',
         'views/sale_order_line_view.xml',
