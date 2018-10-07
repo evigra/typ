@@ -44,7 +44,7 @@
         'views/product_view.xml',
         # 'views/stock_quant_view.xml',
         'views/stock_manual_transfer_view.xml',
-        # 'wizard/view_procurement_compute_wizard_inh.xml',
+        'views/view_procurement_compute_wizard_inh.xml',
         # 'wizard/stock_serial_view.xml',
         # 'wizard/pedimento_product_wizard.xml',
         # 'wizard/stock_transfer_details.xml',

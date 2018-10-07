@@ -2,6 +2,7 @@
 # from . import procurement_rule
 # from . import orderpoint_procurement
 from . import stock
+from . import stock_scheduler_compute
 # from . import stock_return_picking
 # from . import pedimento_product
 # from . import stock_invoice_onshipping

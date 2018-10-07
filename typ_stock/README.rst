@@ -7,15 +7,6 @@ TYP Stock
 
 This module adding functionalities related with stock module.
 
-**Allow propagate transfer pickings.**
-
-This functionality allow transfer picking by propagation. To do this, it is
-necessary check the field ``Propagate transfer`` in object procurement rule
-related with stock move.
-
-When the field ``Propagate transfer`` is check in all procurement rules related
-with the stock moves created in a sale order, with make the transfer of first
-picking, all other pickings it will be transfered automatically.
 
 **Validation to warehouses to not allow negative availability in product.**
 
