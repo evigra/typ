@@ -22,9 +22,9 @@
                         <field name="state" widget="statusbar"/>
                     </header>
                     <sheet string="Manual Transfer">
-                            <div class="oe_title">
+                        <group>
                                 <h1><field name="name"/></h1>
-                            </div>
+                        </group>
                         <group col="4">
                             <field name="warehouse_id" options="{'no_create_edit': True}" attrs="{'readonly': [('state', '=', 'valid')]}"/>
                             <field name="date_planned" attrs="{'readonly': [('state', '=', 'valid')]}"/>
@@ -80,13 +80,24 @@
               </p>
             </field>
         </record>
-        
+
         <menuitem
             action="stock_manual_transfer_action"
             id="menu_stock_manual_transfer_act"
-            parent="stock.menu_stock_inventory_control"
+            parent="stock.menu_stock_warehouse_mgmt"
             sequence="40"
             groups="typ_stock.group_stock_manual_transfer"/>
+
+        <record id="stock_location_route_form_view_inherit" model="ir.ui.view">
+            <field name="name">stock.location.route.form.view.inherit</field>
+            <field name="model">stock.location.route</field>
+            <field name="inherit_id" ref="stock.stock_location_route_form_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='warehouse_selectable']" position="after">
+                    <field name="manual_transfer_selectable" string="Manual transfers"/>
+                </xpath>
+            </field>
+        </record>
 
     </data>
 </openerp>

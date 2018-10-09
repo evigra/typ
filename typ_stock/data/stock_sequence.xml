@@ -2,10 +2,6 @@
 <openerp>
     <data noupdate="1">
 
-        <record id="sequence_manual_transfer" model="ir.sequence.type">
-            <field name="name">Manual Transfers</field>
-            <field name="code">manual.transfers</field>
-        </record>
         <record id="sequence_transfer" model="ir.sequence">
             <field name="name">Manual Transfers</field>
             <field name="code">manual.transfers</field>
