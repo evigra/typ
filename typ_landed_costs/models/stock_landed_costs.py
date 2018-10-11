@@ -388,8 +388,21 @@ class StockLandedGuidesLine (models.Model):
         }
 
 
+class AccountInvoice(models.Model):
+    _inherit = 'account.invoice'
+
+    landed_cost_id = fields.Many2one('stock.landed.cost')
+
+
 class StockLandedCost(models.Model):
     _inherit = 'stock.landed.cost'
+
+    invoice_ids = fields.One2many(
+        'account.invoice',
+        'landed_cost_id',
+        string='Invoices',
+        help='Invoices which contain items to be used as landed costs',
+        copy=False)
 
     guide_ids = fields.One2many(
         'stock.landed.cost.guide',
@@ -398,15 +411,35 @@ class StockLandedCost(models.Model):
         help='Guides which contain items to be used as landed costs',
         copy=False)
 
-    @api.onchange('guide_ids')
+    def _get_lines_from_invoice(self):
+        company_currency = self.env.user.company_id.currency_id
+        lines = []
+        for invoice in self.invoice_ids:
+            for line in invoice.invoice_line_ids:
+                cost = line.price_unit
+                if invoice.currency_id != company_currency:
+                    cost = invoice.currency_id.with_context(
+                        date=invoice.date).compute(
+                            line.price_unit, company_currency)
+                lines.append((0, False, {
+                    'name': line.product_id.name,
+                    'account_id': line.account_id.id,
+                    'product_id': line.product_id.id,
+                    'price_unit': cost,
+                    'split_method': 'by_current_cost_price',
+                    'segmentation_cost': 'landed_cost'
+                }))
+        return lines
+
+    @api.onchange('guide_ids', 'invoice_ids')
     def onchange_guide_ids(self):
         """Inherited from stock.landed.costs in oder to add the logic necessary
         to update the list with the elements extracted when guides are
         added/removed"""
         company_currency = self.env.user.company_id.currency_id
+        line_invoice = self._get_lines_from_invoice()
         for landed_cost in self:
-            lines = landed_cost.cost_lines.mapped('id')
-            # Now we load the products present in guides
+            lines = []
             for guide in landed_cost.guide_ids:
                 for line in guide.line_ids:
                     product = line.product_id
@@ -426,8 +459,7 @@ class StockLandedCost(models.Model):
                         'split_method': 'by_current_cost_price',
                         'segmentation_cost': 'landed_cost'
                     }))
-            if lines:
-                landed_cost.update({'cost_lines': lines})
+            landed_cost.update({'cost_lines': lines+line_invoice})
 
 
 class StockLandedCostLines(models.Model):
