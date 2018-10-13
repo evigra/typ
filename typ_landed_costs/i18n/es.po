@@ -46,6 +46,11 @@ msgid "Average Product to Adjust with Landed Costs"
 msgstr "Producto para ajustar con costos de aterrizaje"
 
 #. module: typ_landed_costs
+#: selection:stock.landed.cost.guide,reference:0
+msgid "Branch Client"
+msgstr "Sucursal Cliente"
+
+#. module: typ_landed_costs
 #: view:invoice.guides:typ_landed_costs.view_invoice_from_guides_form
 #: view:stock.landed.cost.guide:typ_landed_costs.guide_form_view
 msgid "Cancel"
@@ -55,6 +60,16 @@ msgstr "Cancelar"
 #: selection:stock.landed.cost.guide,state:0
 msgid "Cancelled"
 msgstr "Cancelado"
+
+#. module: typ_landed_costs
+#: selection:stock.landed.cost.guide,reference:0
+msgid "Charged"
+msgstr "Cobrado"
+
+#. module: typ_landed_costs
+#: model:ir.model.fields,field_description:typ_landed_costs.field_stock_landed_cost_guide_comments
+msgid "Comments"
+msgstr "Comentarios"
 
 #. module: typ_landed_costs
 #: field:stock.landed.cost.guide,company_id:0
@@ -451,6 +466,11 @@ msgid "No Guide Lines!"
 msgstr "¡No hay Líneas de la Guía!"
 
 #. module: typ_landed_costs
+#: selection:stock.landed.cost.guide,reference:0
+msgid "Not charged"
+msgstr "No cobrado"
+
+#. module: typ_landed_costs
 #: code:addons/typ_landed_costs/models/stock_landed_costs.py:668
 #: code:addons/typ_landed_costs/models/stock_landed_costs.py:745
 #, python-format
@@ -539,19 +559,29 @@ msgid "Production Cost"
 msgstr "Coste de producción"
 
 #. module: typ_landed_costs
+#: selection:stock.landed.cost.guide,reference:0
+msgid "Prorated"
+msgstr "Prorrateado"
+
+#. module: typ_landed_costs
 #: model:product.pricelist,name:typ_landed_costs.landed_price
 msgid "Purchase Pricelist"
 msgstr "Lista de precio de compra"
 
 #. module: typ_landed_costs
-#: field:stock.landed.cost.guide,reference:0
+#: model:ir.model.fields,field_description:typ_landed_costs.field_stock_landed_cost_guide_reference
 msgid "Reference"
-msgstr "Referencias"
+msgstr "Referencia"
 
 #. module: typ_landed_costs
 #: help:stock.landed.cost.guide,reference:0
 msgid "Reference code for this guide"
 msgstr "Código de referencia para esta guía"
+
+#. module: typ_landed_costs
+#: model:ir.model.fields,help:typ_landed_costs.field_stock_landed_cost_guide_comments
+msgid "Reference to track guide, folio invoice, folio sales order, authorized customer, refill, etc."
+msgstr "Referencia para rastrear guia, folio factura, folio pedido venta, cliente autorizado, resurtido, etc."
 
 #. module: typ_landed_costs
 #: help:stock.landed.cost.guide,invoice_id:0

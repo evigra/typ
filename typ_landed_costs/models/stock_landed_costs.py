@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 
 from __future__ import division
-from openerp import api, fields, models, _
-from openerp.exceptions import except_orm, ValidationError
-import openerp.addons.decimal_precision as dp
+from odoo import api, fields, models, _
+from odoo.exceptions import except_orm, ValidationError
+import odoo.addons.decimal_precision as dp
 
 
 class StockLandedGuides (models.Model):
@@ -76,7 +76,11 @@ class StockLandedGuides (models.Model):
         readonly=True,
         states={'draft': [('readonly', False)]},
         help='Product lines associated to this guide')
-    reference = fields.Char(
+    reference = fields.Selection(
+        [('prorated', 'Prorated'),
+         ('branch_client', 'Branch Client'),
+         ('charged', 'Charged'),
+         ('not_charged', 'Not charged')],
         readonly=True,
         states={'draft': [('readonly', False)]},
         help='Reference code for this guide')
@@ -107,6 +111,12 @@ class StockLandedGuides (models.Model):
         string='Status',
         default='draft',
         help='Guide status')
+
+    comments = fields.Text(
+        help='Reference to track guide, folio invoice, folio sales order,'
+        ' authorized customer, refill, etc.'
+    )
+
     invoiced = fields.Boolean(help='When the guide has been invoiced, this'
                               ' field is True, otherwise False')
     invoice_id = fields.Many2one('account.invoice', string='Invoice',

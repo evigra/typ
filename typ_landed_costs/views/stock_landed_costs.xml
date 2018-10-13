@@ -43,10 +43,11 @@
                             <field name="date"/>
                             <field name="warehouse_id"/>
                             <field name="journal_id"/>
-                            <field name="reference"/>
+                            <field name="reference" widget="selection" required="True"/>
                             <field name="currency_id"/>
                             <field name="landed_cost_id"/>
-                            <field name="invoice_id" readonly='True'/>
+                            <field name="invoice_id" readonly="True"/>
+                            <field name="comments" required="True"/>
                         </group>
                         <notebook>
                             <page string="Guide Lines">
@@ -60,7 +61,7 @@
                             <page string="Other info">
                                 <group col="4">
                                     <field name="landed"/>
-                                    <field name="invoiced" readonly='True'/>
+                                    <field name="invoiced" readonly="True"/>
                                     <field name="company_id"/>
                                     <field name="move_id"/>
                                 </group>
