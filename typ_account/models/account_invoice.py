@@ -57,20 +57,19 @@ class AccountInvoice(models.Model):
                         ' Limit : %s') % (credit_limit)
                 raise exceptions.Warning(msg)
 
-    @api.onchange('partner_id', 'journal_id', 'company_id')
-    def _onchange_partner_id(self):
+    @api.onchange('partner_id', 'journal_id')
+    def _onchange_limit_credit(self):
         """Show warning message if partner selected has no credit limit.
         """
-        res = super(AccountInvoice, self)._onchange_partner_id()
         if not self.need_verify_limit_credit():
-            return res
+            return {}
         ctx = {'new_amount': self.amount_total,
                'new_currency': self.currency_id.id,
                'journal_id': self.journal_id.id}
         res_partner = self.env['res.partner'].with_context(ctx)
         allowed_sale = res_partner.browse(self.partner_id.id).allowed_sale
         if not self.partner_id or allowed_sale:
-            return res
+            return {}
         credit_overloaded = res_partner.browse(
             self.partner_id.id).credit_overloaded
         overdue_credit = res_partner.with_context(
@@ -88,8 +87,7 @@ class AccountInvoice(models.Model):
             'title': _('Warning!'),
             'message': ((msg) % self.partner_id.name),
         }
-        res['warning'] = warning
-        return res
+        return {'warning': warning}
 
     @api.model
     def invoice_validate(self):
