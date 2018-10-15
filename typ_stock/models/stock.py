@@ -62,10 +62,10 @@ class StockPicking(models.Model):
 
     @api.multi
     def button_validate(self):
-        self.ensure_one()
         """Validates internal movements so that when a movement is generated
         do not allow to customers or suppliers
         """
+        self.ensure_one()
         if self.picking_type_id.code != 'internal':
             return super().button_validate()
         for move in self.move_lines:
@@ -125,10 +125,10 @@ class StockScrap(models.Model):
     _inherit = 'stock.scrap'
 
     def action_validate(self):
-        self.ensure_one()
         """Allows only users group manager/warehouse, confirm and validate
         movements locations losses or scraped
         """
+        self.ensure_one()
         if (self.location_id.usage == 'internal' and
                 self.scrap_location_id.usage == 'inventory'):
             manager = self.env.user.has_group('stock.group_stock_manager')

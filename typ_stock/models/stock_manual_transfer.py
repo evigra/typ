@@ -14,13 +14,14 @@ class StockManualTransfer(models.Model):
     warehouse_id = fields.Many2one('stock.warehouse', 'Warehouse',
                                    required=True, default=lambda self: self.
                                    env.user.sale_team_id.default_warehouse.id)
-    date_planned = fields.Datetime('Planned Date',
-                               default=fields.Datetime.now,
-                               required=True)
-    route_id = fields.Many2one('stock.location.route', 'Preferred Routes',
-                               domain=[
-                                   ('manual_transfer_selectable', '=', True)],
-                               required=True)
+    date_planned = fields.Datetime(
+        'Planned Date',
+        default=fields.Datetime.now,
+        required=True)
+    route_id = fields.Many2one(
+        'stock.location.route', 'Preferred Routes',
+        domain=[('manual_transfer_selectable', '=', True)],
+        required=True)
     transfer_line = fields.One2many('stock.manual_transfer_line',
                                     'transfer_id',
                                     string='Transfer Lines', copy=True)

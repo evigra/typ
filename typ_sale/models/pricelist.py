@@ -2,15 +2,26 @@
 
 from __future__ import division
 from itertools import chain
+import logging
 
 from odoo import api, fields, models, tools
 from odoo.exceptions import UserError
+
+_logger = logging.getLogger(__name__)
+
+
+class PricelistItem(models.Model):
+
+    _inherit = 'product.pricelist.item'
+
+    sequence = fields.Integer(default=5)
 
 
 class Pricelist(models.Model):
 
     _inherit = 'product.pricelist'
 
+    # pylint: disable=R1260
     @api.multi
     def _compute_price_rule(self, products_qty_partner, date=False,
                             uom_id=False):
@@ -44,8 +55,8 @@ class Pricelist(models.Model):
             return {}
 
         categ_ids = {}
-        for p in products:
-            categ = p.categ_id
+        for product in products:
+            categ = product.categ_id
             while categ:
                 categ_ids[categ.id] = True
                 categ = categ.parent_id
@@ -81,6 +92,7 @@ class Pricelist(models.Model):
                 (item.date_start IS NULL OR item.date_start<=%s) AND
                 (item.date_end IS NULL OR item.date_end>=%s)
             ORDER BY
+                item.sequence asc,
                 item.applied_on,
                 item.min_quantity desc,
                 categ.parent_left desc''',
@@ -101,7 +113,7 @@ class Pricelist(models.Model):
                         [self._context['uom']])._compute_quantity(
                             qty, product.uom_id)
                 except UserError:
-                    pass
+                    _logger.warning('Passing error computing quantities')
 
             price = product.price_compute('list_price')[product.id]
 
