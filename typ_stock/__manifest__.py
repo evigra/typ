@@ -33,7 +33,7 @@
         # 'views/email_template_view.xml',
         # 'data/ir_actions_server.xml',
         'security/res_groups.xml',
-        # 'security/ir.model.access.csv',
+        'security/ir.model.access.csv',
         # 'data/base_action_rule.xml',
         # 'data/ir_cron.xml',
         'data/stock_sequence.xml',
