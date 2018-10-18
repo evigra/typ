@@ -29,6 +29,8 @@ lint:
     - git clone https://github.com/vauxoo/maintainer-quality-tools.git -b master ${HOME}/maintainer-quality-tools
     - export PATH=${HOME}/maintainer-quality-tools/travis:${HOME}/gitlab_tools:${PATH}
     - travis_install_nightly
+      # Disable file-not-used because is the project in process of migration: Remove this line after migrate the xml files
+    - sed -i "/file-not-used/d" ${HOME}/maintainer-quality-tools/travis/cfg/travis_run_pylint_pr.cfg
     - travis_run_tests
 
 test:

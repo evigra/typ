@@ -45,7 +45,7 @@ class StockPicking(models.Model):
         if moves_with_orig_transit_loc:
             picks = ','.join(moves_with_orig_transit_loc.mapped(
                 'picking_id.name'))
-            raise UserError(_('This picking %s cannot be cancelled.' % picks))
+            raise UserError(_('This picking %s cannot be cancelled.') % picks)
         return super().action_cancel()
 
     def _get_overprocessed_stock_moves(self):
@@ -62,7 +62,7 @@ class StockPicking(models.Model):
 
     @api.multi
     def button_validate(self):
-        """Validates internal movements so that when a movement is generated
+        """Validates internal movements so that when a movement is generated,
         do not allow to customers or suppliers
         """
         self.ensure_one()
@@ -125,7 +125,7 @@ class StockScrap(models.Model):
     _inherit = 'stock.scrap'
 
     def action_validate(self):
-        """Allows only users group manager/warehouse, confirm and validate
+        """Allows only users group manager/warehouse, confirm and validate, the
         movements locations losses or scraped
         """
         self.ensure_one()

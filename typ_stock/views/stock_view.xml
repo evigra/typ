@@ -1,96 +1,92 @@
 <?xml version="1.0" encoding="utf-8"?>
-<openerp>
-    <data>
+<odoo>
+    <record model="ir.ui.view" id="view_stock_picking_force_assign">
+        <field name="name">stock.picking.force.assign</field>
+        <field name="model">stock.picking</field>
+        <field name="inherit_id" ref="stock.view_picking_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//button[@name='do_unreserve']" position="attributes">
+                <attribute name="groups" translation="off">typ_stock.res_group_force_stock_move,typ_stock.res_group_can_unreserve</attribute>
+            </xpath>
+        </field>
+    </record>
 
-        <record model="ir.ui.view" id="view_stock_picking_force_assign">
-            <field name="name">stock.picking.force.assign</field>
-            <field name="model">stock.picking</field>
-            <field name="inherit_id" ref="stock.view_picking_form"/>
-            <field name="arch" type="xml">
-                <xpath expr="//button[@name='do_unreserve']" position="attributes">
-                    <attribute name="groups" translation="off">typ_stock.res_group_force_stock_move,typ_stock.res_group_can_unreserve</attribute>
+    <record model="ir.ui.view" id="view_stock_wareohuse_orderppoint_product">
+        <field name="name">stock.warehouse.orderpoint.product</field>
+        <field name="model">stock.warehouse.orderpoint</field>
+        <field name="inherit_id" ref="stock.view_warehouse_orderpoint_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='product_id']" position="after">
+                <field name='importance'/>
+                <field name='reorder_point'/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view__warehouse_orderpoint_tree_inherit" model="ir.ui.view">
+        <field name="name">warehouse.orderpoint.tree.inherit</field>
+        <field name="model">stock.warehouse.orderpoint</field>
+        <field name="inherit_id" ref="stock.view_warehouse_orderpoint_tree"/>
+        <field name="arch" type="xml">
+                <xpath expr="//field[@name='product_max_qty']" position="after">
+                    <field name="qty_multiple"/>
                 </xpath>
-            </field>
-        </record>
+        </field>
+    </record>
 
-        <record model="ir.ui.view" id="view_stock_wareohuse_orderppoint_product">
-            <field name="name">stock.warehouse.orderpoint.product</field>
-            <field name="model">stock.warehouse.orderpoint</field>
-            <field name="inherit_id" ref="stock.view_warehouse_orderpoint_form"/>
-            <field name="arch" type="xml">
-                <xpath expr="//field[@name='product_id']" position="after">
-                    <field name='importance'/>
-                    <field name='reorder_point'/>
-                </xpath>
+    <record model="ir.ui.view" id="view_stock_move_shipment_date_form">
+        <field name="name">stock.move.shipment.date.form</field>
+        <field name="model">stock.move</field>
+        <field name="inherit_id" ref="stock.view_move_picking_form"/>
+        <field name="arch" type="xml">
+            <field name="date_expected" position="before">
+                <field name='shipment_date'/>
             </field>
-        </record>
+        </field>
+    </record>
 
-        <record id="view__warehouse_orderpoint_tree_inherit" model="ir.ui.view">
-            <field name="name">warehouse.orderpoint.tree.inherit</field>
-            <field name="model">stock.warehouse.orderpoint</field>
-            <field name="inherit_id" ref="stock.view_warehouse_orderpoint_tree"/>
-            <field name="arch" type="xml">
-                    <xpath expr="//field[@name='product_max_qty']" position="after">
-                        <field name="qty_multiple"/>
-                    </xpath>
+    <record model="ir.ui.view" id="view_stock_move_shipment_date_tree">
+        <field name="name">stock.move.shipment.date.tree</field>
+        <field name="model">stock.move</field>
+        <field name="inherit_id" ref="stock.view_move_picking_tree"/>
+        <field name="arch" type="xml">
+            <field name="date_expected" position="before">
+                <field name='shipment_date'/>
             </field>
-        </record>
+        </field>
+    </record>
 
-        <record model="ir.ui.view" id="view_stock_move_shipment_date_form">
-            <field name="name">stock.move.shipment.date.form</field>
-            <field name="model">stock.move</field>
-            <field name="inherit_id" ref="stock.view_move_picking_form"/>
-            <field name="arch" type="xml">
-                <field name="date_expected" position="before">
-                    <field name='shipment_date'/>
-                </field>
+    <record model="ir.ui.view" id="view_stock_move_supplier_code_view">
+        <field name="name">stock.move.supplier.code.tree</field>
+        <field name="model">stock.move</field>
+        <field name="inherit_id" ref="stock.view_move_picking_tree"/>
+        <field name="arch" type="xml">
+            <field name="product_id" position="before">
+                <field name='product_supplier_ref' groups="typ_stock.group_reception_picking_attributes"/>
             </field>
-        </record>
+        </field>
+    </record>
 
-        <record model="ir.ui.view" id="view_stock_move_shipment_date_tree">
-            <field name="name">stock.move.shipment.date.tree</field>
-            <field name="model">stock.move</field>
-            <field name="inherit_id" ref="stock.view_move_picking_tree"/>
-            <field name="arch" type="xml">
-                <field name="date_expected" position="before">
-                    <field name='shipment_date'/>
-                </field>
-            </field>
-        </record>
+    <record id="view_inventory_tree_inherit" model="ir.ui.view">
+        <field name="name">stock.inventory.tree.inherit</field>
+        <field name="model">stock.inventory</field>
+        <field name="inherit_id" ref="stock.view_inventory_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='state']" position="before">
+                <field name="location_id"/>
+                <field name="filter"/>
+            </xpath>
+        </field>
+    </record>
 
-        <record model="ir.ui.view" id="view_stock_move_supplier_code_view">
-            <field name="name">stock.move.supplier.code.tree</field>
-            <field name="model">stock.move</field>
-            <field name="inherit_id" ref="stock.view_move_picking_tree"/>
-            <field name="arch" type="xml">
-                <field name="product_id" position="before">
-                    <field name='product_supplier_ref' groups="typ_stock.group_reception_picking_attributes"/>
-                </field>
-            </field>
-        </record>
-
-        <record id="view_inventory_tree_inherit" model="ir.ui.view">
-            <field name="name">stock.inventory.tree.inherit</field>
-            <field name="model">stock.inventory</field>
-            <field name="inherit_id" ref="stock.view_inventory_tree"/>
-            <field name="arch" type="xml">
-                <xpath expr="//field[@name='state']" position="before">
-                    <field name="location_id"/>
-                    <field name="filter"/>
-                </xpath>
-            </field>
-        </record>
-
-        <record model="ir.ui.view" id="view_inventory_filter_inherit">
-            <field name="name">stock.inventory.filter.inherit</field>
-            <field name="model">stock.inventory</field>
-            <field name="inherit_id" ref="stock.view_inventory_filter"/>
-            <field name="arch" type="xml">
-                <search>
-                    <field name="location_id"/>
-                </search>
-            </field>
-        </record>
-
-    </data>
-</openerp>
+    <record model="ir.ui.view" id="view_inventory_filter_inherit">
+        <field name="name">stock.inventory.filter.inherit</field>
+        <field name="model">stock.inventory</field>
+        <field name="inherit_id" ref="stock.view_inventory_filter"/>
+        <field name="arch" type="xml">
+            <search>
+                <field name="location_id"/>
+            </search>
+        </field>
+    </record>
+</odoo>

@@ -1,19 +1,17 @@
 <?xml version="1.0"?>
-<openerp>
-    <data noupdate="1">
-        <record model="email.template" id="email_template_product_manager">
-            <field name="name">Email template product manager</field>
-            <field name="model">email.template</field>
-            <field name="email_from">${(user.email or '' | safe)}</field>
-            <field name="email_to">${(object.product_manager.partner_id.email) | safe}</field>
-            <field name="subject">Responsable del producto</field>
-            <field name="body_html">Hi ${(object.product_manager.partner_id.name)}, there is new product
-            that needs check it.
-            </field>
-            <field name="model_id" ref="account.model_product_template"/>
-            <field name="auto_delete" eval="True"/>
-            <field name="company_id" ref="base.main_company"/>
-        </record>
-
-    </data>
-</openerp>
+<!-- pylint:disable=name-of-check-to-skip -->
+<odoo noupdate="1">
+    <record model="email.template" id="email_template_product_manager">
+        <field name="name">Email template product manager</field>
+        <field name="model">email.template</field>
+        <field name="email_from">${(user.email or '' | safe)}</field>
+        <field name="email_to">${(object.product_manager.partner_id.email) | safe}</field>
+        <field name="subject">Responsable del producto</field>
+        <field name="body_html">Hi ${(object.product_manager.partner_id.name)}, there is new product
+        that needs check it.
+        </field>
+        <field name="model_id" ref="account.model_product_template"/>
+        <field name="auto_delete" eval="True"/>
+        <field name="company_id" ref="base.main_company"/>
+    </record>
+</odoo>

@@ -1,36 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
-<openerp>
-    <data>
-        <record id="view_pedimento_product_wizard" model="ir.ui.view">
-            <field name="name">view.pedimento.product.wizard</field>
-            <field name="model">pedimento.product</field>
-            <field name="type">form</field>
-            <field name="arch" type="xml">
-                <form string="Pedimento/Serial-Product">
-                    <group>
-                        <label string="Wizard / write selected lot or quant"/>
-                    </group>
-                    <group>
-                        <field name="product_id" invisible="True" />
-                        <field name="lot_id" style="width: 40%" string="Serial" domain="[('product_id', '=', product_id), ('quant_ids', '=', False)]"/>
-                        <field name="landed_id" style="width: 40%" string="Pedimento" domain="[('is_pedimento', '=', 1)]"/>
-                    </group>
-                    <footer>
-                        <button name="write_lot_in_quant" string="write data" class="oe_highligth" type="object" />
-                        or
-                        <button string="Cancel" class="oe_link" special="cancel" />
-                    </footer>
-                </form>
-            </field>
-        </record>
-        <record model="ir.actions.act_window" id="pedimento_product_action">
-            <field name="name">Wizard Pedimento Product</field>
-            <field name="res_model">pedimento.product</field>
-            <field name="type">ir.actions.act_window</field>
-            <field name="view_mode">form</field>
-            <field name="view_type">form</field>
-            <field name="target">new</field>
-            <field name="view_id" ref="view_pedimento_product_wizard"/>
-        </record>
-    </data>
-</openerp>
+<odoo>
+    <record id="view_pedimento_product_wizard" model="ir.ui.view">
+        <field name="name">view.pedimento.product.wizard</field>
+        <field name="model">pedimento.product</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <form string="Pedimento/Serial-Product">
+                <group>
+                    <label string="Wizard / write selected lot or quant"/>
+                </group>
+                <group>
+                    <field name="product_id" invisible="True" />
+                    <field name="lot_id" style="width: 40%" string="Serial" domain="[('product_id', '=', product_id), ('quant_ids', '=', False)]"/>
+                    <field name="landed_id" style="width: 40%" string="Pedimento" domain="[('is_pedimento', '=', 1)]"/>
+                </group>
+                <footer>
+                    <button name="write_lot_in_quant" string="write data" class="oe_highligth" type="object" />
+                    or
+                    <button string="Cancel" class="oe_link" special="cancel" />
+                </footer>
+            </form>
+        </field>
+    </record>
+    <record model="ir.actions.act_window" id="pedimento_product_action">
+        <field name="name">Wizard Pedimento Product</field>
+        <field name="res_model">pedimento.product</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="view_mode">form</field>
+        <field name="view_type">form</field>
+        <field name="target">new</field>
+        <field name="view_id" ref="view_pedimento_product_wizard"/>
+    </record>
+</odoo>

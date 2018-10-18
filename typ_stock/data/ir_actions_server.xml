@@ -1,93 +1,90 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<openerp>
-    <data noupdate="1">
+<odoo noupdate="1">
+    <record id="server_action_propagate_picking_transfer" model="ir.actions.server">
+        <field name="name">Propagate picking transfer</field>
+        <field name="model_id" model="ir.model" search="[('model', '=', 'stock.move')]"/>
+        <field name="state">code</field>
+        <field name="code">object.propagate_picking_transfer()</field>
+    </record>
 
-        <record id="server_action_propagate_picking_transfer" model="ir.actions.server">
-            <field name="name">Propagate picking transfer</field>
-            <field name="model_id" model="ir.model" search="[('model', '=', 'stock.move')]"/>
-            <field name="state">code</field>
-            <field name="code">object.propagate_picking_transfer()</field>
-        </record>
+    <record id="server_action_validate_picking_negative" model="ir.actions.server">
+        <field name="name">Validate picking negative</field>
+        <field name="model_id" model="ir.model" search="[('model', '=', 'stock.move')]"/>
+        <field name="state">code</field>
+        <field name="code">object.validate_picking_negative()</field>
+    </record>
 
-        <record id="server_action_validate_picking_negative" model="ir.actions.server">
-            <field name="name">Validate picking negative</field>
-            <field name="model_id" model="ir.model" search="[('model', '=', 'stock.move')]"/>
-            <field name="state">code</field>
-            <field name="code">object.validate_picking_negative()</field>
-        </record>
+    <record id="server_action_validate_move_internal" model="ir.actions.server">
+        <field name="name">Validate move internal locations</field>
+        <field name="model_id" model="ir.model" search="[('model', '=', 'stock.picking')]"/>
+        <field name="state">code</field>
+        <field name="code">object.validate_move_internal()</field>
+    </record>
 
-        <record id="server_action_validate_move_internal" model="ir.actions.server">
-            <field name="name">Validate move internal locations</field>
-            <field name="model_id" model="ir.model" search="[('model', '=', 'stock.picking')]"/>
-            <field name="state">code</field>
-            <field name="code">object.validate_move_internal()</field>
-        </record>
+    <record id="server_action_verify_user_scrap" model="ir.actions.server">
+        <field name="name">Verify user scrap</field>
+        <field name="model_id" model="ir.model" search="[('model', '=', 'stock.move')]"/>
+        <field name="state">code</field>
+        <field name="code">object.verify_user_scrap()</field>
+    </record>
 
-        <record id="server_action_verify_user_scrap" model="ir.actions.server">
-            <field name="name">Verify user scrap</field>
-            <field name="model_id" model="ir.model" search="[('model', '=', 'stock.move')]"/>
-            <field name="state">code</field>
-            <field name="code">object.verify_user_scrap()</field>
-        </record>
+    <record id="server_action_validate_return_customer" model="ir.actions.server">
+        <field name="name">Validate return of customer</field>
+        <field name="model_id" model="ir.model" search="[('model', '=', 'stock.picking')]"/>
+        <field name="state">code</field>
+        <field name="code">object.validate_return_customer()</field>
+    </record>
 
-        <record id="server_action_validate_return_customer" model="ir.actions.server">
-            <field name="name">Validate return of customer</field>
-            <field name="model_id" model="ir.model" search="[('model', '=', 'stock.picking')]"/>
-            <field name="state">code</field>
-            <field name="code">object.validate_return_customer()</field>
-        </record>
+    <record id="server_action_procurement_migration" model="ir.actions.server">
+        <field name="name">Validation procurement in migration</field>
+        <field name="model_id" model="ir.model" search="[('model', '=', 'procurement.order')]"/>
+        <field name="state">code</field>
+        <field name="code">for procurement in model.browse(context.get('active_ids')):
+if procurement.state == 'running' and not procurement.rule_id:
+        procurement.cancel()
+if procurement.purchase_id and procurement.purchase_id.state == 'cancel':
+        procurement.cancel()
+if procurement.purchase_id and procurement.purchase_id.state == 'done':
+        procurement.check()
+        </field>
+    </record>
 
-        <record id="server_action_procurement_migration" model="ir.actions.server">
-            <field name="name">Validation procurement in migration</field>
-            <field name="model_id" model="ir.model" search="[('model', '=', 'procurement.order')]"/>
-            <field name="state">code</field>
-            <field name="code">for procurement in model.browse(context.get('active_ids')):
-    if procurement.state == 'running' and not procurement.rule_id:
-            procurement.cancel()
-    if procurement.purchase_id and procurement.purchase_id.state == 'cancel':
-            procurement.cancel()
-    if procurement.purchase_id and procurement.purchase_id.state == 'done':
-            procurement.check()
-            </field>
-        </record>
-
-        <record id="server_action_procurement_cancel" model="ir.actions.server">
-            <field name="name">Action procurement cancel</field>
-            <field name="model_id" model="ir.model" search="[('model', '=', 'procurement.order')]"/>
-            <field name="state">code</field>
-            <field name="code">
+    <record id="server_action_procurement_cancel" model="ir.actions.server">
+        <field name="name">Action procurement cancel</field>
+        <field name="model_id" model="ir.model" search="[('model', '=', 'procurement.order')]"/>
+        <field name="state">code</field>
+        <field name="code">
 for proc in model.browse(context.get('active_ids')):
-    if proc.state == 'exception' and (not proc.purchase_id or proc.purchase_id.state == 'cancel') and proc.rule_id.action == 'buy':
-            proc.with_context(dict(context, not_delete_purchase_line=True)).cancel()
-            </field>
-        </record>
+if proc.state == 'exception' and (not proc.purchase_id or proc.purchase_id.state == 'cancel') and proc.rule_id.action == 'buy':
+        proc.with_context(dict(context, not_delete_purchase_line=True)).cancel()
+        </field>
+    </record>
 
-        <record id="server_action_product_supplier_ref" model="ir.actions.server">
-             <field name="name">Action compute supplier ref</field>
-             <field name="model_id" model="ir.model" search="[('model', '=', 'stock.move')]"/>
-             <field name="state">code</field>
-             <field name="code">object.compute_seller_code()</field>
-        </record>
+    <record id="server_action_product_supplier_ref" model="ir.actions.server">
+         <field name="name">Action compute supplier ref</field>
+         <field name="model_id" model="ir.model" search="[('model', '=', 'stock.move')]"/>
+         <field name="state">code</field>
+         <field name="code">object.compute_seller_code()</field>
+    </record>
 
-        <record id="server_action_product_manager_follower" model="ir.actions.server">
-             <field name="name">Action follower product manager</field>
-             <field name="model_id" model="ir.model" search="[('model', '=', 'product.template')]"/>
-             <field name="state">code</field>
-             <field name="code">if object.product_manager.partner_id.id:
-                self.message_subscribe(cr, uid, [object.id], [object.product_manager.partner_id.id], context=context)</field>
-        </record>
+    <record id="server_action_product_manager_follower" model="ir.actions.server">
+         <field name="name">Action follower product manager</field>
+         <field name="model_id" model="ir.model" search="[('model', '=', 'product.template')]"/>
+         <field name="state">code</field>
+         <field name="code">if object.product_manager.partner_id.id:
+            self.message_subscribe(cr, uid, [object.id], [object.product_manager.partner_id.id], context=context)</field>
+    </record>
 
-        <record id="server_action_product_manager_send_email" model="ir.actions.server">
-             <field name="name">Send email product manager</field>
-             <field name="model_id" model="ir.model" search="[('model', '=', 'product.template')]"/>
-             <field name="state">email</field>
-             <field name="template_id" ref="typ_stock.email_template_product_manager"/>
-        </record>
+    <record id="server_action_product_manager_send_email" model="ir.actions.server">
+         <field name="name">Send email product manager</field>
+         <field name="model_id" model="ir.model" search="[('model', '=', 'product.template')]"/>
+         <field name="state">email</field>
+         <field name="template_id" ref="typ_stock.email_template_product_manager"/>
+    </record>
 
 
-        <record id="stock_picking_allow_fields" model="ir.config_parameter">
-             <field name="key">stock_picking_allow_fields</field>
-             <field name="value">['date_done', 'recompute_pack_op']</field>
-        </record>
-    </data>
-</openerp>
+    <record id="stock_picking_allow_fields" model="ir.config_parameter">
+         <field name="key">stock_picking_allow_fields</field>
+         <field name="value">['date_done', 'recompute_pack_op']</field>
+    </record>
+</odoo>

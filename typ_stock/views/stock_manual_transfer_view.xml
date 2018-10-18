@@ -1,103 +1,99 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<openerp>
-    <data>
+<odoo>
+    <record id="stock_manual_transfer_form_view" model="ir.ui.view">
+        <field name="name">Manual Transfer Form View</field>
+        <field name="model">stock.manual_transfer</field>
+        <field name="arch" type="xml">
+            <form string="New Manual Transfer">
+                <header>
+                    <field name="picking_ids" invisible="1"/>
+                    <button name="make_transfer" type="object"
+                        string="Make transfer"
+                        states="draft"
+                        class="oe_highlight"
+                        groups="typ_stock.group_stock_manual_transfer"/>
+                    <button name="action_view_pickings" type="object"
+                        string="View Pickings"
+                        attrs="{'invisible': ['|',('picking_ids','=',False),('picking_ids','=',[])]}"
+                        class="oe_highlight"
+                        groups="typ_stock.group_stock_manual_transfer"/>
+                    <field name="state" widget="statusbar"/>
+                </header>
+                <sheet string="Manual Transfer">
+                    <group>
+                            <h1><field name="name"/></h1>
+                    </group>
+                    <group col="4">
+                        <field name="warehouse_id" options="{'no_create_edit': True}" attrs="{'readonly': [('state', '=', 'valid')]}"/>
+                        <field name="date_planned" attrs="{'readonly': [('state', '=', 'valid')]}"/>
+                        <field name="route_id" options="{'no_create_edit': True}" attrs="{'readonly': [('state', '=', 'valid')]}"/>
+                    </group>
+                    <notebook>
+                        <page string="Transfer Lines">
+                            <field name="transfer_line" nolabel="1" attrs="{'readonly': [('state', '=', 'valid')]}"/>
+                        </page>
+                    </notebook>
+                </sheet>
+                 <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers" groups="base.group_user"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>
+            </form>
+        </field>
+    </record>
 
-        <record id="stock_manual_transfer_form_view" model="ir.ui.view">
-            <field name="name">Manual Transfer Form View</field>
-            <field name="model">stock.manual_transfer</field>
-            <field name="arch" type="xml">
-                <form string="New Manual Transfer">
-                    <header>
-                        <field name="picking_ids" invisible="1"/>
-                        <button name="make_transfer" type="object"
-                            string="Make transfer"
-                            states="draft"
-                            class="oe_highlight"
-                            groups="typ_stock.group_stock_manual_transfer"/>
-                        <button name="action_view_pickings" type="object"
-                            string="View Pickings"
-                            attrs="{'invisible': ['|',('picking_ids','=',False),('picking_ids','=',[])]}"
-                            class="oe_highlight"
-                            groups="typ_stock.group_stock_manual_transfer"/>
-                        <field name="state" widget="statusbar"/>
-                    </header>
-                    <sheet string="Manual Transfer">
-                        <group>
-                                <h1><field name="name"/></h1>
-                        </group>
-                        <group col="4">
-                            <field name="warehouse_id" options="{'no_create_edit': True}" attrs="{'readonly': [('state', '=', 'valid')]}"/>
-                            <field name="date_planned" attrs="{'readonly': [('state', '=', 'valid')]}"/>
-                            <field name="route_id" options="{'no_create_edit': True}" attrs="{'readonly': [('state', '=', 'valid')]}"/>
-                        </group>
-                        <notebook>
-                            <page string="Transfer Lines">
-                                <field name="transfer_line" nolabel="1" attrs="{'readonly': [('state', '=', 'valid')]}"/>
-                            </page>
-                        </notebook>
-                    </sheet>
-                     <div class="oe_chatter">
-                        <field name="message_follower_ids" widget="mail_followers" groups="base.group_user"/>
-                        <field name="message_ids" widget="mail_thread"/>
-                    </div>
-                </form>
-            </field>
-        </record>
+    <record id="stock_manual_transfer_tree_view" model="ir.ui.view">
+        <field name="name">Manual Transfer Tree</field>
+        <field name="model">stock.manual_transfer</field>
+        <field name="arch" type="xml">
+            <tree string="Manual Transfer">
+                <field name="name"/>
+                <field name="warehouse_id"/>
+                <field name="date_planned"/>
+                <field name="route_id"/>
+                <field name="state"/>
+            </tree>
+        </field>
+    </record>
 
-        <record id="stock_manual_transfer_tree_view" model="ir.ui.view">
-            <field name="name">Manual Transfer Tree</field>
-            <field name="model">stock.manual_transfer</field>
-            <field name="arch" type="xml">
-                <tree string="Manual Transfer">
-                    <field name="name"/>
-                    <field name="warehouse_id"/>
-                    <field name="date_planned"/>
-                    <field name="route_id"/>
-                    <field name="state"/>
-                </tree>
-            </field>
-        </record>
+    <record id="stock_manual_transfer_line_tree_view" model="ir.ui.view">
+        <field name="name">Manual Transfer Line Tree</field>
+        <field name="model">stock.manual_transfer_line</field>
+        <field name="arch" type="xml">
+            <tree string="Transfer Line" editable="bottom">
+                <field name="product_id"/>
+                <field name="product_uom"/>
+                <field name="product_uom_qty"/>
+            </tree>
+        </field>
+    </record>
 
-        <record id="stock_manual_transfer_line_tree_view" model="ir.ui.view">
-            <field name="name">Manual Transfer Line Tree</field>
-            <field name="model">stock.manual_transfer_line</field>
-            <field name="arch" type="xml">
-                <tree string="Transfer Line" editable="bottom">
-                    <field name="product_id"/>
-                    <field name="product_uom"/>
-                    <field name="product_uom_qty"/>
-                </tree>
-            </field>
-        </record>
+    <record id="stock_manual_transfer_action" model="ir.actions.act_window">
+        <field name="name">Manual Transfer</field>
+        <field name="res_model">stock.manual_transfer</field>
+        <field name="view_type">form</field>
+        <field name="help" type="html">
+          <p class="oe_view_nocontent_create">
+            Click to add a new manual transfer.
+          </p>
+        </field>
+    </record>
 
-        <record id="stock_manual_transfer_action" model="ir.actions.act_window">
-            <field name="name">Manual Transfer</field>
-            <field name="res_model">stock.manual_transfer</field>
-            <field name="view_type">form</field>
-            <field name="help" type="html">
-              <p class="oe_view_nocontent_create">
-                Click to add a new manual transfer.
-              </p>
-            </field>
-        </record>
+    <menuitem
+        action="stock_manual_transfer_action"
+        id="menu_stock_manual_transfer_act"
+        parent="stock.menu_stock_warehouse_mgmt"
+        sequence="40"
+        groups="typ_stock.group_stock_manual_transfer"/>
 
-        <menuitem
-            action="stock_manual_transfer_action"
-            id="menu_stock_manual_transfer_act"
-            parent="stock.menu_stock_warehouse_mgmt"
-            sequence="40"
-            groups="typ_stock.group_stock_manual_transfer"/>
-
-        <record id="stock_location_route_form_view_inherit" model="ir.ui.view">
-            <field name="name">stock.location.route.form.view.inherit</field>
-            <field name="model">stock.location.route</field>
-            <field name="inherit_id" ref="stock.stock_location_route_form_view"/>
-            <field name="arch" type="xml">
-                <xpath expr="//field[@name='warehouse_selectable']" position="after">
-                    <field name="manual_transfer_selectable" string="Manual transfers"/>
-                </xpath>
-            </field>
-        </record>
-
-    </data>
-</openerp>
+    <record id="stock_location_route_form_view_inherit" model="ir.ui.view">
+        <field name="name">stock.location.route.form.view.inherit</field>
+        <field name="model">stock.location.route</field>
+        <field name="inherit_id" ref="stock.stock_location_route_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='warehouse_selectable']" position="after">
+                <field name="manual_transfer_selectable" string="Manual transfers"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>
