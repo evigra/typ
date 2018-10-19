@@ -107,8 +107,7 @@ class ResPartner(models.Model):
                         # with late payments
                         debit_maturity += (line.amount_residual if
                                            line.debit else 0.0)
-                    if line.credit and (line.reconcile_partial_id or
-                                        line.reconcile_id):
+                    if line.credit and line.reconciled:
                         credit_maturity += (line.amount_residual if
                                             line.amount_residual > 0.0 else
                                             0.0)

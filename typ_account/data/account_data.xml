@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<openerp>
-    <data noupdate="1">
+    <odoo noupdate="1">
 
         <!--Payment term-->
         <record id="typ_account_payment_term_immediate" model="account.payment.term">
@@ -14,5 +13,4 @@
             <field eval="typ_account_payment_term_immediate" name="payment_id"/>
         </record>
 
-    </data>
-</openerp>
+    </odoo>

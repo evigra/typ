@@ -25,11 +25,9 @@
     # always loaded
     'data': [
         'data/account_data.xml',
-        'data/ir_actions_server.xml',
         'views/account_invoice_view.xml',
         'views/account_bank_statement_view.xml',
         'views/account_payment_view.xml',
-        # 'reports/account_invoice_report_view.xml',
     ],
     # only loaded in demonstration mode
     'demo': [
