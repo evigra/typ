@@ -1,7 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <odoo>
-    <data>
-
         <record id="view_origin_account_invoice_filter_inherit" model="ir.ui.view">
             <field name="name">origin.account.invoice.filter.inherit</field>
             <field name="model">account.invoice</field>
@@ -88,5 +86,4 @@
                 </field>
             </field>
         </record>
-    </data>
 </odoo>
