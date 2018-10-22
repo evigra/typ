@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<openerp>
-<data>
+<odoo>
     <template id='typ_purchase.report_purchasequotation_document' inherit_id="purchase.report_purchasequotation_document">
         <xpath expr="//t[@t-call='report.external_layout']" position="replace">
             <t t-call="typ_purchase.external_layout_with_address">
@@ -76,5 +75,4 @@
             </t>
         </xpath>
     </template>
-</data>
-</openerp>
+</odoo>

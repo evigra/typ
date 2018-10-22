@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<openerp>
-<data>
+<odoo>
     <template id='typ_purchase.report_purchaseorder_document' inherit_id="purchase.report_purchaseorder_document">
         <xpath expr="//t[@t-call='report.external_layout']" position="replace">
             <t t-call="typ_purchase.external_layout">
@@ -148,6 +147,4 @@
     <record id="purchase.action_report_purchase_order" model="ir.actions.report.xml">
         <field name="paperformat_id" ref="typ_purchase.paperformat_purchase_order"/>
     </record>
-
-</data>
-</openerp>
+</odoo>
