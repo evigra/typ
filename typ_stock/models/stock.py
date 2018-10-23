@@ -58,19 +58,66 @@ class StockPicking(models.Model):
         self.message_post(body=data)
 
     @api.multi
-    def action_cancel(self):
-        """Validate that pickings cannot be cancelled with moves in transit
+    def action_cancel_sale(self):
+        """Cancel sale order related to picking if all picking are canceled
         """
-        if self.env.user.has_group(
-                'typ_stock.group_cancel_picking_with_move_not_in_transit_loc'):
-            return super().action_cancel()
-        moves_with_orig_transit_loc = self.mapped('move_lines').filtered(
-            lambda mv: mv.move_orig_ids and mv.location_id.usage == 'transit')
-        if moves_with_orig_transit_loc:
-            picks = ','.join(moves_with_orig_transit_loc.mapped(
-                'picking_id.name'))
+        sale_id = self.mapped('sale_id')
+        if self._context.get('bypass_check_sale') or not sale_id:
+            return False
+        if all(picking.state == 'cancel' for picking in sale_id.picking_ids):
+            sale_id.with_context(bypass_check_sale=True).action_cancel()
+        return True
+
+    @api.multi
+    def action_cancel(self):
+        """Validate that pickings cannot be cancelled with moves in transit.
+        """
+        # Search for sale orders with special purchase order, in a confirmed
+        # state and that do not have as destination the location of the
+        # customer, to avoid the cancellation of the picking
+        sale_id = self.mapped('sale_id')
+        purchase_ids = sale_id.picking_ids.mapped(
+            'purchase_id').filtered(lambda order: order.state == 'purchase')
+        if purchase_ids and (self.mapped('location_dest_id').filtered(
+                lambda pick: pick.usage != 'customer') or len(self) > 1):
+            raise UserError(_('This order %s cannot be cancelled.') %
+                            sale_id.name)
+
+        # It allows canceling movements of same supply if all its states have
+        # not been transferred, when it is a special order or belong to the
+        # group that allows it to cancel pickings in transit
+        pick_done = sale_id.picking_ids.filtered(
+            lambda pick: pick.state == 'done')
+        group_cancel_pick_move_transit = self.env.user.has_group(
+            'typ_stock.group_cancel_picking_with_move_not_in_transit_loc')
+        if group_cancel_pick_move_transit or (not pick_done and sale_id):
+            res = super().action_cancel()
+            self.action_cancel_sale()
+            return res
+
+        # Verify if there are transfers transferred to transit pending receipt
+        moves_with_transit_loc = self.mapped('move_lines').filtered(
+            lambda mv: mv.location_id.usage == 'transit')
+        moves_with_transit_loc._action_assign()
+        reserved_availability_transit = sum(
+            moves_with_transit_loc.mapped('reserved_availability'))
+        if reserved_availability_transit != 0.0:
+            picks = ','.join(moves_with_transit_loc.mapped('picking_id.name'))
             raise UserError(_('This picking %s cannot be cancelled.') % picks)
-        return super().action_cancel()
+        moves_dest_with_transit = self.mapped(
+            'move_lines.move_dest_ids').filtered(
+                lambda mv: mv.location_id.usage == 'transit')
+        res = super().action_cancel()
+        self.action_cancel_sale()
+
+        # Send messages to movements of transit destination
+        message = _("This pickings has been canceled: %s") % (
+            ",".join(["<a href=# data-oe-model=stock.picking data-oe-id=" +
+                      str(pick.id) + ">" + pick.name +
+                      "</a>" for pick in self]))
+        for pick in moves_dest_with_transit.mapped('picking_id'):
+            pick.message_post(body=message)
+        return res
 
     def _get_overprocessed_stock_moves(self):
         """Validate that pickings cannot be processed more than what was
@@ -99,6 +146,22 @@ class StockPicking(models.Model):
                     _("Internal movements don't allow locations in "
                       "supplier or customer"))
         return super().button_validate()
+
+    @api.multi
+    def _create_backorder(self, backorder_moves=list):
+        """ Send message a picking transit for new backorder picking.
+        """
+        backorders = super()._create_backorder(backorder_moves)
+        moves_orig_with_transit = backorders.mapped(
+            'move_lines.move_orig_ids').filtered(
+                lambda mv: mv.location_dest_id.usage == 'transit')
+        message = _("Back order has been created in destination: %s") % (
+            ",".join(["<a href=# data-oe-model=stock.picking data-oe-id=" +
+                      str(pick.id) + ">" + pick.name +
+                      "</a>" for pick in backorders]))
+        for pick in moves_orig_with_transit.mapped('picking_id'):
+            pick.message_post(body=message)
+        return backorders
 
 
 class StockMove(models.Model):
