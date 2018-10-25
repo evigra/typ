@@ -137,3 +137,18 @@ class StockScrap(models.Model):
                     _('Permission denied only manager/warehouse group.'
                         ' Contact personnel Vauxoo immediately'))
         return super().action_validate()
+
+
+class PurchaseOrderLine(models.Model):
+
+    _inherit = "purchase.order.line"
+
+    @api.multi
+    def _prepare_stock_moves(self, picking):
+        res = super(PurchaseOrderLine, self)._prepare_stock_moves(picking)
+        if res:
+            supplier = self.product_id.seller_ids.filtered(
+                lambda r: r.name == self.order_id.partner_id
+            )
+            res[0].update({'product_supplier_ref': supplier.product_code})
+        return res
