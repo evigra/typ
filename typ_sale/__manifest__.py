@@ -13,6 +13,7 @@
         'crm',
         'payment_term_type',
         'base_automation',
+        'product_supplierinfo_for_customer_sale',
     ],
 
     'data': [
