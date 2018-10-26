@@ -43,6 +43,9 @@
                 <xpath expr="//field[@name='user_id']" position="attributes">
                     <attribute name="attrs" translation="off">{'readonly':[('state', '!=', 'draft')]}</attribute>
                 </xpath>
+                <button name="action_invoice_cancel" position="attributes">
+                    <attribute name="groups" translation="off">typ_account.res_group_cancel_invoice</attribute>
+                </button>
             </field>
         </record>
         <record id="account_invoice_form_group" model="ir.ui.view">

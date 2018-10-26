@@ -24,6 +24,7 @@
     ],
     # always loaded
     'data': [
+        'data/res_groups.xml',
         'data/account_data.xml',
         'views/account_invoice_view.xml',
         'views/account_bank_statement_view.xml',

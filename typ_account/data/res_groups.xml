@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="res_group_cancel_invoice" model="res.groups">
+        <field name="name">Users that can cancel a invoice</field>
+        <field name="comment">This group can cancel invoices.</field>
+    </record>
+</odoo>
