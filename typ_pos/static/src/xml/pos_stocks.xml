@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+    <t t-extend="Product" >
+        <t t-jquery=".product-img" t-operation="append">
+            <t t-if="widget.pos.config.wk_display_stock and product.type != 'service'">
+                <span class="qty-tag" t-att-id="'qty-tag'+product.id">
+                    <t t-esc="widget.get_information(product.id)"/>
+                </span>
+            </t>
+        </t>
+    </t>
+</templates>

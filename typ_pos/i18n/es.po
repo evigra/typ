@@ -1,0 +1,86 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* typ_pos
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 10.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-12-07 00:23+0000\n"
+"PO-Revision-Date: 2017-12-07 00:23+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: typ_pos
+#: model:ir.ui.view,arch_db:typ_pos.wk_pos_stock_qtys
+msgid "<b>Deny order when product qty is lower than</b>"
+msgstr ""
+
+#. module: typ_pos
+#: model:ir.model.fields,field_description:typ_pos.field_pos_config_wk_continous_sale
+msgid "Allow Order When Out-of-Stock"
+msgstr ""
+
+#. module: typ_pos
+#: selection:pos.config,wk_stock_type:0
+msgid "Available Quantity(On hand)"
+msgstr ""
+
+#. module: typ_pos
+#: model:ir.model.fields,field_description:typ_pos.field_pos_config_wk_error_msg
+msgid "Custom message"
+msgstr ""
+
+#. module: typ_pos
+#: model:ir.model.fields,field_description:typ_pos.field_pos_config_wk_deny_val
+msgid "Deny order when product stock is lower than "
+msgstr ""
+
+#. module: typ_pos
+#: model:ir.model.fields,field_description:typ_pos.field_pos_config_wk_display_stock
+msgid "Display stock in POS"
+msgstr ""
+
+#. module: typ_pos
+#: selection:pos.config,wk_stock_type:0
+msgid "Forecasted Quantity"
+msgstr ""
+
+#. module: typ_pos
+#: model:ir.model.fields,field_description:typ_pos.field_pos_config_wk_hide_out_of_stock
+msgid "Hide Out of Stock products"
+msgstr ""
+
+#. module: typ_pos
+#: model:ir.ui.view,arch_db:typ_pos.wk_pos_stock_qtys
+msgid "POS Stock"
+msgstr ""
+
+#. module: typ_pos
+#: selection:pos.config,wk_stock_type:0
+msgid "Quantity on Hand - Outgoing Qty"
+msgstr ""
+
+#. module: typ_pos
+#: model:ir.model.fields,field_description:typ_pos.field_pos_config_wk_stock_type
+msgid "Stock Type"
+msgstr ""
+
+#. module: typ_pos
+#. openerp-web
+#: code:addons/typ_pos/static/src/js/main.js:130
+#: code:addons/typ_pos/static/src/js/main.js:209
+#: code:addons/typ_pos/static/src/js/main.js:230
+#, python-format
+msgid "Warning !!!!"
+msgstr ""
+
+#. module: typ_pos
+#: model:ir.model,name:typ_pos.model_pos_config
+msgid "pos.config"
+msgstr ""
+

@@ -10,9 +10,37 @@ from odoo.exceptions import UserError
 _logger = logging.getLogger(__name__)
 
 
+class ProductProduct(models.Model):
+
+    _inherit = 'product.product'
+
+    @api.multi
+    def price_compute(self, price_type, uom=False, currency=False,
+                      company=False):
+        if self.env.context.get('other_pricelist'):
+            return 0
+        return super(ProductProduct, self).price_compute(
+            price_type, uom=uom, currency=currency, company=company)
+
+
+class ProductTemplate(models.Model):
+
+    _inherit = 'product.template'
+
+    @api.multi
+    def price_compute(self, price_type, uom=False, currency=False,
+                      company=False):
+        if self.env.context.get('other_pricelist'):
+            return 0
+        return super(ProductTemplate, self).price_compute(
+            price_type, uom=uom, currency=currency, company=company)
+
+
 class PricelistItem(models.Model):
 
     _inherit = 'product.pricelist.item'
+
+    _order = 'sequence asc'
 
     sequence = fields.Integer(default=5)
 
@@ -115,7 +143,7 @@ class Pricelist(models.Model):
                 except UserError:
                     _logger.warning('Passing error computing quantities')
 
-            price = product.price_compute('list_price')[product.id]
+            price = 0.0
 
             price_uom = self.env['product.uom'].browse([qty_uom_id])
             for rule in items:
@@ -148,8 +176,9 @@ class Pricelist(models.Model):
 
                 if rule.base == 'pricelist' and rule.base_pricelist_id:
                     price_tmp = (
-                        rule.base_pricelist_id._compute_price_rule(
-                            [(product, qty, partner)])[product.id][0])
+                        rule.base_pricelist_id.with_context(
+                            other_pricelist=True)._compute_price_rule(
+                                [(product, qty, partner)])[product.id][0])
                     price = rule.base_pricelist_id.currency_id.compute(
                         price_tmp, self.currency_id, round=False)
                     if not price:
@@ -200,6 +229,9 @@ class Pricelist(models.Model):
                     suitable_rule.base != 'pricelist'):
                 price = product.currency_id.compute(
                     price, self.currency_id, round=False)
+
+            if not price and not self.env.context.get('other_pricelist'):
+                price = product.price_compute('list_price')[product.id]
 
             results[product.id] = (
                 price, suitable_rule and suitable_rule.id or False)

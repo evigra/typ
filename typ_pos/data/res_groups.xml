@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record model="res.groups" id="allow_create_payment">
+        <field name="name">Create Payment POS</field>
+    </record>
+</odoo>

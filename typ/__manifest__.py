@@ -17,6 +17,7 @@
         'typ_landed_costs',
         'typ_account',
         'typ_purchase',
+        'typ_pos',
         # 'account_aged_partner_balance_vw',
         'account_asset',
         'account_budget',
