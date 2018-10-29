@@ -3,7 +3,6 @@
 # License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl).
 
 from openerp import SUPERUSER_ID
-# from . import report
 # from . import models
 
 

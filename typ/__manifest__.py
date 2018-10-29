@@ -68,11 +68,10 @@
     'test': [
     ],
     'data': [
-        # 'data/typ_paper_format.xml',
+        'data/typ_paper_format.xml',
         # 'data/set_configuration.yml',
         # 'data/typ_security.xml',
-        # 'report/invoice_report.xml',
-        # 'report/report_invoice.xml',
+        'report/report_invoice.xml',
         # 'security/ir.model.access.csv',
     ],
     'demo': [
