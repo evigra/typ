@@ -11,7 +11,6 @@
     'version': '11.0.0.0.2',
     'depends': [
         'l10n_mx_pos_cogs',
-        'l10n_mx_edi_pos',
         'l10n_mx_edi_hr_expense',
         'l10n_mx_reports',
         'typ_landed_costs',
