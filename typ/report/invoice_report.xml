@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-    <openerp>
-        <data>
+    <odoo>
             <template id="report_electronic_invoice_document">
                 <div class="header">
                     <div style="font-size: 9px; line-height: 10px; position: absolute; top: 700px; left: 0px; z-index: -1; overflow: visible; -webkit-transform:rotate(-90deg); -webkit-transform-origin: 0% 0%;">This document is a printed representation of a CFDI</div>
@@ -527,5 +526,4 @@
                 <t t-raw="translate_doc(doc_id, doc_model, 'report_lang','typ.report_electronic_invoice_document')"/>
             </t>
         </template>
-    </data>
-</openerp>
+</odoo>

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<openerp>
-    <data>
+<odoo>
         <report auto="False"
                 id="account_invoice_qweb_report"
                 model="ir.attachment.facturae.mx"
@@ -15,14 +14,13 @@
         <record id="account_invoice_qweb_report" model="ir.actions.report.xml">
             <field name="paperformat_id" ref="typ.typ_paperformat_invoice_letter"/>
         </record>
-    </data>
 
-    <data noupdate="1">
+    <odoo noupdate="1">
 
        <record id="report_qweb_invoice_registrer0" model="report.multicompany">
             <field name="company_id"></field>
             <field name="report_id" ref="typ.account_invoice_qweb_report"/>
             <field name="model" search="[('model','=','ir.attachment.facturae.mx')]" model="ir.model"/>
         </record>
-    </data>
-</openerp>
+    </odoo>
+</odoo>
