@@ -4,10 +4,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 8.0\n"
+"Project-Id-Version: Odoo Server 11.0+e\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-03-12 17:14+0000\n"
-"PO-Revision-Date: 2018-03-12 17:14+0000\n"
+"POT-Creation-Date: 2018-11-01 02:00+0000\n"
+"PO-Revision-Date: 2018-11-01 02:00+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -16,293 +16,249 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. module: typ
-#: view:website:typ.report_electronic_invoice_document
-msgid "Account Last 4 Numbers"
-msgstr "Últimos 4 Números de la Cuenta"
+#: model:ir.ui.view,arch_db:typ.report_invoice_document_typ
+msgid "&amp;nbsp;<span>on</span>"
+msgstr "&amp;nbsp;<span>on</span>"
 
 #. module: typ
-#: model:ir.actions.server,name:typ.account_account_action
-msgid "Account Parent Store Compute"
-msgstr "Cálculo de Almacenaje de Cuenta Padre"
+#: model:ir.ui.view,arch_db:typ.report_invoice_document_typ
+msgid "<b><span>Total</span></b>"
+msgstr "<b><span>Total</span></b>"
 
 #. module: typ
-#: view:website:typ.report_electronic_invoice_document
-msgid "Amount"
-msgstr "Importe"
+#: model:ir.ui.view,arch_db:typ.report_invoice_document_typ
+msgid "<br/>\n"
+"                                 <i>Customs:</i>"
+msgstr "<br/>\n"
+"                                 <i>Pedimento:</i>"
 
 #. module: typ
-#: view:website:typ.report_electronic_invoice_document
-msgid "Amount In Letters"
-msgstr "Cantidad en Letras"
+#: model:ir.ui.view,arch_db:typ.report_invoice_document_typ
+msgid "<span> PPD Payment in partials or deferred</span>"
+msgstr "<span> PPD Pago en parcialidades o diferido</span>"
 
 #. module: typ
-#: view:website:typ.report_electronic_invoice_document
-msgid "Amount Paid"
-msgstr "Monto Pagado"
+#: model:ir.ui.view,arch_db:typ.report_invoice_document_typ
+msgid "<span> PUE Payment in single exhibition</span>"
+msgstr "<span> PUE Pago en una sola exhibición</span>"
 
 #. module: typ
-#: view:website:typ.report_electronic_invoice_document
-msgid "Balance"
-msgstr "Saldo pendiente"
+#: model:ir.ui.view,arch_db:typ.report_invoice_document_typ
+msgid "<span> | Certification Date:</span>"
+msgstr "<span> | Fecha de Certificación:</span>"
 
 #. module: typ
-#: view:website:typ.report_electronic_invoice_document
-msgid "Certificate Link"
-msgstr "Link del Certificado"
+#: model:ir.ui.view,arch_db:typ.report_invoice_document_typ
+msgid "<span> | Emission Date:</span>"
+msgstr "<span> | Fecha de Emisión:</span>"
 
 #. module: typ
-#: view:website:typ.report_electronic_invoice_document
-msgid "Client Reference"
-msgstr "Referencia del Cliente"
+#: model:ir.ui.view,arch_db:typ.report_invoice_document_typ
+msgid "<span> | Expedition place:</span>"
+msgstr "<span> | Lugar de Expedición:</span>"
 
 #. module: typ
-#: view:website:typ.report_electronic_invoice_document
-msgid "Credit note"
-msgstr "Nota de crédito"
+#: model:ir.ui.view,arch_db:typ.report_invoice_document_typ
+msgid "<span> | Fiscal Folio:</span>"
+msgstr "<span> | Folio Fiscal:</span>"
 
 #. module: typ
-#: view:website:typ.report_electronic_invoice_document
-msgid "Currency"
-msgstr "Moneda"
+#: model:ir.ui.view,arch_db:typ.report_invoice_document_typ
+msgid "<span> | Fiscal Regime:</span>"
+msgstr "<span> | Regimen Fiscal:</span>"
 
 #. module: typ
-#: view:website:typ.report_electronic_invoice_document
-msgid "Customer"
-msgstr "Cliente"
+#: model:ir.ui.view,arch_db:typ.report_invoice_document_typ
+msgid "<span>Account Last 4 Numbers</span>"
+msgstr "<span>Últimos 4 números de la cuenta</span>"
 
 #. module: typ
-#: view:website:typ.report_electronic_invoice_document
-msgid "Customs"
-msgstr "Aduana"
+#: model:ir.ui.view,arch_db:typ.report_invoice_document_typ
+msgid "<span>Amount In Letters</span>"
+msgstr "<span>Cantidad en Letra</span>"
 
 #. module: typ
-#: view:website:typ.report_electronic_invoice_document
-msgid "Customs Date"
-msgstr "Fecha de Aduana"
+#: model:ir.ui.view,arch_db:typ.report_invoice_document_typ
+msgid "<span>Amount</span>"
+msgstr "<span>Importe</span>"
 
 #. module: typ
-#: view:website:typ.report_electronic_invoice_document
-msgid "Date Stamp"
-msgstr "Fecha de Timbrado"
+#: model:ir.ui.view,arch_db:typ.report_invoice_document_typ
+msgid "<span>Client Reference</span>"
+msgstr "<span>Referencia del Cliente</span>"
 
 #. module: typ
-#: view:website:typ.report_electronic_invoice_document
+#: model:ir.ui.view,arch_db:typ.report_invoice_document_typ
+msgid "<span>Customer</span>"
+msgstr "<span>Cliente</span>"
+
+#. module: typ
+#: model:ir.ui.view,arch_db:typ.report_invoice_document_typ
+msgid "<span>Date Stamp</span>"
+msgstr "<span>Fecha de Timbrado</span>"
+
+#. module: typ
+#: model:ir.ui.view,arch_db:typ.report_invoice_document_typ
+msgid "<span>Description</span>"
+msgstr "<span>Descripción</span>"
+
+#. module: typ
+#: model:ir.ui.view,arch_db:typ.report_invoice_document_typ
+msgid "<span>Digital stamp SAT</span>"
+msgstr "<span>Sello Digital SAT</span>"
+
+#. module: typ
+#: model:ir.ui.view,arch_db:typ.report_invoice_document_typ
+msgid "<span>Digital stamp of the emitter</span>"
+msgstr "<span>Sello Digital Emisor</span>"
+
+#. module: typ
+#: model:ir.ui.view,arch_db:typ.report_invoice_document_typ
+msgid "<span>Document Date</span>"
+msgstr "<span>Fecha del Documento</span>"
+
+#. module: typ
+#: model:ir.ui.view,arch_db:typ.report_invoice_document_typ
+msgid "<span>Emitter certificate:</span>"
+msgstr "<span>Certificado del Emisor:</span>"
+
+#. module: typ
+#: model:ir.ui.view,arch_db:typ.report_invoice_document_typ
+msgid "<span>Extra Info</span>"
+msgstr "<span>Información Extra</span>"
+
+#. module: typ
+#: model:ir.ui.view,arch_db:typ.report_invoice_document_typ
+msgid "<span>Fiscal Folio</span>"
+msgstr "<span>Folio Fiscal</span>"
+
+#. module: typ
+#: model:ir.ui.view,arch_db:typ.report_invoice_document_typ
+msgid "<span>Fiscal Regime</span>"
+msgstr "<span>Regimen Fiscal</span>"
+
+#. module: typ
+#: model:ir.ui.view,arch_db:typ.report_invoice_document_typ
+msgid "<span>Form of Payment</span>"
+msgstr "<span>Forma de Pago</span>"
+
+#. module: typ
+#: model:ir.ui.view,arch_db:typ.report_invoice_document_typ
+msgid "<span>Issued at</span>"
+msgstr "<span>Expedido en</span>"
+
+#. module: typ
+#: model:ir.ui.view,arch_db:typ.report_invoice_document_typ
+msgid "<span>Issued from</span>"
+msgstr "<span>Expedido desde</span>"
+
+#. module: typ
+#: model:ir.ui.view,arch_db:typ.report_invoice_document_typ
+msgid "<span>Issuer Certificate</span>"
+msgstr "<span>Certificado del Emisor</span>"
+
+#. module: typ
+#: model:ir.ui.view,arch_db:typ.report_invoice_document_typ
+msgid "<span>Issuer</span>"
+msgstr "<span>Emisor</span>"
+
+#. module: typ
+#: model:ir.ui.view,arch_db:typ.report_invoice_document_typ
+msgid "<span>Original chain complement of digital certification SAT</span>"
+msgstr "<span>Cadena Original SAT</span>"
+
+#. module: typ
+#: model:ir.ui.view,arch_db:typ.report_invoice_document_typ
+msgid "<span>Payment Method</span>"
+msgstr "<span>Método de Pago</span>"
+
+#. module: typ
+#: model:ir.ui.view,arch_db:typ.report_invoice_document_typ
+msgid "<span>Quantity</span>"
+msgstr "<span>Cantidad</span>"
+
+#. module: typ
+#: model:ir.ui.view,arch_db:typ.report_invoice_document_typ
+msgid "<span>SAT Certificate</span>"
+msgstr "<span>Certificado SAT</span>"
+
+#. module: typ
+#: model:ir.ui.view,arch_db:typ.report_invoice_document_typ
+msgid "<span>SAT Key</span>"
+msgstr "<span>Clave SAT</span>"
+
+#. module: typ
+#: model:ir.ui.view,arch_db:typ.report_invoice_document_typ
+msgid "<span>Sub Total</span>"
+msgstr "<span>Sub Total</span>"
+
+#. module: typ
+#: model:ir.ui.view,arch_db:typ.report_invoice_document_typ
+msgid "<span>Type Payment Term</span>"
+msgstr "<span>Tipo de Plazo de Pago</span>"
+
+#. module: typ
+#: model:ir.ui.view,arch_db:typ.report_invoice_document_typ
+msgid "<span>Unit Price</span>"
+msgstr "<span>Precio Unidad</span>"
+
+#. module: typ
+#: model:ir.ui.view,arch_db:typ.report_invoice_document_typ
+msgid "<span>Unit</span>"
+msgstr "<span>Unidad</span>"
+
+#. module: typ
+#: model:ir.ui.view,arch_db:typ.report_invoice_document_typ
+msgid "<span>Use</span>"
+msgstr "<span>Uso</span>"
+
+#. module: typ
+#: model:ir.ui.view,arch_db:typ.report_invoice_document_typ
+msgid "<strong>Notes</strong>:"
+msgstr "<strong>Notas</strong>:"
+
+#. module: typ
+#: model:ir.ui.view,arch_db:typ.report_invoice_document_typ
+msgid "<strong>This document is a printed representation of a CFDI</strong>"
+msgstr "<strong>Este documento es una representación impresa de un CFDI</strong>"
+
+#. module: typ
+#: model:ir.ui.view,arch_db:typ.report_invoice_document_typ
+msgid "A signature of this invoice is required, but it is not signed."
+msgstr "Se requiere una firma de esta factura, pero no está firmada."
+
+#. module: typ
+#: model:ir.ui.view,arch_db:typ.report_invoice_document_typ
+msgid "Cancelled Invoice"
+msgstr "Factura Cancelada"
+
+#. module: typ
+#: model:ir.ui.view,arch_db:typ.report_invoice_document_typ
+msgid "Credit Note"
+msgstr "Nota de Crédito"
+
+#. module: typ
+#: model:ir.ui.view,arch_db:typ.report_invoice_document_typ
 msgid "Deadline for returns of 15 calendar days from delivery. Product must be presented in original packaging. Warranties: American 1 year parts and 5 years compressor equipment. Asia 1 year parts and compressor equipment. Does not apply to equipment with power failures or burns."
 msgstr "Plazo para devoluciones de 15 días naturales a partir de la entrega. Es necesario presentar producto en empaque original. Garantías: Equipo americano 1 año en partes y 5 años en compresor. Equipo asiático 1 año en partes y compresor. No aplica en equipo con fallas eléctricas ni quemaduras."
 
 #. module: typ
-#: view:website:typ.report_electronic_invoice_document
-msgid "Description"
-msgstr "Descripción"
+#: model:ir.ui.view,arch_db:typ.report_invoice_document_typ
+msgid "Draft Invoice"
+msgstr "Factura Borrador"
 
 #. module: typ
-#: view:website:typ.report_electronic_invoice_document
-msgid "Digital Stamp Issuer"
-msgstr "Sello Digital Emisor"
-
-#. module: typ
-#: view:website:typ.report_electronic_invoice_document
-msgid "Digital Stamp SAT"
-msgstr "Sello Digital SAT"
-
-#. module: typ
-#: view:website:typ.report_electronic_invoice_document
-msgid "Discount"
-msgstr "Descuento"
-
-#. module: typ
-#: field:report.account.invoice.qweb.report,display_name:0
-msgid "Display Name"
-msgstr "Nombre a mostrar"
-
-#. module: typ
-#: view:website:typ.report_electronic_invoice_document
-msgid "Document Date"
-msgstr "Fecha del Documento"
-
-#. module: typ
-#: model:ir.actions.report.xml,name:typ.account_invoice_qweb_report
-msgid "Electronic Invoice"
-msgstr "Factura Electrónica"
-
-#. module: typ
-#: model:ir.model,name:typ.model_ir_attachment_facturae_mx
-msgid "Email Thread"
-msgstr "Hilo Correo"
-
-#. module: typ
-#: view:website:typ.report_electronic_invoice_document
-msgid "Fiscal Folio"
-msgstr "Folio Fiscal"
-
-#. module: typ
-#: view:website:typ.report_electronic_invoice_document
-msgid "Fiscal Regime"
-msgstr "Régimen Fiscal"
-
-#. module: typ
-#: model:ir.actions.server,name:typ.facturae_fix_encoding_action
-msgid "Fix encoding on signed XML"
-msgstr "Corregir la codificación en XML firmado"
-
-#. module: typ
-#: view:website:typ.report_electronic_invoice_document
-msgid "Form of Payment"
-msgstr "Forma de Pago"
-
-#. module: typ
-#: field:report.account.invoice.qweb.report,id:0
-msgid "ID"
-msgstr "N° Empleado"
-
-#. module: typ
-#: model:ir.model,name:typ.model_account_invoice
-#: view:website:typ.report_electronic_invoice_document
+#: model:ir.ui.view,arch_db:typ.report_invoice_document_typ
 msgid "Invoice"
 msgstr "Factura"
 
 #. module: typ
-#: view:website:typ.report_electronic_invoice_document
-msgid "Invoice:"
-msgstr "Factura:"
+#: model:ir.ui.view,arch_db:typ.report_invoice_document_typ
+msgid "Vendor Bill"
+msgstr "Factura del Vendedor"
 
 #. module: typ
-#: view:website:typ.report_electronic_invoice_document
-msgid "Issued at"
-msgstr "Expedido en"
-
-#. module: typ
-#: view:website:typ.report_electronic_invoice_document
-msgid "Issuer"
-msgstr "Emisor"
-
-#. module: typ
-#: view:website:typ.report_electronic_invoice_document
-msgid "Issuer Certificate"
-msgstr "Certificado del Emisor"
-
-#. module: typ
-#: field:report.account.invoice.qweb.report,__last_update:0
-msgid "Last Modified on"
-msgstr "Última modificación"
-
-#. module: typ
-#: view:website:typ.report_electronic_invoice_document
-msgid "Notes"
-msgstr "Notas"
-
-#. module: typ
-#: view:website:typ.report_electronic_invoice_document
-msgid "Original String"
-msgstr "Cadena Original"
-
-#. module: typ
-#: view:website:typ.report_electronic_invoice_document
-msgid "PPD Payment in partials or deferred"
-msgstr "PPD Pago en parcialidades o Diferido"
-
-#. module: typ
-#: view:website:typ.report_electronic_invoice_document
-msgid "PUE Payment in single exhibition"
-msgstr "PUE Pago en una sola exhibición"
-
-#. module: typ
-#: view:website:typ.report_electronic_invoice_document
-msgid "Partiality"
-msgstr "Parcialidad"
-
-#. module: typ
-#: view:website:typ.report_electronic_invoice_document
-msgid "Payment Method"
-msgstr "Método de Pago"
-
-#. module: typ
-#: view:website:typ.report_electronic_invoice_document
-msgid "Payment:"
-msgstr "Pago:"
-
-#. module: typ
-#: view:website:typ.report_electronic_invoice_document
-msgid "Payroll"
-msgstr "Nómina"
-
-#. module: typ
-#: view:website:typ.report_electronic_invoice_document
-msgid "Pedimento"
-msgstr ""
-
-#. module: typ
-#: view:website:typ.report_electronic_invoice_document
-msgid "Previous balance"
-msgstr "Balance Previo"
-
-#. module: typ
-#: view:website:typ.report_electronic_invoice_document
-msgid "Quantity"
-msgstr "Cantidad"
-
-#. module: typ
-#: field:ir.attachment.facturae.mx,report_lang:0
-msgid "Report Language"
-msgstr "Idioma del Reporte"
-
-#. module: typ
-#: view:website:typ.report_electronic_invoice_document
-msgid "SAT Certificate"
-msgstr "Certificado SAT"
-
-#. module: typ
-#: view:website:typ.report_electronic_invoice_document
-msgid "SAT Key"
-msgstr "Clave SAT"
-
-#. module: typ
-#: model:ir.actions.server,name:typ.stock_location_action
-msgid "Stock Location Parent Store Compute"
-msgstr "Cálculo de Almacenaje de Ubicación de Almacén Padre"
-
-#. module: typ
-#: view:website:typ.report_electronic_invoice_document
-msgid "Sub Total"
-msgstr ""
-
-#. module: typ
-#: view:website:typ.report_electronic_invoice_document
-msgid "This document is a printed representation of a CFDI"
-msgstr "Este documento es una representación impresa de un CFDI"
-
-#. module: typ
-#: help:ir.attachment.facturae.mx,report_lang:0
-msgid "This field is automatically set from partner of account invoice object"
-msgstr "Este campo se establece automáticamente desde la empresa del objeto account invoice"
-
-#. module: typ
-#: view:website:typ.report_electronic_invoice_document
-msgid "Type Payment Term"
-msgstr "Tipo de Plazo de Pago"
-
-#. module: typ
-#: view:website:typ.report_electronic_invoice_document
-msgid "UUID"
-msgstr ""
-
-#. module: typ
-#: view:website:typ.report_electronic_invoice_document
-msgid "Unit"
-msgstr "Unidad"
-
-#. module: typ
-#: view:website:typ.report_electronic_invoice_document
-msgid "Unit Price"
-msgstr "Precio Unidad"
-
-#. module: typ
-#: view:website:typ.report_electronic_invoice_document
-msgid "Use"
-msgstr "Uso"
-
-#. module: typ
-#: view:website:typ.report_electronic_invoice_document
-msgid "WITHOUT FOLIO OR INVALID STATUS"
-msgstr "SIN FOLIO O ESTATUS NO VALIDO"
+#: model:ir.ui.view,arch_db:typ.report_invoice_document_typ
+msgid "Vendor Credit Note"
+msgstr "Nota de Crédito del Vendedor"
 
