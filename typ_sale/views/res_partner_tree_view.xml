@@ -1,0 +1,19 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<odoo>
+    <record id="partner_tree_view_extra" model="ir.ui.view">
+        <field name='name'>res.partner.tree.extra</field>
+        <field name='model'>res.partner</field>
+        <field name='inherit_id' ref='base.view_partner_tree'/>
+        <field name='type'>tree</field>
+        <field name='arch' type='xml'>
+            <xpath expr="//field[@name='user_id']" position="attributes">
+                <attribute name="invisible">0</attribute>
+            </xpath>
+            <xpath expr="//field[@name='email']" position="after">
+                <field name="importance"/>
+                <field name="total_invoiced"/>
+                <field name="credit_limit"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

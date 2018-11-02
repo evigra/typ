@@ -33,6 +33,8 @@
         'views/crm_lead_view.xml',
         'views/sales_team_view.xml',
         'views/pricelist_view.xml',
+        'views/res_partner_tree_view.xml',
+        'views/product_view.xml',
     ],
     'demo': [
         'demo/sale_data_demo.xml',
