@@ -12,6 +12,7 @@
     'depends': [
         'l10n_mx_pos_cogs',
         'l10n_mx_edi_hr_expense',
+        'l10n_mx_edi_customs',
         'l10n_mx_reports',
         'typ_landed_costs',
         'typ_account',
