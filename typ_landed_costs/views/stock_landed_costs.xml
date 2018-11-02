@@ -140,13 +140,6 @@
             <field name="arch" type="xml">
             <xpath expr='//field[@name="picking_ids"]' position='after'>
                 <field
-                    name="invoice_ids"
-                    widget="many2many_tags"
-                    domain="[
-                        ('type', '=', 'in_invoice'),
-                    ]"
-                    />
-                <field
                     name="guide_ids"
                     widget="many2many_tags"
                     domain="[

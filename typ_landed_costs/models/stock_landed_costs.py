@@ -391,18 +391,23 @@ class StockLandedGuidesLine (models.Model):
 class AccountInvoice(models.Model):
     _inherit = 'account.invoice'
 
-    landed_cost_id = fields.Many2one('stock.landed.cost')
+    stock_landed_cost_id = fields.Many2one('stock.landed.cost')
 
 
 class StockLandedCost(models.Model):
     _inherit = 'stock.landed.cost'
 
+    move_ids = fields.Many2many(
+        'stock.move',
+        'stock_landed_move_rel',
+        'stock_landed_cost_id',
+        'move_id',
+        domain=[('state', 'in', ('done',))],
+    )
+
     invoice_ids = fields.One2many(
         'account.invoice',
-        'landed_cost_id',
-        string='Invoices',
-        help='Invoices which contain items to be used as landed costs',
-        copy=False)
+        'stock_landed_cost_id')
 
     guide_ids = fields.One2many(
         'stock.landed.cost.guide',
@@ -432,7 +437,7 @@ class StockLandedCost(models.Model):
         return lines
 
     @api.onchange('guide_ids', 'invoice_ids')
-    def onchange_guide_ids(self):
+    def onchange_invoice_ids(self):
         """Inherited from stock.landed.costs in oder to add the logic necessary
         to update the list with the elements extracted when guides are
         added/removed"""
