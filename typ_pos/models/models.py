@@ -47,7 +47,11 @@ class PosConfig(models.Model):
 class PosOrder(models.Model):
     _inherit = 'pos.order'
 
-    statement_ids = fields.One2many(readonly=False)
+
+    @api.multi
+    def refund(self):
+        res = super(PosOrder, self).refund()
+        return res
 
     @api.multi
     def action_pos_order_paid(self):
