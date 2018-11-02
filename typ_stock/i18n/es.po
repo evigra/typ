@@ -4,17 +4,16 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 8.0\n"
+"Project-Id-Version: Odoo Server 11.0+e\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-04-24 23:16+0000\n"
-"PO-Revision-Date: 2018-04-24 23:16+0000\n"
+"POT-Creation-Date: 2018-11-02 22:46+0000\n"
+"PO-Revision-Date: 2018-11-02 22:46+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 2.14.1\n"
+"Plural-Forms: \n"
 
 #. module: typ_stock
 #: model:ir.actions.act_window,help:typ_stock.stock_manual_transfer_action
@@ -26,6 +25,9 @@ msgstr "<p class=\"oe_view_nocontent_create\">\n"
 "                Click para generar una transferencia manual.\n"
 "              </p>\n"
 "            "
+#: model:ir.ui.view,arch_db:typ_stock.report_picking
+msgid "<span><strong>Customer Address:</strong></span>"
+msgstr "<span><strong>Dirección del Cliente:</strong></span>"
 
 #. module: typ_stock
 #: code:addons/typ_stock/models/stock.py:264
@@ -33,11 +35,19 @@ msgstr "<p class=\"oe_view_nocontent_create\">\n"
 msgid "<ul><li>shipment confirmed --> <b>Canceled</b></li></ul>"
 msgstr "<ul><li>embarque confirmado --> <b>Cancelado</b></li></ul>"
 
+#: model:ir.ui.view,arch_db:typ_stock.report_picking
+msgid "<span><strong>Delivery Address:</strong></span>"
+msgstr "<span><strong>Dirección de Entrega:</strong></span>"
+
 #. module: typ_stock
 #: code:addons/typ_stock/models/stock.py:262
 #, python-format
 msgid "<ul><li>shipment confirmed --> <b>ok</b></li></ul>"
 msgstr "<ul><li>embarque confirmado --> <b>ok</b></li></ul>"
+
+#: model:ir.ui.view,arch_db:typ_stock.report_picking
+msgid "<span><strong>Supplier Address:</strong></span>"
+msgstr "<span><strong>Dirección del Proveedor:</strong></span>"
 
 #. module: typ_stock
 #: selection:procurement.orderpoint.compute,importance:0
@@ -46,55 +56,99 @@ msgstr "<ul><li>embarque confirmado --> <b>ok</b></li></ul>"
 msgid "AA"
 msgstr ""
 
+#: model:ir.ui.view,arch_db:typ_stock.report_picking
+msgid "<span><strong>Warehouse Address:</strong></span>"
+msgstr "<span><strong>Dirección del Almacén:</strong></span>"
+
 #. module: typ_stock
 #: model:ir.actions.server,name:typ_stock.server_action_product_supplier_ref
 msgid "Action compute supplier ref"
 msgstr "Accion para calcular codigo de proveedor"
+
+#: model:ir.ui.view,arch_db:typ_stock.report_picking
+msgid "<strong>Barcode</strong>"
+msgstr "<strong>Código de Barras</strong>"
 
 #. module: typ_stock
 #: model:ir.actions.server,name:typ_stock.server_action_product_manager_follower
 msgid "Action follower product manager"
 msgstr ""
 
+#: model:ir.ui.view,arch_db:typ_stock.report_picking
+msgid "<strong>Commitment Date</strong>"
+msgstr "<strong>Fecha Compromiso</strong>"
+
 #. module: typ_stock
 #: model:ir.actions.server,name:typ_stock.server_action_procurement_cancel
 msgid "Action procurement cancel"
 msgstr "Accion para cancelar abastecimientos"
+
+#: model:ir.ui.view,arch_db:typ_stock.report_picking
+msgid "<strong>Destination</strong>"
+msgstr "<strong>Destino</strong>"
 
 #. module: typ_stock
 #: field:stock.warehouse,active:0
 msgid "Active"
 msgstr "Activo"
 
+#: model:ir.ui.view,arch_db:typ_stock.report_picking
+msgid "<strong>Notes</strong>:"
+msgstr "<strong>Notas</strong>:"
+
 #. module: typ_stock
 #: view:stock.warehouse.orderpoint:typ_stock.stock_warehouse_orderpoint_form_inherit
 msgid "Additional information"
 msgstr ""
+
+#: model:ir.ui.view,arch_db:typ_stock.report_picking
+msgid "<strong>Order (Origin)</strong>"
+msgstr "<strong>Pedido (Origen)</strong>"
 
 #. module: typ_stock
 #: field:stock.location.route,manual_transfer_selectable:0
 msgid "Applicable on manual transfer"
 msgstr "Aplicable en transferencia manual"
 
+#: model:ir.ui.view,arch_db:typ_stock.report_picking
+msgid "<strong>Product</strong>"
+msgstr "<strong>Producto</strong>"
+
 #. module: typ_stock
 #: model:stock.picking.type,name:typ_stock.stock_picking_type_test_1
 msgid "Automatic output"
 msgstr "Salida automatica"
+
+#: model:ir.ui.view,arch_db:typ_stock.report_picking
+msgid "<strong>Quantity</strong>"
+msgstr "<strong>Cantidad</strong>"
 
 #. module: typ_stock
 #: model:stock.picking.type,name:typ_stock.stock_picking_type_test_2
 msgid "Automatic transit"
 msgstr "Transito automático"
 
+#: model:ir.ui.view,arch_db:typ_stock.report_picking
+msgid "<strong>Scheduled Date</strong>"
+msgstr "<strong>Fecha Recepción</strong>"
+
 #. module: typ_stock
 #: field:stock.analysis,balanced:0
 msgid "Balanced"
 msgstr "Balanceo"
 
+#: model:ir.ui.view,arch_db:typ_stock.report_picking
+msgid "<strong>Source</strong>"
+msgstr "<strong>Recurso</strong>"
+
 #. module: typ_stock
 #: view:website:stock.report_picking
 msgid "Barcode"
 msgstr "Código de barras"
+
+#: model:ir.ui.view,arch_db:typ_stock.report_picking
+msgid "<strong>State</strong>"
+msgstr "<strong>Estado</strong>"
 
 #. module: typ_stock
 #: view:pedimento.product:typ_stock.view_pedimento_product_wizard
@@ -134,6 +188,10 @@ msgstr "Dirección del Cliente:"
 #: help:stock.manual_transfer,message_last_post:0
 msgid "Date of the last message posted on the record."
 msgstr "Fecha de el ultimo mensaje creado en el registro."
+
+#: model:ir.ui.view,arch_db:typ_stock.report_picking
+msgid "Barcode"
+msgstr "Código de barras"
 
 #. module: typ_stock
 #: view:website:stock.report_picking
