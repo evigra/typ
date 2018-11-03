@@ -44,13 +44,25 @@ class PosConfig(models.Model):
         'should create the payment from UI POS')
 
 
+class PosSession(models.Model):
+    _inherit = 'pos.session'
+
+    @api.model
+    def search(self, args, offset=0, limit=None, order=None, count=False):
+        if self._context.get('use_session'):
+            args = [
+                ('state', '!=', 'closed'),
+                ('crm_team_id', '=', self.env.user.sale_team_id.id)]
+        return super(PosSession, self).search(
+            args=args, offset=offset, limit=limit, order=order, count=count)
+
+
 class PosOrder(models.Model):
     _inherit = 'pos.order'
 
-
     @api.multi
     def refund(self):
-        res = super(PosOrder, self).refund()
+        res = super(PosOrder, self.with_context(use_session=True)).refund()
         return res
 
     @api.multi
