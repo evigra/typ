@@ -51,6 +51,7 @@
         # 'report/report_stockpicking.xml',
         # 'report/report_product_label.xml',
         # 'report/stock_analysis_view.xml',
+        'views/stock_account_view.xml',
     ],
     # only loaded in demonstration mode
     'demo': [
