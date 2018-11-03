@@ -61,6 +61,12 @@ class SaleOrder(models.Model):
                                     'transfered.'))
         return super(SaleOrder, self).action_cancel()
 
+    @api.multi
+    def _prepare_invoice(self):
+        res = super(SaleOrder, self)._prepare_invoice()
+        res.update({'type_payment_term': self.type_payment_term})
+        return res
+
 
 class PurchaseOrder(models.Model):
 
@@ -72,4 +78,16 @@ class PurchaseOrder(models.Model):
         if self.origin:
             new_origin = self.origin + ':' + self.name
             res.update({'origin': new_origin})
+        return res
+
+
+class SaleAdvancePaymentInv(models.TransientModel):
+
+    _inherit = "sale.advance.payment.inv"
+
+    @api.multi
+    def _create_invoice(self, order, so_line, amount):
+        res = super(SaleAdvancePaymentInv, self)._create_invoice(
+            order, so_line, amount)
+        res.get_payment_term()
         return res
