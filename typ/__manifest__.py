@@ -73,6 +73,7 @@
         # 'data/set_configuration.yml',
         # 'data/typ_security.xml',
         'report/report_invoice.xml',
+        'report/account_report_payment_receipt_templates.xml',
         # 'security/ir.model.access.csv',
     ],
     'demo': [
