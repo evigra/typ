@@ -29,6 +29,7 @@
         'views/account_invoice_view.xml',
         'views/account_bank_statement_view.xml',
         'views/account_payment_view.xml',
+        'views/account_views.xml',
     ],
     # only loaded in demonstration mode
     'demo': [
