@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 11.0+e\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-11-01 02:00+0000\n"
-"PO-Revision-Date: 2018-11-01 02:00+0000\n"
+"POT-Creation-Date: 2018-11-05 00:29+0000\n"
+"PO-Revision-Date: 2018-11-05 00:29+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -18,10 +18,11 @@ msgstr ""
 #. module: typ
 #: model:ir.ui.view,arch_db:typ.report_invoice_document_typ
 msgid "&amp;nbsp;<span>on</span>"
-msgstr "&amp;nbsp;<span>on</span>"
+msgstr "&amp;nbsp;<span>en</span>"
 
 #. module: typ
 #: model:ir.ui.view,arch_db:typ.report_invoice_document_typ
+#: model:ir.ui.view,arch_db:typ.report_payment_receipt_typ
 msgid "<b><span>Total</span></b>"
 msgstr "<b><span>Total</span></b>"
 
@@ -44,36 +45,48 @@ msgstr "<span> PUE Pago en una sola exhibición</span>"
 
 #. module: typ
 #: model:ir.ui.view,arch_db:typ.report_invoice_document_typ
+#: model:ir.ui.view,arch_db:typ.report_payment_receipt_typ
 msgid "<span> | Certification Date:</span>"
 msgstr "<span> | Fecha de Certificación:</span>"
 
 #. module: typ
 #: model:ir.ui.view,arch_db:typ.report_invoice_document_typ
+#: model:ir.ui.view,arch_db:typ.report_payment_receipt_typ
 msgid "<span> | Emission Date:</span>"
 msgstr "<span> | Fecha de Emisión:</span>"
 
 #. module: typ
 #: model:ir.ui.view,arch_db:typ.report_invoice_document_typ
+#: model:ir.ui.view,arch_db:typ.report_payment_receipt_typ
 msgid "<span> | Expedition place:</span>"
 msgstr "<span> | Lugar de Expedición:</span>"
 
 #. module: typ
 #: model:ir.ui.view,arch_db:typ.report_invoice_document_typ
+#: model:ir.ui.view,arch_db:typ.report_payment_receipt_typ
 msgid "<span> | Fiscal Folio:</span>"
 msgstr "<span> | Folio Fiscal:</span>"
 
 #. module: typ
 #: model:ir.ui.view,arch_db:typ.report_invoice_document_typ
+#: model:ir.ui.view,arch_db:typ.report_payment_receipt_typ
 msgid "<span> | Fiscal Regime:</span>"
 msgstr "<span> | Regimen Fiscal:</span>"
 
 #. module: typ
+#: model:ir.ui.view,arch_db:typ.report_payment_receipt_typ
+msgid "<span> | SAT Certificate:</span>"
+msgstr "<span> | Certificado SAT:</span>"
+
+#. module: typ
 #: model:ir.ui.view,arch_db:typ.report_invoice_document_typ
+#: model:ir.ui.view,arch_db:typ.report_payment_receipt_typ
 msgid "<span>Account Last 4 Numbers</span>"
 msgstr "<span>Últimos 4 números de la cuenta</span>"
 
 #. module: typ
 #: model:ir.ui.view,arch_db:typ.report_invoice_document_typ
+#: model:ir.ui.view,arch_db:typ.report_payment_receipt_typ
 msgid "<span>Amount In Letters</span>"
 msgstr "<span>Cantidad en Letra</span>"
 
@@ -84,16 +97,19 @@ msgstr "<span>Importe</span>"
 
 #. module: typ
 #: model:ir.ui.view,arch_db:typ.report_invoice_document_typ
+#: model:ir.ui.view,arch_db:typ.report_payment_receipt_typ
 msgid "<span>Client Reference</span>"
 msgstr "<span>Referencia del Cliente</span>"
 
 #. module: typ
 #: model:ir.ui.view,arch_db:typ.report_invoice_document_typ
+#: model:ir.ui.view,arch_db:typ.report_payment_receipt_typ
 msgid "<span>Customer</span>"
 msgstr "<span>Cliente</span>"
 
 #. module: typ
 #: model:ir.ui.view,arch_db:typ.report_invoice_document_typ
+#: model:ir.ui.view,arch_db:typ.report_payment_receipt_typ
 msgid "<span>Date Stamp</span>"
 msgstr "<span>Fecha de Timbrado</span>"
 
@@ -104,66 +120,79 @@ msgstr "<span>Descripción</span>"
 
 #. module: typ
 #: model:ir.ui.view,arch_db:typ.report_invoice_document_typ
+#: model:ir.ui.view,arch_db:typ.report_payment_receipt_typ
 msgid "<span>Digital stamp SAT</span>"
 msgstr "<span>Sello Digital SAT</span>"
 
 #. module: typ
 #: model:ir.ui.view,arch_db:typ.report_invoice_document_typ
+#: model:ir.ui.view,arch_db:typ.report_payment_receipt_typ
 msgid "<span>Digital stamp of the emitter</span>"
 msgstr "<span>Sello Digital Emisor</span>"
 
 #. module: typ
 #: model:ir.ui.view,arch_db:typ.report_invoice_document_typ
+#: model:ir.ui.view,arch_db:typ.report_payment_receipt_typ
 msgid "<span>Document Date</span>"
 msgstr "<span>Fecha del Documento</span>"
 
 #. module: typ
 #: model:ir.ui.view,arch_db:typ.report_invoice_document_typ
+#: model:ir.ui.view,arch_db:typ.report_payment_receipt_typ
 msgid "<span>Emitter certificate:</span>"
 msgstr "<span>Certificado del Emisor:</span>"
 
 #. module: typ
 #: model:ir.ui.view,arch_db:typ.report_invoice_document_typ
+#: model:ir.ui.view,arch_db:typ.report_payment_receipt_typ
 msgid "<span>Extra Info</span>"
 msgstr "<span>Información Extra</span>"
 
 #. module: typ
 #: model:ir.ui.view,arch_db:typ.report_invoice_document_typ
+#: model:ir.ui.view,arch_db:typ.report_payment_receipt_typ
 msgid "<span>Fiscal Folio</span>"
 msgstr "<span>Folio Fiscal</span>"
 
 #. module: typ
 #: model:ir.ui.view,arch_db:typ.report_invoice_document_typ
+#: model:ir.ui.view,arch_db:typ.report_payment_receipt_typ
 msgid "<span>Fiscal Regime</span>"
 msgstr "<span>Regimen Fiscal</span>"
 
 #. module: typ
 #: model:ir.ui.view,arch_db:typ.report_invoice_document_typ
+#: model:ir.ui.view,arch_db:typ.report_payment_receipt_typ
 msgid "<span>Form of Payment</span>"
 msgstr "<span>Forma de Pago</span>"
 
 #. module: typ
 #: model:ir.ui.view,arch_db:typ.report_invoice_document_typ
+#: model:ir.ui.view,arch_db:typ.report_payment_receipt_typ
 msgid "<span>Issued at</span>"
 msgstr "<span>Expedido en</span>"
 
 #. module: typ
 #: model:ir.ui.view,arch_db:typ.report_invoice_document_typ
+#: model:ir.ui.view,arch_db:typ.report_payment_receipt_typ
 msgid "<span>Issued from</span>"
 msgstr "<span>Expedido desde</span>"
 
 #. module: typ
 #: model:ir.ui.view,arch_db:typ.report_invoice_document_typ
+#: model:ir.ui.view,arch_db:typ.report_payment_receipt_typ
 msgid "<span>Issuer Certificate</span>"
 msgstr "<span>Certificado del Emisor</span>"
 
 #. module: typ
 #: model:ir.ui.view,arch_db:typ.report_invoice_document_typ
+#: model:ir.ui.view,arch_db:typ.report_payment_receipt_typ
 msgid "<span>Issuer</span>"
 msgstr "<span>Emisor</span>"
 
 #. module: typ
 #: model:ir.ui.view,arch_db:typ.report_invoice_document_typ
+#: model:ir.ui.view,arch_db:typ.report_payment_receipt_typ
 msgid "<span>Original chain complement of digital certification SAT</span>"
 msgstr "<span>Cadena Original SAT</span>"
 
@@ -173,12 +202,18 @@ msgid "<span>Payment Method</span>"
 msgstr "<span>Método de Pago</span>"
 
 #. module: typ
+#: model:ir.ui.view,arch_db:typ.report_payment_receipt_typ
+msgid "<span>Payment</span>"
+msgstr "<span>Payment</span>"
+
+#. module: typ
 #: model:ir.ui.view,arch_db:typ.report_invoice_document_typ
 msgid "<span>Quantity</span>"
 msgstr "<span>Cantidad</span>"
 
 #. module: typ
 #: model:ir.ui.view,arch_db:typ.report_invoice_document_typ
+#: model:ir.ui.view,arch_db:typ.report_payment_receipt_typ
 msgid "<span>SAT Certificate</span>"
 msgstr "<span>Certificado SAT</span>"
 
@@ -219,13 +254,25 @@ msgstr "<strong>Notas</strong>:"
 
 #. module: typ
 #: model:ir.ui.view,arch_db:typ.report_invoice_document_typ
+#: model:ir.ui.view,arch_db:typ.report_payment_receipt_typ
 msgid "<strong>This document is a printed representation of a CFDI</strong>"
 msgstr "<strong>Este documento es una representación impresa de un CFDI</strong>"
 
 #. module: typ
 #: model:ir.ui.view,arch_db:typ.report_invoice_document_typ
+#: model:ir.ui.view,arch_db:typ.report_payment_receipt_typ
 msgid "A signature of this invoice is required, but it is not signed."
 msgstr "Se requiere una firma de esta factura, pero no está firmada."
+
+#. module: typ
+#: model:ir.ui.view,arch_db:typ.report_payment_receipt_typ
+msgid "Amount Paid"
+msgstr "Importe pagado"
+
+#. module: typ
+#: model:ir.ui.view,arch_db:typ.report_payment_receipt_typ
+msgid "Balance"
+msgstr "Saldo"
 
 #. module: typ
 #: model:ir.ui.view,arch_db:typ.report_invoice_document_typ
@@ -238,7 +285,13 @@ msgid "Credit Note"
 msgstr "Nota de Crédito"
 
 #. module: typ
+#: model:ir.ui.view,arch_db:typ.report_payment_receipt_typ
+msgid "Currency"
+msgstr "Moneda"
+
+#. module: typ
 #: model:ir.ui.view,arch_db:typ.report_invoice_document_typ
+#: model:ir.ui.view,arch_db:typ.report_payment_receipt_typ
 msgid "Deadline for returns of 15 calendar days from delivery. Product must be presented in original packaging. Warranties: American 1 year parts and 5 years compressor equipment. Asia 1 year parts and compressor equipment. Does not apply to equipment with power failures or burns."
 msgstr "Plazo para devoluciones de 15 días naturales a partir de la entrega. Es necesario presentar producto en empaque original. Garantías: Equipo americano 1 año en partes y 5 años en compresor. Equipo asiático 1 año en partes y compresor. No aplica en equipo con fallas eléctricas ni quemaduras."
 
@@ -249,8 +302,44 @@ msgstr "Factura Borrador"
 
 #. module: typ
 #: model:ir.ui.view,arch_db:typ.report_invoice_document_typ
+#: model:ir.ui.view,arch_db:typ.report_payment_receipt_typ
 msgid "Invoice"
 msgstr "Factura"
+
+#. module: typ
+#: model:ir.ui.view,arch_db:typ.report_payment_receipt_typ
+msgid "Invoice Date"
+msgstr "Fecha de la factura"
+
+#. module: typ
+#: model:ir.ui.view,arch_db:typ.report_payment_receipt_typ
+msgid "Invoice Number"
+msgstr "Número de Factura"
+
+#. module: typ
+#: model:ir.ui.view,arch_db:typ.report_payment_receipt_typ
+msgid "Original Amount"
+msgstr "Monto Original"
+
+#. module: typ
+#: model:ir.ui.view,arch_db:typ.report_payment_receipt_typ
+msgid "Partiality"
+msgstr "Parcialidad"
+
+#. module: typ
+#: model:ir.model,name:typ.model_account_payment
+msgid "Payments"
+msgstr "Pagos"
+
+#. module: typ
+#: model:ir.ui.view,arch_db:typ.report_payment_receipt_typ
+msgid "Previous balance"
+msgstr "Saldo anterior"
+
+#. module: typ
+#: model:ir.ui.view,arch_db:typ.report_payment_receipt_typ
+msgid "UUID"
+msgstr "UUID"
 
 #. module: typ
 #: model:ir.ui.view,arch_db:typ.report_invoice_document_typ
