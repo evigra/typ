@@ -4,4 +4,8 @@
         <field name="name">Users that can cancel a invoice</field>
         <field name="comment">This group can cancel invoices.</field>
     </record>
+    <record id="res_group_button_credit_note" model="res.groups">
+        <field name="name">Users that can see the button add credit note</field>
+        <field name="comment">This group can see the button add credit note.</field>
+    </record>
 </odoo>
