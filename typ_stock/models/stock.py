@@ -89,6 +89,9 @@ class StockMove(models.Model):
     )
     product_supplier_ref = fields.Char(string='Supplier Code')
 
+    def _push_apply(self):
+        return super(StockMove, self.sudo())._push_apply()
+
 
 class ReturnPicking(models.TransientModel):
     _inherit = 'stock.return.picking'
