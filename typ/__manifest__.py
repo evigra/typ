@@ -14,6 +14,7 @@
         'l10n_mx_edi_hr_expense',
         'l10n_mx_edi_customs',
         'l10n_mx_reports',
+        'l10n_mx_edi_payment',
         'typ_landed_costs',
         'typ_account',
         'typ_purchase',
