@@ -349,8 +349,8 @@ msgid "Notes"
 msgstr "Notas"
 
 #. module: typ_stock
-#: field:stock.picking,number_landing:0
-msgid "Number landing"
+#: model:ir.model.fields,field_description:typ_stock.field_stock_picking_number_landing
+msgid "Number Landing"
 msgstr "Pedimento"
 
 #. module: typ_stock

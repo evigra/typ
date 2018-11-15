@@ -69,6 +69,9 @@
             <field name="origin" position="before">
                 <field name="picking_shipment_date"/>
             </field>
+            <xpath expr="//field[@name='origin']" position="after">
+                <field name="number_landing"/>
+            </xpath>
             <xpath expr="//field[@name='backorder_id']" position="after">
                 <field name="invoiced" readonly="1"/>
             </xpath>
@@ -96,6 +99,9 @@
                 <field name="picking_shipment_date"/>
                 <field name="invoiced" invisible="1"/>
                 <field name="date_done"/>
+            </xpath>
+            <xpath expr="//field[@name='origin']" position="after">
+                <field name="number_landing"/>
             </xpath>
             <xpath expr="//tree" position="attributes">
                 <attribute name="colors" translation="off">blue:state == 'draft';grey:state == 'cancel';
