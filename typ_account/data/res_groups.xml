@@ -8,4 +8,8 @@
         <field name="name">Users that can see the button add credit note</field>
         <field name="comment">This group can see the button add credit note.</field>
     </record>
+    <record id="res_group_account_adviser" model="res.groups">
+        <field name="name">Users that can see the adviser menu in accounting</field>
+        <field name="comment">This group can see the adviser menu in accounting.</field>
+    </record>
 </odoo>

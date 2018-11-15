@@ -11,4 +11,11 @@
             </field>
         </field>
     </record>
+    <menuitem id="account.menu_finance_entries" name="Adviser" parent="account.menu_finance" sequence="4" groups="account.group_account_user,res_group_account_adviser"/>
+    <menuitem action="account.action_account_moves_all_a" id="account.menu_action_account_moves_all"
+        parent="account.menu_finance_entries_accounting_entries" sequence="10" groups="account.group_account_manager,res_group_account_adviser"/>
+    <menuitem name="Analytic Entries" parent="account.menu_finance_entries_accounting_entries" action="analytic.account_analytic_line_action_entries"
+        id="account.menu_action_analytic_lines_tree" sequence="35" groups="analytic.group_analytic_accounting,res_group_account_adviser"/>
+    <menuitem action="account.action_move_journal_line" id="account.menu_action_move_journal_line_form"
+        parent="account.menu_finance_entries_accounting_entries" groups="account.group_account_user,res_group_account_adviser" sequence="2"/>
 </odoo>
