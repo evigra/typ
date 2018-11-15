@@ -101,4 +101,9 @@
             </search>
         </field>
     </record>
+
+    <menuitem id="stock.menu_warehouse_report" name="Reporting" sequence="99" parent="stock.menu_stock_root" groups="stock.group_stock_manager,typ_stock.group_stock_menu_inform_configuration"/>
+    <menuitem action="stock.action_location_form" id="stock.menu_action_location_form"
+        parent="stock.menu_warehouse_report" sequence="10" groups="group_stock_menu_inform_configuration"/>
+
 </odoo>
