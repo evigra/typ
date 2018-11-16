@@ -202,10 +202,8 @@ msgid "If checked new messages require your attention."
 msgstr "Si seleccionas nuevos mensajes requieren tu atención."
 
 #. module: typ_stock
-#: field:procurement.orderpoint.compute,importance:0
-#: view:stock.analysis:typ_stock.stock_analysis_graph_search_inherit
-#: field:stock.analysis,importance:0
-#: field:stock.warehouse.orderpoint,importance:0
+#: model:ir.model.fields,field_description:typ_stock.field_stock_scheduler_compute_importance
+#: model:ir.model.fields,field_description:typ_stock.field_stock_warehouse_orderpoint_importance
 msgid "Importance"
 msgstr "Importancia"
 
@@ -493,8 +491,8 @@ msgid "Quants"
 msgstr "Cuantos"
 
 #. module: typ_stock
-#: field:stock.warehouse.orderpoint,reorder_point:0
-msgid "Reorder point"
+#: model:ir.model.fields,field_description:typ_stock.field_stock_warehouse_orderpoint_reorder_point
+msgid "Reorder Point"
 msgstr "Punto de reorden"
 
 #. module: typ_stock
