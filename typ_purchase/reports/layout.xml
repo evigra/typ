@@ -68,21 +68,15 @@
                         <t t-if="address.street">
                             <span t-raw="address.street"/>
                         </t>
-                        <!--<t t-if="address.street and address.l10n_mx_street3"><span>,</span></t>
-                        <t t-if="address.l10n_mx_street3">
-                            <span t-raw="address.l10n_mx_street3"/>
-                        </t>--><br/>
-                        <t t-if="address.street2">
-                            <span t-raw="address.street2"/>
+                        <br/>
+                        <t t-if="address.l10n_mx_edi_colony">
+                            <span t-raw="address.l10n_mx_edi_colony"/>
                         </t>
-                        <t t-if="address.street2 and address.city"><span>,</span></t>
+                        <t t-if="address.l10n_mx_edi_colony and address.city"><span>,</span></t>
                         <t t-if="address.city">
                             <span t-raw="address.city"/>
                         </t>
-                        <!--<t t-if="address.city and address.l10n_mx_city2"><span>,</span></t>
-                        <t t-if="address.l10n_mx_city2">
-                            <span t-raw="address.l10n_mx_city2"/>
-                        </t>--><br/>
+                        <br/>
                         <t t-if="address.state_id">
                             <span t-raw="address.state_id.name"/>
                         </t>
@@ -102,10 +96,6 @@
                             <i class="fa fa-phone"/>
                             <span class="text-muted" style="font-size: 12px; line-height: 13px;" t-raw="address.phone"/>,
                         </t>
-                        <!--<t t-if="address.fax">
-                            <i class="fa fa-fax"/>
-                            <span class="text-muted" style="font-size: 12px; line-height: 13px;" t-raw="address.fax"/>
-                        </t>-->
                     </address>
                 </div>
             </div>

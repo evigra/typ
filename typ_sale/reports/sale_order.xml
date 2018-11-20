@@ -14,21 +14,14 @@
                         <t t-if="doc.partner_shipping_id.street">
                             <span t-raw="doc.partner_shipping_id.street"/>
                         </t>
-                        <!--<t t-if="doc.partner_shipping_id.l10n_mx_street3">
-                            <span t-raw="doc.partner_shipping_id.l10n_mx_street3"/>
-                        </t>
-                        <t t-if="doc.partner_shipping_id.l10n_mx_street4">
-                            <span t-raw="doc.partner_shipping_id.l10n_mx_street4"/>
-                        </t>--><br/>
-                        <t t-if="doc.partner_shipping_id.street2">
-                            <span t-raw="doc.partner_shipping_id.street2"/>
+                        <br/>
+                        <t t-if="doc.partner_shipping_id.l10n_mx_edi_colony">
+                            <span t-raw="doc.partner_shipping_id.l10n_mx_edi_colony"/>
                         </t>
                         <t t-if="doc.partner_shipping_id.city">
                             <span t-raw="doc.partner_shipping_id.city"/>
                         </t>
-                        <!--<t t-if="doc.partner_shipping_id.l10n_mx_city2">
-                            <span t-raw="doc.partner_shipping_id.l10n_mx_city2"/>
-                        </t>--><br/>
+                        <br/>
                         <t t-if="doc.partner_shipping_id.state_id">
                             <span t-raw="doc.partner_shipping_id.state_id.name"/>
                         </t>
@@ -45,21 +38,14 @@
                         <t t-if="doc.partner_invoice_id.street">
                             <span t-raw="doc.partner_invoice_id.street"/>
                         </t>
-                        <!--<t t-if="doc.partner_invoice_id.l10n_mx_street3">
-                            <span t-raw="doc.partner_invoice_id.l10n_mx_street3"/>
-                        </t>
-                        <t t-if="doc.partner_invoice_id.l10n_mx_street4">
-                            <span t-raw="doc.partner_invoice_id.l10n_mx_street4"/>
-                        </t>--><br/>
-                        <t t-if="doc.partner_invoice_id.street2">
-                            <span t-raw="doc.partner_invoice_id.street2"/>
+                        <br/>
+                        <t t-if="doc.partner_invoice_id.l10n_mx_edi_colony">
+                            <span t-raw="doc.partner_invoice_id.l10n_mx_edi_colony"/>
                         </t>
                         <t t-if="doc.partner_invoice_id.city">
                             <span t-raw="doc.partner_invoice_id.city"/>
                         </t>
-                        <!--<t t-if="doc.partner_invoice_id.l10n_mx_city2">
-                            <span t-raw="doc.partner_invoice_id.l10n_mx_city2"/>
-                        </t>--><br/>
+                        <br/>
                         <t t-if="doc.partner_invoice_id.state_id">
                             <span t-raw="doc.partner_invoice_id.state_id.name"/>
                         </t>
@@ -79,21 +65,14 @@
                         <t t-if="doc.partner_id.street">
                             <span t-raw="doc.partner_id.street"/>
                         </t>
-                        <!--<t t-if="doc.partner_id.l10n_mx_street3">
-                            <span t-raw="doc.partner_id.l10n_mx_street3"/>
-                        </t>
-                        <t t-if="doc.partner_id.l10n_mx_street4">
-                            <span t-raw="doc.partner_id.l10n_mx_street4"/>
-                        </t>--><br/>
-                        <t t-if="doc.partner_id.street2">
-                            <span t-raw="doc.partner_id.street2"/>
+                        <br/>
+                        <t t-if="doc.partner_id.l10n_mx_edi_colony">
+                            <span t-raw="doc.partner_id.l10n_mx_edi_colony"/>
                         </t>
                         <t t-if="doc.partner_id.city">
                             <span t-raw="doc.partner_id.city"/>
                         </t>
-                        <!--<t t-if="doc.partner_id.l10n_mx_city2">
-                            <span t-raw="doc.partner_id.l10n_mx_city2"/>
-                        </t>--><br/>
+                        <br/>
                         <t t-if="doc.partner_id.state_id">
                             <span t-raw="doc.partner_id.state_id.name"/>
                         </t>
