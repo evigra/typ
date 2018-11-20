@@ -16,6 +16,7 @@
         'l10n_mx_reports',
         'l10n_mx_edi_payment',
         'l10n_mx_edi_partner_defaults',
+        'l10n_mx_edi_payment_bank',
         'typ_landed_costs',
         'typ_account',
         'typ_purchase',
