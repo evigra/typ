@@ -3,3 +3,4 @@ addons-vauxoo git@github.com:Vauxoo/addons-vauxoo.git
 mexico git@git.vauxoo.com:vauxoo/mexico.git
 stock-logistics-workflow git@github.com:Vauxoo/stock-logistics-workflow.git
 sale-workflow
+vendor-bills git@git.vauxoo.com:vauxoo/vendor-bills.git
