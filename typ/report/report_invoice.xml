@@ -165,6 +165,7 @@
                             </div>
                             <div>
                                 <span t-esc="o.company_id.street_name"/>
+                                <span t-esc="o.company_id.street_number"/>
                                 <span t-esc="o.company_id.street2"/>
                                 <br/>
                                 <span t-esc="o.company_id.l10n_mx_edi_colony"/>
@@ -196,6 +197,7 @@
                             </div>
                             <div>
                                 <span t-esc="o.partner_id.street_name"/>
+                                <span t-esc="o.partner_id.street_number"/>
                                 <span t-esc="o.partner_id.street2"/>
                                 <br/>
                                 <span t-esc="o.partner_id.l10n_mx_edi_colony"/>
@@ -225,6 +227,7 @@
                             </div>
                             <div>
                                 <span t-esc="o.journal_id.l10n_mx_address_issued_id.street_name"/>
+                                <span t-esc="o.journal_id.l10n_mx_address_issued_id.street_number"/>
                                 <span t-esc="o.journal_id.l10n_mx_address_issued_id.street2"/>
                                 <br/>
                                 <span t-esc="o.journal_id.l10n_mx_address_issued_id.l10n_mx_edi_colony"/>
