@@ -125,7 +125,7 @@
                         domain="[('landed_cost_ok', '=', True)]"
                         />
                     <field name="cost"/>
-                    <field name="freight_type"/>
+                    <field name="freight_type" required="True"/>
                 </tree>
             </field>
         </record>

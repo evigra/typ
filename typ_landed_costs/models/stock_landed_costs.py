@@ -350,10 +350,11 @@ class StockLandedGuidesLine (models.Model):
         help='Product associated to this line')
     cost = fields.Float(help='Cost of the operation on this line')
     freight_type = fields.Selection(
-        [('others', 'Freight - Others'),
-         ('purchases', 'Freight - Purchases'),
-         ('transfers', 'Freight - Transfers'),
-         ('sales', 'Freight - Sales'),
+        [('transfers', 'Restocked'),
+         ('purchases', 'Purchases'),
+         ('sales', 'Firm Sale'),
+         ('salesc', 'Branch-Client Sale'),
+         ('others', 'Others'),
          ('services', 'Services')],
         help='Freight type of this operation'
         )

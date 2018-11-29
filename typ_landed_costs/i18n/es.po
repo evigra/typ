@@ -51,6 +51,11 @@ msgid "Branch Client"
 msgstr "Sucursal Cliente"
 
 #. module: typ_landed_costs
+#: selection:stock.landed.cost.guide.line,freight_type:0
+msgid "Branch-Client Sale"
+msgstr "Venta Sucursal-Cliente"
+
+#. module: typ_landed_costs
 #: view:invoice.guides:typ_landed_costs.view_invoice_from_guides_form
 #: view:stock.landed.cost.guide:typ_landed_costs.guide_form_view
 msgid "Cancel"
@@ -212,31 +217,16 @@ msgstr "Aterrizaje por diferencial cambiario"
 
 #. module: typ_landed_costs
 #: selection:stock.landed.cost.guide.line,freight_type:0
-msgid "Freight - Others"
-msgstr "Flete - Otros"
+msgid "Firm Sale"
+msgstr "Venta en firme"
 
 #. module: typ_landed_costs
-#: selection:stock.landed.cost.guide.line,freight_type:0
-msgid "Freight - Purchases"
-msgstr "Flete - Compras"
-
-#. module: typ_landed_costs
-#: selection:stock.landed.cost.guide.line,freight_type:0
-msgid "Freight - Sales"
-msgstr "Flete - Ventas"
-
-#. module: typ_landed_costs
-#: selection:stock.landed.cost.guide.line,freight_type:0
-msgid "Freight - Transfers"
-msgstr "Flete - Transferencias"
-
-#. module: typ_landed_costs
-#: field:stock.landed.cost.guide.line,freight_type:0
-msgid "Freight type"
+#: model:ir.model.fields,field_description:typ_landed_costs.field_stock_landed_cost_guide_line_freight_type
+msgid "Freight Type"
 msgstr "Tipo de flete"
 
 #. module: typ_landed_costs
-#: help:stock.landed.cost.guide.line,freight_type:0
+#: model:ir.model.fields,help:typ_landed_costs.field_stock_landed_cost_guide_line_freight_type
 msgid "Freight type of this operation"
 msgstr "Tipo de flete de esta operación"
 
@@ -489,6 +479,11 @@ msgid "Other info"
 msgstr "Otra información"
 
 #. module: typ_landed_costs
+#: selection:stock.landed.cost.guide.line,freight_type:0
+msgid "Others"
+msgstr "Otros"
+
+#. module: typ_landed_costs
 #: view:stock.landed.cost.guide:typ_landed_costs.guide_search_view
 #: field:stock.landed.cost.guide,partner_id:0
 msgid "Partner"
@@ -564,6 +559,11 @@ msgid "Prorated"
 msgstr "Prorrateado"
 
 #. module: typ_landed_costs
+#: selection:stock.landed.cost.guide.line,freight_type:0
+msgid "Purchases"
+msgstr "Compras"
+
+#. module: typ_landed_costs
 #: model:product.pricelist,name:typ_landed_costs.landed_price
 msgid "Purchase Pricelist"
 msgstr "Lista de precio de compra"
@@ -592,6 +592,11 @@ msgstr "Referencia de la factura creada a partir de la guía"
 #: view:stock.landed.cost.guide:typ_landed_costs.guide_form_view
 msgid "Reset to draft"
 msgstr "Reiniciar a borrador"
+
+#. module: typ_landed_costs
+#: selection:stock.landed.cost.guide.line,freight_type:0
+msgid "Restocked"
+msgstr "Resurtidos"
 
 #. module: typ_landed_costs
 #: field:stock.discrete,segmentation_cost:0
