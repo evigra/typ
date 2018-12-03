@@ -1,8 +1,9 @@
 # coding: utf-8
 
-from odoo import api, fields, models, _
+from odoo import api, fields, models, SUPERUSER_ID, _
 from odoo.exceptions import UserError
 from odoo.tools.float_utils import float_round
+from odoo.tools.safe_eval import safe_eval
 
 
 class StockPicking(models.Model):
@@ -21,6 +22,29 @@ class StockPicking(models.Model):
         "green highlight on tree view "
     )
     number_landing = fields.Char(copy=False)
+
+    def _check_allow_write(self, vals):
+        """ Validate which fields the user can write when warehouse of the
+        picking is not the same of the sale team of the user"""
+
+        if vals is None:
+            vals = {}
+
+        allow_fields = safe_eval(
+            self.sudo().env['ir.config_parameter'].get_param(
+                'stock_picking_allow_fields'))
+
+        if set(vals.keys()).difference(allow_fields):
+            raise UserError(_('You are not allowed to do this change'))
+
+    @api.multi
+    def write(self, vals):
+        # check if the user can modify the fields depending of the sales team
+        for picking in self.filtered(lambda dat: dat.warehouse_id not in (
+                dat.env.user.sale_team_ids.mapped('default_warehouse')) and
+                dat.env.user.id != SUPERUSER_ID):
+            picking._check_allow_write(vals)
+        return super(StockPicking, self).write(vals)
 
     def action_confirm_trafic(self):
         """This fill the invoiced field automatically"""
