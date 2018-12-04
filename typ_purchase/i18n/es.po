@@ -160,7 +160,7 @@ msgid "Product Code"
 msgstr "Código de Producto"
 
 #. module: typ_purchase
-#: field:purchase.order.line,shipment_date:0
+#: model:ir.model.fields,field_description:typ_purchase.field_purchase_order_line_shipment_date
 msgid "Product shipment date"
 msgstr "Fecha de embarque"
 

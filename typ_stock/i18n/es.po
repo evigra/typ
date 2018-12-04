@@ -518,7 +518,7 @@ msgid "Product id"
 msgstr "Id del Producto"
 
 #. module: typ_stock
-#: field:stock.move,shipment_date:0
+#: model:ir.model.fields,field_description:typ_stock.field_stock_move_shipment_date
 msgid "Product shipment date"
 msgstr "Fecha de embarque"
 
@@ -569,9 +569,9 @@ msgid "Scheduled Date"
 msgstr "Fecha Programada"
 
 #. module: typ_stock
-#: help:stock.move,shipment_date:0
+#: model:ir.model.fields,help:typ_stock.field_stock_move_shipment_date
 msgid "Scheduled date for the shipment of this move"
-msgstr "Fecha programada para el envío de este movimiento"
+msgstr "Fecha programada para el envío de este traslado"
 
 #. module: typ_stock
 #: model:ir.actions.server,name:typ_stock.server_action_product_manager_send_email
