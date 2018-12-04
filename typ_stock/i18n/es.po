@@ -471,8 +471,8 @@ msgid "Picking ids"
 msgstr "id de picking"
 
 #. module: typ_stock
-#: field:stock.picking,picking_shipment_date:0
-msgid "Picking shipment date"
+#: model:ir.model.fields,field_description:typ_stock.field_stock_picking_picking_shipment_date
+msgid "Picking Shipment Date"
 msgstr "Fecha de embarque"
 
 #. module: typ_stock
