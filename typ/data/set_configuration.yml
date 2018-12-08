@@ -1,73 +1,50 @@
 -
-  Base General Settings
+  Configuration Settings
 -
-  !record {model: base.config.settings, id: typ_default_base_properties}:
+
+  !record {model: res.config.settings, id: config_settings}:
     {
-    'alias_domain': 'erp.typrefrigeracion.com'
+        # Sale
+        'group_product_variant': True,
+        'group_uom': True,
+        'group_discount_per_so_line': True,
+        'multi_sales_price_method': 'formula',
+        'module_sale_margin': True,
+        'margin_allowed': 7.0,
+        'group_warning_sale': True,
+        'group_sale_delivery_address': True,
+        'module_delivery': True,
+        'group_route_so_lines': True,
+        'default_invoice_policy': 'delivery',
+
+        # Purchase
+        'po_order_approval': 10000.0,
+        'group_warning_purchase': True,
+        'default_purchase_method': 'receive',
+        'group_manage_vendor_price': True,
+
+        # Stock
+        'group_warning_stock': True,
+        'default_picking_policy': 'direct',
+        'group_stock_production_lot': True,
+        'group_stock_multi_locations': True,
+        'group_stock_multi_warehouses': True,
+        'group_stock_adv_location': True,
+
+        # Account
+        'tax_calculation_rounding_method': 'round_per_line',
+        'tax_exigibility': True,
+        'group_multi_currency': True,
+        'currency_provider': 'banxico',
+        'currency_interval_unit': 'daily',
+        #'payment_type': 'bdp',
+        'group_warning_account': True,
+
+        # General
+        'alias_domain': 'erp.typrefrigeracion.com',
+        'auth_signup_uninvited': 'b2b',
     }
 -
-  !python {model: base.config.settings}: |
-    self.execute(cr, uid, [ref('typ_default_base_properties')], context=context)
--
-  Purchase
--
-  !record {model: purchase.config.settings, id: typ_default_purchase_properties}:
-    {
-    'group_purchase_pricelist': 1,
-    'group_costing_method': 1,
-    'default_invoice_method': 'picking',
-    }
-    # Module stock_dropshipping ('module_stock_dropshipping': 1,) is removed
-    # because it causes and error when is instaled from the typ configuration
-    # file:
-    # TypeError: Cannot create a consistent method resolution order (MRO) for
-    # bases sale.order.line, sale_order_line
--
-  !python {model: purchase.config.settings}: |
-    self.execute(cr, uid, [ref('typ_default_purchase_properties')], context=context)
--
-  Sales
--
-  !record {model: sale.config.settings, id: typ_default_sale_properties}:
-    {
-    'group_invoice_so_lines': 1,
-    'group_invoice_deli_orders': 1,
-    'group_sale_pricelist': 1,
-    'group_sale_delivery_address': 1,
-    'group_mrp_properties': 1,
-    'group_uom': 1,
-    'group_route_so_lines': 1,
-    'group_multi_salesteams': 1,
-    'default_order_policy': 'picking',
-    }
--
-  !python {model: sale.config.settings}: |
-    self.execute(cr, uid, [ref('typ_default_sale_properties')], context=context)
--
-  Accounting
--
-  !record {model: account.config.settings, id: typ_default_account_properties}:
-    {
-    'date_stop': !eval time.strftime('%Y-12-31'),
-    'date_start': !eval time.strftime('%Y-01-01'),
-    'period': 'month',
-    'currency_id': base.MXN,
-    'payment_type': 'bdp',
-    }
--
-  !python {model: account.config.settings}: |
-    self.execute(cr, uid, [ref('typ_default_account_properties')], context=context)
--
-  Stock
--
-  !record {model: stock.config.settings, id: typ_default_stock_properties}:
-    {
-    'group_stock_production_lot': 1,
-    'group_stock_tracking_lot': 1,
-    'group_stock_multiple_locations': 1,
-    'group_stock_adv_location': 1,
-    'make_journal_entry': 1,
-    }
--
-  !python {model: stock.config.settings}: |
-    self.execute(cr, uid, [ref('typ_default_stock_properties')], context=context)
+  !python {model: res.config.settings}: |
+    self.browse(ref('config_settings')).execute()
+

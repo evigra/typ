@@ -74,7 +74,7 @@
     ],
     'data': [
         'data/typ_paper_format.xml',
-        # 'data/set_configuration.yml',
+        'data/set_configuration.yml',
         # 'data/typ_security.xml',
         'report/report_invoice.xml',
         'report/account_report_payment_receipt_templates.xml',

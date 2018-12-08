@@ -7,6 +7,9 @@
         <field name="sequence">5</field>
         <field name="trigger">on_create_or_write</field>
         <field name="state">code</field>
-        <field name="code">record.check_margin()</field>
+        <field name="code">
+            if not record.move_ids:
+              record.check_margin()
+        </field>
     </record>
 </odoo>
