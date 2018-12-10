@@ -151,6 +151,9 @@
             <xpath expr='//field[@name="cost_line_id"]' position='after'>
                 <field name="picking_id" readonly="True"/>
             </xpath>
+                <field name="picking_ids" position="attributes">
+                    <attribute name="domain">[('state', '=', 'done')]</attribute>
+                </field>
             </field>
         </record>
 
