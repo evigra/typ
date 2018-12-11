@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<odoo>
+    <template id="report_delivery_document_inherit_typ" inherit_id="stock.report_delivery_document">
+        <t t-set="lines" position="attributes">
+            <attribute name="t-value">o.move_lines.filtered(lambda x: x.product_uom_qty).sorted(key=lambda r: (r.product_id.categ_id.name, r.product_id.default_code))</attribute>
+        </t>
+        <tr t-as="move_line" position="before">
+            <t t-set="move_lines" t-value="o.move_line_ids.sorted(key=lambda r: (r.product_id.categ_id.name, r.product_id.default_code))"/>
+        </tr>
+        <tr t-as="move_line" position="attributes">
+            <attribute name="t-foreach">move_lines</attribute>
+        </tr>
+    </template>
+</odoo>
