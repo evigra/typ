@@ -221,9 +221,9 @@ msgid "Email Thread"
 msgstr "Hilo Correo"
 
 #. module: typ_stock
-#: selection:stock.analysis,state:0
+#: selection:product.template,state:0
 msgid "End of Lifecycle"
-msgstr "Fin ciclo de vida"
+msgstr "Fin del ciclo de vida"
 
 #. module: typ_stock
 #: field:stock.transfer_details_items,expected_quantity:0
@@ -264,6 +264,11 @@ msgstr "Si seleccionas nuevos mensajes requieren tu atención."
 #: model:ir.model.fields,field_description:typ_stock.field_stock_warehouse_orderpoint_importance
 msgid "Importance"
 msgstr "Importancia"
+
+#. module: typ_stock
+#: selection:product.template,state:0
+msgid "In Development"
+msgstr "En desarrollo"
 
 #. module: typ_stock
 #: code:addons/typ_stock/models/stock.py:314
@@ -387,9 +392,9 @@ msgid "New Manual Transfer"
 msgstr "Nueva transferencia manual"
 
 #. module: typ_stock
-#: selection:stock.analysis,state:0
+#: selection:product.template,state:0
 msgid "Normal"
-msgstr ""
+msgstr "Normal"
 
 #. module: typ_stock
 #: view:stock.analysis:typ_stock.stock_analysis_graph_search_inherit
@@ -412,7 +417,7 @@ msgid "Number Landing"
 msgstr "Pedimento"
 
 #. module: typ_stock
-#: selection:stock.analysis,state:0
+#: selection:product.template,state:0
 msgid "Obsolete"
 msgstr "Obsoleto"
 
@@ -620,16 +625,17 @@ msgid "Standard price"
 msgstr "Costo promedio"
 
 #. module: typ_stock
-#: field:stock.manual_transfer,state:0
-#: view:website:stock.report_picking
+#: model:ir.model.fields,field_description:typ_stock.field_product_product_state
+#: model:ir.model.fields,field_description:typ_stock.field_product_template_state
+#: model:ir.model.fields,field_description:typ_stock.field_stock_manual_transfer_state
 msgid "State"
 msgstr "Estado"
 
 #. module: typ_stock
-#: view:stock.analysis:typ_stock.stock_analysis_graph_search_inherit
-#: field:stock.analysis,state:0
-msgid "Status"
-msgstr "Estado"
+#: model:ir.model.fields,help:typ_stock.field_product_product_state
+#: model:ir.model.fields,help:typ_stock.field_product_template_state
+msgid "State of lifecycle of the product."
+msgstr "Estado del ciclo de vida del producto."
 
 #. module: typ_stock
 #: model:ir.model,name:typ_stock.model_stock_invoice_onshipping

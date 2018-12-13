@@ -172,6 +172,11 @@ msgid "Email"
 msgstr "Correo electrónico"
 
 #. module: typ_sale
+#: selection:product.product,state:0 selection:product.template,state:0
+msgid "End of Lifecycle"
+msgstr "Fin del ciclo de vida"
+
+#. module: typ_sale
 #: view:website:sale.report_saleorder_document
 msgid "Except prior sale."
 msgstr "Salvo previa venta."
@@ -205,6 +210,11 @@ msgstr "Si el pago es con cheque, considere un adicional de 2% del total por con
 #: field:res.partner,importance:0
 msgid "Importance"
 msgstr "Importancia"
+
+#. module: typ_sale
+#: selection:product.product,state:0 selection:product.template,state:0
+msgid "In Development"
+msgstr "En desarrollo"
 
 #. module: typ_sale
 #: help:sale.order.line,purchase_partner_id:0
@@ -289,6 +299,11 @@ msgid "NOT CLASSIFIED"
 msgstr "NO CLASIFICADO"
 
 #. module: typ_sale
+#: selection:product.product,state:0 selection:product.template,state:0
+msgid "Normal"
+msgstr "Normal"
+
+#. module: typ_sale
 #: help:res.partner,business_activity:0
 msgid "Not classified \n"
 "CON - Contractor\n"
@@ -340,6 +355,11 @@ msgstr "CO - Contratista operador\n"
 #: selection:res.partner,partner_type:0
 msgid "OTH"
 msgstr "OTR"
+
+#. module: typ_sale
+#: selection:product.product,state:0 selection:product.template,state:0
+msgid "Obsolete"
+msgstr "Obsoleto"
 
 #. module: typ_sale
 #: view:website:sale.report_saleorder_document
@@ -608,9 +628,21 @@ msgid "Special sale"
 msgstr "Venta especial"
 
 #. module: typ_sale
-#: view:sale.order:typ_sale.view_state_sale_order_filter_inherit
+#: model:ir.model.fields,field_description:typ_sale.field_product_product_state
+#: model:ir.model.fields,field_description:typ_sale.field_product_template_state
+#: model:ir.ui.view,arch_db:typ_sale.view_state_sale_order_filter_inherit
 msgid "State"
 msgstr "Estado"
+
+#. module: typ_sale
+#: model:ir.model.fields,help:typ_sale.field_product_template_state
+msgid "State of lifecycle of the product."
+msgstr "Estado del ciclo de vida del producto."
+
+#. module: typ_sale
+#: model:ir.model.fields,help:typ_sale.field_product_product_state
+msgid "State of lifecycle of the variant"
+msgstr "Estado del ciclo de vida de la variante"
 
 #. module: typ_sale
 #: model:ir.model,name:typ_sale.model_stock_move
