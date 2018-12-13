@@ -61,4 +61,8 @@
       <field name="name">Users can see the Inform and Ubications menu</field>
       <field name="comment">This group can see the Inform and Ubication menu</field>
     </record>
+    <record id="group_stock_validation_button_inventory" model="res.groups">
+      <field name="name">Users can see the button Validation in inventory adjustments</field>
+      <field name="comment">This group can see the button Validation in inventory adjustments</field>
+    </record>
 </odoo>
