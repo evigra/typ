@@ -30,6 +30,11 @@
                     <field name="write_uid" readonly="True"/>
                 </group>
             </xpath>
+            <xpath expr="//group[4]" position="after">
+                <group>
+                    <field name="note" string="Inf. adicional"/>
+                </group>
+            </xpath>
         </field>
     </record>
 
