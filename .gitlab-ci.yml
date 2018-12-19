@@ -4,15 +4,6 @@ stages:
   - test_build
   - build
 
-variables:
-    PSQL_VERSION: "9.6"
-    VERSION: "11.0"
-    TRAVIS_PYTHON_VERSION: "3.5"
-    ODOO_REPO: "vauxoo/odoo"
-    ODOO_BRANCH: "11.0"
-    BASE_IMAGE: "vauxoo/odoo-110-image"
-    COUNTRY: "MX"
-
 lint:
   stage: test
   tags:
@@ -21,6 +12,7 @@ lint:
     LINT_CHECK: "1"
     TESTS: "0"
   script:
+    - source variables.sh
     - export TRAVIS_BUILD_DIR=$(pwd)
     - pip install deployv-addon-gitlab-tools
     - deployvcmd gitlab_tools check_keys
@@ -42,9 +34,8 @@ test:
   variables:
     LINT_CHECK: "0"
     TESTS: "1"
-    INCLUDE: "typ"
-    INSTALL: "typ"
   script:
+    - source variables.sh
     - export TRAVIS_BUILD_DIR=$(pwd)
     - pip install deployv-addon-gitlab-tools
     - deployvcmd gitlab_tools check_keys
@@ -67,6 +58,7 @@ publish_coverage:
   dependencies:
     - test
   script:
+    - source variables.sh
     - deployvcmd gitlab_tools push_coverage
   environment:
     name: coverage
@@ -77,10 +69,7 @@ build:
   image: quay.io/vauxoo/dockerv:latest
   tags:
     - build
-  variables:
-    INSTALL: "typ"
-    CUSTOMER: "typ"
   script:
+    - source variables.sh
     - deployvcmd gitlab_tools check_keys
     - deployvcmd gitlab_tools test_images --push_image
-
