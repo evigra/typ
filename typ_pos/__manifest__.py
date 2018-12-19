@@ -30,6 +30,7 @@
         'data/res_groups.xml',
         'views/pos_stocks_view.xml',
         'views/template.xml',
+        'views/pos_view.xml',
     ],
     "qweb":  ['static/src/xml/pos_stocks.xml'],
     "installable":  True,
