@@ -75,11 +75,11 @@
             <xpath expr="//field[@name='backorder_id']" position="after">
                 <field name="invoiced" readonly="1"/>
             </xpath>
-            <!-- <xpath expr="/button[@name='button_validate']" position="after"> -->
-            <!--     <button type="object" name="action_confirm_trafic" string="shipped ok" icon="STOCK_APPLY" attrs=" -->
-            <!--         {'invisible':[('state','in',('draft','cancel','partial_available','done'))]} -->
-            <!--         " groups="purchase.group_purchase_manager"/> -->
-            <!-- </xpath> -->
+            <xpath expr="//button[@name='button_validate']" position="after">
+                <button type="object" name="action_confirm_trafic" string="shipped ok"  attrs="
+                    {'invisible':[('state','in',('draft','cancel','done'))]}
+                    " groups="purchase.group_purchase_manager"/>
+            </xpath>
             <xpath expr="//button[@name='%(stock.act_stock_return_picking)d']" position="attributes">
                 <attribute name="groups" translation="off">typ_stock.res_group_reverse_transfer</attribute>
             </xpath>
@@ -104,11 +104,8 @@
                 <field name="number_landing"/>
             </xpath>
             <xpath expr="//tree" position="attributes">
-                <attribute name="colors" translation="off">blue:state == 'draft';grey:state == 'cancel';
-                red:state not in ('cancel', 'done') and min_date &lt; current_date;
-                green:invoiced == True and picking_shipment_date &lt; current_date;
-                orange:state not in ('cancel','done') and picking_shipment_date &lt; current_date
-                </attribute>
+                <attribute name="decoration-success" translation="off">invoiced and picking_shipment_date &lt; current_date</attribute>
+                <attribute name="decoration-warning" translation="off">state not in ('cancel','done') and picking_shipment_date &lt; current_date</attribute>
             </xpath>
             </field>
     </record>
