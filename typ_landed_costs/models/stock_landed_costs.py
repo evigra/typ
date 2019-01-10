@@ -447,6 +447,16 @@ class StockLandedCost(models.Model):
         help='Guides which contain items to be used as landed costs',
         copy=False)
 
+    port_input = fields.Char(
+        help='Port of input'
+    )
+
+    partner_id = fields.Many2one(
+        'res.partner',
+        string='Broker',
+        help='Broker of this landed cost'
+    )
+
     def _get_lines_from_invoice(self):
         company_currency = self.env.user.company_id.currency_id
         lines = []

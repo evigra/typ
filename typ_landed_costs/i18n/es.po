@@ -55,6 +55,15 @@ msgstr "Sucursal Cliente"
 msgid "Branch-Client Sale"
 msgstr "Venta Sucursal-Cliente"
 
+#: model:ir.model.fields,field_description:typ_landed_costs.field_stock_landed_cost_partner_id
+msgid "Broker"
+msgstr "Broker"
+
+#. module: typ_landed_costs
+#: model:ir.model.fields,help:typ_landed_costs.field_stock_landed_cost_partner_id
+msgid "Broker of this landed cost"
+msgstr "Broker de este gasto de envío"
+
 #. module: typ_landed_costs
 #: view:invoice.guides:typ_landed_costs.view_invoice_from_guides_form
 #: view:stock.landed.cost.guide:typ_landed_costs.guide_form_view
@@ -527,6 +536,16 @@ msgstr "Por favor defina una secuencia en el diario relacionado a esta guía."
 #, python-format
 msgid "Please fill the segmentation field in Cost Lines"
 msgstr "Favor de llenar el campo de segmentación en la lineas de costeo"
+
+#. module: typ_landed_costs
+#: model:ir.model.fields,field_description:typ_landed_costs.field_stock_landed_cost_port_input
+msgid "Port input"
+msgstr "Puerto de entrada"
+
+#. module: typ_landed_costs
+#: model:ir.model.fields,help:typ_landed_costs.field_stock_landed_cost_port_input
+msgid "Port of input"
+msgstr "Puerto de entrada"
 
 #. module: typ_landed_costs
 #: field:stock.landed.cost.guide.line,product_id:0

@@ -148,6 +148,12 @@
                     ]"
                     />
             </xpath>
+            <xpath expr='//group/group' position='after'>
+                <group string="Pedimento">
+                    <field name="port_input"/>
+                    <field name="partner_id"/>
+                </group>
+            </xpath>
             <xpath expr='//field[@name="cost_line_id"]' position='after'>
                 <field name="picking_id" readonly="True"/>
             </xpath>
