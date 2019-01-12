@@ -24,6 +24,12 @@
             <field name="picking_type_id" position="before">
                 <field name="broker_id"/>
             </field>
+            <field name="incoterm_id" position="after">
+                <field name="is_shipped"/>
+            </field>
+            <xpath expr="//field[@name='date_approve']" position="attributes">
+                <attribute name="groups" translation="off"></attribute>
+            </xpath>
         </field>
     </record>
     <!-- Hides "Create" and "Confirm" Button to a Group -->

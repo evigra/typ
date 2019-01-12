@@ -22,3 +22,8 @@ msgstr ""
 #: view:website:purchase.report_purchasequotation_document
 msgid "Expected Date"
 msgstr "Fecha Recepción"
+
+#. module: purchase
+#: model:ir.model.fields,field_description:purchase.field_purchase_order_is_shipped
+msgid "Is Shipped"
+msgstr "Recibido"
