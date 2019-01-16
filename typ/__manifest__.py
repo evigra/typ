@@ -18,6 +18,7 @@
         'l10n_mx_edi_partner_defaults',
         'l10n_mx_edi_payment_bank',
         'l10n_mx_edi_vendor_bills',
+        'l10n_mx_avoid_reversal_entry',
         'typ_landed_costs',
         'typ_account',
         'typ_purchase',
