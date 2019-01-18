@@ -17,4 +17,26 @@ if record.type in ('in_invoice', 'in_refund') and record.state == 'draft':
     record.update({'currency_id': currency_id.id})
         </field>
     </record>
+    <record id="automated_action_modify_journal_supplier_invoice" model="base.automation">
+        <field name="name">Modify journal on supplier invoice according to sale team</field>
+        <field name="model_id" ref="account.model_account_invoice"/>
+        <field name="active" eval="True"/>
+        <field name="sequence">5</field>
+        <field name="trigger">on_change</field>
+        <field name="on_change_fields">partner_id</field>
+        <field name="state">code</field>
+        <field name="code">
+if record.type in ('in_invoice', 'in_refund') and record.state == 'draft':
+    journal_id = False
+    sale_team_id = env['res.users'].browse(record._uid).sale_team_id
+    if 'default_purchase_id' in env.context:
+      purchase_id = env['purchase.order'].browse(env.context['default_purchase_id'])
+      warehouse_id = purchase_id.picking_type_id.warehouse_id
+      sale_team_id = env['crm.team'].search([('default_warehouse', '=', warehouse_id.id)], limit=1)
+    journal_ids = sale_team_id.mapped('journal_team_ids').filtered(lambda j: j.type == 'purchase')
+    if len(journal_ids) > 0:
+      journal_id = journal_ids[0]
+    record.update({'journal_id': journal_id})
+        </field>
+    </record>
 </odoo>
