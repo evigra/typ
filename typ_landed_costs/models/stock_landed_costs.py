@@ -461,7 +461,8 @@ class StockLandedCost(models.Model):
         company_currency = self.env.user.company_id.currency_id
         lines = []
         for invoice in self.invoice_ids:
-            for line in invoice.invoice_line_ids:
+            for line in invoice.invoice_line_ids.filtered(
+                    lambda dat: dat.product_id.landed_cost_ok):
                 cost = line.price_unit
                 if invoice.currency_id != company_currency:
                     cost = invoice.currency_id.with_context(
