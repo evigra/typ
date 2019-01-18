@@ -1,0 +1,271 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">      
+
+       <record id="air-conditioner" model="product.public.category">
+            <field name="name">Air Conditioner</field>
+            <field name="image_medium" type="base64" file="theme_typ/static/img/categories/ac.png"/>
+            <field name="cover_img" type="base64" file="theme_typ/static/img/categories/back1.jpg"/>
+            <field name="landing_category" eval="True"></field>
+        </record>
+
+        <record id="ventilation" model="product.public.category">
+            <field name="name">Ventilation</field>
+            <field name="image_medium" type="base64" file="theme_typ/static/img/categories/refri.png"/>
+            <field name="cover_img" type="base64" file="theme_typ/static/img/categories/back1.jpg"/>
+            <field name="landing_category" eval="True"></field>
+        </record>
+
+        <record id="refrigeration" model="product.public.category">
+            <field name="name">Refrigeration</field>
+            <field name="image_medium" type="base64" file="theme_typ/static/img/categories/venti.png"/>
+            <field name="cover_img" type="base64" file="theme_typ/static/img/categories/back1.jpg"/>
+            <field name="landing_category" eval="True"></field>
+        </record>
+
+        <record id="spare-parts" model="product.public.category">
+            <field name="name">Spare Parts</field>
+            <field name="image_medium" type="base64" file="theme_typ/static/img/categories/refri.png"/>
+            <field name="cover_img" type="base64" file="theme_typ/static/img/categories/back1.jpg"/>
+            <field name="landing_category" eval="True"></field>
+        </record>
+
+        <record id="tools" model="product.public.category">
+            <field name="name">Tools</field>
+            <field name="image_medium" type="base64" file="theme_typ/static/img/categories/ac.png"/>
+            <field name="cover_img" type="base64" file="theme_typ/static/img/categories/back1.jpg"/>
+            <field name="landing_category" eval="True"></field>
+        </record>
+
+        <record id="materials" model="product.public.category">
+            <field name="name">Materials</field>
+            <field name="image_medium" type="base64" file="theme_typ/static/img/categories/venti.png"/>
+            <field name="cover_img" type="base64" file="theme_typ/static/img/categories/back1.jpg"/>
+            <field name="landing_category" eval="True"></field>
+        </record>
+
+        <record id="compressors" model="product.public.category">
+            <field name="name">Compressors</field>
+            <field name="image_medium" type="base64" file="theme_typ/static/img/categories/ac.png"/>
+            <field name="cover_img" type="base64" file="theme_typ/static/img/categories/back1.jpg"/>
+            <field name="landing_category" eval="True"></field>
+        </record>
+
+        <record id="thermostats" model="product.public.category">
+            <field name="name">Thermostats and controls for A / C</field>
+            <field name="image_medium" type="base64" file="theme_typ/static/img/categories/ac.png"/>
+            <field name="cover_img" type="base64" file="theme_typ/static/img/categories/back1.jpg"/>
+            <field name="landing_category" eval="True"></field>
+        </record>
+
+        <record id="minisplits" model="product.public.category">
+            <field name="name">Mini Splits</field>
+            <field name="parent_id" eval="ref('air-conditioner')"/>
+            <field name="image_medium" type="base64" file="theme_typ/static/img/categories/demo4.png"/>
+            <field name="cover_img" type="base64" file="theme_typ/static/img/categories/back2.jpg"/>
+            <field name="landing_category" eval="True"></field>
+        </record>
+
+        <record id="piso-techo" model="product.public.category">
+            <field name="name">Piso Techo</field>
+            <field name="parent_id" eval="ref('air-conditioner')"/>
+            <field name="image_medium" type="base64" file="theme_typ/static/img/categories/demo1.png"/>
+            <field name="cover_img" type="base64" file="theme_typ/static/img/categories/back2.jpg"/>
+            <field name="landing_category" eval="True"></field>
+        </record>
+
+        <record id="fancoils" model="product.public.category">
+            <field name="name">Fancoils</field>
+            <field name="parent_id" eval="ref('air-conditioner')"/>
+            <field name="image_medium" type="base64" file="theme_typ/static/img/categories/demo2.png"/>
+            <field name="cover_img" type="base64" file="theme_typ/static/img/categories/back2.jpg"/>
+            <field name="landing_category" eval="True"></field>
+        </record>
+
+        <record id="cassette" model="product.public.category">
+            <field name="name">Cassette</field>
+            <field name="parent_id" eval="ref('air-conditioner')"/>
+            <field name="image_medium" type="base64" file="theme_typ/static/img/categories/demo3.png"/>
+            <field name="cover_img" type="base64" file="theme_typ/static/img/categories/back2.jpg"/>
+            <field name="landing_category" eval="True"></field>
+        </record>
+
+        <record id="divididos-residenciales" model="product.public.category">
+            <field name="name">Divididos Residenciales</field>
+            <field name="parent_id" eval="ref('air-conditioner')"/>
+            <field name="image_medium" type="base64" file="theme_typ/static/img/categories/demo1.png"/>
+            <field name="cover_img" type="base64" file="theme_typ/static/img/categories/back2.jpg"/>
+            <field name="landing_category" eval="True"></field>
+        </record>
+
+        <record id="manejadoras-residenciales" model="product.public.category">
+            <field name="name">Manejadoras Residenciales</field>
+            <field name="parent_id" eval="ref('air-conditioner')"/>
+            <field name="image_medium" type="base64" file="theme_typ/static/img/categories/demo2.png"/>
+            <field name="cover_img" type="base64" file="theme_typ/static/img/categories/back2.jpg"/>
+            <field name="landing_category" eval="True"></field>
+        </record>
+
+         <record id="calefactores" model="product.public.category">
+            <field name="name">Calefactores</field>
+            <field name="parent_id" eval="ref('air-conditioner')"/>
+            <field name="image_medium" type="base64" file="theme_typ/static/img/categories/demo3.png"/>
+            <field name="cover_img" type="base64" file="theme_typ/static/img/categories/back2.jpg"/>
+            <field name="landing_category" eval="True"></field>
+        </record>
+
+        <record id="cortinas-aire" model="product.public.category">
+            <field name="name">Cortinas de Aire</field>
+            <field name="parent_id" eval="ref('ventilation')"/>
+            <field name="image_medium" type="base64" file="theme_typ/static/img/categories/demo4.png"/>
+            <field name="cover_img" type="base64" file="theme_typ/static/img/categories/back2.jpg"/>
+            <field name="landing_category" eval="True"></field>
+        </record>
+
+        <record id="axiales-pared" model="product.public.category">
+            <field name="name">Axiales de Pared</field>
+            <field name="parent_id" eval="ref('ventilation')"/>
+            <field name="image_medium" type="base64" file="theme_typ/static/img/categories/demo1.png"/>
+            <field name="cover_img" type="base64" file="theme_typ/static/img/categories/back2.jpg"/>
+            <field name="landing_category" eval="True"></field>
+        </record>
+
+        <record id="axiales-tejado" model="product.public.category">
+            <field name="name">Axiales de Tejado</field>
+            <field name="parent_id" eval="ref('ventilation')"/>
+            <field name="image_medium" type="base64" file="theme_typ/static/img/categories/demo2.png"/>
+            <field name="cover_img" type="base64" file="theme_typ/static/img/categories/back2.jpg"/>
+            <field name="landing_category" eval="True"></field>
+        </record>
+
+        <record id="helicoidales-tubulares" model="product.public.category">
+            <field name="name">Helicoidales Tubulares</field>
+            <field name="parent_id" eval="ref('ventilation')"/>
+            <field name="image_medium" type="base64" file="theme_typ/static/img/categories/demo3.png"/>
+            <field name="cover_img" type="base64" file="theme_typ/static/img/categories/back2.jpg"/>
+            <field name="landing_category" eval="True"></field>
+        </record>
+
+        <record id="evaporadores" model="product.public.category">
+            <field name="name">Evaporadores</field>
+            <field name="parent_id" eval="ref('refrigeration')"/>
+            <field name="image_medium" type="base64" file="theme_typ/static/img/categories/demo4.png"/>
+            <field name="cover_img" type="base64" file="theme_typ/static/img/categories/back2.jpg"/>
+            <field name="landing_category" eval="True"></field>
+        </record>
+
+        <record id="unidades-hermeticas" model="product.public.category">
+            <field name="name">Unidades Condensadoras Herméticas</field>
+            <field name="parent_id" eval="ref('refrigeration')"/>
+            <field name="image_medium" type="base64" file="theme_typ/static/img/categories/demo1.png"/>
+            <field name="cover_img" type="base64" file="theme_typ/static/img/categories/back2.jpg"/>
+            <field name="landing_category" eval="True"></field>
+        </record>
+
+        <record id="accesories-refrigeration" model="product.public.category">
+            <field name="name">Refrigeration Accesories</field>
+            <field name="parent_id" eval="ref('spare-parts')"/>
+            <field name="image_medium" type="base64" file="theme_typ/static/img/categories/demo2.png"/>
+            <field name="cover_img" type="base64" file="theme_typ/static/img/categories/back2.jpg"/>
+            <field name="landing_category" eval="True"></field>
+        </record>
+
+        <record id="electrical-control" model="product.public.category">
+            <field name="name">Electrical Controls</field>
+            <field name="parent_id" eval="ref('spare-parts')"/>
+            <field name="image_medium" type="base64" file="theme_typ/static/img/categories/demo3.png"/>
+            <field name="cover_img" type="base64" file="theme_typ/static/img/categories/back2.jpg"/>
+            <field name="landing_category" eval="True"></field>
+        </record>
+
+        <record id="refrigeration-control" model="product.public.category">
+            <field name="name">Refrigeration Controls</field>
+            <field name="parent_id" eval="ref('spare-parts')"/>
+            <field name="image_medium" type="base64" file="theme_typ/static/img/categories/demo4.png"/>
+            <field name="cover_img" type="base64" file="theme_typ/static/img/categories/back2.jpg"/>
+            <field name="landing_category" eval="True"></field>
+        </record>
+
+        <record id="scrolls" model="product.public.category">
+            <field name="name">Scrolls</field>
+            <field name="parent_id" eval="ref('compressors')"/>
+            <field name="image_medium" type="base64" file="theme_typ/static/img/categories/demo1.png"/>
+            <field name="cover_img" type="base64" file="theme_typ/static/img/categories/back2.jpg"/>
+            <field name="landing_category" eval="True"></field>
+        </record>
+
+        <record id="reciprocantes" model="product.public.category">
+            <field name="name">Reciprocantes</field>
+            <field name="parent_id" eval="ref('compressors')"/>
+            <field name="image_medium" type="base64" file="theme_typ/static/img/categories/demo2.png"/>
+            <field name="cover_img" type="base64" file="theme_typ/static/img/categories/back2.jpg"/>
+            <field name="landing_category" eval="True"></field>
+        </record>
+
+        <record id="fraccionarios" model="product.public.category">
+            <field name="name">Fraccionarios</field>
+            <field name="parent_id" eval="ref('compressors')"/>
+            <field name="image_medium" type="base64" file="theme_typ/static/img/categories/demo3.png"/>
+            <field name="cover_img" type="base64" file="theme_typ/static/img/categories/back2.jpg"/>
+            <field name="landing_category" eval="True"></field>
+        </record>
+
+        <record id="electrical-material" model="product.public.category">
+            <field name="name">Electrical Material</field>
+            <field name="parent_id" eval="ref('materials')"/>
+            <field name="image_medium" type="base64" file="theme_typ/static/img/categories/demo4.png"/>
+            <field name="cover_img" type="base64" file="theme_typ/static/img/categories/back2.jpg"/>
+            <field name="landing_category" eval="True"></field>
+        </record>
+
+        <record id="pipes" model="product.public.category">
+            <field name="name">Pipes</field>
+            <field name="parent_id" eval="ref('materials')"/>
+            <field name="image_medium" type="base64" file="theme_typ/static/img/categories/demo1.png"/>
+            <field name="cover_img" type="base64" file="theme_typ/static/img/categories/back2.jpg"/>
+            <field name="landing_category" eval="True"></field>
+        </record>
+
+        <record id="thermostats-ac" model="product.public.category">
+            <field name="name">AC Thermostats</field>
+            <field name="parent_id" eval="ref('thermostats')"/>
+            <field name="image_medium" type="base64" file="theme_typ/static/img/categories/demo2.png"/>
+            <field name="cover_img" type="base64" file="theme_typ/static/img/categories/back2.jpg"/>
+            <field name="landing_category" eval="True"></field>
+        </record>
+
+        <record id="electrical-controls-ac" model="product.public.category">
+            <field name="name">Electrical Controls A/C</field>
+            <field name="parent_id" eval="ref('thermostats')"/>
+            <field name="image_medium" type="base64" file="theme_typ/static/img/categories/demo3.png"/>
+            <field name="cover_img" type="base64" file="theme_typ/static/img/categories/back2.jpg"/>
+            <field name="landing_category" eval="True"></field>
+        </record>
+
+        <record id="anemometros" model="product.public.category">
+            <field name="name">Anemómetros</field>
+            <field name="parent_id" eval="ref('tools')"/>
+            <field name="image_medium" type="base64" file="theme_typ/static/img/categories/demo4.png"/>
+            <field name="cover_img" type="base64" file="theme_typ/static/img/categories/back2.jpg"/>
+            <field name="landing_category" eval="True"></field>
+        </record>
+
+        <record id="bombas-vacio" model="product.public.category">
+            <field name="name">Bombas de Vacío</field>
+            <field name="parent_id" eval="ref('tools')"/>
+            <field name="image_medium" type="base64" file="theme_typ/static/img/categories/demo1.png"/>
+            <field name="cover_img" type="base64" file="theme_typ/static/img/categories/back2.jpg"/>
+            <field name="landing_category" eval="True"></field>
+        </record>
+
+
+        <record id="ms_frio" model="product.public.category">
+            <field name="name">Solo Frio</field>
+            <field name="parent_id" eval="ref('minisplits')"/>
+        </record>
+
+        <record id="ms_calor" model="product.public.category">
+            <field name="name">Solo Calor</field>
+            <field name="parent_id" eval="ref('minisplits')"/>
+        </record>
+      
+</odoo>

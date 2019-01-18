@@ -71,6 +71,7 @@
         # 'typ_printing_report',
         'dev_invoice_multi_payment',
         'login',
+        'theme_typ',
     ],
     'test': [
     ],
@@ -82,6 +83,8 @@
         'report/account_report_payment_receipt_templates.xml',
         'security/ir.model.access.csv',
         'data/website_settings.yml',
+        'data/company.xml',
+        'data/categories.xml',
     ],
     'demo': [
     ],
