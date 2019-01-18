@@ -44,6 +44,23 @@
            </xpath>
         </field>
     </record>
+    <record id="view_sale_order_form_no_price_edit" model="ir.ui.view">
+        <field name="name">sale.order.form.no_price_edit</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="groups_id" eval="[(6, 0, [ref('res_group_no_edit_price')])]"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='order_line']/form//field[@name='price_unit']" position="attributes">
+                <attribute name="readonly" translation="off">1</attribute>
+            </xpath>
+            <xpath expr="//field[@name='order_line']/tree//field[@name='price_unit']" position="attributes">
+                <attribute name="readonly" translation="off">1</attribute>
+            </xpath>
+            <xpath expr="//field[@name='order_line']/kanban/field[@name='price_unit']" position="attributes">
+                <attribute name="readonly" translation="off">1</attribute>
+            </xpath>
+        </field>
+    </record>
 
     <record id="view_sale_order_form_margin" model="ir.ui.view">
         <field name="name">sale.order.form.margin</field>
