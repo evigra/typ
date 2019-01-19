@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<odoo noupdate="0">
+    <record id="automated_action_currency_supplier_invoice_according_partner" model="base.automation">
+        <field name="name">Modify currency on supplier invoice according to partner</field>
+        <field name="model_id" ref="account.model_account_invoice"/>
+        <field name="active" eval="True"/>
+        <field name="sequence">5</field>
+        <field name="trigger">on_change</field>
+        <field name="on_change_fields">partner_id,journal_id,origin</field>
+        <field name="state">code</field>
+        <field name="code">
+if record.type in ('in_invoice', 'in_refund') and record.state == 'draft':
+    currency_id = record.partner_id.property_purchase_currency_id
+    if 'default_purchase_id' in env.context:
+      purchase_id = env['purchase.order'].browse(env.context['default_purchase_id'])
+      currency_id = purchase_id.currency_id
+    record.update({'currency_id': currency_id.id})
+        </field>
+    </record>
+</odoo>

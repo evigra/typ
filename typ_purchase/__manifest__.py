@@ -27,6 +27,7 @@
         'security/res_groups.xml',
         'security/ir.model.access.csv',
         'data/paperformat.xml',
+        'data/base_action_rule.xml',
         'reports/layout.xml',
         'reports/purchase_order.xml',
         'reports/purchase_quotation.xml',
