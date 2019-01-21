@@ -70,6 +70,7 @@
         # 'typ_portal',
         # 'typ_printing_report',
         'dev_invoice_multi_payment',
+        'theme_typ',
     ],
     'test': [
     ],
