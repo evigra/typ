@@ -33,7 +33,7 @@
         # 'account_followup',
         # 'account_financial_report',
         # 'account_ledger_report',
-        # 'account_payment',
+        'account_payment',
         # 'account_currency_tools',
         # 'aging_due_report',
         # 'claim_from_delivery',
@@ -70,7 +70,7 @@
         # 'typ_portal',
         # 'typ_printing_report',
         'dev_invoice_multi_payment',
-        'theme_typ',
+        'login',
     ],
     'test': [
     ],
@@ -80,7 +80,8 @@
         # 'data/typ_security.xml',
         'report/report_invoice.xml',
         'report/account_report_payment_receipt_templates.xml',
-        # 'security/ir.model.access.csv',
+        'security/ir.model.access.csv',
+        'data/website_settings.yml',
     ],
     'demo': [
     ],

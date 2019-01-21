@@ -17,7 +17,7 @@ class TestSaleBelowMargin(TransactionCase):
         self.dict_vals_line = {
             'name': self.product.name, 'product_id': self.product.id,
             'product_uom_qty': 1, 'product_uom': self.product.uom_id.id,
-            'price_unit': 100, }
+            'price_unit': 1, }
         self.demo_user = self.env.ref('base.user_demo')
 
     def test_00_sale_below_margin(self):

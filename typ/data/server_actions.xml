@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+        <!-- Account -->
+        <record id="account_account_action" model="ir.actions.server">
+            <field name="name">Account Parent Store Compute</field>
+            <field name="model_id" ref="account.model_account_account"/>
+            <field name="code">
+                self._parent_store_compute(cr)
+            </field>
+        </record>
+        <!-- Stock -->
+        <record id="stock_location_action" model="ir.actions.server">
+            <field name="name">Stock Location Parent Store Compute</field>
+            <field name="model_id" ref="stock.model_stock_location"/>
+            <field name="code">
+                self._parent_store_compute(cr)
+            </field>
+        </record>
+        <!-- FacturaE -->
+        <record id="facturae_fix_encoding_action" model="ir.actions.server">
+            <field name="name">Fix encoding on signed XML</field>
+            <field name="model_id" ref="l10n_mx_ir_attachment_facturae.model_ir_attachment_facturae_mx"/>
+            <field name="code">
+ids = context['active_ids'] if context.get('active_ids', False) else object.ids
+env['ir.attachment.facturae.mx'].browse(ids).filtered('file_xml_sign').fix_xml_encoding()
+            </field>
+        </record>
+</odoo>

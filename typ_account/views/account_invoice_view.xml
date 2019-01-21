@@ -32,9 +32,6 @@
                 <field name="reference" position="after">
                     <field name="supplier_invoice_number"/>
                 </field>
-                <field name="validation_date" position="after">
-                    <field name="expense_id"/>
-                </field>
             </field>
         </record>
 

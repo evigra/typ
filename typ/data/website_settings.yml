@@ -1,0 +1,25 @@
+-
+  Configuration Settings
+-
+  !record {model: res.config.settings, id: config_settings}:
+    {
+        # General Settings
+        'auth_signup_uninvited': 'b2c',
+        'auth_signup_reset_password': True,
+    }
+-
+  !python {model: res.config.settings}: |
+    self.browse(ref('config_settings')).execute()
+-
+  Install Spanish language (if not installed yet)
+-
+  !python {model: base.language.install}: |
+    lang = self.env.ref('base.lang_es_MX')
+    if not lang.active:
+        self.create({"lang": lang.code, "website_ids":
+            [(6, 0, self.env["website"].search([]).mapped('id'))],
+        }).lang_install()
+    lang.write({'thousands_sep': ',',
+                'decimal_point': '.',
+    })
+

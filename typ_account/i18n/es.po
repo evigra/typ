@@ -177,11 +177,6 @@ msgid "Invoice validation date"
 msgstr "Fecha de validación de la factura"
 
 #. module: typ_account
-#: model:ir.ui.menu,name:typ_account.menu_action_account_invoice_report_all
-msgid "Invoices"
-msgstr "Facturas"
-
-#. module: typ_account
 #: model:ir.model,name:typ_account.model_account_invoice_report
 msgid "Invoices Statistics"
 msgstr "Estadísticas de Facturas"
@@ -190,11 +185,6 @@ msgstr "Estadísticas de Facturas"
 #: view:account.invoice.report:typ_account.view_account_invoice_report_search_inh
 msgid "Last week"
 msgstr "Ultima semana"
-
-#. module: typ_account
-#: model:ir.ui.menu,name:typ_account.account_reports_management_menu
-msgid "Management"
-msgstr "Administración"
 
 #. module: typ_account
 #: selection:account.invoice.report,partner_type:0
