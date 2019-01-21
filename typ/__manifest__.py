@@ -72,6 +72,7 @@
         'dev_invoice_multi_payment',
         'login',
         'theme_typ',
+        'payment_conekta',
     ],
     'test': [
     ],
