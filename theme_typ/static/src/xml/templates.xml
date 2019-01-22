@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<templates id="rating" xml:space="preserve">
+    <t t-name="typ_star_rating">
+        <div class="o_rating_star_card" groups="website.group_website_designer">
+            <div class="js_stars_content"></div>
+        </div>
+    </t>
+    <t t-name="typ_stars_collection">
+        <t t-foreach="widget.star_list" t-as="star">
+            <t t-set="avg" t-value="widget.star_avarage" />
+            <t t-if="star &lt; avg">
+                <t t-set="star_url" t-value="'full_star'" />
+            </t>
+            <t t-elif="star &gt; avg and avg &gt; (star - 1)">
+                <t t-set="star_url" t-value="'half_star'" />
+            </t>
+            <t t-else="star != avg">
+                <t t-set="star_url" t-value="'empty_star'" />
+            </t>
+            <img t-attf-src="/web/image/theme_typ.#{star_url}" alt="star" />
+        </t>
+    </t>
+</templates>

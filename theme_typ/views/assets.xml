@@ -14,6 +14,7 @@
         <xpath expr="//script[last()]" position="after">          
             <script type="text/javascript" src="/theme_typ/static/src/js/menu-btns.js"></script>    
             <script type="text/javascript" src="/theme_typ/static/src/js/categories.js"></script>
+            <script type="text/javascript" src="/theme_typ/static/src/js/star_rating.js"></script>
         </xpath>
     </template>
 </odoo>

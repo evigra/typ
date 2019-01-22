@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    
+    <template id="contact_us_form" inherit_id="website_crm.contactus_form" name="Office Branches">
+
+        <xpath expr="//div" position="replace">
+            <div class="dark-white" id="wrap">
+                <t t-call="typ.contactus"/>                        
+            </div>
+            
+        </xpath>
+    </template>
+
+    <!-- contact us template -->
+    <template id="contactus" name="Contact us">
+        <div class="container text-center">
+            <!-- title -->
+            <div class="row mt24 mb32 hidden-xs">
+                <h5 class="sections">CONTACT</h5>
+            </div>
+            <div class="row mt24 mb16 hidden-md hidden-lg hidden-sm">
+                <h5 class="sections">CONTACT</h5>
+            </div>
+            
+            <div class="row">
+                <!-- Contact us -->
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                    <div class="row">
+                        <p>Do you have any doubt or comment? Contact us</p>
+                    </div>
+                    <div class="form-group">
+                        <form action="/website_form/" class="s_website_form form-horizontal container-fluid mt24" data-model_name="crm.lead" data-success_page="/contactus-thank-you" enctype="multipart/form-data" method="post">
+                            <div class="form-group form-field o_website_form_required_custom">
+                                <input class="form-control o_website_form_input" name="contact_name" placeholder="Name" required="" t-att-value="request.params.get('contact_name', '')" type="text"/>
+                            </div>
+                            <div class="form-group form-field o_website_form_required_custom">
+                                <input class="form-control o_website_form_input" name="email_from" placeholder="E-mail*" required="" t-att-value="request.params.get('email_from', '')" type="email"/>
+                            </div>
+                            <div class="form-group form-field">
+                                <input class="form-control o_website_form_input" name="phone" placeholder="Telephone" t-att-value="request.params.get('phone', '')" type="text"/>
+                            </div>
+                            <div class="form-group form-field o_website_form_required_custom">
+                                <textarea class="form-control o_website_form_input" placeholder="Your Message..." name="description" required=""><t t-esc="request.params.get('description', '')"/></textarea>
+                            </div>
+                            <div class="form-group form-field hidden">
+                                <input class="form-control o_website_form_input" name="name" placeholder="" t-att-value="'Contact from website'" type="hidden"/>
+                            </div>
+                            <div class="form-group mt32 hidden-xs">
+                                <div class="row text-center mb32">
+                                <a class="btn btn-primary btn-lg o_website_form_send">SEND COMMENT</a>
+                                </div>
+                                <div class="row text-center">
+                                <span id="o_website_form_result"/>
+                                </div>
+                            </div>
+                            <div class="form-group hidden-md hidden-sm hidden-lg">
+                                <div class="row text-center mb16">
+                                <a class="btn btn-primary btn-lg o_website_form_send">SEND COMMENT</a>
+                                </div>
+                                <div class="row text-center">
+                                <span id="o_website_form_result"/>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- offices -->
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                    <div class="row">   
+                        <h6 class="mt0 mb0">Offices</h6>
+                    </div>
+                    
+                    <t t-call="typ.office_places"/>
+                    
+                </div>
+            </div>
+            
+        </div>
+    </template>
+    
+
+    <!-- thank you view -->
+    <template id="contactus_thanks" inherit_id="website_crm.contactus_thanks_ir_ui_view" name="Thank You">
+        <xpath expr="//div[@id='wrap']" position="replace">
+            <div class="dark-white"  id="wrap">
+                <div class="oe_structure dark-white"/>
+                <div class="container text-center">
+                    <div class="col-md-12 col-sm-12 col-lg-12 ">
+                    <!-- title -->
+                    <div class="row mt24 mb32">
+                        <h5 class="sections">CONTACT</h5>
+                    </div>
+
+                    <div class="row mb32">
+                        <img class="center-block" src="/web/image/theme_typ.email-confirmation" alt="Email Success Information"/>
+                    </div>
+
+                    <div class="row">
+                        <p class="email-response">Your information has been sent succesfully <br/> Wait our response on your email </p>                        
+                    </div>
+                    </div>
+
+                    <div class="col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2 col-lg-8 col-lg-offset-2 col-xs-12 col-xs-offset-0">
+                        <div class="row">
+                            <a class="btn btn-primary btn-lg mt48 mb300 hidden-xs" href="/shop">CONTINUE SHOPPING</a>
+                            <a class="btn btn-primary btn-block mt24 mb48 hidden-sm hidden-md hidden-lg" href="/shop">CONTINUE SHOPPING</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </xpath>
+    </template>
+
+    <!-- Map of the offices -->
+   <template id="office_places" name="Sucursales">
+   <t t-set="branches" t-value="res_company.partner_id.child_ids.filtered('website_published')"/>
+        <div class="col-md-12 col-sm-12 col-md-offset-0 col-sm-offset-0 col-xs-offset-0 mt16">
+            <div class="tab-content">
+                <t t-foreach="branches" t-as="branch">
+                    <div t-attf-class="tab-pane branch-content #{'active' if branch_first else ''}" t-att-id="'branch-%d' % branch_index">
+                        <iframe t-att-src="'%s' % branch.map_location" width="100%" height="210px" frameborder="0"></iframe>
+                        <div class="row mt16">
+                            <p><span t-field="branch.street_name"/><span> #</span><span t-field="branch.street_number"/><span>, Col. </span><span t-field="branch.street2"/>
+                                <br/><span t-field="branch.zip"/><span> </span><span t-field="branch.city"/><span> , </span><span class="state-code" t-field="branch.state_id.code"/>  
+                                <t t-if="branch.phone">
+                                    <br/><span t-field="branch.phone"/>
+                                </t>
+                                <t t-if="branch.mobile">
+                                    <span> , </span><span t-field="branch.mobile"/>
+                                </t>
+                            </p>
+                        </div>
+                        <div class="row mt8 mb24">
+                                <t t-if="branch.email">
+                                    <a t-att-href="'mailto:%s' % branch.email" t-field="branch.email"/>
+                                </t>
+                        </div>
+                    </div>
+                </t>
+            </div>
+        </div>
+        <div class="col-sm-12 col-md-12 col-xs-12 mt8 mb64">
+            <ul class="nav nav-tabs branch-list" id="branches">
+                <t t-foreach="branches" t-as="branch">
+                    <li t-attf-class="#{'active' if branch_first else ''} col-md-3 col-sm-3 col-xs-4" style="padding: 0;">
+                        <a data-toggle="tab" t-att-href="'#branch-%s' % branch_index">
+                            <span t-field="branch.name"/>
+                        </a>
+                    </li>
+                </t>
+            </ul>
+        </div>
+
+    </template>
+
+</odoo>

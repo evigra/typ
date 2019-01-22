@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">      
+
+    <!-- Variants -->      
+        
+        <record id="attribute-1" model="product.attribute">
+            <field name="name">Modes</field>
+        </record>
+
+        <record id="product_attribute1_value" model="product.attribute.value">
+            <field name="name">Manual, Semi, Auto</field>
+            <field name="attribute_id" ref="attribute-1"/>
+        </record>
+
+        <record id="attribute-2" model="product.attribute">
+            <field name="name">SEER</field>
+        </record>
+
+        <record id="product_attribute2_value" model="product.attribute.value">
+            <field name="name">16.0</field>
+            <field name="attribute_id" ref="attribute-2"/>
+        </record>
+
+        <record id="attribute-lennox" model="product.attribute">
+            <field name="name">Capacity</field>
+            <field name="type">select</field> 
+        </record>
+
+        <record id="attribute-lennox-1" model="product.attribute.value">
+            <field name="name">1.0 Tons</field>
+            <field name="attribute_id" ref="attribute-lennox"/>
+        </record>
+
+        <record id="attribute-lennox-2" model="product.attribute.value">
+            <field name="name">1.5 Tons</field>
+            <field name="attribute_id" ref="attribute-lennox"/>
+        </record>
+
+        <record id="attribute-lennox-3" model="product.attribute.value">
+            <field name="name">2.0 Tons</field>
+            <field name="attribute_id" ref="attribute-lennox"/>
+        </record>
+
+        <!-- products -->
+
+        <record id="lennox_1" model="product.template">
+            <field name="name">LENNOX BCB321</field>
+            <field name="public_categ_ids" eval="[(6,0,[ref('minisplits')])]"/>
+            <field name="standard_price">500.0</field>
+            <field name="list_price">750.0</field>
+            <field name="type">consu</field>            
+            <field name="description_sale">Lorem ipsum dolor sit amet consectetur adipisicing elit. Id non enim possimus ratione distinctio odio! Rerum officia alias tempore eaque facere ab animi, veritatis ducimus numquam? Maiores nihil inventore tenetur.</field>
+            <field name="image" type="base64" file="theme_typ/static/img/categories/demo4.png"/>
+            <field name="website_published" eval="True"></field>
+        </record>
+
+        <record id="lennox_2" model="product.template">
+            <field name="name">LENNOX ARJZ829</field>
+            <field name="public_categ_ids" eval="[(6,0,[ref('minisplits')])]"/>
+            <field name="standard_price">300.0</field>
+            <field name="list_price">750.0</field>
+            <field name="type">consu</field>            
+            <field name="description_sale">Lorem ipsum dolor sit amet consectetur adipisicing elit. Id non enim possimus ratione distinctio odio! Rerum officia alias tempore eaque facere ab animi, veritatis ducimus numquam? Maiores nihil inventore tenetur.</field>
+            <field name="image" type="base64" file="theme_typ/static/img/categories/demo4.png"/>
+            <field name="website_published" eval="True"></field>
+        </record>
+
+        <record id="lennox_3" model="product.template">
+            <field name="name">LENNOX KLY101</field>
+            <field name="public_categ_ids" eval="[(6,0,[ref('minisplits')])]"/>
+            <field name="standard_price">800.0</field>
+            <field name="list_price">1600.0</field>
+            <field name="type">consu</field>            
+            <field name="description_sale">Lorem ipsum dolor sit amet consectetur adipisicing elit. Id non enim possimus ratione distinctio odio! Rerum officia alias tempore eaque facere ab animi, veritatis ducimus numquam? Maiores nihil inventore tenetur.</field>
+            <field name="image" type="base64" file="theme_typ/static/img/categories/demo1.png"/>
+            <field name="website_published" eval="True"></field>
+        </record>
+
+        <record id="lennox_4" model="product.template">
+            <field name="name">LENNOX POO29</field>
+            <field name="public_categ_ids" eval="[(6,0,[ref('minisplits')])]"/>
+            <field name="standard_price">650.0</field>
+            <field name="list_price">900.0</field>
+            <field name="type">consu</field>            
+            <field name="description_sale">Lorem ipsum dolor sit amet consectetur adipisicing elit. Id non enim possimus ratione distinctio odio! Rerum officia alias tempore eaque facere ab animi, veritatis ducimus numquam? Maiores nihil inventore tenetur.</field>
+            <field name="image" type="base64" file="theme_typ/static/img/categories/demo2.png"/>
+            <field name="website_published" eval="True"></field>
+        </record>
+
+        <record id="lennox_5" model="product.template">
+            <field name="name">LENNOX A2D2 3000</field>
+            <field name="public_categ_ids" eval="[(6,0,[ref('minisplits')])]"/>
+            <field name="standard_price">700.0</field>
+            <field name="list_price">1500.0</field>
+            <field name="type">consu</field>            
+            <field name="description_sale">Lorem ipsum dolor sit amet consectetur adipisicing elit. Id non enim possimus ratione distinctio odio! Rerum officia alias tempore eaque facere ab animi, veritatis ducimus numquam? Maiores nihil inventore tenetur.</field>
+            <field name="image" type="base64" file="theme_typ/static/img/categories/demo3.png"/>
+            <field name="website_published" eval="True"></field>
+        </record>
+
+        <!-- Products with variants -->
+        
+        <record id="product_attribute_line_1" model="product.attribute.line">
+            <field name="product_tmpl_id" eval="ref('lennox_2')"/>
+            <field name="attribute_id" ref="attribute-lennox"/>
+            <field name="value_ids" eval="[(6,0,[ref('attribute-lennox-1'), ref('attribute-lennox-2'), ref('attribute-lennox-3')])]"/>
+        </record>
+
+        <record id="product_attribute_line_2" model="product.attribute.line">
+            <field name="product_tmpl_id" eval="ref('lennox_2')"/>
+            <field name="attribute_id" ref="attribute-1"/>
+            <field name="value_ids" eval="[(6,0,[ref('product_attribute1_value')])]"/>
+        </record>
+
+        <record id="product_attribute_line_3" model="product.attribute.line">
+            <field name="product_tmpl_id" eval="ref('lennox_2')"/>
+            <field name="attribute_id" ref="attribute-2"/>
+            <field name="value_ids" eval="[(6,0,[ref('product_attribute2_value')])]"/>
+        </record>
+
+        <record id="lennox2_attribute_line_1" model="product.attribute.line">
+            <field name="product_tmpl_id" eval="ref('lennox_1')"/>
+            <field name="attribute_id" ref="attribute-lennox"/>
+            <field name="value_ids" eval="[(6,0,[ref('attribute-lennox-1'), ref('attribute-lennox-2'), ref('attribute-lennox-3')])]"/>
+        </record>
+
+        <record id="lennox3_attribute_line_1" model="product.attribute.line">
+            <field name="product_tmpl_id" eval="ref('lennox_3')"/>
+            <field name="attribute_id" ref="attribute-lennox"/>
+            <field name="value_ids" eval="[(6,0,[ref('attribute-lennox-1'), ref('attribute-lennox-2'), ref('attribute-lennox-3')])]"/>
+        </record>
+
+        <record id="lennox4_attribute_line_1" model="product.attribute.line">
+            <field name="product_tmpl_id" eval="ref('lennox_4')"/>
+            <field name="attribute_id" ref="attribute-lennox"/>
+            <field name="value_ids" eval="[(6,0,[ref('attribute-lennox-1'), ref('attribute-lennox-2'), ref('attribute-lennox-3')])]"/>
+        </record>
+
+        <record id="lennox5_attribute_line_1" model="product.attribute.line">
+            <field name="product_tmpl_id" eval="ref('lennox_5')"/>
+            <field name="attribute_id" ref="attribute-lennox"/>
+            <field name="value_ids" eval="[(6,0,[ref('attribute-lennox-1'), ref('attribute-lennox-2'), ref('attribute-lennox-3')])]"/>
+        </record>
+
+</odoo>

@@ -6,6 +6,8 @@
         # General Settings
         'auth_signup_uninvited': 'b2c',
         'auth_signup_reset_password': True,
+        'group_product_variant': True,
+        'group_website_multiimage': True,
     }
 -
   !python {model: res.config.settings}: |

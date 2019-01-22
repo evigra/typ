@@ -21,3 +21,11 @@ class Product(models.Model):
                 product=self, partner=None).get('taxes')
         taxed_price = sum([tax.get('amount') for tax in taxes]) + untaxed_price
         return taxed_price
+
+    @api.multi
+    def is_favorite(self):
+        self.ensure_one()
+        result_wish = self.env['user.wishlist'].search(
+            [('product_template_id', '=', self.id),
+             ('user_id', '=', self.env.uid)], limit=1)
+        return bool(result_wish)

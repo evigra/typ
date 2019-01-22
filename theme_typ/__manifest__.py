@@ -20,4 +20,9 @@
         'website_crm',
         'website_sale',
     ],
+    'qweb': [
+        'static/src/xml/portal.xml',
+        'static/src/xml/rating.xml',
+        'static/src/xml/templates.xml',
+    ],
 }

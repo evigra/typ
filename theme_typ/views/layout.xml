@@ -2,7 +2,7 @@
 <odoo>
     <!-- Menu elements to show as blog,shop,contact us -->
     <template id="menu_elements" name="Menu Elements">
-    <div class="no-padding-right hidden-xs" id="menu-options" groups="website.group_website_designer">
+    <div class="no-padding-right hidden-xs" id="menu-options">
                 <div class="container">
                     <!-- Products menu -->
                     <ul class="nav navbar-nav navbar-center no-padding-left ml16 products-navbar" id="top_menu">
@@ -295,7 +295,7 @@
     <!-- search box customized -->
     <template id="search" name="Search Box">
         <form t-att-action="keep and keep('/shop', search=0) or '/shop'" method="get" t-att-class="search_class">
-            <div groups="website.group_website_designer">
+            <div>
                 <t t-if="attrib_values">
                     <t t-foreach="attrib_values" t-as="a">
                         <input type="hidden" name="attrib" t-att-value="'%s-%s' % (a[0], a[1])" />
@@ -338,7 +338,7 @@
     <!-- Footer Layout-->
     <template id="footer_default" inherit_id="website.footer_default">
         <xpath expr="//div[@id='footer']" position="replace">
-            <div class="container white-color hidden-xs" groups="website.group_website_designer">
+            <div class="container white-color hidden-xs">
                     <!-- Product and media links -->
                     <div class="col-md-4 col-sm-4 mt24">
                         <!-- products -->

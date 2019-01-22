@@ -1863,7 +1863,7 @@ ul li ul:hover {
     }
 }
 
-#wrap, .wrap{
+#wrap, .wrap, .home-page-cover{
     margin-top:115px;
     /* margin-top:100px; */
     @media (max-width: @screen-xs-max) {
@@ -2512,4 +2512,36 @@ ul li ul:hover {
     float: right;
     width: 0;
     height: 0;
+}
+
+
+
+.o_portal_chatter_messages{
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    .o_portal_chatter_message{
+        overflow: hidden;
+        max-height: 12em;
+        height: 12em;
+        flex-basis: 25%;
+        min-width: 25%;
+        @media (max-width: @screen-sm-min) {
+            flex-basis: 100%;
+            min-width: 100%;
+        }
+        padding: 0 1em;
+        transition: all 1s;
+        .text-center;
+        .mb8;
+    }
+    .o_website_rating_static{
+        .mb8;
+        .fa{
+            font-size: 1.5em;
+        }
+    }
+    p{
+        font-size: .9em;
+    }
 }

@@ -5,7 +5,7 @@ odoo.define('theme_typ.categories', function (require) {
 
     const Widget = require('web.Widget');
 
-    const $Show_categories = $('.nav-tabs');
+    const $Show_categories = $('.categories-menu');
 
     if(!$Show_categories.length){
         return $.Deferred().reject("DOM doesn't contain any '.nav-tabs' element.");
@@ -18,8 +18,10 @@ odoo.define('theme_typ.categories', function (require) {
     const Show_categories = Widget.extend({
         events: {
             'mouseenter .categories_js': function (event) {
-                this.$('a').removeClass('active');
-                this.$(element_active).removeClass('active in');
+                var subcategories = this.$el.find('.tab-content');
+
+                this.$el.find('a').removeClass('active');
+                subcategories.find(element_active).removeClass('active in');
                 this.$(li_active).css("background-color", "white");
                 this.$(img_active).addClass('hidden');
 
@@ -30,13 +32,14 @@ odoo.define('theme_typ.categories', function (require) {
                 img_active = "#img-category" +li_active;
                 li_active = "#li"+li_active;
 
-                this.$(element_active).addClass('active in');
+                subcategories.find(element_active).addClass('active in');
                 $(event.currentTarget).addClass("active");
                 $(li_active).css("background-color", "#f5f5f5");
                 $(img_active).removeClass('hidden');
 
             },
             'mouseenter .no_parent_js': function() {
+                console.log("no parent");
                 this.$('a').removeClass('active');
                 this.$(element_active).removeClass('active in');
                 this.$(li_active).css("background-color", "white");

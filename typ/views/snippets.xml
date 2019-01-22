@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="s-product-description" name="Product Specifications">
+        <section class="product-specifications">
+            <div class="container">
+                <div class="col-md-12 col-xs-12 mb48">
+                    <div class="col-md-5 col-xs-12">
+                        <div class="row s-content">
+                            <p class="s-title mt32">Title</p>
+                            <p class="mt16 mb24">
+                                Insert text here
+                            </p>
+                        </div>
+                        <div class="row s-content">
+                            <p class="s-subtitle mb0">Second title</p>
+                            <p class="mb24">
+                                Insert text here
+                            </p>
+                        </div>
+                    </div>                                     
+                </div>
+            </div>    
+        </section>
+    </template>
+
+    <template id="s-product-description-title" name="TYP Title">
+        <div class="row s-content">
+            <p class="s-title mt16">Title</p>
+            <p class="mt16 mb24">
+               Insert text here
+            </p>
+        </div>
+    </template>
+
+    <template id="s-product-description-subtitle" name="TYP Subtitle">
+        <div class="row s-content">
+            <p class="s-subtitle mb0">Subtitle</p>
+            <p class="mb24">
+                Insert text here
+            </p>
+        </div>
+    </template>
+
+    <template id="s_image_banner" name="Product Banner">
+        <section class="s_image_banner">                
+            <img class="img img-responsive" src="/web/image/theme_typ.s-banner" alt="Sample"/>
+        </section>
+    </template>    
+
+
+    <template id="snippets" inherit_id="website.snippets">
+        <xpath expr="//div[@id='o_scroll']" position="inside">
+            <div id="snippet_typ" class="o_panel">
+                <div class="o_panel_header">
+                    <i class="fa fa-th-large"/> TYP
+                </div>
+                <div class="o_panel_body">
+                    <t t-snippet="typ.s_image_banner" />
+                </div>
+            </div>
+        </xpath>
+    </template>
+
+    <template id="snippet_options" inherit_id="website.snippet_options">
+        <xpath expr="//div[@data-js='content']" position="attributes">
+            <attribute name="data-selector" add=".s-content" separator=", "></attribute>
+            <attribute name="data-drop-near" add=".s-content" separator=", "></attribute>
+        </xpath>
+    </template>
+
+
+</odoo>

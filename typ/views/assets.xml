@@ -5,6 +5,9 @@
             <script type="text/javascript" src="/typ/static/src/js/portal_account.js"></script>
             <script type="text/javascript" src="/typ/static/src/js/edit_information.js"></script>
             <script type="text/javascript" src="/typ/static/src/js/shipping.js"></script>
+            <script type="text/javascript" src="/typ/static/src/js/favorites.js"></script>
+            <script type="text/javascript" src="/typ/static/src/js/share.js"></script>
+            <script type="text/javascript" src="/typ/static/src/js/cart.js"></script>
         </xpath>
     </template>
 </odoo>

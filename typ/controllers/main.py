@@ -62,6 +62,18 @@ class WebsiteAccount(WebsiteSale):
             ['street2', 'state_id', 'zip'])
         return msf
 
+    @http.route()
+    def shop(self, page=0, category=None, search='', ppg=False, **post):
+        res = super(WebsiteAccount, self).shop(page,
+                                               category,
+                                               search,
+                                               ppg,
+                                               **post)
+        sort_by = post.get('order')
+        res.qcontext['ppg'] = ppg
+        res.qcontext['sort_by'] = sort_by
+        return res
+
 
 class MyAccountInvoices(PortalAccount):
     @http.route()
@@ -414,3 +426,56 @@ class SendInvoiceAndXML(Controller):
             'invoice': invoice,
         }
         return request.render('typ.email_sent', values)
+
+
+class WebsiteUserWishList(http.Controller):
+
+    @http.route('/add_to_wishlist', type='json',
+                auth='user', website=True)
+    def add_wishlist_json(self, product_id):
+        dic_wishlist = {}
+        if product_id:
+            dic_wishlist = {
+                'product_template_id': int(product_id),
+                'user_id': request.uid,
+            }
+        request.env['user.wishlist'].create(dic_wishlist)
+        return True
+
+    @http.route('/delete-order', type='http',
+                auth='user', website=True)
+    def delete_order(self):
+        order = request.website.sale_get_order()
+        if order:
+            order.status = 'cancel'
+            order.unlink()
+        return request.redirect('/shop')
+
+    @http.route(['/shop/duplicate_order/<model("sale.order"):order>'],
+                type='http', auth="public", website=True)
+    def duplicate_order(self, order, **kw):
+        """Since the original `_cart_update` method is only useful for one
+        product at the time, here we do a call per each line of the order and
+        one single return to the cart.
+
+        The `sudo()` call was necessary because old orders made via website
+        include the delivery product which is not `website_published = True`
+        this causes ACL errors, this implementation does not cause a hole
+        of security because in the controller we are not sending `int` id of
+        the order but a `sale.order` object which already has its own ACL.
+
+        :param order: The order to duplicate.
+        :type order: Recordset.
+
+        :return: A redirection to the cart page.
+        :rtype: Request redirect.
+        """
+        for order_l in order.order_line:
+            if not order_l.sudo().product_id.sale_ok:
+                continue
+            request.website.sale_get_order(
+                force_create=1)._cart_update(
+                    product_id=int(order_l.product_id.id),
+                    add_qty=float(order_l.product_uom_qty),
+                    set_qty=float(order_l.product_uom_qty))
+        return request.redirect("/shop/cart")

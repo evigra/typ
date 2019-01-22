@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<templates id="template" inherit_id="website_rating.template" xml:space="preserve">
+    <t t-extend="website_rating.rating_card">
+        <t t-jquery=".o_website_rating_card_container" t-operation="replace"></t>
+   </t>
+</templates>
