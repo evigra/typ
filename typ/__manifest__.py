@@ -88,7 +88,6 @@
         'data/categories.xml',
         'data/website.xml',
         # Website stuff
-        'views/pages/account.xml',
         'views/assets.xml',
         'views/templates.xml',
         'views/pages/homepage.xml',
@@ -97,6 +96,10 @@
         'views/pages/contact.xml',
         'views/snippets.xml',
         'views/product_view.xml',
+        'views/pages/account.xml',
+        'views/pages/about.xml',
+        'views/pages/organizations.xml',
+        'views/pages/providers.xml',
     ],
     'demo': [
         'demo/products.xml',

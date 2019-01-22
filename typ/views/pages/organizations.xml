@@ -1,0 +1,613 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <record id="typ_organizations" model="ir.ui.view">
+    <field name="name">Organizations</field>
+    <field name="type">qweb</field>
+    <field name="key">typ.organizations</field>
+    <field name="arch" type="xml">
+        <t t-name="organizations_typ" name="Organizations">
+            <t t-call="website.layout">
+             <div class="oe_structure home-page-cover">
+                <section class="s_text_block_image_fw oe_img_bg oe_custom_bg text-center background-header-org" style="background-image: url(/web/image/theme_typ.hero-org);">
+                    <div class="container">
+                        <div class="row">
+                            <h1 class="header-titles hidden-xs">HVACR ORGANIZATIONS</h1>
+                            <h1 class="header-titles mr16 ml16 hidden-lg hidden-sm hidden-md">HVACR ORGANIZATIONS</h1>
+                        </div>
+                        <div class="row">
+                            <h5 class="header-subtitles">Selection of links to organizations and institutions related to the field of HVACR.</h5>
+                        </div>
+                    </div>
+                </section>
+            </div>
+            <div class="oe_structure oe_empty">
+               <!--  <section class="s_body_content text-center background-header-org" style="background-image: url(/web/image/theme_typ.hero-org);">
+                    <div class="container">
+                        <div class="row">
+                            <h1 class="header-titles hidden-xs">HVACR ORGANIZATIONS</h1>
+                            <h1 class="header-titles mr16 ml16 hidden-lg hidden-sm hidden-md">HVACR ORGANIZATIONS</h1>
+                        </div>
+                        <div class="row">
+                            <h5 class="header-subtitles">Selection of links to organizations and institutions related to the field of HVACR.</h5>
+                        </div>
+                    </div>
+                </section> -->
+                <div class="container general-typ-information">            
+                    <div class="col-sm-12 media-links">
+                        <div class="row">
+                            <div class="col-md-3 col-sm-3 col-xs-6">
+                                <a href="/organizations/acca"><img class="center-block img-responsive img-organizations mt16" src="/web/image/theme_typ.acca" alt="acca"/></a>
+                            </div>
+                            <div class="col-md-3 col-sm-3 col-xs-6 ">
+                                <a href="/organizations/americ"><img class="center-block img-responsive img-organizations" src="/web/image/theme_typ.americ" alt="americ"/></a>
+                            </div>
+                            <div class="col-md-3 col-sm-3 col-xs-6 hidden-xs">
+                                <a href="/organizations/fide"><img class="center-block img-responsive img-organizations mt16" src="/web/image/theme_typ.fide" alt="fide"/></a>
+                            </div>
+                            <div class="col-md-3 col-sm-3 col-xs-6 hidden-xs">
+                                <a href="/organizations/hardi"><img class="center-block img-responsive img-organizations mt32" src="/web/image/theme_typ.hardi" alt="hardi"/></a>
+                            </div>                            
+                        </div>
+                        <div class="row hidden-md hidden-sm hidden-lg">                            
+                            <div class="col-xs-6">
+                                <a href="/organizations/fide"><img class="center-block img-responsive img-organizations" src="/web/image/theme_typ.fide" alt="fide"/></a>
+                            </div>
+                            <div class="col-xs-6">
+                                <a href="/organizations/hardi"><img class="center-block img-responsive img-organizations mt16" src="/web/image/theme_typ.hardi" alt="hardi"/></a>
+                            </div>
+                        </div>
+                        <div class="row">                            
+                            <div class="col-md-3 col-sm-3 col-xs-6">
+                                <a href="/organizations/nate"><img class="center-block img-responsive img-organizations" src="/web/image/theme_typ.nate" alt="nate"/></a>
+                            </div>
+                            <div class="col-md-3 col-sm-3 col-xs-6 ">
+                                <a href="/organizations/ashrae"><img class="center-block img-responsive img-organizations" src="/web/image/theme_typ.ashrae" alt="ashrae"/></a>
+                            </div>
+                            <div class="col-md-3 col-sm-3 col-xs-6 hidden-xs">
+                                <a href="/organizations/ahri"><img class="center-block img-responsive img-organizations mt32" src="/web/image/theme_typ.ahri" alt="ahri"/></a>
+                            </div>
+                            <div class="col-md-3 col-sm-3 col-xs-6 hidden-xs">
+                                <a href="/organizations/comfort"><img class="center-block img-responsive img-organizations mt8" src="/web/image/theme_typ.comfort-institute" alt="comfort-institute"/></a>
+                            </div>                                              
+                        </div>
+                        <div class="row hidden-md hidden-lg hidden-sm">                            
+                            <div class="col-md-3 col-sm-3 col-xs-6">
+                                <a href="/organizations/ahri"><img class="center-block img-responsive img-organizations mt16" src="/web/image/theme_typ.ahri" alt="ahri"/></a>
+                            </div>
+                            <div class="col-md-3 col-sm-3 col-xs-6">
+                                <a href="/organizations/comfort"><img class="center-block img-responsive img-organizations" src="/web/image/theme_typ.comfort-institute" alt="comfort-institute"/></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+              </div>
+              <div class="oe_structure"/>
+            </t>
+        </t>
+    </field>
+  </record>
+
+<template id="header-orgs">
+    <section class="s_body_content text-center background-header-org" style="background-image: url(/web/image/theme_typ.hero-org);">
+        <div class="container">
+            <div class="row">
+                <h1 class="header-titles hidden-xs">HVACR ORGANIZATIONS</h1>
+                <h1 class="header-titles mr16 ml16 hidden-lg hidden-sm hidden-md">HVACR ORGANIZATIONS</h1>
+            </div>
+            <div class="row">
+                <h5 class="header-subtitles">Organizations and institutions related to the field of HVACR.</h5>
+            </div>
+        </div>
+    </section>
+</template>
+
+<record id="typ_acca" model="ir.ui.view">
+    <field name="name">acaa</field>
+    <field name="type">qweb</field>
+    <field name="key">typ.acaa</field>
+    <field name="arch" type="xml">
+        <t t-name="acaa_typ" name="acaa">
+            <t t-call="website.layout">
+              <div class="oe_structure oe_empty " id="wrap">
+                    <t t-call="typ.header-orgs"/>
+                    <div class="container general-typ-information">
+                        <ol class="breadcrumb mb0 no-padding-left">
+                            <li>
+                                <a href="/organizations">Organizaciones HVACR</a>
+                            </li>        
+                            <li class="active">
+                                <span>ACCA</span>
+                            </li>
+                        </ol>
+                        <div class="col-xs-10 col-sm-10 col-sm-offset-1 col-xs-offset-1 mt24 mb96">   
+                            <div class="row">
+                                <h5 class="sections text-center">Air Conditioning Contractors of America (ACCA)</h5> 
+                            </div>
+                            <div class="row">
+                                <img class="mt24 center-block img-responsive" src="/web/image/theme_typ.acca" alt="acca"/>
+                            </div>
+                            <div class="row mt24">
+                                <p class="">
+                                    <p class="mb0">¿Quienes somos?</p>
+                                    <p>                                  
+                                        ACCA, Contratista de Aire Acondicionado de América (por sus siglas en inglés), es una asociación de más de 4,000 
+                                        contratistas que trabaja en grupo para mejorar a la industria del HVACR; promover buenas prácticas y mantener a los 
+                                        hogares y edificios seguros, limpios y confortables.
+                                    </p>                                    
+                                </p>
+                                <p class="mt16">
+                                    <p class="mb0">Perseguimos un objetivo:</p>
+                                    <p>                                
+                                        <strong>Hacer de la Industria del HVACR y de cada Negocio Contratista , uno profesional y con más éxito.</strong>
+                                    </p> 
+                                    <p>
+                                        En <strong>T&amp;P Refrigeración</strong> apoyamos todos los esfuerzos enfocados al mejoramiento de la Industria y podemos ayudarle a 
+                                        asociarse a esta organización de éxito probado en Norte América. Acérquese a nosotros y te ayudaremos decirte como.
+                                    </p>                                   
+                                </p>                                
+                            </div>  
+                            <div class="row">
+                                <p>Sitio oficial:</p>
+                            </div>
+                            <div class="row">
+                                <a href="http://www.acca.org/" target="_BLANK">www.acca.org/</a>
+                            </div>                                                                                                        
+                        </div>
+                    </div>
+                </div>
+            </t>
+        </t>
+    </field>
+  </record>
+
+  <record id="typ_hardi" model="ir.ui.view">
+    <field name="name">hardi</field>
+    <field name="type">qweb</field>
+    <field name="key">typ.hardi</field>
+    <field name="arch" type="xml">
+        <t t-name="hardi_typ" name="hardi">
+            <t t-call="website.layout">
+              <div class="oe_structure oe_empty " id="wrap">
+                    <t t-call="typ.header-orgs"/>
+                    <div class="container general-typ-information">
+                        <ol class="breadcrumb mb0 no-padding-left">
+                            <li>
+                                <a href="/organizations">Organizaciones HVACR</a>
+                            </li>        
+                            <li class="active">
+                                <span>HARDI</span>
+                            </li>
+                        </ol>
+                        <div class="col-xs-10 col-sm-10 col-sm-offset-1 col-xs-offset-1 mt24 mb96">   
+                            <div class="row">
+                                <h5 class="sections text-center">Heating, Airconditioning &amp; Refrigeration Distributors International (HARDI)</h5> 
+                            </div>
+                            <div class="row">
+                                <img class="mt24 center-block img-responsive" src="/web/image/theme_typ.hardi" alt="hardi"/>
+                            </div>
+                            <div class="row mt24">                                
+                                <p class="">                                    
+                                    <p>                                
+                                       Asociación Internacional de Distribuidores Mayoristas de Aire Acondicionado, Calefacción y Refrigeración, HARDI, alberga a mas de 450 Distribuidores Mayoristas con mas de 3600 puntos de ventas y aproximadamente el 80% del valor de las ventas de los distribuidores mayoristas de la industria, las cuales ascienden a mas de $20,000,000,000 de dólares anualmente.
+                                    </p> 
+                                    <p>
+                                        Los mas de 1000 miembros asociados entre ellos distribuidores mayoristas, fabricantes y cooperativas de compra se extienden a todos los continentes con su mayor concentración en los Estados Unidos y Canadá. La asociación ayuda a crear alianzas estratégicas entre distribuidores fabricantes pues les brinda todo su apoyo para crecer, a través de reuniones regionales y convenciones anuales, con exhibiciones, exposiciones, seminarios y conferencias, ayudando así a sus miembros a darle valor agregado al canal de distribución.
+                                    </p>
+                                    <p>
+                                        Estas reuniones sirven como preámbulo para conocer a otros distribuidores y empezar a establecer conexiones entre ellos, fomentando a su vez el intercambio de ideas y creando sociedades que benefician a la industria del HVACR y a todos sus miembros.
+                                    </p> 
+                                    <p>
+                                    HARDI promueve el modelo de distribución de 2 etapas con el objetivo de tener un mejor orden y mayor eficiencia entre las partes que constituyen el canal de distribución requerido para atender al usuario final en todas sus necesidades y de la manera mas ordenada y eficiente posible. <strong>T&amp;P Refrigeración</strong>  en la actualidad es el único miembro de México.
+                                    </p>                                 
+                                </p>                                
+                            </div>  
+                            <div class="row">
+                                <p>Sitio oficial:</p>
+                            </div>
+                            <div class="row">
+                                <a href="http://www.hardinet.org/" target="_BLANK">www.hardinet.org</a>
+                            </div>                                                                                                        
+                        </div>
+                    </div>
+                </div>
+            </t>
+        </t>
+    </field>
+  </record>
+
+  <record id="typ_fide" model="ir.ui.view">
+    <field name="name">fide</field>
+    <field name="type">qweb</field>
+    <field name="key">typ.fide</field>
+    <field name="arch" type="xml">
+        <t t-name="fide_typ" name="fide">
+            <t t-call="website.layout">
+              <div class="oe_structure oe_empty " id="wrap">
+                    <t t-call="typ.header-orgs"/>
+                    <div class="container general-typ-information">
+                        <ol class="breadcrumb mb0 no-padding-left">
+                            <li>
+                                <a href="/organizations">Organizaciones HVACR</a>
+                            </li>        
+                            <li class="active">
+                                <span>FIDE</span>
+                            </li>
+                        </ol>
+                        <div class="col-xs-10 col-sm-10 col-sm-offset-1 col-xs-offset-1 mt24 mb96">   
+                            <div class="row">
+                                <h5 class="sections text-center">Fideicomiso para el Ahorro de Energía Eléctrica (FIDE)</h5> 
+                            </div>
+                            <div class="row">
+                                <img class="mt24 center-block img-responsive" src="/web/image/theme_typ.fide" alt="fide"/>
+                            </div>
+                            <div class="row mt24">                                
+                                <p class="">                                    
+                                    <p>
+                                    Una de las etapas más críticas al momento de cerrar una operación con equipos de refrigeración es cuando el estatus del proyecto llega a la negociación del dinero para la adquisición de la maquinaria. Existe una gran cantidad de clientes que prefieren comprar equipos usados con el afán de ahorrarse dinero de la empresa y utilizarlo en otros rubros en lugar de invertirlo en equipamiento nuevo que es fundamental para la seguridad que implica dentro del proceso.                                 
+                                    </p> 
+                                    <p>
+                                    En <strong>T&amp;P Refrigeración</strong> contamos con el conocimiento de la logística para conseguir el apoyo de Esquemas de Financiamiento Fide para la adquisición de equipos de refrigeración de alta eficiencia para pequeñas y medianas empresas. Conocemos los procedimientos y contamos con la asesoría para poderle ayudar a su cliente a conseguir estos recursos y así cerrar operaciones sin riesgo de la recuperación del dinero.
+                                    </p>
+                                    <p>
+                                        Estas reuniones sirven como preámbulo para conocer a otros distribuidores y empezar a establecer conexiones entre ellos, fomentando a su vez el intercambio de ideas y creando sociedades que benefician a la industria del HVACR y a todos sus miembros.
+                                    </p> 
+                                    <p>
+                                    Para el desarrollo de proyectos de MYPES o PYMES en los que esta involucrado el equipo de refrigeración, hay diversos esquemas a los que se puede acceder con un mínimo de requisitos para pre-aprobación de una línea de crédito
+                                    </p>    
+                                    <p>
+                                    Acérquese a nuestro departamento de ventas para mayor información al respecto.
+                                    </p>                             
+                                </p>                                
+                            </div>  
+                            <div class="row">
+                                <p>Sitio oficial:</p>
+                            </div>
+                            <div class="row">
+                                <a href="http://www.fide.org.mx/" target="_BLANK">www.fide.org.mx</a>
+                            </div>                                                                                                        
+                        </div>
+                    </div>
+                </div>
+            </t>
+        </t>
+    </field>
+  </record>
+
+  <record id="typ_nate" model="ir.ui.view">
+    <field name="name">nate</field>
+    <field name="type">qweb</field>
+    <field name="key">typ.nate</field>
+    <field name="arch" type="xml">
+        <t t-name="nate_typ" name="nate">
+            <t t-call="website.layout">
+              <div class="oe_structure oe_empty " id="wrap">
+                    <t t-call="typ.header-orgs"/>
+                    <div class="container general-typ-information">
+                        <ol class="breadcrumb mb0 no-padding-left">
+                            <li>
+                                <a href="/organizations">Organizaciones HVACR</a>
+                            </li>        
+                            <li class="active">
+                                <span>NATE</span>
+                            </li>
+                        </ol>
+                        <div class="col-xs-10 col-sm-10 col-sm-offset-1 col-xs-offset-1 mt24 mb96">   
+                            <div class="row">
+                                <h5 class="sections text-center">North American Technician Excellence (NATE)</h5> 
+                            </div>
+                            <div class="row">
+                                <img class="mt24 center-block img-responsive" src="/web/image/theme_typ.nate" alt="nate"/>
+                            </div>
+                            <div class="row mt24">                                
+                                <p class="">                                    
+                                    <p>
+                                    La necesidad de reducir los elevados costos debido a los índices de garantías por fallas en equipos que pudieron haberse evitado, obligó a los fabricantes de equipo original de los EEUU a construir una organización dedicada a la capacitación efectiva y continua de los técnicos en cargados de las instalaciones de sus productos y a su certificación.                                
+                                    </p> 
+                                    <p>
+                                    N.A.T.E. (National American Technician Excellence) Es una organización dedicada exclusivamente a la certificación de los conocimientos del personal de las empresas del ramo de la refrigeración y Aire Acondicionado y que tuvieran la necesidad de crecer para hacer mas productivas sus empresas a través de la adquisición de conocimientos tales que sus honorarios tuvieran un costo mas alto que aquellos que no cuentan con esta Certificación, y por lo tanto subir su índice de crecimiento como empresa.
+                                    </p>
+                                    <p>
+                                    En <strong>T&amp;P Refrigeración</strong> estamos ocupándonos de que estas certificaciones lleguen a México para nuestros contratistas y socios comerciales con el estándar internacional de calidad en la instalación de los equipos de refrigeración y A/C ya que de esta manera elevaran sus niveles de ingresos al ofrecer un valor agregado contra sus competidores.
+                                    </p>                                                                     
+                                </p>                                
+                            </div>  
+                            <div class="row">
+                                <p>Sitio oficial:</p>
+                            </div>
+                            <div class="row">
+                                <a href="http://www.natex.org/" target="_BLANK">www.natex.org</a>
+                            </div>                                                                                                        
+                        </div>
+                    </div>
+                </div>
+            </t>
+        </t>
+    </field>
+  </record>
+
+  <record id="typ_americ" model="ir.ui.view">
+    <field name="name">americ</field>
+    <field name="type">qweb</field>
+    <field name="key">typ.americ</field>
+    <field name="arch" type="xml">
+        <t t-name="americ_typ" name="americ">
+            <t t-call="website.layout">
+              <div class="oe_structure oe_empty " id="wrap">
+                    <t t-call="typ.header-orgs"/>
+                    <div class="container general-typ-information">
+                        <ol class="breadcrumb mb0 no-padding-left">
+                            <li>
+                                <a href="/organizations">Organizaciones HVACR</a>
+                            </li>        
+                            <li class="active">
+                                <span>AMERIC</span>
+                            </li>
+                        </ol>
+                        <div class="col-xs-10 col-sm-10 col-sm-offset-1 col-xs-offset-1 mt24 mb96">   
+                            <div class="row">
+                                <h5 class="sections text-center">Asociación Mexicana de Empresas del Ramo de Instalaciones para la Construcción (AMERIC)</h5> 
+                            </div>
+                            <div class="row">
+                                <img class="mt24 center-block img-responsive" src="/web/image/theme_typ.americ" alt="americ"/>
+                            </div>
+                            <div class="row mt24">                                
+                                <p class="">                                    
+                                    <p> 
+                                    En nuestro país, la industria del Aire Acondicionado y la Refrigeración ha venido evolucionando de una manera acelerada e irreversible, con una tendencia de que la importancia del Contratista como el integrador de los proyectos ha venido cobrando cada vez mas fuerza dentro del desarrollo de la obra de nuestro ramo.                               
+                                    </p> 
+                                    <p>
+                                    Es por esta razón que este eslabón de la industria (el contratista) tiene la necesidad de acercarse a asociaciones donde pueda lograr un desarrollo e integración de una manera más ordenada y productiva para poder lograr que su negocio crezca al nivel que exige el usuario final y no quedarse rezagado al margen de esta evolución.
+                                    </p>
+                                    <p>
+                                    AMERIC es una asociación de profesionales donde podemos contar con el apoyo y la logística de cómo cubrir estas necesidades y lograr el crecimiento necesario para llegar a nuestras metas con la mejor productividad posible.
+                                    </p> 
+                                    <p>
+                                    En <strong>T&amp;P Refrigeración </strong> tenemos el enlace para acceder a toda la información para afiliarse a esta institución y poder aprovechar los beneficios de esta institución. Acuda con nuestro personal para que le asesoren al respecto.
+                                    </p>                                 
+                                </p>                                
+                            </div>  
+                            <div class="row">
+                                <p>Sitio oficial:</p>
+                            </div>
+                            <div class="row">
+                                <a href="http://www.americmx.com/" target="_BLANK">www.americmx.com</a>
+                            </div>                                                                                                        
+                        </div>
+                    </div>
+                </div>
+            </t>
+        </t>
+    </field>
+  </record>
+
+  <record id="typ_ahri" model="ir.ui.view">
+    <field name="name">ahri</field>
+    <field name="type">qweb</field>
+    <field name="key">typ.ahri</field>
+    <field name="arch" type="xml">
+        <t t-name="ahri_typ" name="ahri">
+            <t t-call="website.layout">
+              <div class="oe_structure oe_empty " id="wrap">
+                    <t t-call="typ.header-orgs"/>
+                    <div class="container general-typ-information">
+                        <ol class="breadcrumb mb0 no-padding-left">
+                            <li>
+                                <a href="/organizations">Organizaciones HVACR</a>
+                            </li>        
+                            <li class="active">
+                                <span>AHRI</span>
+                            </li>
+                        </ol>
+                        <div class="col-xs-10 col-sm-10 col-sm-offset-1 col-xs-offset-1 mt24 mb96">   
+                            <div class="row">
+                                <h5 class="sections text-center">Air Conditioning, Heating and Refrigeration Institute (AHRI)</h5> 
+                            </div>
+                            <div class="row">
+                                <img class="mt24 center-block img-responsive" src="/web/image/theme_typ.ahri" alt="ahri"/>
+                            </div>
+                            <div class="row mt24">                                
+                                <p class="">                                    
+                                    <p>                                
+                                       Las más de 300 empresas asociadas producen más del 90 por ciento de la climatización residencial y comercial, calefacción, calentamiento de agua y equipos de refrigeración comercial realizado en América del Norte. A través de nuestro programa de certificación, normas, actividades de promoción, y otras actividades, nos esforzamos por ayudar a ahorrar energía, mejorar la productividad y asegurar un medio ambiente mejor.
+                                    </p>                                                          
+                                </p>                                
+                            </div>  
+                            <div class="row">
+                                <p>Sitio oficial:</p>
+                            </div>
+                            <div class="row">
+                                <a href="http://www.ahrinet.org/" target="_BLANK">www.ahrinet.org</a>
+                            </div>                                                                                                        
+                        </div>
+                    </div>
+                </div>
+            </t>
+        </t>
+    </field>
+  </record>
+
+  <record id="typ_ashrae" model="ir.ui.view">
+    <field name="name">ashrae</field>
+    <field name="type">qweb</field>
+    <field name="key">typ.ashrae</field>
+    <field name="arch" type="xml">
+        <t t-name="ashrae_typ" name="ashrae">
+            <t t-call="website.layout">
+              <div class="oe_structure oe_empty " id="wrap">
+                    <t t-call="typ.header-orgs"/>
+                    <div class="container general-typ-information">
+                        <ol class="breadcrumb mb0 no-padding-left">
+                            <li>
+                                <a href="/organizations">Organizaciones HVACR</a>
+                            </li>        
+                            <li class="active">
+                                <span>ASHRAE</span>
+                            </li>
+                        </ol>
+                        <div class="col-xs-10 col-sm-10 col-sm-offset-1 col-xs-offset-1 mt24 mb96">   
+                            <div class="row">
+                                <h5 class="sections text-center">American Society of Heating, Refrigerating and Air-Conditioning Engineers (ASHRAE)</h5> 
+                            </div>
+                            <div class="row">
+                                <img class="mt24 center-block img-responsive" src="/web/image/theme_typ.ashrae" alt="ashrae"/>
+                            </div>
+                            <div class="row mt24">
+                                <p class="">
+                                    <p class="mb0">¿Quienes somos?</p>
+                                    <p>                                  
+                                        Organización internacional fundada en el año de 1984; cuenta en la actualidad con más de 51,000 miembros distribuidos alrededor del mundo. 
+                                    </p>                                    
+                                </p>
+                                <p class="mt16">
+                                    <p class="mb0">Perseguimos un objetivo:</p>
+                                    <p>                                
+                                        <strong>Tiene la misión de servir a la humanidad, promoviendo un mundo sostenible mediante la investigación, redacción de normas, publicaciones y educación continua.</strong>
+                                    </p> 
+                                    <p>
+                                        En <strong>T&amp;P Refrigeración</strong> apoyamos a todas las asociaciones que tengan como fin hacer avanzar las artes de la Calefacción, Ventilación, Aire Acondicionado y la Refrigeración, así como todos sus esfuerzos enfocados al mejoramiento del medio ambiente.
+                                    </p>                                   
+                                </p>                                
+                            </div>  
+                            <div class="row">
+                                <p>Sitio oficial:</p>
+                            </div>
+                            <div class="row">
+                                <a href="http://www.ashrae.org/" target="_BLANK">www.ashrae.org/</a>
+                            </div>                                                                                                        
+                        </div>
+                    </div>
+                </div>
+            </t>
+        </t>
+    </field>
+  </record>
+
+<record id="typ_comfort" model="ir.ui.view">
+    <field name="name">comfort</field>
+    <field name="type">qweb</field>
+    <field name="key">typ.comfort</field>
+    <field name="arch" type="xml">
+        <t t-name="comfort_typ" name="comfort">
+            <t t-call="website.layout">
+              <div class="oe_structure oe_empty " id="wrap">
+                    <t t-call="typ.header-orgs"/>
+                    <div class="container general-typ-information">
+                        <ol class="breadcrumb mb0 no-padding-left">
+                            <li>
+                                <a href="/organizations">Organizaciones HVACR</a>
+                            </li>        
+                            <li class="active">
+                                <span>COMFORT INSITUTE</span>
+                            </li>
+                        </ol>
+                        <div class="col-xs-10 col-sm-10 col-sm-offset-1 col-xs-offset-1 mt24 mb96">   
+                            <div class="row">
+                                <h5 class="sections text-center">Comfort Institute, Inc. (IC)</h5> 
+                            </div>
+                            <div class="row">
+                                <img class="mt24 center-block img-responsive" src="/web/image/theme_typ.comfort-institute" alt="comfort-institute"/>
+                            </div>
+
+                            <div class="row mt24">  
+                                <p>
+                                    Comfort Institute, Inc. (IC) es una organización internacional dedicada a la investigación del confort interior, también provee de entrenamientos y protección a los consumidores. La sede de la organización se encuentra en Bellingham, Washington, con instructores y oficinas distribuidas a través de los Estados Unidos y Canadá.
+                                </p>                                
+                                <p class="">                                    
+                                    <p>
+                                        La división de protección del consumidor del Confort Institute, provee a los propietarios de viviendas de importante información y tips, que cubren aspectos del confort del hogar, incluyendo formas para reducir o eliminar completamente, problemas tan comunes como:
+                                        <ul>
+                                            <li>Areas calientes y frías</li>
+                                            <li>Polvo excesivo</li>
+                                            <li>Padecimientos de alergías y asma</li>
+                                            <li>Aire interior húmedo o seco</li>
+                                            <li>Aire interior de poca calidad</li>
+                                            <li>Equipo de Refrigeración/Calefacción ruidoso y poco confiable</li>
+                                            <li>Recibos altos</li>
+                                        </ul>
+                                    </p>                                    
+                                    <p>
+                                    Diversas investigaciones han demostrado que la mayoría de los equipos de calefacción y aire acondicionado de “alta eficiencia”, no trabajan a carga completa ni entregan el confort para el que están diseñados, por lo tanto no se ve reflejado ningún ahora en las cuentas de energía. Comfort Institute se encuentra dedicado a informar a los consumidores de Norte América sobre el porqué de esto y como evitarlo.
+                                    </p> 
+                                    <p>
+                                    Comfort Institute provee de capacitación y soporte a una red de Contratistas del Confort en Norte América. Estos programas ayudan a los contratistas a resolver los problemas (como los mencionados anteriormente) de sus clientes; también los ayuda a ofrecer la mayor calidad en servicios e instalaciones de equipos de calefacción y aire acondicionado.
+                                    </p>                                 
+                                </p>                                
+                            </div>  
+                            <div class="row">
+                                <p>Sitio oficial:</p>
+                            </div>
+                            <div class="row">
+                                <a href="http://www.comfortinstitute.org/index.php" target="_BLANK">www.comfortinstitute.org</a>
+                            </div>                                                                                                        
+                        </div>
+                    </div>
+                </div>
+            </t>
+        </t>
+    </field>
+  </record>
+
+  <record id="page_typ_organizations" model="website.page">
+    <field name="website_published">True</field>
+    <field name="name">Organizations</field>
+    <field name="url">/organizations</field>
+    <field name="view_id" ref="typ.typ_organizations"/>
+  </record>
+
+  <record id="page_typ_acca" model="website.page">
+    <field name="website_published">True</field>
+    <field name="name">acca</field>
+    <field name="url">/organizations/acca</field>
+    <field name="view_id" ref="typ.typ_acca"/>
+  </record>
+
+  <record id="page_typ_ahri" model="website.page">
+    <field name="website_published">True</field>
+    <field name="name">ahri</field>
+    <field name="url">/organizations/ahri</field>
+    <field name="view_id" ref="typ.typ_ahri"/>
+  </record>
+
+  <record id="page_typ_americ" model="website.page">
+    <field name="website_published">True</field>
+    <field name="name">americ</field>
+    <field name="url">/organizations/americ</field>
+    <field name="view_id" ref="typ.typ_americ"/>
+  </record>
+
+  <record id="page_typ_ashrae" model="website.page">
+    <field name="website_published">True</field>
+    <field name="name">ashrae</field>
+    <field name="url">/organizations/ashrae</field>
+    <field name="view_id" ref="typ.typ_ashrae"/>
+  </record>
+
+  <record id="page_typ_comfort" model="website.page">
+    <field name="website_published">True</field>
+    <field name="name">comfort</field>
+    <field name="url">/organizations/comfort</field>
+    <field name="view_id" ref="typ.typ_comfort"/>
+  </record>
+
+  <record id="page_typ_fide" model="website.page">
+    <field name="website_published">True</field>
+    <field name="name">fide</field>
+    <field name="url">/organizations/fide</field>
+    <field name="view_id" ref="typ.typ_fide"/>
+  </record>
+
+  <record id="page_typ_hardi" model="website.page">
+    <field name="website_published">True</field>
+    <field name="name">Hardi</field>
+    <field name="url">/organizations/hardi</field>
+    <field name="view_id" ref="typ.typ_hardi"/>
+  </record>
+
+  <record id="page_typ_nate" model="website.page">
+    <field name="website_published">True</field>
+    <field name="name">Nate</field>
+    <field name="url">/organizations/nate</field>
+    <field name="view_id" ref="typ.typ_nate"/>
+  </record>
+
+</odoo>

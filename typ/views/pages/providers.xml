@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <record id="typ_providers" model="ir.ui.view">
+    <field name="name">Providers</field>
+    <field name="type">qweb</field>
+    <field name="key">typ.providers</field>
+    <field name="arch" type="xml">
+        <t t-name="providers_typ" name="Providers">
+            <t t-call="website.layout">
+                <div class="oe_structure home-page-cover">
+                    <section class="s_text_block_image_fw oe_img_bg oe_custom_bg text-center background-header-org" style="background-image: url(/web/image/theme_typ.hero-org);">
+                        <div class="container">
+                            <div class="row">
+                                <h1 class="header-titles hidden-xs">PROVIDERS</h1>
+                                <h1 class="header-titles mr16 ml16 hidden-lg hidden-sm hidden-md">PROVIDERS</h1>
+                            </div>
+                            <div class="row">
+                                <h5 class="header-subtitles">Links to our providers website</h5>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+                <div class="oe_structure oe_empty">
+                    <!-- <section class="s_body_content text-center background-header-org" style="background-image: url(/web/image/theme_typ.hero-org);">
+                        <div class="container">
+                            <div class="row">
+                                <h1 class="header-titles hidden-xs">PROVIDERS</h1>
+                                <h1 class="header-titles mr16 ml16 hidden-lg hidden-sm hidden-md">PROVIDERS</h1>
+                            </div>
+                            <div class="row">
+                                <h5 class="header-subtitles">Links to our providers website</h5>
+                            </div>
+                        </div>
+                    </section> -->
+                    <div class="container general-typ-information">
+                        <div class="col-sm-12 providers">
+                            <div class="col-md-2 col-sm-4 col-xs-6">
+                                <a href="http://www.acemire.com.mx/inicio/" target="_BLANK"><img src="/web/image/theme_typ.acemire" alt="Acemire"/></a>
+                            </div>
+                            <div class="col-md-2 col-sm-4 col-xs-6">
+                                <a href="http://www.aeroflexusa.com/" target="_BLANK"><img src="/web/image/theme_typ.aeroflex" alt="aeroflex"/></a>
+                            </div>
+                            <div class="col-md-2 col-sm-4 col-xs-6">
+                                <a href="" target="_BLANK"><img src="/web/image/theme_typ.alco" alt="alco"/></a>
+                            </div>
+                            <div class="col-md-2 col-sm-4 col-xs-6">
+                                <a href="http://www.anthonydoors.com/" target="_BLANK"><img src="/web/image/theme_typ.anthony" alt="anthony"/></a>
+                            </div>
+                            <div class="col-md-2 col-sm-4 col-xs-6">
+                                <a href="http://www.aspenpumps.com/" target="_BLANK"><img src="/web/image/theme_typ.aspen" alt="aspen"/></a>
+                            </div>
+                            <div class="col-md-2 col-sm-4 col-xs-6">
+                                <a href="" target="_BLANK"><img src="/web/image/theme_typ.astrocool" alt="astrocool"/></a>
+                            </div>
+                            <div class="col-md-2 col-sm-4 col-xs-6">
+                                <a href="http://www.atcoflex.com/" target="_BLANK"><img src="/web/image/theme_typ.atco" alt="atco"/></a>
+                            </div>
+                            <div class="col-md-2 col-sm-4 col-xs-6">
+                                <a href="http://www.avaly.com.mx/" target="_BLANK"><img src="/web/image/theme_typ.avaly" alt="avaly"/></a>
+                            </div>
+                            <div class="col-md-2 col-sm-4 col-xs-6">
+                                <a href="http://www.bohn.com.mx/" target="_BLANK"><img src="/web/image/theme_typ.bohn" alt="bohn"/></a>
+                            </div>
+                            <div class="col-md-2 col-sm-4 col-xs-6">
+                                <a href="http://www.bronz-glow.com/" target="_BLANK"><img src="/web/image/theme_typ.bronzglow" alt="bronzglow"/></a>
+                            </div>
+                            <div class="col-md-2 col-sm-4 col-xs-6">
+                                <a href="" target="_BLANK"><img src="/web/image/theme_typ.cain" alt="cain"/></a>
+                            </div>
+                            <div class="col-md-2 col-sm-4 col-xs-6">
+                                <a href="http://www.carel.com/carelcom/web/eng/home.jsp" target="_BLANK"><img src="/web/image/theme_typ.carel" alt="carel"/></a>
+                            </div>
+                            <div class="col-md-2 col-sm-4 col-xs-6">
+                                <a href="http://www.cerroflow.com/" target="_BLANK"><img src="/web/image/theme_typ.cerro" alt="cerro"/></a>
+                            </div>
+                            <div class="col-md-2 col-sm-4 col-xs-6">
+                                <a href="http://www.colemancable.com/" target="_BLANK"><img src="/web/image/theme_typ.coleman" alt="coleman"/></a>
+                            </div>
+                            <div class="col-md-2 col-sm-4 col-xs-6">
+                                <a href="http://www.connecticut-electric.com/" target="_BLANK"><img src="/web/image/theme_typ.connecticut" alt="connecticut"/></a>
+                            </div>
+                            <div class="col-md-2 col-sm-4 col-xs-6">
+                                <a href="http://www.copelandscroll.com/espanol/" target="_BLANK"><img src="/web/image/theme_typ.copeland" alt="copeland"/></a>
+                            </div>
+                            <div class="col-md-2 col-sm-4 col-xs-6">
+                                <a href="" target="_BLANK"><img src="/web/image/theme_typ.cps" alt="cps"/></a>
+                            </div>
+                            <div class="col-md-2 col-sm-4 col-xs-6">
+                                <a href="http://www.diversitech.com/" target="_BLANK"><img src="/web/image/theme_typ.diversitech" alt="diversitech"/></a>
+                            </div>
+                            <div class="col-md-2 col-sm-4 col-xs-6">
+                                <a href="http://www2.dupont.com/Refrigerants/es_MX/" target="_BLANK"><img src="/web/image/theme_typ.dupont" alt="dupont"/></a>
+                            </div>
+                            <div class="col-md-2 col-sm-4 col-xs-6">
+                                <a href="http://www.embraco.com/Default.aspx?tabid=161" target="_BLANK"><img src="/web/image/theme_typ.embraco" alt="embraco"/></a>
+                            </div>
+                            <div class="col-md-2 col-sm-4 col-xs-6">
+                                <a href="http://spanish.emersonclimate.com/espanol/" target="_BLANK"><img src="/web/image/theme_typ.emerson" alt="emerson"/></a>
+                            </div>
+                            <div class="col-md-2 col-sm-4 col-xs-6">
+                                <a href="http://www.fasco.com/" target="_BLANK"><img src="/web/image/theme_typ.fasco" alt="fasco"/></a>
+                            </div>
+                            <div class="col-md-2 col-sm-4 col-xs-6">
+                                <a href="" target="_BLANK"><img src="/web/image/theme_typ.fasson" alt="fasson"/></a>
+                            </div>
+                            <div class="col-md-2 col-sm-4 col-xs-6">
+                                <a href="" target="_BLANK"><img src="/web/image/theme_typ.flanders" alt="flanders"/></a>
+                            </div>
+                            <div class="col-md-2 col-sm-4 col-xs-6">
+                                <a href="" target="_BLANK"><img src="/web/image/theme_typ.harris" alt="harris"/></a>
+                            </div>
+                            <div class="col-md-2 col-sm-4 col-xs-6">
+                                <a href="http://customer.honeywell.com/Business/Cultures/en-US/Default.htm" target="_BLANK"><img src="/web/image/theme_typ.honeywell" alt="honeywell"/></a>
+                            </div>
+                            <div class="col-md-2 col-sm-4 col-xs-6">
+                                <a href="" target="_BLANK"><img src="/web/image/theme_typ.icm" alt="icm"/></a>
+                            </div>
+                            <div class="col-md-2 col-sm-4 col-xs-6">
+                                <a href="http://www.stridetool.com/replocator.html" target="_BLANK"><img src="/web/image/theme_typ.imperial" alt="imperial"/></a>
+                            </div>
+                            <div class="col-md-2 col-sm-4 col-xs-6">
+                                <a href="http://www.iusamex.com/" target="_BLANK"><img src="/web/image/theme_typ.iusa" alt="iusa"/></a>
+                            </div>
+                            <div class="col-md-2 col-sm-4 col-xs-6">
+                                <a href="http://www.johnsoncontrols.com/publish/us/en.html" target="_BLANK"><img src="/web/image/theme_typ.johnsoncontrols" alt="johnsoncontrols"/></a>
+                            </div>
+                            <div class="col-md-2 col-sm-4 col-xs-6">
+                                <a href="http://www.kleerstrip.com/" target="_BLANK"><img src="/web/image/theme_typ.kleerstrip" alt="kleerstrip"/></a>
+                            </div>
+                            <div class="col-md-2 col-sm-4 col-xs-6">
+                                <a href="http://www.knaufusa.com/" target="_BLANK"><img src="/web/image/theme_typ.knauf" alt="knauf"/></a>
+                            </div>
+                            <div class="col-md-2 col-sm-4 col-xs-6">
+                                <a href="" target="_BLANK"><img src="/web/image/theme_typ.kompress" alt="kompress"/></a>
+                            </div>
+                            <div class="col-md-2 col-sm-4 col-xs-6">
+                                <a href="http://www.lanhaicomp.com/" target="_BLANK"><img src="/web/image/theme_typ.lanhai" alt="lanhai"/></a>
+                            </div>
+                            <div class="col-md-2 col-sm-4 col-xs-6">
+                                <a href="http://www.laufan.com/" target="_BLANK"><img src="/web/image/theme_typ.lau" alt="lau"/></a>
+                            </div>
+                            <div class="col-md-2 col-sm-4 col-xs-6">
+                                <a href="http://www.lennox.com/" target="_BLANK"><img src="/web/image/theme_typ.lennox" alt="lennox"/></a>
+                            </div>
+                            <div class="col-md-2 col-sm-4 col-xs-6">
+                                <a href="http://malcoproducts.com/" target="_BLANK"><img src="/web/image/theme_typ.malco" alt="malco"/></a>
+                            </div>
+                            <div class="col-md-2 col-sm-4 col-xs-6">
+                                <a href="http://www.marsm-a.com/" target="_BLANK"><img src="/web/image/theme_typ.mars" alt="mars"/></a>
+                            </div>
+                            <div class="col-md-2 col-sm-4 col-xs-6">
+                                <a href="http://www.mason-ind.com/masonind/home/index.cfm" target="_BLANK"><img src="/web/image/theme_typ.mason" alt="mason"/></a>
+                            </div>
+                            <div class="col-md-2 col-sm-4 col-xs-6">
+                                <a href="http://www.metalaire.com/" target="_BLANK"><img src="/web/image/theme_typ.metalaire" alt="metalaire"/></a>
+                            </div>
+                            <div class="col-md-2 col-sm-4 col-xs-6">
+                                <a href="http://metalyfrio.com/" target="_BLANK"><img src="/web/image/theme_typ.metalyfrio" alt="metalyfrio"/></a>
+                            </div>
+                            <div class="col-md-2 col-sm-4 col-xs-6">
+                                <a href="http://www.muellerindustries.com/" target="_BLANK"><img src="/web/image/theme_typ.mueller" alt="mueller"/></a>
+                            </div>
+                            <div class="col-md-2 col-sm-4 col-xs-6">
+                                <a href="http://www.nucalgon.com/" target="_BLANK"><img src="/web/image/theme_typ.nucalgon" alt="nucalgon"/></a>
+                            </div>
+                            <div class="col-md-2 col-sm-4 col-xs-6">
+                                <a href="http://www.paragontimecontrols.com/about/default.html" target="_BLANK"><img src="/web/image/theme_typ.paragon" alt="paragon"/></a>
+                            </div>
+                            <div class="col-md-2 col-sm-4 col-xs-6">
+                                <a href="http://polyken.com.mx/" target="_BLANK"><img src="/web/image/theme_typ.polyken" alt="polyken"/></a>
+                            </div>
+                            <div class="col-md-2 col-sm-4 col-xs-6">
+                                <a href="http://polymeradhesives.com/" target="_BLANK"><img src="/web/image/theme_typ.polymer" alt="polymer"/></a>
+                            </div>
+                            <div class="col-md-2 col-sm-4 col-xs-6">
+                                <a href="http://www.invensyscontrolseurope.com/ranco/" target="_BLANK"><img src="/web/image/theme_typ.ranco" alt="ranco"/></a>
+                            </div>
+                            <div class="col-md-2 col-sm-4 col-xs-6">
+                                <a href="http://www.sauermannpumps.es/" target="_BLANK"><img src="/web/image/theme_typ.sauermann" alt="sauermann"/></a>
+                            </div>
+                            <div class="col-md-2 col-sm-4 col-xs-6">
+                                <a href="http://www.soler-palau.com.mx/" target="_BLANK"><img src="/web/image/theme_typ.soler" alt="soler"/></a>
+                            </div>
+                            <div class="col-md-2 col-sm-4 col-xs-6">
+                                <a href="http://www.parker.com/" target="_BLANK"><img src="/web/image/theme_typ.sporlan" alt="sporlan"/></a>
+                            </div>
+                            <div class="col-md-2 col-sm-4 col-xs-6">
+                                <a href="http://www.supco.com/" target="_BLANK"><img src="/web/image/theme_typ.supco" alt="supco"/></a>
+                            </div>
+                            <div class="col-md-2 col-sm-4 col-xs-6">
+                                <a href="http://www.taylorusa.com/" target="_BLANK"><img src="/web/image/theme_typ.taylor" alt="taylor"/></a>
+                            </div>
+                            <div class="col-md-2 col-sm-4 col-xs-6">
+                                <a href="http://teco.en.ecplaza.net/" target="_BLANK"><img src="/web/image/theme_typ.teco" alt="teco"/></a>
+                            </div>
+                            <div class="col-md-2 col-sm-4 col-xs-6">
+                                <a href="http://www.tecumseh.com/en/united-states" target="_BLANK"><img src="/web/image/theme_typ.tecumseh" alt="tecumseh"/></a>
+                            </div>
+                            <div class="col-md-4 col-sm-4 col-xs-6">
+                                <a href="http://www.ueitest.com/" target="_BLANK"><img class="center-block" src="/web/image/theme_typ.uei" alt="uei"/></a>
+                            </div>
+                            <div class="col-md-4 col-sm-4 col-xs-6">
+                                <a href="http://www.usaire.com/" target="_BLANK"><img class="center-block" src="/web/image/theme_typ.usaire" alt="usaire"/></a>
+                            </div>
+                            <div class="col-md-4 col-sm-4 col-xs-6">
+                                <a href="http://www.vtronix.com/index.php" target="_BLANK"><img class="center-block" src="/web/image/theme_typ.vtronix" alt="vtronix"/></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="oe_structure"/>
+            </t>
+        </t>
+    </field>
+  </record>
+
+  <record id="page_typ_providers" model="website.page">
+    <field name="website_published">True</field>
+    <field name="name">Providers</field>
+    <field name="url">/providers</field>
+    <field name="view_id" ref="typ.typ_providers"/>
+  </record>
+
+</odoo>

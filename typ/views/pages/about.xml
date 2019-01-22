@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+   <template id="about" name="About typ" inherit_id="website.aboutus">
+        <xpath expr="//div[@id='wrap']" position="replace">
+            <div class="oe_structure home-page-cover">
+                <section class="s_text_block_image_fw oe_img_bg oe_custom_bg text-center background-header-typ" style="background-image: url(/web/image/theme_typ.hero-about);">
+                    <div class="container">
+                        <div class="row">
+                            <h1 class="header-titles hidden-xs">WHO WE ARE IN T&amp;P<br />REFRIGERATION</h1>
+                            <h1 class="header-titles mr16 ml16 hidden-lg hidden-sm hidden-md">WHO WE ARE IN T&amp;P<br />REFRIGERATION</h1>
+                        </div>
+                    </div>
+                </section>
+            </div>
+            <div class="oe_structure oe_empty dark-white">                 
+                <div class="container general-typ-information">
+                    <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-xs-offset-0 mt32 mb96">
+                        <div class="menu-options">
+                            <ul class="nav nav-tabs">
+                                <li class="active"><a data-toggle="tab" href="#about">About us</a></li>
+                                <li><a data-toggle="tab" href="#mision">Mision, vision and values</a></li>
+                                <li><a data-toggle="tab" href="#policies">Sale Policies</a></li>
+                            </ul>
+                        </div>                       
+                        <div class="tab-content">
+                            <div id="about" class="tab-pane fade in active">
+                                <p class="typ-text">
+                                    In <strong>T&amp;P Refrigeration</strong> we are a wholesale commercial company with more than 20 years of experience, 
+                                    with its operations center in Hermosillo, Sonora, Mexico. We have six points of sale located in the Northwest of Mexico,
+                                    in the States of Sonora, Sinaloa and Baja California and also in the Operations and Distribution Center located in the 
+                                    city of Hermosillo, Sonora.
+                                </p>
+                                <p class="mt16">
+                                    We are dedicated to the commercialization of spare parts, installation materials and equipment for air conditioning, 
+                                    refrigeration and air ventilation, being our primary objective to serve the contractors of these branches, both in the Northwest
+                                    of Mexico through our establishments and through of our new store option by phone and internet to serve the rest of the country.
+                                </p>
+                                <p class="mt16">
+                                    We are distributors of important manufacturers of the products we sell, both in Mexico and the United States, which allows us to 
+                                    provide a wide range of alternatives for market needs, technical support, guarantees and trained personnel to support investments 
+                                    of those who use our services.
+                                </p>
+                                <p class="mt16">
+                                    As of 2006, we are active members of HARDI, an organization that groups more than 450 distribution companies and more than 300
+                                    associated manufacturing companies, mainly in the United States, and that represent little more than 80% of the value of products
+                                    sold through distribution companies. .
+                                </p>
+                                <p class="title mt32">Background</p>
+                                <p class="mt16">
+                                    T&amp;P Refrigeracion is a regional company specialized in the attention to contractor companies, which operates in the Northwest 
+                                    of the Mexican Republic. Established more than 20 years ago, it has as its base of operations the city of 
+                                    Hermosillo, Sonora, Mexico, and is dedicated to the commercialization of equipment, installation materials and refurbishments 
+                                    for Air Conditioning, Refrigeration and Ventilation.
+                                </p>                                
+                            </div>
+                            <div id="mision" class="tab-pane fade">
+                                <p class="title">
+                                    Mision
+                                </p>
+                                <p class="mt16">
+                                    To effectively satisfy the supply of products and services to our customers, generating mutual business opportunities,
+                                    backed by our values, innovation and development of our collaborators.
+                                </p> 
+                                <p class="title mt32">
+                                    Vision
+                                </p>
+                                <p class="mt16">
+                                    To be a leading company in the marketing of air conditioning and refrigeration products in the northwest and with presence in other territories
+                                    of the Mexican Republic operating as an intelligent company.
+                                </p> 
+                                <p class="title mt32">
+                                    Values
+                                </p>
+                                <p class="mt16">
+                                    Unquestionable values: 
+                                    <ul>
+                                        <li>Commitment.</li>
+                                        <li>Honesty.</li>
+                                        <li>Loyalty.</li>
+                                        <li>Respect.</li>
+                                        <li>Responsibility</li>
+                                    </ul>
+                                </p>
+                                <p class="mt16">
+                                    Desirable values:
+                                    <ul>
+                                        <li>Humility.</li>
+                                        <li>Continuous improvement.</li>
+                                        <li>Passion for the service.</li>
+                                        <li>Proactivity</li>
+                                        <li>Social responsability.</li>
+                                        <li>Teamwork.</li>
+                                    </ul>                                       
+                                </p>
+                                <h5 class="sections mt48 text-center">WE SUPPORT THE SUCCESS OF YOUR BUSINESS</h5>                           
+                            </div>
+                            <div id="policies" class="tab-pane fade">
+                                <p class="title">
+                                    Contracting companies
+                                </p>
+                                <p class="mt16">
+                                    <p class="subtitle mb0">Minimum Purchases:</p>
+                                    <p>
+                                        There is no minimum purchase limit. Any number of products, regardless of their price will be attended.
+                                    </p>                                    
+                                </p>
+                                <p class="mt16">
+                                    <p class="subtitle mb0">Prices:</p>
+                                    <p>
+                                        Purchase orders will be invoiced at current prices on the date of shipment. 
+                                        All prices are subject to change without notice as long as they are not billed.
+                                    </p>                                    
+                                </p>
+                                <p class="mt16">
+                                    <p class="subtitle mb0">Payment Methods:</p>
+                                    <p>
+                                       Purchase orders will be filled upon receipt of the total payment of the products or it is suggested to make the payments 
+                                       preferably using the electronic banking system, for the agile and secure of this type of transactions.
+                                    </p>                                    
+                                </p>
+                                <p class="mt16">
+                                    <p class="subtitle mb0">Credit:</p>
+                                    <p>
+                                       Available to customers with an authorized and current line of credit. Credit sales invoices will cause interest if they are not paid when due. 
+                                       Purchase orders from customers with suspended credit will not be processed.
+                                    </p>                                    
+                                </p>
+                                <p class="mt16">
+                                    <p class="subtitle mb0">Returns:</p>
+                                    <p>
+                                       Any return of products arising from causes attributable to the buyer, will generate a charge of 20% on the value of your shipment, will be freight
+                                       paid by the customer to the branch that corresponds. If the products are returned for reasons attributable to T&amp;P Refrigeración or to the manufacturers 
+                                       of the product, the money will be returned or a credit will be extended to the customer's account after receiving and having accepted the return.
+                                    </p>                                    
+                                </p>
+                                <p class="mt16">
+                                    <p class="subtitle mb0">Freight:</p>
+                                    <p>
+                                      All prices are L.A.B. point of sale or assortment of T&amp;P Refrigeration. The freight charges for shipping products are charged to the customer, 
+                                      who will pay them when they are received. In case of receiving damaged or missing products, the customer must immediately claim the freight company.
+                                    </p>                                    
+                                </p>
+                                <p class="mt16">
+                                    <p class="subtitle mb0">Warranty:</p>
+                                    <p>
+                                      All our products are guaranteed, however, the terms vary according to the policies and conditions established by each supplier or manufacturer. 
+                                      The electrical parts have no guarantee.
+                                    </p>                                    
+                                </p>                                
+                            </div>
+                        </div>
+                    </div>                        
+                </div>
+            </div>
+            <div class="oe_structure"/>
+        </xpath>
+   </template>
+
+</odoo>
