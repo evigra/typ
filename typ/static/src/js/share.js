@@ -8,7 +8,7 @@ odoo.define('theme_typ.share_product', (require) => {
     const $Share_product = $('.o_share_product');
 
     if(!$Share_product.length){
-        return $.Defferred().Reject("DOM doesn't contain any '.o_share_product' element.");
+        return $.Deferred().Reject("DOM doesn't contain any '.o_share_product' element.");
     }
 
     const Share_product = Widget.extend({

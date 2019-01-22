@@ -45,7 +45,41 @@
         <section class="s_image_banner">                
             <img class="img img-responsive" src="/web/image/theme_typ.s-banner" alt="Sample"/>
         </section>
-    </template>    
+    </template>
+
+     <template id="s_image_banner_contact_us" name="Banner Contact Us">
+        <section class="s_text_block_image_fw oe_img_bg oe_custom_bg text-center">
+                <div class="container oswald-text">
+                    <div class="row hidden-xs">
+                        <div class="col-md-4 col-md-offset-1 col-sm-7 col-sm-offset-0 mt32 ">
+                            <span class="typ-img-logo-banner" t-field="res_company.logo" t-options="{'widget': 'image'}" t-att-alt="'Logo of %s' % res_company.name" t-att-title="res_company.name"/>
+                            <h4 class="banner mt16 mb16">WE WANT TO BE YOUR PARTNERS</h4>
+                            <a class="btn btn-primary btn-lg mb32" href="/contactus">QUOTE YOUR PROJECT</a>
+                        </div>
+                    </div>
+
+                    <div class="hidden-md hidden-sm hidden-lg">
+                        <div class="row">
+                            <div class="col-xs-7 col-xs-offset-1 mt32 ">
+                                <span class="typ-img-logo-banner" t-field="res_company.logo" t-options="{'widget': 'image'}" t-att-alt="'Logo of %s' % res_company.name" t-att-title="res_company.name"/>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-8 col-xs-offset-0">
+                                <h4 class="banner mt16 mb16 hidden-xs">WE WANT TO BE YOUR PARTNERS</h4>
+                                <h4 class="banner pull-left mt16 mb16 hidden-md hidden-sm hidden-lg">WE WANT TO BE YOUR PARTNERS</h4>
+                            </div>
+                        </div>
+                        <div class="row hidden-md hidden-sm hidden-lg">
+                            <div class="col-xs-10 col-xs-offset-1">
+                                <a class="btn btn-primary btn-block mb8" href="/contactus">QUOTE YOUR PROJECT</a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+        </section>
+    </template>
 
 
     <template id="snippets" inherit_id="website.snippets">
@@ -56,6 +90,7 @@
                 </div>
                 <div class="o_panel_body">
                     <t t-snippet="typ.s_image_banner" />
+                    <t t-snippet="typ.s_image_banner_contact_us" />
                 </div>
             </div>
         </xpath>

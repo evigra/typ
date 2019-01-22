@@ -8,7 +8,7 @@ odoo.define('theme_typ.delete_product', (require) => {
     const $Delete_product = $('.oe_cart');
 
     if(!$Delete_product.length){
-        return $.Defferred().Reject("DOM doesn't contain any '.oe_cart");
+        return $.Deferred().Reject("DOM doesn't contain any '.oe_cart");
     }
 
     const Delete_product = Widget.extend({

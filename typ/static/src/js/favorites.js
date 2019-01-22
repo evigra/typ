@@ -10,7 +10,7 @@ odoo.define('theme_typ.favorites', (require) => {
     const $Add_fav = $('.o_add_fav');
 
     if(!$Add_fav.length){
-        return $.Defferred().Reject("DOM doesn't contain any '.o_add_fav' element.");
+        return $.Deferred().Reject("DOM doesn't contain any '.o_add_fav' element.");
     }
 
     function remove_from_wishlist(prod_id) {
