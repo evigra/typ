@@ -13,6 +13,8 @@
     'demo': [
         # 'demo/categories.xml',
     ],
+    'demo': [
+    ],
     'category': 'Theme/Creative',
     'depends': [
         'website',

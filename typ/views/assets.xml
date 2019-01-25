@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <template id="assets_frontend" inherit_id="website.assets_frontend" name="Assets Frontend">
+        <xpath expr="//script[last()]" position="after">
+            <script type="text/javascript" src="/typ/static/src/js/portal_account.js"></script>
+            <script type="text/javascript" src="/typ/static/src/js/edit_information.js"></script>
+            <script type="text/javascript" src="/typ/static/src/js/shipping.js"></script>
+        </xpath>
+    </template>
+</odoo>

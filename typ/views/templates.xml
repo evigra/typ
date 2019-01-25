@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>  
+    <template id="my_final_products_table">
+    <!-- order products -->         
+        <div class="my-cart-typ confirmation-order mt32 mb8 hidden-xs">
+            <!-- products list -->
+            <div class="products-table text-center">             
+                <t t-foreach="order.order_line" t-as="line">
+                    <div class="row">                    
+                        <div t-attf-class="col-md-2 col-md-offset-1 col-sm-2 col-sm-offset-1 #{'mt8 mb8' if request.httprequest.path =='/shop/confirmation' else 'mt32 mb32'}">
+                            <span t-field="line.product_id.image_small" t-options="{'widget': 'image', 'class': 'white-color'}" />
+                        </div>
+                        <div t-attf-class="col-md-4 col-sm-4 #{'mt32 mb16' if request.httprequest.path =='/shop/confirmation' else 'mt32 mb32'}">
+                            <t t-set="characters" t-value="line.product_id.with_context(display_default_code=False).display_name if len(line.product_id.with_context(display_default_code=False).display_name) &lt; 25 else line.product_id.with_context(display_default_code=False).display_name[:26]+'...'"/>
+                            <p class="product-order text-left mb0" t-esc="characters" />
+                        </div>                                    
+                        <div t-attf-class="col-md-1 col-sm-1 #{'mt32 mb16' if request.httprequest.path =='/shop/confirmation' else 'mt32 mb32'}">
+                            <p t-esc="int(line.product_uom_qty) == line.product_uom_qty and int(line.product_uom_qty) or line.product_uom_qty"/>
+                        </div>
+                        <div t-attf-class="col-md-3 col-sm-3 subtotal-product #{'mt32 mb16' if request.httprequest.path =='/shop/confirmation' else 'mt32 mb32'} ">
+                                    <span class="taxed-price" t-esc="line.price_reduce_taxexcl * line.product_uom_qty"  style="white-space: nowrap;" t-options='{
+                                "widget": "monetary",
+                                "display_currency": website.currency_id
+                            }'/> <span t-if="request.httprequest.path !='/shop/confirmation'" itemprop="priceCurrency" t-esc="line.currency_id.name" />
+                        </div>
+                    </div>
+                </t>
+            </div> 
+        </div>
+        <!-- product list mobile -->
+        <div class="my-cart-typ confirmation-order mt32 mb8 hidden-md hidden-sm hidden-lg">
+            <div class="products-table">             
+                <t t-foreach="order.order_line" t-as="line">
+                    <div class="row">                    
+                        <div class="col-xs-3 mt8 mb8">
+                            <span t-field="line.product_id.image_small" t-options="{'widget': 'image', 'class': 'white-color'}" />
+                        </div>
+                        <div class="col-xs-8 mt8 mb8">
+                            <div class="row">
+                                <t t-set="characters" t-value="line.product_id.with_context(display_default_code=False).display_name if len(line.product_id.with_context(display_default_code=False).display_name) &lt; 22 else line.product_id.with_context(display_default_code=False).display_name[:23]+'...'"/>
+                                <p class="product-order text-left mb0" t-esc="characters" />
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-6 text-center">
+                                        <p t-esc="int(line.product_uom_qty) == line.product_uom_qty and int(line.product_uom_qty) or line.product_uom_qty"/>
+                                </div>
+                                <div class="col-xs-6 text-center subtotal-product">
+                                        <span class="taxed-price" t-esc="line.price_reduce_taxexcl * line.product_uom_qty"  style="white-space: nowrap;" t-options='{
+                                            "widget": "monetary",
+                                            "display_currency": website.currency_id
+                                        }'/><span t-if="request.httprequest.path !='/shop/confirmation'" itemprop="priceCurrency" t-esc="website.currency_id.name" />
+                                </div>                                
+                            </div>
+                        </div> 
+                    </div>
+                </t>
+            </div> 
+        </div>                           
+    </template>
+
+    
+</odoo>

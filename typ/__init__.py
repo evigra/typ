@@ -4,6 +4,7 @@
 
 from openerp import SUPERUSER_ID
 from . import models
+from . import controllers
 
 
 def _auto_install_stock_account_unfuck(cr, registry):

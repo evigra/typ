@@ -85,6 +85,10 @@
         'data/website_settings.yml',
         'data/company.xml',
         'data/categories.xml',
+        # Website stuff
+        'views/pages/account.xml',
+        'views/assets.xml',
+        'views/templates.xml',
     ],
     'demo': [
     ],
