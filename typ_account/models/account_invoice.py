@@ -102,3 +102,14 @@ class AccountInvoice(models.Model):
         date_paid = fields.Date.context_today(self)
         self.write({'date_paid': date_paid})
         return res
+
+    @api.multi
+    def _l10n_mx_edi_get_payment_policy(self):
+        """Inherit Method to change the Payment Method to PPD, if the payment
+        term is Post-dated Checks"""
+        self.ensure_one()
+        version = self.l10n_mx_edi_get_pac_version()
+        res = super()._l10n_mx_edi_get_payment_policy()
+        if version != '3.3' or self.type_payment_term != 'postdated_check':
+            return res
+        return 'PPD'
