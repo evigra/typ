@@ -124,19 +124,7 @@
 
     <template id="contact_edit" name="Edit Contact">
             <t t-call="typ.portal_layout">                                         
-                <div class="col-md-12 oe_cart">   
-
-                    <!-- <t t-if="mode == ('new', 'billing')">
-                        <h2 class="sections text-center mb32 mt0">Your Address
-                            <small> or </small>
-                            <a href='/web/login?redirect=/shop/checkout' class='btn btn-primary' style="margin-top: -11px">Log In</a>
-                        </h2>
-                    </t>
-
-                    <t t-if="mode == ('edit', 'billing')">
-                        <h2 class="sections text-center mb32 mt0">Your Address</h2>
-                    </t> -->
-
+                <div class="col-md-12 oe_cart">  
                     <t t-if="mode[1] == 'shipping'">
                         <div class="row breadcrumbs-account">
                             <ol class="breadcrumb o_portal_submenu mb0">
@@ -580,10 +568,13 @@
                         <div class="col-sm-2 mt24 mb8">
                             <p>#Invoice</p>
                         </div>
-                        <div class="col-sm-3 mt24 mb8">
+                        <div class="col-sm-2 mt24 mb8">
                             <p>Date</p>
                         </div>
-                        <div class="col-sm-3 mt24 mb8">
+                        <div class="col-sm-2 mt24 mb8">
+                            <p>Due Date</p>
+                        </div>
+                        <div class="col-sm-2 mt24 mb8">
                             <p>Total</p>
                         </div>
                         <div class="col-sm-2 mt24 mb8">
@@ -600,14 +591,21 @@
                                     <a t-attf-href="/my/invoices/#{invoice.id}"><p class="invoice-name mt8" t-esc="invoice.number"/></a> 
                                 </div>
                                 
-                                <div class="col-sm-3 mt8">
+                                <div class="col-sm-2 mt8">
                                     <t t-if="invoice.date_invoice">
                                         <t t-call="typ.order_date">
                                             <t t-set="order_date" t-value="time.strptime(invoice.date_invoice,'%Y-%m-%d')" />
                                         </t>
                                     </t>                                    
-                                </div>                                
-                                <div class="col-sm-3 mt8">
+                                </div>
+                                <div class="col-sm-2 mt8">
+                                    <t t-if="invoice.date_invoice">
+                                        <t t-call="typ.order_date">
+                                            <t t-set="order_date" t-value="time.strptime(invoice.date_due,'%Y-%m-%d')" />
+                                        </t>
+                                    </t>                                    
+                                </div>                               
+                                <div class="col-sm-2 mt8">
                                     <span class="total-order" t-esc="invoice.amount_total" t-options='{"widget": "monetary", "display_currency": invoice.currency_id}'/>
                                     <span class="total-order" itemprop="priceCurrency" t-esc="invoice.currency_id.name" />
                                 </div>
