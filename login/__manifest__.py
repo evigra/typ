@@ -11,7 +11,7 @@
     ],
     'demo': [
     ],
-    'category': 'Theme/Creative',
+    'category': 'Extra Tools',
     'depends': [
         'website',
         'auth_signup',
