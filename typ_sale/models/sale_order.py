@@ -139,6 +139,29 @@ class SaleOrder(models.Model):
             return {'warning': warning}
         return res
 
+    @api.multi
+    def action_invoice_create(self, grouped=False, final=False):
+        """Inherited method, to add picking name in origin field to the
+        dict of values to create the new invoice for a sales order.
+        """
+        res = super().action_invoice_create(grouped, final)
+        invoice_model = self.env['account.invoice']
+        invoices_set = invoice_model
+        invoices_new = invoice_model.browse(res)
+        for sale in self:
+            invoices = sale.invoice_ids & invoices_new
+            pick_ids = sale.picking_ids.filtered(
+                lambda pick: pick.location_dest_id.usage == 'customer' and
+                pick.state == 'done')
+            origin_new = '%s : %s' % (sale.name, ' '.join(
+                pick_ids.mapped('name')))
+            origin_old = invoices.mapped(
+                'origin') if invoices in invoices_set else []
+            origin_old.append(origin_new)
+            invoices.update({'origin': ', '.join(origin_old)})
+            invoices_set |= invoices
+        return res
+
 
 class PurchaseOrder(models.Model):
 
