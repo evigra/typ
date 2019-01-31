@@ -148,13 +148,13 @@
                 </div>
                 <div class="col-xs-6 col-md-4 text-right">
                     <div class="row">
-                        <span class="col-xs-4 text-left"><strong>SubTotal</strong>:</span> <span class="col-xs-1" t-esc="doc.pricelist_id and doc.pricelist_id.currency_id and doc.pricelist_id.currency_id.symbol or ''"/> <span class="col-xs-7 text-right" t-field="doc.amount_untaxed"/>
+                        <span class="col-xs-4 text-left"><strong>SubTotal</strong>:</span> <span class="col-xs-7 text-right" t-field="doc.amount_untaxed"/>
                     </div>
                     <div class="row">
-                        <span class="col-xs-4 text-left"><strong>IVA 16%</strong>:</span> <span class="col-xs-1" t-esc="doc.pricelist_id and doc.pricelist_id.currency_id and doc.pricelist_id.currency_id.symbol or ''"/> <span class="col-xs-7 text-right" t-field="doc.amount_tax"/>
+                        <span class="col-xs-4 text-left"><strong>IVA</strong>:</span> <span class="col-xs-7 text-right" t-field="doc.amount_tax"/>
                     </div>
                     <div class="row" name='total'>
-                        <span class="col-xs-4 text-left"><strong>Total</strong>:</span> <span class="col-xs-1" t-esc="doc.pricelist_id and doc.pricelist_id.currency_id and doc.pricelist_id.currency_id.symbol or ''"/> <span class="col-xs-7 text-right" t-field="doc.amount_total"/>
+                        <span class="col-xs-4 text-left"><strong>Total</strong>:</span> <span class="col-xs-7 text-right" t-field="doc.amount_total"/>
                     </div>
                 </div>
             </div>
