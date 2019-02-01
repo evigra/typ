@@ -75,10 +75,13 @@ class StockPicking(models.Model):
         # Search for sale orders with special purchase order, in a confirmed
         # state and that do not have as destination the location of the
         # customer, to avoid the cancellation of the picking
+
         sale_id = self.mapped('sale_id')
         purchase_ids = sale_id.picking_ids.mapped(
             'purchase_id').filtered(lambda order: order.state == 'purchase')
-        if purchase_ids and (self.mapped('location_dest_id').filtered(
+        cancel_picking = self._context.get('cancel_picking', False)
+        if not cancel_picking and purchase_ids and (self.mapped(
+            'location_dest_id').filtered(
                 lambda pick: pick.usage != 'customer') or len(self) > 1):
             raise UserError(_('This order %s cannot be cancelled.') %
                             sale_id.name)

@@ -33,3 +33,10 @@ class PurchaseOrder(models.Model):
     def _onchange_shipment_date(self):
         for line in self.order_line:
             line.update({'shipment_date': self.shipment_date})
+
+    @api.multi
+    def button_cancel(self):
+        """Allow cancel purchase order, related to special sale order with
+        pickings in transit when their states aren`t done"""
+        return super(PurchaseOrder, self.with_context(
+            cancel_picking=True)).button_cancel()
