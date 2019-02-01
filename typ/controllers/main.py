@@ -6,7 +6,6 @@ from werkzeug.exceptions import Forbidden
 
 from odoo import http, tools, _
 from odoo.http import request, Controller
-
 from odoo.addons.website_sale.controllers.main import WebsiteSale
 from odoo.addons.portal.controllers.portal import CustomerPortal
 from odoo.addons.sale.controllers.portal import CustomerPortal as SP
@@ -70,6 +69,8 @@ class MyAccountInvoices(PortalAccount):
         response = super(MyAccountInvoices, self).portal_my_invoices(*arg,
                                                                      **kw)
 
+        response.qcontext['in_view'] = "invoices"
+
         status_filter = kw.get('invoices_status')
         response.qcontext['invoices_status'] = status_filter
 
@@ -107,17 +108,92 @@ class MyAccountInvoices(PortalAccount):
 
         amount_usd = my_invoices.filtered(
             lambda rec: rec.currency_id.name == 'USD'
+            and rec.state != 'cancel'
             ).mapped('amount_total')
         to_paid_usd = sum(amount_usd) - sum_unpaid_usd
         response.qcontext['total_to_paid_usd'] = to_paid_usd
 
         amount_mxn = my_invoices.filtered(
             lambda rec: rec.currency_id.name == 'MXN'
+            and rec.state != 'cancel'
             ).mapped('amount_total')
         to_paid_mxn = sum(amount_mxn) - sum_unpaid_mxn
         response.qcontext['total_to_paid_mxn'] = to_paid_mxn
 
         return response
+
+    @http.route(['/my/credit_notes'], type='http', auth="user", website=True)
+    def my_credit_notes(self, *arg, **kw):
+        response = super(MyAccountInvoices, self).portal_my_invoices(*arg,
+                                                                     **kw)
+
+        response.qcontext['in_view'] = "credit_notes"
+
+        status_filter = kw.get('invoices_status')
+        response.qcontext['invoices_status'] = status_filter
+
+        month_filter = kw.get('month')
+        response.qcontext['month_filter'] = month_filter
+
+        invoices = response.qcontext.get('invoices')
+
+        if status_filter == 'open':
+            my_credit_notes = invoices.filtered(lambda rec:
+                                                rec.state == 'open' and
+                                                rec.type == 'out_refund')
+            response.qcontext.update({'invoices': my_credit_notes})
+        elif status_filter == 'paid':
+            my_credit_notes = invoices.filtered(lambda rec:
+                                                rec.state == 'paid' and
+                                                rec.type == 'out_refund')
+            response.qcontext.update({'invoices': my_credit_notes})
+        else:
+            my_credit_notes = invoices.filtered(lambda rec:
+                                                rec.type == 'out_refund')
+            response.qcontext.update({'invoices': my_credit_notes})
+
+        response.qcontext.update({'default_url': '/my/credit_notes'})
+
+        total_unpaid_usd = my_credit_notes.filtered(
+            lambda rec: rec.currency_id.name == 'USD'
+            ).mapped('residual')
+        sum_unpaid_usd = sum(total_unpaid_usd)
+        response.qcontext['total_unpaid_usd'] = sum_unpaid_usd
+
+        total_unpaid_mxn = my_credit_notes.filtered(
+            lambda rec: rec.currency_id.name == 'MXN'
+            ).mapped('residual')
+        sum_unpaid_mxn = sum(total_unpaid_mxn)
+        response.qcontext['total_unpaid_mxn'] = sum_unpaid_mxn
+
+        amount_usd = my_credit_notes.filtered(
+            lambda rec: rec.currency_id.name == 'USD'
+            ).mapped('amount_total')
+        to_paid_usd = sum(amount_usd) - sum_unpaid_usd
+        response.qcontext['total_to_paid_usd'] = to_paid_usd
+
+        amount_mxn = my_credit_notes.filtered(
+            lambda rec: rec.currency_id.name == 'MXN'
+            ).mapped('amount_total')
+        to_paid_mxn = sum(amount_mxn) - sum_unpaid_mxn
+        response.qcontext['total_to_paid_mxn'] = to_paid_mxn
+
+        return request.render("typ.my_invoices", response.qcontext)
+
+    @http.route(['/my/payment_complements'], type='http',
+                auth="user", website=True)
+    def my_payment_complements(self, **kw):
+        partner = request.env.user.partner_id.ids
+        account_payments = request.env['account.payment']
+
+        complements = account_payments.sudo().search([(
+            'partner_id', '=', partner)])
+
+        values = {
+            'payment_partner': complements,
+        }
+
+        return request.render("typ.payment_complements", values)
 
 
 class MyAccountOrders(SP):

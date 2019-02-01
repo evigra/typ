@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 11.0+e\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-01-15 16:26+0000\n"
-"PO-Revision-Date: 2019-01-15 10:42-0600\n"
+"POT-Creation-Date: 2019-02-14 22:41+0000\n"
+"PO-Revision-Date: 2019-02-14 16:47-0600\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -16,6 +16,11 @@ msgstr ""
 "Plural-Forms: \n"
 "Language: es_MX\n"
 "X-Generator: Poedit 2.0.6\n"
+
+#. module: typ
+#: model:ir.ui.view,arch_db:typ.my_invoices
+msgid "#Credit Note"
+msgstr "#Nota de Crédito"
 
 #. module: typ
 #: model:ir.ui.view,arch_db:typ.my_invoices
@@ -34,36 +39,6 @@ msgid "&amp;nbsp;<span>on</span>"
 msgstr "&amp;nbsp;<span>en</span>"
 
 #. module: typ
-#: model:ir.ui.view,arch_db:typ.payment
-msgid "1 - Billing Address"
-msgstr "1 - Dirección de envío"
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.carriers
-msgid "2 - Delivery Method"
-msgstr "2 - Método de entrega"
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.sort_products
-msgid "20 products"
-msgstr "20 productos"
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.payment_method
-msgid "3 - Payment Method"
-msgstr "3 - Método de pago"
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.confirm_order
-msgid "4 - Confirm Order"
-msgstr "4 - Confirmar Pedido"
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.sort_products
-msgid "50 products"
-msgstr "50 productos"
-
-#. module: typ
 #: model:ir.ui.view,arch_db:typ.report_invoice_document_typ
 #: model:ir.ui.view,arch_db:typ.report_payment_receipt_typ
 msgid "<b><span>Total</span></b>"
@@ -79,15 +54,10 @@ msgstr ""
 "                                 <i>Pedimento:</i>"
 
 #. module: typ
-#: code:addons/typ/models/account_invoice.py:35
+#: code:addons/typ/models/account_invoice.py:38
 #, python-format
 msgid "<h2>Error when try send invoice by email</h2><hr>Partner have not email. Please set that value.</hr>"
 msgstr "<h2>Error cuando se envia la factura por email</h2><hr>El cliente no tiene email. Porfavor agregue el valor</hr>"
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.payment
-msgid "<i class=\"fa fa-chevron-left mr8\"/>Continue shopping"
-msgstr "<i class=\"fa fa-chevron-left mr8\"/>Seguir comprando"
 
 #. module: typ
 #: model:ir.ui.view,arch_db:typ.portal_my_home_menu_invoice
@@ -115,55 +85,14 @@ msgid "<i class=\"fa fa-chevron-left\" aria-hidden=\"true\"/> Back to shipping i
 msgstr "<i class=\"fa fa-chevron-left\" aria-hidden=\"true\"/> Regresar a información de envío"
 
 #. module: typ
-#: model:ir.ui.view,arch_db:typ.product-description
-msgid "<i class=\"fa fa-heart fa-lg mr16 heart-fav\"/>Remove from favorites"
-msgstr "<i class=\"fa fa-heart fa-lg mr16 heart-fav\"/>Eliminar de favoritos"
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.product-description
-msgid "<i class=\"fa fa-heart-o fa-lg mr16 heart-fav\"/>Add to favorites"
-msgstr "<i class=\"fa fa-heart-o fa-lg mr16 heart-fav\"/>Agregar a favoritos"
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.snippets
-msgid "<i class=\"fa fa-th-large\"/> TYP"
-msgstr "<i class=\"fa fa-th-large\"/> TYP"
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.continue_shopping
-msgid "<span class=\"\">Continue Shopping</span>"
-msgstr "<span class=\"\">Seguir comprando</span>"
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.cart_lines
-msgid "<span class=\"\">Pay</span>"
-msgstr "<span class=\"\">Pagar</span>"
-
-#. module: typ
 #: model:ir.ui.view,arch_db:typ.portal_order_page
 msgid "<span class=\"\">Repurchase Order</span>"
 msgstr "<span class=\"\">Re-comprar pedido</span>"
 
 #. module: typ
-#: model:ir.ui.view,arch_db:typ.total
-msgid "<span class=\"col-xs-6 text-right text-field\" title=\"Taxes may be updated after providing shipping address\"> Taxes:</span>"
-msgstr "<span class=\"col-xs-6 text-right text-field\" title=“Los impuestos pueden ser actualizados después de llenar la dirección de envío”> Impuestos:</span>"
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.total
-msgid "<span class=\"col-xs-6 text-right text-field\">Subtotal:</span>"
-msgstr "<span class=\"col-xs-6 text-right text-field\">Subtotal:</span>"
-
-#. module: typ
 #: model:ir.ui.view,arch_db:typ.portal_invoice_page
 msgid "<span class=\"date-order mr8\">RFC:</span>"
 msgstr "<span class=\"date-order mr8\">RFC:</span>"
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.products_list
-#: model:ir.ui.view,arch_db:typ.sort_products
-msgid "<span class=\"filter filter_by\">Filter by: </span>"
-msgstr "<span class=\"filter filter_by\">Filtrar por: </span>"
 
 #. module: typ
 #: model:ir.ui.view,arch_db:typ.sort_by_orders
@@ -176,52 +105,6 @@ msgid "<span class=\"mr16 filter\">See:</span>"
 msgstr "<span class=\"mr16 filter\">Visualizar:</span>"
 
 #. module: typ
-#: model:ir.ui.view,arch_db:typ.products_list
-#: model:ir.ui.view,arch_db:typ.sort_products
-msgid "<span class=\"mr16 filter\">Sort by:</span>"
-msgstr "<span class=\"mr16 filter\">Ordenar por:</span>"
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.sort_products
-msgid "<span class=\"mr16 filter\">Visualize: </span>"
-msgstr "<span class=\"mr16 filter\">Visualizar: </span>"
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.featured-products
-msgid "<span class=\"sr-only\">Next</span>"
-msgstr "<span class=\"sr-only\">Siguiente</span>"
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.confirmation
-msgid "<span class=\"text-green\">Autorized</span>"
-msgstr "<span class=\"text-green\">Autorizado</span>"
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.confirmation
-msgid "<span class=\"text-green\">Paid Done</span>"
-msgstr "<span class=\"text-green\">Pagado</span>"
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.confirmation
-msgid "<span class=\"text-red\">Cancel</span>"
-msgstr "<span class=\"text-red\">Cancelar</span>"
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.confirmation
-msgid "<span class=\"text-red\">Error</span>"
-msgstr "<span class=\"text-red\">Error</span>"
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.confirmation
-msgid "<span class=\"text-yellow\">Pending</span>"
-msgstr "<span class=\"text-yellow\">Pendiente</span>"
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.cart_lines
-msgid "<span class=\"total-title\">Total</span>"
-msgstr "<span class=\"total-title\">Total</span>"
-
-#. module: typ
 #: model:ir.ui.view,arch_db:typ.report_invoice_document_typ
 msgid "<span> PPD Payment in partials or deferred</span>"
 msgstr "<span> PPD Pago en parcialidades o diferido</span>"
@@ -230,11 +113,6 @@ msgstr "<span> PPD Pago en parcialidades o diferido</span>"
 #: model:ir.ui.view,arch_db:typ.report_invoice_document_typ
 msgid "<span> PUE Payment in single exhibition</span>"
 msgstr "<span> PUE Pago en una sola exhibición</span>"
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.sort_products
-msgid "<span> products</span>"
-msgstr "<span> productos</span>"
 
 #. module: typ
 #: model:ir.ui.view,arch_db:typ.report_invoice_document_typ
@@ -272,39 +150,6 @@ msgid "<span> | SAT Certificate:</span>"
 msgstr "<span> | Certificado SAT:</span>"
 
 #. module: typ
-#: model:ir.ui.view,arch_db:typ.office_places
-msgid "<span>, Col. </span>"
-msgstr "<span>, Col. </span>"
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.page_typ_acca_ir_ui_view
-#: model:ir.ui.view,arch_db:typ.typ_acca
-#: model:website.page,arch_db:typ.page_typ_acca
-msgid "<span>ACCA</span>"
-msgstr "<span>ACCA</span>"
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.page_typ_ahri_ir_ui_view
-#: model:ir.ui.view,arch_db:typ.typ_ahri
-#: model:website.page,arch_db:typ.page_typ_ahri
-msgid "<span>AHRI</span>"
-msgstr "<span>AHRI</span>"
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.page_typ_americ_ir_ui_view
-#: model:ir.ui.view,arch_db:typ.typ_americ
-#: model:website.page,arch_db:typ.page_typ_americ
-msgid "<span>AMERIC</span>"
-msgstr "<span>AMERIC</span>"
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.page_typ_ashrae_ir_ui_view
-#: model:ir.ui.view,arch_db:typ.typ_ashrae
-#: model:website.page,arch_db:typ.page_typ_ashrae
-msgid "<span>ASHRAE</span>"
-msgstr "<span>ASHRAE</span>"
-
-#. module: typ
 #: model:ir.ui.view,arch_db:typ.report_invoice_document_typ
 #: model:ir.ui.view,arch_db:typ.report_payment_receipt_typ
 msgid "<span>Account Last 4 Numbers</span>"
@@ -327,26 +172,15 @@ msgid "<span>Amount</span>"
 msgstr "<span>Importe</span>"
 
 #. module: typ
-#: model:ir.ui.view,arch_db:typ.page_typ_comfort_ir_ui_view
-#: model:ir.ui.view,arch_db:typ.typ_comfort
-#: model:website.page,arch_db:typ.page_typ_comfort
-msgid "<span>COMFORT INSITUTE</span>"
-msgstr "<span>COMFORT INSITUTE</span>"
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.products_list
-msgid ""
-"<span>Categories</span> \n"
-"                                        <i class=\"fa fa-chevron-down pull-right\"/>"
-msgstr ""
-"<span>Categorías</span> \n"
-"                                        <i class=\"fa fa-chevron-down pull-right\"/>"
-
-#. module: typ
 #: model:ir.ui.view,arch_db:typ.report_invoice_document_typ
 #: model:ir.ui.view,arch_db:typ.report_payment_receipt_typ
 msgid "<span>Client Reference</span>"
 msgstr "<span>Referencia del Cliente</span>"
+
+#. module: typ
+#: model:ir.ui.view,arch_db:typ.sort_by_orders
+msgid "<span>Credit notes</span>"
+msgstr "<span>Notas de crédito</span>"
 
 #. module: typ
 #: model:ir.ui.view,arch_db:typ.report_invoice_document_typ
@@ -396,13 +230,6 @@ msgid "<span>Extra Info</span>"
 msgstr "<span>Información Extra</span>"
 
 #. module: typ
-#: model:ir.ui.view,arch_db:typ.page_typ_fide_ir_ui_view
-#: model:ir.ui.view,arch_db:typ.typ_fide
-#: model:website.page,arch_db:typ.page_typ_fide
-msgid "<span>FIDE</span>"
-msgstr "<span>FIDE</span>"
-
-#. module: typ
 #: model:ir.ui.view,arch_db:typ.report_invoice_document_typ
 #: model:ir.ui.view,arch_db:typ.report_payment_receipt_typ
 msgid "<span>Fiscal Folio</span>"
@@ -421,11 +248,9 @@ msgid "<span>Form of Payment</span>"
 msgstr "<span>Forma de Pago</span>"
 
 #. module: typ
-#: model:ir.ui.view,arch_db:typ.page_typ_hardi_ir_ui_view
-#: model:ir.ui.view,arch_db:typ.typ_hardi
-#: model:website.page,arch_db:typ.page_typ_hardi
-msgid "<span>HARDI</span>"
-msgstr "<span>HARDI</span>"
+#: model:ir.ui.view,arch_db:typ.sort_by_orders
+msgid "<span>Invoices</span>"
+msgstr "<span>Facturas</span>"
 
 #. module: typ
 #: model:ir.ui.view,arch_db:typ.report_invoice_document_typ
@@ -450,13 +275,6 @@ msgstr "<span>Certificado del Emisor</span>"
 #: model:ir.ui.view,arch_db:typ.report_payment_receipt_typ
 msgid "<span>Issuer</span>"
 msgstr "<span>Emisor</span>"
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.page_typ_nate_ir_ui_view
-#: model:ir.ui.view,arch_db:typ.typ_nate
-#: model:website.page,arch_db:typ.page_typ_nate
-msgid "<span>NATE</span>"
-msgstr "<span>NATE</span>"
 
 #. module: typ
 #: model:ir.ui.view,arch_db:typ.sort_by_orders
@@ -490,7 +308,6 @@ msgid "<span>Quotations</span>"
 msgstr "<span>Cotizaciones</span>"
 
 #. module: typ
-#: model:ir.ui.view,arch_db:typ.confirmation
 #: model:ir.ui.view,arch_db:typ.portal_order_page
 msgid "<span>RFC: </span>"
 msgstr "<span>RFC: </span>"
@@ -510,11 +327,6 @@ msgstr "<span>Clave SAT</span>"
 #: model:ir.ui.view,arch_db:typ.report_invoice_document_typ
 msgid "<span>Sub Total</span>"
 msgstr "<span>Sub Total</span>"
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.cart_lines
-msgid "<span>Total</span>"
-msgstr "<span>Total</span>"
 
 #. module: typ
 #: model:ir.ui.view,arch_db:typ.report_invoice_document_typ
@@ -537,18 +349,6 @@ msgid "<span>Use</span>"
 msgstr "<span>Uso</span>"
 
 #. module: typ
-#: model:ir.ui.view,arch_db:typ.confirmation
-msgid "<span>ZIP. </span>"
-msgstr "<span>C.P. </span>"
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.page_typ_acca_ir_ui_view
-#: model:ir.ui.view,arch_db:typ.typ_acca
-#: model:website.page,arch_db:typ.page_typ_acca
-msgid "<strong>Hacer de la Industria del HVACR y de cada Negocio Contratista , uno profesional y con más éxito.</strong>"
-msgstr "<strong>Hacer de la Industria del HVACR y de cada Negocio Contratista , uno profesional y con más éxito.</strong>"
-
-#. module: typ
 #: model:ir.ui.view,arch_db:typ.report_invoice_document_typ
 msgid "<strong>Notes</strong>:"
 msgstr "<strong>Notas</strong>:"
@@ -558,13 +358,6 @@ msgstr "<strong>Notas</strong>:"
 #: model:ir.ui.view,arch_db:typ.report_payment_receipt_typ
 msgid "<strong>This document is a printed representation of a CFDI</strong>"
 msgstr "<strong>Este documento es una representación impresa de un CFDI</strong>"
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.page_typ_ashrae_ir_ui_view
-#: model:ir.ui.view,arch_db:typ.typ_ashrae
-#: model:website.page,arch_db:typ.page_typ_ashrae
-msgid "<strong>Tiene la misión de servir a la humanidad, promoviendo un mundo sostenible mediante la investigación, redacción de normas, publicaciones y educación continua.</strong>"
-msgstr "<strong>Tiene la misión de servir a la humanidad, promoviendo un mundo sostenible mediante la investigación, redacción de normas, publicaciones y educación continua.</strong>"
 
 #. module: typ
 #: model:ir.ui.view,arch_db:typ.report_invoice_document_typ
@@ -578,44 +371,9 @@ msgid "AC Thermostats"
 msgstr "Termostatos de AC"
 
 #. module: typ
-#: model:ir.ui.view,arch_db:typ.page_typ_acca_ir_ui_view
-#: model:ir.ui.view,arch_db:typ.typ_acca
-#: model:website.page,arch_db:typ.page_typ_acca
-msgid ""
-"ACCA, Contratista de Aire Acondicionado de América (por sus siglas en inglés), es una asociación de más de 4,000 \n"
-"                                        contratistas que trabaja en grupo para mejorar a la industria del HVACR; promover buenas prácticas y mantener a los \n"
-"                                        hogares y edificios seguros, limpios y confortables."
-msgstr ""
-"ACCA, Contratista de Aire Acondicionado de América (por sus siglas en inglés), es una asociación de más de 4,000 \n"
-"                                        contratistas que trabaja en grupo para mejorar a la industria del HVACR; promover buenas prácticas y mantener a los \n"
-"                                        hogares y edificios seguros, limpios y confortables."
-
-#. module: typ
 #: model:ir.ui.view,arch_db:typ.personal-info
 msgid "ACCOUNT INFORMATION"
 msgstr "INFORMACIÓN DE CUENTA"
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.homepage
-msgid "ADD PRODUCTS TO<br/>CART"
-msgstr "AGREGAR PRODUCTOS AL<br/>CARRITO"
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.page_typ_americ_ir_ui_view
-#: model:ir.ui.view,arch_db:typ.typ_americ
-#: model:website.page,arch_db:typ.page_typ_americ
-msgid "AMERIC es una asociación de profesionales donde podemos contar con el apoyo y la logística de cómo cubrir estas necesidades y lograr el crecimiento necesario para llegar a nuestras metas con la mejor productividad posible."
-msgstr "AMERIC es una asociación de profesionales donde podemos contar con el apoyo y la logística de cómo cubrir estas necesidades y lograr el crecimiento necesario para llegar a nuestras metas con la mejor productividad posible."
-
-#. module: typ
-#: model:website.menu,name:typ.menu_about
-msgid "About"
-msgstr "Nosotros"
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.about
-msgid "About us"
-msgstr "Acerca de"
 
 #. module: typ
 #: model:ir.ui.view,arch_db:typ.my-account-menu
@@ -623,22 +381,7 @@ msgid "Account"
 msgstr "Cuenta"
 
 #. module: typ
-#: model:ir.ui.view,arch_db:typ.page_typ_providers_ir_ui_view
-#: model:ir.ui.view,arch_db:typ.typ_providers
-#: model:website.page,arch_db:typ.page_typ_providers
-msgid "Acemire"
-msgstr "Acemire"
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.page_typ_fide_ir_ui_view
-#: model:ir.ui.view,arch_db:typ.typ_fide
-#: model:website.page,arch_db:typ.page_typ_fide
-msgid "Acérquese a nuestro departamento de ventas para mayor información al respecto."
-msgstr "Acérquese a nuestro departamento de ventas para mayor información al respecto."
-
-#. module: typ
 #: model:ir.ui.view,arch_db:typ.account_address
-#: model:ir.ui.view,arch_db:typ.shipping_cards
 msgid "Add an address"
 msgstr "Agregar dirección"
 
@@ -646,11 +389,6 @@ msgstr "Agregar dirección"
 #: model:ir.ui.view,arch_db:typ.payment_tokens_list
 msgid "Add new card"
 msgstr "Agregar nueva tarjeta"
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.product-description
-msgid "Add to cart"
-msgstr "Agregar al carrito"
 
 #. module: typ
 #: model:ir.ui.view,arch_db:typ.address_panel
@@ -664,11 +402,6 @@ msgid "Addresses"
 msgstr "Direcciones"
 
 #. module: typ
-#: model:ir.ui.view,arch_db:typ.homepage
-msgid "Agrega Productos al Carrito"
-msgstr "Agrega Productos al Carrito"
-
-#. module: typ
 #: model:ir.ui.view,arch_db:typ.month_name
 msgid "Agu"
 msgstr "Agu"
@@ -679,73 +412,9 @@ msgid "Air Conditioner"
 msgstr "Aire acondicionado"
 
 #. module: typ
-#: model:ir.ui.view,arch_db:typ.page_typ_acca_ir_ui_view
-#: model:ir.ui.view,arch_db:typ.typ_acca
-#: model:website.page,arch_db:typ.page_typ_acca
-msgid "Air Conditioning Contractors of America (ACCA)"
-msgstr "Air Conditioning Contractors of America (ACCA)"
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.page_typ_ahri_ir_ui_view
-#: model:ir.ui.view,arch_db:typ.typ_ahri
-#: model:website.page,arch_db:typ.page_typ_ahri
-msgid "Air Conditioning, Heating and Refrigeration Institute (AHRI)"
-msgstr "Air Conditioning, Heating and Refrigeration Institute (AHRI)"
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.page_typ_comfort_ir_ui_view
-#: model:ir.ui.view,arch_db:typ.typ_comfort
-#: model:website.page,arch_db:typ.page_typ_comfort
-msgid "Aire interior de poca calidad"
-msgstr "Aire interior de poca calidad"
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.page_typ_comfort_ir_ui_view
-#: model:ir.ui.view,arch_db:typ.typ_comfort
-#: model:website.page,arch_db:typ.page_typ_comfort
-msgid "Aire interior húmedo o seco"
-msgstr "Aire interior húmedo o seco"
-
-#. module: typ
 #: model:ir.ui.view,arch_db:typ.sort_by_orders
-#: model:ir.ui.view,arch_db:typ.sort_products
 msgid "All"
 msgstr "Todos"
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.products_list
-msgid "All Products"
-msgstr "Todos los productos"
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.about
-msgid ""
-"All our products are guaranteed, however, the terms vary according to the policies and conditions established by each supplier or manufacturer. \n"
-"                                      The electrical parts have no guarantee."
-msgstr ""
-"Todos nuestros productos están garantizados, sin embargo, los términos varían de acuerdo a las políticas y condiciones que establece cada proveedor o fabricante.  \n"
-"                                      Las partes eléctricas no tienen garantía."
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.about
-msgid ""
-"All prices are L.A.B. point of sale or assortment of T&amp;P Refrigeration. The freight charges for shipping products are charged to the customer, \n"
-"                                      who will pay them when they are received. In case of receiving damaged or missing products, the customer must immediately claim the freight company."
-msgstr ""
-"Todos los precios son L.A.B. punto de venta o surtido de T&amp;P Refrigeración. Los fletes por envío de productos son con cargo al cliente, \n"
-"                                      quien los pagará al momento de recibirlos. En caso de recibir productos dañados o con faltantes, el cliente deberá reclamar de inmediato a la compañía fletera."
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.confirmation
-msgid "All the information to track your order will be sent to your email."
-msgstr "Toda la información para rastrear tu pedido será enviada a tu correo."
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.page_typ_ashrae_ir_ui_view
-#: model:ir.ui.view,arch_db:typ.typ_ashrae
-#: model:website.page,arch_db:typ.page_typ_ashrae
-msgid "American Society of Heating, Refrigerating and Air-Conditioning Engineers (ASHRAE)"
-msgstr "American Society of Heating, Refrigerating and Air-Conditioning Engineers (ASHRAE)"
 
 #. module: typ
 #: model:ir.ui.view,arch_db:typ.report_payment_receipt_typ
@@ -758,66 +427,9 @@ msgid "Anemómetros"
 msgstr "Anemómetros"
 
 #. module: typ
-#: model:ir.ui.view,arch_db:typ.about
-msgid ""
-"Any return of products arising from causes attributable to the buyer, will generate a charge of 20% on the value of your shipment, will be freight\n"
-"                                       paid by the customer to the branch that corresponds. If the products are returned for reasons attributable to T&amp;P Refrigeración or to the manufacturers \n"
-"                                       of the product, the money will be returned or a credit will be extended to the customer's account after receiving and having accepted the return."
-msgstr ""
-"Toda devolución de productos originada por causas atribuibles al comprador, generará un cargo del 20% sobre el valor de su envío, será con flete\n"
-"                                       pagado por el cliente a la sucursal que corresponda. Si los productos son devueltos por causas atribuibles a T&amp;P Refrigeración o a los fabricantes \n"
-"                                       del producto, se hará la devolución del dinero o se extenderá un crédito a la cuenta del cliente después de recibir y haber sido aceptada la devolución."
-
-#. module: typ
 #: model:ir.ui.view,arch_db:typ.month_name
 msgid "Apr"
 msgstr "Abr"
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.page_typ_comfort_ir_ui_view
-#: model:ir.ui.view,arch_db:typ.typ_comfort
-#: model:website.page,arch_db:typ.page_typ_comfort
-msgid "Areas calientes y frías"
-msgstr "Areas calientes y frías"
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.about
-msgid ""
-"As of 2006, we are active members of HARDI, an organization that groups more than 450 distribution companies and more than 300\n"
-"                                    associated manufacturing companies, mainly in the United States, and that represent little more than 80% of the value of products\n"
-"                                    sold through distribution companies. ."
-msgstr ""
-"A partir del 2006 somos miembros activos de HARDI, organización que agrupa a mas de 450 compañías distribuidoras y mas de 300 \n"
-"                                    compañías fabricantes asociadas, en Estados Unidos principalmente y que representan poco mas del 80% del valor de los productos\n"
-"                                   vendidos a través de compañías distribuidoras."
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.products_list
-msgid "Ask for product"
-msgstr "Preguntar por producto"
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.page_typ_hardi_ir_ui_view
-#: model:ir.ui.view,arch_db:typ.typ_hardi
-#: model:website.page,arch_db:typ.page_typ_hardi
-msgid "Asociación Internacional de Distribuidores Mayoristas de Aire Acondicionado, Calefacción y Refrigeración, HARDI, alberga a mas de 450 Distribuidores Mayoristas con mas de 3600 puntos de ventas y aproximadamente el 80% del valor de las ventas de los distribuidores mayoristas de la industria, las cuales ascienden a mas de $20,000,000,000 de dólares anualmente."
-msgstr "Asociación Internacional de Distribuidores Mayoristas de Aire Acondicionado, Calefacción y Refrigeración, HARDI, alberga a mas de 450 Distribuidores Mayoristas con mas de 3600 puntos de ventas y aproximadamente el 80% del valor de las ventas de los distribuidores mayoristas de la industria, las cuales ascienden a mas de $20,000,000,000 de dólares anualmente."
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.page_typ_americ_ir_ui_view
-#: model:ir.ui.view,arch_db:typ.typ_americ
-#: model:website.page,arch_db:typ.page_typ_americ
-msgid "Asociación Mexicana de Empresas del Ramo de Instalaciones para la Construcción (AMERIC)"
-msgstr "Asociación Mexicana de Empresas del Ramo de Instalaciones para la Construcción (AMERIC)"
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.about
-msgid ""
-"Available to customers with an authorized and current line of credit. Credit sales invoices will cause interest if they are not paid when due. \n"
-"                                       Purchase orders from customers with suspended credit will not be processed."
-msgstr ""
-"Disponible para clientes con línea de crédito autorizada y vigente. Las facturas de ventas a crédito causarán intereses si no son pagadas a su vencimiento. \n"
-"                                        Las órdenes de compra de clientes con crédito suspendidos no serán procesadas."
 
 #. module: typ
 #: model:product.public.category,name:typ.axiales-pared
@@ -835,11 +447,6 @@ msgid "BILLING INFORMATION"
 msgstr "INFORMACIÓN DE FACTURACIÓN"
 
 #. module: typ
-#: model:ir.ui.view,arch_db:typ.about
-msgid "Background"
-msgstr "Antecedentes"
-
-#. module: typ
 #: model:ir.ui.view,arch_db:typ.report_payment_receipt_typ
 msgid "Balance"
 msgstr "Saldo"
@@ -850,40 +457,9 @@ msgid "Billing Adddres"
 msgstr "Dirección de facturación"
 
 #. module: typ
-#: model:ir.ui.view,arch_db:typ.confirmation
-msgid "Billing Address"
-msgstr "Dirección de facturación"
-
-#. module: typ
 #: model:product.public.category,name:typ.bombas-vacio
 msgid "Bombas de Vacío"
 msgstr "Bombas de Vacío"
-
-#. module: typ
-#: model:delivery.carrier,name:typ.pick_up_at_cedis
-msgid "CEDIS"
-msgstr "CEDIS"
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.homepage
-msgid "CHOOSE YOUR PAYMENT<br/>METHOD"
-msgstr "ESCOGE TU MÉTODO DE <br/>PAGO"
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.contactus
-#: model:ir.ui.view,arch_db:typ.contactus_thanks
-msgid "CONTACT"
-msgstr "CONTACTO"
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.contactus_thanks
-msgid "CONTINUE SHOPPING"
-msgstr "SEGUIR COMPRANDO"
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.conekta_s2s_form
-msgid "CVC"
-msgstr "CVC"
 
 #. module: typ
 #: model:product.public.category,name:typ.calefactores
@@ -911,24 +487,9 @@ msgid "Cancelled Invoice"
 msgstr "Factura cancelada"
 
 #. module: typ
-#: model:ir.ui.view,arch_db:typ.conekta_s2s_form
-msgid "Card Number"
-msgstr "Número de Tarjeta"
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.conekta_s2s_form
-msgid "Cardholder Name"
-msgstr "Nombre del Titular"
-
-#. module: typ
 #: model:product.public.category,name:typ.cassette
 msgid "Cassette"
 msgstr "Cassette"
-
-#. module: typ
-#: model:delivery.carrier,name:typ.pick_up_at_cd_obregon
-msgid "Cd. Obregon"
-msgstr "Cd. Obregon"
 
 #. module: typ
 #: model:ir.ui.view,arch_db:typ.email_sent
@@ -945,32 +506,6 @@ msgstr "Ciudades"
 #: model:ir.ui.view,arch_db:typ.portal_my_details
 msgid "City:"
 msgstr "Ciudad:"
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.page_typ_comfort_ir_ui_view
-#: model:ir.ui.view,arch_db:typ.typ_comfort
-#: model:website.page,arch_db:typ.page_typ_comfort
-msgid "Comfort Institute provee de capacitación y soporte a una red de Contratistas del Confort en Norte América. Estos programas ayudan a los contratistas a resolver los problemas (como los mencionados anteriormente) de sus clientes; también los ayuda a ofrecer la mayor calidad en servicios e instalaciones de equipos de calefacción y aire acondicionado."
-msgstr "Comfort Institute provee de capacitación y soporte a una red de Contratistas del Confort en Norte América. Estos programas ayudan a los contratistas a resolver los problemas (como los mencionados anteriormente) de sus clientes; también los ayuda a ofrecer la mayor calidad en servicios e instalaciones de equipos de calefacción y aire acondicionado."
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.page_typ_comfort_ir_ui_view
-#: model:ir.ui.view,arch_db:typ.typ_comfort
-#: model:website.page,arch_db:typ.page_typ_comfort
-msgid "Comfort Institute, Inc. (IC)"
-msgstr "Comfort Institute, Inc. (IC)"
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.page_typ_comfort_ir_ui_view
-#: model:ir.ui.view,arch_db:typ.typ_comfort
-#: model:website.page,arch_db:typ.page_typ_comfort
-msgid "Comfort Institute, Inc. (IC) es una organización internacional dedicada a la investigación del confort interior, también provee de entrenamientos y protección a los consumidores. La sede de la organización se encuentra en Bellingham, Washington, con instructores y oficinas distribuidas a través de los Estados Unidos y Canadá."
-msgstr "Comfort Institute, Inc. (IC) es una organización internacional dedicada a la investigación del confort interior, también provee de entrenamientos y protección a los consumidores. La sede de la organización se encuentra en Bellingham, Washington, con instructores y oficinas distribuidas a través de los Estados Unidos y Canadá."
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.about
-msgid "Commitment."
-msgstr "Compromiso."
 
 #. module: typ
 #: model:ir.ui.view,arch_db:typ.portal_my_details
@@ -1004,21 +539,6 @@ msgid "Contains the background-image of each category"
 msgstr "Contiene la imagen de fondo de cada categoría"
 
 #. module: typ
-#: model:ir.ui.view,arch_db:typ.confirmation
-msgid "Continue shopping"
-msgstr "Seguir comprando"
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.about
-msgid "Continuous improvement."
-msgstr "Mejora continua."
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.about
-msgid "Contracting companies"
-msgstr "Empresas contratistas"
-
-#. module: typ
 #: model:product.public.category,name:typ.cortinas-aire
 msgid "Cortinas de Aire"
 msgstr "Cortinas de Aire"
@@ -1027,12 +547,6 @@ msgstr "Cortinas de Aire"
 #: model:ir.model,name:typ.model_res_country
 msgid "Country"
 msgstr "País"
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.billing_form
-#: model:ir.ui.view,arch_db:typ.shipping_address
-msgid "Country*"
-msgstr "País*"
 
 #. module: typ
 #: model:ir.ui.view,arch_db:typ.contact_edit
@@ -1052,16 +566,6 @@ msgid "Cover Img"
 msgstr "Imagen de portada"
 
 #. module: typ
-#: model:ir.model.fields,field_description:typ.field_user_wishlist_create_uid
-msgid "Created by"
-msgstr "Creado por"
-
-#. module: typ
-#: model:ir.model.fields,field_description:typ.field_user_wishlist_create_date
-msgid "Created on"
-msgstr "Creado en"
-
-#. module: typ
 #: model:ir.ui.view,arch_db:typ.portal_order_page
 msgid "Creation date:"
 msgstr "Fecha de creación:"
@@ -1072,20 +576,19 @@ msgid "Credit Note"
 msgstr "Rectificativa"
 
 #. module: typ
-#: model:ir.ui.view,arch_db:typ.confirmation
+#: model:ir.ui.view,arch_db:typ.my_invoices
+msgid "Credit Notes"
+msgstr "Rectificativas"
+
+#. module: typ
+#: model:ir.ui.view,arch_db:typ.sort_by_orders
+msgid "Credit notes"
+msgstr "Notas de crédito"
+
+#. module: typ
 #: model:ir.ui.view,arch_db:typ.portal_order_page
 msgid "Credit/Debit Card"
 msgstr "Tarjeta de Crédito/Débito"
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.about
-msgid "Credit:"
-msgstr "Crédito:"
-
-#. module: typ
-#: model:delivery.carrier,name:typ.pick_up_at_culiacan
-msgid "Culiacan"
-msgstr "Culiacan"
 
 #. module: typ
 #: model:ir.ui.view,arch_db:typ.report_payment_receipt_typ
@@ -1117,31 +620,13 @@ msgstr "Suprimir"
 
 #. module: typ
 #: model:ir.ui.view,arch_db:typ.address_panel
-#: model:ir.ui.view,arch_db:typ.cart_lines
-#: model:ir.ui.view,arch_db:typ.checkout_products_cart
 msgid "Delete item"
 msgstr "Borrar elemento"
 
 #. module: typ
-#: model:ir.ui.view,arch_db:typ.cart_lines
-msgid "Delete order"
-msgstr "Borrar pedido"
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.confirmation
 #: model:ir.ui.view,arch_db:typ.portal_order_page
 msgid "Delivery"
 msgstr "Entrega"
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.product-specifications
-msgid "Description"
-msgstr "Descripción"
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.about
-msgid "Desirable values:"
-msgstr "Valores deseables:"
 
 #. module: typ
 #: model:ir.ui.view,arch_db:typ.my_orders
@@ -1155,31 +640,9 @@ msgid "Dic"
 msgstr "Dic"
 
 #. module: typ
-#: model:ir.model.fields,field_description:typ.field_user_wishlist_display_name
-msgid "Display Name"
-msgstr "Nombre mostrado"
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.page_typ_comfort_ir_ui_view
-#: model:ir.ui.view,arch_db:typ.typ_comfort
-#: model:website.page,arch_db:typ.page_typ_comfort
-msgid "Diversas investigaciones han demostrado que la mayoría de los equipos de calefacción y aire acondicionado de “alta eficiencia”, no trabajan a carga completa ni entregan el confort para el que están diseñados, por lo tanto no se ve reflejado ningún ahora en las cuentas de energía. Comfort Institute se encuentra dedicado a informar a los consumidores de Norte América sobre el porqué de esto y como evitarlo."
-msgstr "Diversas investigaciones han demostrado que la mayoría de los equipos de calefacción y aire acondicionado de “alta eficiencia”, no trabajan a carga completa ni entregan el confort para el que están diseñados, por lo tanto no se ve reflejado ningún ahora en las cuentas de energía. Comfort Institute se encuentra dedicado a informar a los consumidores de Norte América sobre el porqué de esto y como evitarlo."
-
-#. module: typ
 #: model:product.public.category,name:typ.divididos-residenciales
 msgid "Divididos Residenciales"
 msgstr "Divididos Residenciales"
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.contactus
-msgid "Do you have any doubt or comment? Contact us"
-msgstr "¿Tienes alguna duda o comentario? Contáctanos"
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.total
-msgid "Do you wish to add indications to your order?"
-msgstr "¿Deseas agregar indicaciones a tu pedido?"
 
 #. module: typ
 #: model:ir.ui.view,arch_db:typ.my_orders
@@ -1188,12 +651,14 @@ msgid "Done"
 msgstr "Hecho"
 
 #. module: typ
+#: model:ir.ui.view,arch_db:typ.payment_complements
 #: model:ir.ui.view,arch_db:typ.portal_invoice_page
 msgid "Download"
 msgstr "Descargar"
 
 #. module: typ
 #: model:ir.ui.view,arch_db:typ.my_invoices
+#: model:ir.ui.view,arch_db:typ.payment_complements
 msgid "Download invoice"
 msgstr "Descargar Factura"
 
@@ -1208,9 +673,9 @@ msgid "Draft Invoice"
 msgstr "Factura borrador"
 
 #. module: typ
-#: model:ir.ui.view,arch_db:typ.contactus
-msgid "E-mail*"
-msgstr "E-mail*"
+#: model:ir.ui.view,arch_db:typ.my_invoices
+msgid "Due Date"
+msgstr "Fecha vencimiento"
 
 #. module: typ
 #: model:ir.ui.view,arch_db:typ.portal_my_details
@@ -1218,26 +683,10 @@ msgid "EDIT PERSONAL INFORMATION"
 msgstr "EDITAR INFORMACIÓN PERSONAL"
 
 #. module: typ
-#: model:ir.ui.view,arch_db:typ.homepage
-msgid "EXCLUSIVE DISTRIBUTOR"
-msgstr "DISTRIBUIDOR EXCLUSIVO"
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.payment
-msgid "EXPRESS CHECKOUT"
-msgstr "CHECKOUT EXPRESS"
-
-#. module: typ
 #: model:ir.ui.view,arch_db:typ.address_panel
 #: model:ir.ui.view,arch_db:typ.personal-info
 msgid "Edit information"
 msgstr "Editar información"
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.address_kanban
-#: model:ir.ui.view,arch_db:typ.partner_card
-msgid "Edit this address"
-msgstr "Editar esta dirección"
 
 #. module: typ
 #: model:product.public.category,name:typ.electrical-control
@@ -1255,16 +704,6 @@ msgid "Electrical Material"
 msgstr "Material Eléctrico"
 
 #. module: typ
-#: model:ir.ui.view,arch_db:typ.homepage
-msgid "Elige Metodo de Pago"
-msgstr "Elige Método de Pago"
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.contactus_thanks
-msgid "Email Success Information"
-msgstr "Información de correo correcta"
-
-#. module: typ
 #: model:ir.ui.view,arch_db:typ.contact_edit
 #: model:ir.ui.view,arch_db:typ.personal-info
 #: model:ir.ui.view,arch_db:typ.portal_my_details
@@ -1278,96 +717,16 @@ msgid "Embeded url from google maps"
 msgstr "Embeber URL de Google Maps"
 
 #. module: typ
-#: model:ir.ui.view,arch_db:typ.page_typ_americ_ir_ui_view
-#: model:ir.ui.view,arch_db:typ.typ_americ
-#: model:website.page,arch_db:typ.page_typ_americ
-msgid "En <strong>T&amp;P Refrigeración </strong> tenemos el enlace para acceder a toda la información para afiliarse a esta institución y poder aprovechar los beneficios de esta institución. Acuda con nuestro personal para que le asesoren al respecto."
-msgstr "En <strong>T&amp;P Refrigeración </strong> tenemos el enlace para acceder a toda la información para afiliarse a esta institución y poder aprovechar los beneficios de esta institución. Acuda con nuestro personal para que le asesoren al respecto."
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.page_typ_ashrae_ir_ui_view
-#: model:ir.ui.view,arch_db:typ.typ_ashrae
-#: model:website.page,arch_db:typ.page_typ_ashrae
-msgid "En <strong>T&amp;P Refrigeración</strong> apoyamos a todas las asociaciones que tengan como fin hacer avanzar las artes de la Calefacción, Ventilación, Aire Acondicionado y la Refrigeración, así como todos sus esfuerzos enfocados al mejoramiento del medio ambiente."
-msgstr "En <strong>T&amp;P Refrigeración</strong> apoyamos a todas las asociaciones que tengan como fin hacer avanzar las artes de la Calefacción, Ventilación, Aire Acondicionado y la Refrigeración, así como todos sus esfuerzos enfocados al mejoramiento del medio ambiente."
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.page_typ_acca_ir_ui_view
-#: model:ir.ui.view,arch_db:typ.typ_acca
-#: model:website.page,arch_db:typ.page_typ_acca
-msgid ""
-"En <strong>T&amp;P Refrigeración</strong> apoyamos todos los esfuerzos enfocados al mejoramiento de la Industria y podemos ayudarle a \n"
-"                                        asociarse a esta organización de éxito probado en Norte América. Acérquese a nosotros y te ayudaremos decirte como."
-msgstr ""
-"En <strong>T&amp;P Refrigeración</strong> apoyamos todos los esfuerzos enfocados al mejoramiento de la Industria y podemos ayudarle a \n"
-"                                        asociarse a esta organización de éxito probado en Norte América. Acérquese a nosotros y te ayudaremos decirte como."
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.page_typ_fide_ir_ui_view
-#: model:ir.ui.view,arch_db:typ.typ_fide
-#: model:website.page,arch_db:typ.page_typ_fide
-msgid "En <strong>T&amp;P Refrigeración</strong> contamos con el conocimiento de la logística para conseguir el apoyo de Esquemas de Financiamiento Fide para la adquisición de equipos de refrigeración de alta eficiencia para pequeñas y medianas empresas. Conocemos los procedimientos y contamos con la asesoría para poderle ayudar a su cliente a conseguir estos recursos y así cerrar operaciones sin riesgo de la recuperación del dinero."
-msgstr "En <strong>T&amp;P Refrigeración</strong> contamos con el conocimiento de la logística para conseguir el apoyo de Esquemas de Financiamiento Fide para la adquisición de equipos de refrigeración de alta eficiencia para pequeñas y medianas empresas. Conocemos los procedimientos y contamos con la asesoría para poderle ayudar a su cliente a conseguir estos recursos y así cerrar operaciones sin riesgo de la recuperación del dinero."
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.page_typ_nate_ir_ui_view
-#: model:ir.ui.view,arch_db:typ.typ_nate
-#: model:website.page,arch_db:typ.page_typ_nate
-msgid "En <strong>T&amp;P Refrigeración</strong> estamos ocupándonos de que estas certificaciones lleguen a México para nuestros contratistas y socios comerciales con el estándar internacional de calidad en la instalación de los equipos de refrigeración y A/C ya que de esta manera elevaran sus niveles de ingresos al ofrecer un valor agregado contra sus competidores."
-msgstr "En <strong>T&amp;P Refrigeración</strong> estamos ocupándonos de que estas certificaciones lleguen a México para nuestros contratistas y socios comerciales con el estándar internacional de calidad en la instalación de los equipos de refrigeración y A/C ya que de esta manera elevaran sus niveles de ingresos al ofrecer un valor agregado contra sus competidores."
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.page_typ_americ_ir_ui_view
-#: model:ir.ui.view,arch_db:typ.typ_americ
-#: model:website.page,arch_db:typ.page_typ_americ
-msgid "En nuestro país, la industria del Aire Acondicionado y la Refrigeración ha venido evolucionando de una manera acelerada e irreversible, con una tendencia de que la importancia del Contratista como el integrador de los proyectos ha venido cobrando cada vez mas fuerza dentro del desarrollo de la obra de nuestro ramo."
-msgstr "En nuestro país, la industria del Aire Acondicionado y la Refrigeración ha venido evolucionando de una manera acelerada e irreversible, con una tendencia de que la importancia del Contratista como el integrador de los proyectos ha venido cobrando cada vez mas fuerza dentro del desarrollo de la obra de nuestro ramo."
-
-#. module: typ
-#: model:product.product,name:typ.product_product_delivery_to_address
-#: model:product.template,name:typ.product_product_delivery_to_address_product_template
-msgid "Envio a domicilio"
-msgstr "Envio a domicilio"
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.page_typ_comfort_ir_ui_view
-#: model:ir.ui.view,arch_db:typ.typ_comfort
-#: model:website.page,arch_db:typ.page_typ_comfort
-msgid "Equipo de Refrigeración/Calefacción ruidoso y poco confiable"
-msgstr "Equipo de Refrigeración/Calefacción ruidoso y poco confiable"
-
-#. module: typ
-#: code:addons/typ/models/account_invoice.py:34
-#: code:addons/typ/models/account_invoice.py:75
+#: code:addons/typ/models/account_invoice.py:37
+#: code:addons/typ/models/account_invoice.py:78
 #, python-format
 msgid "Error when try send invoice by email"
 msgstr "Error al enviar la factura por email"
 
 #. module: typ
-#: model:ir.ui.view,arch_db:typ.page_typ_americ_ir_ui_view
-#: model:ir.ui.view,arch_db:typ.typ_americ
-#: model:website.page,arch_db:typ.page_typ_americ
-msgid "Es por esta razón que este eslabón de la industria (el contratista) tiene la necesidad de acercarse a asociaciones donde pueda lograr un desarrollo e integración de una manera más ordenada y productiva para poder lograr que su negocio crezca al nivel que exige el usuario final y no quedarse rezagado al margen de esta evolución."
-msgstr "Es por esta razón que este eslabón de la industria (el contratista) tiene la necesidad de acercarse a asociaciones donde pueda lograr un desarrollo e integración de una manera más ordenada y productiva para poder lograr que su negocio crezca al nivel que exige el usuario final y no quedarse rezagado al margen de esta evolución."
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.page_typ_fide_ir_ui_view
-#: model:ir.ui.view,arch_db:typ.page_typ_hardi_ir_ui_view
-#: model:ir.ui.view,arch_db:typ.typ_fide model:ir.ui.view,arch_db:typ.typ_hardi
-#: model:website.page,arch_db:typ.page_typ_fide
-#: model:website.page,arch_db:typ.page_typ_hardi
-msgid "Estas reuniones sirven como preámbulo para conocer a otros distribuidores y empezar a establecer conexiones entre ellos, fomentando a su vez el intercambio de ideas y creando sociedades que benefician a la industria del HVACR y a todos sus miembros."
-msgstr "Estas reuniones sirven como preámbulo para conocer a otros distribuidores y empezar a establecer conexiones entre ellos, fomentando a su vez el intercambio de ideas y creando sociedades que benefician a la industria del HVACR y a todos sus miembros."
-
-#. module: typ
 #: model:product.public.category,name:typ.evaporadores
 msgid "Evaporadores"
 msgstr "Evaporadores"
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.sort_products
-msgid "Everything"
-msgstr "Todos"
 
 #. module: typ
 #: model:ir.ui.view,arch_db:typ.my_quotations
@@ -1376,29 +735,9 @@ msgid "Expired"
 msgstr "Expirado"
 
 #. module: typ
-#: model:ir.ui.view,arch_db:typ.payment
-msgid "Express delivery"
-msgstr "Envío Express"
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.featured-products
-msgid "FEATURED PRODUCTS"
-msgstr "PRODUCTOS DESTACADOS"
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.product-description
-msgid "Facebook"
-msgstr "Facebook"
-
-#. module: typ
 #: model:product.public.category,name:typ.fancoils
 msgid "Fancoils"
 msgstr "Fancoils"
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.product-description
-msgid "Favorite"
-msgstr "Favorite"
 
 #. module: typ
 #: model:ir.ui.view,arch_db:typ.month_name
@@ -1406,36 +745,14 @@ msgid "Feb"
 msgstr "Feb"
 
 #. module: typ
-#: model:ir.ui.view,arch_db:typ.page_typ_fide_ir_ui_view
-#: model:ir.ui.view,arch_db:typ.typ_fide
-#: model:website.page,arch_db:typ.page_typ_fide
-msgid "Fideicomiso para el Ahorro de Energía Eléctrica (FIDE)"
-msgstr "Fideicomiso para el Ahorro de Energía Eléctrica (FIDE)"
-
-#. module: typ
 #: model:product.public.category,name:typ.fraccionarios
 msgid "Fraccionarios"
 msgstr "Fraccionarios"
 
 #. module: typ
-#: model:ir.ui.view,arch_db:typ.payment
-msgid "Free delivery on first purchase"
-msgstr "Envío gratis en tu primera compra"
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.about
-msgid "Freight:"
-msgstr "Fletes:"
-
-#. module: typ
 #: model:ir.ui.view,arch_db:typ.my_invoices
 msgid "Generate"
 msgstr "Generar"
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.payment
-msgid "Go payment method<i class=\"fa fa-chevron-right ml8\"/>"
-msgstr "Ir a método de pago<i class=\"fa fa-chevron-right ml16\"/>"
 
 #. module: typ
 #: model:ir.model.fields,field_description:typ.field_res_partner_map_location
@@ -1444,73 +761,15 @@ msgid "Google Maps Location"
 msgstr "Ubicación Google Maps"
 
 #. module: typ
-#: model:delivery.carrier,name:typ.pick_up_at_guadalajara
-msgid "Guadalajara"
-msgstr "Guadalajara"
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.page_typ_hardi_ir_ui_view
-#: model:ir.ui.view,arch_db:typ.typ_hardi
-#: model:website.page,arch_db:typ.page_typ_hardi
-msgid "HARDI promueve el modelo de distribución de 2 etapas con el objetivo de tener un mejor orden y mayor eficiencia entre las partes que constituyen el canal de distribución requerido para atender al usuario final en todas sus necesidades y de la manera mas ordenada y eficiente posible. <strong>T&amp;P Refrigeración</strong>  en la actualidad es el único miembro de México."
-msgstr "HARDI promueve el modelo de distribución de 2 etapas con el objetivo de tener un mejor orden y mayor eficiencia entre las partes que constituyen el canal de distribución requerido para atender al usuario final en todas sus necesidades y de la manera mas ordenada y eficiente posible. <strong>T&amp;P Refrigeración</strong>  en la actualidad es el único miembro de México."
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.homepage
-msgid "HOW TO BUY IN T&amp;P"
-msgstr "COMO COMPRAR EN T&amp;P"
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.header-orgs
-#: model:ir.ui.view,arch_db:typ.page_typ_organizations_ir_ui_view
-#: model:ir.ui.view,arch_db:typ.typ_organizations
-#: model:website.page,arch_db:typ.page_typ_organizations
-msgid "HVACR ORGANIZATIONS"
-msgstr "ORGANIZACIONES HVACR"
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.page_typ_hardi_ir_ui_view
-#: model:ir.ui.view,arch_db:typ.typ_hardi
-#: model:website.page,arch_db:typ.page_typ_hardi
-msgid "Heating, Airconditioning &amp; Refrigeration Distributors International (HARDI)"
-msgstr "Heating, Airconditioning &amp; Refrigeration Distributors International (HARDI)"
-
-#. module: typ
 #: model:product.public.category,name:typ.helicoidales-tubulares
 msgid "Helicoidales Tubulares"
 msgstr "Helicoidales Tubulares"
 
 #. module: typ
-#: model:delivery.carrier,name:typ.pick_up_at_hermosillo
-msgid "Hermosillo"
-msgstr "Hermosillo"
-
-#. module: typ
 #: model:ir.model.fields,field_description:typ.field_product_product_is_highlight
 #: model:ir.model.fields,field_description:typ.field_product_template_is_highlight
-#: model:ir.ui.view,arch_db:typ.product_template_form_view
 msgid "Highlight Product"
 msgstr "Producto Destacado"
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.about
-msgid "Honesty."
-msgstr "Honestidad."
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.about
-msgid "Humility."
-msgstr "Humildad."
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.carriers
-msgid "I receive it in the Branch Office:"
-msgstr "Lo recoge en sucursal:"
-
-#. module: typ
-#: model:ir.model.fields,field_description:typ.field_user_wishlist_id
-msgid "ID"
-msgstr "ID (identificación)"
 
 #. module: typ
 #: model:ir.ui.view,arch_db:typ.my_invoices
@@ -1518,32 +777,7 @@ msgid "INVOICES HISTORY"
 msgstr "HISTORIAL DE FACTURAS"
 
 #. module: typ
-#: model:ir.ui.view,arch_db:typ.total
-msgid "Ie. White house with white doors"
-msgstr "P.ej. La casa blanca con puertas blancas"
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.about
-msgid ""
-"In <strong>T&amp;P Refrigeration</strong> we are a wholesale commercial company with more than 20 years of experience, \n"
-"                                    with its operations center in Hermosillo, Sonora, Mexico. We have six points of sale located in the Northwest of Mexico,\n"
-"                                    in the States of Sonora, Sinaloa and Baja California and also in the Operations and Distribution Center located in the \n"
-"                                    city of Hermosillo, Sonora."
-msgstr ""
-"En <strong>T&amp;P Refrigeración</strong> somos una empresa comercial mayorista con más de 20 años de experiencia, \n"
-"                                   con su centro de operaciones en Hermosillo, Sonora, México. Contamos con seis puntos de venta localizados en el Noroeste de México,\n"
-"                                    en los Estados de Sonora, Sinaloa y Baja California y además un Centro de Operaciones y Distribución ubicado en la\n"
-"                                    ciudad de Hermosillo, Sonora."
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.s-product-description
-#: model:ir.ui.view,arch_db:typ.s-product-description-subtitle
-#: model:ir.ui.view,arch_db:typ.s-product-description-title
-msgid "Insert text here"
-msgstr "Inserte texto aquí"
-
-#. module: typ
-#: code:addons/typ/controllers/main.py:281
+#: code:addons/typ/controllers/main.py:338
 #, python-format
 msgid "Invalid Email! Please enter a valid email address."
 msgstr "¡Correo invalido! Pon un correo valido."
@@ -1578,6 +812,8 @@ msgstr "Estado de la factura"
 
 #. module: typ
 #: model:ir.ui.view,arch_db:typ.my-account-menu
+#: model:ir.ui.view,arch_db:typ.my_invoices
+#: model:ir.ui.view,arch_db:typ.sort_by_orders
 msgid "Invoices"
 msgstr "Facturas"
 
@@ -1597,89 +833,9 @@ msgid "Jun"
 msgstr "Jun"
 
 #. module: typ
-#: model:ir.ui.view,arch_db:typ.homepage
-msgid "Know our double stage system"
-msgstr "Conoce nuestro sistema de dos pasos"
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.homepage
-msgid "LENNOX PRODUCTS"
-msgstr "PRODUCTOS LENNOX"
-
-#. module: typ
-#: model:delivery.carrier,name:typ.pick_up_at_la_paz
-msgid "La Paz"
-msgstr "La Paz"
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.page_typ_comfort_ir_ui_view
-#: model:ir.ui.view,arch_db:typ.typ_comfort
-#: model:website.page,arch_db:typ.page_typ_comfort
-msgid "La división de protección del consumidor del Confort Institute, provee a los propietarios de viviendas de importante información y tips, que cubren aspectos del confort del hogar, incluyendo formas para reducir o eliminar completamente, problemas tan comunes como:"
-msgstr "La división de protección del consumidor del Confort Institute, provee a los propietarios de viviendas de importante información y tips, que cubren aspectos del confort del hogar, incluyendo formas para reducir o eliminar completamente, problemas tan comunes como:"
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.page_typ_nate_ir_ui_view
-#: model:ir.ui.view,arch_db:typ.typ_nate
-#: model:website.page,arch_db:typ.page_typ_nate
-msgid "La necesidad de reducir los elevados costos debido a los índices de garantías por fallas en equipos que pudieron haberse evitado, obligó a los fabricantes de equipo original de los EEUU a construir una organización dedicada a la capacitación efectiva y continua de los técnicos en cargados de las instalaciones de sus productos y a su certificación."
-msgstr "La necesidad de reducir los elevados costos debido a los índices de garantías por fallas en equipos que pudieron haberse evitado, obligó a los fabricantes de equipo original de los EEUU a construir una organización dedicada a la capacitación efectiva y continua de los técnicos en cargados de las instalaciones de sus productos y a su certificación."
-
-#. module: typ
 #: model:ir.model.fields,field_description:typ.field_product_public_category_landing_category
 msgid "Landing Category"
 msgstr "Categoría inicial"
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.page_typ_ahri_ir_ui_view
-#: model:ir.ui.view,arch_db:typ.typ_ahri
-#: model:website.page,arch_db:typ.page_typ_ahri
-msgid "Las más de 300 empresas asociadas producen más del 90 por ciento de la climatización residencial y comercial, calefacción, calentamiento de agua y equipos de refrigeración comercial realizado en América del Norte. A través de nuestro programa de certificación, normas, actividades de promoción, y otras actividades, nos esforzamos por ayudar a ahorrar energía, mejorar la productividad y asegurar un medio ambiente mejor."
-msgstr "Las más de 300 empresas asociadas producen más del 90 por ciento de la climatización residencial y comercial, calefacción, calentamiento de agua y equipos de refrigeración comercial realizado en América del Norte. A través de nuestro programa de certificación, normas, actividades de promoción, y otras actividades, nos esforzamos por ayudar a ahorrar energía, mejorar la productividad y asegurar un medio ambiente mejor."
-
-#. module: typ
-#: model:ir.model.fields,field_description:typ.field_user_wishlist___last_update
-msgid "Last Modified on"
-msgstr "Última modificación en"
-
-#. module: typ
-#: model:ir.model.fields,field_description:typ.field_user_wishlist_write_uid
-msgid "Last Updated by"
-msgstr "Última actualización de"
-
-#. module: typ
-#: model:ir.model.fields,field_description:typ.field_user_wishlist_write_date
-msgid "Last Updated on"
-msgstr "Última actualización en"
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.page_typ_providers_ir_ui_view
-#: model:ir.ui.view,arch_db:typ.typ_providers
-#: model:website.page,arch_db:typ.page_typ_providers
-msgid "Links to our providers website"
-msgstr "Enlaces al website de nuestros proveedores"
-
-#. module: typ
-#: model:delivery.carrier,name:typ.pick_up_at_mochis
-msgid "Los Mochis"
-msgstr "Los Mochis"
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.page_typ_hardi_ir_ui_view
-#: model:ir.ui.view,arch_db:typ.typ_hardi
-#: model:website.page,arch_db:typ.page_typ_hardi
-msgid "Los mas de 1000 miembros asociados entre ellos distribuidores mayoristas, fabricantes y cooperativas de compra se extienden a todos los continentes con su mayor concentración en los Estados Unidos y Canadá. La asociación ayuda a crear alianzas estratégicas entre distribuidores fabricantes pues les brinda todo su apoyo para crecer, a través de reuniones regionales y convenciones anuales, con exhibiciones, exposiciones, seminarios y conferencias, ayudando así a sus miembros a darle valor agregado al canal de distribución."
-msgstr "Los mas de 1000 miembros asociados entre ellos distribuidores mayoristas, fabricantes y cooperativas de compra se extienden a todos los continentes con su mayor concentración en los Estados Unidos y Canadá. La asociación ayuda a crear alianzas estratégicas entre distribuidores fabricantes pues les brinda todo su apoyo para crecer, a través de reuniones regionales y convenciones anuales, con exhibiciones, exposiciones, seminarios y conferencias, ayudando así a sus miembros a darle valor agregado al canal de distribución."
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.about
-msgid "Loyalty."
-msgstr "Lealtad."
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.conekta_s2s_form
-msgid "MM"
-msgstr "MM"
 
 #. module: typ
 #: model:ir.ui.view,arch_db:typ.pay_methods
@@ -1713,29 +869,9 @@ msgid "May"
 msgstr "May"
 
 #. module: typ
-#: model:delivery.carrier,name:typ.pick_up_at_mexicali
-msgid "Mexicali"
-msgstr "Mexicali"
-
-#. module: typ
 #: model:product.public.category,name:typ.minisplits
 msgid "Mini Splits"
 msgstr "Mini Splits"
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.about
-msgid "Minimum Purchases:"
-msgstr "Compras Mínimas:"
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.about
-msgid "Mision"
-msgstr "Misión"
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.about
-msgid "Mision, vision and values"
-msgstr "Misión, visión y valores"
 
 #. module: typ
 #: model:ir.ui.view,arch_db:typ.sort_by_orders
@@ -1743,14 +879,7 @@ msgid "Months"
 msgstr "Meses"
 
 #. module: typ
-#: model:ir.ui.view,arch_db:typ.page_typ_nate_ir_ui_view
-#: model:ir.ui.view,arch_db:typ.typ_nate
-#: model:website.page,arch_db:typ.page_typ_nate
-msgid "N.A.T.E. (National American Technician Excellence) Es una organización dedicada exclusivamente a la certificación de los conocimientos del personal de las empresas del ramo de la refrigeración y Aire Acondicionado y que tuvieran la necesidad de crecer para hacer mas productivas sus empresas a través de la adquisición de conocimientos tales que sus honorarios tuvieran un costo mas alto que aquellos que no cuentan con esta Certificación, y por lo tanto subir su índice de crecimiento como empresa."
-msgstr "N.A.T.E. (National American Technician Excellence) Es una organización dedicada exclusivamente a la certificación de los conocimientos del personal de las empresas del ramo de la refrigeración y Aire Acondicionado y que tuvieran la necesidad de crecer para hacer mas productivas sus empresas a través de la adquisición de conocimientos tales que sus honorarios tuvieran un costo mas alto que aquellos que no cuentan con esta Certificación, y por lo tanto subir su índice de crecimiento como empresa."
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.contactus
+#: model:ir.ui.view,arch_db:typ.payment_complements
 msgid "Name"
 msgstr "Nombre"
 
@@ -1763,48 +892,10 @@ msgid "Name:"
 msgstr "Nombre:"
 
 #. module: typ
-#: model:ir.ui.view,arch_db:typ.shipping_address
-msgid "Neighborhood"
-msgstr "Colonia"
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.billing_form
-msgid "Neighborhood*"
-msgstr "Colonia*"
-
-#. module: typ
 #: model:ir.ui.view,arch_db:typ.contact_edit
 #: model:ir.ui.view,arch_db:typ.portal_my_details
 msgid "Neighborhood:"
 msgstr "Colonia:"
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.products_list
-#: model:ir.ui.view,arch_db:typ.sort_products
-msgid "New Arrivals"
-msgstr "Nuevos productos"
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.featured-products
-msgid "Next"
-msgstr "Siguiente"
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.products_list
-msgid "No results for \""
-msgstr "No hay resultados para \""
-
-#. module: typ
-#: model:delivery.carrier,name:typ.pick_up_at_nogales
-msgid "Nogales"
-msgstr "Nogales"
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.page_typ_nate_ir_ui_view
-#: model:ir.ui.view,arch_db:typ.typ_nate
-#: model:website.page,arch_db:typ.page_typ_nate
-msgid "North American Technician Excellence (NATE)"
-msgstr "North American Technician Excellence (NATE)"
 
 #. module: typ
 #: model:ir.ui.view,arch_db:typ.month_name
@@ -1818,19 +909,9 @@ msgid "ORDERS HISTORY"
 msgstr "HISTORIAL DE PEDIDOS"
 
 #. module: typ
-#: model:ir.ui.view,arch_db:typ.homepage
-msgid "OUR CLIENTS OPINION"
-msgstr "LA OPINION DE NUESTROS CLIENTES"
-
-#. module: typ
 #: model:ir.ui.view,arch_db:typ.month_name
 msgid "Oct"
 msgstr "Oct"
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.contactus
-msgid "Offices"
-msgstr "Sucursales"
 
 #. module: typ
 #: model:ir.ui.view,arch_db:typ.portal_order_page
@@ -1841,11 +922,6 @@ msgstr "Pedir"
 #: model:ir.ui.view,arch_db:typ.portal_order_page
 msgid "Order Date:"
 msgstr "Pedido del:"
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.confirmation
-msgid "Order details"
-msgstr "Detalle del pedido"
 
 #. module: typ
 #: model:ir.ui.view,arch_db:typ.portal_order_page
@@ -1860,44 +936,6 @@ msgid "Orders"
 msgstr "Pedidos"
 
 #. module: typ
-#: model:ir.ui.view,arch_db:typ.page_typ_acca_ir_ui_view
-#: model:ir.ui.view,arch_db:typ.page_typ_ahri_ir_ui_view
-#: model:ir.ui.view,arch_db:typ.page_typ_americ_ir_ui_view
-#: model:ir.ui.view,arch_db:typ.page_typ_ashrae_ir_ui_view
-#: model:ir.ui.view,arch_db:typ.page_typ_comfort_ir_ui_view
-#: model:ir.ui.view,arch_db:typ.page_typ_fide_ir_ui_view
-#: model:ir.ui.view,arch_db:typ.page_typ_hardi_ir_ui_view
-#: model:ir.ui.view,arch_db:typ.page_typ_nate_ir_ui_view
-#: model:ir.ui.view,arch_db:typ.typ_acca model:ir.ui.view,arch_db:typ.typ_ahri
-#: model:ir.ui.view,arch_db:typ.typ_americ
-#: model:ir.ui.view,arch_db:typ.typ_ashrae
-#: model:ir.ui.view,arch_db:typ.typ_comfort
-#: model:ir.ui.view,arch_db:typ.typ_fide model:ir.ui.view,arch_db:typ.typ_hardi
-#: model:ir.ui.view,arch_db:typ.typ_nate
-#: model:website.page,arch_db:typ.page_typ_acca
-#: model:website.page,arch_db:typ.page_typ_ahri
-#: model:website.page,arch_db:typ.page_typ_americ
-#: model:website.page,arch_db:typ.page_typ_ashrae
-#: model:website.page,arch_db:typ.page_typ_comfort
-#: model:website.page,arch_db:typ.page_typ_fide
-#: model:website.page,arch_db:typ.page_typ_hardi
-#: model:website.page,arch_db:typ.page_typ_nate
-msgid "Organizaciones HVACR"
-msgstr "Organizaciones HVACR"
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.page_typ_ashrae_ir_ui_view
-#: model:ir.ui.view,arch_db:typ.typ_ashrae
-#: model:website.page,arch_db:typ.page_typ_ashrae
-msgid "Organización internacional fundada en el año de 1984; cuenta en la actualidad con más de 51,000 miembros distribuidos alrededor del mundo."
-msgstr "Organización internacional fundada en el año de 1984; cuenta en la actualidad con más de 51,000 miembros distribuidos alrededor del mundo."
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.header-orgs
-msgid "Organizations and institutions related to the field of HVACR."
-msgstr "Organizaciones e instituciones relacionadas con el ramo del HVACR."
-
-#. module: typ
 #: model:ir.ui.view,arch_db:typ.report_payment_receipt_typ
 msgid "Original Amount"
 msgstr "Importe original"
@@ -1908,18 +946,9 @@ msgid "PAYMENT"
 msgstr "PAGO"
 
 #. module: typ
-#: model:ir.ui.view,arch_db:typ.page_typ_providers_ir_ui_view
-#: model:ir.ui.view,arch_db:typ.typ_providers
-#: model:website.page,arch_db:typ.page_typ_providers
-msgid "PROVIDERS"
-msgstr "PROVEEDORES"
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.page_typ_comfort_ir_ui_view
-#: model:ir.ui.view,arch_db:typ.typ_comfort
-#: model:website.page,arch_db:typ.page_typ_comfort
-msgid "Padecimientos de alergías y asma"
-msgstr "Padecimientos de alergías y asma"
+#: model:ir.ui.view,arch_db:typ.payment_complements
+msgid "PAYMENT COMPLEMENTS"
+msgstr "COMPLEMENTOS DE PAGO"
 
 #. module: typ
 #: model:ir.ui.view,arch_db:typ.my_invoices
@@ -1929,31 +958,14 @@ msgid "Paid"
 msgstr "Pagado"
 
 #. module: typ
-#: model:ir.ui.view,arch_db:typ.page_typ_fide_ir_ui_view
-#: model:ir.ui.view,arch_db:typ.typ_fide
-#: model:website.page,arch_db:typ.page_typ_fide
-msgid "Para el desarrollo de proyectos de MYPES o PYMES en los que esta involucrado el equipo de refrigeración, hay diversos esquemas a los que se puede acceder con un mínimo de requisitos para pre-aprobación de una línea de crédito"
-msgstr "Para el desarrollo de proyectos de MYPES o PYMES en los que esta involucrado el equipo de refrigeración, hay diversos esquemas a los que se puede acceder con un mínimo de requisitos para pre-aprobación de una línea de crédito"
-
-#. module: typ
 #: model:ir.ui.view,arch_db:typ.report_payment_receipt_typ
 msgid "Partiality"
 msgstr "Parcialidad"
 
 #. module: typ
-#: model:ir.ui.view,arch_db:typ.about
-msgid "Passion for the service."
-msgstr "Pasión por el servicio."
-
-#. module: typ
 #: model:ir.ui.view,arch_db:typ.personal-info
 msgid "Password:"
 msgstr "Contraseña:"
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.payment
-msgid "Pay easily and secure"
-msgstr "Pague fácil y seguro"
 
 #. module: typ
 #: model:ir.ui.view,arch_db:typ.my_invoices
@@ -1962,12 +974,16 @@ msgid "Pay now"
 msgstr "Pagar"
 
 #. module: typ
-#: model:ir.ui.view,arch_db:typ.about
-msgid "Payment Methods:"
-msgstr "Métodos de pago:"
+#: model:ir.ui.view,arch_db:typ.my-account-menu
+msgid "Payment Complements"
+msgstr "Complementos de Pago"
 
 #. module: typ
-#: model:ir.ui.view,arch_db:typ.confirmation
+#: model:ir.ui.view,arch_db:typ.payment_complements
+msgid "Payment Date"
+msgstr "Fecha de Pago"
+
+#. module: typ
 #: model:ir.ui.view,arch_db:typ.portal_order_page
 msgid "Payment method"
 msgstr "Método de pago"
@@ -1983,28 +999,12 @@ msgid "Payments"
 msgstr "Pagos"
 
 #. module: typ
-#: model:ir.ui.view,arch_db:typ.page_typ_acca_ir_ui_view
-#: model:ir.ui.view,arch_db:typ.page_typ_ashrae_ir_ui_view
-#: model:ir.ui.view,arch_db:typ.typ_acca
-#: model:ir.ui.view,arch_db:typ.typ_ashrae
-#: model:website.page,arch_db:typ.page_typ_acca
-#: model:website.page,arch_db:typ.page_typ_ashrae
-msgid "Perseguimos un objetivo:"
-msgstr "Perseguimos un objetivo:"
-
-#. module: typ
 #: model:ir.ui.view,arch_db:typ.address_panel
 #: model:ir.ui.view,arch_db:typ.contact_edit
 #: model:ir.ui.view,arch_db:typ.personal-info
 #: model:ir.ui.view,arch_db:typ.portal_my_details
 msgid "Phone:"
 msgstr "Teléfono:"
-
-#. module: typ
-#: model:product.product,name:typ.pick_up_at
-#: model:product.template,name:typ.pick_up_at_product_template
-msgid "Pick up at"
-msgstr "Recoger en"
 
 #. module: typ
 #: model:product.public.category,name:typ.pipes
@@ -2017,13 +1017,6 @@ msgid "Piso Techo"
 msgstr "Piso Techo"
 
 #. module: typ
-#: model:ir.ui.view,arch_db:typ.page_typ_comfort_ir_ui_view
-#: model:ir.ui.view,arch_db:typ.typ_comfort
-#: model:website.page,arch_db:typ.page_typ_comfort
-msgid "Polvo excesivo"
-msgstr "Polvo excesivo"
-
-#. module: typ
 #: model:ir.ui.view,arch_db:typ.address_panel
 msgid "Predetermined"
 msgstr "Predeterminado"
@@ -2034,134 +1027,25 @@ msgid "Previous balance"
 msgstr "Saldo anterior"
 
 #. module: typ
-#: model:ir.ui.view,arch_db:typ.cart_lines
-msgid "Price"
-msgstr "Precio"
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.products_list
-#: model:ir.ui.view,arch_db:typ.sort_products
-msgid "Price: Highest"
-msgstr "Precio: Más alto"
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.products_list
-#: model:ir.ui.view,arch_db:typ.sort_products
-msgid "Price: Lowest"
-msgstr "Precio: Más bajo"
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.about
-msgid "Prices:"
-msgstr "Precios:"
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.confirmation
-msgid "Print Order"
-msgstr "Imprimir pedido"
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.about
-msgid "Proactivity"
-msgstr "Proactividad"
-
-#. module: typ
-#: model:ir.model.fields,field_description:typ.field_user_wishlist_product_template_id
-#: model:ir.ui.view,arch_db:typ.cart_lines
-msgid "Product"
-msgstr "Producto"
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.product-description
-msgid "Product Name"
-msgstr "Nombre del producto"
-
-#. module: typ
 #: model:ir.model,name:typ.model_product_template
 msgid "Product Template"
 msgstr "Plantilla de producto"
 
 #. module: typ
-#: model:ir.ui.view,arch_db:typ.breadcrumb-categories
-#: model:ir.ui.view,arch_db:typ.product-description
-msgid "Products"
-msgstr "Productos"
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.about
-msgid ""
-"Purchase orders will be filled upon receipt of the total payment of the products or it is suggested to make the payments \n"
-"                                       preferably using the electronic banking system, for the agile and secure of this type of transactions."
-msgstr ""
-"Las órdenes de compras serán surtidas al recibir el pago total de los productos o se sugiere realizar los pagos utilizando \n"
-"                                       preferentemente el sistema de banca electrónica, por lo ágil y seguro de este tipo de transacciones."
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.about
-msgid ""
-"Purchase orders will be invoiced at current prices on the date of shipment. \n"
-"                                        All prices are subject to change without notice as long as they are not billed."
-msgstr ""
-"Las órdenes de compra serán facturadas a precios vigentes en la fecha de envío.\n"
-"                                        Todos los precios están sujetos a cambio sin previo aviso en tanto no sean facturados."
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.homepage
-msgid "QUOTE YOUR PROJECT"
-msgstr "COTIZA TU PROYECTO"
-
-#. module: typ
-#: model:ir.model.fields,field_description:typ.field_user_wishlist_qty
-msgid "Qty"
-msgstr "Ctd"
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.cart_lines
-msgid "Quantity"
-msgstr "Cantidad"
-
-#. module: typ
 #: model:ir.ui.view,arch_db:typ.portal_order_page
 msgid "Quotation"
-msgstr "Cotización"
+msgstr "Presupuesto"
 
 #. module: typ
 #: model:ir.ui.view,arch_db:typ.my_quotations
 #: model:ir.ui.view,arch_db:typ.sort_by_orders
 msgid "Quotations"
-msgstr "Cotizaciones"
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.homepage
-msgid "RECEIVE OR COLLECT<br/>YOUR EQUIPMENT"
-msgstr "RECIBE O RECOLECTA<br/>TU EQUIPO"
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.homepage
-msgid "REQUEST ACCESS"
-msgstr "SOLICITAR ACCESO"
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.homepage
-msgid "REQUEST ACCESS TO<br/>SIGN IN"
-msgstr "SOLICITAR ACCESO"
+msgstr "Presupuestos"
 
 #. module: typ
 #: model:ir.ui.view,arch_db:typ.personal-info
 msgid "RFC:"
 msgstr "RFC:"
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.homepage
-msgid "Recibe o Recoge tu Pedido"
-msgstr "Recibe o Recoge tu Pedido"
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.page_typ_comfort_ir_ui_view
-#: model:ir.ui.view,arch_db:typ.typ_comfort
-#: model:website.page,arch_db:typ.page_typ_comfort
-msgid "Recibos altos"
-msgstr "Recibos altos"
 
 #. module: typ
 #: model:product.public.category,name:typ.reciprocantes
@@ -2184,59 +1068,14 @@ msgid "Refrigeration Controls"
 msgstr "Controles de refrigeración"
 
 #. module: typ
-#: model:ir.ui.view,arch_db:typ.product-description
-msgid "Request a quote"
-msgstr "Solicitar una cotización"
-
-#. module: typ
 #: model:ir.ui.view,arch_db:typ.personal-info
 msgid "Reset"
 msgstr "Restablecer"
 
 #. module: typ
-#: model:ir.ui.view,arch_db:typ.about
-msgid "Respect."
-msgstr "Respeto."
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.about
-msgid "Responsibility"
-msgstr "Responsabilidad"
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.about
-msgid "Returns:"
-msgstr "Devoluciones:"
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.products_list
-msgid "SEARCH RESULTS"
-msgstr "RESULTADOS DE LA BÚSQUEDA"
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.contactus
-msgid "SEND COMMENT"
-msgstr "ENVIAR COMENTARIO"
-
-#. module: typ
 #: model:ir.ui.view,arch_db:typ.account_address
 msgid "SHIPPING INFORMATION"
 msgstr "INFORMACIÓN DE ENVÍO"
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.cart_layout
-msgid "SHOPPING CART"
-msgstr "CARRITO"
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.about
-msgid "Sale Policies"
-msgstr "Políticas de venta"
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.s_image_banner
-msgid "Sample"
-msgstr "Sample"
 
 #. module: typ
 #: model:ir.ui.view,arch_db:typ.contact_edit
@@ -2250,21 +1089,9 @@ msgid "Scrolls"
 msgstr "Scrolls"
 
 #. module: typ
-#: model:ir.ui.view,arch_db:typ.s-product-description
-msgid "Second title"
-msgstr "Segundo titulo"
-
-#. module: typ
 #: model:ir.ui.view,arch_db:typ.address_panel
 msgid "Selected Address"
 msgstr "Direcciones seleccionadas"
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.page_typ_organizations_ir_ui_view
-#: model:ir.ui.view,arch_db:typ.typ_organizations
-#: model:website.page,arch_db:typ.page_typ_organizations
-msgid "Selection of links to organizations and institutions related to the field of HVACR."
-msgstr "Selección de enlaces a organizaciones e instituciones relacionadas con el ramo del HVACR."
 
 #. module: typ
 #: model:ir.ui.view,arch_db:typ.my_invoices
@@ -2282,61 +1109,10 @@ msgid "Sep"
 msgstr "Sep"
 
 #. module: typ
-#: model:ir.ui.view,arch_db:typ.product-description
-msgid "Share product"
-msgstr "Compartir producto"
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.confirmation
-msgid "Ship Address"
-msgstr "Dirección de envío"
-
-#. module: typ
 #: model:ir.ui.view,arch_db:typ.contact_edit
 #: model:ir.ui.view,arch_db:typ.portal_order_page
 msgid "Shipping Address"
 msgstr "Dirección de envío"
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.payment
-msgid "Shipping Addresses"
-msgstr "Direcciones de envío"
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.page_typ_acca_ir_ui_view
-#: model:ir.ui.view,arch_db:typ.page_typ_ahri_ir_ui_view
-#: model:ir.ui.view,arch_db:typ.page_typ_americ_ir_ui_view
-#: model:ir.ui.view,arch_db:typ.page_typ_ashrae_ir_ui_view
-#: model:ir.ui.view,arch_db:typ.page_typ_comfort_ir_ui_view
-#: model:ir.ui.view,arch_db:typ.page_typ_fide_ir_ui_view
-#: model:ir.ui.view,arch_db:typ.page_typ_hardi_ir_ui_view
-#: model:ir.ui.view,arch_db:typ.page_typ_nate_ir_ui_view
-#: model:ir.ui.view,arch_db:typ.typ_acca model:ir.ui.view,arch_db:typ.typ_ahri
-#: model:ir.ui.view,arch_db:typ.typ_americ
-#: model:ir.ui.view,arch_db:typ.typ_ashrae
-#: model:ir.ui.view,arch_db:typ.typ_comfort
-#: model:ir.ui.view,arch_db:typ.typ_fide model:ir.ui.view,arch_db:typ.typ_hardi
-#: model:ir.ui.view,arch_db:typ.typ_nate
-#: model:website.page,arch_db:typ.page_typ_acca
-#: model:website.page,arch_db:typ.page_typ_ahri
-#: model:website.page,arch_db:typ.page_typ_americ
-#: model:website.page,arch_db:typ.page_typ_ashrae
-#: model:website.page,arch_db:typ.page_typ_comfort
-#: model:website.page,arch_db:typ.page_typ_fide
-#: model:website.page,arch_db:typ.page_typ_hardi
-#: model:website.page,arch_db:typ.page_typ_nate
-msgid "Sitio oficial:"
-msgstr "Sitio oficial:"
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.about
-msgid "Social responsability."
-msgstr "Responsabilidad social."
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.homepage
-msgid "Solicita Acceso"
-msgstr "Solicita Acceso"
 
 #. module: typ
 #: model:product.public.category,name:typ.ms_calor
@@ -2349,16 +1125,10 @@ msgid "Solo Frio"
 msgstr "Solo Frio"
 
 #. module: typ
-#: code:addons/typ/controllers/main.py:295
+#: code:addons/typ/controllers/main.py:352
 #, python-format
 msgid "Some required fields are empty."
 msgstr "Algunos campos requeridos están vacíos."
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.products_list
-#: model:ir.ui.view,arch_db:typ.sort_products
-msgid "Sort by"
-msgstr "Ordenar por"
 
 #. module: typ
 #: model:ir.ui.view,arch_db:typ.portal_invoice_page
@@ -2390,7 +1160,6 @@ msgid "Status"
 msgstr "Estado"
 
 #. module: typ
-#: model:ir.ui.view,arch_db:typ.confirmation
 #: model:ir.ui.view,arch_db:typ.sort_by_orders
 msgid "Status:"
 msgstr "Estado:"
@@ -2402,87 +1171,26 @@ msgid "Street:"
 msgstr "Calle:"
 
 #. module: typ
-#: model:ir.ui.view,arch_db:typ.s-product-description-subtitle
-msgid "Subtitle"
-msgstr "Subtítulo"
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.cart_lines
-#: model:ir.ui.view,arch_db:typ.confirmation
 #: model:ir.ui.view,arch_db:typ.portal_invoice_page
 #: model:ir.ui.view,arch_db:typ.portal_order_page
 msgid "Subtotal"
 msgstr "Subtotal"
 
 #. module: typ
-#: model:ir.ui.view,arch_db:typ.about
-msgid ""
-"T&amp;P Refrigeracion is a regional company specialized in the attention to contractor companies, which operates in the Northwest \n"
-"                                    of the Mexican Republic. Established more than 20 years ago, it has as its base of operations the city of \n"
-"                                    Hermosillo, Sonora, Mexico, and is dedicated to the commercialization of equipment, installation materials and refurbishments \n"
-"                                    for Air Conditioning, Refrigeration and Ventilation."
-msgstr ""
-"T&amp;P Refrigeracion es una empresa regional especializada en la atención a empresas contratistas, que opera en el Noroeste  \n"
-"                                    de la República Mexicana. Establecida hace más de 20 años, tiene como base de operaciones la ciudad de \n"
-"                                    Hermosillo, Sonora, México, y está dedicada a la comercialización de equipos, materiales de instalación y refaccciones \n"
-"                                   para Aire Acondicionado, Refrigeración y Ventilación."
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.confirmation
 #: model:ir.ui.view,arch_db:typ.portal_invoice_page
 #: model:ir.ui.view,arch_db:typ.portal_order_page
 msgid "Taxes"
 msgstr "Impuestos"
 
 #. module: typ
-#: model:ir.ui.view,arch_db:typ.about
-msgid "Teamwork."
-msgstr "Trabajo en equipo."
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.contactus
-msgid "Telephone"
-msgstr "Teléfono"
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.homepage
-msgid "Testimonial 1"
-msgstr "Testimonial 1"
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.homepage
-msgid "Testimonial 2"
-msgstr "Testimonial 2"
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.homepage
-msgid "Testimonial 3"
-msgstr "Testimonial 3"
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.homepage
-msgid "Testimonial 4"
-msgstr "Testimonial 4"
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.homepage
-msgid "Testomonial 1"
-msgstr "Testomonial 1"
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.homepage
-msgid "Testomonial 2"
-msgstr "Testomonial 2"
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.confirmation
-msgid "Thank you for your order!"
-msgstr "¡Gracias por tu compra!"
-
-#. module: typ
 #: model:ir.ui.view,arch_db:typ.email_sent
 msgid "The invoice has been sent"
 msgstr "La factura fue enviada"
+
+#. module: typ
+#: model:ir.ui.view,arch_db:typ.my_invoices
+msgid "There are currently no credit notes and payments for your account."
+msgstr "Actualmente no hay notas de crédito o pagos para tu cuenta."
 
 #. module: typ
 #: model:ir.ui.view,arch_db:typ.my_invoices
@@ -2495,14 +1203,14 @@ msgid "There are currently no orders for your account."
 msgstr "Actualmente no hay pedidos para su cuenta."
 
 #. module: typ
-#: model:ir.ui.view,arch_db:typ.my_quotations
-msgid "There are currently no quotations for your account."
-msgstr "Actualmente no hay cotizaciones para su cuenta."
+#: model:ir.ui.view,arch_db:typ.payment_complements
+msgid "There are currently no payment complements for your account."
+msgstr "Actualmente no hay complementos de pago para tu cuenta."
 
 #. module: typ
-#: model:ir.ui.view,arch_db:typ.about
-msgid "There is no minimum purchase limit. Any number of products, regardless of their price will be attended."
-msgstr "No existe un límite de compra mínima. Cualquier cantidad de productos, independientemente de su precio será atendida."
+#: model:ir.ui.view,arch_db:typ.my_quotations
+msgid "There are currently no quotations for your account."
+msgstr "Actualmente no hay presupuestos para su cuenta."
 
 #. module: typ
 #: model:product.public.category,name:typ.thermostats
@@ -2510,41 +1218,11 @@ msgid "Thermostats and controls for A / C"
 msgstr "Termostatos y controles para A/C"
 
 #. module: typ
-#: model:delivery.carrier,name:typ.pick_up_at_tijuana
-msgid "Tijuana"
-msgstr "Tijuana"
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.s-product-description
-#: model:ir.ui.view,arch_db:typ.s-product-description-title
-msgid "Title"
-msgstr "Título"
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.about
-msgid ""
-"To be a leading company in the marketing of air conditioning and refrigeration products in the northwest and with presence in other territories\n"
-"                                    of the Mexican Republic operating as an intelligent company."
-msgstr ""
-"Ser una empresa líder en la comercialización de productos de aire acondicionado y refrigeración en el noroeste y con presencia en otros territorios\n"
-"                                    de la República Mexicana operando como una empresa inteligente."
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.about
-msgid ""
-"To effectively satisfy the supply of products and services to our customers, generating mutual business opportunities,\n"
-"                                    backed by our values, innovation and development of our collaborators."
-msgstr ""
-"Satisfacer efectivamente el suministro de productos y servicios a nuestros clientes, generando oportunidades de negocio mutuo, \n"
-"                                    respaldados por nuestros valores, innovación y desarrollo de nuestros colaboradores."
-
-#. module: typ
 #: model:product.public.category,name:typ.tools
 msgid "Tools"
 msgstr "Herramientas"
 
 #. module: typ
-#: model:ir.ui.view,arch_db:typ.confirmation
 #: model:ir.ui.view,arch_db:typ.my_invoices
 #: model:ir.ui.view,arch_db:typ.my_orders
 #: model:ir.ui.view,arch_db:typ.my_quotations
@@ -2554,37 +1232,41 @@ msgid "Total"
 msgstr "Total"
 
 #. module: typ
-#: model:ir.ui.view,arch_db:typ.my_invoices
-msgid "Total pagado"
-msgstr "Total pagado"
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.my_invoices
+#: model:ir.ui.view,arch_db:typ.my_orders
 #: model:ir.ui.view,arch_db:typ.my_quotations
-msgid "Total por pagar"
-msgstr "Total por pagar"
+msgid "Total (MXN)"
+msgstr "Total (MXN)"
 
 #. module: typ
-#: model:ir.ui.view,arch_db:typ.confirmation
-msgid "Total:"
-msgstr "Total:"
+#: model:ir.ui.view,arch_db:typ.my_orders
+#: model:ir.ui.view,arch_db:typ.my_quotations
+msgid "Total (USD)"
+msgstr "Total (USD)"
 
 #. module: typ
-#: model:ir.ui.view,arch_db:typ.product-description
-msgid "URL Copied to clipboard!"
-msgstr "¡URL Copiado al portapapeles!"
+#: model:ir.ui.view,arch_db:typ.my_invoices
+msgid "Total pagado (MXN)"
+msgstr "Total pagado (MXN)"
+
+#. module: typ
+#: model:ir.ui.view,arch_db:typ.my_invoices
+msgid "Total pagado (USD)"
+msgstr "Total pagado (USD)"
+
+#. module: typ
+#: model:ir.ui.view,arch_db:typ.my_invoices
+msgid "Total por pagar (MXN)"
+msgstr "Total por pagar (MXN)"
+
+#. module: typ
+#: model:ir.ui.view,arch_db:typ.my_invoices
+msgid "Total por pagar (USD)"
+msgstr "Total por pagar (USD)"
 
 #. module: typ
 #: model:ir.ui.view,arch_db:typ.report_payment_receipt_typ
 msgid "UUID"
 msgstr "UUID"
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.page_typ_fide_ir_ui_view
-#: model:ir.ui.view,arch_db:typ.typ_fide
-#: model:website.page,arch_db:typ.page_typ_fide
-msgid "Una de las etapas más críticas al momento de cerrar una operación con equipos de refrigeración es cuando el estatus del proyecto llega a la negociación del dinero para la adquisición de la maquinaria. Existe una gran cantidad de clientes que prefieren comprar equipos usados con el afán de ahorrarse dinero de la empresa y utilizarlo en otros rubros en lugar de invertirlo en equipamiento nuevo que es fundamental para la seguridad que implica dentro del proceso."
-msgstr "Una de las etapas más críticas al momento de cerrar una operación con equipos de refrigeración es cuando el estatus del proyecto llega a la negociación del dinero para la adquisición de la maquinaria. Existe una gran cantidad de clientes que prefieren comprar equipos usados con el afán de ahorrarse dinero de la empresa y utilizarlo en otros rubros en lugar de invertirlo en equipamiento nuevo que es fundamental para la seguridad que implica dentro del proceso."
 
 #. module: typ
 #: model:product.public.category,name:typ.unidades-hermeticas
@@ -2597,25 +1279,10 @@ msgid "Unpaid"
 msgstr "Sin pagar"
 
 #. module: typ
-#: model:ir.ui.view,arch_db:typ.about
-msgid "Unquestionable values:"
-msgstr "Valores incuestionables:"
-
-#. module: typ
-#: model:ir.model.fields,field_description:typ.field_user_wishlist_user_id
-msgid "User"
-msgstr "Usuario"
-
-#. module: typ
 #: model:ir.ui.view,arch_db:typ.contact_edit
 #: model:ir.ui.view,arch_db:typ.portal_my_details
 msgid "VAT:"
 msgstr "CIF/NIF:"
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.about
-msgid "Values"
-msgstr "Valores"
 
 #. module: typ
 #: model:ir.ui.view,arch_db:typ.report_invoice_document_typ
@@ -2633,79 +1300,10 @@ msgid "Ventilation"
 msgstr "Ventilación"
 
 #. module: typ
-#: model:ir.ui.view,arch_db:typ.my_product_card
-#: model:ir.ui.view,arch_db:typ.products-list
-msgid "View Details"
-msgstr "Ver detalles"
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.about
-msgid "Vision"
-msgstr "Vision"
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.about model:ir.ui.view,arch_db:typ.homepage
-msgid "WE SUPPORT THE SUCCESS OF YOUR BUSINESS"
-msgstr "APOYAMOS EL ÉXITO DE TU NEGOCIO"
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.homepage
-msgid "WE SUPPORT THE SUCCESS OF YOUR<br/>BUSINESS"
-msgstr "APOYAMOS EL ÉXITO DE TU<br/> NEGOCIO"
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.homepage
-msgid "WE WANT TO BE YOUR PARTNERS"
-msgstr "QUEREMOS SER TUS SOCIOS"
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.about
-msgid "WHO WE ARE IN T&amp;P<br/>REFRIGERATION"
-msgstr "QUIENES SOMOS EN T&amp;P<br/>REFRIGERACIÓN"
-
-#. module: typ
 #: model:ir.ui.view,arch_db:typ.my_quotations
 #: model:ir.ui.view,arch_db:typ.portal_order_page
 msgid "Waiting"
 msgstr "En espera"
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.about
-msgid "Warranty:"
-msgstr "Garantía:"
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.about
-msgid ""
-"We are dedicated to the commercialization of spare parts, installation materials and equipment for air conditioning, \n"
-"                                    refrigeration and air ventilation, being our primary objective to serve the contractors of these branches, both in the Northwest\n"
-"                                    of Mexico through our establishments and through of our new store option by phone and internet to serve the rest of the country."
-msgstr ""
-"Nos dedicamos a la comercialización de refacciones, materiales de instalación y equipos para aire acondicionado, \n"
-"                                     refrigeración y ventilación de aire, siendo nuestro objetivo primordial atender a las empresas contratistas de estos ramos, tanto en el Noroeste\n"
-"                                    de México a través de nuestros establecimientos como a través de nuestra nueva opción de tienda por teléfono e internet para atender al resto del país."
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.about
-msgid ""
-"We are distributors of important manufacturers of the products we sell, both in Mexico and the United States, which allows us to \n"
-"                                    provide a wide range of alternatives for market needs, technical support, guarantees and trained personnel to support investments \n"
-"                                    of those who use our services."
-msgstr ""
-"Somos distribuidores de importantes empresas fabricantes de los productos que comercializamos, tanto de México como de Estados Unidos, lo que nos permite \n"
-"                                    brindar una amplia gama de alternativas para las necesidades del mercado, el soporte técnico, las garantías y el personal capacitado que respalden las inversiones \n"
-"                                    de quienes utilizan nuestros servicios."
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.products_list
-msgid ""
-"We did not find a result that match with what you are looking for.<br/> \n"
-"                                Please check spelling or get in contact with us<br/>\n"
-"                                to verify the existence of the product."
-msgstr ""
-"No encontramos un resultado que coincida con lo que está buscando. <br/>\n"
-"                                Por favor revise la ortografía o póngase en contacto con nosotros <br/>\n"
-"                                para verificar la existencia del producto."
 
 #. module: typ
 #: model:ir.model,name:typ.model_product_public_category
@@ -2718,39 +1316,9 @@ msgid "When selected this category will be displayed on the homepage"
 msgstr "Cuando seleccionado esta categoría será mostrada en la pagina de inicio del website"
 
 #. module: typ
-#: model:ir.ui.view,arch_db:typ.conekta_s2s_form
-msgid "YY"
-msgstr "AA"
-
-#. module: typ
 #: model:ir.ui.view,arch_db:typ.email_sent
 msgid "Your Details"
 msgstr "Sus detalles"
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.contactus
-msgid "Your Message..."
-msgstr "Tu Mensaje..."
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.products_list
-msgid "Your Search:"
-msgstr "Tu búsqueda:"
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.contactus_thanks
-msgid "Your information has been sent succesfully <br/> Wait our response on your email"
-msgstr "Tu información ha sido envíada con éxito <br/> Espera por una respuesta en tu correo"
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.confirmation
-msgid "Your payment has been registred with te following order number"
-msgstr "Tu pago ha sido registrado con el siguiente número de orden"
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.products_list
-msgid "Your search:"
-msgstr "Tu búsqueda:"
 
 #. module: typ
 #: model:ir.ui.view,arch_db:typ.portal_my_details
@@ -2763,569 +1331,6 @@ msgid "Zip Code:"
 msgstr "C.P.:"
 
 #. module: typ
-#: model:ir.ui.view,arch_db:typ.page_typ_acca_ir_ui_view
-#: model:ir.ui.view,arch_db:typ.page_typ_organizations_ir_ui_view
-#: model:ir.ui.view,arch_db:typ.typ_acca
-#: model:ir.ui.view,arch_db:typ.typ_organizations
-#: model:website.page,arch_db:typ.page_typ_acca
-#: model:website.page,arch_db:typ.page_typ_organizations
-msgid "acca"
-msgstr "acca"
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.page_typ_providers_ir_ui_view
-#: model:ir.ui.view,arch_db:typ.typ_providers
-#: model:website.page,arch_db:typ.page_typ_providers
-msgid "aeroflex"
-msgstr "aeroflex"
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.page_typ_ahri_ir_ui_view
-#: model:ir.ui.view,arch_db:typ.page_typ_organizations_ir_ui_view
-#: model:ir.ui.view,arch_db:typ.typ_ahri
-#: model:ir.ui.view,arch_db:typ.typ_organizations
-#: model:website.page,arch_db:typ.page_typ_ahri
-#: model:website.page,arch_db:typ.page_typ_organizations
-msgid "ahri"
-msgstr "ahri"
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.page_typ_providers_ir_ui_view
-#: model:ir.ui.view,arch_db:typ.typ_providers
-#: model:website.page,arch_db:typ.page_typ_providers
-msgid "alco"
-msgstr "alco"
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.page_typ_americ_ir_ui_view
-#: model:ir.ui.view,arch_db:typ.page_typ_organizations_ir_ui_view
-#: model:ir.ui.view,arch_db:typ.typ_americ
-#: model:ir.ui.view,arch_db:typ.typ_organizations
-#: model:website.page,arch_db:typ.page_typ_americ
-#: model:website.page,arch_db:typ.page_typ_organizations
-msgid "americ"
-msgstr "americ"
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.page_typ_providers_ir_ui_view
-#: model:ir.ui.view,arch_db:typ.typ_providers
-#: model:website.page,arch_db:typ.page_typ_providers
-msgid "anthony"
-msgstr "anthony"
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.page_typ_ashrae_ir_ui_view
-#: model:ir.ui.view,arch_db:typ.page_typ_organizations_ir_ui_view
-#: model:ir.ui.view,arch_db:typ.typ_ashrae
-#: model:ir.ui.view,arch_db:typ.typ_organizations
-#: model:website.page,arch_db:typ.page_typ_ashrae
-#: model:website.page,arch_db:typ.page_typ_organizations
-msgid "ashrae"
-msgstr "ashrae"
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.page_typ_providers_ir_ui_view
-#: model:ir.ui.view,arch_db:typ.typ_providers
-#: model:website.page,arch_db:typ.page_typ_providers
-msgid "aspen"
-msgstr "aspen"
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.page_typ_providers_ir_ui_view
-#: model:ir.ui.view,arch_db:typ.typ_providers
-#: model:website.page,arch_db:typ.page_typ_providers
-msgid "astrocool"
-msgstr "astrocool"
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.page_typ_providers_ir_ui_view
-#: model:ir.ui.view,arch_db:typ.typ_providers
-#: model:website.page,arch_db:typ.page_typ_providers
-msgid "atco"
-msgstr "atco"
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.page_typ_providers_ir_ui_view
-#: model:ir.ui.view,arch_db:typ.typ_providers
-#: model:website.page,arch_db:typ.page_typ_providers
-msgid "avaly"
-msgstr "avaly"
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.page_typ_providers_ir_ui_view
-#: model:ir.ui.view,arch_db:typ.typ_providers
-#: model:website.page,arch_db:typ.page_typ_providers
-msgid "bohn"
-msgstr "bohn"
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.page_typ_providers_ir_ui_view
-#: model:ir.ui.view,arch_db:typ.typ_providers
-#: model:website.page,arch_db:typ.page_typ_providers
-msgid "bronzglow"
-msgstr "bronzglow"
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.page_typ_providers_ir_ui_view
-#: model:ir.ui.view,arch_db:typ.typ_providers
-#: model:website.page,arch_db:typ.page_typ_providers
-msgid "cain"
-msgstr "cain"
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.page_typ_providers_ir_ui_view
-#: model:ir.ui.view,arch_db:typ.typ_providers
-#: model:website.page,arch_db:typ.page_typ_providers
-msgid "carel"
-msgstr "carel"
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.page_typ_providers_ir_ui_view
-#: model:ir.ui.view,arch_db:typ.typ_providers
-#: model:website.page,arch_db:typ.page_typ_providers
-msgid "cerro"
-msgstr "cerro"
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.page_typ_providers_ir_ui_view
-#: model:ir.ui.view,arch_db:typ.typ_providers
-#: model:website.page,arch_db:typ.page_typ_providers
-msgid "coleman"
-msgstr "coleman"
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.page_typ_comfort_ir_ui_view
-#: model:ir.ui.view,arch_db:typ.page_typ_organizations_ir_ui_view
-#: model:ir.ui.view,arch_db:typ.typ_comfort
-#: model:ir.ui.view,arch_db:typ.typ_organizations
-#: model:website.page,arch_db:typ.page_typ_comfort
-#: model:website.page,arch_db:typ.page_typ_organizations
-msgid "comfort-institute"
-msgstr "comfort-institute"
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.page_typ_providers_ir_ui_view
-#: model:ir.ui.view,arch_db:typ.typ_providers
-#: model:website.page,arch_db:typ.page_typ_providers
-msgid "connecticut"
-msgstr "connecticut"
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.page_typ_providers_ir_ui_view
-#: model:ir.ui.view,arch_db:typ.typ_providers
-#: model:website.page,arch_db:typ.page_typ_providers
-msgid "copeland"
-msgstr "copeland"
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.page_typ_providers_ir_ui_view
-#: model:ir.ui.view,arch_db:typ.typ_providers
-#: model:website.page,arch_db:typ.page_typ_providers
-msgid "cps"
-msgstr "cps"
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.page_typ_providers_ir_ui_view
-#: model:ir.ui.view,arch_db:typ.typ_providers
-#: model:website.page,arch_db:typ.page_typ_providers
-msgid "diversitech"
-msgstr "diversitech"
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.page_typ_providers_ir_ui_view
-#: model:ir.ui.view,arch_db:typ.typ_providers
-#: model:website.page,arch_db:typ.page_typ_providers
-msgid "dupont"
-msgstr "dupont"
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.page_typ_providers_ir_ui_view
-#: model:ir.ui.view,arch_db:typ.typ_providers
-#: model:website.page,arch_db:typ.page_typ_providers
-msgid "embraco"
-msgstr "embraco"
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.page_typ_providers_ir_ui_view
-#: model:ir.ui.view,arch_db:typ.typ_providers
-#: model:website.page,arch_db:typ.page_typ_providers
-msgid "emerson"
-msgstr "emerson"
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.page_typ_providers_ir_ui_view
-#: model:ir.ui.view,arch_db:typ.typ_providers
-#: model:website.page,arch_db:typ.page_typ_providers
-msgid "fasco"
-msgstr "fasco"
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.page_typ_providers_ir_ui_view
-#: model:ir.ui.view,arch_db:typ.typ_providers
-#: model:website.page,arch_db:typ.page_typ_providers
-msgid "fasson"
-msgstr "fasson"
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.page_typ_fide_ir_ui_view
-#: model:ir.ui.view,arch_db:typ.page_typ_organizations_ir_ui_view
-#: model:ir.ui.view,arch_db:typ.typ_fide
-#: model:ir.ui.view,arch_db:typ.typ_organizations
-#: model:website.page,arch_db:typ.page_typ_fide
-#: model:website.page,arch_db:typ.page_typ_organizations
-msgid "fide"
-msgstr "fide"
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.page_typ_providers_ir_ui_view
-#: model:ir.ui.view,arch_db:typ.typ_providers
-#: model:website.page,arch_db:typ.page_typ_providers
-msgid "flanders"
-msgstr "flanders"
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.page_typ_hardi_ir_ui_view
-#: model:ir.ui.view,arch_db:typ.page_typ_organizations_ir_ui_view
-#: model:ir.ui.view,arch_db:typ.typ_hardi
-#: model:ir.ui.view,arch_db:typ.typ_organizations
-#: model:website.page,arch_db:typ.page_typ_hardi
-#: model:website.page,arch_db:typ.page_typ_organizations
-msgid "hardi"
-msgstr "hardi"
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.page_typ_providers_ir_ui_view
-#: model:ir.ui.view,arch_db:typ.typ_providers
-#: model:website.page,arch_db:typ.page_typ_providers
-msgid "harris"
-msgstr "harris"
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.page_typ_providers_ir_ui_view
-#: model:ir.ui.view,arch_db:typ.typ_providers
-#: model:website.page,arch_db:typ.page_typ_providers
-msgid "honeywell"
-msgstr "honeywell"
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.page_typ_providers_ir_ui_view
-#: model:ir.ui.view,arch_db:typ.typ_providers
-#: model:website.page,arch_db:typ.page_typ_providers
-msgid "icm"
-msgstr "icm"
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.page_typ_providers_ir_ui_view
-#: model:ir.ui.view,arch_db:typ.typ_providers
-#: model:website.page,arch_db:typ.page_typ_providers
-msgid "imperial"
-msgstr "imperial"
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.page_typ_providers_ir_ui_view
-#: model:ir.ui.view,arch_db:typ.typ_providers
-#: model:website.page,arch_db:typ.page_typ_providers
-msgid "iusa"
-msgstr "iusa"
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.page_typ_providers_ir_ui_view
-#: model:ir.ui.view,arch_db:typ.typ_providers
-#: model:website.page,arch_db:typ.page_typ_providers
-msgid "johnsoncontrols"
-msgstr "johnsoncontrols"
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.page_typ_providers_ir_ui_view
-#: model:ir.ui.view,arch_db:typ.typ_providers
-#: model:website.page,arch_db:typ.page_typ_providers
-msgid "kleerstrip"
-msgstr "kleerstrip"
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.page_typ_providers_ir_ui_view
-#: model:ir.ui.view,arch_db:typ.typ_providers
-#: model:website.page,arch_db:typ.page_typ_providers
-msgid "knauf"
-msgstr "knauf"
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.page_typ_providers_ir_ui_view
-#: model:ir.ui.view,arch_db:typ.typ_providers
-#: model:website.page,arch_db:typ.page_typ_providers
-msgid "kompress"
-msgstr "kompress"
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.page_typ_providers_ir_ui_view
-#: model:ir.ui.view,arch_db:typ.typ_providers
-#: model:website.page,arch_db:typ.page_typ_providers
-msgid "lanhai"
-msgstr "lanhai"
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.page_typ_providers_ir_ui_view
-#: model:ir.ui.view,arch_db:typ.typ_providers
-#: model:website.page,arch_db:typ.page_typ_providers
-msgid "lau"
-msgstr "lau"
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.page_typ_providers_ir_ui_view
-#: model:ir.ui.view,arch_db:typ.typ_providers
-#: model:website.page,arch_db:typ.page_typ_providers
-msgid "lennox"
-msgstr "lennox"
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.page_typ_providers_ir_ui_view
-#: model:ir.ui.view,arch_db:typ.typ_providers
-#: model:website.page,arch_db:typ.page_typ_providers
-msgid "malco"
-msgstr "malco"
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.page_typ_providers_ir_ui_view
-#: model:ir.ui.view,arch_db:typ.typ_providers
-#: model:website.page,arch_db:typ.page_typ_providers
-msgid "mars"
-msgstr "mars"
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.page_typ_providers_ir_ui_view
-#: model:ir.ui.view,arch_db:typ.typ_providers
-#: model:website.page,arch_db:typ.page_typ_providers
-msgid "mason"
-msgstr "mason"
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.page_typ_providers_ir_ui_view
-#: model:ir.ui.view,arch_db:typ.typ_providers
-#: model:website.page,arch_db:typ.page_typ_providers
-msgid "metalaire"
-msgstr "metalaire"
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.page_typ_providers_ir_ui_view
-#: model:ir.ui.view,arch_db:typ.typ_providers
-#: model:website.page,arch_db:typ.page_typ_providers
-msgid "metalyfrio"
-msgstr "metalyfrio"
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.page_typ_providers_ir_ui_view
-#: model:ir.ui.view,arch_db:typ.typ_providers
-#: model:website.page,arch_db:typ.page_typ_providers
-msgid "mueller"
-msgstr "mueller"
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.page_typ_nate_ir_ui_view
-#: model:ir.ui.view,arch_db:typ.page_typ_organizations_ir_ui_view
-#: model:ir.ui.view,arch_db:typ.typ_nate
-#: model:ir.ui.view,arch_db:typ.typ_organizations
-#: model:website.page,arch_db:typ.page_typ_nate
-#: model:website.page,arch_db:typ.page_typ_organizations
-msgid "nate"
-msgstr "nate"
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.page_typ_providers_ir_ui_view
-#: model:ir.ui.view,arch_db:typ.typ_providers
-#: model:website.page,arch_db:typ.page_typ_providers
-msgid "nucalgon"
-msgstr "nucalgon"
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.page_typ_providers_ir_ui_view
-#: model:ir.ui.view,arch_db:typ.typ_providers
-#: model:website.page,arch_db:typ.page_typ_providers
-msgid "paragon"
-msgstr "paragon"
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.page_typ_providers_ir_ui_view
-#: model:ir.ui.view,arch_db:typ.typ_providers
-#: model:website.page,arch_db:typ.page_typ_providers
-msgid "polyken"
-msgstr "polyken"
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.page_typ_providers_ir_ui_view
-#: model:ir.ui.view,arch_db:typ.typ_providers
-#: model:website.page,arch_db:typ.page_typ_providers
-msgid "polymer"
-msgstr "polymer"
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.page_typ_providers_ir_ui_view
-#: model:ir.ui.view,arch_db:typ.typ_providers
-#: model:website.page,arch_db:typ.page_typ_providers
-msgid "ranco"
-msgstr "ranco"
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.page_typ_providers_ir_ui_view
-#: model:ir.ui.view,arch_db:typ.typ_providers
-#: model:website.page,arch_db:typ.page_typ_providers
-msgid "sauermann"
-msgstr "sauermann"
-
-#. module: typ
 #: model:ir.ui.view,arch_db:typ.portal_my_details
 msgid "select..."
 msgstr "seleccionar..."
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.page_typ_providers_ir_ui_view
-#: model:ir.ui.view,arch_db:typ.typ_providers
-#: model:website.page,arch_db:typ.page_typ_providers
-msgid "soler"
-msgstr "soler"
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.page_typ_providers_ir_ui_view
-#: model:ir.ui.view,arch_db:typ.typ_providers
-#: model:website.page,arch_db:typ.page_typ_providers
-msgid "sporlan"
-msgstr "sporlan"
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.page_typ_providers_ir_ui_view
-#: model:ir.ui.view,arch_db:typ.typ_providers
-#: model:website.page,arch_db:typ.page_typ_providers
-msgid "supco"
-msgstr "supco"
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.page_typ_providers_ir_ui_view
-#: model:ir.ui.view,arch_db:typ.typ_providers
-#: model:website.page,arch_db:typ.page_typ_providers
-msgid "taylor"
-msgstr "taylor"
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.page_typ_providers_ir_ui_view
-#: model:ir.ui.view,arch_db:typ.typ_providers
-#: model:website.page,arch_db:typ.page_typ_providers
-msgid "teco"
-msgstr "teco"
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.page_typ_providers_ir_ui_view
-#: model:ir.ui.view,arch_db:typ.typ_providers
-#: model:website.page,arch_db:typ.page_typ_providers
-msgid "tecumseh"
-msgstr "tecumseh"
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.page_typ_providers_ir_ui_view
-#: model:ir.ui.view,arch_db:typ.typ_providers
-#: model:website.page,arch_db:typ.page_typ_providers
-msgid "uei"
-msgstr "uei"
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.page_typ_providers_ir_ui_view
-#: model:ir.ui.view,arch_db:typ.typ_providers
-#: model:website.page,arch_db:typ.page_typ_providers
-msgid "usaire"
-msgstr "usaire"
-
-#. module: typ
-#: model:ir.model,name:typ.model_user_wishlist
-msgid "user.wishlist"
-msgstr "user.wishlist"
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.page_typ_providers_ir_ui_view
-#: model:ir.ui.view,arch_db:typ.typ_providers
-#: model:website.page,arch_db:typ.page_typ_providers
-msgid "vtronix"
-msgstr "vtronix"
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.page_typ_acca_ir_ui_view
-#: model:ir.ui.view,arch_db:typ.typ_acca
-#: model:website.page,arch_db:typ.page_typ_acca
-msgid "www.acca.org/"
-msgstr "www.acca.org/"
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.page_typ_ahri_ir_ui_view
-#: model:ir.ui.view,arch_db:typ.typ_ahri
-#: model:website.page,arch_db:typ.page_typ_ahri
-msgid "www.ahrinet.org"
-msgstr "www.ahrinet.org"
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.page_typ_americ_ir_ui_view
-#: model:ir.ui.view,arch_db:typ.typ_americ
-#: model:website.page,arch_db:typ.page_typ_americ
-msgid "www.americmx.com"
-msgstr "www.americmx.com"
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.page_typ_ashrae_ir_ui_view
-#: model:ir.ui.view,arch_db:typ.typ_ashrae
-#: model:website.page,arch_db:typ.page_typ_ashrae
-msgid "www.ashrae.org/"
-msgstr "www.ashrae.org/"
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.page_typ_comfort_ir_ui_view
-#: model:ir.ui.view,arch_db:typ.typ_comfort
-#: model:website.page,arch_db:typ.page_typ_comfort
-msgid "www.comfortinstitute.org"
-msgstr "www.comfortinstitute.org"
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.page_typ_fide_ir_ui_view
-#: model:ir.ui.view,arch_db:typ.typ_fide
-#: model:website.page,arch_db:typ.page_typ_fide
-msgid "www.fide.org.mx"
-msgstr "www.fide.org.mx"
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.page_typ_hardi_ir_ui_view
-#: model:ir.ui.view,arch_db:typ.typ_hardi
-#: model:website.page,arch_db:typ.page_typ_hardi
-msgid "www.hardinet.org"
-msgstr "www.hardinet.org"
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.page_typ_nate_ir_ui_view
-#: model:ir.ui.view,arch_db:typ.typ_nate
-#: model:website.page,arch_db:typ.page_typ_nate
-msgid "www.natex.org"
-msgstr "www.natex.org"
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.page_typ_acca_ir_ui_view
-#: model:ir.ui.view,arch_db:typ.page_typ_ashrae_ir_ui_view
-#: model:ir.ui.view,arch_db:typ.typ_acca
-#: model:ir.ui.view,arch_db:typ.typ_ashrae
-#: model:website.page,arch_db:typ.page_typ_acca
-#: model:website.page,arch_db:typ.page_typ_ashrae
-msgid "¿Quienes somos?"
-msgstr "¿Quienes somos?"
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.homepage
-msgid "“El equipo de T&amp;P siempre está atento de nuestras necesidades, y de cumplir con el proceso completo con un estándar de calidad muy alto, nos gusta ser sus clientes”"
-msgstr "“El equipo de T&amp;P siempre está atento de nuestras necesidades, y de cumplir con el proceso completo con un estándar de calidad muy alto, nos gusta ser sus clientes”"
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.homepage
-msgid "“Nuestros amigos de T&amp;P, han sido parte de nuestro recorrido desde el inicio de nuestra empresa, así como el crecimiento que hemos tenido, es siempre un placer trabajar con T&amp;P como nuestro proveedor”"
-msgstr "“Nuestros amigos de T&amp;P, han sido parte de nuestro recorrido desde el inicio de nuestra empresa, así como el crecimiento que hemos tenido, es siempre un placer trabajar con T&amp;P como nuestro proveedor”"
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.homepage
-msgid "“Simplemente mantenemos nuestra fidelidad con T&amp;P, porque representan un gran profesionalismo, su equipo siempre está implicado y atento de nosotros, los productos son de la mejor calidad\""
-msgstr "“Simplemente mantenemos nuestra fidelidad con T&amp;P, porque representan un gran profesionalismo, su equipo siempre está implicado y atento de nosotros, los productos son de la mejor calidad\""
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.homepage
-msgid "“Tengo 10 años siendo cliente de T&amp;P, la confianza que tengo de encontrar lo que necesito, y sus políticas de sistema doble etapa hacen de ésta empresa la mejor opción”"
-msgstr "“Tengo 10 años siendo cliente de T&amp;P, la confianza que tengo de encontrar lo que necesito, y sus políticas de sistema doble etapa hacen de ésta empresa la mejor opción”"

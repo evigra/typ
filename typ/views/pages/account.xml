@@ -124,7 +124,19 @@
 
     <template id="contact_edit" name="Edit Contact">
             <t t-call="typ.portal_layout">                                         
-                <div class="col-md-12 oe_cart">  
+                <div class="col-md-12 oe_cart">   
+
+                    <!-- <t t-if="mode == ('new', 'billing')">
+                        <h2 class="sections text-center mb32 mt0">Your Address
+                            <small> or </small>
+                            <a href='/web/login?redirect=/shop/checkout' class='btn btn-primary' style="margin-top: -11px">Log In</a>
+                        </h2>
+                    </t>
+
+                    <t t-if="mode == ('edit', 'billing')">
+                        <h2 class="sections text-center mb32 mt0">Your Address</h2>
+                    </t> -->
+
                     <t t-if="mode[1] == 'shipping'">
                         <div class="row breadcrumbs-account">
                             <ol class="breadcrumb o_portal_submenu mb0">
@@ -291,7 +303,7 @@
     <template id="my-account-menu">
         <div t-attf-class="col-xs-12 white-color account-menu text-center hidden-md hidden-lg hidden-sm my-account-mobile #{'mt32' if request.httprequest.path == '/my/payment_method' else ''}">
             <ul class="nav nav-pills nav-mobile list-unstyled ">
-                <li  t-attf-class=" #{'active' if request.httprequest.path == '/my/home' else ''}"><a href="/my/home">Account</a></li>
+                <li  t-attf-class=" #{'active' if request.httprequest.path == '/my/home' or request.httprequest.path =='/my' else ''}"><a href="/my/home">Account</a></li>
                 <li t-attf-class="#{'active' if request.httprequest.path == '/my/payment_method' else ''}" ><a  href="/my/payment_method">Payment methods</a></li>
                 <li t-attf-class=" #{'active' if active_page =='/my/address' else ''}" ><a  href="/my/address">Addresses</a></li>
             </ul>        
@@ -299,10 +311,11 @@
         <div class="col-md-3 col-sm-4 hidden-xs">
             <div class="col-md-12 white-color account-menu mt96 mb48 no-padding-left">
                 <ul class="nav-pills nav-desktop nav-stacked list-unstyled mt32 mb32">
-                    <li  t-attf-class="mb16 #{'active' if request.httprequest.path == '/my/home' else ''}"><a class="no-padding-top" href="/my/home">Account</a></li>
+                    <li  t-attf-class="mb16 #{'active' if request.httprequest.path == '/my/home' or request.httprequest.path =='/my' else ''}"><a class="no-padding-top" href="/my/home">Account</a></li>
                     <li t-attf-class="mb16 #{'active' if request.httprequest.path =='/my/payment_method' else ''}" ><a  href="/my/payment_method">Payment methods</a></li>
                     <li t-attf-class="mb16 #{'active' if request.httprequest.path =='/my/orders' or request.httprequest.path =='/my/quotes' else ''}"><a href="/my/orders">Orders</a></li>
-                    <li t-attf-class="mb16 #{'active' if request.httprequest.path =='/my/invoices' else ''}"><a href="/my/invoices">Invoices</a></li>
+                    <li t-attf-class="mb16 #{'active' if request.httprequest.path =='/my/invoices' or request.httprequest.path =='/my/credit_notes' else ''}"><a href="/my/invoices">Invoices</a></li>
+                    <li t-attf-class="mb16 #{'active' if request.httprequest.path =='/my/payment_complements' else ''}"><a href="/my/payment_complements">Payment Complements</a></li>
                     <li t-attf-class="mb16 #{'active' if active_page =='/my/address' else ''}" ><a  href="/my/address">Addresses</a></li>
                 </ul>
             </div>
@@ -360,8 +373,49 @@
                         (unpaid_invoices, 'open'),
                     ]"/> 
                 
-                <!-- filter for orders and quotes -->
-                <div class="row" t-if="not request.httprequest.path =='/my/invoices'">
+                
+               <div t-if="request.httprequest.path == '/my/invoices' or request.httprequest.path == '/my/credit_notes'" class="row" >
+                    <!-- invoices filter -->
+                    <span class="mr16 filter">Filter by: </span>
+                    <div class="dropdown btn-group  dropdown_filters">
+                         <a href="#" class="dropdown-toggle btn btn-default" data-toggle="dropdown">
+                            <span class="mr0" t-if="not invoices_status and not month_filter">All</span> 
+                            <span class="mr0" t-elif="month_filter" t-esc="month_filter"/>
+                            <span class="mr0" t-elif="invoices_status == 'open'">Status: <span t-esc="unpaid_invoices"/></span>                            
+                            <span class="mr0" t-else="">Status: <span t-esc="paid_invoices"/></span>
+                            <i class="fa fa-chevron-down pull-right"/>
+                        </a> 
+
+                        <ul class="dropdown-menu multi-level" role="menu" aria-labelledby="dropdownMenu">
+                            <li>
+                                <a t-if="in_view == 'invoices'" href="/my/invoices">All</a>
+                                <a t-else="" href="/my/credit_notes">All</a>
+                            </li>  
+                            <li class="dropdown-submenu">
+                                <a tabindex="-1">Months</a>
+                                <ul class="dropdown-menu">   
+                                    <t t-call="typ.order_by_dates"/>
+                                </ul>
+                            </li>
+                            <li class="dropdown-submenu">
+                                <a tabindex="-1">Status</a>
+                                <ul class="dropdown-menu">
+                                   <li t-foreach="filter_invoices" t-as="status">
+                                        <a t-if="in_view == 'invoices'" t-attf-href="/my/invoices?invoices_status={{status[1]}}">
+                                            <span t-raw="status[0]"/>
+                                        </a>
+                                        <a t-else="" t-attf-href="/my/credit_notes?invoices_status={{status[1]}}">
+                                            <span t-raw="status[0]"/>
+                                        </a>
+                                    </li> 
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div t-else="" class="row" >
+                    <!-- filter for orders and quotes -->
                     <span class="mr16 filter">Filter by: </span>
                     <div class="dropdown btn-group  dropdown_filters">
                         <a href="#" class="dropdown-toggle btn btn-default" data-toggle="dropdown">                                       
@@ -379,63 +433,45 @@
                     </div>
                 </div>
 
-                <!-- invoices filter -->
-               <div class="row" t-if="request.httprequest.path =='/my/invoices'">
-                    <span class="mr16 filter">Filter by: </span>
-                    <div class="dropdown btn-group  dropdown_filters">
-                         <a href="#" class="dropdown-toggle btn btn-default" data-toggle="dropdown">
-                            <span class="mr0" t-if="not invoices_status and not month_filter">All</span> 
-                            <span class="mr0" t-elif="month_filter" t-esc="month_filter"/>
-                            <span class="mr0" t-elif="invoices_status == 'open'">Status: <span t-esc="unpaid_invoices"/></span>                            
-                            <span class="mr0" t-else="">Status: <span t-esc="paid_invoices"/></span>
-                            <i class="fa fa-chevron-down pull-right"/>
-                        </a> 
-
-                        <ul class="dropdown-menu multi-level" role="menu" aria-labelledby="dropdownMenu">
-                            <li>
-                                <a href="/my/invoices">All</a>
-                            </li>  
-                            <li class="dropdown-submenu">
-                                <a tabindex="-1">Months</a>
-                                <ul class="dropdown-menu">   
-                                    <t t-call="typ.order_by_dates"/>
-                                </ul>
-                            </li>
-                            <li class="dropdown-submenu">
-                                <a tabindex="-1">Status</a>
-                                <ul class="dropdown-menu">
-                                   <li t-foreach="filter_invoices" t-as="status">
-                                        <a t-attf-href="/my/invoices?invoices_status={{status[1]}}">
-                                            <span t-raw="status[0]"/>
-                                        </a>
-                                    </li> 
-                                </ul>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
             </div>
             
-            <div t-attf-class=" #{'hidden' if request.httprequest.path =='/my/invoices' else 'mt16 col-md-5 col-md-offset-2 col-sm-5 col-sm-offset-2 text-right'}">
+            <div class="mt16 col-md-5 col-md-offset-2 col-sm-5 col-sm-offset-2 text-right">
                 <div class="row">
                     <span class="mr16 filter">See:</span>
                     <div class="dropdown btn-group  dropdown_filters">
                         <a href="#" class="dropdown-toggle btn btn-default" data-toggle="dropdown">
                             <span t-if="request.httprequest.path == '/my/orders'">Orders</span>
                             <span t-if="request.httprequest.path == '/my/quotes'">Quotations</span>
+                            <span t-if="request.httprequest.path == '/my/invoices'">Invoices</span>
+                            <span t-if="request.httprequest.path == '/my/credit_notes'">Credit notes</span>
                             <i class="fa fa-chevron-down pull-right"/>
                         </a>
                         <ul class="dropdown-menu" role="menu">
-                            <li>
-                                <a t-attf-href="/my/quotes?{{ keep_query() }}">
-                                    <span>Quotations</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a t-attf-href="/my/orders?{{ keep_query() }}">
-                                    <span>Orders</span>
-                                </a>
-                            </li>
+                            
+                            <t t-if="request.httprequest.path == '/my/invoices' or request.httprequest.path == '/my/credit_notes'">
+                                <li>
+                                    <a t-attf-href="/my/invoices?{{ keep_query() }}">
+                                        <span>Invoices</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a t-attf-href="/my/credit_notes?{{ keep_query() }}">
+                                        <span>Credit notes</span>
+                                    </a>
+                                </li>
+                            </t>
+                            <t t-else="">
+                                <li>
+                                    <a t-attf-href="/my/quotes?{{ keep_query() }}">
+                                        <span>Quotations</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a t-attf-href="/my/orders?{{ keep_query() }}">
+                                        <span>Orders</span>
+                                    </a>
+                                </li>
+                            </t>
                         </ul>
                     </div>
                 </div>
@@ -501,7 +537,6 @@
                                 </div>
                                 <div class="col-sm-3 mt8">
                                     <span class="total-order" t-field="order.amount_total" t-field-options='{"widget": "monetary", "display_currency": "order.pricelist_id.currency_id"}'/>
-                                    <span class="total-order" itemprop="priceCurrency" t-esc="order.currency_id.name" />
                                 </div>
                                 <div class="col-sm-2">                                    
                                     <t t-if="order.state == 'done'">
@@ -527,14 +562,14 @@
                         <h6>Total (USD)</h6>
                         <p class="unpaid-total mt16">
                             <span t-esc="total_amount_usd" 
-                                t-options='{"widget": "monetary", "display_currency": website.currency_id}'/>
+                                t-options='{"widget": "monetary", "display_currency": env.ref("base.USD")}'/>
                         </p>                    
                     </div>
                     <div class="col-sm-3 col-sm-offset-0 text-center">
                         <h6>Total (MXN)</h6>
                         <p class="unpaid-total mt16">
                             <span t-esc="total_amount_mxn" 
-                                t-options='{"widget": "monetary", "display_currency": website.currency_id}'/>
+                                t-options='{"widget": "monetary", "display_currency": env.ref("base.MXN")}'/>
                         </p>                    
                     </div>
                 </div>                
@@ -546,12 +581,17 @@
         <xpath expr="//div" position="replace"/>
         <xpath expr="//t/t/p" position="replace">
             <div class="col-md-9 col-md-offset-0 col-sm-9 col-sm-offset-0 col-xs-12 col-xs-offset-0 o_my_sale_orders">
-                <div class="col-md-12 text-center mt32 mb16">
+                <div class="col-md-12 text-center mt32">
                     <h5 class="sections">INVOICES HISTORY</h5>
-                </div>               
+                </div>
+                <div class="col-md-12 text-center mt16 mb16">
+                    <h5 t-if="in_view == 'credit_notes'" class="sections">Credit Notes</h5>
+                    <h5 t-else="" class="sections">Invoices</h5>
+                </div>             
                 <t t-call="typ.sort_by_orders"/>
                 <div class="col-sm-12 mt32">
-                    <h5 class="sections">There are currently no invoices and payments for your account.</h5>
+                    <h5 class="sections" t-if="request.httprequest.path == '/my/invoices'">There are currently no invoices and payments for your account.</h5>
+                    <h5 class="sections" t-else="">There are currently no credit notes and payments for your account.</h5>                    
                 </div>
             </div>
         </xpath>
@@ -559,14 +599,19 @@
             <t t-call="typ.my-account-menu"/>
            
             <div t-if="invoices" class="col-md-9 col-md-offset-0 col-sm-8 col-sm-offset-0 col-xs-12 col-xs-offset-0 o_my_sale_orders">
-                <div class="col-md-12 text-center mt32 mb16">
+                <div class="col-md-12 text-center mt32">
                     <h5 class="sections">INVOICES HISTORY</h5>
-                </div>                
+                </div>
+                <div class="col-md-12 text-center mt16 mb16">
+                    <h5 t-if="in_view == 'credit_notes'" class="sections">Credit Notes</h5>
+                    <h5 t-else="" class="sections">Invoices</h5>
+                </div>             
                 <t t-call="typ.sort_by_orders"/>
                 <div class="my-table-typ col-sm-12 text-center white-color no-padding-right mb16">
                     <div class="row text-center orders-title">                    
                         <div class="col-sm-2 mt24 mb8">
-                            <p>#Invoice</p>
+                            <p t-if="in_view == 'invoices'">#Invoice</p>
+                            <p t-else="">#Credit Note</p>
                         </div>
                         <div class="col-sm-2 mt24 mb8">
                             <p>Date</p>
@@ -607,7 +652,6 @@
                                 </div>                               
                                 <div class="col-sm-2 mt8">
                                     <span class="total-order" t-esc="invoice.amount_total" t-options='{"widget": "monetary", "display_currency": invoice.currency_id}'/>
-                                    <span class="total-order" itemprop="priceCurrency" t-esc="invoice.currency_id.name" />
                                 </div>
                                 <div class="col-sm-2 mt8">  
                                     <t t-set="attachment_id" t-value="invoice.my_invoices_zip()"/>                                
@@ -642,34 +686,88 @@
                         <h6>Total pagado (USD)</h6>
                         <p class="unpaid-total mt16">
                             <span t-esc="total_to_paid_usd" 
-                                t-options='{"widget": "monetary", "display_currency": website.currency_id}'/>
+                                t-options='{"widget": "monetary", "display_currency": env.ref("base.USD")}'/>
                             
-                        </p>                                         
+                        </p>     
                     </div>
                     <div class="col-sm-3 col-sm-offset-0 text-center">
                         <h6>Total por pagar (USD)</h6>
                         <p class="unpaid-total mt16">
                             <span t-esc="total_unpaid_usd" 
-                                t-options='{"widget": "monetary", "display_currency": website.currency_id}'/>
+                                t-options='{"widget": "monetary", "display_currency": env.ref("base.USD")}'/>
                         </p>                                         
                     </div>                                       
                     <div class="col-sm-3 col-sm-offset-0 text-center">
                         <h6>Total pagado (MXN)</h6>
                         <p class="unpaid-total mt16">
                             <span t-esc="total_to_paid_mxn" 
-                                t-options='{"widget": "monetary", "display_currency": website.currency_id}'/>
+                                t-options='{"widget": "monetary", "display_currency": env.ref("base.MXN")}'/>
                         </p>                                         
                     </div>
                     <div class="col-sm-3 col-sm-offset-0 text-center">
                         <h6>Total por pagar (MXN)</h6>
                         <p class="unpaid-total mt16">
                             <span t-esc="total_unpaid_mxn" 
-                                t-options='{"widget": "monetary", "display_currency": website.currency_id}'/>
+                                t-options='{"widget": "monetary", "display_currency": env.ref("base.MXN")}'/>
                         </p>                                         
                     </div>                     
                 </div>
-            </div>
+            </div>      
         </xpath>
+    </template>
+
+    <template id="payment_complements">
+
+        <t t-call="portal.portal_layout">
+            <t t-call="typ.my-account-menu"/>
+            <div class="col-md-9 col-md-offset-0 col-sm-8 col-sm-offset-0 col-xs-12 col-xs-offset-0 o_my_sale_orders">
+                <div class="col-md-12 text-center mt32 mb32">
+                    <h5 class="sections">PAYMENT COMPLEMENTS</h5>
+                </div> 
+            </div> 
+            <div t-if="not payment_partner" class="col-sm-9 mt32">
+                <h5 class="sections" >There are currently no payment complements for your account.</h5>                    
+            </div>           
+            <div t-else="" class="col-sm-9 mb64">                   
+                <div class="my-table-typ col-sm-12 text-center white-color no-padding-right mb16">
+                    <div class="row text-center orders-title">               
+                        <div class="col-sm-4 mt24 mb8">
+                            <p>Name</p>
+                        </div>
+                        <div class="col-sm-4 mt24 mb8">
+                            <p>Payment Date</p>
+                        </div>  
+                        <div class="col-sm-4 mt24 mb8">
+                            <p>Download</p>
+                        </div> 
+                    </div>
+                    <!-- users are not allowed to see the account_payment model. We have to add a new ACL and update a sale record rule -->                       
+                    <div class="content-table-typ">     
+                        <t t-foreach="payment_partner" t-as="id_payment">
+                            <t t-set="attachment_id" t-value="env['ir.attachment'].sudo().search([('res_id','=',id_payment.id),('res_model', '=', 'account.payment')], limit = 1)"/> 
+                            <t t-set="payment" t-value="env['account.payment'].sudo().search([('id','=', id_payment.id)])"/>
+                            <t t-if="attachment_id">
+                                <div class="row">
+                                    <div class="col-sm-4 mt8">
+                                        <span t-esc="payment.name"/>                                 
+                                    </div>
+                                    <div class="col-sm-4 mt8">
+                                        <t t-call="typ.order_date">
+                                            <t t-set="order_date" t-value="time.strptime(payment.payment_date,'%Y-%m-%d')" />
+                                        </t>                   
+                                    </div>
+                                    <div class="col-sm-4 mt8">
+                                        <a t-att-href="'/web/content/{0}?download=true'.format(attachment_id.id)"><img src="/web/image/theme_typ.download-icon" alt="Download invoice"/></a>                             
+                                    </div>
+                                </div>
+                            </t>     
+                        </t>     
+                    </div>
+                </div>
+            </div> 
+
+        </t>
+    
     </template>
 
     <template id="my_quotations" inherit_id="sale.portal_my_quotations">
@@ -730,7 +828,6 @@
                                 </div>
                                 <div class="col-sm-3 mt8">
                                     <span class="total-order" t-field="quotation.amount_total" t-options='{"widget": "monetary", "display_currency": quotation.pricelist_id.currency_id}'/>
-                                    <span class="total-order" itemprop="priceCurrency" t-esc="quotation.currency_id.name" />
                                 </div>
                                 <div class="col-sm-2">                                    
                                     <t t-if="quotation.state == 'cancel'">
@@ -756,14 +853,14 @@
                         <h6>Total (USD)</h6>
                         <p class="unpaid-total mt16">
                             <span t-esc="total_amount_usd" 
-                                t-options='{"widget": "monetary", "display_currency": website.currency_id}'/>
+                                t-options='{"widget": "monetary", "display_currency": env.ref("base.USD")}'/>
                         </p>                    
                     </div>
                     <div class="col-sm-3 col-sm-offset-0 text-center">
                         <h6>Total (MXN)</h6>
                         <p class="unpaid-total mt16">
                             <span t-esc="total_amount_mxn" 
-                                t-options='{"widget": "monetary", "display_currency": website.currency_id}'/>
+                                t-options='{"widget": "monetary", "display_currency": env.ref("base.MXN")}'/>
                         </p>                    
                     </div>
                 </div>         
