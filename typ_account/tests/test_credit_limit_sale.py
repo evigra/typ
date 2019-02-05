@@ -8,13 +8,13 @@ from .common import TestTypAccount
 class TestCreditLimitSale(TestTypAccount):
 
     def test_00_credit_limit_sale_warning_message(self):
-        """Message warning is not raised when partner has credit limit
+        """Message warning is not raise when partner has credit limit
         """
         with_credit_limit = self.sale_order.onchange_partner_id()
         self.assertFalse(with_credit_limit)
 
     def test_10_credit_limit_sale_cash_warning_message(self):
-        """Message warning is not raised when partner hasn't credit limit but
+        """Message warning is not raise when partner hasn't credit limit but
         sale is cash
         """
         self.account_invoice_1.action_invoice_open()
@@ -28,7 +28,7 @@ class TestCreditLimitSale(TestTypAccount):
         self.assertFalse(with_credit_limit)
 
     def test_20_credit_limit_sale_warning_message(self):
-        """Test that message warning is raised when partner hasn't credit limit
+        """Test that message warning is raise when partner hasn't credit limit
         """
         self.account_invoice_1.action_invoice_open()
         self.conf_warehouse.write({'credit_limit': 0.0})

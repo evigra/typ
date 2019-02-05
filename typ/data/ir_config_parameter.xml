@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-    <odoo noupdate="1">
-        <!-- Parameter to Define price to product -->
-        <record model="ir.config_parameter" id="price_list_config">
-            <field name="key">price_rule_zero_continue</field>
-            <field name="value">True</field>
-        </record>
-    </odoo>

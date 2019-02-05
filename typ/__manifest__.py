@@ -81,7 +81,7 @@
         # 'data/typ_security.xml',
         'report/report_invoice.xml',
         'report/account_report_payment_receipt_templates.xml',
-        'security/ir.model.access.csv',
+        # 'security/ir.model.access.csv',
         'data/website_settings.yml',
         'data/company.xml',
         'data/categories.xml',

@@ -387,7 +387,7 @@
                             <span class="mr0" t-if="not invoices_status and not month_filter">All</span> 
                             <span class="mr0" t-elif="month_filter" t-esc="month_filter"/>
                             <span class="mr0" t-elif="invoices_status == 'open'">Status: <span t-esc="unpaid_invoices"/></span>                            
-                            <span class="mr0" t-else="">Status: <span t-esc="invoices_status"/></span>
+                            <span class="mr0" t-else="">Status: <span t-esc="paid_invoices"/></span>
                             <i class="fa fa-chevron-down pull-right"/>
                         </a> 
 
