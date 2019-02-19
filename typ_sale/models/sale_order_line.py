@@ -91,6 +91,22 @@ class SaleOrderLine(models.Model):
         if margin_sale < margin:
             return res
 
+    @api.onchange('price_unit')
+    def _onchange_price_unit(self):
+        """Method to restrict change of price of sale"""
+        if (self.env.user.has_group('typ_sale.res_group_modify_price_sale') or
+                not (self.order_id.pricelist_id and self.order_id.partner_id)):
+            return
+        tmp_price_unit = self.price_unit
+        self.product_uom_change()
+        if (self.product_id.type != 'service' and
+                self.price_unit != tmp_price_unit and
+                not self.product_id.categ_id.allow_change_price_sale):
+            raise ValidationError(
+                _("You can not modify the price sale of product %s") % (
+                    self.product_id.name))
+        self.price_unit = tmp_price_unit
+
 
 class ProcurementRule(models.Model):
     _inherit = 'procurement.rule'

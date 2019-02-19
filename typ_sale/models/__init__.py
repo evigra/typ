@@ -9,3 +9,4 @@ from . import res_company
 from . import res_config
 from . import sales_team
 from . import pricelist
+from . import product
