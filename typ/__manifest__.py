@@ -68,7 +68,7 @@
         # 'web_export_view',
         'typ_hr',
         # 'typ_portal',
-        # 'typ_printing_report',
+        'typ_printing_report',
         'dev_invoice_multi_payment',
         'login',
         'theme_typ',

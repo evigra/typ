@@ -10,7 +10,7 @@
 ############################################################################
 {
     'name': "TyP Printing Report",
-    'version': '8.0.0.1.0',
+    'version': '11.0.0.1.0',
     'license': 'LGPL-3',
     'category': '',
     'author': 'Vauxoo',
@@ -18,7 +18,7 @@
     # any module necessary for this one to work correctly
     'depends': [
         'stock',
-        'product_barcode_generator',
+        'barcodes_generator_product',
         'base_report_to_printer',
     ],
     # always loaded

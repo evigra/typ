@@ -1,6 +1,6 @@
 # coding: utf-8
 
-from openerp import api, fields, models
+from odoo import api, fields, models
 
 
 class PrintLabel(models.TransientModel):
@@ -9,7 +9,7 @@ class PrintLabel(models.TransientModel):
     _description = 'Print product label'
 
     product_id = fields.Many2one('product.product', 'Product', required=True)
-    report_id = fields.Many2one('ir.actions.report.xml', 'Label report',
+    report_id = fields.Many2one('ir.actions.report', 'Label report',
                                 required=True,
                                 domain="[('model','=','product.product')]")
     qty = fields.Integer('Quantity', required=True,
@@ -33,41 +33,5 @@ class PrintLabel(models.TransientModel):
     def print_label(self):
         data = False
         if self.report_id.usage == 'zebra':
-            data = {'ids': self.product_id.ids, 'qty': self.qty}
-        return self.env["report"].with_context(
-            active_ids=self.product_id.ids,
-            active_model='product.product').get_action(
-                self.product_id, self.report_id.report_name, data)
-
-
-class ProductProduct(models.Model):
-
-    _inherit = 'product.product'
-
-    report_id = fields.Many2one('ir.actions.report.xml', 'Label report',
-                                domain="[('model','=','product.product')]")
-
-
-class ProductCategory(models.Model):
-
-    _inherit = 'product.category'
-
-    report_id = fields.Many2one('ir.actions.report.xml', 'Label report',
-                                domain="[('model','=','product.product')]")
-
-
-class ResCompany(models.Model):
-
-    _inherit = 'res.company'
-
-    report_id = fields.Many2one('ir.actions.report.xml', 'Label report',
-                                domain="[('model','=','product.product')]")
-
-
-class StockMove(models.Model):
-
-    _inherit = "stock.move"
-
-    normalized_barcode = fields.Boolean(
-        related='product_id.normalized_barcode')
-    location_usage = fields.Selection(related='location_id.usage')
+            data = {'qty': self.qty}
+        return self.report_id.report_action(self.product_id.ids, data)

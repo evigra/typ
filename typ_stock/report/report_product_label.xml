@@ -25,8 +25,8 @@
         />
 
     <template id="product_label_large_view">
-        <t t-call="report.html_container">
-            <t t-foreach="docs" t-as="doc">
+        <t t-foreach="docs" t-as="doc">
+            <t t-call="web.basic_layout">
                 <div class="page">
                     <h3 class="text-center" t-field="doc.default_code"/>
                     <h6 class="text-left" t-field="doc.categ_id.name"/>
@@ -44,8 +44,8 @@
     </template>
 
     <template id="product_label_medium_view">
-        <t t-call="report.html_container">
-            <t t-foreach="docs" t-as="doc">
+        <t t-foreach="docs" t-as="doc">
+            <t t-call="web.basic_layout">
                 <div class="page">
                     <h6>
                         [<span t-field="doc.default_code"/>]
@@ -65,8 +65,8 @@
     </template>
 
     <template id="product_label_small_view">
-        <t t-call="report.html_container">
-            <t t-foreach="docs" t-as="doc">
+        <t t-foreach="docs" t-as="doc">
+            <t t-call="web.basic_layout">
                 <div class="page">
                     <h6 class="text-center" t-field="doc.default_code"/>
                     <h6 class="text-left" t-field="doc.name"/>
