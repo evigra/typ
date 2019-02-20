@@ -42,7 +42,17 @@ msgid "AD"
 msgstr "DA"
 
 #. module: typ_sale
-#: field:res.partner.warehouse,allow_overdue_invoice:0
+#: model:ir.model.fields,field_description:typ_sale.field_product_category_allow_change_price_sale
+msgid "Allow Change Price Sale"
+msgstr "Permite cambiar el precio de venta"
+
+#. module: typ_sale
+#: model:ir.model.fields,help:typ_sale.field_product_category_allow_change_price_sale
+msgid "Allow change price sale in the sale order for the stockable and consumable products attached to this category. The options doesn't apply to products attached to sub-categories of this category."
+msgstr "Permite cambiar el precio de venta en la orden de compra para los productos almacenables y consumibles ligado a esta categoría. Las opciones no aplica a productos ligados a sub-categorías de esta categoría."
+
+#. module: typ_sale
+#: model:ir.model.fields,field_description:typ_sale.field_res_partner_warehouse_allow_overdue_invoice
 msgid "Allow overdue invoices"
 msgstr "Permitir facturas vencidas"
 
@@ -297,6 +307,11 @@ msgstr "Última actualización en"
 #: field:sale.config.settings,margin_allowed:0
 msgid "Margin Allowed on Sale Order"
 msgstr "Margen permitido en Pedido de Venta"
+
+#. module: typ_sale
+#: model:res.groups,name:typ_sale.res_group_modify_price_sale
+msgid "Modify price of sale in sale order"
+msgstr "Modifica el precio de venta en la orden de venta"
 
 #. module: typ_sale
 #: selection:res.partner,partner_type:0
@@ -848,6 +863,11 @@ msgid "USD / MXN"
 msgstr "USD / MXN"
 
 #. module: typ_sale
+#: model:res.groups,comment:typ_sale.res_group_modify_price_sale
+msgid "Users can modify price of sale in sale orders"
+msgstr "Los usuarios pueden modificar precios de ventas en la ordenes de venta"
+
+#. module: typ_sale
 #: model:res.groups,name:typ_sale.res_group_cancel_sale_order
 msgid "Users that can cancel a sale order"
 msgstr "Los usuarios que pueden cancelar una orden de venta"
@@ -921,6 +941,12 @@ msgstr "Configuración de almacenes"
 #: view:website:sale.report_saleorder_document
 msgid "Warranty:"
 msgstr "Garantía:"
+
+#. module: typ_sale
+#: code:addons/typ_sale/models/sale_order_line.py:115
+#, python-format
+msgid "You can not modify the price sale of product %s"
+msgstr "No puedes modificar el precio de venta del producto %s"
 
 #. module: typ_sale
 #: view:website:typ_sale.external_layout_footer
