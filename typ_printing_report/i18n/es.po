@@ -230,15 +230,38 @@ msgstr ""
 #. module: typ_printing_report
 #: view:stock.print_label:typ_printing_report.print_label_form_view
 msgid "or"
-msgstr ""
+msgstr "o"
 
 #. module: typ_printing_report
-#: model:ir.actions.report.xml,name:typ_printing_report.product_label_zebra
+#: model:ir.actions.report,name:typ_printing_report.product_label_extra_zebra
+msgid "product zebra Extra Label"
+msgstr "zebra etiqueta de producto extra"
+
+#. module: typ_printing_report
+#: model:ir.actions.report,name:typ_printing_report.product_label_zebra
 msgid "product zebra Label"
-msgstr ""
+msgstr "zebra etiqueta de producto"
 
 #. module: typ_printing_report
-#: model:ir.actions.report.xml,name:typ_printing_report.rack_label_zebra
-msgid "rack zebra Label"
-msgstr ""
+#: model:ir.actions.report,name:typ_printing_report.product_label_medium_zebra
+msgid "product zebra Medium Label"
+msgstr "zebra etiqueta de producto mediana"
+
+#. module: typ_printing_report
+#: model:ir.actions.report,name:typ_printing_report.rack_label_extra_zebra
+msgid "rack zebra Extra Label"
+msgstr "zebra etiqueta de rack extra"
+
+#. module: typ_printing_report
+#: model:ir.actions.report,name:typ_printing_report.rack_label_medium_zebra
+msgid "rack zebra Medium Label"
+msgstr "zebra etiqueta de rack mediana"
+
+#. module: typ_printing_report
+#: model:ir.actions.report,name:typ_printing_report.rack_label_zebra
+msgid "rack zebra big Label"
+msgstr "zebra etiqueta de rack grande"
+
+
+
 

@@ -2,9 +2,25 @@
 <odoo>
     <report id="rack_label_zebra"
         model="product.product"
-        string="rack zebra Label"
+        string="rack zebra big Label"
         name="typ_printing_report.rack_label_zebra_view"
         file="typ_printing_report.rack_label_zebra_view"
+        report_type="qweb-pdf"
+        usage="zebra"
+        />
+    <report id="rack_label_medium_zebra"
+        model="product.product"
+        string="rack zebra Medium Label"
+        name="typ_printing_report.rack_label_medium_zebra_view"
+        file="typ_printing_report.rack_label_medium_zebra_view"
+        report_type="qweb-pdf"
+        usage="zebra"
+        />
+    <report id="rack_label_extra_zebra"
+        model="product.product"
+        string="rack zebra Extra Label"
+        name="typ_printing_report.rack_label_extra_zebra_view"
+        file="typ_printing_report.rack_label_extra_zebra_view"
         report_type="qweb-pdf"
         usage="zebra"
         />
@@ -13,6 +29,22 @@
         string="product zebra Label"
         name="typ_printing_report.product_label_zebra_view"
         file="typ_printing_report.product_label_zebra_view"
+        report_type="qweb-pdf"
+        usage="zebra"
+        />
+    <report id="product_label_medium_zebra"
+        model="product.product"
+        string="product zebra Medium Label"
+        name="typ_printing_report.product_label_medium_zebra_view"
+        file="typ_printing_report.product_label_medium_zebra_view"
+        report_type="qweb-pdf"
+        usage="zebra"
+        />
+    <report id="product_label_extra_zebra"
+        model="product.product"
+        string="product zebra Extra Label"
+        name="typ_printing_report.product_label_extra_zebra_view"
+        file="typ_printing_report.product_label_extra_zebra_view"
         report_type="qweb-pdf"
         usage="zebra"
         />
@@ -27,8 +59,70 @@
                     <div class="code">
                     <t t-foreach="docs" t-as="product">
     N
-    A270,50,0,4,1,1,N,"<t t-raw='product.default_code.upper()'/>"
-    B270,100,0,1,2,6,40,B,<t t-if="product.barcode">"<t t-raw="product.barcode"/>"</t><t t-if="not product.barcode">"<t t-raw='product.default_code.upper()'/>"</t>
+    A30,50,0,4,1,1,N,"<t t-raw='product.default_code.upper()'/>"
+    B30,100,0,1,2,6,40,B,<t t-if="product.barcode">"<t t-raw="product.barcode"/>"</t><t t-if="not product.barcode">"<t t-raw='product.default_code.upper()'/>"</t>
+    P<t t-esc="data.get('qty')"/>
+                    </t>
+                    </div>
+                </div>
+            </t>
+        </t>
+    </template>
+
+    <template id="product_label_medium_zebra_view">
+        <t t-call="web.basic_layout">
+            <t t-foreach="docs" t-as="o">
+                <div class="page">
+                    <p>
+                        Este es el codigo enviado a la zebra
+                    </p>
+                    <div class="code">
+                    <t t-foreach="docs" t-as="product">
+    N
+    A200,50,0,4,1,1,N,"<t t-raw='product.default_code.upper()'/>"
+    B200,100,0,1,2,6,40,B,<t t-if="product.barcode">"<t t-raw="product.barcode"/>"</t><t t-if="not product.barcode">"<t t-raw='product.default_code.upper()'/>"</t>
+    P<t t-esc="data.get('qty')"/>
+                    </t>
+                    </div>
+                </div>
+            </t>
+        </t>
+    </template>
+
+    <template id="product_label_extra_zebra_view">
+        <t t-call="web.basic_layout">
+            <t t-foreach="docs" t-as="o">
+                <div class="page">
+                    <p>
+                        Este es el codigo enviado a la zebra
+                    </p>
+                    <div class="code">
+                    <t t-foreach="docs" t-as="product">
+    N
+    A30,50,0,4,1,1,N,"<t t-raw='product.default_code.upper()'/>"
+    B30,100,0,1,2,6,40,B,<t t-if="product.barcode">"<t t-raw="product.barcode"/>"</t><t t-if="not product.barcode">"<t t-raw='product.default_code.upper()'/>"</t>
+    P<t t-esc="data.get('qty')"/>
+                    </t>
+                    </div>
+                </div>
+            </t>
+        </t>
+    </template>
+
+    <template id="rack_label_medium_zebra_view">
+        <t t-call="web.basic_layout">
+            <t t-foreach="docs" t-as="o">
+                <div class="page">
+                    <p>
+                        Este es el codigo enviado a la zebra
+                    </p>
+                    <div class="code">
+                    <t t-foreach="docs" t-as="product">
+    N
+    A50,5,0,3,2,1,N,"<t t-raw='product.default_code.upper()'/>"
+    A50,50,0,3,1,1,N,"<t t-raw='product.categ_id.name.upper()'/>"
+    A50,90,0,1,0,1,N,"<t t-raw='product.name.upper()'/>"
+    B50,130,0,3,2,6,80,B,<t t-if="product.barcode">"<t t-raw="product.barcode"/>"</t><t t-if="not product.barcode">"<t t-raw='product.default_code.upper()'/>"</t>
     P<t t-esc="data.get('qty')"/>
                     </t>
                     </div>
@@ -47,10 +141,32 @@
                     <div class="code">
                     <t t-foreach="docs" t-as="product">
     N
-    A50,10,0,5,1,1,N,"<t t-raw='product.default_code.upper()'/>"
-    A50,80,0,3,1,1,N,"<t t-raw='product.categ_id.name.upper()'/>"
-    A50,120,0,3,1,1,N,"<t t-raw='product.name.upper()'/>"
-    B50,200,0,1,2,6,40,B,<t t-if="product.barcode">"<t t-raw="product.barcode"/>"</t><t t-if="not product.barcode">"<t t-raw='product.default_code.upper()'/>"</t>
+    A50,50,0,5,1,1,N,"<t t-raw='product.default_code.upper()'/>"
+    A50,150,0,3,1,1,N,"<t t-raw='product.categ_id.name.upper()'/>"
+    A50,180,0,3,1,1,N,"<t t-raw='product.name.upper()'/>"
+    B50,220,0,1,5,6,120,B,<t t-if="product.barcode">"<t t-raw="product.barcode"/>"</t><t t-if="not product.barcode">"<t t-raw='product.default_code.upper()'/>"</t>
+    P<t t-esc="data.get('qty')"/>
+                    </t>
+                    </div>
+                </div>
+            </t>
+        </t>
+    </template>
+
+    <template id="rack_label_extra_zebra_view">
+        <t t-call="web.basic_layout">
+            <t t-foreach="docs" t-as="o">
+                <div class="page">
+                    <p>
+                        Este es el codigo enviado a la zebra
+                    </p>
+                    <div class="code">
+                    <t t-foreach="docs" t-as="product">
+    N
+    A100,10,0,5,1,1,N,"<t t-raw='product.default_code.upper()'/>"
+    A100,80,0,3,1,1,N,"<t t-raw='product.categ_id.name.upper()'/>"
+    A100,120,0,3,1,1,N,"<t t-raw='product.name.upper()'/>"
+    B100,200,0,1,2,6,40,B,<t t-if="product.barcode">"<t t-raw="product.barcode"/>"</t><t t-if="not product.barcode">"<t t-raw='product.default_code.upper()'/>"</t>
     P<t t-esc="data.get('qty')"/>
                     </t>
                     </div>
