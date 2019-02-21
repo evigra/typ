@@ -73,6 +73,9 @@ class InvoiceFromGuides(models.TransientModel):
                 'account_id': account_line.id,
                 'quantity': 1.0,
                 'price_unit': line.cost,
+                'invoice_line_tax_ids': [
+                    (6, 0,
+                     [tax.id for tax in line.product_id.supplier_taxes_id])],
                 'invoice_id': invoice.id,
                 'guide_line_id': line.id,
             })
