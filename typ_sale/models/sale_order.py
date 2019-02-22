@@ -11,6 +11,53 @@ class SaleOrder(models.Model):
     type_payment_term = fields.Selection(
         [('credit', 'Credit'), ('cash', 'Cash'),
          ('postdated_check', 'Postdated check')], default='credit')
+    so = fields.Boolean(string='Is Special Order?', default=False,
+                        help='This or some product of the sales order '
+                        'will be purchased with a supplier?')
+    notest = fields.Text(string='Notes',
+                         help='Delivery address, product availability, '
+                         'special shipping instructions, '
+                         'conditions of purchase, etc.')
+    delivery_promise = fields.Date(help='Date in which we promise '
+                                   'to deliver to the client')
+    shipping_to = fields.Selection([
+        ('cliente', 'CLIENTE'),
+        ('t_hmo', 'TIENDA HERMOSILLO'),
+        ('t_cln', 'TIENDA CULIACAN'),
+        ('t_nog', 'TIENDA NOGALES'),
+        ('t_tij', 'TIENDA TIJUANA'),
+        ('t_cen', 'TIENDA OBREGON'),
+        ('t_mxl', 'TIENDA MEXICALI'),
+        ('t_lap', 'TIENDA LA PAZ'),
+        ('t_lmm', 'TIENDA LOS MOCHIS'),
+        ('t_gdl', 'TIENDA GUADALAJARA'),
+        ('aa_nog', 'AGENCIA ADUANAL NOGALES'),
+        ('aa_tij', 'AGENCIA ADUANAL TIJUANA'),
+        ('aa_mxl', 'AGENCIA ADUANAL MEXICALI'),
+        ('aa_nld', 'AGENCIA ADUANAL NUEVO LAREDO'),
+        ('aa_cjs', 'AGENCIA ADUANAL CD JUAREZ'),
+        ('otro', 'OTRO'),
+    ], help='Branch, customs agency or destination to which the '
+        'merchandise will be sent from the supplier')
+    partial_supply = fields.Selection([
+        ('si', 'Si'),
+        ('no', 'No'),
+        ], help='Partial delivery may or may not be possible')
+    type_of_import = fields.Selection([
+        ('semanal', 'Semanal'),
+        ('express', 'Express'),
+        ('na', 'N/A'),
+        ], help='This order crosses only through customs or in a consolidated')
+    shipping_by = fields.Selection([
+        ('paquetexpress', 'Paquetexpress'),
+        ('consolidado', 'Consolidado'),
+        ('otro', 'Otro'),
+    ], help='It will be shipped by some freight company or '
+        'in some consolidated of the provider')
+    purchase_currency = fields.Many2one('res.currency',
+                                        help='USD / MXN')
+    special_discounts = fields.Char(
+        help='Any compensation granted by the provider')
 
     @api.onchange('warehouse_id', 'partner_id')
     def _onchange_warehouse_id(self):
@@ -71,6 +118,11 @@ class SaleOrder(models.Model):
 class PurchaseOrder(models.Model):
 
     _inherit = 'purchase.order'
+
+    sale_order_id = fields.Many2one(
+        'sale.order', "Sale Order",
+        help="Reference to Sale Order"
+    )
 
     @api.model
     def _prepare_picking(self):

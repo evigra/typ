@@ -32,6 +32,11 @@ msgid "AA"
 msgstr ""
 
 #. module: typ_sale
+#: model:ir.model.fields,help:typ_sale.field_sale_order_special_discounts
+msgid "Any compensation granted by the provider"
+msgstr "Alguna compensación otorgada por el proveedor"
+
+#. module: typ_sale
 #: selection:res.partner,dealer:0
 msgid "AD"
 msgstr "DA"
@@ -45,6 +50,11 @@ msgstr "Permitir facturas vencidas"
 #: view:website:sale.report_saleorder_document
 msgid "Availability:"
 msgstr "Disponibilidad:"
+
+#. module: typ_sale
+#: model:ir.model.fields,help:typ_sale.field_sale_order_shipping_to
+msgid "Branch, customs agency or destination to which the merchandise will be sent from the supplier"
+msgstr "Sucursal, agencia aduanal o destino al que se enviará la mercancía desde el proveedor"
 
 #. module: typ_sale
 #: selection:res.partner,partner_type:0
@@ -139,9 +149,24 @@ msgid "Currency:"
 msgstr "Moneda:"
 
 #. module: typ_sale
+#: model:ir.model.fields,help:typ_sale.field_sale_order_delivery_promise
+msgid "Date in which we promise to deliver to the client"
+msgstr "Fecha en la que nos comprometemos entregarle al cliente"
+
+#. module: typ_sale
 #: field:res.partner,dealer:0
 msgid "Dealer type"
 msgstr "Tipo dealer"
+
+#. module: typ_sale
+#: model:ir.model.fields,field_description:typ_sale.field_sale_order_delivery_promise
+msgid "Delivery Promise"
+msgstr "Promesa de entrega"
+
+#. module: typ_sale
+#: model:ir.model.fields,help:typ_sale.field_sale_order_notest
+msgid "Delivery address, product availability, special shipping instructions, conditions of purchase, etc."
+msgstr "Dirección de entrega, disponibilidad del producto, instrucciones especiales de embarque, condiciones de la compra, etc."
 
 #. module: typ_sale
 #: view:website:sale.report_saleorder_document
@@ -232,6 +257,21 @@ msgid "Invoice address:"
 msgstr "Dirección de facturación:"
 
 #. module: typ_sale
+#: model:ir.model.fields,field_description:typ_sale.field_sale_order_so
+msgid "Is Special Order?"
+msgstr "¿Es Pedido especial?"
+
+#. module: typ_sale
+#: model:ir.model.fields,help:typ_sale.field_sale_order_shipping_by
+msgid "It will be shipped by some freight company or in some consolidated of the provider"
+msgstr "Se embarcará por alguna fletera o en algún consolidado del proveedor"
+
+#. module: typ_sale
+#: model:ir.model.fields,help:typ_sale.field_sale_order_partial_supply
+msgid "Is a partial supply?"
+msgstr "¿Es entrega parcial?"
+
+#. module: typ_sale
 #: field:sale.order,pos:0
 msgid "Is PoS?"
 msgstr "Es PdV?"
@@ -320,6 +360,11 @@ msgid "Notes:"
 msgstr "Notas:"
 
 #. module: typ_sale
+#: model:ir.ui.view,arch_db:typ_sale.view_sale_order_form_type_payment_term
+msgid "Notes (Shipping Address, if applicable)"
+msgstr "Notas (Dirección de entrega, si applica)"
+
+#. module: typ_sale
 #: selection:res.partner,partner_type:0
 msgid "OC"
 msgstr "CO"
@@ -405,6 +450,16 @@ msgstr "PUBLICO"
 #: view:website:typ_sale.external_layout_footer
 msgid "Page:"
 msgstr "Página:"
+
+#. module: typ_sale
+#: model:ir.model.fields,field_description:typ_sale.field_sale_order_partial_supply
+msgid "Partial Supply"
+msgstr "Entrega parcial"
+
+#. module: typ_sale
+#: model:ir.model.fields,help:typ_sale.field_sale_order_partial_supply
+msgid "Partial delivery may or may not be possible"
+msgstr "Se puede o no embarcar parcialmente"
 
 #. module: typ_sale
 #: model:ir.model,name:typ_sale.model_res_partner
@@ -502,9 +557,19 @@ msgid "Product Price History Search"
 msgstr "Buscador del histórico del precio del producto"
 
 #. module: typ_sale
+#: model:ir.model.fields,field_description:typ_sale.field_sale_order_purchase_currency
+msgid "Purchase Currency"
+msgstr "Moneda de compra"
+
+#. module: typ_sale
 #: model:ir.model,name:typ_sale.model_purchase_order
 msgid "Purchase Order"
 msgstr "Pedido de Compra"
+
+#. module: typ_sale
+#: model:ir.model.fields,help:typ_sale.field_sale_order_purchase_currency
+msgid "Purchase currency"
+msgstr "Moneda de compra"
 
 #. module: typ_sale
 #: view:website:sale.report_saleorder_document
@@ -623,6 +688,41 @@ msgid "Shipping address:"
 msgstr "Dirección de envío:"
 
 #. module: typ_sale
+#: model:ir.model.fields,field_description:typ_sale.field_sale_order_shipping_by
+msgid "Shipping By"
+msgstr "Embarcar por"
+
+#. module: typ_sale
+#: model:ir.model.fields,field_description:typ_sale.field_sale_order_shipping_to
+msgid "Shipping To"
+msgstr "Embarcar a"
+
+#. module: typ_sale
+#: model:ir.model.fields,help:typ_sale.field_sale_order_shipping_by
+msgid "Shipping by"
+msgstr "Embarcar por"
+
+#. module: typ_sale
+#: model:ir.model.fields,help:typ_sale.field_sale_order_shipping_to
+msgid "Shipping to"
+msgstr "Embarcar a"
+
+#. module: typ_sale
+#: model:ir.model.fields,help:typ_sale.field_sale_order_special_discounts
+msgid "Special Discount"
+msgstr "Descuento especial"
+
+#. module: typ_sale
+#: model:ir.model.fields,field_description:typ_sale.field_sale_order_special_discounts
+msgid "Special Discounts"
+msgstr "Descuento especial"
+
+#. module: typ_sale
+#: model:ir.ui.view,arch_db:typ_sale.view_sale_order_form_type_payment_term
+msgid "Special Order"
+msgstr "Pedido especial"
+
+#. module: typ_sale
 #: field:sale.order.line,special_sale:0
 msgid "Special sale"
 msgstr "Venta especial"
@@ -703,10 +803,20 @@ msgid "This group has access to modify field payment term in Sale Orders and Inv
 msgstr "Este grupo tiene acceso a modificar campos de plazo de pago en Ordenes de Venta y Facturas."
 
 #. module: typ_sale
+#: model:ir.model.fields,help:typ_sale.field_sale_order_so
+msgid "This or some product of the sales order will be purchased with a supplier?"
+msgstr "Este o algún producto del pedido de venta va a comprarse con un proveedor?"
+
+#. module: typ_sale
 #: code:addons/typ_sale/models/sale_order.py:83
 #, python-format
 msgid "This order can not be canceled because some of their pickings already have been transfered."
 msgstr "Esta venta no puede ser cancelada ya que alguno de sus albaranes ya ha sido transferido."
+
+#. module: typ_sale
+#: model:ir.model.fields,help:typ_sale.field_sale_order_type_of_import
+msgid "This order crosses only through customs or in a consolidated"
+msgstr "Este pedido cruza solo por la aduana o en un consolidado"
 
 #. module: typ_sale
 #: view:website:sale.report_saleorder_document
@@ -725,10 +835,20 @@ msgid "True if there is a buy type procurement rule within the chosen route, oth
 msgstr "Verdadero si hay una regla de abastecimiento de tipo compra dentro de la ruta escogida, en caso contrario falso"
 
 #. module: typ_sale
+#: model:ir.model.fields,field_description:typ_sale.field_sale_order_type_of_import
+msgid "Type Of Import"
+msgstr "Tipo de importación"
+
+#. module: typ_sale
 #: field:account.invoice,type_payment_term:0
 #: field:sale.order,type_payment_term:0
 msgid "Type payment term"
 msgstr "Tipo de termino de pago"
+
+#. module: typ_sale
+#: model:ir.model.fields,help:typ_sale.field_sale_order_type_of_import
+msgid "Type of import"
+msgstr "Tipo de importación"
 
 #. module: typ_sale
 #: view:website:sale.report_saleorder_document
