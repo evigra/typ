@@ -107,7 +107,8 @@
                 <field name="number_landing"/>
             </xpath>
             <xpath expr="//tree" position="attributes">
-                <attribute name="decoration-success" translation="off">invoiced and picking_shipment_date &lt; current_date</attribute>
+                <attribute name="decoration-danger" translation="off">not invoiced and state not in ('cancel', 'done') and scheduled_date &lt; current_date</attribute>
+                <attribute name="decoration-success" translation="off">invoiced and scheduled_date &gt; current_date</attribute>
                 <attribute name="decoration-warning" translation="off">state not in ('cancel','done') and picking_shipment_date &lt; current_date</attribute>
             </xpath>
             </field>
