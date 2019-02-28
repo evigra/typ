@@ -178,6 +178,10 @@ class StockMove(models.Model):
         help="Scheduled date for the shipment of this move"
     )
     product_supplier_ref = fields.Char(string='Supplier Code')
+    product_shipment_date = fields.Date(
+        related='picking_id.picking_shipment_date',
+        help='Product picking shipment date'
+    )
 
     def _push_apply(self):
         return super(StockMove, self.sudo())._push_apply()

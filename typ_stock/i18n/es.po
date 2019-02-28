@@ -143,6 +143,7 @@ msgstr "<strong>Recurso</strong>"
 
 #. module: typ_stock
 #: view:website:stock.report_picking
+#: model:ir.ui.view,arch_db:typ_stock.report_picking
 msgid "Barcode"
 msgstr "Código de barras"
 
@@ -188,10 +189,6 @@ msgstr "Dirección del Cliente:"
 #: help:stock.manual_transfer,message_last_post:0
 msgid "Date of the last message posted on the record."
 msgstr "Fecha de el ultimo mensaje creado en el registro."
-
-#: model:ir.ui.view,arch_db:typ_stock.report_picking
-msgid "Barcode"
-msgstr "Código de barras"
 
 #. module: typ_stock
 #: view:website:stock.report_picking
@@ -523,6 +520,11 @@ msgid "Product id"
 msgstr "Id del Producto"
 
 #. module: typ_stock
+#: model:ir.model.fields,help:typ_stock.field_stock_move_product_shipment_date
+msgid "Product picking shipment date"
+msgstr "Fecha de embarque del producto/picking"
+
+#. module: typ_stock
 #: model:ir.model.fields,field_description:typ_stock.field_stock_move_shipment_date
 msgid "Product shipment date"
 msgstr "Fecha de embarque"
@@ -595,7 +597,7 @@ msgid "Serial number %s not found"
 msgstr "El número serial %s no ha sido encontrado"
 
 #. module: typ_stock
-#: help:stock.picking,picking_shipment_date:0
+#: model:ir.model.fields,help:typ_stock.field_stock_picking_picking_shipment_date
 msgid "Shipment date of the picking"
 msgstr "Fecha de embarque del picking"
 

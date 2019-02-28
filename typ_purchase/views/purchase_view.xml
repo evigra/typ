@@ -185,7 +185,7 @@
         <field name="inherit_id" ref="stock.view_move_tree_receipt_picking"/>
         <field name="arch" type="xml">
             <xpath expr="//field[@name='date_expected']" position="before">
-                <field name="shipment_date"/>
+                <field name="product_shipment_date"/>
             </xpath>
         </field>
     </record>
