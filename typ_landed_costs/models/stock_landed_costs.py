@@ -447,8 +447,17 @@ class StockLandedCost(models.Model):
         help='Guides which contain items to be used as landed costs',
         copy=False)
 
-    port_input = fields.Char(
-        help='Port of input'
+    port_input = fields.Selection([
+        ('nog', 'NOGALES'),
+        ('san', 'SAN DIEGO'),
+        ('cxl', 'CALEXICO'),
+        ('ese', 'ENSENADA'),
+        ('zlo', 'MANZANILLO'),
+        ('lrd', 'LAREDO'),
+        ('nac', 'NACO'),
+        ('mzt', 'MAZATLAN'),
+        ('elp', 'EL PASO'),
+        ], help='Port of input',
     )
 
     partner_id = fields.Many2one(
