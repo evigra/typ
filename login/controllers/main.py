@@ -17,7 +17,7 @@ class AuthSignupHomeInherit(AuthSignupHome):
         """
         res = self.web_auth_signup(*args, **kw)
         return json.dumps({
-            'login_success': True if not res.qcontext.get("error") else False,
+            'login_success': not res.qcontext.get("error"),
             'error': res.qcontext.get("error", False),
             'login': kw.get('login', False)
         })
@@ -53,6 +53,6 @@ class HomeInherit(Home):
         """
         res = self.web_login(redirect, **kw)
         return json.dumps({
-            'login_success': True if not res.qcontext.get("error") else False,
+            'login_success': not res.qcontext.get("error"),
             'error': res.qcontext.get("error", False),
         })

@@ -99,8 +99,7 @@ class StockSerial(models.TransientModel):
                                 _('The Serial number %s already captured') %
                                 (serial_id.lot_id.name.encode('utf-8')))
                         }}
-                else:
-                    serial.append(serial_id.lot_id)
+                serial.append(serial_id.lot_id)
 
         else:
             return super(StockSerial, self).onchange_serial()

@@ -43,19 +43,18 @@ class AccountInvoice(models.Model):
                      invoice.partner_id.id).allowed_sale
             if allowed_sale:
                 return True
-            else:
-                default_sale_team = invoice.journal_id.section_id
-                warehouse_id = default_sale_team.default_warehouse.id
-                wh_config = invoice.partner_id.res_warehouse_ids.filtered(
-                    lambda wh_conf: wh_conf.warehouse_id.id == warehouse_id)
-                credit_limit = wh_config.credit_limit if wh_config else \
-                    invoice.partner_id.credit_limit
-                msg = _('Can not validate the Invoice because Partner '
-                        'has late payments or has exceeded the credit limit.'
-                        '\nPlease cover the late payment or check credit limit'
-                        '\nCredit'
-                        ' Limit : %s') % (credit_limit)
-                raise exceptions.Warning(msg)
+            default_sale_team = invoice.journal_id.section_id
+            warehouse_id = default_sale_team.default_warehouse.id
+            wh_config = invoice.partner_id.res_warehouse_ids.filtered(
+                lambda wh_conf: wh_conf.warehouse_id.id == warehouse_id)
+            credit_limit = wh_config.credit_limit if wh_config else \
+                invoice.partner_id.credit_limit
+            msg = _('Can not validate the Invoice because Partner '
+                    'has late payments or has exceeded the credit limit.'
+                    '\nPlease cover the late payment or check credit limit'
+                    '\nCredit'
+                    ' Limit : %s') % (credit_limit)
+            raise exceptions.Warning(msg)
 
     @api.onchange('partner_id', 'journal_id')
     def _onchange_limit_credit(self):
