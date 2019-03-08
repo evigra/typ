@@ -35,7 +35,7 @@ class SaleOrderLine(models.Model):
         for rec in self:
             pull_buy = rec.route_id.pull_ids.filtered(
                 lambda dat: dat.action == 'buy')
-            rec.special_sale = not pull_buy
+            rec.special_sale = bool(pull_buy)
 
     @api.constrains('state')
     def check_margin(self):

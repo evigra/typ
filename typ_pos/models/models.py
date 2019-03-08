@@ -69,9 +69,10 @@ class PosOrder(models.Model):
     def action_pos_order_paid(self):
         try:
             return super(PosOrder, self).action_pos_order_paid()
+        except psycopg2.OperationalError:
+            # do not hide transactional errors, the order(s) won't be saved!
+            raise
         except BaseException as e:
-            if isinstance(e, psycopg2.OperationalError):
-                raise
             _logger.error(
                 'Could not fully process the POS Order: %s', tools.ustr(e))
 
