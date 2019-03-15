@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from openerp import models, api
+from odoo import models, api
 from odoo.exceptions import AccessError
 
 
@@ -29,6 +29,7 @@ class AccountBankStatement(models.Model):
         res = super().reconciliation_widget_preprocess()
         st_lines = self.env['account.bank.statement.line'].browse(
             res['st_lines_ids'])
-        for st_line in st_lines.filtered(lambda l: l.id in st_lines_old):
-            st_line.partner_id = False
+        (st_lines & st_lines_old).write({
+            'partner_id': False
+        })
         return res
