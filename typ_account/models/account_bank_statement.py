@@ -24,8 +24,7 @@ class AccountBankStatement(models.Model):
     def reconciliation_widget_preprocess(self):
         """ Inherit method to avoid assigning a partner.
         """
-        st_lines_old = [l.id for l in self.line_ids.filtered(
-            lambda l: not l.partner_id)]
+        st_lines_old = self.line_ids.filtered(lambda l: not l.partner_id)
         res = super().reconciliation_widget_preprocess()
         st_lines = self.env['account.bank.statement.line'].browse(
             res['st_lines_ids'])
