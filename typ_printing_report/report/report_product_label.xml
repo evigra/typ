@@ -48,6 +48,30 @@
         report_type="qweb-pdf"
         usage="zebra"
         />
+    <report id="product_import_usa_label_zebra"
+        model="product.product"
+        string="product import USA zebra Label"
+        name="typ_printing_report.import_usa_label_zebra_view"
+        file="typ_printing_report.import_usa_label_zebra_view"
+        report_type="qweb-pdf"
+        usage="zebra"
+        />
+    <report id="product_import_can_label_zebra"
+        model="product.product"
+        string="product import CAN zebra Label"
+        name="typ_printing_report.import_can_label_zebra_view"
+        file="typ_printing_report.import_can_label_zebra_view"
+        report_type="qweb-pdf"
+        usage="zebra"
+        />
+    <report id="product_import_uk_label_zebra"
+        model="product.product"
+        string="product import UK zebra Label"
+        name="typ_printing_report.import_uk_label_zebra_view"
+        file="typ_printing_report.import_uk_label_zebra_view"
+        report_type="qweb-pdf"
+        usage="zebra"
+        />
 
     <template id="product_label_zebra_view">
         <t t-call="web.basic_layout">
@@ -174,4 +198,80 @@
             </t>
         </t>
     </template>
+
+    <template id="import_usa_label_zebra_view">
+        <t t-call="web.basic_layout">
+            <t t-foreach="docs" t-as="o">
+                <div class="page">
+                    <p>
+                        Este es el codigo enviado a la zebra
+                    </p>
+                    <div class="code">
+                    <t t-foreach="docs" t-as="product">
+    N
+    A30,50,0,4,1,1,N,"<t t-raw='product.name.upper()'/>"
+    A30,100,0,3,1,1,N,"1 <t t-raw='product.uom_id.name'/> Hecho en EE.UU."
+    A30,140,0,3,1,1,N,"Importado por TYP REFRIGERACION SA DE CV"
+    A30,180,0,3,1,1,N,"Nayarit 291 col. San Benito CP 83190"
+    A30,220,0,3,1,1,N,"Hermosillo, Sonora, Mexico. RFC TPR920625G68"
+    A30,260,0,3,1,1,N,"Instrucciones en el empaque"
+    B30,300,0,1,5,6,120,B,<t t-if="product.barcode">"<t t-raw="product.barcode"/>"</t><t t-if="not product.barcode">"<t t-raw='product.default_code.upper()'/>"</t>
+    P<t t-esc="data.get('qty')"/>
+                    </t>
+                    </div>
+                </div>
+            </t>
+        </t>
+    </template>
+
+    <template id="import_can_label_zebra_view">
+        <t t-call="web.basic_layout">
+            <t t-foreach="docs" t-as="o">
+                <div class="page">
+                    <p>
+                        Este es el codigo enviado a la zebra
+                    </p>
+                    <div class="code">
+                    <t t-foreach="docs" t-as="product">
+    N
+    A30,50,0,4,1,1,N,"<t t-raw='product.name.upper()'/>"
+    A30,100,0,3,1,1,N,"1 <t t-raw='product.uom_id.name'/> Hecho en Canada."
+    A30,140,0,3,1,1,N,"Importado por TYP REFRIGERACION SA DE CV"
+    A30,180,0,3,1,1,N,"Nayarit 291 col. San Benito CP 83190"
+    A30,220,0,3,1,1,N,"Hermosillo, Sonora, Mexico. RFC TPR920625G68"
+    A30,260,0,3,1,1,N,"Instrucciones en el empaque"
+    B30,300,0,1,5,6,120,B,<t t-if="product.barcode">"<t t-raw="product.barcode"/>"</t><t t-if="not product.barcode">"<t t-raw='product.default_code.upper()'/>"</t>
+    P<t t-esc="data.get('qty')"/>
+                    </t>
+                    </div>
+                </div>
+            </t>
+        </t>
+    </template>
+
+    <template id="import_uk_label_zebra_view">
+        <t t-call="web.basic_layout">
+            <t t-foreach="docs" t-as="o">
+                <div class="page">
+                    <p>
+                        Este es el codigo enviado a la zebra
+                    </p>
+                    <div class="code">
+                    <t t-foreach="docs" t-as="product">
+    N
+    A30,50,0,4,1,1,N,"<t t-raw='product.name.upper()'/>"
+    A30,100,0,3,1,1,N,"1 <t t-raw='product.uom_id.name'/> Hecho en Reino Unido"
+    A30,140,0,3,1,1,N,"Importado por TYP REFRIGERACION SA DE CV"
+    A30,180,0,3,1,1,N,"Nayarit 291 col. San Benito CP 83190"
+    A30,220,0,3,1,1,N,"Hermosillo, Sonora, Mexico. RFC TPR920625G68"
+    A30,260,0,3,1,1,N,"Instrucciones en el empaque"
+    B30,300,0,1,5,6,120,B,<t t-if="product.barcode">"<t t-raw="product.barcode"/>"</t><t t-if="not product.barcode">"<t t-raw='product.default_code.upper()'/>"</t>
+    P<t t-esc="data.get('qty')"/>
+                    </t>
+                    </div>
+                </div>
+            </t>
+        </t>
+    </template>
+
 </odoo>

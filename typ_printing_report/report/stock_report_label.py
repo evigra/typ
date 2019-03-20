@@ -124,3 +124,45 @@ class ReportZebraRackE(models.AbstractModel):
             'docs': products,
             'data': data
         }
+
+
+class ReportZebraImportUSA(models.AbstractModel):
+
+    _name = 'report.typ_printing_report.import_usa_label_zebra_view'
+
+    @api.multi
+    def get_report_values(self, docids, data):
+        products = self.env['product.product'].browse(docids)
+        return {
+            'doc_ids': products.ids,
+            'docs': products,
+            'data': data
+        }
+
+
+class ReportZebraImportCAN(models.AbstractModel):
+
+    _name = 'report.typ_printing_report.import_can_label_zebra_view'
+
+    @api.multi
+    def get_report_values(self, docids, data):
+        products = self.env['product.product'].browse(docids)
+        return {
+            'doc_ids': products.ids,
+            'docs': products,
+            'data': data
+        }
+
+
+class ReportZebraImportUK(models.AbstractModel):
+
+    _name = 'report.typ_printing_report.import_uk_label_zebra_view'
+
+    @api.multi
+    def get_report_values(self, docids, data):
+        products = self.env['product.product'].browse(docids)
+        return {
+            'doc_ids': products.ids,
+            'docs': products,
+            'data': data
+        }
