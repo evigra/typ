@@ -267,11 +267,6 @@ msgid "It will be shipped by some freight company or in some consolidated of the
 msgstr "Se embarcará por alguna fletera o en algún consolidado del proveedor"
 
 #. module: typ_sale
-#: model:ir.model.fields,help:typ_sale.field_sale_order_partial_supply
-msgid "Is a partial supply?"
-msgstr "¿Es entrega parcial?"
-
-#. module: typ_sale
 #: field:sale.order,pos:0
 msgid "Is PoS?"
 msgstr "Es PdV?"
@@ -362,7 +357,7 @@ msgstr "Notas:"
 #. module: typ_sale
 #: model:ir.ui.view,arch_db:typ_sale.view_sale_order_form_type_payment_term
 msgid "Notes (Shipping Address, if applicable)"
-msgstr "Notas (Dirección de entrega, si applica)"
+msgstr "Notas (Dirección de entrega, si aplica)"
 
 #. module: typ_sale
 #: selection:res.partner,partner_type:0
@@ -567,11 +562,6 @@ msgid "Purchase Order"
 msgstr "Pedido de Compra"
 
 #. module: typ_sale
-#: model:ir.model.fields,help:typ_sale.field_sale_order_purchase_currency
-msgid "Purchase currency"
-msgstr "Moneda de compra"
-
-#. module: typ_sale
 #: view:website:sale.report_saleorder_document
 msgid "Quantity"
 msgstr "Cantidad"
@@ -696,21 +686,6 @@ msgstr "Embarcar por"
 #: model:ir.model.fields,field_description:typ_sale.field_sale_order_shipping_to
 msgid "Shipping To"
 msgstr "Embarcar a"
-
-#. module: typ_sale
-#: model:ir.model.fields,help:typ_sale.field_sale_order_shipping_by
-msgid "Shipping by"
-msgstr "Embarcar por"
-
-#. module: typ_sale
-#: model:ir.model.fields,help:typ_sale.field_sale_order_shipping_to
-msgid "Shipping to"
-msgstr "Embarcar a"
-
-#. module: typ_sale
-#: model:ir.model.fields,help:typ_sale.field_sale_order_special_discounts
-msgid "Special Discount"
-msgstr "Descuento especial"
 
 #. module: typ_sale
 #: model:ir.model.fields,field_description:typ_sale.field_sale_order_special_discounts
@@ -854,6 +829,11 @@ msgstr "Tipo de importación"
 #: view:website:sale.report_saleorder_document
 msgid "Unit Price"
 msgstr "Precio Unidad"
+
+#. module: typ_sale
+#: model:ir.model.fields,help:typ_sale.field_sale_order_purchase_currency
+msgid "USD / MXN"
+msgstr "USD / MXN"
 
 #. module: typ_sale
 #: model:res.groups,name:typ_sale.res_group_cancel_sale_order
