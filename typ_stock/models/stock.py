@@ -247,5 +247,7 @@ class PurchaseOrderLine(models.Model):
             supplier = self.product_id.seller_ids.filtered(
                 lambda r: r.name == self.order_id.partner_id
             )
-            res[0].update({'product_supplier_ref': supplier.product_code})
+            res[0].update({
+                'product_supplier_ref': supplier.product_code,
+                'shipment_date': picking.picking_shipment_date})
         return res
