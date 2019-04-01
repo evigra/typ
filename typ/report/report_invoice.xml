@@ -470,7 +470,15 @@
                     <div class="col-xs-12 img-rounded" style="page-break-inside:avoid; border: 2px solid #deeff5;">
                         <div class="barcode col-xs-3">
                             <t t-set="sello" t-value="xml.get('Sello', 'No identificado')[-8:]"/>
-                            <img t-att-src="'/report/barcode/?type=QR&amp;value=%s' % quote_plus(                             'https://verificacfdi.facturaelectronica.sat.gob.mx/default.aspx?' + keep_query(                                 re=o.l10n_mx_edi_cfdi_supplier_rfc, rr=o.l10n_mx_edi_cfdi_customer_rfc,                                 tt=o.l10n_mx_edi_cfdi_amount, id=o.l10n_mx_edi_cfdi_uuid)                                 + '&amp;fe=%s' % quote_plus(                                     sello, 'utf-8', 'strict', '=/').replace('%2B', '+'))"/>
+                            <img t-if="o.partner_id.vat=='CCF941117QG9'" t-att-src="'/report/barcode/?type=QR&amp;value=%s' % quote_plus(
+                                'https://verificacfdi.facturaelectronica.sat.gob.mx/default.aspx?id=%s&amp;re=%s&amp;rr=%s&amp;tt=%s&amp;fe=%s' %
+                                    (o.l10n_mx_edi_cfdi_uuid, o.l10n_mx_edi_cfdi_supplier_rfc, o.l10n_mx_edi_cfdi_customer_rfc, o.l10n_mx_edi_cfdi_amount,
+                                quote_plus(sello, 'utf-8', 'strict', '=/').replace('%2B', '+')))"/>
+                            <img t-else="" t-att-src="'/report/barcode/?type=QR&amp;value=%s' % quote_plus(
+                                'https://verificacfdi.facturaelectronica.sat.gob.mx/default.aspx?' + keep_query(
+                                    re=o.l10n_mx_edi_cfdi_supplier_rfc, rr=o.l10n_mx_edi_cfdi_customer_rfc,
+                                    tt=o.l10n_mx_edi_cfdi_amount, id=o.l10n_mx_edi_cfdi_uuid)
+                                    + '&amp;fe=%s' % quote_plus(sello, 'utf-8', 'strict', '=/').replace('%2B', '+'))"/>
                         </div>
                         <div class="complement-details col-xs-9">
                             <div class="digital-stamp">
