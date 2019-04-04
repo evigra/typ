@@ -21,6 +21,94 @@ class ProductProduct(models.Model):
          ('obsolete', 'Obsolete')],
         help='State of lifecycle of the product.'
     )
+    project_or_replacement = fields.Selection(
+        [('project', 'Project'),
+         ('replacement', 'Replacement'),
+         ('projrepl', 'Project Replacement')],
+        help='The product is usually used for a new PROJECT, is used '
+        'to REPLACE some component or is used for both.'
+    )
+    ref_ac = fields.Selection(
+        [('ref', 'Refrigeration'),
+         ('ac', 'AC'),
+         ('refac', 'Refrigeration AC')],
+        string='Refrigeration/AC',
+        help='The product is used for Refrigeration, Air Conditioning or both.'
+    )
+    final_market = fields.Selection(
+        [('res', 'RES'),
+         ('com', 'COM'),
+         ('ind', 'IND'),
+         ('res_com', 'RES COM'),
+         ('res_ind', 'RES IND'),
+         ('com_ind', 'COM IND'),
+         ('res_com_ind', 'RES COM IND')],
+        help='The final market to which the product is directed in general is '
+        'residential (RES), Commercial (COM), Industrial (IND), '
+        'the last three, only residential and commercial, only residential '
+        'and industrial or commercial and industrial.'
+    )
+    main_customer_activity = fields.Selection(
+        [('con', 'CON'),
+         ('emp', 'EMP'),
+         ('may', 'MAY'),
+         ('con_emp', 'CON EMP'),
+         ('con_may', 'CON MAY'),
+         ('emp_may', 'EMP MAY'),
+         ('con_emp_may', 'CON EMP MAY')],
+        help='The activity of the client that uses this product is mainly '
+        'Contractor (CON), Company (EMP), Wholesaler (MAY), Contractor but '
+        'also a company, company but also a wholesaler, contractor but '
+        'also wholesaler or all of the above.'
+    )
+    wait_time = fields.Selection(
+        [('nulo', 'Nulo'),
+         ('nday', 'Next day'),
+         ('nurg', 'Not urgent')],
+        help='The delivery time according to the priority and importance of '
+        'the product is Null if it can not wait, Next Day if the time is '
+        'moderate and No Urgent if we can wait to have it.'
+    )
+    type_of_client = fields.Selection(
+        [('co', 'CO'),
+         ('cr', 'CR'),
+         ('cp', 'CP'),
+         ('esp', 'ESP'),
+         ('cn', 'CN'),
+         ('emb', 'EMB'),
+         ('sup', 'SUP'),
+         ('ali', 'ALI'),
+         ('otros', 'OTROS'),
+         ('may', 'MAY'),
+         ('cocr', 'CO CR'),
+         ('cnesp', 'CN ESP'),
+         ('cccec', 'CO CR CP ESP CN'),
+         ('esao', 'EMB SUB ALI OTROS'),
+         ('cccecesao', 'CO CR CP ESP CN EMB SUB ALI OTROS'),
+         ('cccecm', 'CO CR CP ESP CN MAY'),
+         ('todos', 'TODOS')],
+        help='Types of customers, defined in the target market.'
+    )
+    price_sensitivity = fields.Selection(
+        [('ns', 'Insensitive'),
+         ('ps', 'Little sensitive'),
+         ('n', 'Neutral'),
+         ('as', 'Something sensitive'),
+         ('ms', 'Very sensitive')],
+        help='Field to know how much the price of the product impacts the '
+        'customers decision to purchase.'
+    )
+    product_nature = fields.Selection(
+        [('commodity', 'Commodity'),
+         ('specialty', 'Specialty'),
+         ('normal', 'Normal')],
+        help='A Commodity product is a product that almost all suppliers '
+        'handle, its main attribute is the price. A Specialty product is '
+        'one with a unique or specific purpose, '
+        'Normal product that is handled from stock.'
+    )
+    product_market_type = fields.Many2one('product.market.type',
+                                          ondelete='set null', index=True)
 
     @api.multi
     def price_compute(self, price_type, uom=False, currency=False,
@@ -42,6 +130,12 @@ class ProductTemplate(models.Model):
             return 0
         return super(ProductTemplate, self).price_compute(
             price_type, uom=uom, currency=currency, company=company)
+
+
+class ProductMarketType(models.Model):
+    _name = 'product.market.type'
+
+    name = fields.Char(required=True)
 
 
 class PricelistItem(models.Model):
