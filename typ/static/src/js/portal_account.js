@@ -1,4 +1,4 @@
-odoo.define('theme_typ.portal_account', (require) => {
+odoo.define('theme_typ.portal_account', function (require) {
     'use strict';
 
     require('web.dom_ready');
@@ -8,12 +8,12 @@ odoo.define('theme_typ.portal_account', (require) => {
     const $Edit_information = $('.all_shipping');
 
     if(!$Edit_information.length){
-        return $.Defferred().Reject("DOM doesn't contain any '.all_shipping' element.");
+        return $.Deferred().reject("DOM doesn't contain any '.all_shipping' element.");
     }
 
     const Edit_information = Widget.extend({
         events: {
-            'click .js_edit_address': (event) => {
+            'click .js_edit_address': function(event) {
                 event.preventDefault();
                 $(event.currentTarget).parents('div.account-information').find('form.hide').attr('action', '/my/contact/edit').submit();
             }

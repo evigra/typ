@@ -64,16 +64,16 @@ odoo.define('theme_typ.login', function (require) {
             });
             return form_values;
         }
-    });   
+    });
 
     if(!$('.modal_form_login, .modal_form_signup, .modal-login, .oe_login_form').length) {
-        return $.Defferred().reject('DOM does not contain log in form');
+        return $.Deferred().reject('DOM does not contain log in form');
     }
     $('.modal_form_login, .modal_form_signup, .oe_login_form').each(function(){
         var $elem = $(this);
         var button = new submitLogIn(null, $elem.data());
         button.attachTo($elem);
     });
-    
+
     return submitLogIn;
 });

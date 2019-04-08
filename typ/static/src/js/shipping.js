@@ -1,4 +1,4 @@
-odoo.define('theme_typ.shipping_address', (require) => {
+odoo.define('theme_typ.shipping_address', function (require) {
     'use strict';
 
     require('web.dom_ready');
@@ -9,12 +9,12 @@ odoo.define('theme_typ.shipping_address', (require) => {
     const $Change_address = $('.all_shipping');
 
     if(!$Change_address.length){
-        return $.Defferred().Reject("DOM doesn't contain any '.all_shipping' element.");
+        return $.Deferred().reject("DOM doesn't contain any '.all_shipping' element.");
     }
 
     const Change_address = Widget.extend({
         events: {
-            'click .change_address_js': (event) => {
+            'click .change_address_js': function(event){
                 event.preventDefault();
                 $('.address').removeClass('fa-star address-selected');
                 $('.address').addClass('fa-star-o change_address_js');
@@ -33,7 +33,7 @@ odoo.define('theme_typ.shipping_address', (require) => {
                 var $form = $('div.one_kanban').find('form.hide');
                 $.post($form.attr('action'), $form.serialize()+'&xhr=1');
             },
-            'click .delete_address_js': (event) => {
+            'click .delete_address_js': function(event) {
                 event.preventDefault();
                 var address_id = $(event.currentTarget).attr('data-address-id');
                 ajax.jsonRpc("/delete-address/", 'call', {'address_id': address_id});

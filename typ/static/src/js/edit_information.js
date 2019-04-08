@@ -1,4 +1,4 @@
-odoo.define('theme_typ.edit_information', (require) => {
+odoo.define('theme_typ.edit_information', function(require) {
     'use strict';
 
     require('web.dom_ready');
@@ -8,7 +8,7 @@ odoo.define('theme_typ.edit_information', (require) => {
     const $Edit_information = $('.account-form');
 
     if(!$Edit_information.length){
-        return $.Defferred().Reject("DOM doesn't contain any '.account-form' element.");
+        return $.Deferred().reject("DOM doesn't contain any '.account-form' element.");
     }
 
     function populate_states (env) {

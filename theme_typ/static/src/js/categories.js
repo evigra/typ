@@ -1,4 +1,4 @@
-odoo.define('theme_typ.categories', (require) => {
+odoo.define('theme_typ.categories', function (require) {
     'use strict';
 
     require('web.dom_ready');
@@ -8,7 +8,7 @@ odoo.define('theme_typ.categories', (require) => {
     const $Show_categories = $('.nav-tabs');
 
     if(!$Show_categories.length){
-        return $.Defferred().Reject("DOM doesn't contain any '.nav-tabs' element.");
+        return $.Deferred().reject("DOM doesn't contain any '.nav-tabs' element.");
     }
 
     var element_active="";
@@ -17,7 +17,7 @@ odoo.define('theme_typ.categories', (require) => {
 
     const Show_categories = Widget.extend({
         events: {
-            'mouseenter .categories_js': (event) => {
+            'mouseenter .categories_js': function (event) {
                 this.$('a').removeClass('active');
                 this.$(element_active).removeClass('active in');
                 this.$(li_active).css("background-color", "white");
@@ -36,7 +36,7 @@ odoo.define('theme_typ.categories', (require) => {
                 $(img_active).removeClass('hidden');
 
             },
-            'mouseenter .no_parent_js': () => {
+            'mouseenter .no_parent_js': function() {
                 this.$('a').removeClass('active');
                 this.$(element_active).removeClass('active in');
                 this.$(li_active).css("background-color", "white");

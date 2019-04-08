@@ -1,4 +1,4 @@
-odoo.define('theme_typ.menu-icon', (require) => {
+odoo.define('theme_typ.menu-icon', function (require)  {
     'use strict';
 
     require('web.dom_ready');
@@ -9,18 +9,18 @@ odoo.define('theme_typ.menu-icon', (require) => {
 
     //Menu mobile button
     if(!$See_obj.length){
-        return $.Defferred().Reject("DOM doesn't contain any '.navbar-default' element.");
+        return $.Deferred().reject("DOM doesn't contain any '.navbar-default' element.");
     }
 
     const See_obj = Widget.extend({
         events: {
-            'click .icon-menu-btn': (event) => {
+            'click .icon-menu-btn': function(event) {
                 event.preventDefault();
                 this.$('.navbar-collapse').toggleClass('hidden');
                 this.$('body').toggleClass('cover-bg');
                 this.$('.block-menu').toggleClass('hidden');
             },
-            'click .icon-close-btn': (event) => {
+            'click .icon-close-btn': function(event) {
                 event.preventDefault();
                 this.$('.navbar-collapse').toggleClass('hidden');
                 this.$('.navbar-collapse').removeClass('collapse in');
@@ -40,12 +40,12 @@ odoo.define('theme_typ.menu-icon', (require) => {
     const $See_search = $('#wrapwrap');
 
     if(!$See_search.length){
-        return $.Defferred().Reject("DOM doesn't contain any '#wrapwrap' element.");
+        return $.Deferred().reject("DOM doesn't contain any '#wrapwrap' element.");
     }
 
     const See_search = Widget.extend({
         events: {
-            'click .search-btn': (event) => {
+            'click .search-btn': function(event) {
                 event.preventDefault();
                 this.$('.to-hidden-menu').toggleClass('hidden');
                 this.$('body').toggleClass('cover-bg');
