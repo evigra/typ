@@ -21,6 +21,11 @@ msgid "Approve purchase order users"
 msgstr "Usuarios para aprobar ordenes de compra"
 
 #. module: typ_purchase
+#: model:ir.ui.menu,name:typ_purchase.menu_atach_xmls_wizard
+msgid "Attach Multiple Supplier XML's"
+msgstr "Adjuntar Múltiples XML's de Proveedor"
+
+#. module: typ_purchase
 #: field:purchase.order,broker_id:0
 msgid "Broker"
 msgstr "Agente aduanal"
