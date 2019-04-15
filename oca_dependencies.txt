@@ -5,5 +5,5 @@ stock-logistics-workflow git@github.com:Vauxoo/stock-logistics-workflow.git
 sale-workflow
 vendor-bills git@git.vauxoo.com:vauxoo/vendor-bills.git
 odoo-apps git@git.vauxoo.com:vauxoo/odoo-apps.git
-report-print-send git@github.com:OCA/report-print-send.git
-stock-logistics-barcode git@github.com:OCA/stock-logistics-barcode.git
+report-print-send git@github.com:Vauxoo/report-print-send.git
+stock-logistics-barcode git@github.com:Vauxoo/stock-logistics-barcode.git
