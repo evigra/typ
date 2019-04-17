@@ -4,44 +4,31 @@
     <xpath expr="//t[@t-call='website.layout']" position="replace">
       <t t-call="website.layout">
         <!-- Banner homepage -->
-        <div class="oe_structure home-page-cover">
-            <section class="s_text_block_image_fw oe_img_bg oe_custom_bg text-center background-header" style="background-image: url(/web/image/theme_typ.home-hero);">
-                <div class="container">
-                    <div class="row">
-                        <h1 class="header-titles hidden-xs">WE SUPPORT THE SUCCESS OF YOUR<br/>BUSINESS</h1>
-                        <h1 class="header-titles mr16 ml16 hidden-lg hidden-sm hidden-md">WE SUPPORT THE SUCCESS OF YOUR BUSINESS</h1>
-                    </div>
-                    <div class="row">
-                        <h5 class="header-subtitles">Know our double stage system</h5>
-                    </div>
-                </div>
-            </section>
-        </div>
-        <div class="oe_structure">
+        <div class="oe_structure home-page-cover"/>
+        <div class="">
             <data data-transparent="transparent" id="transparency"/>
             <!-- highlights products -->
             <t t-call="typ.featured-products"/>
         </div>
         <div class="oe_structure"/>
-        
         <!-- first banner -->
         <div class="oe_structure">
-            <section class="s_text_block_image_fw oe_img_bg oe_custom_bg text-center background-banner-quote">
+            <section class="s_body_content text-center text-center background-banner-quote">
                 <div class="container oswald-text">
-                    <div class="row hidden-xs">
+                    <div class="row ">
                         <div class="col-md-4 col-md-offset-1 col-sm-7 col-sm-offset-0 mt32 ">
                              <span class="typ-img-logo-banner" t-field="res_company.logo" t-options="{'widget': 'image'}" t-att-alt="'Logo of %s' % res_company.name" t-att-title="res_company.name"/>
-                            <h4 class="banner mt16 mb16">WE WANT TO BE YOUR PARTNERS</h4>
-                            <a class="btn btn-primary btn-lg mb32" href="/contactus">QUOTE YOUR PROJECT</a>
+                            <h4 class="banner mt16 mb16 hidden-xs">WE WANT TO BE YOUR PARTNERS</h4>
+                            <a class="btn btn-primary btn-lg mb32 hidden-xs" href="/contactus">QUOTE YOUR PROJECT</a>
                         </div>
                     </div>
 
                     <div class="hidden-md hidden-sm hidden-lg">
-                        <div class="row">
+                        <!-- <div class="row">
                             <div class="col-xs-7 col-xs-offset-1 mt32 ">
                                  <span class="typ-img-logo-banner" t-field="res_company.logo" t-options="{'widget': 'image'}" t-att-alt="'Logo of %s' % res_company.name" t-att-title="res_company.name"/>
                             </div>
-                        </div>
+                        </div> -->
                         <div class="row">
                             <div class="col-xs-8 col-xs-offset-0">
                                 <h4 class="banner mt16 mb16 hidden-xs">WE WANT TO BE YOUR PARTNERS</h4>
@@ -57,8 +44,9 @@
 
                 </div>
             </section>
-        </div>      
-
+        </div>
+        <div class="oe_structure"/>
+        
             <!-- categories -->
             <section class="dark-white text-center">
                 <div class="container categories-section">
@@ -91,82 +79,14 @@
                 </section>
             </div>
 
+            <div class="oe_structure"/>
+
             <!-- contact us -->
             <section>
                 <t t-call="typ.contactus"/>
             </section>
 
-            <!-- shop method -->
-            <div class="oe_structure">
-                <section class="s_text_block_image_fw oe_img_bg oe_custom_bg text-center background-body" style="background-image: url(/web/image/theme_typ.img-back-ice);">
-                    <div class="container oswald-text">
-                        <!-- title -->
-                        <div class="row mt24 mb32">
-                            <h5 class="banner">HOW TO BUY IN T&amp;P</h5>
-                        </div>
-                        <!-- steps to buy -->
-                        <div class="row">
-                            <div class="col-md-3 col-sm-3 col-xs-6">
-                                <div class="row img-height">
-                                    <img class="mt16" src="/web/image/theme_typ.icon-info" alt="Solicita Acceso"/>
-                                </div>
-                                <div class="row mt16">
-                                    <p>REQUEST ACCESS TO<br/>SIGN IN</p>
-                                </div>
-                            </div>
-                            <div class="col-md-3 col-sm-3 col-xs-6">
-                                <div class="row img-height">
-                                    <img class="mt16" src="/web/image/theme_typ.icon-cart" alt="Agrega Productos al Carrito"/>
-                                </div>
-                                <div class="row mt16">
-                                    <p>ADD PRODUCTS TO<br/>CART</p>
-                                </div>
-                            </div>
-                            <div class="col-md-3 col-sm-3 hidden-xs">
-                                <div class="row img-height">
-                                    <img class="mt16" src="/web/image/theme_typ.icon-payment" alt="Elige Metodo de Pago"/>
-                                </div>
-                                <div class="row mt16">
-                                    <p>CHOOSE YOUR PAYMENT<br/>METHOD</p>
-                                </div>
-                            </div>
-                            <div class="col-md-3 col-sm-3 hidden-xs">
-                                <div class="row img-height">
-                                    <img src="/web/image/theme_typ.icon-enjoy" alt="Recibe o Recoge tu Pedido"/>
-                                </div>
-                                <div class="row mt16">
-                                    <p>RECEIVE OR COLLECT<br/>YOUR EQUIPMENT</p>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- mobile second row -->
-                        <div class="row hidden-md hidden-sm hidden-lg mt16">
-                                <div class="col-xs-6">
-                                    <div class="row img-height">
-                                        <img class="mt16" src="/web/image/theme_typ.icon-payment" alt="Elige Metodo de Pago"/>
-                                    </div>
-                                    <div class="row mt16">
-                                        <p>CHOOSE YOUR PAYMENT<br/>METHOD</p>
-                                    </div>
-                                </div> 
-                                <div class="col-xs-6">
-                                    <div class="row img-height">
-                                        <img src="/web/image/theme_typ.icon-enjoy" alt="Recibe o Recoge tu Pedido"/>
-                                    </div>
-                                    <div class="row mt16">
-                                        <p>RECEIVE OR COLLECT<br/>YOUR EQUIPMENT</p>
-                                    </div>
-                                </div> 
-                        </div>
-                    </div>
-                    <!--  Request Access  -->
-                    <div class="row">
-                        <div class="col-md-8 col-md-offset-2 col-xs-12 col-xs-offset-0 col-sm-8 col-sm-offset-2 text-center mt32 mb32">
-                        <a href="/contactus" class="btn btn-lg btn-primary">REQUEST ACCESS</a>
-                        </div>
-                    </div>
-                </section>
-            </div>
+            <div class="oe_structure"/>
 
         <!-- testimonials -->
         <div class="oe_structure">
@@ -177,7 +97,7 @@
                         <h5 class="sections">OUR CLIENTS OPINION</h5>
                     </div>
                     <!-- opinions -->
-                    <div class="row hidden-xs mt32 mb96">
+                    <div class="row mt32 mb96">
                         <div class="col-md-3 col-sm-3 col-xs-6">
                             <div class="row img-height">
                                 <img class="testimonial" src="/web/image/theme_typ.t1" alt="Testimonial 1"/>
@@ -198,7 +118,7 @@
                                 </p>    
                             </div>
                         </div> 
-                        <div class="col-md-3 col-sm-3">
+                        <div class="col-md-3 col-sm-3 col-xs-6">
                             <div class="row img-height">
                                 <img class="testimonial" src="/web/image/theme_typ.t2" alt="Testimonial 3"/>
                             </div>
@@ -208,7 +128,7 @@
                                 </p>
                             </div>
                         </div> 
-                        <div class="col-md-3 col-sm-3">
+                        <div class="col-md-3 col-sm-3 col-xs-6">
                             <div class="row img-height">
                                 <img class="testimonial" src="/web/image/theme_typ.t3" alt="Testimonial 4"/>
                             </div>
@@ -220,7 +140,7 @@
                         </div> 
                     </div>
                     <!-- mobile second row -->
-                    <div class="container hidden-md hidden-sm hidden-lg mt24 mb48">
+                    <!-- <div class="container hidden-md hidden-sm hidden-lg mt24 mb48">
                             <div class="col-xs-6 mt24">
                                 <div class="row img-height">
                                     <img class="testimonial" src="/web/image/theme_typ.t1" alt="Testomonial 1"/>
@@ -253,7 +173,7 @@
                                     <p>“El equipo de T&amp;P siempre está atento de nuestras necesidades, y de cumplir con el proceso completo con un estándar de calidad muy alto, nos gusta ser sus clientes”</p>
                                 </div>
                             </div> 
-                    </div>
+                    </div> -->
                 </div>
 
             </section>
