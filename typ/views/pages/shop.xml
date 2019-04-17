@@ -4,7 +4,7 @@
         <div class="background-category-section">
             <div class="category-img">
                 <img t-if="category.cover_img" t-att-src="'/website/image/product.public.category/%s/cover_img' % (category.id)" t-att-alt="category.name" />
-                <img t-else="" src="/web/image/theme_typ.default-cover" t-att-alt="category.name" />
+                <img t-else="" class="img-default" src="/web/image/theme_typ.default-cover" t-att-alt="category.name" />
             </div>
             <div class="col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2 col-lg-8 col-lg-offset-2 col-xs-10 col-xs-offset-1" >
                 <div class="text-center mt8 category-header">                        

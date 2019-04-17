@@ -145,6 +145,60 @@
         </section>
     </template>
 
+     <template id="s_typ_testimonials" name="Clients Opinions">
+        <section class="s_text_block_image_fw oe_img_bg oe_custom_bg dark-white text-center">
+                <div class="container">
+                    <!-- title -->
+                    <div class="row mt32">
+                        <h5 class="sections">OUR CLIENTS OPINION</h5>
+                    </div>
+                    <!-- opinions -->
+                    <div class="row mt32 mb96">
+                        <div class="col-md-3 col-sm-3 col-xs-6">
+                            <div class="row img-height">
+                                <img class="testimonial" src="/web/image/theme_typ.t1" alt="Testimonial 1"/>
+                            </div>
+                            <div class="row mt16">
+                                <p class="opinion-clients fade-effect">
+                                    “Tengo 10 años siendo cliente de T&amp;P, la confianza que tengo de encontrar lo que necesito, y sus políticas de sistema doble etapa hacen de ésta empresa la mejor opción”
+                                </p>                            
+                            </div>
+                        </div> 
+                        <div class="col-md-3 col-sm-3 col-xs-6">
+                            <div class="row img-height">
+                                <img class="testimonial" src="/web/image/theme_typ.t4" alt="Testomonial 2"/>
+                            </div>
+                            <div class="row mt16">
+                                <p class="opinion-clients fade-effect">
+                                    “Nuestros amigos de T&amp;P, han sido parte de nuestro recorrido desde el inicio de nuestra empresa, así como el crecimiento que hemos tenido, es siempre un placer trabajar con T&amp;P como nuestro proveedor”
+                                </p>    
+                            </div>
+                        </div> 
+                        <div class="col-md-3 col-sm-3 col-xs-6">
+                            <div class="row img-height">
+                                <img class="testimonial" src="/web/image/theme_typ.t2" alt="Testimonial 3"/>
+                            </div>
+                            <div class="row mt16">
+                                <p class="opinion-clients fade-effect">
+                                    “Simplemente mantenemos nuestra fidelidad con T&amp;P, porque representan un gran profesionalismo, su equipo siempre está implicado y atento de nosotros, los productos son de la mejor calidad"
+                                </p>
+                            </div>
+                        </div> 
+                        <div class="col-md-3 col-sm-3 col-xs-6">
+                            <div class="row img-height">
+                                <img class="testimonial" src="/web/image/theme_typ.t3" alt="Testimonial 4"/>
+                            </div>
+                            <div class="row mt16">
+                                <p class="opinion-clients fade-effect">
+                                    “El equipo de T&amp;P siempre está atento de nuestras necesidades, y de cumplir con el proceso completo con un estándar de calidad muy alto, nos gusta ser sus clientes”
+                                </p>
+                            </div>
+                        </div> 
+                    </div>
+                </div>
+            </section>
+    </template>
+
 
     <template id="snippets" inherit_id="website.snippets">
         <xpath expr="//div[@id='o_scroll']" position="inside">
@@ -156,7 +210,8 @@
                     <t t-snippet="typ.s_image_banner" />
                     <t t-snippet="typ.s_image_banner_contact_us" />
                     <t t-snippet="typ.s_banner_homepage" />
-                     <t t-snippet="typ.s_banner_sales" />
+                    <t t-snippet="typ.s_banner_sales" />
+                    <t t-snippet="typ.s_typ_testimonials" />
                 </div>
             </div>
         </xpath>
