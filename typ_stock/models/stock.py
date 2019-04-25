@@ -245,8 +245,9 @@ class PurchaseOrderLine(models.Model):
         res = super(PurchaseOrderLine, self)._prepare_stock_moves(picking)
         if res:
             supplier = self.product_id.seller_ids.filtered(
-                lambda r: r.name == self.order_id.partner_id
-            )
+                lambda r: r.name == self.order_id.partner_id and r.product_id
+                == self.product_id)
+            supplier = supplier and supplier[0] or supplier
             res[0].update({
                 'product_supplier_ref': supplier.product_code,
                 'shipment_date': picking.picking_shipment_date})
