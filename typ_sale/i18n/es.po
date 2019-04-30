@@ -355,6 +355,11 @@ msgid "Notes:"
 msgstr "Notas:"
 
 #. module: typ_sale
+#: model:ir.model.fields,field_description:typ_sale.field_sale_order_notest
+msgid "Notes"
+msgstr "Notas"
+
+#. module: typ_sale
 #: model:ir.ui.view,arch_db:typ_sale.view_sale_order_form_type_payment_term
 msgid "Notes (Shipping Address, if applicable)"
 msgstr "Notas (Dirección de entrega, si aplica)"
@@ -631,6 +636,11 @@ msgstr "Administrador de plazo de pago - Orden de venta - Factura"
 #: field:stock.move,sale_order_line_id:0
 msgid "Sale order line id"
 msgstr ""
+
+#. module: typ_sale
+#: model:ir.model.fields,field_description:typ_sale.field_purchase_order_sale_order_id
+msgid "Sale Order"
+msgstr "Pedido de venta"
 
 #. module: typ_sale
 #: model:crm.case.section,name:typ_sale.sale_team_01

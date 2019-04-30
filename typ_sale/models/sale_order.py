@@ -114,6 +114,11 @@ class SaleOrder(models.Model):
         res.update({'type_payment_term': self.type_payment_term})
         return res
 
+    @api.onchange('order_line')
+    def onchange_special_order(self):
+        if self.order_line.filtered('special_sale') and not self.so:
+            self.so = True  # pylint: disable=invalid-name
+
 
 class PurchaseOrder(models.Model):
 
