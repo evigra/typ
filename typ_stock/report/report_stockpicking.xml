@@ -78,9 +78,9 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <t t-set="order_category" t-value="o.move_lines.mapped('product_id.categ_id').sorted(key=lambda r: r.name)"/>
+                    <t t-set="order_category" t-value="o.move_lines.mapped('product_id.categ_id.parent_id').sorted(key=lambda r: r.name)"/>
                     <t t-foreach="order_category" t-as="categ">
-                        <t t-set="move_order_ref_product" t-value="o.move_lines.filtered(lambda r : r.product_id.categ_id == categ).sorted(key=lambda r: r.product_id.default_code)"/>
+                        <t t-set="move_order_ref_product" t-value="o.move_lines.filtered(lambda r : r.product_id.categ_id.parent_id == categ).sorted(key=lambda r: r.product_id.default_code)"/>
                         <t t-foreach="move_order_ref_product" t-as="move">
                             <tr t-foreach="move.move_line_ids.sorted(key=lambda ml: ml.location_id.id)" t-as="ml">
                                 <t t-if="(ml.qty_done > 0 and o.picking_type_id.code != 'outgoing') or o.picking_type_id.code != 'incoming'">
