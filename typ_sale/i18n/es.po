@@ -738,8 +738,10 @@ msgstr "Proveedor para la orden de compra"
 #. module: typ_sale
 #: code:addons/typ_sale/models/sale_order_line.py:69
 #, python-format
-msgid "The product %s"
-msgstr "El producto %s"
+msgid "The product [%s] %s %s can not be sold below the allowed margin\n"
+"Contact Manager"
+msgstr "El producto [%s] %s %s no puede ser vendido por debajo del margen permitido\n"
+"Contactar Administrador"
 
 #. module: typ_sale
 #: code:addons/typ_sale/models/res_partner.py:117
