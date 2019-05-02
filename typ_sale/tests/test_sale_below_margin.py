@@ -1,4 +1,4 @@
-# -*- coding: utf-8 -*-<F3>eg
+# -*- coding: utf-8 -*-
 
 from openerp.exceptions import ValidationError as UserError
 from openerp.tests.common import TransactionCase
@@ -24,9 +24,7 @@ class TestSaleBelowMargin(TransactionCase):
         """When sale order in create below margin minimum
         """
         self.dict_vals.update({'order_line': [(0, 0, self.dict_vals_line)]})
-        msg = (".*You can not be sold the product %s below "
-               "permitted margin.*") % (self.product.name)
-        with self.assertRaisesRegexp(UserError, msg):
+        with self.assertRaises(UserError):
             self.env['sale.order'].sudo(self.demo_user).create(self.dict_vals)
 
     def test_01_sale_below_margin_with_price_zero(self):
@@ -34,7 +32,5 @@ class TestSaleBelowMargin(TransactionCase):
         """
         self.dict_vals_line['price_unit'] = 0
         self.dict_vals.update({'order_line': [(0, 0, self.dict_vals_line)]})
-        msg = (".*You can not be sold the product %s below "
-               "permitted margin.*") % self.product.name
-        with self.assertRaisesRegexp(UserError, msg):
+        with self.assertRaises(UserError):
             self.env['sale.order'].sudo(self.demo_user).create(self.dict_vals)
