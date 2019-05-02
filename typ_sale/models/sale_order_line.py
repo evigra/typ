@@ -56,8 +56,12 @@ class SaleOrderLine(models.Model):
         """Verify quantity of margin minimum in sale order line for onchange.
         """
         res = {
-            'message': _('You can not be sold the product %s below permitted '
-                         'margin\nContact Manager') % (self.product_id.name)}
+            'message': _(
+                'The product [%s] %s %s can not be sold below the allowed '
+                'margin\nContact Manager') % (
+                    self.product_id.default_code, self.product_id.name,
+                    ','.join(self.product_id.attribute_value_ids.mapped(
+                        'name')))}
         if self.env.user.has_group(
                 'typ_sale.res_group_can_sell_below_minimum_margin'):
             return
