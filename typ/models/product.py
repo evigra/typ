@@ -29,3 +29,14 @@ class Product(models.Model):
             [('product_template_id', '=', self.id),
              ('user_id', '=', self.env.uid)], limit=1)
         return bool(result_wish)
+
+
+class ProductProduct(models.Model):
+    _inherit = 'product.product'
+
+    route_ids = fields.Many2many(
+        'stock.location.route', 'stock_route_product_product', 'product_id',
+        'route_id', 'Routes', domain="[('product_selectable', '=', True)]",
+        help="Depending on the modules installed, this will allow you to "
+        "define the route of the product: whether it will be bought, "
+        "manufactured, MTO/MTS,...")

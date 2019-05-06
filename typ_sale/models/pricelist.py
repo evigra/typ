@@ -14,6 +14,14 @@ class ProductProduct(models.Model):
 
     _inherit = 'product.product'
 
+    state = fields.Selection(
+        [('draft', 'In Development'),
+         ('sellable', 'Normal'),
+         ('end', 'End of Lifecycle'),
+         ('obsolete', 'Obsolete')],
+        help='State of lifecycle of the product.'
+    )
+
     @api.multi
     def price_compute(self, price_type, uom=False, currency=False,
                       company=False):
@@ -26,14 +34,6 @@ class ProductProduct(models.Model):
 class ProductTemplate(models.Model):
 
     _inherit = 'product.template'
-
-    state = fields.Selection(
-        [('draft', 'In Development'),
-         ('sellable', 'Normal'),
-         ('end', 'End of Lifecycle'),
-         ('obsolete', 'Obsolete')],
-        help='State of lifecycle of the product.'
-    )
 
     @api.multi
     def price_compute(self, price_type, uom=False, currency=False,
