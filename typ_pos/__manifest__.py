@@ -32,7 +32,10 @@
         'views/template.xml',
         'views/pos_view.xml',
     ],
-    "qweb":  ['static/src/xml/pos_stocks.xml'],
+    "qweb":  [
+        'static/src/xml/pos_stocks.xml',
+        'static/src/xml/pos.xml',
+    ],
     "installable":  True,
     "auto_install":  False,
     "post_init_hook": "_set_new_group",

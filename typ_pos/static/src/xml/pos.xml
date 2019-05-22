@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<templates id="template_pos" inherit_id="point_of_sale.template">
+  <t t-extend="PosTicket">
+    <t t-jquery="div[class*='receipt-user']" t-operation="after">
+        <div class="receipt-client">
+            <t t-if="widget.pos.get_client()">
+                Client: <t t-esc="widget.pos.get_client().name"/>
+            </t>
+        </div>
+    </t>
+  </t>
+</templates>
