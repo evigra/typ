@@ -8,7 +8,7 @@
     'website': 'http://www.vauxoo.com',
     'license': 'AGPL-3',
     'category': 'Installer',
-    'version': '11.0.0.0.2',
+    'version': '11.0.0.0.3',
     'depends': [
         'l10n_mx_pos_cogs',
         'l10n_mx_edi_hr_expense',
@@ -77,6 +77,7 @@
     'test': [
     ],
     'data': [
+        'data/typ_payment_complements.xml',
         'data/typ_paper_format.xml',
         'data/set_configuration.yml',
         # 'data/typ_security.xml',
