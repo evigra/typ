@@ -31,6 +31,13 @@ msgid "Available Quantity(On hand)"
 msgstr ""
 
 #. module: typ_pos
+#. openerp-web
+#: code:addons/typ_pos/static/src/xml/pos.xml:6
+#, python-format
+msgid "Client:"
+msgstr "Cliente:"
+
+#. module: typ_pos
 #: model:ir.model.fields,field_description:typ_pos.field_pos_config_wk_error_msg
 msgid "Custom message"
 msgstr ""
