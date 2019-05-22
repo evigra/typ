@@ -883,7 +883,7 @@
         <xpath expr="//div/div/div" position="before">
             <t t-call="typ.my-account-menu"/>
         </xpath>
-         <xpath expr="//div/div/div[2]/div/t" position="replace">
+        <xpath expr="//div/div/div[2]/div/t" position="replace">
             <div id="payment_method">
                 <t t-call="payment.payment_tokens_list" t-if="reference and amount and currency">
                     <t t-set="mode" t-value="'payment'"/>
