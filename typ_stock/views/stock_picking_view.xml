@@ -90,7 +90,22 @@
                 <field name="shipment_date"/>
                 <field name="date_expected"/>
             </xpath>
+            <xpath expr="//field[@name='location_dest_id']" position="after">
+                <field name="requirements_for_warranty" attrs="{'invisible': [('is_warranty', '=', False)], 'readonly': True}"/>
+                <field name="is_warranty" invisible="1"/>
+            </xpath>
+        </field>
+    </record>
 
+    <record id="view_requirements_for_warranty_readonly" model="ir.ui.view">
+        <field name="name">stock.picking.form.inherit</field>
+        <field name="model">stock.picking</field>
+        <field name="inherit_id" ref="typ_stock.view_stock_picking_form_inherit"/>
+        <field name="groups_id" eval="[(6, 0, [ref('typ_stock.group_stock_validation_warranty_transfer')])]"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='requirements_for_warranty']" position="attributes">
+                <attribute name="readonly">False</attribute>
+            </xpath>
         </field>
     </record>
 

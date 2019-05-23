@@ -147,6 +147,16 @@ msgstr "<strong>Recurso</strong>"
 msgid "Barcode"
 msgstr "Código de barras"
 
+#. module: typ_stock
+#: model:ir.model.fields,help:typ_stock.field_stock_location_warranty_location
+msgid "Check this box to allow the use of this location for warranties in process."
+msgstr "Marque esta casilla para permitir el uso de esta ubicación para garantías en proceso."
+
+#. module: typ_stock
+#: model:ir.model.fields,help:typ_stock.field_stock_picking_requirements_for_warranty
+msgid "Check this box when the requirements for guarantee are fulfilled in order to transfer it to guarantees in process."
+msgstr "Marque esta casilla cuando se cumplan los requisitos de garantía para poder tranferirla a garantías en proceso."
+
 #: model:ir.ui.view,arch_db:typ_stock.report_picking
 msgid "<strong>State</strong>"
 msgstr "<strong>Estado</strong>"
@@ -289,6 +299,16 @@ msgid "Is a Follower"
 msgstr "Es seguidor"
 
 #. module: typ_stock
+#: model:ir.model.fields,field_description:typ_stock.field_stock_picking_is_warranty
+msgid "Is Warranty"
+msgstr "Es garantía"
+
+#. module: typ_stock
+#: model:ir.model.fields,field_description:typ_stock.field_stock_location_warranty_location
+msgid "Is a Warranty Location?"
+msgstr "¿Es una ubicación de garantía?"
+
+#. module: typ_stock
 #: field:stock.manual_transfer,message_last_post:0
 msgid "Last Message Date"
 msgstr "Fecha del último mensaje"
@@ -341,6 +361,11 @@ msgstr "Transferencias manuales"
 #: view:stock.location.route:typ_stock.stock_location_route_form_view_inherit
 msgid "Manual transfers"
 msgstr "Transferencias manuales"
+
+#. module: typ_stock
+#: model:ir.model.fields,field_description:typ_stock.field_stock_picking_requirements_for_warranty
+msgid "Meets requirements for warranty?"
+msgstr "¿Cumple con los requisitos de garantía?"
 
 #. module: typ_stock
 #: field:stock.analysis,product_max_qty:0
@@ -779,6 +804,11 @@ msgid "This group can cancel the pickings"
 msgstr "Este grupo tiene el privilegio de cancelar albaranes"
 
 #. module: typ_stock
+#: model:res.groups,comment:typ_stock.group_stock_validation_warranty_transfer
+msgid "This group can confirm transfers for warranty"
+msgstr "Este grupo puede confirmar transferencias a garantía"
+
+#. module: typ_stock
 #: model:res.groups,comment:typ_stock.res_group_stock_manager
 msgid "This group can define pedimentos serial and lot"
 msgstr "Este grupo puede definir pedimentos, seriales y lotes"
@@ -830,6 +860,12 @@ msgid "This picking cannot be cancelled."
 msgstr "Este albarán no puede ser cancelado."
 
 #. module: typ_stock
+#: code:addons/typ_stock/models/stock.py:177
+#, python-format
+msgid "To transfer this picking to guarantees in process, approval of the purchasing department is necessary, please contact them."
+msgstr "Para transferir este picking a garantías en proceso, es necesaria la aprobación del departamento de proveeduría, favor de contactarlos."
+
+#. module: typ_stock
 #: model:res.groups,name:typ_stock.group_traffic
 msgid "Traffic"
 msgstr ""
@@ -861,9 +897,19 @@ msgid "Transit-TW2"
 msgstr "Transito-TW2"
 
 #. module: typ_stock
+#: model:ir.model.fields,help:typ_stock.field_stock_picking_is_warranty
+msgid "True if destiny is warranty location"
+msgstr "Verdadero si el destino es una ubicación de garantía en proceso"
+
+#. module: typ_stock
 #: field:stock.manual_transfer_line,product_uom:0
 msgid "Unit of Measure"
 msgstr "Unidad de medida"
+
+#. module: typ_stock
+#: model:res.groups,name:typ_stock.group_stock_validation_warranty_transfer
+msgid "Users can confirm transfers for warranty"
+msgstr "Usuarios que pueden confirmar transferencias a garantías"
 
 #. module: typ_stock
 #: field:stock.manual_transfer,message_unread:0

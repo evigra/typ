@@ -107,6 +107,29 @@
         </field>
     </record>
 
+    <record model="ir.ui.view" id="view_location_form_inherit">
+        <field name="name">stock.location.form.inherit</field>
+        <field name="model">stock.location</field>
+        <field name="inherit_id" ref="stock.view_location_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='return_location']" position="after">
+                <field name="warranty_location" attrs="{'readonly':True}"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="view_location_form_readonly">
+        <field name="name">stock.location.form.inherit</field>
+        <field name="model">stock.location</field>
+        <field name="inherit_id" ref="typ_stock.view_location_form_inherit"/>
+        <field name="groups_id" eval="[(6, 0, [ref('typ_stock.group_stock_validation_warranty_transfer')])]"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='warranty_location']" position="attributes">
+                <attribute name="readonly">False</attribute>
+            </xpath>
+        </field>
+    </record>
+
     <menuitem id="stock.menu_warehouse_report" name="Reporting" sequence="99" parent="stock.menu_stock_root" groups="stock.group_stock_manager,typ_stock.group_stock_menu_inform_configuration"/>
     <menuitem action="stock.action_location_form" id="stock.menu_action_location_form"
         parent="stock.menu_warehouse_report" sequence="10" groups="group_stock_menu_inform_configuration"/>

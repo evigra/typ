@@ -6,6 +6,16 @@ from odoo.tools.float_utils import float_round
 from odoo.tools.safe_eval import safe_eval
 
 
+class StockLocations(models.Model):
+
+    _inherit = "stock.location"
+
+    warranty_location = fields.Boolean('Is a Warranty Location?',
+                                       help='Check this box to '
+                                       'allow the use of this location for '
+                                       'warranties in process.')
+
+
 class StockPicking(models.Model):
 
     _inherit = "stock.picking"
@@ -22,6 +32,17 @@ class StockPicking(models.Model):
         "green highlight on tree view "
     )
     number_landing = fields.Char(copy=False)
+    requirements_for_warranty = fields.Boolean(
+        'Meets requirements for warranty?',
+        help='Check this box when the requirements for guarantee are fulfilled'
+        ' in order to transfer it to guarantees in process.'
+    )
+    is_warranty = fields.Boolean(
+        help='True if destiny is warranty location')
+
+    @api.onchange('location_dest_id')
+    def onchange_dest_warranty(self):
+        self.is_warranty = self.location_dest_id.warranty_location
 
     def _check_allow_write(self, vals):
         """ Validate which fields the user can write when warehouse of the
@@ -148,6 +169,11 @@ class StockPicking(models.Model):
                 raise UserError(
                     _("Internal movements don't allow locations in "
                       "supplier or customer"))
+        if self.is_warranty and not self.requirements_for_warranty:
+            raise UserError(
+                _("To transfer this picking to guarantees in process, "
+                  "approval of the purchasing department is necessary, "
+                  "please contact them."))
         return super().button_validate()
 
     @api.multi
