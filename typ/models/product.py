@@ -40,3 +40,17 @@ class ProductProduct(models.Model):
         help="Depending on the modules installed, this will allow you to "
         "define the route of the product: whether it will be bought, "
         "manufactured, MTO/MTS,...")
+
+    @api.model
+    def name_search(self, name='', args=None, operator='ilike', limit=80):
+        res = super(ProductProduct, self).name_search(
+            name, args=args, operator=operator, limit=limit)
+        if (not name or len(res) >= limit):
+            return res
+        limit -= len(res)
+        products = self.search(
+            [('attribute_value_ids.name', operator, name)], limit=limit)
+        if not products:
+            return res
+        res.extend(products.name_get())
+        return res
