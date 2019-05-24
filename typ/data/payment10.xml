@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="l10n_mx_edi_payment_multicurrency_payments" inherit_id="l10n_mx_edi.payment10">
+        <xpath expr="//*[name()='pago10:DoctoRelacionado']" position="attributes">
+            <attribute name="t-att-TipoCambioDR">inv_rate if record.currency_id != invoice.currency_id else False</attribute>
+        </xpath>
+    </template>
+</odoo>

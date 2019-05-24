@@ -87,6 +87,7 @@
         'data/company.xml',
         'data/categories.xml',
         'data/website.xml',
+        'data/payment10.xml',
         # Website stuff
         'views/assets.xml',
         'views/templates.xml',
