@@ -78,6 +78,7 @@
     ],
     'data': [
         'data/typ_payment_complements.xml',
+        'data/data_facebook.xml',
         'data/typ_paper_format.xml',
         'data/set_configuration.yml',
         # 'data/typ_security.xml',
