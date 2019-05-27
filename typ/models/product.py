@@ -45,6 +45,8 @@ class ProductProduct(models.Model):
     def name_search(self, name='', args=None, operator='ilike', limit=80):
         res = super(ProductProduct, self).name_search(
             name, args=args, operator=operator, limit=limit)
+        if not limit or len(res) >= limit:
+            limit = (limit - len(res)) if limit else False
         if (not name or len(res) >= limit):
             return res
         limit -= len(res)
