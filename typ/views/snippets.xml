@@ -41,7 +41,7 @@
         </div>
     </template>
 
-    <template id="s_image_banner" name="Product Banner">
+    <template id="s_image_banner" name="Banner">
         <section class="s_image_banner">                
             <img class="img img-responsive" src="/web/image/theme_typ.s-banner" alt="Sample"/>
         </section>
@@ -99,7 +99,8 @@
                             <p>ADD PRODUCTS TO<br/>CART</p>
                         </div>
                     </div>
-                    <div class="col-md-3 col-sm-3 hidden-xs">
+                    <div class="clearfix hidden-md hidden-sm hidden-lg"></div>
+                    <div class="col-md-3 col-sm-3 col-xs-6">
                         <div class="row img-height">
                             <img class="mt16" src="/web/image/theme_typ.icon-payment" alt="Elige Metodo de Pago"/>
                         </div>
@@ -107,7 +108,7 @@
                             <p>CHOOSE YOUR PAYMENT<br/>METHOD</p>
                         </div>
                     </div>
-                    <div class="col-md-3 col-sm-3 hidden-xs">
+                    <div class="col-md-3 col-sm-3 col-xs-6">
                         <div class="row img-height">
                             <img src="/web/image/theme_typ.icon-enjoy" alt="Recibe o Recoge tu Pedido"/>
                         </div>
@@ -115,25 +116,6 @@
                             <p>RECEIVE OR COLLECT<br/>YOUR EQUIPMENT</p>
                         </div>
                     </div>
-                </div>
-                <!-- mobile second row -->
-                <div class="row hidden-md hidden-sm hidden-lg mt16">
-                        <div class="col-xs-6">
-                            <div class="row img-height">
-                                <img class="mt16" src="/web/image/theme_typ.icon-payment" alt="Elige Metodo de Pago"/>
-                            </div>
-                            <div class="row mt16">
-                                <p>CHOOSE YOUR PAYMENT<br/>METHOD</p>
-                            </div>
-                        </div> 
-                        <div class="col-xs-6">
-                            <div class="row img-height">
-                                <img src="/web/image/theme_typ.icon-enjoy" alt="Recibe o Recoge tu Pedido"/>
-                            </div>
-                            <div class="row mt16">
-                                <p>RECEIVE OR COLLECT<br/>YOUR EQUIPMENT</p>
-                            </div>
-                        </div> 
                 </div>
             </div>
             <!--  Request Access  -->
@@ -207,11 +189,11 @@
                     <i class="fa fa-th-large"/> TYP
                 </div>
                 <div class="o_panel_body">
-                    <t t-snippet="typ.s_image_banner" />
-                    <t t-snippet="typ.s_image_banner_contact_us" />
-                    <t t-snippet="typ.s_banner_homepage" />
-                    <t t-snippet="typ.s_banner_sales" />
-                    <t t-snippet="typ.s_typ_testimonials" />
+                    <t t-snippet="typ.s_image_banner" t-thumbnail="/theme_typ/static/img/banner.png"/>
+                    <t t-snippet="typ.s_image_banner_contact_us" t-thumbnail="/theme_typ/static/img/contact-us.png" />
+                    <t t-snippet="typ.s_banner_homepage" t-thumbnail="/theme_typ/static/img/banner-text-home.png"/>
+                    <t t-snippet="typ.s_banner_sales" t-thumbnail="/theme_typ/static/img/how-to.png"/>
+                    <t t-snippet="typ.s_typ_testimonials" t-thumbnail="/theme_typ/static/img/clients-opinion.png"/>
                 </div>
             </div>
         </xpath>
