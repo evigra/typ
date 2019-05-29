@@ -52,7 +52,14 @@ class HomeInherit(Home):
         info instead of returning a html DOM
         """
         res = self.web_login(redirect, **kw)
+        if not redirect and request.params['login_success']:
+            if request.env['res.users'].browse(
+                    request.uid).has_group('base.group_user'):
+                redirect = b'/web?' + request.httprequest.query_string
+            else:
+                redirect = '/'
         return json.dumps({
             'login_success': not res.qcontext.get("error"),
             'error': res.qcontext.get("error", False),
+            'redirect': redirect.decode('utf-8'),
         })

@@ -39,7 +39,7 @@ odoo.define('theme_typ.login', function (require) {
                             }
                     });
                     }else{
-                        $(location).attr('href', '/');
+                        $(location).attr('href', this.js_result.redirect);
                     }
                 } else {
                     this.error_msg = form.find('.login-modal-error, .signup-modal-error');
