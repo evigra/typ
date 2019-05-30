@@ -7,3 +7,4 @@ from . import test_invoice_type_payment_term
 from . import test_sale_below_margin
 # from . import test_cancel_sale_order
 from . import test_sale_change_price_unit
+from . import test_position_fiscal_border_location
