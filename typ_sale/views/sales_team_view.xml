@@ -8,6 +8,9 @@
             <field name="alias_contact" position="after">
                 <field name="sale_phone"/>
             </field>
+            <group name="right" position="inside">
+                <field name="fiscal_position_id"/>
+            </group>
         </field>
     </record>
 </odoo>

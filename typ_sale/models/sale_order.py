@@ -119,6 +119,26 @@ class SaleOrder(models.Model):
         if self.order_line.filtered('special_sale') and not self.so:
             self.so = True  # pylint: disable=invalid-name
 
+    @api.multi
+    @api.onchange('partner_id')
+    def onchange_partner_shipping_id(self):
+        """Assignment of fiscal position, for clients with sales team in border
+        location.
+        """
+        res = super(SaleOrder, self).onchange_partner_shipping_id()
+        self.fiscal_position_id = self.team_id.fiscal_position_id
+        if (self.partner_id.property_account_position_id and
+                self.team_id.fiscal_position_id):
+            msg = _('The partner ')
+            msg = msg + _('%s has a fiscal position configuration, however it '
+                          'is recommended to apply the border fiscal position')
+            warning = {
+                'title': _('Warning!'),
+                'message': ((msg) % self.partner_id.name),
+            }
+            return {'warning': warning}
+        return res
+
 
 class PurchaseOrder(models.Model):
 
