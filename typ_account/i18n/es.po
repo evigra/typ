@@ -325,6 +325,11 @@ msgid "Sales Order"
 msgstr "Pedido de venta"
 
 #. module: typ_account
+#: model:ir.model.fields,field_description:typ_account.field_account_invoice_supplier_invoice_number
+msgid "Supplier Invoice Number"
+msgstr "Número de factura de proveedor"
+
+#. module: typ_account
 #: code:addons/typ_account/models/account_invoice.py:81
 #: code:addons/typ_account/models/sale_order.py:37
 #, python-format

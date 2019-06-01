@@ -65,6 +65,19 @@
                 </xpath>
             </field>
         </record>
+
+        <record id="account_invoice_custom_search" model="ir.ui.view">
+            <field name="name">account.invoice.select.search</field>
+            <field name="model">account.invoice</field>
+            <field name="inherit_id" ref="account.view_account_invoice_filter"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='number']" position="after">
+                    <field name="supplier_invoice_number"
+                        filter_domain="[('supplier_invoice_number', 'ilike', self)]"/>
+                </xpath>
+            </field>
+        </record>
+
         <record id="account_invoice_customer_tree_view_inherit" model="ir.ui.view">
             <field name="name">account.invoice.customer.tree</field>
             <field name="model">account.invoice</field>
