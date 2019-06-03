@@ -41,7 +41,7 @@
             <t t-call="typ.portal_layout">
                 <t t-call="typ.my-account-menu"/>
                 <div class="col-md-8 col-md-offset-1 col-sm-8 col-sm-offset-0 col-xs-12 col-xs-offset-0 o_my_address">
-                    <div class="col-md-12 col-xs-12 col-sm-12 text-center mt32 mb24">
+                    <div class="col-md-12 col-xs-12 col-sm-12 text-center account-content mb24">
                             <h5 class="sections">SHIPPING INFORMATION</h5>
                     </div>
                     <div class="col-xs-12 col-sm-12 col-md-12">
@@ -301,13 +301,13 @@
             </ul>
         </div>
         <div class="col-md-3 col-sm-4 hidden-xs">
-            <div class="col-md-12 white-color account-menu mt96 mb48 no-padding-left">
+            <div class="col-md-12 white-color account-menu mt64 mb48 no-padding-left">
                 <ul class="nav-pills nav-desktop nav-stacked list-unstyled mt32 mb32">
                     <li  t-attf-class="mb16 #{'active' if request.httprequest.path == '/my/home' or request.httprequest.path =='/my' else ''}"><a class="no-padding-top" href="/my/home">Account</a></li>
                     <li t-attf-class="mb16 #{'active' if request.httprequest.path =='/my/payment_method' else ''}" ><a  href="/my/payment_method">Payment methods</a></li>
                     <li t-attf-class="mb16 #{'active' if request.httprequest.path =='/my/orders' or request.httprequest.path =='/my/quotes' else ''}"><a href="/my/orders">Orders</a></li>
                     <li t-attf-class="mb16 #{'active' if request.httprequest.path =='/my/invoices' or request.httprequest.path =='/my/credit_notes' else ''}"><a href="/my/invoices">Invoices</a></li>
-                    <li t-attf-class="mb16 #{'active' if request.httprequest.path =='/my/payment_complements' else ''}"><a href="/my/payment_complements">Payment Complements</a></li>
+                    <li t-attf-class="mb16 payment-complements-li #{'active' if request.httprequest.path =='/my/payment_complements' else ''}"><a href="/my/payment_complements">Payment Complements</a></li>
                     <li t-attf-class="mb16 #{'active' if active_page =='/my/address' else ''}" ><a  href="/my/address">Addresses</a></li>
                 </ul>
             </div>
@@ -482,7 +482,7 @@
        <xpath expr="//h3" position="replace">
             <t t-call="typ.my-account-menu"/>
             <div t-if="orders" class="col-md-9 col-md-offset-0 col-sm-9 col-sm-offset-0 col-xs-12 col-xs-offset-0 o_my_sale_orders">
-                <div class="col-md-12 text-center mt32">
+                <div class="col-md-12 text-center account-content">
                     <h5 class="sections">ORDERS HISTORY</h5>
                 </div>
                 <div class="col-md-12 text-center mt24">
@@ -562,7 +562,7 @@
         <xpath expr="//div" position="replace"/>
         <xpath expr="//t/t/p" position="replace">
             <div class="col-md-9 col-md-offset-0 col-sm-9 col-sm-offset-0 col-xs-12 col-xs-offset-0 o_my_sale_orders">
-                <div class="col-md-12 text-center mt32">
+                <div class="col-md-12 text-center account-content">
                     <h5 class="sections">INVOICES HISTORY</h5>
                 </div>
                 <div class="col-md-12 text-center mt16 mb16">
@@ -579,7 +579,7 @@
        <xpath expr="//h3" position="replace">
             <t t-call="typ.my-account-menu"/>
             <div t-if="invoices" class="col-md-9 col-md-offset-0 col-sm-8 col-sm-offset-0 col-xs-12 col-xs-offset-0 o_my_sale_orders">
-                <div class="col-md-12 text-center mt32">
+                <div class="col-md-12 text-center account-content">
                     <h5 class="sections">INVOICES HISTORY</h5>
                 </div>
                 <div class="col-md-12 text-center mt16 mb16">
@@ -699,7 +699,7 @@
         <t t-call="portal.portal_layout">
             <t t-call="typ.my-account-menu"/>
             <div class="col-md-9 col-md-offset-0 col-sm-8 col-sm-offset-0 col-xs-12 col-xs-offset-0 o_my_sale_orders">
-                <div class="col-md-12 text-center mt32 mb32">
+                <div class="col-md-12 text-center account-content mb32">
                     <h5 class="sections">PAYMENT COMPLEMENTS</h5>
                 </div>
             </div>
@@ -1165,7 +1165,7 @@
         </t>
     </template>
     <template id="personal-info">
-        <div class="col-md-12 col-sm-12 col-xs-12 text-center mt32 mb24">
+        <div class="col-md-12 col-sm-12 col-xs-12 text-center account-content mb24">
                 <h5 class="sections">ACCOUNT INFORMATION</h5>
         </div>
         <div class="col-md-12 col-sm-12 col-xs-12 white-color account-information">
@@ -1248,7 +1248,7 @@
                 <form action="/my/account" method="post">
                     <div class="col-md-6 col-md-offset-3 o_portal_details">
                         <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
-                        <div class="form-group row #{error.get('name') and 'has-error' or ''}">
+                        <div  t-attf-class="form-group row #{error.get('name') and 'has-error' or ''}">
                             <label class="control-label text-right col-md-3 col-sm-3 col-xs-12" for="name">Name:</label>
                             <div class="col-md-9 col-sm-9 col-xs-12">
                                 <input type="text" name="name" class="form-control" t-att-value="name or partner.name" />
@@ -1256,7 +1256,7 @@
                         </div>
 
                         <div class="clearfix" />
-                        <div class="form-group row #{error.get('company_name') and 'has-error' or ''}">
+                        <div t-attf-class="form-group row #{error.get('company_name') and 'has-error' or ''}">
                             <label class="control-label text-right col-md-3 col-sm-3 col-xs-12" for="company_name">Company Name:</label>
                             <div class="col-md-9 col-sm-9 col-xs-12">
                                 <p t-if="partner.commercial_partner_id.is_company" class="form-control" t-esc="partner.commercial_company_name"/>
@@ -1271,7 +1271,7 @@
                             </div>
                         </div>
 
-                        <div class="form-group row #{error.get('email') and 'has-error' or ''}">
+                        <div t-attf-class="form-group row #{error.get('email') and 'has-error' or ''}">
                             <label class="control-label text-right col-md-3 col-sm-3 col-xs-12" for="email">Email:</label>
                             <div class="col-md-9 col-sm-9 col-xs-12">
                                 <input type="email" name="email" class="form-control" t-att-value="email or partner.email" />
@@ -1280,35 +1280,35 @@
 
                         <div class="clearfix" />
 
-                        <div class="form-group row #{error.get('street') and 'has-error' or ''}">
+                        <div t-attf-class="form-group row #{error.get('street') and 'has-error' or ''}">
                             <label class="control-label text-right col-md-3 col-sm-3 col-xs-12" for="street">Street:</label>
                             <div class="col-md-9 col-sm-9 col-xs-12">
                             <input type="text" name="street" class="form-control" t-att-value="street or partner.street"/>
                             </div>
                         </div>
 
-                        <div class="form-group row #{error.get('street2') and 'has-error' or ''}">
+                        <div t-attf-class="form-group row #{error.get('street2') and 'has-error' or ''}">
                             <label class="control-label text-right col-md-3 col-sm-3 col-xs-12" for="street2">Neighborhood:</label>
                             <div class="col-md-9 col-sm-9 col-xs-12">
                             <input type="text" name="street2" class="form-control" t-att-value="street2 or partner.street2"/>
                             </div>
                         </div>
 
-                        <div class="form-group row #{error.get('city') and 'has-error' or ''}">
+                        <div t-attf-class="form-group row #{error.get('city') and 'has-error' or ''}">
                             <label class="control-label text-right col-md-3 col-sm-3 col-xs-12" for="city">City:</label>
                             <div class="col-md-9 col-sm-9 col-xs-12">
                             <input type="text" name="city" class="form-control" t-att-value="city or partner.city" />
                             </div>
                         </div>
 
-                        <div class="form-group row #{error.get('zip') and 'has-error' or ''}">
+                        <div t-attf-class="form-group row #{error.get('zip') and 'has-error' or ''}">
                             <label class="control-label text-right col-md-3 col-sm-3 col-xs-12" for="zipcode">ZIP:</label>
                             <div class="col-md-9 col-sm-9 col-xs-12">
                             <input type="text" name="zipcode" class="form-control" t-att-value="zipcode or partner.zip" />
                             </div>
                         </div>
 
-                        <div class="form-group row #{error.get('country_id') and 'has-error' or ''}">
+                        <div t-attf-class="form-group row #{error.get('country_id') and 'has-error' or ''}">
                             <label class="control-label text-right col-md-3 col-sm-3 col-xs-12" for="country_id">Country:</label>
                             <div class="col-md-9 col-sm-9 col-xs-12">
                             <select name="country_id" class="form-control">
@@ -1322,7 +1322,7 @@
                             </div>
                         </div>
 
-                        <div class="form-group row #{error.get('state_id') and 'has-error' or ''}">
+                        <div t-attf-class="form-group row #{error.get('state_id') and 'has-error' or ''}">
                             <label class="control-label text-right col-md-3 col-sm-3 col-xs-12" for="state_id">State:</label>
                             <div class="col-md-9 col-sm-9 col-xs-12">
                             <select name="state_id" class="form-control">
@@ -1336,7 +1336,7 @@
                             </div>
                         </div>
 
-                        <div class="form-group row  #{error.get('phone') and 'has-error' or ''}">
+                        <div  t-attf-class="form-group row #{error.get('phone') and 'has-error' or ''}">
                             <label class="control-label text-right col-md-3 col-sm-3 col-xs-12" for="phone">Phone:</label>
                             <div class="col-md-9 col-sm-9 col-xs-12">
                                 <input type="tel" name="phone" class="form-control" t-att-value="phone or partner.phone" />

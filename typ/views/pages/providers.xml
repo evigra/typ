@@ -11,8 +11,7 @@
                     <section class="s_text_block_image_fw oe_img_bg oe_custom_bg text-center background-header-org" style="background-image: url(/web/image/theme_typ.hero-org);">
                         <div class="container">
                             <div class="row">
-                                <h1 class="header-titles hidden-xs">PROVIDERS</h1>
-                                <h1 class="header-titles mr16 ml16 hidden-lg hidden-sm hidden-md">PROVIDERS</h1>
+                                <h1 class="header-titles">PROVIDERS</h1>
                             </div>
                             <div class="row">
                                 <h5 class="header-subtitles">Links to our providers website</h5>
@@ -21,17 +20,6 @@
                     </section>
                 </div>
                 <div class="oe_structure oe_empty">
-                    <!-- <section class="s_body_content text-center background-header-org" style="background-image: url(/web/image/theme_typ.hero-org);">
-                        <div class="container">
-                            <div class="row">
-                                <h1 class="header-titles hidden-xs">PROVIDERS</h1>
-                                <h1 class="header-titles mr16 ml16 hidden-lg hidden-sm hidden-md">PROVIDERS</h1>
-                            </div>
-                            <div class="row">
-                                <h5 class="header-subtitles">Links to our providers website</h5>
-                            </div>
-                        </div>
-                    </section> -->
                     <div class="container general-typ-information">
                         <div class="col-sm-12 providers">
                             <div class="col-md-2 col-sm-4 col-xs-6">
@@ -196,13 +184,13 @@
                             <div class="col-md-2 col-sm-4 col-xs-6">
                                 <a href="http://www.tecumseh.com/en/united-states" target="_BLANK"><img src="/web/image/theme_typ.tecumseh" alt="tecumseh"/></a>
                             </div>
-                            <div class="col-md-4 col-sm-4 col-xs-6">
+                            <div class="col-md-2 col-sm-4 col-xs-6">
                                 <a href="http://www.ueitest.com/" target="_BLANK"><img class="center-block" src="/web/image/theme_typ.uei" alt="uei"/></a>
                             </div>
-                            <div class="col-md-4 col-sm-4 col-xs-6">
+                            <div class="col-md-2 col-sm-4 col-xs-6">
                                 <a href="http://www.usaire.com/" target="_BLANK"><img class="center-block" src="/web/image/theme_typ.usaire" alt="usaire"/></a>
                             </div>
-                            <div class="col-md-4 col-sm-4 col-xs-6">
+                            <div class="col-md-2 col-sm-4 col-xs-6">
                                 <a href="http://www.vtronix.com/index.php" target="_BLANK"><img class="center-block" src="/web/image/theme_typ.vtronix" alt="vtronix"/></a>
                             </div>
                         </div>

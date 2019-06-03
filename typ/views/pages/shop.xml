@@ -136,10 +136,10 @@
             
             <t t-if="not (search or category or product or pager['page']['num'] != 1)">
                 <div class="col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2 col-lg-8 col-lg-offset-2 col-xs-12 col-xs-offset-0" >
-                    <div class="text-center mt32 mb32 category-header hidden-xs">                        
+                    <div class="text-center mt32 mb32 category-header hidden-xs hidden-sm">                        
                         <p class="category-name">All Products</p>                         
                     </div> 
-                    <div class="text-center mt24 mb24 category-header hidden-md hidden-sm hidden-lg">                        
+                    <div class="text-center mt24 mb24 category-header hidden-md hidden-lg">                        
                         <p class="category-name">All Products</p>                         
                     </div> 
                 </div>
@@ -178,7 +178,7 @@
             <t t-else="">
                 <div class="container text-center subcategories-section">
                     <div class="col-md-12 col-sm-12 col-lg-12 col-xs-12 sort-products text-left">
-                        <div class="col-md-4 col-sm-4 col-xs-12">
+                        <div class="col-md-4 col-sm-4 col-xs-12 filter_shop">
                             <div class="row">
                                 <span class="filter filter_by">Filter by: </span>
                                 <div class="dropdown btn-group  dropdown_filters">

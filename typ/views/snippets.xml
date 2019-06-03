@@ -42,18 +42,18 @@
     </template>
 
     <template id="s_image_banner" name="Banner">
-        <section class="s_image_banner">                
+        <section class="s_image_banner">
             <img class="img img-responsive" src="/web/image/theme_typ.s-banner" alt="Sample"/>
         </section>
     </template>
 
      <template id="s_image_banner_contact_us" name="Banner Contact Us">
         <section class="s_text_block_image_fw oe_img_bg oe_custom_bg text-center">
-                <div class="container oswald-text">
+                <div class="container oswald-text contact-banner">
                     <div class="row">
-                        <div class="col-md-4 col-md-offset-1 col-sm-7 col-sm-offset-0 mt32 ">
+                        <div class="col-md-5 col-md-offset-0 col-sm-7 col-sm-offset-0 mt32 ">
                             <span class="typ-img-logo-banner" t-field="res_company.logo" t-options="{'widget': 'image'}" t-att-alt="'Logo of %s' % res_company.name" t-att-title="res_company.name"/>
-                            <h4 class="banner mt16 mb16">WE WANT TO BE YOUR PARTNERS</h4>
+                            <h4 class="banner mt16 mb16 col-xs-12">WE WANT TO BE YOUR PARTNERS</h4>
                             <a class="btn btn-primary btn-lg mb32" href="/contactus">QUOTE YOUR PROJECT</a>
                         </div>
                     </div>
@@ -181,6 +181,38 @@
             </section>
     </template>
 
+    <template id="s_cover_img" name="Slider Images">
+     <section class="s_image_banner">
+        <div id="myCarouselImages" class="carousel slide s_banner background-header-carousel" data-interval="10000">
+            <!-- Indicators -->
+            <ol class="carousel-indicators hidden">
+                <li data-target="#myCarouselImages" data-slide-to="0" class="active"></li>
+            </ol>
+            <div class="carousel-inner">
+                <div class="item oe_img_bg active">
+                    <div class="col-sm-12 col-xs-12 no-padding">
+                        <img class="img-responsive" src="/theme_typ/static/img/home.png" alt="Banner Image"/>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-control left hidden" data-target="#myCarousel" data-slide="prev" style="width: 10%"><i class="fa fa-chevron-left"></i></div>
+            <div class="carousel-control right hidden" data-target="#myCarousel" data-slide="next" style="width: 10%"><i class="fa fa-chevron-right"></i></div>
+        </div>
+    </section>
+    </template>
+
+    <template id="s_typ_header" name="Header Section">
+       <section class="s_text_block_image_fw oe_img_bg oe_custom_bg text-center background-header-org" style="background-image: url(/web/image/theme_typ.hero-org);">
+            <div class="container">
+                <div class="row">
+                    <h1 class="header-titles">TITLE</h1>
+                </div>
+                <div class="row">
+                    <h5 class="header-subtitles">Text</h5>
+                </div>
+            </div>
+        </section>
+    </template>
 
     <template id="snippets" inherit_id="website.snippets">
         <xpath expr="//div[@id='o_scroll']" position="inside">
@@ -194,6 +226,8 @@
                     <t t-snippet="typ.s_banner_homepage" t-thumbnail="/theme_typ/static/img/banner-text-home.png"/>
                     <t t-snippet="typ.s_banner_sales" t-thumbnail="/theme_typ/static/img/how-to.png"/>
                     <t t-snippet="typ.s_typ_testimonials" t-thumbnail="/theme_typ/static/img/clients-opinion.png"/>
+                    <t t-snippet="typ.s_cover_img" t-thumbnail="/theme_typ/static/img/carousel_image.png"/>
+                    <t t-snippet="typ.s_typ_header" t-thumbnail="/theme_typ/static/img/header-text.png" />
                 </div>
             </div>
         </xpath>

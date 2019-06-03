@@ -862,4 +862,10 @@
         <field name="url">theme_typ/static/img/star-blank.svg</field>
         <field name="public" eval="True"/>
     </record>
+    <record id="home_carousel" model="ir.attachment">
+        <field name="name">home_carousel</field>
+        <field name="type">url</field>
+        <field name="url">theme_typ/static/img/home.png</field>
+        <field name="public" eval="True"/>
+    </record>
 </odoo>
