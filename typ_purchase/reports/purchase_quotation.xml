@@ -48,9 +48,27 @@
                                     </div>
                                 </div>
                                 <div t-if="not o.dest_address_id and o.picking_type_id and o.picking_type_id.warehouse_id">
-                                    <span t-field="o.picking_type_id.warehouse_id.name"/>
+                                    <!--<span t-field="o.picking_type_id.warehouse_id.name"/>
                                     <div t-field="o.picking_type_id.warehouse_id.partner_id"
-                                        t-field-options='{"widget": "contact", "no_marker": true}'/>
+                                        t-field-options='{"widget": "contact", "no_marker": true}'/>-->
+                                    <div>
+                                        <strong t-if="o.picking_type_id.warehouse_id.name" t-esc="o.picking_type_id.warehouse_id.name"/>
+                                    </div>
+                                    <div>
+                                        <span t-if="o.picking_type_id.warehouse_id.partner_id.street_name" t-esc="o.picking_type_id.warehouse_id.partner_id.street_name"/>
+                                        <span t-if="o.picking_type_id.warehouse_id.partner_id.street2" t-esc="o.picking_type_id.warehouse_id.partner_id.street2"/>
+                                        <br/>
+                                        <span t-if="o.picking_type_id.warehouse_id.partner_id.l10n_mx_edi_colony" t-esc="o.picking_type_id.warehouse_id.partner_id.l10n_mx_edi_colony"/>
+                                        <span t-if="o.picking_type_id.warehouse_id.partner_id.zip" t-esc="o.picking_type_id.warehouse_id.partner_id.zip"/>
+                                        <br/>
+                                        <span t-if="o.picking_type_id.warehouse_id.partner_id.l10n_mx_edi_locality" t-esc="o.picking_type_id.warehouse_id.partner_id.l10n_mx_edi_locality"><br/></span>
+                                        <span t-if="o.picking_type_id.warehouse_id.partner_id.city" t-esc="o.picking_type_id.warehouse_id.partner_id.city"/>
+                                        <span t-if="o.picking_type_id.warehouse_id.partner_id.state_id.name" t-esc="o.picking_type_id.warehouse_id.partner_id.state_id.name"/>
+                                        <span t-if="o.picking_type_id.warehouse_id.partner_id.country_id.name" t-esc="o.picking_type_id.warehouse_id.partner_id.country_id.name"/>
+                                    </div>
+                                    <div>
+                                        <span t-if="o.picking_type_id.warehouse_id.partner_id.phone" t-esc="o.picking_type_id.warehouse_id.partner_id.phone"/>
+                                    </div>
                                 </div>
                             </t>
                         </div>
