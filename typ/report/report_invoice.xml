@@ -100,14 +100,19 @@
                         <span>Client Reference</span>
                     </div>
                 </div>
-                <div class="col-xs-4" style="padding-right: 0.2em; padding-left: 0.2em;">
+                <div class="col-xs-3" style="padding-right: 0.2em; padding-left: 0.2em;">
                     <div class="text-center bg-primary" style="border-top-right-radius: 0.4em; border-top-left-radius: 0.4em; padding-top: 0.0em;">
                         <span>Fiscal Regime</span>
                     </div>
                 </div>
-                <div class="col-xs-3" style="padding-right: 0.0em; padding-left: 0.2em;">
+                <div class="col-xs-2" style="padding-right: 0.0em; padding-left: 0.2em;">
                     <div class="text-center bg-primary" style="border-top-right-radius: 0.4em; border-top-left-radius: 0.4em; padding-top: 0.0em;">
                         <span>Type Payment Term</span>
+                    </div>
+                </div>
+                <div class="col-xs-2" style="padding-right: 0.0em; padding-left: 0.2em;">
+                    <div class="text-center bg-primary" style="border-top-right-radius: 0.4em; border-top-left-radius: 0.4em; padding-top: 0.0em;">
+                        <span>Payment Term</span>
                     </div>
                 </div>
             </div>
@@ -118,16 +123,21 @@
                             <span t-esc="o.name"/>
                         </div>
                     </div>
-                    <div class="col-xs-4" style="padding-right: 0.2em; padding-left: 0.2em;">
+                    <div class="col-xs-3" style="padding-right: 0.2em; padding-left: 0.2em;">
                         <div class="text-center" style="border-bottom-right-radius: 0.4em; border-bottom-left-radius: 0.4em; border: 2px solid #deeff5; padding-top: 0.0em; font-size: 10;">
                             <t t-if="o.l10n_mx_edi_cfdi_uuid">
                                 <span t-esc="xml.Emisor.get('RegimenFiscal')"/>
                             </t>
                         </div>
                     </div>
-                    <div class="col-xs-3" style="padding-right: 0.0em; padding-left: 0.2em;">
+                    <div class="col-xs-2" style="padding-right: 0.0em; padding-left: 0.2em;">
                         <div class="text-center" style="border-bottom-right-radius: 0.4em; border-bottom-left-radius: 0.4em; border: 2px solid #deeff5; padding-top: 0.0em; font-size: 10;">
                             <span t-field="o.type_payment_term"/>
+                        </div>
+                    </div>
+                    <div class="col-xs-2" style="padding-right: 0.0em; padding-left: 0.2em;">
+                        <div class="text-center" style="border-bottom-right-radius: 0.4em; border-bottom-left-radius: 0.4em; border: 2px solid #deeff5; padding-top: 0.0em; font-size: 10;">
+                            <span t-field="o.payment_term_id"/>
                         </div>
                     </div>
                 </div>
