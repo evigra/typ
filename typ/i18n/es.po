@@ -202,6 +202,11 @@ msgid "<span>Payment Method</span>"
 msgstr "<span>Método de Pago</span>"
 
 #. module: typ
+#: model:ir.ui.view,arch_db:typ.report_invoice_document_typ
+msgid "<span>Payment Term</span>"
+msgstr "<span>Plazo de Pago</span>"
+
+#. module: typ
 #: model:ir.ui.view,arch_db:typ.report_payment_receipt_typ
 msgid "<span>Payment</span>"
 msgstr "<span>Payment</span>"
