@@ -22,6 +22,7 @@
         'typ_account',
         'typ_purchase',
         'typ_pos',
+        'typ_stock_barcode',
         # 'account_aged_partner_balance_vw',
         'account_asset',
         'account_budget',
