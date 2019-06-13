@@ -105,6 +105,12 @@
             <xpath expr="//field[@name='origin']" position="attributes">
                 <attribute name="attrs" translation="off"></attribute>
             </xpath>
+            <xpath expr="//button[@name='action_rfq_send'][1]" position="attributes">
+                <attribute name="context" translation="off">{'send_rfq':False}</attribute>
+            </xpath>
+            <xpath expr="//button[@name='action_rfq_send'][2]" position="attributes">
+                <attribute name="context" translation="off">{'send_rfq':False}</attribute>
+            </xpath>
         </field>
     </record>
     <record id="view_create_date_purchase_order_tree" model="ir.ui.view">
