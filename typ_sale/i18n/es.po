@@ -219,7 +219,7 @@ msgstr "Correo electrónico"
 #. module: typ_sale
 #: selection:product.product,state:0 selection:product.template,state:0
 msgid "End of Lifecycle"
-msgstr "Fin del ciclo de vida"
+msgstr "Fin ciclo de vida"
 
 #. module: typ_sale
 #: view:website:sale.report_saleorder_document
