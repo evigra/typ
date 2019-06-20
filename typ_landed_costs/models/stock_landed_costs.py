@@ -496,6 +496,7 @@ class StockLandedCost(models.Model):
         line_invoice = self._get_lines_from_invoice()
         for landed_cost in self:
             lines = []
+            landed_cost.update({'cost_lines': [(5, 0, 0)]})
             for guide in landed_cost.guide_ids:
                 for line in guide.line_ids:
                     product = line.product_id
