@@ -586,6 +586,11 @@ msgid "Reorder Point"
 msgstr "Punto de reorden"
 
 #. module: typ_stock
+#: model:ir.model.fields,field_description:typ_stock.field_stock_picking_responsible_for_warranty
+msgid "Responsible For Warranty"
+msgstr "Responsable de la garantía"
+
+#. module: typ_stock
 #: model:email.template,subject:typ_stock.email_template_product_manager
 msgid "Responsable del producto"
 msgstr ""

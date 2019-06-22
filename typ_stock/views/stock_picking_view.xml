@@ -93,6 +93,7 @@
             <xpath expr="//field[@name='location_dest_id']" position="after">
                 <field name="requirements_for_warranty" attrs="{'invisible': [('is_warranty', '=', False)], 'readonly': True}"/>
                 <field name="is_warranty" invisible="1"/>
+                <field name="responsible_for_warranty" attrs="{ 'invisible': [('is_warranty', '=', False)], 'required': [('is_warranty', '=', True)]}"/>
             </xpath>
         </field>
     </record>

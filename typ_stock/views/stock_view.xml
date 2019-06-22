@@ -122,7 +122,7 @@
         <field name="name">stock.location.form.inherit</field>
         <field name="model">stock.location</field>
         <field name="inherit_id" ref="typ_stock.view_location_form_inherit"/>
-        <field name="groups_id" eval="[(6, 0, [ref('typ_stock.group_stock_validation_warranty_transfer')])]"/>
+        <field name="groups_id" eval="[(6, 0, [ref('stock.group_stock_manager')])]"/>
         <field name="arch" type="xml">
             <xpath expr="//field[@name='warranty_location']" position="attributes">
                 <attribute name="readonly">False</attribute>

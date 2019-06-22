@@ -39,6 +39,11 @@ class StockPicking(models.Model):
     )
     is_warranty = fields.Boolean(
         help='True if destiny is warranty location')
+    responsible_for_warranty = fields.Many2one(
+        'res.users',
+        domain=lambda self:
+        [('groups_id', '=', self.env.ref(
+            "typ_stock.group_stock_validation_warranty_transfer").id)])
 
     @api.onchange('location_dest_id')
     def onchange_dest_warranty(self):
