@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="account.open_account_journal_dashboard_kanban" model="ir.actions.act_window">
+        <field name="limit">5</field>
+    </record>
+
+    <menuitem id="account.menu_board_journal_1" name="Dashboard"
+        action="account.open_account_journal_dashboard_kanban"
+        parent="account.menu_finance" sequence="20"
+        groups="account.group_account_user"/>
+</odoo>
