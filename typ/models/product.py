@@ -34,6 +34,30 @@ class Product(models.Model):
 class ProductProduct(models.Model):
     _inherit = 'product.product'
 
+    # TODO: Check if this does not cause performance problems since at update
+    # process will update this fields when updating product, stock and typ
+    # modules Ticket 6289
+    description = fields.Text(
+        translate=True,
+        help="A precise description of the Product, used only for internal "
+        "information purposes.")
+    description_purchase = fields.Text(
+        'Purchase Description', translate=True,
+        help="A description of the Product that you want to communicate "
+        "to your vendors. This description will be copied to every "
+        "Purchase Order, Receipt and Vendor Bill/Credit Note.")
+    description_sale = fields.Text(
+        'Sale Description', translate=True,
+        help="A description of the Product that you want to communicate to "
+        "your customers. This description will be copied to every Sales Order,"
+        " Delivery Order and Customer Invoice/Credit Note")
+    description_picking = fields.Text(
+        'Description on Picking', translate=True)
+    description_pickingout = fields.Text(
+        'Description on Delivery Orders', translate=True)
+    description_pickingin = fields.Text(
+        'Description on Receptions', translate=True)
+
     route_ids = fields.Many2many(
         'stock.location.route', 'stock_route_product_product', 'product_id',
         'route_id', 'Routes', domain="[('product_selectable', '=', True)]",
