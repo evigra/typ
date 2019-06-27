@@ -7,6 +7,7 @@
 ##############################################################################
 
 from . import models
+from . import report
 
 def _set_new_group(cr, registry):
     cr.execute(

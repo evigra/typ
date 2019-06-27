@@ -27,10 +27,12 @@
                       "pos_stocks&version=10.0",
     "depends":  ['point_of_sale'],
     "data": [
+        'report/receipt_report.xml',
         'data/res_groups.xml',
         'views/pos_stocks_view.xml',
         'views/template.xml',
         'views/pos_view.xml',
+        'views/point_of_sale_report.xml',
     ],
     "qweb":  [
         'static/src/xml/pos_stocks.xml',
