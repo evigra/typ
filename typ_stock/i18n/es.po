@@ -138,14 +138,8 @@ msgid "Balanced"
 msgstr "Balanceo"
 
 #: model:ir.ui.view,arch_db:typ_stock.report_picking
-msgid "<strong>Source</strong>"
-msgstr "<strong>Recurso</strong>"
-
-#. module: typ_stock
-#: view:website:stock.report_picking
-#: model:ir.ui.view,arch_db:typ_stock.report_picking
-msgid "Barcode"
-msgstr "Código de barras"
+msgid "<strong>Serie</strong>"
+msgstr "<strong>Serie</strong>"
 
 #. module: typ_stock
 #: model:ir.model.fields,help:typ_stock.field_stock_location_warranty_location
@@ -157,6 +151,7 @@ msgstr "Marque esta casilla para permitir el uso de esta ubicación para garant�
 msgid "Check this box when the requirements for guarantee are fulfilled in order to transfer it to guarantees in process."
 msgstr "Marque esta casilla cuando se cumplan los requisitos de garantía para poder tranferirla a garantías en proceso."
 
+#. module: typ_stock
 #: model:ir.ui.view,arch_db:typ_stock.report_picking
 msgid "<strong>State</strong>"
 msgstr "<strong>Estado</strong>"
