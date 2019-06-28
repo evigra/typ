@@ -163,6 +163,17 @@
             </field>
         </record>
 
+        <record id="view_stock_landed_cost_tree_inherit" model="ir.ui.view">
+            <field name="name">stock.landed.cost.tree.inherit</field>
+            <field name="model">stock.landed.cost</field>
+            <field name="inherit_id" ref="stock_landed_costs.view_stock_landed_cost_tree"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='date']" position="after">
+                    <field name="create_date"/>
+                </xpath>
+            </field>
+        </record>
+
         <record model="ir.actions.act_window" id="action_landed_cost_guides">
             <field name="name">Landed Cost Guides</field>
             <field name="res_model">stock.landed.cost.guide</field>
