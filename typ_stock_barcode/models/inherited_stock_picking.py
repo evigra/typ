@@ -21,7 +21,8 @@ class StockPicking(models.Model):
 
         action_ctx = dict(
             self.env.context, default_picking_id=self.id,
-            default_product_id=product_id.id, candidates=candidates.ids)
+            default_product_id=product_id.id, candidates=candidates.ids,
+            default_barcode=barcode)
         view_id = self.env.ref(
             'typ_stock_barcode.view_barcode_notracking_form').id
         return {

@@ -14,8 +14,7 @@ class StockBarcodeNotracking(models.TransientModel):
 
     picking_id = fields.Many2one('stock.picking')
     product_id = fields.Many2one('product.product')
-    qty_reserved = fields.Float()
-    qty_done = fields.Float()
+    qty_done = fields.Float('Quantity Done')
     default_move_id = fields.Many2one('stock.move')
     stock_barcode_product_line_ids = fields.One2many(
         'stock.barcode.product.line', 'stock_barcode_product_id')
@@ -46,11 +45,12 @@ class StockBarcodeNotracking(models.TransientModel):
             res['qty_done'] = qty_done
         return res
 
-    @api.multi
-    def _update_quantity_done(self):
-        self.ensure_one()
-        self.qty_done = sum(
-            self.stock_barcode_product_line_ids.mapped('qty_done'))
+    @api.onchange('qty_done')
+    def onchange_quantity_done(self):
+        barcode = self.env.context.get('default_barcode')
+        suitable_line = self.stock_barcode_product_line_ids.filtered(
+            lambda l: l.product_barcode == barcode or not l.product_barcode)
+        suitable_line.qty_done = self.qty_done if self.qty_done != 0 else 1
 
     @api.multi
     def on_barcode_scanned(self, barcode):
@@ -109,7 +109,3 @@ class StockBarcodeProductLine(models.TransientModel):
     qty_done = fields.Float('Quantity Done')
     stock_barcode_product_id = fields.Many2one('stock.barcode.notracking')
     move_line_id = fields.Many2one('stock.move.line')
-
-    @api.onchange('qty_done')
-    def onchange_qty_done(self):
-        self.stock_barcode_product_id._update_quantity_done()
