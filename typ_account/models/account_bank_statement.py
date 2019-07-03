@@ -1,20 +1,18 @@
 # -*- coding: utf-8 -*-
 
 from odoo import models, api
-from odoo.exceptions import AccessError
 
 
 class AccountBankStatementLine(models.Model):
     _inherit = "account.bank.statement.line"
 
     def get_reconciliation_proposition(self, excluded_ids=None):
-        res = super(AccountBankStatementLine,
-                    self).get_reconciliation_proposition(excluded_ids)
-        try:
-            res.check_access_rule('read')
-        except AccessError:
-            return self.env['account.move.line']
-        return res
+        # Ticket 6482
+        # Context: Typ instance has seriously performance issues, in a meeting
+        # with Moy, Julio, deduct after a lot of analysis with
+        # pgbadger that is needed the following:
+
+        return self.env['account.move.line']
 
 
 class AccountBankStatement(models.Model):
