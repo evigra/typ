@@ -56,10 +56,13 @@ class HomeInherit(Home):
             if request.env['res.users'].browse(
                     request.uid).has_group('base.group_user'):
                 redirect = b'/web?' + request.httprequest.query_string
-            else:
-                redirect = '/'
+        try:
+            redirect = redirect.decode()
+        except AttributeError:
+            redirect = '/'
+
         return json.dumps({
             'login_success': not res.qcontext.get("error"),
             'error': res.qcontext.get("error", False),
-            'redirect': redirect.decode('utf-8'),
+            'redirect': redirect,
         })
