@@ -10,6 +10,7 @@
     'license': 'LGPL-3',
     'data': [
         'views/stock_barcode_templates.xml',
+        'views/stock_picking_views.xml',
         'wizard/stock_barcode_product_view.xml',
     ],
     'installable': True,
