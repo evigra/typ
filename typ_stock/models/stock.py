@@ -35,7 +35,8 @@ class StockPicking(models.Model):
     requirements_for_warranty = fields.Boolean(
         'Meets requirements for warranty?',
         help='Check this box when the requirements for guarantee are fulfilled'
-        ' in order to transfer it to guarantees in process.'
+        ' in order to transfer it to guarantees in process.',
+        copy=False
     )
     is_warranty = fields.Boolean(
         help='True if destiny is warranty location')
