@@ -199,7 +199,7 @@ class MyAccountInvoices(PortalAccount):
         account_payments = request.env['account.payment']
 
         complements = account_payments.sudo().search([(
-            'partner_id', '=', partner)])
+            'partner_id', '=', partner), ('state', '=', 'reconciled')])
 
         values = {
             'payment_partner': complements,

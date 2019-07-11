@@ -717,12 +717,12 @@
                         </div>
                         <div class="col-sm-4 mt24 mb8">
                             <p>Download</p>
-                        </div> 
+                        </div>
                     </div>
                     <!-- users are not allowed to see the account_payment model. We have to add a new ACL and update a sale record rule -->
                     <div class="content-table-typ">
                         <t t-foreach="payment_partner" t-as="id_payment">
-                            <t t-set="attachment_id" t-value="env['ir.attachment'].sudo().search([('res_id','=',id_payment.id),('res_model', '=', 'account.payment')], limit = 1)"/> 
+                            <t t-set="attachment_id" t-value="id_payment.my_payment_complements_zip()" />
                             <t t-set="payment" t-value="env['account.payment'].sudo().search([('id','=', id_payment.id)])"/>
                             <t t-if="attachment_id">
                                 <div class="row">
@@ -735,7 +735,7 @@
                                         </t>
                                     </div>
                                     <div class="col-sm-4 mt8">
-                                        <a t-att-href="'/web/content/{0}?download=true'.format(attachment_id.id)"><img src="/web/image/theme_typ.download-icon" alt="Download invoice"/></a>                             
+                                        <a t-att-href="'/web/content/{0}?download=true'.format(attachment_id.id)"><img src="/web/image/theme_typ.download-icon" alt="Download Payment Complement"/></a>
                                     </div>
                                 </div>
                             </t>
