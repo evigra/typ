@@ -356,3 +356,8 @@ msgstr "Factura del Vendedor"
 msgid "Vendor Credit Note"
 msgstr "Nota de Crédito del Vendedor"
 
+#. module: typ
+#: model:ir.model.fields,field_description:typ.field_account_payment_is_commission
+#: model:ir.model.fields,field_description:typ.field_account_register_payments_is_commission
+msgid "Is Commission"
+msgstr "Es Comisión"

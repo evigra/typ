@@ -95,6 +95,7 @@
         'data/payment10.xml',
         # Website stuff
         'views/account_views.xml',
+        'views/account_payment_views.xml',
         'views/stock_views.xml',
         'views/assets.xml',
         'views/templates.xml',

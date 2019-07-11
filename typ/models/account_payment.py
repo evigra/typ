@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from odoo import api, models
+from odoo import api, fields, models
 
 import io
 import zipfile
@@ -9,6 +9,10 @@ import base64
 
 class AccountPayment(models.Model):
     _inherit = 'account.payment'
+
+    is_commission = fields.Boolean(
+        help='This must be True if the amount difference is because the bank '
+        'take that amount to commissions.')
 
     @api.multi
     def l10n_mx_edi_amount_to_text(self):
@@ -75,3 +79,22 @@ class AccountPayment(models.Model):
             }
         attachment_id = self.env['ir.attachment'].create(values)
         return attachment_id
+
+
+class AccountRegisterPayments(models.TransientModel):
+    _inherit = 'account.register.payments'
+
+    is_commission = fields.Boolean(
+        help='This must be True if the amount difference is because the bank '
+        'take that amount to commissions.')
+
+    @api.multi
+    def _prepare_payment_vals(self, invoices):
+        """Any field that is going to be passed from this model to
+        account.payment needs to be added in this dictionary"""
+        res = super(AccountRegisterPayments, self)._prepare_payment_vals(
+            invoices)
+        res.update({
+            'is_commission': self.is_commission,
+        })
+        return res
