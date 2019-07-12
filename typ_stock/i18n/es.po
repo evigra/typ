@@ -852,6 +852,11 @@ msgid "This group can update cost standard of product."
 msgstr "Este grupo puede actualizar el costo estándar del producto."
 
 #. module: typ_stock
+#: model:res.groups,comment:typ_stock.group_stock_button_validation_transfer
+msgid "This group will not see the validation transfer button"
+msgstr "Este grupo no puede ver el botón validar tranferencia"
+
+#. module: typ_stock
 #: help:stock.picking,invoiced:0
 msgid "This must be checked only when the supplier have invoiced the whole order and there isn't a backorder. This activate a green highlight on tree view "
 msgstr "Este check debera ser activado solamente cuando el proveedor haya facturado la orden completa indicando así que no hay un backorder. Esto activara en la vista de arbol el color verde para este picking indicando que la orden esta embarcada sin ningún problema "
@@ -988,6 +993,11 @@ msgstr "Usuarios que pueden ver el botón de precio estándar"
 #: model:res.groups,name:typ_stock.group_reception_picking_attributes
 msgid "Users who see picking reception attributes"
 msgstr "Usuarios que ven los atributos en pickings de recepcion"
+
+#. module: typ_stock
+#: model:res.groups,name:typ_stock.group_stock_button_validation_transfer
+msgid "Users will not see the validation transfer button"
+msgstr "Usuarios que no pueden ver el botón validar transferencia"
 
 #. module: typ_stock
 #: view:website:stock.report_picking

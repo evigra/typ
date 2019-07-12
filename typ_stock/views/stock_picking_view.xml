@@ -156,4 +156,15 @@
             </xpath>
         </field>
     </record>
+    <record id="stock_picking_hide_button_validation_group" model="ir.ui.view">
+        <field name="name">stock.picking.hide.button.form</field>
+        <field name="model">stock.picking</field>
+        <field name="inherit_id" ref="stock.view_picking_form"/>
+        <field name="groups_id" eval="[(6, 0, [ref('typ_stock.group_stock_button_validation_transfer')])]"/>
+        <field name="arch" type="xml">
+            <xpath expr="//button[@name='button_validate']" position="attributes">
+                <attribute name="invisible" translation="off">True</attribute>
+            </xpath>
+        </field>
+    </record>
 </odoo>

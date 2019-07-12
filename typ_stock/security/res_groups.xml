@@ -69,4 +69,8 @@
         <field name="name">Users can confirm transfers for warranty</field>
         <field name="comment">This group can confirm transfers for warranty</field>
     </record>
+    <record id="group_stock_button_validation_transfer" model="res.groups">
+        <field name="name">Users will not see the validation transfer button</field>
+        <field name="comment">This group will not see the validation transfer button</field>
+    </record>
 </odoo>
