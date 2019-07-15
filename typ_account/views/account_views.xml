@@ -20,5 +20,7 @@
         parent="account.menu_finance_entries_accounting_entries" groups="account.group_account_user,res_group_account_adviser" sequence="2"/>
 
     <menuitem id="account_reports_management_menu" name="Management" parent="account.menu_finance_receivables" sequence="4"/>
-    <menuitem name="Invoices" action="account.action_account_invoice_report_all" id="menu_action_account_invoice_report_all" parent="typ_account.account_reports_management_menu" sequence="1"/>
+    <menuitem name="Invoices" action="account.action_account_invoice_report_all" id="menu_action_account_invoice_report_all"
+        parent="typ_account.account_reports_management_menu" sequence="1"
+        groups="res_group_invoices_report"/>
 </odoo>

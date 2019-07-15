@@ -12,4 +12,8 @@
         <field name="name">Users that can see the adviser menu in accounting</field>
         <field name="comment">This group can see the adviser menu in accounting.</field>
     </record>
+    <record id="res_group_invoices_report" model="res.groups">
+        <field name="name">Users that can see Invoices Report</field>
+        <field name="comment">This group can see the Invoices report menu in accounting.</field>
+    </record>
 </odoo>
