@@ -3,4 +3,4 @@
 from . import models
 # from . import tests
 # from . import wizard
-# from . import report
+from . import report
