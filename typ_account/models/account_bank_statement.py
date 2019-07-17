@@ -14,6 +14,10 @@ class AccountBankStatementLine(models.Model):
 
         return self.env['account.move.line']
 
+    @api.multi
+    def auto_reconcile(self):
+        return False
+
 
 class AccountBankStatement(models.Model):
     _inherit = "account.bank.statement"
