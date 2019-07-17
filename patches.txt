@@ -1,1 +1,2 @@
 odoo https://github.com/Vauxoo/odoo/pull/306.patch
+odoo https://github.com/Vauxoo/odoo/pull/309.patch
