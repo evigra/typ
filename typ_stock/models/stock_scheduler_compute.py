@@ -42,5 +42,6 @@ class ProcurementGroup(models.Model):
             )
         domain = super(
             ProcurementGroup, self)._get_orderpoint_domain(company_id)
-        domain.extend(ctx['order_point_domain'])
+        if ctx.get('order_point_domain'):
+            domain.extend(ctx['order_point_domain'])
         return domain
