@@ -206,6 +206,8 @@ class StockMove(models.Model):
 
     _inherit = "stock.move"
 
+    sale_line_id = fields.Many2one(index=True)
+
     shipment_date = fields.Date(
         'Product shipment date',
         default=fields.Date.context_today, index=True,
