@@ -113,6 +113,22 @@ class SaleOrderLine(models.Model):
                     self.product_id.name))
         self.price_unit = tmp_price_unit
 
+    def invoice_line_create(self, invoice_id, qty):
+        move_model = self.env['stock.move']
+        landed_model = self.env['stock.landed.cost']
+        invoice_lines = super().invoice_line_create(invoice_id, qty)
+        for invoice_line in invoice_lines:
+            moves = move_model.search([
+                ('sale_line_id', 'in', invoice_line.sale_line_ids.ids),
+                ('state', '=', 'done'), ('scrapped', '!=', True)])
+            dat = moves.mapped('move_orig_logistic_ids.origin_move_id')
+            landed = landed_model.search(
+                [('move_ids', 'in', dat.ids),
+                 ('l10n_mx_edi_customs_number', '!=', False)])
+            invoice_line.update({'l10n_mx_edi_customs_number': ','.join(
+                list(set(landed.mapped('l10n_mx_edi_customs_number'))))})
+        return invoice_lines
+
 
 class ProcurementRule(models.Model):
     _inherit = 'procurement.rule'
