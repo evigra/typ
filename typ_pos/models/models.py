@@ -141,3 +141,11 @@ class PosOrder(models.Model):
             result.append(new_vals)
 
         return [result, discount, payment_lines, change]
+
+    def _prepare_invoice(self):
+        """ Inherit method to add team_id according to pos config
+        """
+        res = super()._prepare_invoice()
+        team_id = self.config_id.crm_team_id
+        res.update({'team_id': team_id.id})
+        return res
