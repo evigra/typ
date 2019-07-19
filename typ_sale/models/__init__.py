@@ -10,3 +10,5 @@ from . import res_config
 from . import sales_team
 from . import pricelist
 from . import product
+from . import res_users
+from . import account_journal

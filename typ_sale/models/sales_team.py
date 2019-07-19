@@ -1,6 +1,6 @@
 # coding: utf-8
 
-from openerp import fields, models
+from openerp import fields, models, api
 
 
 class CrmTeam(models.Model):
@@ -14,3 +14,10 @@ class CrmTeam(models.Model):
         'account.fiscal.position', string='Fiscal position',
         help='It indicates the fiscal position'
         ' to be used when sale order is created')
+
+    @api.multi
+    def write(self, values):
+        res = super(CrmTeam, self).write(values)
+        if 'member_ids' in values or 'journal_team_ids' in values:
+            self.clear_caches()
+        return res
