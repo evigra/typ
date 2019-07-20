@@ -55,7 +55,7 @@ class SaleOrderLine(models.Model):
             if warning:
                 raise ValidationError(warning.get('message'))
 
-    @api.onchange('price_unit')
+    @api.onchange('price_unit', 'discount')
     def onchange_check_margin(self):
         """Verify margin minimum in sale order line by change in field.
         """
@@ -71,14 +71,15 @@ class SaleOrderLine(models.Model):
                     self.product_id.default_code, self.product_id.name,
                     ','.join(self.product_id.attribute_value_ids.mapped(
                         'name')))}
-        if self.env.user.has_group(
-                'typ_sale.res_group_can_sell_below_minimum_margin'):
-            return
+        can_sell_bellow_minimun_margin = self.env.user.has_group(
+            'typ_sale.res_group_can_sell_below_minimum_margin')
+        if can_sell_bellow_minimun_margin or not self.move_ids:
+            return False
         if not price_subtotal:
             price_subtotal = self.price_subtotal
 
         if price_subtotal == 0 and not self.product_id:
-            return
+            return False
 
         if price_subtotal <= 0 and self.product_id:
             return res
@@ -99,6 +100,7 @@ class SaleOrderLine(models.Model):
         margin_sale = (purchase_sale / price_subtotal) * 100
         if margin_sale < margin:
             return res
+        return False
 
     @api.onchange('price_unit')
     def _onchange_price_unit(self):
