@@ -8,7 +8,7 @@
     'website': 'http://www.vauxoo.com',
     'license': 'AGPL-3',
     'category': 'Installer',
-    'version': '11.0.0.0.4',
+    'version': '11.0.0.0.5',
     'depends': [
         'l10n_mx_pos_cogs',
         'l10n_mx_edi_hr_expense',
