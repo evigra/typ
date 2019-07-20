@@ -15,7 +15,7 @@
     <record id="automated_action_description_sale_order_line" model="base.automation">
         <field name="name">Add default code in description of sale order line</field>
         <field name="model_id" ref="sale.model_sale_order_line"/>
-        <field name="active" eval="True"/>
+        <field name="active" eval="False"/>
         <field name="sequence">5</field>
         <field name="trigger">on_change</field>
         <field name="on_change_fields">product_id</field>
