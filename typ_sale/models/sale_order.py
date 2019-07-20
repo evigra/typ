@@ -67,11 +67,14 @@ class SaleOrder(models.Model):
         """Obtain Salesman depending on configuration warehouse in partner
         related
         """
+        partner_warehouse_model = self.env['res.partner.warehouse']
         res = super(SaleOrder, self)._onchange_warehouse_id()
-        warehouse_config = self.partner_id.res_warehouse_ids.filtered(
-            lambda wh_conf: wh_conf.warehouse_id == self.warehouse_id)
-        if warehouse_config:
-            self.user_id = warehouse_config.user_id.id
+        res_warehouse = partner_warehouse_model.search(
+            [('partner_id', '=', self.partner_id.id),
+             ('warehouse_id', '=', self.warehouse_id.id)], limit=1)
+        seller_id = res_warehouse.user_id
+        if seller_id:
+            self.user_id = seller_id
         return res
 
     @api.model
