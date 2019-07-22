@@ -30,7 +30,7 @@ python:
 
 env:
   global:
-  - LINT_CHECK="0" TESTS="0"
+  - LINT_CHECK="0" TESTS="0" OPTIONS="--load=web,base_sparse_field"
   matrix:
   - LINT_CHECK="1"
   - INCLUDE="typ" TESTS="1"
