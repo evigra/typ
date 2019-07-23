@@ -101,6 +101,7 @@
         'views/res_partner_views.xml',
         'views/assets.xml',
         'views/templates.xml',
+        'views/helpdesk_views.xml',
         'views/pages/homepage.xml',
         'views/pages/shop.xml',
         'views/pages/pdp.xml',
