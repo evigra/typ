@@ -357,6 +357,11 @@ msgid "Vendor Credit Note"
 msgstr "Nota de Crédito del Vendedor"
 
 #. module: typ
+#: model:res.partner.category,name:typ.tag_compensation
+msgid "Complement with compensation"
+msgstr "Complemento con compensación"
+
+#. module: typ
 #: model:ir.model.fields,field_description:typ.field_account_payment_is_commission
 #: model:ir.model.fields,field_description:typ.field_account_register_payments_is_commission
 msgid "Is Commission"

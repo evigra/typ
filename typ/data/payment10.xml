@@ -5,7 +5,8 @@
             <attribute name="t-att-TipoCambioDR">inv_rate if record.currency_id != invoice.currency_id else False</attribute>
         </xpath>
         <xpath expr="//*[local-name()='Pagos']" position="inside">
-            <t t-if="record.is_commission">
+            <t t-set="label" t-value="record.env.ref('typ.tag_compensation')"/>
+            <t t-if="record.is_commission and label in record.partner_id.category_id">
                 <t t-set="invoice" t-value="record.invoice_ids[-1]"/>
                 <t t-set="tfd_node" t-value="record.invoice_ids.l10n_mx_edi_get_tfd_etree(invoice)"/>
                 <t t-set="writeoff_vals" t-value="record._l10n_mx_edi_get_payment_write_off()"/>
