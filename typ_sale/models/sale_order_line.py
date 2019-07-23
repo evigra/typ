@@ -73,15 +73,17 @@ class SaleOrderLine(models.Model):
                         'name')))}
         can_sell_bellow_minimun_margin = self.env.user.has_group(
             'typ_sale.res_group_can_sell_below_minimum_margin')
-        if can_sell_bellow_minimun_margin or not self.move_ids:
+        invoice = getattr(self, '_origin', self)
+        has_stock_moves = bool(self.env['stock.move'].search(
+            [('sale_line_id', '=', invoice.id)], limit=1))
+        if can_sell_bellow_minimun_margin:
             return False
         if not price_subtotal:
             price_subtotal = self.price_subtotal
 
         if price_subtotal == 0 and not self.product_id:
             return False
-
-        if price_subtotal <= 0 and self.product_id:
+        if price_subtotal <= 0 and self.product_id and not has_stock_moves:
             return res
 
         cur = self.order_id.pricelist_id.currency_id
@@ -98,7 +100,7 @@ class SaleOrderLine(models.Model):
         purchase_sale = cur.round(tmp_margin)
 
         margin_sale = (purchase_sale / price_subtotal) * 100
-        if margin_sale < margin:
+        if margin_sale < margin and not has_stock_moves:
             return res
         return False
 
