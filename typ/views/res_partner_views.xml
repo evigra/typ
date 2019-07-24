@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<odoo>
+
+    <record id="view_partner_form_inherit_tanner" model="ir.ui.view">
+        <field name="name">res.partner.form.inherit.tanner</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="helpdesk.view_partner_form_inherit_helpdesk"/>
+        <field name="arch" type="xml">
+            <button name="action_open_helpdesk_ticket" position="attributes">
+                <attribute name="attrs"></attribute>
+            </button>
+        </field>
+    </record>
+
+</odoo>
