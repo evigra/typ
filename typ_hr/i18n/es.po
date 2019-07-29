@@ -374,6 +374,12 @@ msgid "Reference"
 msgstr "Referencias"
 
 #. module: typ_hr
+#: model:ir.model.fields,field_description:typ_hr.field_fleet_vehicle_vehicle_manager
+#: model:ir.model.fields,help:typ_hr.field_fleet_vehicle_vehicle_manager
+msgid "Responsible for the vehicle"
+msgstr "Responsable del vehículo"
+
+#. module: typ_hr
 #: view:website:typ_hr.hr_employee_expedient_report_pdf
 msgid "SSN No"
 msgstr "NSS"
@@ -403,6 +409,11 @@ msgstr "Teléfono"
 #: model:res.groups,comment:typ_hr.res_partner_accounting_employee_contact
 msgid "This group can see contact employee, but not see their address"
 msgstr "Este grupo puede ver el contacto del empleado, pero no puede ver sus direcciones"
+
+#. module: typ_hr
+#: model:res.groups,comment:typ_hr.fleet_group_manager_configuration
+msgid "This group can see fleet configuration menu"
+msgstr "Este grupo puede ver el menu configuración en Flota"
 
 #. module: typ_hr
 #: selection:hr.employee,last_degree:0

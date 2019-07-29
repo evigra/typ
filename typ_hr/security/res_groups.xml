@@ -4,4 +4,8 @@
         <field name="name">Users that can see contact employee in partner</field>
         <field name="comment">This group can see contact employee, but not see their address</field>
     </record>
+    <record id="fleet_group_manager_configuration" model="res.groups">
+        <field name="name">Users that can see fleet configuration menu</field>
+        <field name="comment">This group can see fleet configuration menu</field>
+    </record>
 </odoo>

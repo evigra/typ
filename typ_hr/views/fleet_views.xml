@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<odoo>
+    <record id="fleet_vehicle_inherit_view_form" model="ir.ui.view">
+        <field name="name">fleet.vehicle.inherit</field>
+        <field name="model">fleet.vehicle</field>
+        <field name="inherit_id" ref="fleet.fleet_vehicle_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='driver_id']" position="after">
+                <field name="vehicle_manager"/>
+            </xpath>
+        </field>
+    </record>
+    <record id="fleet_vehicle_inherit_view_tree" model="ir.ui.view">
+        <field name="name">fleet.vehicle.inherit.tree</field>
+        <field name="model">fleet.vehicle</field>
+        <field name="inherit_id" ref="fleet.fleet_vehicle_view_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='driver_id']" position="after">
+                <field name="vehicle_manager"/>
+            </xpath>
+        </field>
+    </record>
+    <record id="fleet_vehicle_inherit_view_search" model="ir.ui.view">
+        <field name="name">fleet.vehicle.inherit.search</field>
+        <field name="model">fleet.vehicle</field>
+        <field name="inherit_id" ref="fleet.fleet_vehicle_view_search"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='driver_id']" position="after">
+                <field name="vehicle_manager"/>
+            </xpath>
+        </field>
+    </record>
+    <record id="fleet_vehicle_inherit_view_kanban" model="ir.ui.view">
+        <field name="name">fleet.vehicle.inherit.kanban</field>
+        <field name="model">fleet.vehicle</field>
+        <field name="inherit_id" ref="fleet.fleet_vehicle_view_kanban"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='driver_id']" position="after">
+                <field name="vehicle_manager"/>
+            </xpath>
+            <xpath expr="//t[@t-if='record.location.raw_value']" position="before">
+                <li>
+                    <t i-if="record.vehicle_manager.raw_value"><field name="vehicle_manager"/></t>
+                </li>
+            </xpath>
+            <xpath expr="//t[@t-if='record.driver_id.raw_value']" position="attributes">
+                <attribute name="invisible" translation="off">1</attribute>
+            </xpath>
+        </field>
+    </record>
+    <record id="fleet.fleet_configuration" model="ir.ui.menu">
+        <field name="groups_id" eval="[(6,0,[ref('typ_hr.fleet_group_manager_configuration')])]"/>
+    </record>
+</odoo>

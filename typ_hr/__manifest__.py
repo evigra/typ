@@ -24,6 +24,7 @@
         'reports/hr_employee_report_pdf_view.xml',
         'reports/hr_reports.xml',
         'views/hr_contract_inherit_view.xml',
+        'views/fleet_views.xml',
     ],
     'installable': True,
 }
