@@ -11,9 +11,10 @@ class SaleOrder(models.Model):
     type_payment_term = fields.Selection(
         [('credit', 'Credit'), ('cash', 'Cash'),
          ('postdated_check', 'Postdated check')], default='credit')
-    so = fields.Boolean(string='Is Special Order?', default=False,
+    so = fields.Boolean(string='Is Special Order', default=False,
                         help='This or some product of the sales order '
-                        'will be purchased with a supplier?')
+                        'will be purchased with a supplier?',
+                        readonly=True)
     notest = fields.Text(string='Notes',
                          help='Delivery address, product availability, '
                          'special shipping instructions, '
@@ -118,6 +119,8 @@ class SaleOrder(models.Model):
     def onchange_special_order(self):
         if self.order_line.filtered('special_sale') and not self.so:
             self.so = True  # pylint: disable=invalid-name
+        if not self.order_line.filtered('special_sale') and self.so:
+            self.so = False  # pylint: disable=invalid-name
 
     @api.multi
     @api.onchange('partner_id')

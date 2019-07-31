@@ -181,7 +181,7 @@ msgstr "Tipo dealer"
 #. module: typ_sale
 #: model:ir.model.fields,field_description:typ_sale.field_sale_order_delivery_promise
 msgid "Delivery Promise"
-msgstr "Promesa de entrega"
+msgstr "Promesa de entrega al cliente"
 
 #. module: typ_sale
 #: model:ir.model.fields,help:typ_sale.field_sale_order_notest
@@ -302,8 +302,8 @@ msgstr "Dirección de facturación:"
 
 #. module: typ_sale
 #: model:ir.model.fields,field_description:typ_sale.field_sale_order_so
-msgid "Is Special Order?"
-msgstr "¿Es Pedido especial?"
+msgid "Is Special Order"
+msgstr "Es Pedido especial"
 
 #. module: typ_sale
 #: model:ir.model.fields,help:typ_sale.field_crm_team_fiscal_position_id
