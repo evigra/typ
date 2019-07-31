@@ -9,3 +9,4 @@ from . import test_sale_origin_to_invoice
 # from . import test_cancel_sale_order
 from . import test_sale_change_price_unit
 from . import test_position_fiscal_border_location
+from . import test_sale_invoice_customs
