@@ -174,6 +174,11 @@ msgid "Date in which we promise to deliver to the client"
 msgstr "Fecha en la que nos comprometemos entregarle al cliente"
 
 #. module: typ_sale
+#: model:ir.model.fields,help:typ_sale.field_purchase_order_supply_commitment_date
+msgid "Date that the supplier undertakes to deliver."
+msgstr "Fecha en la que proveeduría se compromete a entregar."
+
+#. module: typ_sale
 #: field:res.partner,dealer:0
 msgid "Dealer type"
 msgstr "Tipo dealer"
@@ -908,6 +913,11 @@ msgstr "Sub Total"
 #: field:sale.order.line,purchase_partner_id:0
 msgid "Supplier for purchase"
 msgstr "Proveedor para la orden de compra"
+
+#. module: typ_sale
+#: model:ir.model.fields,field_description:typ_sale.field_purchase_order_supply_commitment_date
+msgid "Supply Commitment Date"
+msgstr "Fecha compromiso de proveeduría"
 
 #. module: typ_sale
 #: model:ir.model.fields,help:typ_sale.field_product_product_main_customer_activity

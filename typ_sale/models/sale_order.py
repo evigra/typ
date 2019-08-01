@@ -174,6 +174,15 @@ class PurchaseOrder(models.Model):
         'sale.order', "Sale Order",
         help="Reference to Sale Order"
     )
+    supply_commitment_date = fields.Date(
+        states={
+            'cancel': [('readonly', True)],
+            'done': [('readonly', True)],
+            'purchase': [('readonly', True)]
+        },
+        help='Date that the supplier undertakes to deliver.',
+        copy=False
+    )
 
     @api.model
     def _prepare_picking(self):

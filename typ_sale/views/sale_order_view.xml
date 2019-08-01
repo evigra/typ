@@ -106,6 +106,7 @@
                     context="{
                     'form_view_ref':'typ_sale.sale_order_purchase_template',
                     }"/>
+                <field name="supply_commitment_date" attrs="{'required': [('sale_order_id', '!=', False)]}"/>
             </xpath>
         </field>
     </record>
