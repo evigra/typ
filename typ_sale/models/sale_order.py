@@ -11,10 +11,9 @@ class SaleOrder(models.Model):
     type_payment_term = fields.Selection(
         [('credit', 'Credit'), ('cash', 'Cash'),
          ('postdated_check', 'Postdated check')], default='credit')
-    so = fields.Boolean(string='Is Special Order', default=False,
+    so = fields.Boolean(string='Is Special Order',
                         help='This or some product of the sales order '
-                        'will be purchased with a supplier?',
-                        readonly=True)
+                        'will be purchased with a supplier?')
     notest = fields.Text(string='Notes',
                          help='Delivery address, product availability, '
                          'special shipping instructions, '

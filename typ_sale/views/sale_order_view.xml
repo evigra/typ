@@ -44,7 +44,7 @@
             </xpath>
             <xpath expr="//group[2]" position="after">
                 <group>
-                    <field name="so" default="False"/>
+                    <field name="so"/>
                 </group>
             </xpath>
             <xpath expr="//notebook/page[2]" position="after">
