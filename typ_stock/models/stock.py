@@ -237,6 +237,12 @@ class StockMove(models.Model):
     def _push_apply(self):
         return super(StockMove, self.sudo())._push_apply()
 
+    def _action_done(self):
+        if (not self.location_id.should_bypass_reservation() and
+                self.quantity_done > self.reserved_availability):
+            raise UserError(_('You can not transfer different reserved'))
+        return super(StockMove, self)._action_done()
+
 
 class ReturnPicking(models.TransientModel):
     _inherit = 'stock.return.picking'
