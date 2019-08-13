@@ -26,6 +26,7 @@ msgstr "<p class=\"oe_view_nocontent_create\">\n"
 "              </p>\n"
 "            "
 #: model:ir.ui.view,arch_db:typ_stock.report_picking
+#: model:ir.ui.view,arch_db:typ_stock.report_picking_wobc
 msgid "<span><strong>Customer Address:</strong></span>"
 msgstr "<span><strong>Dirección del Cliente:</strong></span>"
 
@@ -36,6 +37,7 @@ msgid "<ul><li>shipment confirmed --> <b>Canceled</b></li></ul>"
 msgstr "<ul><li>embarque confirmado --> <b>Cancelado</b></li></ul>"
 
 #: model:ir.ui.view,arch_db:typ_stock.report_picking
+#: model:ir.ui.view,arch_db:typ_stock.report_picking_wobc
 msgid "<span><strong>Delivery Address:</strong></span>"
 msgstr "<span><strong>Dirección de Entrega:</strong></span>"
 
@@ -46,6 +48,7 @@ msgid "<ul><li>shipment confirmed --> <b>ok</b></li></ul>"
 msgstr "<ul><li>embarque confirmado --> <b>ok</b></li></ul>"
 
 #: model:ir.ui.view,arch_db:typ_stock.report_picking
+#: model:ir.ui.view,arch_db:typ_stock.report_picking_wobc
 msgid "<span><strong>Supplier Address:</strong></span>"
 msgstr "<span><strong>Dirección del Proveedor:</strong></span>"
 
@@ -57,6 +60,7 @@ msgid "AA"
 msgstr ""
 
 #: model:ir.ui.view,arch_db:typ_stock.report_picking
+#: model:ir.ui.view,arch_db:typ_stock.report_picking_wobc
 msgid "<span><strong>Warehouse Address:</strong></span>"
 msgstr "<span><strong>Dirección del Almacén:</strong></span>"
 
@@ -75,6 +79,7 @@ msgid "Action follower product manager"
 msgstr ""
 
 #: model:ir.ui.view,arch_db:typ_stock.report_picking
+#: model:ir.ui.view,arch_db:typ_stock.report_picking_wobc
 msgid "<strong>Commitment Date</strong>"
 msgstr "<strong>Fecha Compromiso</strong>"
 
@@ -84,6 +89,7 @@ msgid "Action procurement cancel"
 msgstr "Accion para cancelar abastecimientos"
 
 #: model:ir.ui.view,arch_db:typ_stock.report_picking
+#: model:ir.ui.view,arch_db:typ_stock.report_picking_wobc
 msgid "<strong>Destination</strong>"
 msgstr "<strong>Destino</strong>"
 
@@ -93,6 +99,7 @@ msgid "Active"
 msgstr "Activo"
 
 #: model:ir.ui.view,arch_db:typ_stock.report_picking
+#: model:ir.ui.view,arch_db:typ_stock.report_picking_wobc
 msgid "<strong>Notes</strong>:"
 msgstr "<strong>Notas</strong>:"
 
@@ -102,6 +109,7 @@ msgid "Additional information"
 msgstr ""
 
 #: model:ir.ui.view,arch_db:typ_stock.report_picking
+#: model:ir.ui.view,arch_db:typ_stock.report_picking_wobc
 msgid "<strong>Order (Origin)</strong>"
 msgstr "<strong>Pedido (Origen)</strong>"
 
@@ -111,6 +119,7 @@ msgid "Applicable on manual transfer"
 msgstr "Aplicable en transferencia manual"
 
 #: model:ir.ui.view,arch_db:typ_stock.report_picking
+#: model:ir.ui.view,arch_db:typ_stock.report_picking_wobc
 msgid "<strong>Product</strong>"
 msgstr "<strong>Producto</strong>"
 
@@ -120,6 +129,7 @@ msgid "Automatic output"
 msgstr "Salida automatica"
 
 #: model:ir.ui.view,arch_db:typ_stock.report_picking
+#: model:ir.ui.view,arch_db:typ_stock.report_picking_wobc
 msgid "<strong>Quantity</strong>"
 msgstr "<strong>Cantidad</strong>"
 
@@ -129,6 +139,7 @@ msgid "Automatic transit"
 msgstr "Transito automático"
 
 #: model:ir.ui.view,arch_db:typ_stock.report_picking
+#: model:ir.ui.view,arch_db:typ_stock.report_picking_wobc
 msgid "<strong>Scheduled Date</strong>"
 msgstr "<strong>Fecha Recepción</strong>"
 
@@ -138,6 +149,7 @@ msgid "Balanced"
 msgstr "Balanceo"
 
 #: model:ir.ui.view,arch_db:typ_stock.report_picking
+#: model:ir.ui.view,arch_db:typ_stock.report_picking_wobc
 msgid "<strong>Serie</strong>"
 msgstr "<strong>Serie</strong>"
 
@@ -153,6 +165,7 @@ msgstr "Marque esta casilla cuando se cumplan los requisitos de garantía para p
 
 #. module: typ_stock
 #: model:ir.ui.view,arch_db:typ_stock.report_picking
+#: model:ir.ui.view,arch_db:typ_stock.report_picking_wobc
 msgid "<strong>State</strong>"
 msgstr "<strong>Estado</strong>"
 
@@ -486,6 +499,11 @@ msgstr "Lista de Albaranes"
 #: field:stock.manual_transfer,picking_ids:0
 msgid "Picking ids"
 msgstr "id de picking"
+
+#. module: typ_stock
+#: model:ir.actions.report,name:typ_stock.action_report_picking_wobc
+msgid "Picking Operations wobc"
+msgstr "Operaciones de albarán wobc"
 
 #. module: typ_stock
 #: model:ir.model.fields,field_description:typ_stock.field_stock_picking_picking_shipment_date
