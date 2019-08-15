@@ -9,8 +9,8 @@
             <xpath expr="/form/sheet/notebook/page/group/group/field[@name='supplier']" position="after">
                     <field name="importance" />
                     <field name="potential_importance" />
-                    <field name="partner_type" />
-                    <field name="business_activity" />
+                    <field name="partner_type" required="1"/>
+                    <field name="business_activity" required="1"/>
                     <field name="dealer" />
                     <field name="region" />
             </xpath>
