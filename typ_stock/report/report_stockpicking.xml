@@ -81,13 +81,12 @@
                     <t t-foreach="lines_category_three(o)" t-as="moves">
                         <t t-foreach="moves[1].sorted(key=lambda r: r.product_id.default_code)" t-as="move">
                             <tr t-foreach="move.move_line_ids.sorted(key=lambda ml: ml.location_id.id)" t-as="ml">
-                                <t t-if="(ml.qty_done > 0 and o.picking_type_id.code in ('internal', 'mrp_operation')) or o.picking_type_id.code in ('outgoing', 'incoming')">
+                                <t t-if="(ml.qty_done > 0 and o.picking_type_id.code in ('mrp_operation')) or o.picking_type_id.code in ('outgoing', 'incoming', 'internal')">
                                     <td>
-                                        <t t-if="not move.move_dest_ids"><span t-field="move.name"/></t>
-                                        <t t-if="move.move_dest_ids"><span t-field="move.product_id"/></t>
+                                        <span t-field="move.product_id.display_name"/>
                                         <t t-if="ml.package_id"><span t-field="ml.package_id"/></t>
                                     </td>
-                                    <t t-if="o.picking_type_id.code in ('outgoing', 'incoming')">
+                                    <t t-if="o.picking_type_id.code in ('outgoing', 'incoming', 'internal')">
                                         <td class="text-right">
                                             <t t-if="o.state == 'done'">
                                                 <span t-field="ml.qty_done"/> <span t-field="move.product_id.uom_id" groups="product.group_uom"/>
@@ -97,7 +96,7 @@
                                             </t>
                                         </td>
                                     </t>
-                                    <t t-if="o.picking_type_id.code in ('internal', 'mrp_operation')">
+                                    <t t-if="o.picking_type_id.code in ('mrp_operation')">
                                         <td class="text-right">
                                             <span t-field="ml.qty_done"/> <span t-field="move.product_id.uom_id" groups="product.group_uom"/>
                                         </td>
