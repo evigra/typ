@@ -239,6 +239,14 @@ class StockMove(models.Model):
     def _push_apply(self):
         return super(StockMove, self.sudo())._push_apply()
 
+    def _action_confirm(self, merge=True, merge_into=False):
+        group_id = self._context.get('group_id')
+        for move in self.filtered(lambda dat: not dat.group_id and group_id):
+            move.group_id = group_id
+            merge = False
+        return super(StockMove, self)._action_confirm(
+            merge=merge, merge_into=merge_into)
+
     def _action_done(self):
         for move in self.filtered(lambda dat: not dat.inventory_id):
             if (not move.location_id.should_bypass_reservation() and

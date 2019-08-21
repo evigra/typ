@@ -19,9 +19,11 @@ class StockSchedulerCompute(models.TransientModel):
         """method insert warehouse_id in context & call super
         procure_calculation"""
 
+        group_id = self.env['procurement.group'].create({})
         context = dict(
             self._context,
-            warehouse_id=self.warehouse_id, importance=self.importance
+            warehouse_id=self.warehouse_id, importance=self.importance,
+            group_id=group_id.id
         )
         return super(StockSchedulerCompute,
                      self.with_context(context)).procure_calculation()
