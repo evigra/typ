@@ -56,7 +56,7 @@ class AccountPayment(models.Model):
             ('res_id', '=', self.id),
             ('mimetype', '=', 'application/zip'),
             ('res_model', '=', "account.payment")]
-        attachments = self.env['ir.attachment'].search(domain, limit=2)
+        attachments = self.env['ir.attachment'].search(domain, limit=1)
         return attachments
 
     def create_zip(self, attachments_ids):
