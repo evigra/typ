@@ -240,9 +240,10 @@ class StockMove(models.Model):
         return super(StockMove, self.sudo())._push_apply()
 
     def _action_done(self):
-        if (not self.location_id.should_bypass_reservation() and
-                self.quantity_done > self.reserved_availability):
-            raise UserError(_('You can not transfer different reserved'))
+        for move in self:
+            if (not move.location_id.should_bypass_reservation() and
+                    move.quantity_done > move.reserved_availability):
+                raise UserError(_('You can not transfer different reserved'))
         return super(StockMove, self)._action_done()
 
 
