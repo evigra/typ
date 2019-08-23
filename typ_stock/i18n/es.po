@@ -601,6 +601,12 @@ msgid "Scheduled Date"
 msgstr "Fecha Programada"
 
 #. module: typ_stock
+#: code:addons/typ_stock/models/stock.py:97
+#, python-format
+msgid "Sale order cancelled by %s"
+msgstr "Order de venta cancelada por %s"
+
+#. module: typ_stock
 #: model:ir.model.fields,help:typ_stock.field_stock_move_shipment_date
 msgid "Scheduled date for the shipment of this move"
 msgstr "Fecha programada para el envío de este traslado"
