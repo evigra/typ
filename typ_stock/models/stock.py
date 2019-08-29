@@ -94,7 +94,7 @@ class StockPicking(models.Model):
         if all(picking.state == 'cancel' for picking in sale_id.picking_ids):
             sale_id.sudo().with_context(bypass_check_sale=True).action_cancel()
             msg = _("Sale order cancelled by %s") % self.env.user.name
-            sale_id.message_post(body=msg)
+            sale_id.sudo().message_post(body=msg)
         return True
 
     @api.multi
