@@ -5,3 +5,4 @@ access_hr_employee_beneficiary,access_hr_employee_beneficiary,model_hr_employee_
 access_hr_employee_reference,access_hr_employee_reference,model_hr_employee_reference,,1,1,1,1
 access_hr_employee_auxiliar,access_hr_employee_auxiliar,model_hr_employee_auxiliar,,1,1,1,1
 access_hr_payslip,hr.payslip,hr_payroll.model_hr_payslip,base.group_user,1,1,0,0
+fleet.fleet_vehicle_log_services_access_right_user,fleet_vehicle_log_services_access_right,fleet.model_fleet_vehicle_log_services,fleet.fleet_group_user,1,1,1,1
