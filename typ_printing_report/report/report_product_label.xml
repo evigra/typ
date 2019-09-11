@@ -84,7 +84,7 @@
                     <t t-foreach="docs" t-as="product">
     N
     A30,50,0,4,1,1,N,"<t t-raw='product.default_code.upper()'/>"
-    B30,100,0,1,2,6,40,B,<t t-if="product.barcode">"<t t-raw="product.barcode"/>"</t><t t-if="not product.barcode">"<t t-raw='product.default_code.upper()'/>"</t>
+    B30,100,0,1,1,6,40,B,<t t-if="product.barcode">"<t t-raw="product.barcode"/>"</t><t t-if="not product.barcode">"<t t-raw='product.default_code.upper()'/>"</t>
     P<t t-esc="data.get('qty')"/>
                     </t>
                     </div>
@@ -124,7 +124,7 @@
                     <t t-foreach="docs" t-as="product">
     N
     A30,50,0,4,1,1,N,"<t t-raw='product.default_code.upper()'/>"
-    B30,100,0,1,2,6,40,B,<t t-if="product.barcode">"<t t-raw="product.barcode"/>"</t><t t-if="not product.barcode">"<t t-raw='product.default_code.upper()'/>"</t>
+    B30,100,0,1,1,6,40,B,<t t-if="product.barcode">"<t t-raw="product.barcode"/>"</t><t t-if="not product.barcode">"<t t-raw='product.default_code.upper()'/>"</t>
     P<t t-esc="data.get('qty')"/>
                     </t>
                     </div>
