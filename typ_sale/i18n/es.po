@@ -920,6 +920,11 @@ msgid "Supply Commitment Date"
 msgstr "Fecha compromiso de proveeduría"
 
 #. module: typ_sale
+#: selection:product.product,state:0
+msgid "Support"
+msgstr "Soporte"
+
+#. module: typ_sale
 #: model:ir.model.fields,help:typ_sale.field_product_product_main_customer_activity
 msgid "The activity of the client that uses this product is mainly Contractor (CON), Company (EMP), Wholesaler (MAY). Contractor but also a company, company but also a wholesaler, contractor but also wholesaler or all of the above."
 msgstr "El Giro del cliente que utiliza este producto principalmente es Contratista (CON), Empresa (EMP), Mayorista (MAY), Contratista pero también es empresa, empresa pero también es mayorista, contratista pero también mayorista o todo los anteriores."

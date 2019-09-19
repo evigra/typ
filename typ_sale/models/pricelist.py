@@ -18,7 +18,8 @@ class ProductProduct(models.Model):
         [('draft', 'In Development'),
          ('sellable', 'Normal'),
          ('end', 'End of Lifecycle'),
-         ('obsolete', 'Obsolete')],
+         ('obsolete', 'Obsolete'),
+         ('support', 'Support')],
         help='State of lifecycle of the product.'
     )
     project_or_replacement = fields.Selection(
