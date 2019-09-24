@@ -35,5 +35,19 @@
             </xpath>
         </field>
     </record>
+
+    <record model="ir.ui.view" id="sale_order_product_customer_code_view_order_form">
+        <field name="name">sale.order.product.customer.code.view.order.form</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="product_supplierinfo_for_customer_sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//form//tree//field[@name='product_customer_code']" position="attributes">
+                <attribute name="groups" translation="off">typ_sale.res_group_product_customer_code</attribute>
+            </xpath>
+            <xpath expr="//form//form//field[@name='product_customer_code']" position="attributes">
+                <attribute name="groups" translation="off">typ_sale.res_group_product_customer_code</attribute>
+            </xpath>
+        </field>
+    </record>
 </odoo>
 
