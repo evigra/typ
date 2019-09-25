@@ -11,7 +11,7 @@
         <field name="street_name">Nayarit</field>
         <field name="street_number">291</field>
         <field name="street2">San Benito</field>
-        <field name="zip"> 83190</field>
+        <field name="zip">83190</field>
         <field name="city">Hermosillo</field>
         <field name="state_id" ref="base.state_mx_son"/>
         <field name="country_id" ref="base.mx"/>
@@ -39,7 +39,7 @@
         <field name="email">typhillo@typrefrigeracion.com.mx</field>
         <field name="street_number">291</field>
         <field name="street2">San Benito</field>
-        <field name="zip"> 83190</field>
+        <field name="zip">83190</field>
         <field name="city">Hermosillo</field>
         <field name="state_id" ref="base.state_mx_son"/>
         <field name="parent_id" ref="base.main_partner"/>
