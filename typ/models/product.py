@@ -3,6 +3,7 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
 from odoo import models, fields, api
+from odoo.addons.base.res.res_partner import WARNING_MESSAGE, WARNING_HELP
 
 
 class Product(models.Model):
@@ -57,6 +58,14 @@ class ProductProduct(models.Model):
         'Description on Delivery Orders', translate=True)
     description_pickingin = fields.Text(
         'Description on Receptions', translate=True)
+    sale_line_warn = fields.Selection(
+        WARNING_MESSAGE, 'Sales Order Line',
+        help=WARNING_HELP, required=True, default="no-message")
+    sale_line_warn_msg = fields.Text('Message for Sales Order Line')
+    purchase_line_warn = fields.Selection(
+        WARNING_MESSAGE, 'Purchase Order Line',
+        help=WARNING_HELP, required=True, default="no-message")
+    purchase_line_warn_msg = fields.Text('Message for Purchase Order Line')
 
     route_ids = fields.Many2many(
         'stock.location.route', 'stock_route_product_product', 'product_id',
