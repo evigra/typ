@@ -16,6 +16,7 @@
                                 </div>
                                 <div>
                                     <span t-if="o.broker_id.street_name" t-esc="o.broker_id.street_name"/>
+                                    <span t-if="o.broker_id.street_number" t-esc="o.broker_id.street_number"/>
                                     <span t-if="o.broker_id.street2" t-esc="o.broker_id.street2"/>
                                     <br/>
                                     <span t-if="o.broker_id.l10n_mx_edi_colony" t-esc="o.broker_id.l10n_mx_edi_colony"/>
@@ -36,6 +37,7 @@
                                     </div>
                                     <div>
                                         <span t-if="o.dest_address_id.street_name" t-esc="o.dest_address_id.street_name"/>
+                                        <span t-if="o.dest_address_id.street_number" t-esc="o.dest_address_id.street_number"/>
                                         <span t-if="o.dest_address_id.street2" t-esc="o.dest_address_id.street2"/>
                                         <br/>
                                         <span t-if="o.dest_address_id.l10n_mx_edi_colony" t-esc="o.dest_address_id.l10n_mx_edi_colony"/>
@@ -56,6 +58,7 @@
                                     </div>
                                     <div>
                                         <span t-if="o.picking_type_id.warehouse_id.partner_id.street_name" t-esc="o.picking_type_id.warehouse_id.partner_id.street_name"/>
+                                        <span t-if="o.picking_type_id.warehouse_id.partner_id.street_number" t-esc="o.picking_type_id.warehouse_id.partner_id.street_number"/>
                                         <span t-if="o.picking_type_id.warehouse_id.partner_id.street2" t-esc="o.picking_type_id.warehouse_id.partner_id.street2"/>
                                         <br/>
                                         <span t-if="o.picking_type_id.warehouse_id.partner_id.l10n_mx_edi_colony" t-esc="o.picking_type_id.warehouse_id.partner_id.l10n_mx_edi_colony"/>
@@ -81,6 +84,7 @@
                             </div>
                             <div>
                                 <span t-if="o.partner_id.street_name" t-esc="o.partner_id.street_name"/>
+                                <span t-if="o.partner_id.street_number" t-esc="o.partner_id.street_number"/>
                                 <span t-if="o.partner_id.street2" t-esc="o.partner_id.street2"/>
                                 <br/>
                                 <span t-if="o.partner_id.l10n_mx_edi_colony" t-esc="o.partner_id.l10n_mx_edi_colony"/>
