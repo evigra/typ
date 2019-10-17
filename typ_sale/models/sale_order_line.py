@@ -10,11 +10,9 @@ class SaleOrderLine(models.Model):
     _inherit = 'sale.order.line'
 
     def _get_purchase_partner_id(self):
-        if not self.product_id:
-            return
-        suppliers = self.env['product.supplierinfo']([
-            ('product_id', '=', self.product_id)], ['name'])
-        return [x['name'][0] for x in suppliers]
+        suppliers = self.env['product.supplierinfo'].search_read([
+            ('product_id', '=', self.product_id.id)], ['name'])
+        return [('id', 'in', [x['name'][0] for x in suppliers])]
 
     purchase_partner_id = fields.Many2one(
         'res.partner', string='Supplier for purchase',
