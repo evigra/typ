@@ -74,6 +74,11 @@ class ProductProduct(models.Model):
         "define the route of the product: whether it will be bought, "
         "manufactured, MTO/MTS,...")
 
+    product_warehouse_ids = fields.One2many(
+        comodel_name='product.stock.warehouse', inverse_name='product_id',
+        string='Storage location', help='Configure storage location'
+        ' to each warehouse')
+
     @api.model
     def name_search(self, name='', args=None, operator='ilike', limit=80):
         res = super(ProductProduct, self).name_search(
@@ -89,3 +94,22 @@ class ProductProduct(models.Model):
             return res
         res.extend(products.name_get())
         return res
+
+
+class ProductStockWarehouse(models.Model):
+
+    _name = 'product.stock.warehouse'
+
+    warehouse_id = fields.Many2one('stock.warehouse', string='Warehouse',
+                                   help='Set the warehouse')
+    posx = fields.Char(
+        'Corridor (X)',
+        help="Optional product details, for information purpose only")
+    posy = fields.Char(
+        'Shelves (Y)',
+        help="Optional product details, for information purpose only")
+    posz = fields.Char(
+        'Height (Z)',
+        help="Optional product details, for information purpose only")
+    product_id = fields.Many2one('product.product', string='Product',
+                                 help='Set the product')
