@@ -366,3 +366,45 @@ msgstr "Complemento con compensación"
 #: model:ir.model.fields,field_description:typ.field_account_register_payments_is_commission
 msgid "Is Commission"
 msgstr "Es Comisión"
+
+#. module: typ
+#: model:ir.model.fields,help:typ.field_product_product_product_warehouse_ids
+msgid "Configure storage location to each warehouse"
+msgstr "Configura la ubicación de almacenamiento por cada almacén"
+
+#. module: typ
+#: model:ir.model.fields,field_description:typ.field_product_stock_warehouse_posx
+msgid "Corridor (X)"
+msgstr "Pasillo (X)"
+
+#. module: typ
+#: model:ir.model.fields,field_description:typ.field_product_stock_warehouse_posz
+msgid "Height (Z)"
+msgstr "Altura (Z)"
+
+#. module: typ
+#: model:ir.model.fields,help:typ.field_product_stock_warehouse_product_id
+msgid "Set the product"
+msgstr "Configurar el producto"
+
+#. module: typ
+#: model:ir.model.fields,help:typ.field_product_stock_warehouse_warehouse_id
+msgid "Set the warehouse"
+msgstr "Configurar el almacén"
+
+#. module: typ
+#: model:ir.model.fields,field_description:typ.field_product_stock_warehouse_posy
+msgid "Shelves (Y)"
+msgstr "Estantería (Y)"
+
+#. module: typ
+#: model:ir.model.fields,field_description:typ.field_product_product_product_warehouse_ids
+#: model:ir.ui.view,arch_db:typ.view_product_normal_inherit_typ
+msgid "Storage location"
+msgstr "Ubicación de almacenamiento"
+
+#. module: typ
+#: model:ir.model.fields,field_description:typ.field_product_stock_warehouse_warehouse_id
+msgid "Warehouse"
+msgstr "Almacén"
+
