@@ -16,10 +16,6 @@ class StockPicking(models.Model):
             ('picking_id', 'in', self.ids),
             ('product_barcode', '=', barcode),
         ])
-        if not candidates:
-            raise UserError(
-                _('Scanned product not found.'))
-
         product_id = candidates.mapped('product_id')
 
         action_ctx = dict(
@@ -38,3 +34,13 @@ class StockPicking(models.Model):
             'view_id': view_id,
             'target': 'new',
             'context': action_ctx}
+
+    @api.multi
+    def on_barcode_scanned(self, barcode):
+        suitable_line = self.move_line_ids.filtered(
+            lambda l: l.product_barcode == barcode or
+            not l.product_barcode)
+        if not suitable_line:
+            raise UserError(
+                _('Scanned code not found %s') % (barcode))
+        return super(StockPicking, self).on_barcode_scanned(barcode)

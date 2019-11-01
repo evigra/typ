@@ -31,6 +31,10 @@
                         </div>
                         <div class="row">
                             <div class="col-xs-6 text-left">
+                                <field name="product_barcode" invisible="1"/>
+                                <field name="location_processed" invisible="1"/>
+                                <field name="result_package_id" invisible="1"/>
+                                <field name="lots_visible" invisible="1"/>
                                 <field name="qty_done" invisible="1"/>
                                 <span t-attf-class="#{record.qty_done.raw_value == 0.0 ? 'label label-info' : record.qty_done.raw_value &gt; 0.0 &amp; record.qty_done.raw_value &lt; record.product_uom_qty.raw_value ? 'label label-warning' : record.qty_done.raw_value == record.product_uom_qty.raw_value ? 'label label-success' : ''}">
                                     <t t-esc="record.qty_done.raw_value"/>

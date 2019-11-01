@@ -55,6 +55,14 @@ class StockBarcodeNotracking(models.TransientModel):
 
     @api.multi
     def on_barcode_scanned(self, barcode):
+        """This function is called when no product_barcode is not found on UI,
+        This is in order to make a post-process or search under a different
+        criteria that product_barcode field
+
+        Note: product_barcode is the first field consulted from js side if
+        founded a record that matches the barcode scanned on product_barcode
+        field it will try to increment only by js
+        """
         self.ensure_one()
         suitable_line = self.stock_barcode_product_line_ids.filtered(
             lambda l: l.line_product_barcode == barcode or
