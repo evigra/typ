@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from odoo import models, api, _
+from odoo.exceptions import UserError
 
 
 class StockPicking(models.Model):
@@ -17,6 +18,10 @@ class StockPicking(models.Model):
             ('picking_id', 'in', self.ids),
             ('product_barcode', '=', barcode),
         ])
+        if not candidates:
+            raise UserError(
+                _('Scanned product not found.'))
+
         product_id = candidates.mapped('product_id')
 
         action_ctx = dict(
