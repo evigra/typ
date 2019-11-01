@@ -25,6 +25,11 @@ class SaleOrderLine(models.Model):
         help='True if there is a buy type procurement rule within the chosen'
         ' route, otherwise false')
 
+    alternative_variant_line_ids = fields.Many2many(
+        string='Alternative variants',
+        related='product_id.alternative_variant_ids',
+        help='Alternative variants to offer the customer')
+
     @api.multi
     def button_cancel(self):
         res = super(SaleOrderLine, self).button_cancel()

@@ -68,6 +68,9 @@
                     </group>
                 </page>
             </xpath>
+            <xpath expr="//field[@name='alternative_product_ids']" position="after">
+                <field name='alternative_variant_ids' widget="many2many_tags"/>
+            </xpath>
         </field>
     </record>
 

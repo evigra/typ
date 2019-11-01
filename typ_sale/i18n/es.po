@@ -67,6 +67,18 @@ msgid "Allow overdue invoices"
 msgstr "Permitir facturas vencidas"
 
 #. module: typ_sale
+#: model:ir.model.fields,field_description:typ_sale.field_product_product_alternative_variant_ids
+#: model:ir.model.fields,field_description:typ_sale.field_sale_order_line_alternative_variant_line_ids
+msgid "Alternative variants"
+msgstr "Variantes alternativas"
+
+#. module: typ_sale
+#: model:ir.model.fields,help:typ_sale.field_product_product_alternative_variant_ids
+#: model:ir.model.fields,help:typ_sale.field_sale_order_line_alternative_variant_line_ids
+msgid "Alternative variants to offer the customer"
+msgstr "Variantes alternativas para ofrecer al cliente"
+
+#. module: typ_sale
 #: view:website:sale.report_saleorder_document
 msgid "Availability:"
 msgstr "Disponibilidad:"

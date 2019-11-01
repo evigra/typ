@@ -116,6 +116,12 @@ class ProductProduct(models.Model):
     product_market_type = fields.Many2one('product.market.type',
                                           ondelete='set null', index=True)
 
+    alternative_variant_ids = fields.Many2many(
+        'product.product', 'variant_alternative_rel', 'src_id', 'dest_id',
+        string='Alternative variants', help='Alternative variants'
+        ' to offer the customer'
+    )
+
     @api.multi
     def price_compute(self, price_type, uom=False, currency=False,
                       company=False):

@@ -11,6 +11,14 @@
                     groups="sale_stock.group_route_so_lines"/>
                 <field name="special_sale" invisible="1"/>
             </xpath>
+            <xpath expr="//field[@name='order_line']/form/group/group[2]" position="inside">
+                <field name="alternative_variant_line_ids" widget="many2many">
+                    <tree create="0">
+                        <field name="default_code"/>
+                        <field name="name"/>
+                    </tree>
+                </field>
+            </xpath>
        </field>
     </record>
 
