@@ -9,6 +9,7 @@
     'depends': ['stock_barcode'],
     'license': 'LGPL-3',
     'data': [
+        'security/res_groups.xml',
         'views/stock_barcode_templates.xml',
         'views/stock_picking_views.xml',
         'wizard/stock_barcode_product_view.xml',
