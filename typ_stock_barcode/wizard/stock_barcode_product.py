@@ -31,7 +31,7 @@ class StockBarcodeNotracking(models.TransientModel):
             res['default_move_id'] = candidates[0].move_id.id
             for ml in candidates:
                 lines.append({
-                    'product_barcode': ml.product_id.barcode,
+                    'line_product_barcode': ml.product_id.barcode,
                     'qty_reserved': ml.product_uom_qty,
                     'qty_done': ml.qty_done + 1,
                     'move_line_id': ml.id,
@@ -49,28 +49,33 @@ class StockBarcodeNotracking(models.TransientModel):
     def onchange_quantity_done(self):
         barcode = self.env.context.get('default_barcode')
         suitable_line = self.stock_barcode_product_line_ids.filtered(
-            lambda l: l.product_barcode == barcode or not l.product_barcode)
+            lambda l: l.line_product_barcode == barcode or
+            not l.line_product_barcode)
         suitable_line.qty_done = self.qty_done if self.qty_done != 0 else 1
 
     @api.multi
     def on_barcode_scanned(self, barcode):
         self.ensure_one()
         suitable_line = self.stock_barcode_product_line_ids.filtered(
-            lambda l: l.product_barcode == barcode or not l.product_barcode)
+            lambda l: l.line_product_barcode == barcode or
+            not l.line_product_barcode)
         vals = {}
         if not suitable_line:
             raise UserError(
                 _('Be sure that you are scanning the same product'))
-        vals['product_barcode'] = barcode
+        vals['line_product_barcode'] = barcode
         vals['qty_done'] = suitable_line[0].qty_done + 1
         suitable_line[0].update(vals)
         self.qty_done += 1
+        if suitable_line.qty_done > suitable_line.qty_reserved:
+            raise UserError(
+                _("You can't add more products than the reserved."))
 
     @api.multi
     def validate_product_set(self):
         self.ensure_one()
         for line in self.stock_barcode_product_line_ids.filtered(
-                'product_barcode'):
+                'line_product_barcode'):
             vals = {}
             vals['qty_done'] = line.qty_done
             if line.move_line_id:
@@ -104,7 +109,7 @@ class StockBarcodeProductLine(models.TransientModel):
     _name = "stock.barcode.product.line"
     _description = "Line of LN/SN scanned of a product"
 
-    product_barcode = fields.Char()
+    line_product_barcode = fields.Char()
     qty_reserved = fields.Float('Quantity Reserved')
     qty_done = fields.Float('Quantity Done')
     stock_barcode_product_id = fields.Many2one('stock.barcode.notracking')
