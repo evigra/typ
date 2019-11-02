@@ -1,10 +1,15 @@
+from collections import defaultdict
+
 from odoo import models, fields, api
 from odoo.addons import decimal_precision as dp
 
 
 class StockPicking(models.Model):
     _inherit = 'stock.move.line'
+    _order = 'typ_sort asc, result_package_id desc, id'
 
+    typ_sort = fields.Integer("Typ Sorting", compute="_compute_sorting",
+                              store=True)
     initial_demand_qty = fields.Float(
         'Initial Demand', related="move_id.product_uom_qty", readonly=True,
         digits=dp.get_precision('Product Unit of Measure'),
@@ -41,3 +46,33 @@ class StockPicking(models.Model):
                 'posy': product_warehouse_id.posy,
                 'posz': product_warehouse_id.posz,
             })
+
+    @api.multi
+    @api.depends('product_id')
+    def _compute_sorting(self):
+        last_sort = self.search([], order="typ_sort desc", limit=1).typ_sort
+        moves = self.mapped('move_id')
+        group_move = defaultdict(lambda: self.env['stock.move'])
+        for smove in moves:
+            complete_name = smove.product_id.categ_id.complete_name
+            name_three = complete_name.rsplit("/", 3)
+            if len(name_three) > 3:
+                name_three.pop(0)
+            # Discard category one
+            name_three.pop()
+            # Adjusted category up to level three and two
+            complete_name_three = "/".join(name_three).strip()
+            group_move[complete_name_three] |= smove
+
+        # For each set of category
+        for categ_moves in sorted(group_move.items()):
+            # For each set of moves
+            for smove in categ_moves[1].sorted(
+                    key=lambda r: r.product_id.default_code):
+                # For each line
+                lines = smove.move_line_ids.sorted(
+                    lambda x: x.location_id.id)
+                for sort, line in enumerate(
+                        lines, last_sort + 1 if last_sort else 1):
+                    line.typ_sort = sort
+                    last_sort = sort
