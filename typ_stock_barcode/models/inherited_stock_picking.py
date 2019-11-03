@@ -38,8 +38,7 @@ class StockPicking(models.Model):
     @api.multi
     def on_barcode_scanned(self, barcode):
         suitable_line = self.move_line_ids.filtered(
-            lambda l: l.product_barcode == barcode or
-            not l.product_barcode)
+            lambda l: l.product_barcode == barcode)
         if not suitable_line:
             raise UserError(
                 _('Scanned code not found %s') % (barcode))
