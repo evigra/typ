@@ -76,7 +76,8 @@
 
     <record id="group_stock_advanced_info" model="res.groups">
         <field name="name">Show advanced info</field>
-        <field name="comment">This group will allow user to see operation, additional info and note page on form piking view</field>
+        <field name="comment">This group will allow user to see operation, additional info and note pages on form piking view and other fields including put_in_pack button
+        </field>
         <field name="category_id" ref="base.module_category_hidden"/>
     </record>
 </odoo>

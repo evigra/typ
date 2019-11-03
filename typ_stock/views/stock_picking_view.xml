@@ -78,6 +78,9 @@
             <xpath expr="//page[4]" position="attributes">
                 <attribute name="groups">typ_stock.group_stock_advanced_info</attribute>
             </xpath>
+            <xpath expr="//button[@name='put_in_pack']" position="attributes">
+                <attribute name="groups">typ_stock.group_stock_advanced_info</attribute>
+            </xpath>
             <xpath expr="//field[@name='origin']" position="after">
                 <field name="number_landing" groups="typ_stock.group_stock_advanced_info"/>
             </xpath>
