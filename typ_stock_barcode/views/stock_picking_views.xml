@@ -1,16 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <record id="view_picking_form" model="ir.ui.view">
-        <field name="name">stock.picking.form.hide.operations</field>
-        <field name="model">stock.picking</field>
-        <field name="inherit_id" ref="stock.view_picking_form"/>
-        <field name="arch" type="xml">
-            <xpath expr="//page[2]" position="attributes">
-                <attribute name="groups">typ_stock_barcode.group_stock_all_operations</attribute>
-            </xpath>
-        </field>
-    </record>
-
     <record id="view_stock_move_line_kanban_limit" model="ir.ui.view">
         <field name="name">stock.move.line.kanban.limit</field>
         <field name="model">stock.move.line</field>
@@ -23,7 +12,7 @@
             </xpath>
             <xpath expr="//t[@t-name='kanban-box']" position="replace">
                 <t t-name="kanban-box">
-                    <div t-attf-class="oe_kanban_card oe_kanban_global_click" t-attf-style="#{record.qty_done.raw_value == 0.0 ? 'background-color: #d9edf7;' : record.qty_done.raw_value &gt; 0.0 &amp; record.qty_done.raw_value &lt; record.product_uom_qty.raw_value ? 'background-color: #fcf8e3;' : record.qty_done.raw_value == record.product_uom_qty.raw_value ? 'background-color: ##dff0d8;' : ''}">
+                    <div t-attf-class="oe_kanban_card oe_kanban_global_click" t-attf-style="#{record.qty_done.raw_value == 0.0 ? 'background-color: #d9edf7;' : record.qty_done.raw_value &gt; 0.0 &amp; record.qty_done.raw_value &lt; record.product_uom_qty.raw_value ? 'background-color: #fcf8e3;' : record.qty_done.raw_value == record.product_uom_qty.raw_value ? 'background-color: #dff0d8;' : ''}">
                         <strong class="o_kanban_record_title"><span><field name="product_id"/></span></strong>
                         <field name="picking_id" invisible="1"/>
                         <field name="posx" invisible="1"/>
@@ -39,8 +28,8 @@
                                 <field name="lot_name" invisible="not context.get('show_lots_text')" groups="stock.group_production_lot"/>
                             </div>
                         </div>
-                        <div class="row o_kanban_record_title">
-                            <div class="col-xs-6 text-left">
+                        <div class="row">
+                            <div class="col-xs-4 text-left">
                                 <field name="product_barcode" invisible="1"/>
                                 <field name="location_processed" invisible="1"/>
                                 <field name="result_package_id" invisible="1"/>
@@ -51,10 +40,18 @@
                                 </span>
                                 <field name="product_uom_id" string="Unit of Measure" groups="product.group_uom"/>
                             </div>
-                            <div class="col-xs-6 text-right">
-                                <field name="product_uom_qty" string="Quantity Reserved"/>
+                            <div class="col-xs-4 text-left">
+                                <field name="product_uom_qty" invisible="1" string="Quantity Reserved"/>
+                                <span>
+                                    <t t-esc="record.product_uom_qty.raw_value"/>
+                                </span>
                                 <field name="product_uom_id" string="Unit of Measure" groups="product.group_uom"/>
-                                <field name="initial_demand_qty" string="Initial Demand"/>
+                            </div>
+                            <div class="col-xs-4 text-left">
+                                <field name="initial_demand_qty" invisible="1" string="Initial Demand"/>
+                                <span>
+                                    <t t-esc="record.initial_demand_qty.raw_value"/>
+                                </span>
                                 <field name="product_uom_id" string="Unit of Measure" groups="product.group_uom"/>
                             </div>
                         </div>

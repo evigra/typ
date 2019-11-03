@@ -69,11 +69,20 @@
             <field name="origin" position="before">
                 <field name="picking_shipment_date"/>
             </field>
+            <xpath expr="//page[2]" position="attributes">
+                <attribute name="groups">typ_stock.group_stock_advanced_info</attribute>
+            </xpath>
+            <xpath expr="//page[3]" position="attributes">
+                <attribute name="groups">typ_stock.group_stock_advanced_info</attribute>
+            </xpath>
+            <xpath expr="//page[4]" position="attributes">
+                <attribute name="groups">typ_stock.group_stock_advanced_info</attribute>
+            </xpath>
             <xpath expr="//field[@name='origin']" position="after">
-                <field name="number_landing"/>
+                <field name="number_landing" groups="typ_stock.group_stock_advanced_info"/>
             </xpath>
             <xpath expr="//field[@name='backorder_id']" position="after">
-                <field name="invoiced" readonly="1"/>
+                <field name="invoiced" readonly="1" groups="typ_stock.group_stock_advanced_info"/>
             </xpath>
             <xpath expr="//button[@name='button_validate']" position="after">
                 <button type="object" name="action_confirm_trafic" string="shipped ok"  attrs="
