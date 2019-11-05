@@ -52,7 +52,7 @@
             </group>
         </field>
     </record>
-    <record id="product.product_search_form_inherit_typ" model="ir.ui.view">
+    <record id="product_product_search_form_inherit_typ" model="ir.ui.view">
         <field name="name">product.template.search.inherit.typ</field>
         <field name="model">product.product</field>
         <field name="inherit_id" ref="product.product_search_form_view"/>
