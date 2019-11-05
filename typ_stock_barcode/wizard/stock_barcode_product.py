@@ -30,14 +30,14 @@ class StockBarcodeNotracking(models.TransientModel):
             lines = []
             res['default_move_id'] = candidates[0].move_id.id
             for ml in candidates:
+                qty_done = ml.qty_done + 1 if ml.qty_done < ml.product_uom_qty else ml.qty_done  # noqa
+                qty_reserved += ml.product_uom_qty
                 lines.append({
                     'line_product_barcode': ml.product_id.barcode,
-                    'qty_reserved': ml.product_uom_qty,
-                    'qty_done': ml.qty_done + 1,
+                    'qty_reserved': qty_reserved,
+                    'qty_done': qty_done,
                     'move_line_id': ml.id,
                 })
-                qty_reserved += ml.product_uom_qty
-                qty_done += ml.qty_done
             res['stock_barcode_product_line_ids'] = [(0, 0, x) for x in lines]
         if 'qty_reserved' in fields_list:
             res['qty_reserved'] = qty_reserved
@@ -52,6 +52,9 @@ class StockBarcodeNotracking(models.TransientModel):
             lambda l: l.line_product_barcode == barcode or
             not l.line_product_barcode)
         suitable_line.qty_done = self.qty_done if self.qty_done != 0 else 1
+        if suitable_line.qty_done > suitable_line.qty_reserved:
+            raise UserError(
+                _("You can't add more products than the reserved."))
 
     @api.multi
     def on_barcode_scanned(self, barcode):
