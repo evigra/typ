@@ -7,10 +7,13 @@ def delete_view(cr):
     with api.Environment.manage():
         env = api.Environment(cr, SUPERUSER_ID, {})
         view = env.ref(
-            'product.product_search_form_inherit_typ',
+            'typ.product.product_search_form_inherit_typ',
             raise_if_not_found=False)
-        view.unlink()
+        if view:
+            view.unlink()
 
 
 def migrate(cr, version):
-    return
+    if not version:
+        return
+    delete_view(cr)
