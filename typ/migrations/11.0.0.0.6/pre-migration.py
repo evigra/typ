@@ -13,6 +13,4 @@ def delete_view(cr):
 
 
 def migrate(cr, version):
-    if not version:
-        return
-    delete_view(cr)
+    return
