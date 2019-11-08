@@ -14,7 +14,7 @@ class StockBarcodeNotracking(models.TransientModel):
 
     picking_id = fields.Many2one('stock.picking')
     product_id = fields.Many2one('product.product')
-    qty_done = fields.Float('Quantity Done')
+    qty_done = fields.Float('Manually Quantity Done')
     default_move_id = fields.Many2one('stock.move')
     stock_barcode_product_line_ids = fields.One2many(
         'stock.barcode.product.line', 'stock_barcode_product_id')
@@ -70,8 +70,7 @@ class StockBarcodeNotracking(models.TransientModel):
         """
         self.ensure_one()
         suitable_line = self.stock_barcode_product_line_ids.filtered(
-            lambda l: l.line_product_barcode == barcode or
-            not l.line_product_barcode)
+            lambda l: l.line_product_barcode == barcode)
         vals = {}
         if not suitable_line:
             raise UserError(
@@ -79,7 +78,6 @@ class StockBarcodeNotracking(models.TransientModel):
         vals['line_product_barcode'] = barcode
         vals['qty_done'] = suitable_line[0].qty_done + 1
         suitable_line[0].update(vals)
-        self.qty_done += 1
         if suitable_line.qty_done > suitable_line.qty_reserved:
             raise UserError(
                 _("You can't add more products than the reserved."))
