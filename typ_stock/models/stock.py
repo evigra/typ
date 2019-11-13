@@ -218,6 +218,32 @@ class StockPicking(models.Model):
         return backorders
 
 
+class StockMoveLine(models.Model):
+
+    _inherit = "stock.move.line"
+
+    def write(self, vals):
+        quant_obj = self.env['stock.quant']
+
+        res = super(StockMoveLine, self).write(vals)
+
+        lot_id = self.env['stock.production.lot'].browse(
+            vals.get('lot_id', []))
+        if lot_id and self.product_uom_qty == 0:
+            self.with_context(
+                bypass_reservation_update=True).product_uom_qty = 1
+
+            self.search(
+                [('lot_id', '=', lot_id.id), ('id', '!=', self.id)]).filtered(
+                    lambda dat: dat.state != 'done').mapped(
+                        'move_id'). _do_unreserve()
+
+            quant_obj._update_reserved_quantity(
+                self.product_id, self.location_id, 1, lot_id=lot_id,
+                strict=True)
+        return res
+
+
 class StockMove(models.Model):
 
     _inherit = "stock.move"
