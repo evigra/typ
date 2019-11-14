@@ -23,4 +23,7 @@
     <menuitem name="Invoices" action="account.action_account_invoice_report_all" id="menu_action_account_invoice_report_all"
         parent="typ_account.account_reports_management_menu" sequence="1"
         groups="res_group_invoices_report"/>
+
+    <menuitem id="account_accountant.menu_action_change_lock_date" name="Lock Dates" action="account_accountant.action_view_account_change_lock_date"
+        parent="account.menu_finance_entries_actions" sequence="30" groups="-account.group_account_user,res_group_lock_dates"/>
 </odoo>

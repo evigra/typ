@@ -16,4 +16,8 @@
         <field name="name">Users that can see Invoices Report</field>
         <field name="comment">This group can see the Invoices report menu in accounting.</field>
     </record>
+    <record id="res_group_lock_dates" model="res.groups">
+        <field name="name">Users that can see lock dates menu</field>
+        <field name="comment">This group can see lock dates menu in accounting.</field>
+    </record>
 </odoo>
