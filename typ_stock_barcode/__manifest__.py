@@ -5,7 +5,7 @@
     'category': 'Warehouse',
     'author': 'Vauxoo',
     'website': 'http://www.vauxoo.com/',
-    'version': '11.0.0.0.1',
+    'version': '11.0.1.0.1',
     'depends': ['stock_barcode'],
     'license': 'LGPL-3',
     'data': [

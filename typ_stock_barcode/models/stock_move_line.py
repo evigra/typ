@@ -8,8 +8,7 @@ class StockPicking(models.Model):
     _inherit = 'stock.move.line'
     _order = 'typ_sort asc, result_package_id desc, id'
 
-    typ_sort = fields.Integer("Typ Sorting", compute="_compute_sorting",
-                              store=True)
+    typ_sort = fields.Integer("Typ Sorting")
     initial_demand_qty = fields.Float(
         'Initial Demand', related="move_id.product_uom_qty", readonly=True,
         digits=dp.get_precision('Product Unit of Measure'),
@@ -50,7 +49,9 @@ class StockPicking(models.Model):
     @api.multi
     @api.depends('product_id')
     def _compute_sorting(self):
-        last_sort = self.search([], order="typ_sort desc", limit=1).typ_sort
+        last_sort = self.search([
+            ('typ_sort', '>', 0)],
+            order="typ_sort desc", limit=1).typ_sort or 0
         moves = self.mapped('move_id')
         group_move = defaultdict(lambda: self.env['stock.move'])
         for smove in moves:

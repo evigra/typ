@@ -66,4 +66,15 @@
             </kanban>
         </field>
     </record>
+
+    <record id="view_barcode_lot_kanban_inherit" model="ir.ui.view">
+        <field name="name">stock_barcode.lot.kanban.inherit</field>
+        <field name="model">stock_barcode.lot.line</field>
+        <field name="inherit_id" ref="stock_barcode.view_barcode_lot_kanban"/>
+        <field name="arch" type="xml">
+            <xpath expr="//kanban" position="attributes">
+                <attribute name="create">false</attribute>
+            </xpath>
+        </field>
+    </record>
 </odoo>
