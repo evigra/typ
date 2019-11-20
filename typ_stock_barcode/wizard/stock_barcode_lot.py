@@ -26,9 +26,6 @@ class StockBarcodeLot(models.TransientModel):
         already_exist = self.stock_barcode_lot_line_ids.filtered(
             lambda l: l.move_line_id.lot_id.name == barcode
             and l.qty_done == 0)
-        if already_scanned and self.product_id.tracking == 'serial':
-            raise UserError(_(
-                'You cannot scan two times the same serial number'))
 
         suitable_line = self.stock_barcode_lot_line_ids.filtered(
             lambda l: not l.lot_name and l.qty_done == 0)

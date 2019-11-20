@@ -56,7 +56,7 @@ class StockBarcodeNotracking(models.TransientModel):
         suitable_line.qty_done = qty_done
         if suitable_line.qty_done > suitable_line.qty_reserved:
             raise UserError(
-                _("You can't add more products than the reserved."))
+                _("You cannot fill more than the requested quantity"))
 
     @api.multi
     def on_barcode_scanned(self, barcode):
@@ -80,7 +80,7 @@ class StockBarcodeNotracking(models.TransientModel):
         suitable_line[0].update(vals)
         if suitable_line.qty_done > suitable_line.qty_reserved:
             raise UserError(
-                _("You can't add more products than the reserved."))
+                _("You cannot fill more than the requested quantity"))
 
     @api.multi
     def validate_product_set(self):

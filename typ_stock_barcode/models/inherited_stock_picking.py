@@ -41,7 +41,7 @@ class StockPicking(models.Model):
             lambda l: l.product_barcode == barcode)
         if not suitable_line:
             raise UserError(
-                _('Scanned code not found %s') % (barcode))
+                _('This product is not in the order: %s') % (barcode))
         return super(StockPicking, self).on_barcode_scanned(barcode)
 
     @api.multi

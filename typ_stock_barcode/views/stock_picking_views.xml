@@ -35,22 +35,22 @@
                                 <field name="location_processed" invisible="1"/>
                                 <field name="result_package_id" invisible="1"/>
                                 <field name="qty_done" invisible="1"/>
-                                <span>
-                                    <t t-esc="record.qty_done.raw_value"/>
-                                </span>
-                                <field name="product_uom_id" string="Unit of Measure" groups="product.group_uom"/>
-                            </div>
-                            <div class="col-xs-4 text-left">
+                                <field name="initial_demand_qty" invisible="1" string="Initial Demand"/>
                                 <field name="product_uom_qty" invisible="1" string="Quantity Reserved"/>
                                 <span>
-                                    <t t-esc="record.product_uom_qty.raw_value"/>
+                                    I:<t t-esc="record.initial_demand_qty.raw_value"/>
                                 </span>
                                 <field name="product_uom_id" string="Unit of Measure" groups="product.group_uom"/>
                             </div>
                             <div class="col-xs-4 text-left">
-                                <field name="initial_demand_qty" invisible="1" string="Initial Demand"/>
                                 <span>
-                                    <t t-esc="record.initial_demand_qty.raw_value"/>
+                                    R:<t t-esc="record.product_uom_qty.raw_value"/>
+                                </span>
+                                <field name="product_uom_id" string="Unit of Measure" groups="product.group_uom"/>
+                            </div>
+                            <div class="col-xs-4 text-left">
+                                <span>
+                                    H:<t t-esc="record.qty_done.raw_value"/>
                                 </span>
                                 <field name="product_uom_id" string="Unit of Measure" groups="product.group_uom"/>
                             </div>

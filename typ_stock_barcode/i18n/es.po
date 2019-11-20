@@ -1,0 +1,259 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#   * typ_stock_barcode
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 11.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-11-20 01:31+0000\n"
+"PO-Revision-Date: 2019-11-20 01:31+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: typ_stock_barcode
+#: model:ir.model,name:typ_stock_barcode.model_stock_barcode_notracking
+msgid "\n"
+"        Wizard to scan products with no tracking and for specific product\n"
+"    "
+msgstr "\n"
+"        Asistente para escanear productos sin seguimiento y para productos específicos\n"
+"    "
+
+#. module: typ_stock_barcode
+#: code:addons/typ_stock_barcode/models/inherited_stock_picking.py:28
+#, python-format
+msgid "%s set."
+msgstr "%s conjunto."
+
+#. module: typ_stock_barcode
+#: model:ir.ui.view,arch_db:typ_stock_barcode.view_stock_barcode_product_line_kanban
+msgid "<span>Barcode</span>"
+msgstr "<span>Código de Barras</span>"
+
+#. module: typ_stock_barcode
+#: model:ir.ui.view,arch_db:typ_stock_barcode.view_stock_barcode_product_line_kanban
+msgid "<span>Done</span>"
+msgstr "<span>Hecho</span>"
+
+#. module: typ_stock_barcode
+#: model:ir.ui.view,arch_db:typ_stock_barcode.view_stock_barcode_product_line_kanban
+msgid "<span>Reserved</span>"
+msgstr "<span>Reservado</span>"
+
+#. module: typ_stock_barcode
+#: code:addons/typ_stock_barcode/wizard/stock_barcode_product.py:77
+#, python-format
+msgid "Be sure that you are scanning the same product"
+msgstr "Asegúrese de estar escaneando el mismo producto"
+
+#. module: typ_stock_barcode
+#: model:ir.ui.view,arch_db:typ_stock_barcode.view_barcode_notracking_form
+msgid "Cancel"
+msgstr "Cancelar"
+
+#. module: typ_stock_barcode
+#: model:ir.model.fields,field_description:typ_stock_barcode.field_stock_move_line_posx
+msgid "Corridor (X)"
+msgstr "Pasillo (X)"
+
+#. module: typ_stock_barcode
+#: model:ir.model.fields,field_description:typ_stock_barcode.field_stock_move_line_posy
+msgid "Corridor (Y)"
+msgstr "Corridor (Y)"
+
+#. module: typ_stock_barcode
+#: model:ir.model.fields,field_description:typ_stock_barcode.field_stock_move_line_posz
+msgid "Corridor (Z)"
+msgstr "Corridor (Z)"
+
+#. module: typ_stock_barcode
+#: model:ir.model.fields,field_description:typ_stock_barcode.field_stock_barcode_notracking_create_uid
+#: model:ir.model.fields,field_description:typ_stock_barcode.field_stock_barcode_product_line_create_uid
+msgid "Created by"
+msgstr "Creado por :"
+
+#. module: typ_stock_barcode
+#: model:ir.model.fields,field_description:typ_stock_barcode.field_stock_barcode_notracking_create_date
+#: model:ir.model.fields,field_description:typ_stock_barcode.field_stock_barcode_product_line_create_date
+msgid "Created on"
+msgstr "Creado en"
+
+#. module: typ_stock_barcode
+#: model:ir.model.fields,field_description:typ_stock_barcode.field_stock_barcode_notracking_default_move_id
+msgid "Default Move"
+msgstr "Movimiento predeterminado"
+
+#. module: typ_stock_barcode
+#: model:ir.model.fields,field_description:typ_stock_barcode.field_stock_barcode_notracking_display_name
+#: model:ir.model.fields,field_description:typ_stock_barcode.field_stock_barcode_product_line_display_name
+msgid "Display Name"
+msgstr "Nombre mostrado"
+
+#. module: typ_stock_barcode
+#: model:ir.model.fields,field_description:typ_stock_barcode.field_stock_barcode_notracking_id
+#: model:ir.model.fields,field_description:typ_stock_barcode.field_stock_barcode_product_line_id
+msgid "ID"
+msgstr "ID (identificación)"
+
+#. module: typ_stock_barcode
+#: model:ir.model.fields,field_description:typ_stock_barcode.field_stock_move_line_initial_demand_qty
+#: model:ir.ui.view,arch_db:typ_stock_barcode.view_stock_move_line_kanban_limit
+msgid "Initial Demand"
+msgstr "Demanda inicial"
+
+#. module: typ_stock_barcode
+#: model:ir.model.fields,field_description:typ_stock_barcode.field_stock_barcode_notracking___last_update
+#: model:ir.model.fields,field_description:typ_stock_barcode.field_stock_barcode_product_line___last_update
+msgid "Last Modified on"
+msgstr "Última modificación en"
+
+#. module: typ_stock_barcode
+#: model:ir.model.fields,field_description:typ_stock_barcode.field_stock_barcode_notracking_write_uid
+#: model:ir.model.fields,field_description:typ_stock_barcode.field_stock_barcode_product_line_write_uid
+msgid "Last Updated by"
+msgstr "Última actualización de"
+
+#. module: typ_stock_barcode
+#: model:ir.model.fields,field_description:typ_stock_barcode.field_stock_barcode_notracking_write_date
+#: model:ir.model.fields,field_description:typ_stock_barcode.field_stock_barcode_product_line_write_date
+msgid "Last Updated on"
+msgstr "Última actualización en"
+
+#. module: typ_stock_barcode
+#: model:ir.model.fields,field_description:typ_stock_barcode.field_stock_barcode_product_line_line_product_barcode
+msgid "Line Product Barcode"
+msgstr "Código de barras del producto de línea"
+
+#. module: typ_stock_barcode
+#: model:ir.model,name:typ_stock_barcode.model_stock_barcode_product_line
+msgid "Line of LN/SN scanned of a product"
+msgstr "Línea de LN/LS escaneado de un producto"
+
+#. module: typ_stock_barcode
+#: model:ir.model.fields,field_description:typ_stock_barcode.field_stock_barcode_notracking_qty_done
+msgid "Manually Quantity Done"
+msgstr "Cantidad manual hecha"
+
+#. module: typ_stock_barcode
+#: model:ir.model.fields,field_description:typ_stock_barcode.field_stock_barcode_product_line_move_line_id
+msgid "Move Line"
+msgstr "Registro de movimiento"
+
+#. module: typ_stock_barcode
+#: model:ir.model.fields,help:typ_stock_barcode.field_stock_move_line_posx
+#: model:ir.model.fields,help:typ_stock_barcode.field_stock_move_line_posy
+#: model:ir.model.fields,help:typ_stock_barcode.field_stock_move_line_posz
+msgid "Optional product details, for information purpose only"
+msgstr "Detalles opcionales del producto, solo con fines informativos"
+
+#. module: typ_stock_barcode
+#: model:ir.model,name:typ_stock_barcode.model_stock_move_line
+msgid "Packing Operation"
+msgstr "Operación de Empaque"
+
+#. module: typ_stock_barcode
+#: model:ir.model.fields,field_description:typ_stock_barcode.field_stock_barcode_notracking_picking_id
+msgid "Picking"
+msgstr "Albarán"
+
+#. module: typ_stock_barcode
+#: model:ir.model.fields,field_description:typ_stock_barcode.field_stock_barcode_notracking_product_id
+msgid "Product"
+msgstr "Producto"
+
+#. module: typ_stock_barcode
+#: model:ir.model.fields,field_description:typ_stock_barcode.field_stock_barcode_product_line_qty_done
+msgid "Quantity Done"
+msgstr "Cantidad hecha"
+
+#. module: typ_stock_barcode
+#: model:ir.model.fields,field_description:typ_stock_barcode.field_stock_barcode_product_line_qty_reserved
+#: model:ir.ui.view,arch_db:typ_stock_barcode.view_stock_move_line_kanban_limit
+msgid "Quantity Reserved"
+msgstr "Cantidad reservada"
+
+#. module: typ_stock_barcode
+#: code:addons/typ_stock_barcode/wizard/stock_barcode_lot.py:17
+#, python-format
+msgid "Scanned number it's not a valid Serial number for this product"
+msgstr "Número escaneado no es un número de serie válido para este producto"
+
+#. module: typ_stock_barcode
+#: model:res.groups,name:typ_stock_barcode.group_stock_all_operations
+msgid "See All Operations"
+msgstr "Ver todas las operaciones"
+
+#. module: typ_stock_barcode
+#: model:ir.model.fields,field_description:typ_stock_barcode.field_stock_barcode_product_line_stock_barcode_product_id
+msgid "Stock Barcode Product"
+msgstr "Stock Barcode Product"
+
+#. module: typ_stock_barcode
+#: model:ir.model.fields,field_description:typ_stock_barcode.field_stock_barcode_notracking_stock_barcode_product_line_ids
+msgid "Stock Barcode Product Line"
+msgstr "Stock Barcode Product Line"
+
+#. module: typ_stock_barcode
+#: model:ir.model.fields,help:typ_stock_barcode.field_stock_move_line_initial_demand_qty
+msgid "This is the quantity of products from an inventory point of view. For moves in the state 'done', this is the quantity of products that were actually moved. For other moves, this is the quantity of product that is planned to be moved. Lowering this quantity does not generate a backorder. Changing this quantity on assigned moves affects the product reservation, and should be done with care."
+msgstr "Ésta es la cantidad de productos desde un punto de vista de inventario. Para movimientos en el estado 'Realizado', ésta es la cantidad de productos que se movieron realmente. Para otros movimientos, ésta es la cantidad de producto que está planeado mover. Disminuyendo esta cantidad no se genera un pedido en espera. Cambiando esta cantidad en movimientos asignados, afecta la reserva de producto, y debe ser realizado con cuidado."
+
+#. module: typ_stock_barcode
+#: code:addons/typ_stock_barcode/models/inherited_stock_picking.py:44
+#, python-format
+msgid "This product is not in the order: %s"
+msgstr "Este producto no está en la orden: %s"
+
+#. module: typ_stock_barcode
+#: model:ir.model,name:typ_stock_barcode.model_stock_picking
+msgid "Transfer"
+msgstr "Transferir"
+
+#. module: typ_stock_barcode
+#: model:ir.model.fields,field_description:typ_stock_barcode.field_stock_move_line_typ_sort
+msgid "Typ Sorting"
+msgstr "Typ Sorting"
+
+#. module: typ_stock_barcode
+#: model:ir.ui.view,arch_db:typ_stock_barcode.view_stock_move_line_kanban_limit
+msgid "Ubication"
+msgstr "Ubicación"
+
+#. module: typ_stock_barcode
+#: model:ir.ui.view,arch_db:typ_stock_barcode.view_stock_move_line_kanban_limit
+msgid "Unit of Measure"
+msgstr "Unidad de medida"
+
+#. module: typ_stock_barcode
+#: model:ir.ui.view,arch_db:typ_stock_barcode.view_barcode_notracking_form
+msgid "Validate Product Set"
+msgstr "Validar conjunto de productos"
+
+#. module: typ_stock_barcode
+#: model:ir.model,name:typ_stock_barcode.model_stock_barcode_lot
+msgid "Wizard to scan SN/LN for specific product"
+msgstr "Asistente para escanear SN/LN de un producto específico"
+
+#. module: typ_stock_barcode
+#: code:addons/typ_stock_barcode/wizard/stock_barcode_lot.py:36
+#, python-format
+msgid "You can't add more products than the reserved."
+msgstr "No puede agregar más productos que los reservados."
+
+#. module: typ_stock_barcode
+#: code:addons/typ_stock_barcode/wizard/stock_barcode_product.py:59
+#: code:addons/typ_stock_barcode/wizard/stock_barcode_product.py:83
+#, python-format
+msgid "You cannot fill more than the requested quantity"
+msgstr "No se puede surtir más de la cantidad solicitada"
+
+#. module: typ_stock_barcode
+#: code:addons/typ_stock_barcode/wizard/stock_barcode_lot.py:23
+#, python-format
+msgid "You cannot scan two times the same serial number"
+msgstr "No puede escanear dos veces el mismo número de serie"
