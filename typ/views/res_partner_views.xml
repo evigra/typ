@@ -1,6 +1,5 @@
 <?xml version="1.0"?>
 <odoo>
-
     <record id="view_partner_form_inherit_tanner" model="ir.ui.view">
         <field name="name">res.partner.form.inherit.tanner</field>
         <field name="model">res.partner</field>
@@ -9,7 +8,13 @@
             <button name="action_open_helpdesk_ticket" position="attributes">
                 <attribute name="attrs"></attribute>
             </button>
+            <xpath expr="//page[@name='sales_purchases']/group">
+                <group string="Social Media" name="social_media">
+                    <field name="facebook_profile" widget="url"/>
+                    <field name="linkedin_profile" widget="url"/>
+                    <field name="upgradable"/>
+                </group>
+            </xpath>
         </field>
     </record>
-
 </odoo>

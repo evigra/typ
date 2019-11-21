@@ -9,5 +9,8 @@
             <script type="text/javascript" src="/typ/static/src/js/share.js"></script>
             <script type="text/javascript" src="/typ/static/src/js/cart.js"></script>
         </xpath>
+        <xpath expr="//link[last()]" position="after">
+            <link href="/typ/static/src/less/main.less" rel="stylesheet" type="text/less"/>
+        </xpath>
     </template>
 </odoo>

@@ -8,6 +8,20 @@
         <field name="public" eval="True"/>
     </record>
 
+    <record id="black_template" model="ir.attachment">
+        <field name="name">Black email template</field>
+        <field name="type">url</field>
+        <field name="url">/theme_typ/static/img/email_black.jpg</field>
+        <field name="public" eval="True"/>
+    </record>
+
+    <record id="titanium_template" model="ir.attachment">
+        <field name="name">Titanium email template</field>
+        <field name="type">url</field>
+        <field name="url">/theme_typ/static/img/email_titanium.jpg</field>
+        <field name="public" eval="True"/>
+    </record>
+
     <record id="typ-logo-footer" model="ir.attachment">
         <field name="name">typ-logo-footer</field>
         <field name="type">url</field>
@@ -866,6 +880,158 @@
         <field name="name">home_carousel</field>
         <field name="type">url</field>
         <field name="url">theme_typ/static/img/home.png</field>
+        <field name="public" eval="True"/>
+    </record>
+    <record id="soy_typ" model="ir.attachment">
+        <field name="name">Soy TyP Logo</field>
+        <field name="type">url</field>
+        <field name="url">theme_typ/static/img/logosoyTyP.png</field>
+        <field name="public" eval="True"/>
+    </record>
+    <record id="loyalty_typ_logo" model="ir.attachment">
+        <field name="name">Loyalty TyP Logo</field>
+        <field name="type">url</field>
+        <field name="url">theme_typ/static/img/logoTyP.png</field>
+        <field name="public" eval="True"/>
+    </record>
+    <record id="fondo_azul" model="ir.attachment">
+        <field name="name">Fondo Azul</field>
+        <field name="type">url</field>
+        <field name="url">theme_typ/static/img/fondoAzul.png</field>
+        <field name="public" eval="True"/>
+    </record>
+    <record id="chairman" model="ir.attachment">
+        <field name="name">Chairman</field>
+        <field name="type">url</field>
+        <field name="url">theme_typ/static/img/chairman.png</field>
+        <field name="public" eval="True"/>
+    </record>
+    <record id="black" model="ir.attachment">
+        <field name="name">black</field>
+        <field name="type">url</field>
+        <field name="url">theme_typ/static/img/FondoBlack.jpg</field>
+        <field name="public" eval="True"/>
+    </record>
+    <record id="titanium" model="ir.attachment">
+        <field name="name">titanium</field>
+        <field name="type">url</field>
+        <field name="url">theme_typ/static/img/FondoTitanium.jpg</field>
+        <field name="public" eval="True"/>
+    </record>
+    <!-- small icons for the loyalty page -->
+    <record id="flete" model="ir.attachment">
+        <field name="name">flete</field>
+        <field name="type">url</field>
+        <field name="url">theme_typ/static/img/icons/white/flete.png</field>
+        <field name="public" eval="True"/>
+    </record>
+    <record id="garantia" model="ir.attachment">
+        <field name="name">garantia</field>
+        <field name="type">url</field>
+        <field name="url">theme_typ/static/img/icons/white/garantia.png</field>
+        <field name="public" eval="True"/>
+    </record>
+    <record id="stock" model="ir.attachment">
+        <field name="name">stock</field>
+        <field name="type">url</field>
+        <field name="url">theme_typ/static/img/icons/white/stock.png</field>
+        <field name="public" eval="True"/>
+    </record>
+    <record id="portal" model="ir.attachment">
+        <field name="name">portal</field>
+        <field name="type">url</field>
+        <field name="url">theme_typ/static/img/icons/white/portal.png</field>
+        <field name="public" eval="True"/>
+    </record>
+    <record id="credito" model="ir.attachment">
+        <field name="name">credito</field>
+        <field name="type">url</field>
+        <field name="url">theme_typ/static/img/icons/white/credito.png</field>
+        <field name="public" eval="True"/>
+    </record>
+    <record id="publicidad" model="ir.attachment">
+        <field name="name">publicidad</field>
+        <field name="type">url</field>
+        <field name="url">theme_typ/static/img/icons/white/publicidad.png</field>
+        <field name="public" eval="True"/>
+    </record>
+    <record id="acompanamiento" model="ir.attachment">
+        <field name="name">acompanamiento</field>
+        <field name="type">url</field>
+        <field name="url">theme_typ/static/img/icons/white/acompanamiento.png</field>
+        <field name="public" eval="True"/>
+    </record>
+    <record id="capacitacion" model="ir.attachment">
+        <field name="name">capacitacion</field>
+        <field name="type">url</field>
+        <field name="url">theme_typ/static/img/icons/white/capacitacion.png</field>
+        <field name="public" eval="True"/>
+    </record>
+    <!-- small icons for loyalty page in blue -->
+    <record id="flete-blue" model="ir.attachment">
+        <field name="name">flete</field>
+        <field name="type">url</field>
+        <field name="url">theme_typ/static/img/icons/blue/distribuidor.png</field>
+        <field name="public" eval="True"/>
+    </record>
+    <record id="garantia-blue" model="ir.attachment">
+        <field name="name">garantia</field>
+        <field name="type">url</field>
+        <field name="url">theme_typ/static/img/icons/blue/garantia.png</field>
+        <field name="public" eval="True"/>
+    </record>
+    <record id="stock-blue" model="ir.attachment">
+        <field name="name">stock</field>
+        <field name="type">url</field>
+        <field name="url">theme_typ/static/img/icons/blue/stock.png</field>
+        <field name="public" eval="True"/>
+    </record>
+    <record id="portal-blue" model="ir.attachment">
+        <field name="name">portal</field>
+        <field name="type">url</field>
+        <field name="url">theme_typ/static/img/icons/blue/portal.png</field>
+        <field name="public" eval="True"/>
+    </record>
+    <record id="credito-blue" model="ir.attachment">
+        <field name="name">credito</field>
+        <field name="type">url</field>
+        <field name="url">theme_typ/static/img/icons/blue/credito.png</field>
+        <field name="public" eval="True"/>
+    </record>
+    <record id="publicidad-blue" model="ir.attachment">
+        <field name="name">publicidad</field>
+        <field name="type">url</field>
+        <field name="url">theme_typ/static/img/icons/blue/publicidad.png</field>
+        <field name="public" eval="True"/>
+    </record>
+    <record id="acompanamiento-blue" model="ir.attachment">
+        <field name="name">acompanamiento</field>
+        <field name="type">url</field>
+        <field name="url">theme_typ/static/img/icons/blue/acompanamiento.png</field>
+        <field name="public" eval="True"/>
+    </record>
+    <record id="capacitacion-blue" model="ir.attachment">
+        <field name="name">capacitacion</field>
+        <field name="type">url</field>
+        <field name="url">theme_typ/static/img/icons/blue/capacitacion.png</field>
+        <field name="public" eval="True"/>
+    </record>
+    <record id="avion-blue" model="ir.attachment">
+        <field name="name">avion</field>
+        <field name="type">url</field>
+        <field name="url">theme_typ/static/img/icons/blue/avion.png</field>
+        <field name="public" eval="True"/>
+    </record>
+    <record id="grua-blue" model="ir.attachment">
+        <field name="name">grua</field>
+        <field name="type">url</field>
+        <field name="url">theme_typ/static/img/icons/blue/grua.png</field>
+        <field name="public" eval="True"/>
+    </record>
+    <record id="reembolso-blue" model="ir.attachment">
+        <field name="name">reembolso</field>
+        <field name="type">url</field>
+        <field name="url">theme_typ/static/img/icons/blue/reembolso.png</field>
         <field name="public" eval="True"/>
     </record>
 </odoo>

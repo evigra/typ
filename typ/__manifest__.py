@@ -84,6 +84,8 @@
         'data/partner_tags.xml',
         'data/typ_paper_format.xml',
         'data/set_configuration.yml',
+        'data/email_template.xml',
+        'data/base_automation.xml',
         # 'data/typ_security.xml',
         'report/report_invoice.xml',
         'report/account_report_payment_receipt_templates.xml',
@@ -112,6 +114,7 @@
         'views/pages/about.xml',
         'views/pages/organizations.xml',
         'views/pages/providers.xml',
+        'views/pages/loyalty.xml',
     ],
     'demo': [
         'demo/products.xml',

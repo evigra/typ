@@ -479,3 +479,21 @@ class WebsiteUserWishList(http.Controller):
                     add_qty=float(order_l.product_uom_qty),
                     set_qty=float(order_l.product_uom_qty))
         return request.redirect("/shop/cart")
+
+
+class WebsiteLoyalty(http.Controller):
+    @http.route(['/loyalty'],
+                type='http', auth="public", website=True, sitemap=False)
+    def create_partner(self, **post):
+        category = post.get('category', False)
+        values = {
+            'category': category
+            }
+        if post.get('submitted', False):
+            partner_obj = request.env['res.partner'].sudo()
+            res = partner_obj._merge_partner(post)
+            res['category'] = category
+            if res.get('partner', False):
+                return request.render('typ.loyalty_success', res)
+            values = res
+        return request.render('typ.loyalty', values)

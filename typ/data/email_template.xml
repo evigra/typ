@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record model="mail.template" id="email_template_loyalty_black">
+        <field name="name">Welcome to Program Soy T&amp;P</field>
+        <field name="email_from">${(user.email or '' | safe)}</field>
+        <field name="partner_to">${object.id}</field>
+        <field name="subject">Confirmation loyalty "black"</field>
+        <field name="model_id" ref="base.model_res_partner"/>
+        <field name="auto_delete" eval="False"/>
+        <field name="body_html" type="html">
+            <div>
+                <table border="0" cellspacing="0" cellpadding="0">
+                    <tbody>
+                        <tr>
+                            <td>
+                                <p>Hello ${object.name | safe}</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <a href="/">
+                                    <img src="/theme_typ/static/img/email_black.jpg"/>
+                                </a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </field>
+    </record>
+
+    <record model="mail.template" id="email_template_loyalty_titanium">
+        <field name="name">Welcome to Program Soy T&amp;P</field>
+        <field name="email_from">${(user.email or '' | safe)}</field>
+        <field name="partner_to">${object.id}</field>
+        <field name="subject">Confirmation loyalty "titanium"</field>
+        <field name="model_id" ref="base.model_res_partner"/>
+        <field name="auto_delete" eval="False"/>
+        <field name="body_html" type="html">
+            <div>
+                <table border="0" cellspacing="0" cellpadding="0">
+                    <tbody>
+                        <tr>
+                            <td>
+                                <p>Hello ${object.name | safe}</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <a href="/">
+                                    <img src="/theme_typ/static/img/email_titanium.jpg"/>
+                                </a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </field>
+    </record>
+</odoo>

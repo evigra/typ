@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+    <record id="send_partner_black_loyalty_email" model="base.automation">
+        <field name="name">Send Partner Black loyalty email</field>
+        <field name="model_id" ref="base.model_res_partner"/>
+        <field name="trigger">on_write</field>
+        <field name="active" eval="True"/>
+        <field name="filter_pre_domain" eval="[('upgradable','=',True)]"/>
+        <field name="filter_domain" eval="[('upgradable','=',False),('importance','=','A')]"/>
+        <field eval="10" name="sequence"/>
+        <field name="state">email</field>
+        <field name="template_id" ref="typ.email_template_loyalty_black"/>
+    </record>
+    <record id="send_partner_titanium_loyalty_email" model="base.automation">
+        <field name="name">Send Partner Titanium loyalty email</field>
+        <field name="model_id" ref="base.model_res_partner"/>
+        <field name="trigger">on_write</field>
+        <field name="active" eval="True"/>
+        <field name="filter_pre_domain" eval="[('upgradable','=',True)]"/>
+        <field name="filter_domain" eval="[('upgradable','=',False),('importance','=','AA')]"/>
+        <field eval="10" name="sequence"/>
+        <field name="state">email</field>
+        <field name="template_id" ref="typ.email_template_loyalty_titanium"/>
+    </record>
+</odoo>

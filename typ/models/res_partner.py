@@ -1,4 +1,4 @@
-from odoo import models, fields, api
+from odoo import models, fields, api, _
 
 
 class ResPartner(models.Model):
@@ -7,6 +7,91 @@ class ResPartner(models.Model):
     map_location = fields.Text(
         string='Google Maps Location',
         help='Embeded url from google maps')
+    facebook_profile = fields.Char(
+        string='Facebook URL',
+        help='URL for the Facebook profile')
+    linkedin_profile = fields.Char(
+        string='LinkedIn URL',
+        help='URL for the LinkedIn profile')
+    upgradable = fields.Boolean(
+        string='Category Can be Improved',
+        help='''Mark this box if you want to allow the customer to upgrade'''
+        '''its category.''')
+
+    @api.model
+    def _merge_partner(self, form_data):
+        """Verify that a partner has the necessary validations to be upgraded
+        to a new category. To do this, check that the mail does not belong to
+        another user and that it is upgradeable. Once validated, the user
+        information is updated with the data entered in the form.
+        """
+        email = form_data.get('email')
+        p_found = self.search([
+            ('email', '=', email),
+            ('upgradable', '=', True)], limit=1)
+        duplicate_partner = self.search([
+            ('email', '=', email),
+            ('signup_valid', '=', True),
+            ('id', '!=', p_found.id)], limit=1)
+        if duplicate_partner:
+            return{
+                'error_title': _('This email already has upgraded '
+                                 'or have portal access'),
+                'error': _('please contact us if you think this is a mistake'),
+            }
+        if not p_found:
+            return {
+                'error_title': _('You are not elegible for upgrade'),
+                'error': _('please contact us if you think this is a mistake'),
+            }
+        pw = self.env['portal.wizard']
+        cpw = self.env['change.password.wizard']
+        categs = {
+            'titanium': 'AA',
+            'black': 'A',
+        }
+        # update values in the partner record
+        category = form_data.get('category')
+        values = {
+            'name': form_data.get('name'),
+            'street_name': form_data.get('street_name'),
+            'street_number': form_data.get('street_number'),
+            'street_number2': form_data.get('street_number2'),
+            'zip': form_data.get('zip'),
+            'street2': form_data.get('l10n_mx_edi_colony'),
+            'l10n_mx_edi_colony': form_data.get('l10n_mx_edi_colony'),
+            'facebook_profile': form_data.get('facebook_profile'),
+            'linkedin_profile': form_data.get('linkedin_profile'),
+            'upgradable': False,
+            'importance': categs.get(category, False)
+        }
+        p_found.write(values)
+        # give portal access
+        portal_wizard = pw.create({
+            'portal_id': self.env['res.groups'].search(
+                [('is_portal', '=', True)], limit=1).id,
+            'user_ids': [(0, 0, {
+                'partner_id': p_found.id,
+                'email': p_found.email,
+                'in_portal': True,
+            })]
+        })
+        portal_wizard.action_apply()
+        user_id = self.env['res.users'].search(
+            [('partner_id', '=', p_found.id)])
+        # set new password to freshly created res.user
+        reset_pwd_wizard = cpw.create({
+            'user_ids': [(0, 0, {
+                'user_id': user_id.id,
+                'user_login': user_id.email,
+                'new_passwd': form_data.get('password'),
+            })],
+        })
+        reset_pwd_wizard.change_password_button()
+        return {
+            'partner': p_found,
+            'category': category
+        }
 
     @api.model
     def _get_partner_shippings(self):
