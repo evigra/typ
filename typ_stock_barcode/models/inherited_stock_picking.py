@@ -1,9 +1,33 @@
-from odoo import models, api, _
+from odoo import models, api, fields, _
 from odoo.exceptions import UserError
 
 
 class StockPicking(models.Model):
     _inherit = 'stock.picking'
+
+    progress_char = fields.Char(
+        "Progress", compute='_compute_progress', store=True,
+        help="Display progress of current Picking in x/x notation")
+
+    progress = fields.Float(
+        "Progress Rate", compute='_compute_progress', store=True,
+        group_operator="avg", help="Display progress of current Picking")
+
+    @api.depends('move_line_ids.qty_done')
+    def _compute_progress(self):
+        for pick in self:
+            total = len(pick.move_line_ids)
+            scanned_lines = len(pick.move_line_ids.filtered(
+                lambda x: x.qty_done > 0))
+            if scanned_lines:
+                if scanned_lines >= total:
+                    pick.progress = 100
+                else:
+                    pick.progress = round(
+                        100.0 * scanned_lines / total, 2)
+            else:
+                pick.progress = 0.0
+            pick.progress_char = '%s/%s' % (scanned_lines, total)
 
     @api.multi
     def get_po_to_split_from_barcode_no_tracking(self, barcode):
