@@ -186,6 +186,7 @@ class StockPicking(models.Model):
         do not allow to customers or suppliers
         """
         self.ensure_one()
+
         if self.picking_type_id.code != 'internal':
             return super().button_validate()
         for move in self.move_lines:
@@ -216,6 +217,22 @@ class StockPicking(models.Model):
         for pick in moves_orig_with_transit.mapped('picking_id'):
             pick.message_post(body=message)
         return backorders
+
+    @api.multi
+    def action_assign(self):
+        res = super().action_assign()
+
+        for move_line in self.move_lines.filtered(
+                lambda dat: dat.product_id.tracking != 'none'):
+
+            move_line.move_line_ids.unlink()
+
+            # pylint: disable=unused-variable
+            for quantity in range(int(move_line.product_uom_qty)):
+                self.env['stock.move.line'].create(
+                    move_line._prepare_move_line_vals(
+                        quantity=0, reserved_quant=0.0))
+        return res
 
 
 class StockMoveLine(models.Model):
