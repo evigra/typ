@@ -222,16 +222,18 @@ class StockPicking(models.Model):
     def action_assign(self):
         res = super().action_assign()
 
-        for move_line in self.move_lines.filtered(
-                lambda dat: dat.product_id.tracking != 'none'):
+        for picking in self:
 
-            move_line.move_line_ids.unlink()
+            for move_line in picking.move_lines.filtered(
+                    lambda dat: dat.product_id.tracking != 'none'):
 
-            # pylint: disable=unused-variable
-            for quantity in range(int(move_line.product_uom_qty)):
-                self.env['stock.move.line'].create(
-                    move_line._prepare_move_line_vals(
-                        quantity=0, reserved_quant=0.0))
+                move_line.move_line_ids.unlink()
+
+                # pylint: disable=unused-variable
+                for quantity in range(int(move_line.product_uom_qty)):
+                    self.env['stock.move.line'].create(
+                        move_line._prepare_move_line_vals(
+                            quantity=0, reserved_quant=0.0))
         return res
 
 
