@@ -67,10 +67,3 @@ class StockPicking(models.Model):
             raise UserError(
                 _('This product is not in the order: %s') % (barcode))
         return super(StockPicking, self).on_barcode_scanned(barcode)
-
-    @api.multi
-    def action_assign(self):
-        res = super(StockPicking, self).action_assign()
-        moves = self.mapped('move_line_ids')
-        moves._compute_sorting()
-        return res

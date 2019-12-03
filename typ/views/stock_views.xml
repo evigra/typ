@@ -21,4 +21,21 @@
             </xpath>
         </field>
     </record>
+    <record id="view_stock_move_line_kanban_limit" model="ir.ui.view">
+        <field name="name">stock.move.line.kanban.limit</field>
+        <field name="model">stock.move.line</field>
+        <field name="inherit_id" ref="typ_stock_barcode.view_stock_move_line_kanban_limit"/>
+        <field name="priority">100</field>
+        <field name="arch" type="xml">
+            <field name="picking_id" position="after">
+                <field name="posx" invisible="1"/>
+                <field name="posy" invisible="1"/>
+                <field name="posz" invisible="1"/>
+                <span t-if="record.posx.raw_value || record.posy.raw_value || record.posz.raw_value">
+                    Ubication
+                    <t t-if="record.posx.raw_value" t-esc="record.posx.raw_value"/> <t t-if="record.posy.raw_value" t-esc="record.posy.raw_value"/> <t t-if="record.posz.raw_value" t-esc="record.posz.raw_value"/>
+                </span>
+            </field>
+        </field>
+    </record>
 </odoo>
