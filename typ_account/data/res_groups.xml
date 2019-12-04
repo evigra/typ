@@ -20,4 +20,8 @@
         <field name="name">Users that can see lock dates menu</field>
         <field name="comment">This group can see lock dates menu in accounting.</field>
     </record>
+    <record id="res_group_button_cancel_payment" model="res.groups">
+        <field name="name">Users who can see the cancel payment button</field>
+        <field name="comment">This group can see the cancel payment button in accounting.</field>
+    </record>
 </odoo>

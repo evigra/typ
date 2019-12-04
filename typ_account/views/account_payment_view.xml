@@ -11,6 +11,9 @@
             <field name="destination_journal_id"  position="attributes">
                 <attribute name="widget"></attribute>
             </field>
+            <xpath expr="//button[@name='cancel']" position="attributes">
+                <attribute name="groups" translation="off">typ_account.res_group_button_cancel_payment</attribute>
+            </xpath>
         </field>
     </record>
     <record id="view_account_payment_invoice_form_inherit" model="ir.ui.view">
