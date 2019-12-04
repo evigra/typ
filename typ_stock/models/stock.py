@@ -187,6 +187,14 @@ class StockPicking(models.Model):
         """
         self.ensure_one()
 
+        move_line_ids = self.move_line_ids.filtered(
+            lambda dat: dat.product_id.tracking != 'none'
+            and not dat.move_id.move_orig_ids and not dat.serial)
+        if move_line_ids:
+            raise UserError(
+                _('You need to supply a lot/serial number for %s.')
+                % move_line_ids.mapped('product_id.name'))
+
         if self.picking_type_id.code != 'internal':
             return super().button_validate()
         for move in self.move_lines:
@@ -218,28 +226,22 @@ class StockPicking(models.Model):
             pick.message_post(body=message)
         return backorders
 
-    @api.multi
-    def action_assign(self):
-        res = super().action_assign()
-
-        for picking in self:
-
-            for move_line in picking.move_lines.filtered(
-                    lambda dat: dat.product_id.tracking != 'none'):
-
-                move_line.move_line_ids.unlink()
-
-                # pylint: disable=unused-variable
-                for quantity in range(int(move_line.product_uom_qty)):
-                    self.env['stock.move.line'].create(
-                        move_line._prepare_move_line_vals(
-                            quantity=0, reserved_quant=0.0))
-        return res
-
 
 class StockMoveLine(models.Model):
 
     _inherit = "stock.move.line"
+
+    serial = fields.Char()
+
+    @api.onchange('lot_name', 'lot_id', 'serial')
+    def onchange_serial_number(self):
+        res = super(StockMoveLine, self).onchange_serial_number()
+        lot_id = self.env['stock.production.lot'].search(
+            [('name', '=', self.serial)], limit=1)
+
+        self.lot_id = lot_id.id
+        self.qty_done = 0
+        return res
 
     def write(self, vals):
         quant_obj = self.env['stock.quant']
