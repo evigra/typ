@@ -189,7 +189,8 @@ class StockPicking(models.Model):
 
         move_line_ids = self.move_line_ids.filtered(
             lambda dat: dat.product_id.tracking != 'none'
-            and not dat.move_id.move_orig_ids and not dat.serial)
+            and not dat.move_id.move_orig_ids and not dat.serial_id
+            and dat.location_id.usage == 'internal')
         if move_line_ids:
             raise UserError(
                 _('You need to supply a lot/serial number for %s.')
@@ -231,13 +232,13 @@ class StockMoveLine(models.Model):
 
     _inherit = "stock.move.line"
 
-    serial = fields.Char()
+    serial_id = fields.Many2one('stock.production.lot', 'Serial')
 
-    @api.onchange('lot_name', 'lot_id', 'serial')
+    @api.onchange('lot_name', 'lot_id', 'serial_id')
     def onchange_serial_number(self):
         res = super(StockMoveLine, self).onchange_serial_number()
         lot_id = self.env['stock.production.lot'].search(
-            [('name', '=', self.serial)], limit=1)
+            [('id', '=', self.serial_id.id)], limit=1)
 
         self.lot_id = lot_id.id
         self.qty_done = 0
