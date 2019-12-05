@@ -1548,7 +1548,7 @@ msgstr "Fraccionarios"
 #. module: typ
 #: model:ir.ui.view,arch_db:typ.loyalty
 msgid "Free Delivery"
-msgstr "Entrega gratuita"
+msgstr "Flete Gratis"
 
 #. module: typ
 #: model:ir.ui.view,arch_db:typ.about
