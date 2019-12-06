@@ -29,10 +29,9 @@ class ResPartner(models.Model):
         p_found = self.search([
             ('email', '=', email),
             ('upgradable', '=', True)], limit=1)
-        duplicate_partner = self.search([
-            ('email', '=', email),
-            ('signup_valid', '=', True),
-            ('id', '!=', p_found.id)], limit=1)
+        duplicate_partner = self.env['res.users'].search([
+            ('login', '=', email),
+            ('partner_id', '!=', p_found.id)])
         if duplicate_partner:
             return{
                 'error_title': _('This email already has upgraded '
