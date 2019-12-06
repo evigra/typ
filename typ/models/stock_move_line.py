@@ -30,6 +30,9 @@ class StockMoveLine(models.Model):
         for line in self:
             product_warehouse_id = line.product_id.product_warehouse_ids.filtered(  # noqa
                 lambda x:  x.warehouse_id == line.picking_id.warehouse_id)
+            # Because there could be more than one ubication
+            product_warehouse_id = product_warehouse_id[
+                0] if product_warehouse_id else product_warehouse_id
             line.update({
                 'posx': product_warehouse_id.posx,
                 'posy': product_warehouse_id.posy,
