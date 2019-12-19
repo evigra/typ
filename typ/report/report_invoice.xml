@@ -188,9 +188,6 @@
                                 <span t-esc="o.company_id.country_id.name"/>
                             </div>
                             <div>
-                                 <span t-if="o.company_id.phone" t-esc="o.company_id.phone"/>
-                            </div>
-                            <div>
                                  <strong t-esc="('RFC. %s') % o.l10n_mx_edi_cfdi_supplier_rfc"/>
                             </div>
                         </div>
@@ -248,6 +245,9 @@
                                 <span t-esc="o.journal_id.l10n_mx_address_issued_id.city"/>
                                 <span t-esc="o.journal_id.l10n_mx_address_issued_id.state_id.name"/>
                                 <span t-esc="o.journal_id.l10n_mx_address_issued_id.country_id.name"/>
+                            </div>
+                            <div>
+                                <span t-esc="o.journal_id.l10n_mx_address_issued_id.phone"/>
                             </div>
                             <br/>
                             <br/>
