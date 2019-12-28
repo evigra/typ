@@ -48,3 +48,10 @@ class StockBarcodeLot(models.TransientModel):
                 values[2]['lot_name'] = values[2][
                     'lot_name'] if values[2]['qty_done'] > 0 else False
         return res
+
+    def validate_lot(self):
+        res = super(StockBarcodeLot, self).validate_lot()
+        for line in self.stock_barcode_lot_line_ids:
+            if line.move_line_id.lot_id:
+                line.move_line_id.serial_id = line.move_line_id.lot_id
+        return res

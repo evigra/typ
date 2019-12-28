@@ -6,7 +6,7 @@
     'author': 'Vauxoo',
     'website': 'http://www.vauxoo.com/',
     'version': '11.0.1.0.1',
-    'depends': ['stock_barcode'],
+    'depends': ['stock_barcode', 'typ_stock'],
     'license': 'LGPL-3',
     'data': [
         'views/stock_barcode_templates.xml',
