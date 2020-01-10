@@ -3,4 +3,8 @@
     <record model="res.groups" id="allow_create_payment">
         <field name="name">Create Payment POS</field>
     </record>
+    <record model="res.groups" id="res_group_delete_pos_orders">
+        <field name="name">Users who can delete POS orders</field>
+        <field name="comment">This group can delete POS orders</field>
+    </record>
 </odoo>

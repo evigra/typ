@@ -33,6 +33,7 @@
         'views/template.xml',
         'views/pos_view.xml',
         'views/point_of_sale_report.xml',
+        'security/ir.model.access.csv'
     ],
     "qweb":  [
         'static/src/xml/pos_stocks.xml',
