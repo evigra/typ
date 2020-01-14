@@ -32,7 +32,7 @@ class StockBarcodeNotracking(models.TransientModel):
             for ml in candidates:
                 qty_done = (ml.qty_done + 1 if ml.qty_done < ml.product_uom_qty
                             else ml.qty_done)
-                qty_reserved += ml.product_uom_qty
+                qty_reserved = ml.product_uom_qty
                 lines.append({
                     'line_product_barcode': ml.product_id.barcode,
                     'qty_reserved': qty_reserved,
@@ -40,8 +40,6 @@ class StockBarcodeNotracking(models.TransientModel):
                     'move_line_id': ml.id,
                 })
             res['stock_barcode_product_line_ids'] = [(0, 0, x) for x in lines]
-        if 'qty_reserved' in fields_list:
-            res['qty_reserved'] = qty_reserved
         if 'qty_done' in fields_list:
             res['qty_done'] = False
         return res
@@ -49,12 +47,18 @@ class StockBarcodeNotracking(models.TransientModel):
     @api.onchange('qty_done')
     def onchange_quantity_done(self):
         barcode = self.env.context.get('default_barcode')
-        suitable_line = self.stock_barcode_product_line_ids.filtered(
+        suitable_lines = self.stock_barcode_product_line_ids.filtered(
             lambda l: l.line_product_barcode == barcode)
+        if len(suitable_lines) > 1:
+            list_diff = suitable_lines.filtered(
+                lambda x: x.qty_done - x.qty_reserved != 0).mapped(
+                    lambda x: [x, x.qty_reserved - x.qty_done])
+            res = min(list_diff, key=lambda x: x[1], default=[])
+            suitable_lines = res[0] if res else suitable_lines[0]
         qty_done = (self.qty_done if self.qty_done != 0 else
-                    suitable_line.qty_done)
-        suitable_line.qty_done = qty_done
-        if suitable_line.qty_done > suitable_line.qty_reserved:
+                    suitable_lines.qty_done)
+        suitable_lines.qty_done = qty_done
+        if suitable_lines.qty_done > suitable_lines.qty_reserved:
             raise UserError(
                 _("You cannot fill more than the requested quantity"))
 
@@ -69,16 +73,25 @@ class StockBarcodeNotracking(models.TransientModel):
         field it will try to increment only by js
         """
         self.ensure_one()
-        suitable_line = self.stock_barcode_product_line_ids.filtered(
+        suitable_lines = self.stock_barcode_product_line_ids.filtered(
             lambda l: l.line_product_barcode == barcode)
+        # If more than one line per product, then increment the one that is
+        # mostly filled/scanned
+        # Reserved - qty done = qty to scan, we'll take the lower
+        if len(suitable_lines) > 1:
+            list_diff = suitable_lines.filtered(
+                lambda x: x.qty_done - x.qty_reserved != 0).mapped(
+                    lambda x: [x, x.qty_reserved - x.qty_done])
+            res = min(list_diff, key=lambda x: x[1], default=[])
+            suitable_lines = res[0] if res else suitable_lines[0]
         vals = {}
-        if not suitable_line:
+        if not suitable_lines:
             raise UserError(
                 _('Be sure that you are scanning the same product'))
         vals['line_product_barcode'] = barcode
-        vals['qty_done'] = suitable_line[0].qty_done + 1
-        suitable_line[0].update(vals)
-        if suitable_line.qty_done > suitable_line.qty_reserved:
+        vals['qty_done'] = suitable_lines.qty_done + 1
+        suitable_lines.update(vals)
+        if suitable_lines.qty_done > suitable_lines.qty_reserved:
             raise UserError(
                 _("You cannot fill more than the requested quantity"))
 
