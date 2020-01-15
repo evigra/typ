@@ -75,6 +75,7 @@
         'login',
         'theme_typ',
         'payment_conekta',
+        'l10n_mx_edi_bank_statement',
     ],
     'test': [
     ],
