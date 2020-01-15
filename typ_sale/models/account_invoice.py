@@ -29,6 +29,9 @@ class AccountInvoice(models.Model):
                 not self.payment_term_id or
                 self.payment_term_id.payment_type == 'cash'):
             self.type_payment_term = 'cash'
+            if not self.payment_term_id:
+                self.payment_term_id = self.env.ref(
+                    'account.account_payment_term_immediate')
 
         elif self.type_payment_term in ('cash', 'postdated_check') and \
                 self.payment_term_id.payment_type == 'credit':

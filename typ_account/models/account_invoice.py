@@ -60,7 +60,11 @@ class AccountInvoice(models.Model):
     def _onchange_limit_credit(self):
         """Show warning message if partner selected has no credit limit.
         """
-        if not self.need_verify_limit_credit():
+        is_cash = (self.type_payment_term in ('cash', 'postdated_check') or
+                   not self.partner_id.property_payment_term_id or
+                   self.partner_id.property_payment_term_id.payment_type ==
+                   'cash')
+        if (not self.need_verify_limit_credit() or is_cash):
             return {}
         ctx = {'new_amount': self.amount_total,
                'new_currency': self.currency_id.id,
