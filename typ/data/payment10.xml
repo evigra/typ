@@ -18,7 +18,7 @@
                     t-att-MonedaP="record.currency_id.name"
                     t-att-TipoCambioP="payment_rate"
                     t-att-Monto="total_writeoff"
-                    t-att-NumOperacion=""
+                    t-att-NumOperacion="record.communication[:100].replace('|', ' ') if record.communication else None"
                     t-att-RfcEmisorCtaOrd="pay_vat_ord or None"
                     t-att-NomBancoOrdExt="pay_name_ord or None"
                     t-att-CtaOrdenante="pay_account_ord or None"
