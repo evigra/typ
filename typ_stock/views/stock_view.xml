@@ -144,6 +144,16 @@
         </field>
     </record>
 
+    <record model="ir.ui.view" id="view_stock_picking_serial_inherit">
+        <field name="name">stock.picking.serial.inherit</field>
+        <field name="model">stock.picking</field>
+        <field name="inherit_id" ref="stock.view_picking_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='lot_id']" position="after">
+                <field name="serial_id" invisible="context.get('show_lots_text')"/>
+            </xpath>
+        </field>
+    </record>
     <menuitem id="stock.menu_warehouse_report" name="Reporting" sequence="99" parent="stock.menu_stock_root" groups="stock.group_stock_manager,typ_stock.group_stock_menu_inform_configuration"/>
     <menuitem action="stock.action_location_form" id="stock.menu_action_location_form"
         parent="stock.menu_warehouse_report" sequence="10" groups="group_stock_menu_inform_configuration"/>
