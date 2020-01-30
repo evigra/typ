@@ -19,10 +19,14 @@ class SaleOrder(models.Model):
                'warehouse_id': self.warehouse_id.id}
         allowed_sale = res_partner.with_context(ctx).browse(
             self.partner_id.id).allowed_sale
-        is_cash = any(
-            [self.type_payment_term in ('cash', 'postdated_check'),
-             not self.partner_id.property_payment_term_id,
-             self.partner_id.property_payment_term_id.payment_type == 'cash'])
+        partner_payment_term_id = self.partner_id.property_payment_term_id
+        is_cash = (self.type_payment_term in ('cash', 'postdated_check') or
+                   not partner_payment_term_id
+                   or partner_payment_term_id.payment_type == 'cash')
+        if (not partner_payment_term_id and is_cash and
+                not self.payment_term_id):
+            self.payment_term_id = self.env.ref(
+                'account.account_payment_term_immediate')
         if all([self.partner_id, not is_cash, not allowed_sale]):
             credit_overloaded = res_partner.with_context(ctx).browse(
                 self.partner_id.id).credit_overloaded
