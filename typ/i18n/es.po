@@ -22,6 +22,11 @@ msgstr "&amp;nbsp;<span>en</span>"
 
 #. module: typ
 #: model:ir.ui.view,arch_db:typ.report_invoice_document_typ
+msgid "(SN:"
+msgstr "(NS:"
+
+#. module: typ
+#: model:ir.ui.view,arch_db:typ.report_invoice_document_typ
 #: model:ir.ui.view,arch_db:typ.report_payment_receipt_typ
 msgid "<b><span>Total</span></b>"
 msgstr "<b><span>Total</span></b>"

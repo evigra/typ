@@ -287,6 +287,10 @@
                             <td class="col-xs-1 text-left" t-if="o.l10n_mx_edi_cfdi_uuid and xml.get('Version')"><span t-field="l.uom_id.l10n_mx_edi_code_sat_id.code"/></td>
                             <td class="col-xs-1 text-left" t-if="o.l10n_mx_edi_cfdi_uuid and xml.get('Version')"><span t-field="l.product_id.l10n_mx_edi_code_sat_id.code"/></td>
                             <td class="col-xs-5 text-left"><span t-field="l.name"/>
+                                <t t-foreach="l.mapped('sale_line_ids.move_ids.move_line_ids.lot_id')" t-as="lot">
+                                    <br/>
+                                    <t>(SN: <span t-esc="lot.name"/>)</t>
+                                </t>
                                 <t t-if="l.l10n_mx_edi_customs_number">
                                  <br/>
                                  <i>Customs:</i>
