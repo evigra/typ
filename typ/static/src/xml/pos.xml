@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="templates" xml:space="preserve">
+    <t t-extend="ClientDetailsEdit">
+        <t t-jquery="div.client-details-left" t-operation="append">
+            <div class='client-detail'>
+                <span class='label'>Usage</span>
+                <select class='detail client-l10n_mx_edi_usage' name='l10n_mx_edi_usage'>
+                    <t t-foreach="widget.pos.usage_selection" t-as="type">
+                        <option t-att-value="type" t-att-selected="partner.l10n_mx_edi_usage ? ((type === partner.l10n_mx_edi_usage) ? true: undefined) : undefined">
+                            <t t-esc="'('+ type +') ' + widget.pos.usage_selection[type]" />
+                        </option>
+                    </t>
+                </select>
+            </div>
+        </t>
+        <t t-jquery="div.client-details-left" t-operation="append">
+            <div class='client-detail'>
+                <span class='label'>Payment Way</span>
+                <select class='detail client-l10n_mx_edi_payment_method' name='l10n_mx_edi_payment_method_id'>
+                    <t t-foreach="widget.pos.l10n_mx_edi_payment_method" t-as="payment_method">
+                        <option t-att-value="payment_method.id" t-att-selected="partner.l10n_mx_edi_payment_method_id ? ((payment_method.id === partner.l10n_mx_edi_payment_method_id[0]) ? true: undefined) : undefined">
+                            <t t-esc="payment_method.name" />
+                        </option>
+                    </t>
+                </select>
+            </div>
+        </t>
+    </t>
+    <t t-extend="ClientDetails">
+        <t t-jquery="div.client-details-right" t-operation="append">
+            <div class='client-detail'>
+                <span class='label'>Usage</span>
+                <span class='detail l10n_mx_edi_usage'><t t-esc="'('+ partner.l10n_mx_edi_usage +') ' + widget.pos.usage_selection[partner.l10n_mx_edi_usage]"/></span>
+            </div>
+        </t>
+        <t t-jquery="div.client-details-left" t-operation="append">
+            <div class='client-detail'>
+                <span class='label'>Payment Way</span>
+                <span class='detail l10n_mx_edi_payment_method_id'><t t-esc='partner.l10n_mx_edi_payment_method_id[1]'/></span>
+            </div>
+        </t>
+    </t>
+</templates>

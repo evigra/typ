@@ -253,6 +253,14 @@ msgid "<span>Unit</span>"
 msgstr "<span>Unidad</span>"
 
 #. module: typ
+#. openerp-web
+#: code:addons/typ/static/src/xml/pos.xml:7
+#: code:addons/typ/static/src/xml/pos.xml:34
+#, python-format
+msgid "Usage"
+msgstr "Uso"
+
+#. module: typ
 #: model:ir.ui.view,arch_db:typ.report_invoice_document_typ
 msgid "<span>Use</span>"
 msgstr "<span>Uso</span>"
@@ -392,6 +400,14 @@ msgid "Partiality"
 msgstr "Parcialidad"
 
 #. module: typ
+#. openerp-web
+#: code:addons/typ/static/src/xml/pos.xml:19
+#: code:addons/typ/static/src/xml/pos.xml:40
+#, python-format
+msgid "Payment Way"
+msgstr "Forma de Pago"
+
+#. module: typ
 #: model:ir.model,name:typ.model_account_payment
 msgid "Payments"
 msgstr "Pagos"
@@ -420,6 +436,160 @@ msgstr "Nota de Crédito del Vendedor"
 #: model:res.partner.category,name:typ.tag_compensation
 msgid "Complement with compensation"
 msgstr "Complemento con compensación"
+
+#. module: typ
+#. openerp-web
+#: code:addons/typ/static/src/js/pos_models.js:22
+#, python-format
+msgid "Acquisition of merchandise"
+msgstr "Adquisición de mercancías"
+
+#. module: typ
+#. openerp-web
+#: code:addons/typ/static/src/js/pos_models.js:28
+#, python-format
+msgid "Computer equipment and accessories"
+msgstr "Equipo de cómputo y accesorios"
+
+#. module: typ
+#. openerp-web
+#: code:addons/typ/static/src/js/pos_models.js:25
+#, python-format
+msgid "Constructions"
+msgstr "Construcciones"
+
+#. module: typ
+#. openerp-web
+#: code:addons/typ/static/src/js/pos_models.js:41
+#, python-format
+msgid "Deposits in savings accounts, premiums based on pension plans."
+msgstr "Depósitos en cuentas para el ahorro, primas que tengan como base planes de pensiones."
+
+#. module: typ
+#. openerp-web
+#: code:addons/typ/static/src/js/pos_models.js:29
+#, python-format
+msgid "Dices, dies, molds, matrices and tooling"
+msgstr "Dados, troqueles, moldes, matrices y herramental"
+
+#. module: typ
+#. openerp-web
+#: code:addons/typ/static/src/js/pos_models.js:36
+#, python-format
+msgid "Donations"
+msgstr "Donativos"
+
+#. module: typ
+#. openerp-web
+#: code:addons/typ/static/src/js/pos_models.js:35
+#, python-format
+msgid "Funeral expenses"
+msgstr "Gastos funerales"
+
+#. module: typ
+#. openerp-web
+#: code:addons/typ/static/src/js/pos_models.js:24
+#, python-format
+msgid "General expenses"
+msgstr "Gastos en general"
+
+#. module: typ
+#. openerp-web
+#: code:addons/typ/static/src/js/pos_models.js:40
+#, python-format
+msgid "Mandatory School Transportation Expenses"
+msgstr "Gastos de transportación escolar obligatoria"
+
+#. module: typ
+#. openerp-web
+#: code:addons/typ/static/src/js/pos_models.js:34
+#, python-format
+msgid "Medical expenses for disability"
+msgstr "Gastos médicos por incapacidad o discapacidad"
+
+#. module: typ
+#. openerp-web
+#: code:addons/typ/static/src/js/pos_models.js:39
+#, python-format
+msgid "Medical insurance premiums"
+msgstr "Primas por seguros de gastos médicos"
+
+#. module: typ
+#. openerp-web
+#: code:addons/typ/static/src/js/pos_models.js:33
+#, python-format
+msgid "Medical, dental and hospital expenses."
+msgstr "Honorarios médicos, dentales y gastos hospitalarios."
+
+#. module: typ
+#. openerp-web
+#: code:addons/typ/static/src/js/pos_models.js:26
+#, python-format
+msgid "Office furniture and equipment investment"
+msgstr "Mobilario y equipo de oficina por inversiones"
+
+#. module: typ
+#. openerp-web
+#: code:addons/typ/static/src/js/pos_models.js:32
+#, python-format
+msgid "Other machinery and equipment"
+msgstr "Otra maquinaria y equipo"
+
+#. module: typ
+#. openerp-web
+#: code:addons/typ/static/src/js/pos_models.js:42
+#, python-format
+msgid "Payments for educational services (Colegiatura)"
+msgstr "Pagos por servicios educativos (colegiaturas)"
+
+#. module: typ
+#. openerp-web
+#: code:addons/typ/static/src/js/pos_models.js:37
+#, python-format
+msgid "Real interest effectively paid for mortgage loans (room house)"
+msgstr "Intereses reales efectivamente pagados por créditos hipotecarios (casa habitación)."
+
+#. module: typ
+#. openerp-web
+#: code:addons/typ/static/src/js/pos_models.js:23
+#, python-format
+msgid "Returns, discounts or bonuses"
+msgstr "Devoluciones, descuentos o bonificaciones"
+
+#. module: typ
+#. openerp-web
+#: code:addons/typ/static/src/js/pos_models.js:31
+#, python-format
+msgid "Satellite communications"
+msgstr "Comunicaciones satelitales"
+
+#. module: typ
+#. openerp-web
+#: code:addons/typ/static/src/js/pos_models.js:30
+#, python-format
+msgid "Telephone communications"
+msgstr "Comunicaciones telefónicas"
+
+#. module: typ
+#. openerp-web
+#: code:addons/typ/static/src/js/pos_models.js:43
+#, python-format
+msgid "To define"
+msgstr "Por definir"
+
+#. module: typ
+#. openerp-web
+#: code:addons/typ/static/src/js/pos_models.js:27
+#, python-format
+msgid "Transportation equipment"
+msgstr "Equipo de transporte"
+
+#. module: typ
+#. openerp-web
+#: code:addons/typ/static/src/js/pos_models.js:38
+#, python-format
+msgid "Voluntary contributions to SAR"
+msgstr "Aportaciones voluntarias al SAR"
 
 #. module: typ
 #: model:ir.model.fields,field_description:typ.field_account_payment_is_commission

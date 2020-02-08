@@ -120,6 +120,7 @@
     'demo': [
         'demo/products.xml',
     ],
+    'qweb': ['static/src/xml/pos.xml'],
     "installable": True,
     "application": True,
     # "post_init_hook": "_auto_install_stock_account_unfuck",

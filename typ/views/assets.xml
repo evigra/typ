@@ -13,4 +13,9 @@
             <link href="/typ/static/src/less/main.less" rel="stylesheet" type="text/less"/>
         </xpath>
     </template>
+    <template id="pos_assets" inherit_id="point_of_sale.assets">
+        <xpath expr="//link[last()]" position="after">
+            <script type="text/javascript" src="/typ/static/src/js/pos_models.js"></script>
+        </xpath>
+    </template>
 </odoo>
