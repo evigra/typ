@@ -247,10 +247,22 @@ class StockMoveLine(models.Model):
     def write(self, vals):
         res = super(StockMoveLine, self).write(vals)
 
-        for move_line_id in self.filtered(
-                lambda dat: dat.serial_id and dat.product_uom_qty == 0):
-            move_line_id.with_context(
-                bypass_reservation_update=True).product_uom_qty = 1
+        quant_obj = self.env['stock.quant']
+
+        for move_line_id in self.mapped('picking_id.move_line_ids').filtered(
+                lambda dat: dat.serial_id and dat.qty_done == 0.0):
+            if move_line_id.product_uom_qty == 0.0:
+                move_line_id.with_context(
+                    bypass_reservation_update=True).product_uom_qty = 1
+            quant_id = quant_obj.search(
+                [('lot_id', '=', move_line_id.lot_id.id)])
+            quant_id.write({'reserved_quantity': 0.0})
+            quant_obj._update_reserved_quantity(
+                move_line_id.product_id, move_line_id.location_id, 0,
+                lot_id=move_line_id.lot_id, strict=True)
+            quant_obj._update_reserved_quantity(
+                move_line_id.product_id, move_line_id.location_id, 1,
+                lot_id=move_line_id.lot_id, strict=True)
 
         return res
 
