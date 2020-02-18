@@ -138,3 +138,16 @@ class AccountInvoice(models.Model):
             }
         attachment_id = self.env['ir.attachment'].create(values)
         return attachment_id
+
+    @api.onchange('partner_id', 'company_id')
+    def _onchange_partner_id(self):
+        """Use the pos order usage and payment method"""
+        usage = self.l10n_mx_edi_usage
+        payment_method = self.l10n_mx_edi_payment_method_id
+        res = super()._onchange_partner_id()
+        if self._context.get('l10n_mx_edi_avoid_partner_defaults', False):
+            self.update({
+                'l10n_mx_edi_usage': usage,
+                'l10n_mx_edi_payment_method_id': payment_method.id,
+            })
+        return res

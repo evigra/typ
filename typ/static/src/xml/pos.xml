@@ -1,43 +1,75 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <templates id="templates" xml:space="preserve">
-    <t t-extend="ClientDetailsEdit">
-        <t t-jquery="div.client-details-left" t-operation="append">
-            <div class='client-detail'>
-                <span class='label'>Usage</span>
-                <select class='detail client-l10n_mx_edi_usage' name='l10n_mx_edi_usage'>
-                    <t t-foreach="widget.pos.usage_selection" t-as="type">
-                        <option t-att-value="type" t-att-selected="partner.l10n_mx_edi_usage ? ((type === partner.l10n_mx_edi_usage) ? true: undefined) : undefined">
-                            <t t-esc="'('+ type +') ' + widget.pos.usage_selection[type]" />
-                        </option>
+    <t t-extend="PaymentScreenWidget">
+        <t t-jquery="div.payment-buttons" t-operation="append">
+            <div class='button js_set_usage'>
+                <i class='fa fa-list' />
+                <span class='js_usage_name'>
+                    <t t-if="widget.pos.get_order().get_usage()">
+                        <t t-esc="'('+ widget.pos.get_order().get_usage() +') ' + widget.pos.usage_selection[widget.pos.get_order().get_usage()]"/>
                     </t>
-                </select>
+                    <t t-if="!widget.pos.get_order().get_usage()">
+                        Usage
+                    </t>
+                </span>
             </div>
-        </t>
-        <t t-jquery="div.client-details-left" t-operation="append">
-            <div class='client-detail'>
-                <span class='label'>Payment Way</span>
-                <select class='detail client-l10n_mx_edi_payment_method' name='l10n_mx_edi_payment_method_id'>
-                    <t t-foreach="widget.pos.l10n_mx_edi_payment_method" t-as="payment_method">
-                        <option t-att-value="payment_method.id" t-att-selected="partner.l10n_mx_edi_payment_method_id ? ((payment_method.id === partner.l10n_mx_edi_payment_method_id[0]) ? true: undefined) : undefined">
-                            <t t-esc="payment_method.name" />
-                        </option>
+            <div class='button js_set_payment_method'>
+                <i class='fa fa-money' />
+                <span class='js_payment_name'>
+                    <t t-if="widget.pos.get_order().get_payment_method()">
+                        <t t-esc="widget.pos.get_order().get_payment_method()[1]" />
                     </t>
-                </select>
+                    <t t-if="!widget.pos.get_order().get_payment_method()">
+                        Payment Form
+                    </t>
+                </span>
             </div>
         </t>
     </t>
-    <t t-extend="ClientDetails">
-        <t t-jquery="div.client-details-right" t-operation="append">
-            <div class='client-detail'>
-                <span class='label'>Usage</span>
-                <span class='detail l10n_mx_edi_usage'><t t-esc="'('+ partner.l10n_mx_edi_usage +') ' + widget.pos.usage_selection[partner.l10n_mx_edi_usage]"/></span>
+    <t t-name="PaymentMethodListScreenWidget">
+        <div class="clientlist-screen screen">
+            <div class="screen-content">
+                <section class="top-content">
+                    <span class='button back'>
+                        <i class='fa fa-angle-double-left'></i>
+                        Cancel
+                    </span>
+                    <span class='searchbox'>
+                        <input placeholder='Search Method' />
+                        <span class='search-clear'></span>
+                    </span>
+                    <span class='searchbox'></span>
+                    <span class='button next oe_hidden highlight'>
+                        Select Payment Method
+                        <i class='fa fa-angle-double-right'></i>
+                    </span>
+                </section>
+                <section class="full-content">
+                    <div class='window'>
+                        <section class='subwindow collapsed'>
+                            <div class='subwindow-container collapsed'>
+                                <div class='subwindow-container-fix client-details-contents'>
+                                </div>
+                            </div>
+                        </section>
+                        <section class='subwindow'>
+                            <div class='subwindow-container'>
+                                <div class='subwindow-container-fix touch-scrollable scrollable-y'>
+                                    <table class='client-list'>
+                                        <thead>
+                                            <tr>
+                                                <th>Name</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody class='client-list-contents'>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </section>
             </div>
-        </t>
-        <t t-jquery="div.client-details-left" t-operation="append">
-            <div class='client-detail'>
-                <span class='label'>Payment Way</span>
-                <span class='detail l10n_mx_edi_payment_method_id'><t t-esc='partner.l10n_mx_edi_payment_method_id[1]'/></span>
-            </div>
-        </t>
+        </div>
     </t>
 </templates>

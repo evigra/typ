@@ -7,3 +7,4 @@ from . import res_partner, product_public_category, product, res_country
 from . import user_wishlist
 from . import account_move
 from . import stock_move_line
+from . import pos_orden
