@@ -7,4 +7,8 @@
         <field name="name">Users who can delete POS orders</field>
         <field name="comment">This group can delete POS orders</field>
     </record>
+    <record model="res.groups" id="res_group_give_back_products_pos">
+        <field name="name">Users who can give back product in POS orders</field>
+        <field name="comment">This group can give back products in POS orders</field>
+    </record>
 </odoo>

@@ -11,6 +11,9 @@
             <xpath expr="//field[@name='state']" position="attributes">
                 <attribute name="statusbar_visible" translation="off">draft,paid,done,cancel</attribute>
             </xpath>
+            <button name="refund" position="attributes">
+                <attribute name="groups" translation="off">typ_pos.res_group_give_back_products_pos</attribute>
+            </button>
         </field>
     </record>
 </odoo>
