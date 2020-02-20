@@ -29,6 +29,11 @@ msgid "Age"
 msgstr "Edad"
 
 #. module: typ_hr
+#: model:ir.ui.menu,name:typ_hr.menu_atach_xmls_wizard
+msgid "Attach Multiple Supplier XML's"
+msgstr "Adjuntar Múltiples XML's de Proveedor"
+
+#. module: typ_hr
 #: view:hr.employee:typ_hr.view_hr_employee_form_inherit
 #: field:hr.employee,hr_auxiliar_ids:0
 msgid "Auxiliar"

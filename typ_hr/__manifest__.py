@@ -9,6 +9,7 @@
 
     'depends': [
         'hr_payroll',
+        'typ_account',
     ],
 
     'data': [
@@ -25,6 +26,7 @@
         'reports/hr_reports.xml',
         'views/hr_contract_inherit_view.xml',
         'views/fleet_views.xml',
+        'views/hr_expenses.xml',
     ],
     'installable': True,
 }

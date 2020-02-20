@@ -1,0 +1,5 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<odoo>
+    <menuitem action="l10n_mx_edi_vendor_bills.attach_xmls_wizard_action" id="menu_atach_xmls_wizard"
+        name="Attach Multiple Supplier XML's" parent="hr_expense.menu_hr_expense_my_expenses" sequence="4"/>
+</odoo>
