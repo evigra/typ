@@ -5,12 +5,6 @@ from odoo import api, fields, models
 class PosOrder(models.Model):
     _inherit = "pos.order"
 
-    l10n_mx_edi_payment_method_id = fields.Many2one(
-        'l10n_mx_edi.payment.method',
-        string="Payment Method",
-        help='This payment method will be used by default in the related '
-        'documents (invoices, payments, and bank statements).')
-
     def _get_usage_selection(self):
         return self.env['res.partner']._get_usage_selection()
 
@@ -21,9 +15,10 @@ class PosOrder(models.Model):
 
     def _prepare_invoice(self):
         res = super(PosOrder, self)._prepare_invoice()
+        journal = self.statement_ids.filtered('journal_id').journal_id
         res.update({
             'l10n_mx_edi_usage': self.l10n_mx_edi_usage,
-            'l10n_mx_edi_payment_method_id': self.l10n_mx_edi_payment_method_id
+            'l10n_mx_edi_payment_method_id': journal.l10n_mx_edi_payment_method_id.id, # noqa
         })
         return res
 

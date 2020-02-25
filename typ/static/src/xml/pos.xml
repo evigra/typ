@@ -6,27 +6,24 @@
                 <i class='fa fa-list' />
                 <span class='js_usage_name'>
                     <t t-if="widget.pos.get_order().get_usage()">
-                        <t t-esc="'('+ widget.pos.get_order().get_usage() +') ' + widget.pos.usage_selection[widget.pos.get_order().get_usage()]"/>
+                        <t t-esc="'('+ widget.pos.get_order().get_usage() +') ' + widget.pos.get_order().get_usage_byid().name"/>
                     </t>
                     <t t-if="!widget.pos.get_order().get_usage()">
                         Usage
                     </t>
                 </span>
             </div>
-            <div class='button js_set_payment_method'>
-                <i class='fa fa-money' />
-                <span class='js_payment_name'>
-                    <t t-if="widget.pos.get_order().get_payment_method()">
-                        <t t-esc="widget.pos.get_order().get_payment_method()[1]" />
-                    </t>
-                    <t t-if="!widget.pos.get_order().get_payment_method()">
-                        Payment Form
-                    </t>
-                </span>
-            </div>
         </t>
     </t>
-    <t t-name="PaymentMethodListScreenWidget">
+
+    <t t-name="UsageLine">
+        <tr class='client-line' t-att-data-id='usage.id'>
+            <td><t t-esc='usage.id' /></td>
+            <td><t t-esc='usage.name' /></td>
+        </tr>
+    </t>
+
+    <t t-name="UsageListScreenWidget">
         <div class="clientlist-screen screen">
             <div class="screen-content">
                 <section class="top-content">
@@ -35,12 +32,12 @@
                         Cancel
                     </span>
                     <span class='searchbox'>
-                        <input placeholder='Search Method' />
+                        <input placeholder='Search Usage' />
                         <span class='search-clear'></span>
                     </span>
                     <span class='searchbox'></span>
                     <span class='button next oe_hidden highlight'>
-                        Select Payment Method
+                        Select Usage
                         <i class='fa fa-angle-double-right'></i>
                     </span>
                 </section>
@@ -58,6 +55,7 @@
                                     <table class='client-list'>
                                         <thead>
                                             <tr>
+                                                <th>Code</th>
                                                 <th>Name</th>
                                             </tr>
                                         </thead>
@@ -72,4 +70,5 @@
             </div>
         </div>
     </t>
+
 </templates>

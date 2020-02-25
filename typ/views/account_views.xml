@@ -8,4 +8,15 @@
         action="account.open_account_journal_dashboard_kanban"
         parent="account.menu_finance" sequence="20"
         groups="account.group_account_user"/>
+
+    <record id="views_account_journal_form_inherit" model="ir.ui.view">
+        <field name="name">account.journal.form.inherit</field>
+        <field name="model">account.journal</field>
+        <field name="inherit_id" ref="account.view_account_journal_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='refund_sequence']" position="before">
+                <field name="l10n_mx_edi_payment_method_id" attrs="{'invisible': [('type','not in',('bank', 'cash'))]}"/>
+            </xpath>
+        </field>
+    </record>
 </odoo>
