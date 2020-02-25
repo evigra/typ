@@ -13,6 +13,14 @@ class PosOrder(models.Model):
         help='This usage will be used instead of the default one for invoices.'
     )
 
+    @api.model
+    def _order_fields(self, ui_order):
+        res = super(PosOrder, self)._order_fields(ui_order)
+        res.update({
+            'l10n_mx_edi_usage': ui_order['l10n_mx_edi_usage'],
+        })
+        return res
+
     def _prepare_invoice(self):
         res = super(PosOrder, self)._prepare_invoice()
         journal = self.statement_ids.filtered('journal_id').journal_id
