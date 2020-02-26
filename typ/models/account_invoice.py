@@ -144,7 +144,7 @@ class AccountInvoice(models.Model):
         """Use the pos order usage and payment method"""
         usage = self.l10n_mx_edi_usage or self.partner_id.l10n_mx_edi_usage
         payment_method = self.l10n_mx_edi_payment_method_id or \
-            self.partner_id.l10n_mx_edi_payment_method_id.id
+            self.partner_id.l10n_mx_edi_payment_method_id
         res = super()._onchange_partner_id()
         if self._context.get('l10n_mx_edi_avoid_partner_defaults', False):
             self.update({
