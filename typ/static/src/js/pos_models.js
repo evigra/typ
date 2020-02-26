@@ -86,6 +86,10 @@ odoo.define('typ.models.extend', function (require) {
     var screens = require('point_of_sale.screens');
     var gui = require('point_of_sale.gui');
     screens.PaymentScreenWidget.include({
+        show: function() {
+            this._super();
+            this.usage_changed();
+        },
         click_set_usage: function(){
              this.gui.show_screen('usagelist');
         },
@@ -96,10 +100,10 @@ odoo.define('typ.models.extend', function (require) {
                 self.click_set_usage();
             });
         },
-        // usage_changed: function() {
-        //     var usage = this.pos.get_usage();
-        //     this.$('.js_usage_name').text( usage ? '(' + usage + ')' + this.pos.usage_selection[usage] : _t('Usage'));
-        // },
+        usage_changed: function() {
+            var usage = this.pos.get_order().get_usage();
+            this.$('.js_usage_name').text( usage ? '(' + usage + ')' + this.pos.get_order().get_usage_byid().name : _t('Usage'));
+        },
     });
 
     var UsageListScreenWidget = screens.ScreenWidget.extend({
@@ -187,6 +191,13 @@ odoo.define('typ.models.extend', function (require) {
             this.$('.searchbox input')[0].value = '';
             this.$('.searchbox input').focus();
         },
+        has_usage_changed: function(){
+            if( this.old_usage && this.new_usage ){
+                return this.old_usage !== this.new_usage;
+            }else{
+                return !!this.old_usage !== !!this.new_usage;
+            }
+        },
         save_changes: function(){
             var order = this.pos.get_order();
             if( this.has_usage_changed() ){
@@ -208,13 +219,6 @@ odoo.define('typ.models.extend', function (require) {
                     usageline.classList.remove('highlight');
                 }
                 contents.appendChild(usageline);
-            }
-        },
-        has_usage_changed: function(){
-            if( this.old_usage && this.new_usage ){
-                return this.old_usage !== this.new_usage;
-            }else{
-                return !!this.old_usage !== !!this.new_usage;
             }
         },
         toggle_save_button: function(){
