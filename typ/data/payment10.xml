@@ -42,5 +42,12 @@
                 </pago10:Pago>
             </t>
         </xpath>
+        <xpath expr="//t[@t-set='writeoff_vals']" position="after">
+            <t t-set="multicurrency" t-value="True if len(record.invoice_ids.mapped('currency_id').ids) > 1 or len(record.invoice_ids) == 1 and record.invoice_ids.currency_id != record.currency_id else False"/>
+        </xpath>
+        <xpath expr="(//*[local-name()='DoctoRelacionado'])" position="attributes">
+            <attribute name="t-att-ImpPagado">"'%0.*f' % (decimal_precision, amount_payment - (writeoff_vals.get(invoice.id, 0) if not multicurrency else 0))"</attribute>
+            <attribute name="t-att-ImpSaldoInsoluto">"'%0.*f' % (decimal_precision, amount_insoluto + (writeoff_vals.get(invoice.id, 0) if not multicurrency else 0))"</attribute>
+        </xpath>
     </template>
 </odoo>
