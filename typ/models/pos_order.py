@@ -23,10 +23,13 @@ class PosOrder(models.Model):
 
     def _prepare_invoice(self):
         res = super(PosOrder, self)._prepare_invoice()
-        journal = self.statement_ids.filtered('journal_id').journal_id
+        max_pay = max(self.statement_ids.mapped('amount'))
+        journal = self.statement_ids.filtered(lambda s: s.amount == max_pay)
+        payment_method = journal.journal_id.l10n_mx_edi_payment_method_id.id \
+            if journal.journal_id.l10n_mx_edi_payment_method_id else False
         res.update({
             'l10n_mx_edi_usage': self.l10n_mx_edi_usage,
-            'l10n_mx_edi_payment_method_id': journal.l10n_mx_edi_payment_method_id.id, # noqa
+            'l10n_mx_edi_payment_method_id': payment_method,
         })
         return res
 
