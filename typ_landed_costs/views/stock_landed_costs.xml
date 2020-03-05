@@ -48,6 +48,7 @@
                             <field name="landed_cost_id"/>
                             <field name="invoice_id" readonly="True"/>
                             <field name="comments" required="True"/>
+                            <field name="carrier_invoice"/>
                         </group>
                         <notebook>
                             <page string="Guide Lines">
@@ -97,6 +98,7 @@
                     <field name="name"/>
                     <field name="partner_id"/>
                     <field name="journal_id"/>
+                    <field name="carrier_invoice"/>
                     <field name="reference"/>
                     <field name="date"/>
                     <group string="Group by">

@@ -123,6 +123,10 @@ class StockLandedGuides (models.Model):
                                  help='Refers the invoice related whit'
                                  ' this guide')
 
+    carrier_invoice = fields.Char(
+        help='Field to add the carrier invoice number'
+    )
+
     @api.multi
     @api.depends('line_ids.cost')
     def _compute_amount(self):
