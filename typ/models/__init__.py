@@ -9,3 +9,4 @@ from . import account_move
 from . import stock_move_line
 from . import pos_order
 from . import account_journal
+from . import helpdesk_ticket

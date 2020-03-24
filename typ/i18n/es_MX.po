@@ -2290,6 +2290,7 @@ msgstr "Proactividad."
 
 #. module: typ
 #: model:ir.model,name:typ.model_product_product
+#: model:ir.model.fields,field_description:typ.field_helpdesk_ticket_product_id
 #: model:ir.model.fields,field_description:typ.field_user_wishlist_product_template_id
 #: model:ir.ui.view,arch_db:typ.cart_lines
 msgid "Product"
