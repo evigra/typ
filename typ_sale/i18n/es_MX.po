@@ -158,8 +158,8 @@ msgstr "<strong>Dirección de envío</strong>"
 
 #. module: typ_sale
 #: model:ir.ui.view,arch_db:typ_sale.report_saleorder_document
-msgid "<strong>Validity:</strong><br/> 15 days for repairs and 30 days for equipments."
-msgstr "<strong>Vigencia:</strong><br/> 15 dias en refacciones y 30 días en equipos."
+msgid "<strong>Validity:</strong><br/> For Parts and Installation Materials, prices subject to change without prior notice. 7 days for equipments."
+msgstr "<strong>Vigencia:</strong><br/> Para Refacciones y Materiales de Instalación, precios sujetos a cambio sin previo aviso. 7 días para equipos."
 
 #. module: typ_sale
 #: model:ir.ui.view,arch_db:typ_sale.report_saleorder_document
