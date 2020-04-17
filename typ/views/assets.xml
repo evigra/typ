@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <odoo>
+    <template id="assets_backend" inherit_id="website.assets_backend">
+        <xpath expr="//script[last()]" position="after">
+            <script type="text/javascript" src="/typ/static/src/js/modal.js"></script>
+        </xpath>
+    </template>
+
     <template id="assets_frontend" inherit_id="website.assets_frontend" name="Assets Frontend">
         <xpath expr="//script[last()]" position="after">
             <script type="text/javascript" src="/typ/static/src/js/portal_account.js"></script>
