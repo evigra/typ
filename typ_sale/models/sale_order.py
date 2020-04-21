@@ -14,6 +14,9 @@ class SaleOrder(models.Model):
     so = fields.Boolean(string='Is Special Order',
                         help='This or some product of the sales order '
                         'will be purchased with a supplier?')
+    stocksale = fields.Boolean(string='Is Stock Sale', help='Check this box '
+                               'if it is a stock sale, if not, define '
+                               'the delivery method')
     notest = fields.Text(string='Notes',
                          help='Delivery address, product availability, '
                          'special shipping instructions, '

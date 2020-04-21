@@ -47,6 +47,14 @@
                     <field name="so"/>
                 </group>
             </xpath>
+            <xpath expr="//group[3]" position="after">
+                <group>
+                    <field name="stocksale" attrs="{'invisible': [('carrier_id', '!=', False)]}"/>
+                </group>
+            </xpath>
+            <xpath expr="//field[@name='carrier_id']" position="attributes">
+                <attribute name="attrs" translation="off">{'required': [('stocksale', '=', False)]}</attribute>
+            </xpath>
             <xpath expr="//notebook/page[2]" position="after">
                 <page string="Special Order" attrs="{'invisible': [('so', '=', False)]}">
                     <group>

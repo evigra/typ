@@ -125,6 +125,11 @@ msgid "Change Standard Price"
 msgstr "Cambiar precio estandar"
 
 #. module: typ_sale
+#: model:ir.model.fields,help:typ_sale.field_sale_order_stocksale
+msgid "Check this box if it is a stock sale, if not, define the delivery method"
+msgstr "Marque esta casilla si es una venta de stock, si no, defina el método de entrega"
+
+#. module: typ_sale
 #: view:website:sale.report_saleorder_document
 msgid "Client:"
 msgstr "Cliente:"
@@ -321,6 +326,11 @@ msgstr "Dirección de facturación:"
 #: model:ir.model.fields,field_description:typ_sale.field_sale_order_so
 msgid "Is Special Order"
 msgstr "Es Pedido especial"
+
+#. module: typ_sale
+#: model:ir.model.fields,field_description:typ_sale.field_sale_order_stocksale
+msgid "Is Stock Sale"
+msgstr "Es venta de Stock"
 
 #. module: typ_sale
 #: model:ir.model.fields,help:typ_sale.field_crm_team_fiscal_position_id
