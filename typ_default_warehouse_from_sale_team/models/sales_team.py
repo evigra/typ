@@ -49,19 +49,16 @@ class ResPartner(models.Model):
         "res.users", "Buyer", sercheable=True
     )
 
-    @api.model
-    def default_get(self, field):
-        """Overwrite default_get method to set the pricelist for the new
-        partner depending of the user's salesteam which is trying to create
-        the partner
+    @api.multi
+    def _compute_product_pricelist(self):
+        """Overwrite _compute_product_pricelist method to set the pricelist
+        for the new partner depending of the user's salesteam which is trying
+        to create the partner.
 
         """
-        res = super(ResPartner, self).default_get(field)
-        res.update({
-            'property_product_pricelist':
-            self._get_sale_pricelist_id() or None,
-        })
-        return res
+        product_pricelist = self._get_sale_pricelist_id() or None
+        for rec in self:
+            rec.property_product_pricelist = product_pricelist
 
     @api.multi
     @api.depends('user_ids.groups_id')
