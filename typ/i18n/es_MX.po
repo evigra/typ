@@ -1587,6 +1587,11 @@ msgid "HVACR ORGANIZATIONS"
 msgstr "ORGANIZACIONES HVACR"
 
 #. module: typ
+#: model:ir.model.fields,field_description:typ.field_sale_order_has_order_lines
+msgid "Has Order Lines"
+msgstr "Tiene Lineas de Orden"
+
+#. module: typ
 #: model:ir.ui.view,arch_db:typ.page_typ_hardi_ir_ui_view
 #: model:ir.ui.view,arch_db:typ.typ_hardi
 #: model:website.page,arch_db:typ.page_typ_hardi
@@ -1597,6 +1602,11 @@ msgstr "Heating, Airconditioning &amp; Refrigeration Distributors International 
 #: model:product.public.category,name:typ.helicoidales-tubulares
 msgid "Helicoidales Tubulares"
 msgstr "Helicoidales Tubulares"
+
+#. module: typ
+#: model:ir.model.fields,help:typ.field_sale_order_has_order_lines
+msgid "Helper field to disable partner edition in Form view"
+msgstr "Campo auxiliar para deshabilitar la edición en la vista Formulario"
 
 #. module: typ
 #: model:ir.ui.view,arch_db:typ.loyalty
@@ -3076,6 +3086,12 @@ msgstr "Con T&amp;P tienes soporte y respaldo cuando lo necesitas, ahora <br/> t
 #, python-format
 msgid "You are not elegible for upgrade"
 msgstr "Usted no es candidato para la actualización"
+
+#. module: typ
+#: code:addons/typ/models/sale_order.py:27
+#, python-format
+msgid "You can't change Partner in Sales Orders with lines. Order IDs: %s."
+msgstr "No puedes cambiar el Cliente en Ordenes de Venta con lineas. IDs: %s."
 
 #. module: typ
 #: model:ir.ui.view,arch_db:typ.loyalty

@@ -1,0 +1,19 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<odoo>
+
+    <record id="view_sale_order_form_inherit" model="ir.ui.view">
+        <field name="name">sale.order.form.inherit</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//group[1]" position="after">
+                    <field name="has_order_lines" invisible="1"/>
+            </xpath>
+            <field name="partner_id" position="attributes">
+               <attribute name="attrs" translation="off">{'readonly': ['|', ('has_order_lines', '!=', False), ('state', 'not in', ['draft', 'sent'])]}</attribute>
+               <attribute name="force_save" translation="off">1</attribute>
+            </field>
+        </field>
+    </record>
+
+</odoo>
