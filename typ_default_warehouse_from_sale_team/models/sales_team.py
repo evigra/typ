@@ -56,7 +56,7 @@ class ResPartner(models.Model):
         to create the partner.
 
         """
-        product_pricelist = self._get_sale_pricelist_id() or None
+        product_pricelist = self._get_sale_pricelist_id()
         for rec in self:
             rec.property_product_pricelist = product_pricelist
 

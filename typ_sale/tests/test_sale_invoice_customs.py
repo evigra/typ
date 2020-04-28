@@ -19,6 +19,8 @@ class TestSaleInvoiceCustoms(TransactionCase):
         self.stock_location_id = self.ref('stock.stock_location_stock')
         self.o_expense_id = self.ref('stock_cost_segmentation.o_expense')
         self.o_income_id = self.ref('stock_cost_segmentation.o_income')
+        self.pricelist = self.env.ref('product.list0')
+        self.env.user.sale_team_id.sale_pricelist_id = self.pricelist.id
 
         (self.product_3 + self.product_4).write({
             'cost_method': 'fifo',

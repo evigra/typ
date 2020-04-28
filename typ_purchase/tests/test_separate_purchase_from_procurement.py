@@ -13,6 +13,8 @@ class TestSeparatePurchaseFromProcurement(TransactionCase):
             {'group_propagation_option': 'propagate'})
         self.partner = self.env.ref('base.res_partner_1')
         self.product = self.env.ref('product.product_delivery_02')
+        self.pricelist = self.env.ref('product.list0')
+        self.env.user.sale_team_id.sale_pricelist_id = self.pricelist.id
         self.line_vals = {
             'name': self.product.name, 'product_id': self.product.id,
             'product_uom_qty': 1, 'product_uom': self.product.uom_id.id,
