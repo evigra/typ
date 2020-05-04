@@ -41,7 +41,6 @@ class TestTypAccount(common.TransactionCase):
         self.account_invoice_1 = self.create_invoice()
         self.account_invoice_2 = self.create_invoice()
         self.pricelist.currency_id = self.env.user.company_id.currency_id.id
-        self.env.user.sale_team_id.sale_pricelist_id = self.pricelist.id
 
         self.dict_vals_sale = {
             'partner_id': self.partner.id,
