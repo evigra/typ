@@ -8,6 +8,11 @@ class SaleOrder(models.Model):
 
     _inherit = 'sale.order'
 
+    @api.multi
+    def _get_pricelist(self):
+        sale_team = self.env.user.sale_team_id
+        return sale_team and sale_team.sale_pricelist_id.id
+
     type_payment_term = fields.Selection(
         [('credit', 'Credit'), ('cash', 'Cash'),
          ('postdated_check', 'Postdated check')], default='credit')
@@ -61,6 +66,7 @@ class SaleOrder(models.Model):
                                         help='USD / MXN')
     special_discounts = fields.Char(
         help='Any compensation granted by the provider')
+    pricelist_id = fields.Many2one(default=_get_pricelist)
 
     @api.onchange('warehouse_id', 'partner_id')
     def _onchange_warehouse_id(self):
