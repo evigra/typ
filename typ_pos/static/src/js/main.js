@@ -6,6 +6,7 @@ odoo.define('typ_pos.pos_stock',function(require) {
     var core = require('web.core');
     var screens = require('point_of_sale.screens');
     var utils = require('web.utils');
+    var rpc = require('web.rpc');
     var SuperNumpadState = models.NumpadState.prototype;
     var model_list = models.PosModel.prototype.models
     var _t = core._t;
@@ -254,23 +255,79 @@ odoo.define('typ_pos.pos_stock',function(require) {
             }
             return _super_order.is_paid.call(this);
         },
-        add_product: function(product, options) {
-            var self = this;
-            if (!self.pos.config.wk_continous_sale && self.pos.config.wk_display_stock)
-            {
-                if (parseInt($("#qty-tag" + product.id).html()) <= self.pos.config.wk_deny_val)
-                    self.pos.gui.show_popup('error',{
-                        'title':  _t("Warning !!!!"),
-                        'body': _t("("+product.display_name+")"+self.pos.config.wk_error_msg+"."),
-                    });
-                else
-                    _super_order.add_product.call(this, product, options);
+        add_product: function (product, options) {
+            // This block of code check the stock.
+            var tagExists = $("#qty-tag" + product.id).length;
+            var stockChecks = [
+                !this.pos.config.wk_continous_sale,
+                this.pos.config.wk_display_stock,
+                tagExists,
+                parseInt($("#qty-tag" + product.id).html()) <= self.pos.config.wk_deny_val,
+            ]
+            if (stockChecks.every(check => check)) {
+                return self.pos.gui.show_popup('error',{
+                    'title':  _t("Warning !!!!"),
+                    'body': _t("("+product.display_name+")"+self.pos.config.wk_error_msg+"."),
+                });
+            };
+            // End of modification.
+            if(this._printed){
+                this.destroy();
+                return this.pos.get_order().add_product(product, options);
             }
-            else
-                _super_order.add_product.call(this, product, options);
-            if (self.pos.config.wk_display_stock) {
-                self.pos.chrome.wk_change_qty_css();
+            this.assert_editable();
+            options = options || {};
+            var attr = JSON.parse(JSON.stringify(product));
+            attr.pos = this.pos;
+            attr.order = this;
+            var line = new models.Orderline({}, {pos: this.pos, order: this, product: product});
+
+            if(options.quantity !== undefined){
+                line.set_quantity(options.quantity);
             }
+
+            if(options.price !== undefined){
+                line.set_unit_price(options.price);
+            }
+
+            //To substract from the unit price the included taxes mapped by the fiscal position
+            this.fix_tax_included_price(line);
+
+            if(options.discount !== undefined){
+                line.set_discount(options.discount);
+            }
+
+            if(options.extras !== undefined){
+                for (var prop in options.extras) {
+                    line[prop] = options.extras[prop];
+                }
+            }
+
+            var to_merge_orderline;
+            for (var i = 0; i < this.orderlines.length; i++) {
+                if(this.orderlines.at(i).can_be_merged_with(line) && options.merge !== false){
+                    to_merge_orderline = this.orderlines.at(i);
+                }
+            }
+            if (to_merge_orderline){
+                to_merge_orderline.merge(line);
+                // The line bellow updates the pricelist value.
+                to_merge_orderline.updateWithPricelist();
+            } else {
+                this.orderlines.add(line);
+                // The line bellow updates the pricelist value.
+                line.updateWithPricelist();
+            }
+            this.select_orderline(this.get_last_orderline());
+
+            if(line.has_product_lot){
+                this.display_lot_popup();
+            }
+            // This block of code updates de css and models.
+            if (this.pos.config.wk_display_stock) {
+                this.pos.chrome.wk_change_qty_css();
+            };
+            // End of modification.
         },
     });
 
@@ -370,7 +427,19 @@ odoo.define('typ_pos.pos_stock',function(require) {
             }
             _super_orderline.initialize.call(this,attr,options);
         },
-
+        updateWithPricelist () {
+            const numpad = $('.numpad').block(), order = this.order;
+            rpc.query({
+                model: 'product.pricelist',
+                method: 'get_product_price_rule_from_ui',
+                args: [order.pricelist.id, this.product.id, this.quantity, (order.get_client() || {}).id]
+            }).then((productPrices) => {
+                const productPrice = productPrices[this.product.id];
+                if (productPrice) {
+                    this.set_unit_price(productPrice[0]);
+                }
+            }).always(() => numpad.unblock());
+        },
         set_quantity: function(quantity) {
             var self = this;
             console.log('get_orderlines set quantity');
@@ -419,6 +488,7 @@ odoo.define('typ_pos.pos_stock',function(require) {
                         _super_orderline.set_quantity.call(this, quantity);
                 }
             }
+            this.updateWithPricelist();
         },
     });
 });

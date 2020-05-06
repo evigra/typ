@@ -163,6 +163,13 @@ class Pricelist(models.Model):
 
     _inherit = 'product.pricelist'
 
+    @api.multi
+    def get_product_price_rule_from_ui(self, product, quantity, partner):
+        product = self.env['product.product'].browse(product)
+        partner = self.env['res.partner'].browse(partner)
+        self.ensure_one()
+        return self._compute_price_rule([(product, quantity, partner)])
+
     # pylint: disable=R1260
     @api.multi
     def _compute_price_rule(self, products_qty_partner, date=False,
