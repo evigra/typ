@@ -16,6 +16,14 @@ class AccountInvoice(models.Model):
 
     _inherit = 'account.invoice'
 
+    @api.multi
+    def action_invoice_open(self):
+        """If this invoice comes from the PoS, send it by e-mail automatically"""
+        res = super(AccountInvoice, self).action_invoice_open()
+        if 'pos_picking_id' in self.env.context:
+            self.send_invoice_mail()
+        return res
+
     @api.model
     def get_human_value(self, field_name, selection_option):
         """Convert technical key to value to show in selection human readable

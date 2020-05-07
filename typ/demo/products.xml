@@ -142,4 +142,8 @@
             <field name="value_ids" eval="[(6,0,[ref('attribute-lennox-1'), ref('attribute-lennox-2'), ref('attribute-lennox-3')])]"/>
         </record>
 
+        <record id="product.service_order_01" model="product.product">
+            <field name="l10n_mx_edi_code_sat_id" ref="l10n_mx_edi.prod_code_sat_01010101"/>
+        </record>
+
 </odoo>

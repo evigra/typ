@@ -6,8 +6,7 @@
         <field name="email">contacto@typrefrigeracion.com.mx</field>
     </record>
     <record id="base.main_partner" model="res.partner">
-        <field name="vat">TCM970625MB1</field>
-        <field name="property_account_position_id" search="[('name', '=', 'Personas morales del régimen general')]"/>
+        <field name="property_account_position_id" ref="l10n_mx.1_account_fiscal_position_601_fr"/>
         <field name="street_name">Nayarit</field>
         <field name="street_number">291</field>
         <field name="street2">San Benito</field>
