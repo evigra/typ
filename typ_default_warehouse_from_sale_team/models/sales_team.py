@@ -30,6 +30,33 @@ class ProductPricelist(models.Model):
         help="Choose the Pricelist that partner can see"
     )
 
+    def _get_partner_pricelist_multi(self, partner_ids, company_id=None):
+        """ Retrieve the applicable pricelist for given partners in a given,
+        company. Check for a default pricelist in the user sale team to use it
+        in partner by default.
+
+            :param company_id: if passed, used for looking up properties,
+                instead of current user's company
+            :return: a dict {partner_id: pricelist}
+        """
+        partner = self.env['res.partner']
+        prop = self.env['ir.property'].with_context(
+            force_company=company_id or self.env.user.company_id.id)
+        res = super()._get_partner_pricelist_multi(
+            partner_ids, company_id=None)
+
+        # retrieve values of property
+        result = prop.get_multi('property_product_pricelist',
+                                partner._name, partner_ids)
+        remaining_partner_ids = [pid for pid, val in result.items() if not val]
+        sale_team = self.env.user.sale_team_id
+        pricelist_id = sale_team and sale_team.sale_pricelist_id
+        if remaining_partner_ids and pricelist_id:
+            for pid in remaining_partner_ids:
+                result[pid] = pricelist_id
+            return result
+        return res
+
 
 class ResPartner(models.Model):
 
