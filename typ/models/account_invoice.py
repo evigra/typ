@@ -4,6 +4,7 @@
 
 import logging
 from odoo import _, api, models
+from odoo.addons.l10n_mx_edi.tools.run_after_commit import run_after_commit
 
 import io
 import zipfile
@@ -35,9 +36,11 @@ class AccountInvoice(models.Model):
         data = dict(self.fields_get().get(field_name).get('selection'))
         return data.get(selection_option, '')
 
+    @run_after_commit
+    @api.multi
     def send_invoice_mail(self):
-        """Try send the XML and Invoice report by email to customer.
-        I is found a problem with this action will be add a new message
+        """Try to send the XML and Invoice report by email to customer.
+        If a problem is found, a new message will be added
         with the error in the invoice."""
         for record in self:
             if not record.partner_id.email:
