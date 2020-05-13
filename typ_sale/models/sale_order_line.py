@@ -64,6 +64,8 @@ class SaleOrderLine(models.Model):
     def check_margin_qty(self, price_subtotal=False):
         """Verify quantity of margin minimum in sale order line for onchange.
         """
+        if self.product_id.type != 'product':
+            return False
         res = {
             'message': _(
                 'The product [%s] %s %s can not be sold below the allowed '
@@ -73,9 +75,6 @@ class SaleOrderLine(models.Model):
                         'name')))}
         can_sell_bellow_minimun_margin = self.env.user.has_group(
             'typ_sale.res_group_can_sell_below_minimum_margin')
-        invoice = getattr(self, '_origin', self)
-        has_stock_moves = bool(self.env['stock.move'].search(
-            [('sale_line_id', '=', invoice.id)], limit=1))
         if can_sell_bellow_minimun_margin:
             return False
         if not price_subtotal:
@@ -83,7 +82,7 @@ class SaleOrderLine(models.Model):
 
         if price_subtotal == 0 and not self.product_id:
             return False
-        if price_subtotal <= 0 and self.product_id and not has_stock_moves:
+        if price_subtotal <= 0 and self.product_id:
             return res
 
         cur = self.order_id.pricelist_id.currency_id
@@ -100,7 +99,7 @@ class SaleOrderLine(models.Model):
         purchase_sale = cur.round(tmp_margin)
 
         margin_sale = (purchase_sale / price_subtotal) * 100
-        if margin_sale < margin and not has_stock_moves:
+        if margin_sale < margin:
             return res
         return False
 
