@@ -64,7 +64,10 @@ class SaleOrderLine(models.Model):
     def check_margin_qty(self, price_subtotal=False):
         """Verify quantity of margin minimum in sale order line for onchange.
         """
-        if self.product_id.type != 'product':
+        can_sell_bellow_minimun_margin = self.env.user.has_group(
+            'typ_sale.res_group_can_sell_below_minimum_margin')
+        if (self.product_id.type != 'product' or self.order_id.state in ['sale', 'cancel'] or
+                can_sell_bellow_minimun_margin):
             return False
         res = {
             'message': _(
@@ -73,10 +76,6 @@ class SaleOrderLine(models.Model):
                     self.product_id.default_code, self.product_id.name,
                     ','.join(self.product_id.attribute_value_ids.mapped(
                         'name')))}
-        can_sell_bellow_minimun_margin = self.env.user.has_group(
-            'typ_sale.res_group_can_sell_below_minimum_margin')
-        if can_sell_bellow_minimun_margin:
-            return False
         if not price_subtotal:
             price_subtotal = self.price_subtotal
 
