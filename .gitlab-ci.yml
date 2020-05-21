@@ -14,7 +14,7 @@ lint:
   script:
     - source variables.sh
     - export TRAVIS_BUILD_DIR=$(pwd)
-    - pip install deployv-addon-gitlab-tools
+    - pip3 install deployv-addon-gitlab-tools
     - deployvcmd gitlab_tools check_keys
     - source ${REPO_REQUIREMENTS}/virtualenv/nodejs/bin/activate
     - source ${REPO_REQUIREMENTS}/virtualenv/python${TRAVIS_PYTHON_VERSION}/bin/activate
@@ -37,7 +37,7 @@ test:
   script:
     - source variables.sh
     - export TRAVIS_BUILD_DIR=$(pwd)
-    - pip install deployv-addon-gitlab-tools
+    - pip3 install deployv-addon-gitlab-tools
     - apt-get update
     - apt-get install python3-dev python3-dev libcups2-dev gcc
     - deployvcmd gitlab_tools check_keys
