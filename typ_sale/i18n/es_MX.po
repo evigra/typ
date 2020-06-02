@@ -492,9 +492,30 @@ msgid "Potential Importance"
 msgstr "Potential Importance"
 
 #. module: typ_sale
+#: model:ir.ui.view,arch_db:typ_sale.product_pricelist_item_search_view
+msgid "Pricelist Item Search"
+msgstr "Búsqueda por Item de Tarifas"
+
+#. module: typ_sale
+#: model:ir.ui.menu,name:typ_sale.menu_product_pricelist_item
+#: model:ir.ui.view,arch_db:typ_sale.product_pricelist_view
+msgid "Pricelist Items"
+msgstr "Tarifas por Item"
+
+#. module: typ_sale
+#: model:ir.model,name:typ_sale.model_product_pricelist_item
+msgid "Pricelist item"
+msgstr "Tarifas por item"
+
+#. module: typ_sale
 #: model:ir.model,name:typ_sale.model_procurement_rule
 msgid "Procurement Rule"
 msgstr "Regla de abastecimiento"
+
+#. module: typ_sale
+#: model:ir.actions.act_window,name:typ_sale.product_pricelist_type_action
+msgid "Product Pricelist Item"
+msgstr "Listas de precio por Item"
 
 #. module: typ_sale
 #: model:ir.model,name:typ_sale.model_purchase_order
