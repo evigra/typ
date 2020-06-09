@@ -38,4 +38,16 @@
             </field>
         </field>
     </record>
+    <record id="attachment_tree_action2" model="ir.actions.act_window">
+        <field name="name">Landed Costs Attachments</field>
+        <field name="res_model">ir.attachment</field>
+        <field name="domain">[("res_model","=","stock.landed.cost")]</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem
+        action="typ.attachment_tree_action2"
+        id="typ.attachment_tree_type_menu"
+        parent="stock.menu_warehouse_report" sequence="60"
+        name="Landed Costs Attachments"/>
 </odoo>

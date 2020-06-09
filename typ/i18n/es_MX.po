@@ -1796,6 +1796,12 @@ msgid "La necesidad de reducir los elevados costos debido a los índices de gara
 msgstr "La necesidad de reducir los elevados costos debido a los índices de garantías por fallas en equipos que pudieron haberse evitado, obligó a los fabricantes de equipo original de los EEUU a construir una organización dedicada a la capacitación efectiva y continua de los técnicos en cargados de las instalaciones de sus productos y a su certificación."
 
 #. module: typ
+#: model:ir.actions.act_window,name:typ.attachment_tree_action2
+#: model:ir.ui.menu,name:typ.attachment_tree_type_menu
+msgid "Landed Costs Attachments"
+msgstr "Adjuntos de Gastos de envío"
+
+#. module: typ
 #: model:ir.model.fields,field_description:typ.field_product_public_category_landing_category
 msgid "Landing Category"
 msgstr "Categoría inicial"
