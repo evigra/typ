@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 import threading
+import pprint
 import openerp
 from openerp import api
 from openerp.tests import common
@@ -95,7 +96,6 @@ class TestReorderingRule(TestTypStock):
         proc --->  procurement order
         po --->  procurement order
         """
-        import pprint
         wh_fields = ['name', 'resupply_wh_ids', 'lot_stock_id',
                      'resupply_from_wh']
         pc_fields = ['name', 'route_ids', 'seller_ids', 'qty_available']
