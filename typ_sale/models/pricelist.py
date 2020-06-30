@@ -19,6 +19,7 @@ class ProductProduct(models.Model):
          ('sellable', 'Normal'),
          ('end', 'End of Lifecycle'),
          ('obsolete', 'Obsolete'),
+         ('temporary', 'Temporary'),
          ('support', 'Support')],
         help='State of lifecycle of the product.'
     )
