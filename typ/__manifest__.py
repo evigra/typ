@@ -119,11 +119,15 @@
         'views/pages/organizations.xml',
         'views/pages/providers.xml',
         'views/pages/loyalty.xml',
+        'views/pages/catalog.xml',
     ],
     'demo': [
         'demo/products.xml',
     ],
-    'qweb': ['static/src/xml/pos.xml'],
+    'qweb': [
+        'static/src/xml/pos.xml',
+        'static/src/xml/link_editor.xml',
+    ],
     "installable": True,
     "application": True,
     # "post_init_hook": "_auto_install_stock_account_unfuck",

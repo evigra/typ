@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <template id="download_modal" name="Download Catalogs Modal">
+            <div id="download-catalog" class="modal fade modal-login mt96" role="dialog">
+                <div class="modal-dialog text-center">
+                    <div class="modal-content">
+                        <div class="modal-header cobalt-color no-padding-bottom no-padding-top">
+                            <div class="row mr0">
+                                <button type="button" class="close mt8" data-dismiss="modal"><img src="/web/image/theme_typ.icon-close-modal" alt="Cerrar Modal"/></button> 
+                            </div>
+                            <div class="row mr0 ml0">
+                                <h5 class="mt0 mb16">Download Catalog</h5>
+                            </div>
+                        </div>
+
+                        <div class="modal-body">
+                            <div class="row">
+                                <div class="col-md-10 col-md-offset-1 col-sm-10 col-sm-offset-1 text-center text-center">
+                                    <p class="mt32 mb16">
+                                        Capture your email and automatically download our catalog
+                                    </p>
+                                </div>
+                                <div class="col-md-10 col-md-offset-1 col-sm-10 col-sm-offset-1 mt24 text-center">
+                                    <div class="form-group">
+                                        <form action="/website_form/" class="s_website_form form-horizontal container-fluid mt24" data-model_name="crm.lead" data-success_page="" enctype="multipart/form-data" method="post">
+                                            <div class="form-group form-field o_website_form_required_custom">
+                                                <input class="form-control o_website_form_input" name="contact_name" placeholder="Name*" required="" t-att-value="request.params.get('contact_name', '')" type="text"/>
+                                            </div>
+                                            <div class="form-group form-field o_website_form_required_custom">
+                                                <input class="form-control o_website_form_input" name="email_from" placeholder="E-mail*" required="" t-att-value="request.params.get('email_from', '')" type="email"/>
+                                            </div>
+                                            <div class="form-group form-field">
+                                                <input class="form-control o_website_form_input" name="phone" placeholder="Telephone*" t-att-value="request.params.get('phone', '')" type="text" required=""/>
+                                            </div>
+                                            <div class="form-group form-field hidden">
+                                                <input class="form-control o_website_form_input" name="name" placeholder="" t-att-value="'Catalog download'" type="hidden"/>
+                                            </div>
+                                            <div class="form-group form-field hidden">
+                                                <input class="form-control o_download_description o_website_form_input" name="description" placeholder="" type="hidden"/>
+                                            </div>
+                                            <div class="form-group mt32">
+                                                <div class="col-sm-10 col-sm-offset-1 text-center mb32">
+                                                    <a class="btn btn-primary btn-lg o_website_form_send">Download</a>
+                                                </div>
+                                                <div class="col-sm-10 col-sm-offset-1 text-center">
+                                                <span id="o_website_form_result"/>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </template>
+
+    <template id="layout_download" inherit_id="website.layout" priority="20">
+        <xpath expr="//div[@id='wrapwrap']/main" position="inside">
+            <t t-call="typ.download_modal"/>
+        </xpath>
+    </template>
+
+</odoo>
