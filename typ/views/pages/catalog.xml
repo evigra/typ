@@ -6,10 +6,10 @@
                     <div class="modal-content">
                         <div class="modal-header cobalt-color no-padding-bottom no-padding-top">
                             <div class="row mr0">
-                                <button type="button" class="close mt8" data-dismiss="modal"><img src="/web/image/theme_typ.icon-close-modal" alt="Cerrar Modal"/></button> 
+                                <button type="button" class="close mt16" data-dismiss="modal"><img src="/web/image/theme_typ.icon-close-modal" alt="Cerrar Modal"/></button> 
                             </div>
                             <div class="row mr0 ml0">
-                                <h5 class="mt0 mb16">Download Catalog</h5>
+                                <h5 class="mt24 mb32">Download Catalog</h5>
                             </div>
                         </div>
 
@@ -17,12 +17,12 @@
                             <div class="row">
                                 <div class="col-md-10 col-md-offset-1 col-sm-10 col-sm-offset-1 text-center text-center">
                                     <p class="mt32 mb16">
-                                        Capture your email and automatically download our catalog
+                                        Capture your information and download our catalog.
                                     </p>
                                 </div>
-                                <div class="col-md-10 col-md-offset-1 col-sm-10 col-sm-offset-1 mt24 text-center">
+                                <div class="col-md-10 col-md-offset-1 col-sm-10 col-sm-offset-1 text-center">
                                     <div class="form-group">
-                                        <form action="/website_form/" class="s_website_form form-horizontal container-fluid mt24" data-model_name="crm.lead" data-success_page="" enctype="multipart/form-data" method="post">
+                                        <form action="/website_form/" class="s_website_form form-horizontal container-fluid mt24" data-model_name="crm.lead" data-success_download="" enctype="multipart/form-data" method="post">
                                             <div class="form-group form-field o_website_form_required_custom">
                                                 <input class="form-control o_website_form_input" name="contact_name" placeholder="Name*" required="" t-att-value="request.params.get('contact_name', '')" type="text"/>
                                             </div>
@@ -40,10 +40,10 @@
                                             </div>
                                             <div class="form-group mt32">
                                                 <div class="col-sm-10 col-sm-offset-1 text-center mb32">
-                                                    <a class="btn btn-primary btn-lg o_website_form_send">Download</a>
+                                                    <a class="btn btn-primary btn-lg o_website_form_send" target="_BLANK">Download</a>
                                                 </div>
                                                 <div class="col-sm-10 col-sm-offset-1 text-center">
-                                                <span id="o_website_form_result"/>
+                                                    <span id="o_website_form_result"/>
                                                 </div>
                                             </div>
                                         </form>

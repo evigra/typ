@@ -518,7 +518,7 @@
                                     </t>
                                 </div>
                                 <div class="col-sm-3 mt8">
-                                    <span class="total-order" t-field="order.amount_total" t-field-options='{"widget": "monetary", "display_currency": "order.pricelist_id.currency_id"}'/>
+                                    <span class="total-order" t-field="order.amount_total" t-options='{"widget": "monetary", "display_currency": "order.pricelist_id.currency_id"}'/>
                                 </div>
                                 <div class="col-sm-2">
                                     <t t-if="order.state == 'done'">
@@ -1156,7 +1156,7 @@
                     <div id="o_my_sidebar" class="col-md-3 col-md-offset-1 o_my_sidebar">
                         <div class="o_my_details">
                             <h3 class="page-header">Your Details <a href="/my/home" class="btn btn-default btn-xs">Change</a></h3>
-                            <div t-field="user.partner_id" t-field-options='{"widget": "contact", "fields": ["email", "phone", "address", "name"]}'/>
+                            <div t-field="user.partner_id" t-options='{"widget": "contact", "fields": ["email", "phone", "address", "name"]}'/>
                         </div>
                     </div>
                     <div class="col-md-12 oe_structure"/>

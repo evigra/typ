@@ -238,6 +238,18 @@
             <attribute name="data-selector" add=".s-content" separator=", "></attribute>
             <attribute name="data-drop-near" add=".s-content" separator=", "></attribute>
         </xpath>
+        <xpath expr="//div[@data-js='background']" position="after">
+            <div data-selector=".s_three_columns a">
+                <li class="dropdown-submenu">
+                    <a tabindex="-2" href="#"><i class="fa fa-edit"/>Form</a>
+                    <ul class="dropdown-menu">
+                        <li data-toggle-class="has-form-download">
+                            <a href="#">Add Download Form</a>
+                        </li>
+                    </ul>
+                </li>
+            </div>
+        </xpath>
     </template>
 
 

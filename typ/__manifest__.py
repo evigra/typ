@@ -126,7 +126,6 @@
     ],
     'qweb': [
         'static/src/xml/pos.xml',
-        'static/src/xml/link_editor.xml',
     ],
     "installable": True,
     "application": True,

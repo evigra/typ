@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 11.0+e\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-04-15 16:45+0000\n"
-"PO-Revision-Date: 2019-04-15 12:54-0500\n"
+"POT-Creation-Date: 2020-08-21 19:10+0000\n"
+"PO-Revision-Date: 2020-08-21 19:10+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -32,6 +32,15 @@ msgid "#Order"
 msgstr "#Pedido"
 
 #. module: typ
+#: model:ir.ui.view,arch_db:typ.about
+#: model:ir.ui.view,arch_db:typ.homepage
+#: model:ir.ui.view,arch_db:typ.page_typ_providers_ir_ui_view
+#: model:ir.ui.view,arch_db:typ.typ_providers
+#: model:website.page,arch_db:typ.page_typ_providers
+msgid "&amp;nbsp;"
+msgstr "&amp;nbsp;"
+
+#. module: typ
 #: model:ir.ui.view,arch_db:typ.report_invoice_document_typ
 msgid "&amp;nbsp;<span>on</span>"
 msgstr "&amp;nbsp;<span>en</span>"
@@ -39,32 +48,17 @@ msgstr "&amp;nbsp;<span>en</span>"
 #. module: typ
 #: model:ir.ui.view,arch_db:typ.loyalty_success
 msgid "&amp;times;"
-msgstr ""
+msgstr "&amp;times;"
 
 #. module: typ
-#: model:product.attribute.value,name:typ.attribute-lennox-1
-msgid "1.0 Tons"
-msgstr "1.0 Tons"
-
-#. module: typ
-#: model:product.attribute.value,name:typ.attribute-lennox-2
-msgid "1.5 Tons"
-msgstr "1.5 Tons"
-
-#. module: typ
-#: model:product.attribute.value,name:typ.product_attribute2_value
-msgid "16.0"
-msgstr "16.0"
+#: model:ir.ui.view,arch_db:typ.report_invoice_document_typ
+msgid "(SN:"
+msgstr "(NS:"
 
 #. module: typ
 #: model:ir.ui.view,arch_db:typ.loyalty
 msgid "2% of Yearly Reinbursment"
 msgstr "Reembolso 2% Anual"
-
-#. module: typ
-#: model:product.attribute.value,name:typ.attribute-lennox-3
-msgid "2.0 Tons"
-msgstr "2.0 Tons"
 
 #. module: typ
 #: model:ir.ui.view,arch_db:typ.sort_products
@@ -75,6 +69,50 @@ msgstr "20 productos"
 #: model:ir.ui.view,arch_db:typ.sort_products
 msgid "50 products"
 msgstr "50 productos"
+
+#. module: typ
+#: model:ir.ui.view,arch_db:typ.homepage
+msgid "<b>\n"
+"                      <font class=\"text-primary\" style=\"font-size: 14px;\">Con T&amp;amp;P tienes el respaldo de expertos.</font>\n"
+"                    </b>"
+msgstr "<b>\n"
+"                      <font class=\"text-primary\" style=\"font-size: 14px;\">Con T&amp;amp;P tienes el respaldo de expertos.</font>\n"
+"                    </b>"
+
+#. module: typ
+#: model:ir.ui.view,arch_db:typ.about
+msgid "<b>\n"
+"                  <span lang=\"es\">\n"
+"                    <font style=\"font-size: 18px;\">Calidad en el servicio es lo nuestro.&amp;nbsp;</font>\n"
+"                  </span>\n"
+"                </b>"
+msgstr "<b>\n"
+"                  <span lang=\"es\">\n"
+"                    <font style=\"font-size: 18px;\">Calidad en el servicio es lo nuestro.&amp;nbsp;</font>\n"
+"                  </span>\n"
+"                </b>"
+
+#. module: typ
+#: model:ir.ui.view,arch_db:typ.about
+msgid "<b>\n"
+"                  <span lang=\"es\">&amp;nbsp;</span>\n"
+"                </b>"
+msgstr "<b>\n"
+"                  <span lang=\"es\">&amp;nbsp;</span>\n"
+"                </b>"
+
+#. module: typ
+#: model:ir.ui.view,arch_db:typ.about
+msgid "<b><font style=\"font-size: 18px;\">Innovación, calidad, servicio.&amp;nbsp;<br/>T&amp;amp;P es garantía.</font>&amp;nbsp;</b>\n"
+"                <span style=\"text-align: justify;\">\n"
+"                  <font style=\"font-size: 18px;\">&amp;nbsp;</font>\n"
+"                </span>\n"
+"                <br/>"
+msgstr "<b><font style=\"font-size: 18px;\">Innovación, calidad, servicio.&amp;nbsp;<br/>T&amp;amp;P es garantía.</font>&amp;nbsp;</b>\n"
+"                <span style=\"text-align: justify;\">\n"
+"                  <font style=\"font-size: 18px;\">&amp;nbsp;</font>\n"
+"                </span>\n"
+"                <br/>"
 
 #. module: typ
 #: model:ir.ui.view,arch_db:typ.report_invoice_document_typ
@@ -172,7 +210,34 @@ msgstr "<div>\n"
 "        "
 
 #. module: typ
-#: code:addons/typ/models/account_invoice.py:38
+#: model:ir.ui.view,arch_db:typ.homepage
+msgid "<font class=\"text-primary\" style=\"font-size: 14px;\">Confías en nosotros y nosotros en ti.</font>"
+msgstr "<font class=\"text-primary\" style=\"font-size: 14px;\">Confías en nosotros y nosotros en ti.</font>"
+
+#. module: typ
+#: model:ir.ui.view,arch_db:typ.homepage
+msgid "<font class=\"text-primary\" style=\"font-size: 14px;\">Listos para cubrir tus proyecto.</font>"
+msgstr "<font class=\"text-primary\" style=\"font-size: 14px;\">Listos para cubrir tus proyecto.</font>"
+
+#. module: typ
+#: model:ir.ui.view,arch_db:typ.homepage
+msgid "<font style=\"font-size: 14px;\" class=\"text-primary\">Ahorra tiempo, haz tu pedido y recoge.</font>"
+msgstr "<font style=\"font-size: 14px;\" class=\"text-primary\">Ahorra tiempo, haz tu pedido y recoge.</font>"
+
+#. module: typ
+#: model:ir.ui.view,arch_db:typ.homepage
+msgid "<font style=\"font-size: 14px;\"> </font>\n"
+"                    <font style=\"font-size: 18px;\">CRÉDITO</font>"
+msgstr "<font style=\"font-size: 14px;\"> </font>\n"
+"                    <font style=\"font-size: 18px;\">CRÉDITO</font>"
+
+#. module: typ
+#: model:ir.ui.view,arch_db:typ.homepage
+msgid "<font style=\"font-size: 18px;\">RESERVADO</font>"
+msgstr "<font style=\"font-size: 18px;\">RESERVADO</font>"
+
+#. module: typ
+#: code:addons/typ/models/account_invoice.py:49
 #, python-format
 msgid "<h2>Error when try send invoice by email</h2><hr>Partner have not email. Please set that value.</hr>"
 msgstr "<h2>Error cuando se envia la factura por email</h2><hr>El cliente no tiene email. Porfavor agregue el valor</hr>"
@@ -201,6 +266,21 @@ msgstr "<i class=\"fa fa-chevron-left\" aria-hidden=\"true\"/> Regresar a histor
 #: model:ir.ui.view,arch_db:typ.contact_edit
 msgid "<i class=\"fa fa-chevron-left\" aria-hidden=\"true\"/> Back to shipping information"
 msgstr "<i class=\"fa fa-chevron-left\" aria-hidden=\"true\"/> Regresar a información de envío"
+
+#. module: typ
+#: model:ir.ui.view,arch_db:typ.homepage
+msgid "<i class=\"fa fa-chevron-left\" data-original-title=\"\" title=\"\"/>"
+msgstr "<i class=\"fa fa-chevron-left\" data-original-title=\"\" title=\"\"/>"
+
+#. module: typ
+#: model:ir.ui.view,arch_db:typ.homepage
+msgid "<i class=\"fa fa-chevron-right\" data-original-title=\"\" title=\"\"/>"
+msgstr "<i class=\"fa fa-chevron-right\" data-original-title=\"\" title=\"\"/>"
+
+#. module: typ
+#: model:ir.ui.view,arch_db:typ.snippet_options
+msgid "<i class=\"fa fa-edit\"/>Form"
+msgstr "<i class=\"fa fa-edit\"/>Formulario"
 
 #. module: typ
 #: model:ir.ui.view,arch_db:typ.product-description
@@ -300,6 +380,63 @@ msgid "<span class=\"total-title\">Total</span>"
 msgstr "<span class=\"total-title\">Total</span>"
 
 #. module: typ
+#: model:ir.ui.view,arch_db:typ.about
+msgid "<span lang=\"es\">Con más de 28 años de experiencia, presencia en los principales estados de la República y crecimiento constante, T&amp;amp;P crea oportunidades de negocio que te harán crecer.&amp;nbsp;</span>"
+msgstr "<span lang=\"es\">Con más de 28 años de experiencia, presencia en los principales estados de la República y crecimiento constante, T&amp;amp;P crea oportunidades de negocio que te harán crecer.&amp;nbsp;</span>"
+
+#. module: typ
+#: model:ir.ui.view,arch_db:typ.about
+msgid "<span lang=\"es\">Un equipo altamente especializado, apasionado por el servicio y en contacto con las marcas más relevantes del mercado. En T&amp;amp;P estamos comprometidos con ofrecerte lo mejor.</span>"
+msgstr "<span lang=\"es\">Un equipo altamente especializado, apasionado por el servicio y en contacto con las marcas más relevantes del mercado. En T&amp;amp;P estamos comprometidos con ofrecerte lo mejor.</span>"
+
+#. module: typ
+#: model:ir.ui.view,arch_db:typ.homepage
+msgid "<span style=\"font-size: 18px;\">GARANTÍAS</span>"
+msgstr "<span style=\"font-size: 18px;\">GARANTÍAS</span>"
+
+#. module: typ
+#: model:ir.ui.view,arch_db:typ.homepage
+msgid "<span style=\"font-size:10.5pt;font-family:&quot;OpenSans&quot;,serif;&#10;mso-fareast-font-family:&quot;Times New Roman&quot;;mso-bidi-font-family:&quot;Times New Roman&quot;;&#10;color:#505050;mso-ansi-language:ES-MX;mso-fareast-language:ES-TRAD\">Ing. Cristina Sotelo, ISSPRO.</span>\n"
+"                    <span style=\"font-family:&quot;OpenSans&quot;,serif;&#10;mso-fareast-font-family:&quot;Times New Roman&quot;;mso-bidi-font-family:&quot;Times New Roman&quot;;&#10;color:#505050;mso-ansi-language:ES-MX;mso-fareast-language:ES-TRAD\"> </span>"
+msgstr "<span style=\"font-size:10.5pt;font-family:&quot;OpenSans&quot;,serif;&#10;mso-fareast-font-family:&quot;Times New Roman&quot;;mso-bidi-font-family:&quot;Times New Roman&quot;;&#10;color:#505050;mso-ansi-language:ES-MX;mso-fareast-language:ES-TRAD\">Ing. Cristina Sotelo, ISSPRO.</span>\n"
+"                    <span style=\"font-family:&quot;OpenSans&quot;,serif;&#10;mso-fareast-font-family:&quot;Times New Roman&quot;;mso-bidi-font-family:&quot;Times New Roman&quot;;&#10;color:#505050;mso-ansi-language:ES-MX;mso-fareast-language:ES-TRAD\"> </span>"
+
+#. module: typ
+#: model:ir.ui.view,arch_db:typ.homepage
+msgid "<span style=\"font-size:10.5pt;font-family:&quot;OpenSans&quot;,serif;&#10;mso-fareast-font-family:&quot;Times New Roman&quot;;mso-bidi-font-family:&quot;Times New Roman&quot;;&#10;color:#505050;mso-ansi-language:ES-MX;mso-fareast-language:ES-TRAD\">Ing. David Campos, Campos Aire Acondicionado.</span>\n"
+"                    <span style=\"font-family:&quot;OpenSans&quot;,serif;&#10;mso-fareast-font-family:&quot;Times New Roman&quot;;mso-bidi-font-family:&quot;Times New Roman&quot;;&#10;color:#505050;mso-ansi-language:ES-MX;mso-fareast-language:ES-TRAD\"> </span>"
+msgstr "<span style=\"font-size:10.5pt;font-family:&quot;OpenSans&quot;,serif;&#10;mso-fareast-font-family:&quot;Times New Roman&quot;;mso-bidi-font-family:&quot;Times New Roman&quot;;&#10;color:#505050;mso-ansi-language:ES-MX;mso-fareast-language:ES-TRAD\">Ing. David Campos, Campos Aire Acondicionado.</span>\n"
+"                    <span style=\"font-family:&quot;OpenSans&quot;,serif;&#10;mso-fareast-font-family:&quot;Times New Roman&quot;;mso-bidi-font-family:&quot;Times New Roman&quot;;&#10;color:#505050;mso-ansi-language:ES-MX;mso-fareast-language:ES-TRAD\"> </span>"
+
+#. module: typ
+#: model:ir.ui.view,arch_db:typ.homepage
+msgid "<span style=\"font-size:10.5pt;font-family:&quot;OpenSans&quot;,serif;&#10;mso-fareast-font-family:&quot;Times New Roman&quot;;mso-bidi-font-family:&quot;Times New Roman&quot;;&#10;color:#505050;mso-ansi-language:ES-MX;mso-fareast-language:ES-TRAD\">Ing.&amp;nbsp;Ricardo Gutiérrez, GAG Industrial.</span>\n"
+"                    <span style=\"font-family:&#10;&quot;OpenSans&quot;,serif;mso-fareast-font-family:&quot;Times New Roman&quot;;mso-bidi-font-family:&#10;&quot;Times New Roman&quot;;color:#505050;mso-ansi-language:ES-MX;mso-fareast-language:&#10;ES-TRAD\"> </span>"
+msgstr "<span style=\"font-size:10.5pt;font-family:&quot;OpenSans&quot;,serif;&#10;mso-fareast-font-family:&quot;Times New Roman&quot;;mso-bidi-font-family:&quot;Times New Roman&quot;;&#10;color:#505050;mso-ansi-language:ES-MX;mso-fareast-language:ES-TRAD\">Ing.&amp;nbsp;Ricardo Gutiérrez, GAG Industrial.</span>\n"
+"                    <span style=\"font-family:&#10;&quot;OpenSans&quot;,serif;mso-fareast-font-family:&quot;Times New Roman&quot;;mso-bidi-font-family:&#10;&quot;Times New Roman&quot;;color:#505050;mso-ansi-language:ES-MX;mso-fareast-language:&#10;ES-TRAD\"> </span>"
+
+#. module: typ
+#: model:ir.ui.view,arch_db:typ.homepage
+msgid "<span style=\"font-size:10.5pt;font-family:&quot;OpenSans&quot;,serif;&#10;mso-fareast-font-family:&quot;Times New Roman&quot;;mso-bidi-font-family:&quot;Times New Roman&quot;;&#10;color:#505050;mso-ansi-language:ES-MX;mso-fareast-language:ES-TRAD\">“Con T&amp;amp;P tenemos más de 10 años trabajando porque siempre nos ha respaldado con la calidad en el servicio y los productos que nos ofrecen\"</span>\n"
+"                    <span style=\"font-family:&quot;OpenSans&quot;,serif;mso-fareast-font-family:&quot;Times New Roman&quot;;&#10;mso-bidi-font-family:&quot;Times New Roman&quot;;color:#505050;mso-ansi-language:ES-MX;&#10;mso-fareast-language:ES-TRAD\"> </span>"
+msgstr "<span style=\"font-size:10.5pt;font-family:&quot;OpenSans&quot;,serif;&#10;mso-fareast-font-family:&quot;Times New Roman&quot;;mso-bidi-font-family:&quot;Times New Roman&quot;;&#10;color:#505050;mso-ansi-language:ES-MX;mso-fareast-language:ES-TRAD\">“Con T&amp;amp;P tenemos más de 10 años trabajando porque siempre nos ha respaldado con la calidad en el servicio y los productos que nos ofrecen\"</span>\n"
+"                    <span style=\"font-family:&quot;OpenSans&quot;,serif;mso-fareast-font-family:&quot;Times New Roman&quot;;&#10;mso-bidi-font-family:&quot;Times New Roman&quot;;color:#505050;mso-ansi-language:ES-MX;&#10;mso-fareast-language:ES-TRAD\"> </span>"
+
+#. module: typ
+#: model:ir.ui.view,arch_db:typ.homepage
+msgid "<span style=\"font-size:10.5pt;font-family:&quot;OpenSans&quot;,serif;&#10;mso-fareast-font-family:&quot;Times New Roman&quot;;mso-bidi-font-family:&quot;Times New Roman&quot;;&#10;color:#505050;mso-ansi-language:ES-MX;mso-fareast-language:ES-TRAD\">“Lo más valioso que T&amp;amp;P nos ofrece es su modelo de negocios de distribución de 2 etapas, ya que no solo somos un cliente, si no que nos convertimos en su socio comercial.\"</span>\n"
+"                    <span style=\"font-family:&quot;OpenSans&quot;,serif;mso-fareast-font-family:&#10;&quot;Times New Roman&quot;;mso-bidi-font-family:&quot;Times New Roman&quot;;color:#505050;&#10;mso-ansi-language:ES-MX;mso-fareast-language:ES-TRAD\"> </span>"
+msgstr "<span style=\"font-size:10.5pt;font-family:&quot;OpenSans&quot;,serif;&#10;mso-fareast-font-family:&quot;Times New Roman&quot;;mso-bidi-font-family:&quot;Times New Roman&quot;;&#10;color:#505050;mso-ansi-language:ES-MX;mso-fareast-language:ES-TRAD\">“Lo más valioso que T&amp;amp;P nos ofrece es su modelo de negocios de distribución de 2 etapas, ya que no solo somos un cliente, si no que nos convertimos en su socio comercial.\"</span>\n"
+"                    <span style=\"font-family:&quot;OpenSans&quot;,serif;mso-fareast-font-family:&#10;&quot;Times New Roman&quot;;mso-bidi-font-family:&quot;Times New Roman&quot;;color:#505050;&#10;mso-ansi-language:ES-MX;mso-fareast-language:ES-TRAD\"> </span>"
+
+#. module: typ
+#: model:ir.ui.view,arch_db:typ.homepage
+msgid "<span style=\"font-size:10.5pt;font-family:&quot;OpenSans&quot;,serif;&#10;mso-fareast-font-family:&quot;Times New Roman&quot;;mso-bidi-font-family:&quot;Times New Roman&quot;;&#10;color:#505050;mso-ansi-language:ES-MX;mso-fareast-language:ES-TRAD\">“Tengo 15 años trabajando con T&amp;amp;P, ya que es un gran socio comercial que te ayuda a sacar todos tus proyectos adelante ”</span>\n"
+"                    <span style=\"font-family:&quot;OpenSans&quot;,serif;&#10;mso-fareast-font-family:&quot;Times New Roman&quot;;mso-bidi-font-family:&quot;Times New Roman&quot;;&#10;color:#505050;mso-ansi-language:ES-MX;mso-fareast-language:ES-TRAD\"> </span>"
+msgstr "<span style=\"font-size:10.5pt;font-family:&quot;OpenSans&quot;,serif;&#10;mso-fareast-font-family:&quot;Times New Roman&quot;;mso-bidi-font-family:&quot;Times New Roman&quot;;&#10;color:#505050;mso-ansi-language:ES-MX;mso-fareast-language:ES-TRAD\">“Tengo 15 años trabajando con T&amp;amp;P, ya que es un gran socio comercial que te ayuda a sacar todos tus proyectos adelante ”</span>\n"
+"                    <span style=\"font-family:&quot;OpenSans&quot;,serif;&#10;mso-fareast-font-family:&quot;Times New Roman&quot;;mso-bidi-font-family:&quot;Times New Roman&quot;;&#10;color:#505050;mso-ansi-language:ES-MX;mso-fareast-language:ES-TRAD\"> </span>"
+
+#. module: typ
 #: model:ir.ui.view,arch_db:typ.report_invoice_document_typ
 msgid "<span> PPD Payment in partials or deferred</span>"
 msgstr "<span> PPD Pago en parcialidades o diferido</span>"
@@ -353,6 +490,60 @@ msgstr "<span> | Certificado SAT:</span>"
 #: model:ir.ui.view,arch_db:typ.office_places
 msgid "<span>, Col. </span>"
 msgstr "<span>, Col. </span>"
+
+#. module: typ
+#: model:ir.ui.view,arch_db:typ.report_invoice_document_typ
+#: model:ir.ui.view,arch_db:typ.report_payment_receipt_typ
+msgid "<span>01 Credit note of related documents</span>"
+msgstr "<span>01 Nota de crédito de documentos relacionados</span>"
+
+#. module: typ
+#: model:ir.ui.view,arch_db:typ.report_invoice_document_typ
+#: model:ir.ui.view,arch_db:typ.report_payment_receipt_typ
+msgid "<span>02 Debit note of related documents</span>"
+msgstr "<span>02 Nota de débito de documentos relacionados</span>"
+
+#. module: typ
+#: model:ir.ui.view,arch_db:typ.report_invoice_document_typ
+#: model:ir.ui.view,arch_db:typ.report_payment_receipt_typ
+msgid "<span>03 Return of merchandise on previous invoices or transfers</span>"
+msgstr "<span>03 Devolución de mercancía sobre facturas o traslados previos</span>"
+
+#. module: typ
+#: model:ir.ui.view,arch_db:typ.report_invoice_document_typ
+#: model:ir.ui.view,arch_db:typ.report_payment_receipt_typ
+msgid "<span>04 Replacement of previous CFDI</span>"
+msgstr "<span>04 Sustitución de los CFDI previos</span>"
+
+#. module: typ
+#: model:ir.ui.view,arch_db:typ.report_invoice_document_typ
+#: model:ir.ui.view,arch_db:typ.report_payment_receipt_typ
+msgid "<span>05 Transfers of goods previously invoiced</span>"
+msgstr "<span>05 Traslados de mercancías facturados previamente</span>"
+
+#. module: typ
+#: model:ir.ui.view,arch_db:typ.report_invoice_document_typ
+#: model:ir.ui.view,arch_db:typ.report_payment_receipt_typ
+msgid "<span>06 Invoice generated by previous transfers</span>"
+msgstr "<span>06 Factura generada por traslados previos</span>"
+
+#. module: typ
+#: model:ir.ui.view,arch_db:typ.report_invoice_document_typ
+#: model:ir.ui.view,arch_db:typ.report_payment_receipt_typ
+msgid "<span>07 CFDI by advance application</span>"
+msgstr "<span>07 CFDI por aplicación de anticipo</span>"
+
+#. module: typ
+#: model:ir.ui.view,arch_db:typ.report_invoice_document_typ
+#: model:ir.ui.view,arch_db:typ.report_payment_receipt_typ
+msgid "<span>08 Invoice generated by partial payments</span>"
+msgstr "<span>08 Factura generada por pagos en parcialidades</span>"
+
+#. module: typ
+#: model:ir.ui.view,arch_db:typ.report_invoice_document_typ
+#: model:ir.ui.view,arch_db:typ.report_payment_receipt_typ
+msgid "<span>09 Invoice generated by deferred payments</span>"
+msgstr "<span>09 Factura generada por pagos diferidos</span>"
 
 #. module: typ
 #: model:ir.ui.view,arch_db:typ.page_typ_acca_ir_ui_view
@@ -589,6 +780,18 @@ msgstr "<span>RFC: </span>"
 #. module: typ
 #: model:ir.ui.view,arch_db:typ.report_invoice_document_typ
 #: model:ir.ui.view,arch_db:typ.report_payment_receipt_typ
+msgid "<span>Related CFDI</span>"
+msgstr "<span>CFDI Relacionado</span>"
+
+#. module: typ
+#: model:ir.ui.view,arch_db:typ.report_invoice_document_typ
+#: model:ir.ui.view,arch_db:typ.report_payment_receipt_typ
+msgid "<span>Related type</span>"
+msgstr "<span>Tipo de Relación</span>"
+
+#. module: typ
+#: model:ir.ui.view,arch_db:typ.report_invoice_document_typ
+#: model:ir.ui.view,arch_db:typ.report_payment_receipt_typ
 msgid "<span>SAT Certificate</span>"
 msgstr "<span>Certificado SAT</span>"
 
@@ -702,11 +905,6 @@ msgid "About"
 msgstr "Acerca"
 
 #. module: typ
-#: model:ir.ui.view,arch_db:typ.about
-msgid "About us"
-msgstr "Acerca de"
-
-#. module: typ
 #: model:ir.ui.view,arch_db:typ.my-account-menu
 msgid "Account"
 msgstr "Cuenta"
@@ -719,11 +917,33 @@ msgid "Acemire"
 msgstr "Acemire"
 
 #. module: typ
+#: model:ir.ui.view,arch_db:typ.about
+msgid "Acerca de"
+msgstr "Acerca de"
+
+#. module: typ
+#: model:ir.ui.view,arch_db:typ.loyalty
+msgid "Acompañamiento con Cliente Final"
+msgstr "Acompañamiento con Cliente Final"
+
+#. module: typ
+#. openerp-web
+#: code:addons/typ/static/src/js/pos_models.js:59
+#, python-format
+msgid "Acquisition of merchandise"
+msgstr "Adquisición de mercancías"
+
+#. module: typ
 #: model:ir.ui.view,arch_db:typ.page_typ_fide_ir_ui_view
 #: model:ir.ui.view,arch_db:typ.typ_fide
 #: model:website.page,arch_db:typ.page_typ_fide
 msgid "Acérquese a nuestro departamento de ventas para mayor información al respecto."
 msgstr "Acérquese a nuestro departamento de ventas para mayor información al respecto."
+
+#. module: typ
+#: model:ir.ui.view,arch_db:typ.snippet_options
+msgid "Add Download Form"
+msgstr "Agregar Formulario de Descarga"
 
 #. module: typ
 #: model:ir.ui.view,arch_db:typ.account_address
@@ -811,20 +1031,6 @@ msgid "All Products"
 msgstr "Todos los productos"
 
 #. module: typ
-#: model:ir.ui.view,arch_db:typ.about
-msgid "All our products are guaranteed, however, the terms vary according to the policies and conditions established by each supplier or manufacturer. \n"
-"                                      The electrical parts have no guarantee."
-msgstr "Todos nuestros productos están garantizados, sin embargo, los términos varían de acuerdo a las políticas y condiciones que establece cada proveedor o fabricante. \n"
-"                                      Las partes eléctricas no tienen garantía."
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.about
-msgid "All prices are L.A.B. point of sale or assortment of T&amp;P Refrigeration. The freight charges for shipping products are charged to the customer, \n"
-"                                      who will pay them when they are received. In case of receiving damaged or missing products, the customer must immediately claim the freight company."
-msgstr "Todos los precios son L.A.B. punto de venta o surtido de T&amp;P Refrigeración. Los fletes por envío de productos son con cargo al cliente,  \n"
-"                                      quien los pagará al momento de recibirlos. En caso de recibir productos dañados o con faltantes, el cliente deberá reclamar de inmediato a la compañía fletera."
-
-#. module: typ
 #: model:ir.ui.view,arch_db:typ.confirmation
 msgid "All the information to track your order will be sent to your email."
 msgstr "Toda la información para el seguimiento de tu pedido será enviada a tu correo electrónico."
@@ -847,15 +1053,6 @@ msgid "Anemómetros"
 msgstr "Anemómetros"
 
 #. module: typ
-#: model:ir.ui.view,arch_db:typ.about
-msgid "Any return of products arising from causes attributable to the buyer, will generate a charge of 20% on the value of your shipment, will be freight\n"
-"                                       paid by the customer to the branch that corresponds. If the products are returned for reasons attributable to T&amp;P Refrigeración or to the manufacturers \n"
-"                                       of the product, the money will be returned or a credit will be extended to the customer's account after receiving and having accepted the return."
-msgstr "Toda devolución de productos originada por causas atribuibles al comprador, generará un cargo del 20% sobre el valor de su envío, será con flete\n"
-"                                       pagado por el cliente a la sucursal que corresponda. Si los productos son devueltos por causas atribuibles a T&amp;P Refrigeración o a los fabricantes \n"
-"                                       del producto, se hará la devolución del dinero o se extenderá un crédito a la cuenta del cliente después de recibir y haber sido aceptada la devolución."
-
-#. module: typ
 #: model:ir.ui.view,arch_db:typ.month_name
 msgid "Apr"
 msgstr "Abr"
@@ -866,15 +1063,6 @@ msgstr "Abr"
 #: model:website.page,arch_db:typ.page_typ_comfort
 msgid "Areas calientes y frías"
 msgstr "Areas calientes y frías"
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.about
-msgid "As of 2006, we are active members of HARDI, an organization that groups more than 450 distribution companies and more than 300\n"
-"                                    associated manufacturing companies, mainly in the United States, and that represent little more than 80% of the value of products\n"
-"                                    sold through distribution companies. ."
-msgstr "A partir del 2006 somos miembros activos de HARDI, organización que agrupa a mas de 450 compañías distribuidoras y mas de 300\n"
-"                                     compañías fabricantes asociadas, en Estados Unidos principalmente y que representan poco mas del 80% del valor de los productos\n"
-"                                    vendidos a través de compañías distribuidoras."
 
 #. module: typ
 #: model:ir.ui.view,arch_db:typ.products_list
@@ -896,18 +1084,6 @@ msgid "Asociación Mexicana de Empresas del Ramo de Instalaciones para la Constr
 msgstr "Asociación Mexicana de Empresas del Ramo de Instalaciones para la Construcción (AMERIC)"
 
 #. module: typ
-#: model:ir.ui.view,arch_db:typ.loyalty
-msgid "At T&amp;P we value being your favorite provider, because of that we created our program <strong>SOY T&amp;P</strong> which brings exclusive benefits for you. It's easy, all your purchases, spare parts and T&amp;P services are acumulated and they turn you into a customer with unique benefits in the market."
-msgstr "En T&amp;P valoramos ser tus proveedores favoritos, por eso creamos nuestro programa <fuerte>SOY T&amp;P</strong> que trae beneficios exclusivos para ti. Es fácil, tu consumo de productos, repuestos y servicios de T&amp;P se acumulan y te convierten en un cliente con beneficios únicos en el mercado."
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.about
-msgid "Available to customers with an authorized and current line of credit. Credit sales invoices will cause interest if they are not paid when due. \n"
-"                                       Purchase orders from customers with suspended credit will not be processed."
-msgstr "Disponible para clientes con línea de crédito autorizada y vigente. Las facturas de ventas a crédito causarán intereses si no son pagadas a su vencimiento.  \n"
-"                                        Las órdenes de compra de clientes con crédito suspendidos no serán procesadas."
-
-#. module: typ
 #: model:product.public.category,name:typ.axiales-pared
 msgid "Axiales de Pared"
 msgstr "Axiales de Pared"
@@ -923,11 +1099,6 @@ msgid "BILLING INFORMATION"
 msgstr "INFORMACIÓN DE FACTURACIÓN"
 
 #. module: typ
-#: model:ir.ui.view,arch_db:typ.about
-msgid "Background"
-msgstr "Antecedentes"
-
-#. module: typ
 #: model:ir.ui.view,arch_db:typ.report_payment_receipt_typ
 msgid "Balance"
 msgstr "Saldo"
@@ -941,6 +1112,11 @@ msgstr "Línea extracto bancario"
 #: model:ir.ui.view,arch_db:typ.s_cover_img
 msgid "Banner Image"
 msgstr "Imagen del banner"
+
+#. module: typ
+#: model:ir.ui.view,arch_db:typ.loyalty
+msgid "Bienvenido"
+msgstr "Bienvenido"
 
 #. module: typ
 #: model:ir.ui.view,arch_db:typ.portal_order_page
@@ -974,13 +1150,21 @@ msgid "CONTINUE SHOPPING"
 msgstr "SEGUIR COMPRANDO"
 
 #. module: typ
+#: model:ir.ui.view,arch_db:typ.homepage
+msgid "COTIZA TU PROYECTO"
+msgstr "COTIZA TU PROYECTO"
+
+#. module: typ
 #: model:product.public.category,name:typ.calefactores
 msgid "Calefactores"
 msgstr "Calefactores"
 
 #. module: typ
+#. openerp-web
+#: code:addons/typ/static/src/xml/pos.xml:31
 #: model:ir.ui.view,arch_db:typ.contact_edit
 #: model:ir.ui.view,arch_db:typ.portal_my_details
+#, python-format
 msgid "Cancel"
 msgstr "Cancelar"
 
@@ -999,9 +1183,14 @@ msgid "Cancelled Invoice"
 msgstr "Factura cancelada"
 
 #. module: typ
-#: model:product.attribute,name:typ.attribute-lennox
-msgid "Capacity"
-msgstr "Capacidad"
+#: model:ir.ui.view,arch_db:typ.loyalty
+msgid "Capacitación + Entrenamiento"
+msgstr "Capacitación + Entrenamiento"
+
+#. module: typ
+#: model:ir.ui.view,arch_db:typ.download_modal
+msgid "Capture your information and download our catalog."
+msgstr "Agrega tu información y descarga nuestro catálogo."
 
 #. module: typ
 #: model:product.public.category,name:typ.cassette
@@ -1015,9 +1204,21 @@ msgid "Category Can be Improved"
 msgstr "La categoría puede mejorarse"
 
 #. module: typ
+#: model:ir.ui.view,arch_db:typ.download_modal
+msgid "Cerrar Modal"
+msgstr "Cerrar Modal"
+
+#. module: typ
 #: model:ir.ui.view,arch_db:typ.email_sent
 msgid "Change"
 msgstr "Cambio"
+
+#. module: typ
+#. openerp-web
+#: code:addons/typ/static/src/js/pos_models.js:230
+#, python-format
+msgid "Change Usage"
+msgstr "Change Usage"
 
 #. module: typ
 #: model:ir.model.fields,field_description:typ.field_res_country_city_ids
@@ -1029,6 +1230,23 @@ msgstr "Ciudades"
 #: model:ir.ui.view,arch_db:typ.portal_my_details
 msgid "City:"
 msgstr "Ciudad:"
+
+#. module: typ
+#: model:ir.ui.view,arch_db:typ.loyalty
+msgid "Cliente Black"
+msgstr "Cliente Black"
+
+#. module: typ
+#: model:ir.ui.view,arch_db:typ.loyalty
+msgid "Cliente TyP"
+msgstr "Cliente TyP"
+
+#. module: typ
+#. openerp-web
+#: code:addons/typ/static/src/xml/pos.xml:58
+#, python-format
+msgid "Code"
+msgstr "Code"
 
 #. module: typ
 #: model:ir.ui.view,arch_db:typ.loyalty
@@ -1057,11 +1275,6 @@ msgid "Comfort Institute, Inc. (IC) es una organización internacional dedicada 
 msgstr "Comfort Institute, Inc. (IC) es una organización internacional dedicada a la investigación del confort interior, también provee de entrenamientos y protección a los consumidores. La sede de la organización se encuentra en Bellingham, Washington, con instructores y oficinas distribuidas a través de los Estados Unidos y Canadá."
 
 #. module: typ
-#: model:ir.ui.view,arch_db:typ.about
-msgid "Commitment."
-msgstr "Compromiso."
-
-#. module: typ
 #: model:ir.ui.view,arch_db:typ.portal_my_details
 msgid "Company Name:"
 msgstr "Compañía:"
@@ -1077,9 +1290,31 @@ msgid "Complement with compensation"
 msgstr "Complemento con compensación"
 
 #. module: typ
+#: model:ir.ui.view,arch_db:typ.about
+msgid "Compras Mínimas:"
+msgstr "Compras Mínimas:"
+
+#. module: typ
 #: model:product.public.category,name:typ.compressors
 msgid "Compressors"
 msgstr "Compresores"
+
+#. module: typ
+#: model:ir.ui.view,arch_db:typ.about
+msgid "Compromiso"
+msgstr "Compromiso"
+
+#. module: typ
+#. openerp-web
+#: code:addons/typ/static/src/js/pos_models.js:65
+#, python-format
+msgid "Computer equipment and accessories"
+msgstr "Equipo de cómputo y accesorios"
+
+#. module: typ
+#: model:ir.model.fields,help:typ.field_product_product_product_warehouse_ids
+msgid "Configure storage location to each warehouse"
+msgstr "Configura la ubicación de almacenamiento por cada almacén"
 
 #. module: typ
 #: model:ir.ui.view,arch_db:typ.loyalty
@@ -1088,15 +1323,26 @@ msgstr "Confirma tu dirección y redes sociales para hacerte llegar tu kit de bi
 
 #. module: typ
 #: model:mail.template,subject:typ.email_template_loyalty_black
+msgid "Confirmation loyalty \"black\""
+msgstr "Confirmation loyalty \"black\""
+
+#. module: typ
 #: model:mail.template,subject:typ.email_template_loyalty_titanium
-msgid "Welcome to Program Soy T&amp;P"
-msgstr "Bienvenido al Programa Soy T&amp;P"
+msgid "Confirmation loyalty \"titanium\""
+msgstr "Confirmation loyalty \"titanium\""
 
 #. module: typ
 #: model:ir.ui.view,arch_db:typ.my_orders
 #: model:ir.ui.view,arch_db:typ.portal_order_page
 msgid "Confirmed"
 msgstr "Confirmado"
+
+#. module: typ
+#. openerp-web
+#: code:addons/typ/static/src/js/pos_models.js:62
+#, python-format
+msgid "Constructions"
+msgstr "Construcciones"
 
 #. module: typ
 #: model:ir.model,name:typ.model_res_partner
@@ -1114,19 +1360,14 @@ msgid "Continue shopping"
 msgstr "Seguir comprando"
 
 #. module: typ
-#: model:ir.ui.view,arch_db:typ.about
-msgid "Continuous improvement."
-msgstr "Mejora continua."
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.about
-msgid "Contracting companies"
-msgstr "Empresas contratistas"
-
-#. module: typ
 #: model:ir.ui.view,arch_db:typ.loyalty
 msgid "Contractor Development Program"
 msgstr "Programa de Desarrollo de Contratistas"
+
+#. module: typ
+#: model:ir.model.fields,field_description:typ.field_product_stock_warehouse_posx
+msgid "Corridor (X)"
+msgstr "Pasillo (X)"
 
 #. module: typ
 #: model:product.public.category,name:typ.cortinas-aire
@@ -1156,11 +1397,13 @@ msgid "Cover Img"
 msgstr "Imagen de portada"
 
 #. module: typ
+#: model:ir.model.fields,field_description:typ.field_product_stock_warehouse_create_uid
 #: model:ir.model.fields,field_description:typ.field_user_wishlist_create_uid
 msgid "Created by"
 msgstr "Creado por"
 
 #. module: typ
+#: model:ir.model.fields,field_description:typ.field_product_stock_warehouse_create_date
 #: model:ir.model.fields,field_description:typ.field_user_wishlist_create_date
 msgid "Created on"
 msgstr "Creado en"
@@ -1193,8 +1436,13 @@ msgstr "Tarjeta de Crédito/Débito"
 
 #. module: typ
 #: model:ir.ui.view,arch_db:typ.about
-msgid "Credit:"
+msgid "Crédito:"
 msgstr "Crédito:"
+
+#. module: typ
+#: model:ir.ui.view,arch_db:typ.loyalty
+msgid "Créditos Encapsulados para Proyectos"
+msgstr "Créditos Encapsulados para Proyectos"
 
 #. module: typ
 #: model:ir.ui.view,arch_db:typ.report_payment_receipt_typ
@@ -1202,19 +1450,19 @@ msgid "Currency"
 msgstr "Moneda"
 
 #. module: typ
-#: model:ir.ui.view,arch_db:typ.loyalty
-msgid "Customer Black"
-msgstr "Cliente Black"
-
-#. module: typ
 #: model:ir.ui.view,arch_db:typ.portal_invoice_page
 msgid "Customer Information"
-msgstr "Información del cliente"
+msgstr "Información de Cliente"
 
 #. module: typ
 #: model:ir.ui.view,arch_db:typ.loyalty
 msgid "Customer Portal"
 msgstr "Portal de Clientes"
+
+#. module: typ
+#: model:ir.ui.view,arch_db:typ.homepage
+msgid "DISTRIBUIDOR MAYORISTA"
+msgstr "DISTRIBUIDOR MAYORISTA"
 
 #. module: typ
 #: model:ir.ui.view,arch_db:typ.my_invoices
@@ -1252,14 +1500,23 @@ msgid "Delivery"
 msgstr "Entrega"
 
 #. module: typ
+#. openerp-web
+#: code:addons/typ/static/src/js/pos_models.js:78
+#, python-format
+msgid "Deposits in savings accounts, premiums based on pension plans."
+msgstr "Depósitos en cuentas para el ahorro, primas que tengan como base planes de pensiones."
+
+#. module: typ
 #: model:ir.ui.view,arch_db:typ.product-specifications
 msgid "Description"
 msgstr "Descripción"
 
 #. module: typ
-#: model:ir.ui.view,arch_db:typ.about
-msgid "Desirable values:"
-msgstr "Valores deseables:"
+#. openerp-web
+#: code:addons/typ/static/src/js/pos_models.js:233
+#, python-format
+msgid "Deselect Usage"
+msgstr "Deselect Usage"
 
 #. module: typ
 #: model:ir.ui.view,arch_db:typ.my_orders
@@ -1268,14 +1525,37 @@ msgid "Details"
 msgstr "Detalles"
 
 #. module: typ
+#: model:ir.ui.view,arch_db:typ.about
+msgid "Devoluciones:"
+msgstr "Devoluciones:"
+
+#. module: typ
 #: model:ir.ui.view,arch_db:typ.month_name
 msgid "Dic"
 msgstr "Dic"
 
 #. module: typ
+#. openerp-web
+#: code:addons/typ/static/src/js/pos_models.js:66
+#, python-format
+msgid "Dices, dies, molds, matrices and tooling"
+msgstr "Dados, troqueles, moldes, matrices y herramental"
+
+#. module: typ
+#: model:ir.model.fields,field_description:typ.field_product_stock_warehouse_display_name
 #: model:ir.model.fields,field_description:typ.field_user_wishlist_display_name
 msgid "Display Name"
 msgstr "Nombre mostrado"
+
+#. module: typ
+#: model:ir.ui.view,arch_db:typ.about
+msgid "Disponible para clientes con línea de crédito autorizada y vigente. Las facturas de ventas a crédito causarán intereses si no son pagadas a su vencimiento. Las órdenes de compra de clientes con crédito suspendidos no serán procesadas."
+msgstr "Disponible para clientes con línea de crédito autorizada y vigente. Las facturas de ventas a crédito causarán intereses si no son pagadas a su vencimiento. Las órdenes de compra de clientes con crédito suspendidos no serán procesadas."
+
+#. module: typ
+#: model:ir.ui.view,arch_db:typ.loyalty
+msgid "Distribuidor Especializado Lennox"
+msgstr "Distribuidor Especializado Lennox"
 
 #. module: typ
 #: model:ir.ui.view,arch_db:typ.page_typ_comfort_ir_ui_view
@@ -1295,16 +1575,29 @@ msgid "Do you have any doubt or comment? Contact us"
 msgstr "¿Tienes alguna duda o comentario? Contáctanos"
 
 #. module: typ
+#. openerp-web
+#: code:addons/typ/static/src/js/pos_models.js:73
+#, python-format
+msgid "Donations"
+msgstr "Donativos"
+
+#. module: typ
 #: model:ir.ui.view,arch_db:typ.my_orders
 #: model:ir.ui.view,arch_db:typ.portal_order_page
 msgid "Done"
 msgstr "Hecho"
 
 #. module: typ
+#: model:ir.ui.view,arch_db:typ.download_modal
 #: model:ir.ui.view,arch_db:typ.payment_complements
 #: model:ir.ui.view,arch_db:typ.portal_invoice_page
 msgid "Download"
 msgstr "Descargar"
+
+#. module: typ
+#: model:ir.ui.view,arch_db:typ.download_modal
+msgid "Download Catalog"
+msgstr "Descargar Catálogo"
 
 #. module: typ
 #: model:ir.ui.view,arch_db:typ.payment_complements
@@ -1334,22 +1627,18 @@ msgstr "Fecha vencimiento"
 #. module: typ
 #: model:ir.ui.view,arch_db:typ.loyalty
 msgid "E-mail"
-msgstr "E-mail"
+msgstr "Email"
 
 #. module: typ
 #: model:ir.ui.view,arch_db:typ.contactus
+#: model:ir.ui.view,arch_db:typ.download_modal
 msgid "E-mail*"
-msgstr "E-mail*"
+msgstr "Correo*"
 
 #. module: typ
 #: model:ir.ui.view,arch_db:typ.portal_my_details
 msgid "EDIT PERSONAL INFORMATION"
 msgstr "EDITAR INFORMACIÓN PERSONAL"
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.homepage
-msgid "EXCLUSIVE DISTRIBUTOR"
-msgstr "DISTRIBUIDOR EXCLUSIVO"
 
 #. module: typ
 #: model:ir.ui.view,arch_db:typ.address_panel
@@ -1396,6 +1685,11 @@ msgid "Embeded url from google maps"
 msgstr "Embeber URL de Google Maps"
 
 #. module: typ
+#: model:ir.ui.view,arch_db:typ.about
+msgid "Empresas contratistas"
+msgstr "Empresas contratistas"
+
+#. module: typ
 #: model:ir.ui.view,arch_db:typ.page_typ_americ_ir_ui_view
 #: model:ir.ui.view,arch_db:typ.typ_americ
 #: model:website.page,arch_db:typ.page_typ_americ
@@ -1433,6 +1727,11 @@ msgid "En <strong>T&amp;P Refrigeración</strong> estamos ocupándonos de que es
 msgstr "En <strong>T&amp;P Refrigeración</strong> estamos ocupándonos de que estas certificaciones lleguen a México para nuestros contratistas y socios comerciales con el estándar internacional de calidad en la instalación de los equipos de refrigeración y A/C ya que de esta manera elevaran sus niveles de ingresos al ofrecer un valor agregado contra sus competidores."
 
 #. module: typ
+#: model:ir.ui.view,arch_db:typ.loyalty
+msgid "En T&amp;amp;P valoramos ser tus proveedores favoritos, por eso creamos nuestro programa"
+msgstr "En T&amp;amp;P valoramos ser tus proveedores favoritos, por eso creamos nuestro programa"
+
+#. module: typ
 #: model:ir.ui.view,arch_db:typ.page_typ_americ_ir_ui_view
 #: model:ir.ui.view,arch_db:typ.typ_americ
 #: model:website.page,arch_db:typ.page_typ_americ
@@ -1445,6 +1744,11 @@ msgid "Encapsulated Credits For Projects"
 msgstr "Créditos Encapsulados para Proyectos"
 
 #. module: typ
+#: model:ir.ui.view,arch_db:typ.loyalty
+msgid "Entrega gratuita"
+msgstr "Entrega gratuita"
+
+#. module: typ
 #: model:ir.ui.view,arch_db:typ.page_typ_comfort_ir_ui_view
 #: model:ir.ui.view,arch_db:typ.typ_comfort
 #: model:website.page,arch_db:typ.page_typ_comfort
@@ -1452,8 +1756,8 @@ msgid "Equipo de Refrigeración/Calefacción ruidoso y poco confiable"
 msgstr "Equipo de Refrigeración/Calefacción ruidoso y poco confiable"
 
 #. module: typ
-#: code:addons/typ/models/account_invoice.py:37
-#: code:addons/typ/models/account_invoice.py:78
+#: code:addons/typ/models/account_invoice.py:48
+#: code:addons/typ/models/account_invoice.py:89
 #, python-format
 msgid "Error when try send invoice by email"
 msgstr "Error al enviar la factura por email"
@@ -1506,7 +1810,7 @@ msgstr "Facebook"
 #: model:ir.model.fields,field_description:typ.field_res_partner_facebook_profile
 #: model:ir.model.fields,field_description:typ.field_res_users_facebook_profile
 msgid "Facebook URL"
-msgstr ""
+msgstr "Facebook URL"
 
 #. module: typ
 #: model:product.public.category,name:typ.fancoils
@@ -1541,19 +1845,48 @@ msgid "First Hour of Tow Free"
 msgstr "Primera Hora de Grúa Gratis"
 
 #. module: typ
+#: model:ir.ui.view,arch_db:typ.loyalty
+msgid "Flete gratis"
+msgstr "Flete gratis"
+
+#. module: typ
+#: model:ir.ui.view,arch_db:typ.about
+msgid "Fletes:"
+msgstr "Fletes:"
+
+#. module: typ
+#: model:ir.ui.view,arch_db:typ.about
+msgid "Formas de Pago:"
+msgstr "Formas de Pago:"
+
+#. module: typ
 #: model:product.public.category,name:typ.fraccionarios
 msgid "Fraccionarios"
 msgstr "Fraccionarios"
 
 #. module: typ
+#. openerp-web
+#: code:addons/typ/static/src/js/pos_models.js:72
+#, python-format
+msgid "Funeral expenses"
+msgstr "Gastos funerales"
+
+#. module: typ
 #: model:ir.ui.view,arch_db:typ.loyalty
-msgid "Free Delivery"
-msgstr "Flete Gratis"
+msgid "Garantía Extendida Lennox"
+msgstr "Garantía Extendida Lennox"
 
 #. module: typ
 #: model:ir.ui.view,arch_db:typ.about
-msgid "Freight:"
-msgstr "Fletes:"
+msgid "Garantía:"
+msgstr "Garantía:"
+
+#. module: typ
+#. openerp-web
+#: code:addons/typ/static/src/js/pos_models.js:61
+#, python-format
+msgid "General expenses"
+msgstr "Gastos en general"
 
 #. module: typ
 #: model:ir.ui.view,arch_db:typ.my_invoices
@@ -1570,8 +1903,8 @@ msgstr "Ubicación Google Maps"
 #: model:ir.ui.view,arch_db:typ.page_typ_hardi_ir_ui_view
 #: model:ir.ui.view,arch_db:typ.typ_hardi
 #: model:website.page,arch_db:typ.page_typ_hardi
-msgid "HARDI promueve el modelo de distribución de 2 etapas con el objetivo de tener un mejor orden y mayor eficiencia entre las partes que constituyen el canal de distribución requerido para atender al usuario final en todas sus necesidades y de la manera mas ordenada y eficiente posible. <strong>T&amp;P Refrigeración</strong>  en la actualidad es el único miembro de México."
-msgstr "HARDI promueve el modelo de distribución de 2 etapas con el objetivo de tener un mejor orden y mayor eficiencia entre las partes que constituyen el canal de distribución requerido para atender al usuario final en todas sus necesidades y de la manera mas ordenada y eficiente posible. <strong>T&amp;P Refrigeración</strong>  en la actualidad es el único miembro de México."
+msgid "HARDI promueve el modelo de distribución de 2 etapas con el objetivo de tener un mejor orden y mayor eficiencia entre las partes que constituyen el canal de distribución requerido para atender al usuario final en todas sus necesidades y de la manera mas ordenada y eficiente posible. <strong>T&amp;amp;P Refrigeración</strong>  en la actualidad es el único miembro de México."
+msgstr "HARDI promueve el modelo de distribución de 2 etapas con el objetivo de tener un mejor orden y mayor eficiencia entre las partes que constituyen el canal de distribución requerido para atender al usuario final en todas sus necesidades y de la manera mas ordenada y eficiente posible. <strong>T&amp;amp;P Refrigeración</strong>  en la actualidad es el único miembro de México."
 
 #. module: typ
 #: model:ir.ui.view,arch_db:typ.s_banner_sales
@@ -1595,8 +1928,13 @@ msgstr "Tiene Lineas de Orden"
 #: model:ir.ui.view,arch_db:typ.page_typ_hardi_ir_ui_view
 #: model:ir.ui.view,arch_db:typ.typ_hardi
 #: model:website.page,arch_db:typ.page_typ_hardi
-msgid "Heating, Airconditioning &amp; Refrigeration Distributors International (HARDI)"
-msgstr "Heating, Airconditioning &amp; Refrigeration Distributors International (HARDI)"
+msgid "Heating, Airconditioning &amp;amp; Refrigeration Distributors International (HARDI)"
+msgstr "Heating, Airconditioning &amp;amp; Refrigeration Distributors International (HARDI)"
+
+#. module: typ
+#: model:ir.model.fields,field_description:typ.field_product_stock_warehouse_posz
+msgid "Height (Z)"
+msgstr "Altura (Z)"
 
 #. module: typ
 #: model:product.public.category,name:typ.helicoidales-tubulares
@@ -1638,15 +1976,11 @@ msgstr "Producto Destacado"
 
 #. module: typ
 #: model:ir.ui.view,arch_db:typ.about
-msgid "Honesty."
-msgstr "Honestidad."
+msgid "Honestidad"
+msgstr "Honestidad"
 
 #. module: typ
-#: model:ir.ui.view,arch_db:typ.about
-msgid "Humility."
-msgstr "Humildad."
-
-#. module: typ
+#: model:ir.model.fields,field_description:typ.field_product_stock_warehouse_id
 #: model:ir.model.fields,field_description:typ.field_user_wishlist_id
 msgid "ID"
 msgstr "ID (identificación)"
@@ -1660,17 +1994,6 @@ msgstr "HISTORIAL DE FACTURAS"
 #: model:ir.ui.view,arch_db:typ.loyalty_success
 msgid "If you have an emergency, do not hesitate to contact us by phone:"
 msgstr "Si tiene una emergencia, no dude en contactarnos por teléfono:"
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.about
-msgid "In <strong>T&amp;P Refrigeration</strong> we are a wholesale commercial company with more than 20 years of experience, \n"
-"                                    with its operations center in Hermosillo, Sonora, Mexico. We have six points of sale located in the Northwest of Mexico,\n"
-"                                    in the States of Sonora, Sinaloa and Baja California and also in the Operations and Distribution Center located in the \n"
-"                                    city of Hermosillo, Sonora."
-msgstr "En<strong>T&amp;P Refrigeración</strong> somos una empresa comercial mayorista con más de 20 años de experiencia, \n"
-"                                    con su centro de operaciones en Hermosillo, Sonora, México. Contamos con seis puntos de venta localizados en el Noroeste de México,\n"
-"                                    en los Estados de Sonora, Sinaloa y Baja California y además un Centro de Operaciones y Distribución ubicado en la\n"
-"                                    ciudad de Hermosillo, Sonora."
 
 #. module: typ
 #: model:ir.ui.view,arch_db:typ.s-product-description
@@ -1732,6 +2055,11 @@ msgid "Jan"
 msgstr "Ene"
 
 #. module: typ
+#: model:ir.model,name:typ.model_account_journal
+msgid "Journal"
+msgstr "Diario"
+
+#. module: typ
 #: model:ir.model,name:typ.model_account_move_line
 msgid "Journal Item"
 msgstr "Apunte contable"
@@ -1750,31 +2078,6 @@ msgstr "Jun"
 #: model:ir.ui.view,arch_db:typ.s_banner_homepage
 msgid "Know our double stage system"
 msgstr "Conoce nuestro sistema de doble etapa"
-
-#. module: typ
-#: model:product.template,name:typ.lennox_5
-msgid "LENNOX A2D2 3000"
-msgstr "LENNOX A2D2 3000"
-
-#. module: typ
-#: model:product.template,name:typ.lennox_2
-msgid "LENNOX ARJZ829"
-msgstr "LENNOX ARJZ829"
-
-#. module: typ
-#: model:product.template,name:typ.lennox_1
-msgid "LENNOX BCB321"
-msgstr "LENNOX BCB321"
-
-#. module: typ
-#: model:product.template,name:typ.lennox_3
-msgid "LENNOX KLY101"
-msgstr "LENNOX KLY101"
-
-#. module: typ
-#: model:product.template,name:typ.lennox_4
-msgid "LENNOX POO29"
-msgstr "LENNOX POO29"
 
 #. module: typ
 #: model:ir.ui.view,arch_db:typ.homepage
@@ -1814,16 +2117,29 @@ msgid "Las más de 300 empresas asociadas producen más del 90 por ciento de la 
 msgstr "Las más de 300 empresas asociadas producen más del 90 por ciento de la climatización residencial y comercial, calefacción, calentamiento de agua y equipos de refrigeración comercial realizado en América del Norte. A través de nuestro programa de certificación, normas, actividades de promoción, y otras actividades, nos esforzamos por ayudar a ahorrar energía, mejorar la productividad y asegurar un medio ambiente mejor."
 
 #. module: typ
+#: model:ir.ui.view,arch_db:typ.about
+msgid "Las órdenes de compra serán facturadas a precios vigentes en la fecha de envío. Todos los precios están sujetos a cambio sin previo aviso en tanto no sean facturados."
+msgstr "Las órdenes de compra serán facturadas a precios vigentes en la fecha de envío. Todos los precios están sujetos a cambio sin previo aviso en tanto no sean facturados."
+
+#. module: typ
+#: model:ir.ui.view,arch_db:typ.about
+msgid "Las órdenes de compras serán surtidas al recibir el pago total de los productos o se sugiere realizar los pagos utilizando preferentemente el sistema de banca electrónica, por lo ágil y seguro de este tipo de transacciones."
+msgstr "Las órdenes de compras serán surtidas al recibir el pago total de los productos o se sugiere realizar los pagos utilizando preferentemente el sistema de banca electrónica, por lo ágil y seguro de este tipo de transacciones."
+
+#. module: typ
+#: model:ir.model.fields,field_description:typ.field_product_stock_warehouse___last_update
 #: model:ir.model.fields,field_description:typ.field_user_wishlist___last_update
 msgid "Last Modified on"
 msgstr "Última modificación en"
 
 #. module: typ
+#: model:ir.model.fields,field_description:typ.field_product_stock_warehouse_write_uid
 #: model:ir.model.fields,field_description:typ.field_user_wishlist_write_uid
 msgid "Last Updated by"
 msgstr "Última actualización de"
 
 #. module: typ
+#: model:ir.model.fields,field_description:typ.field_product_stock_warehouse_write_date
 #: model:ir.model.fields,field_description:typ.field_user_wishlist_write_date
 msgid "Last Updated on"
 msgstr "Última actualización en"
@@ -1846,29 +2162,23 @@ msgstr "Distribuidor Especializado Lennox"
 #. module: typ
 #: model:ir.ui.view,arch_db:typ.loyalty
 msgid "LinkedIn"
-msgstr ""
+msgstr "LinkedIn"
 
 #. module: typ
 #: model:ir.model.fields,field_description:typ.field_res_partner_linkedin_profile
 #: model:ir.model.fields,field_description:typ.field_res_users_linkedin_profile
 msgid "LinkedIn URL"
-msgstr ""
+msgstr "LinkedIn URL"
 
 #. module: typ
-#: model:ir.ui.view,arch_db:typ.page_typ_providers_ir_ui_view
-#: model:ir.ui.view,arch_db:typ.typ_providers
-#: model:website.page,arch_db:typ.page_typ_providers
-msgid "Links to our providers website"
-msgstr "Enlaces a los sitios de nuestros proveedores"
+#: model:ir.ui.view,arch_db:typ.homepage
+msgid "Logo of T Y P REFRIGERACION SA DE CV"
+msgstr "Logo of T Y P REFRIGERACION SA DE CV"
 
 #. module: typ
-#: model:product.template,description_sale:typ.lennox_1
-#: model:product.template,description_sale:typ.lennox_2
-#: model:product.template,description_sale:typ.lennox_3
-#: model:product.template,description_sale:typ.lennox_4
-#: model:product.template,description_sale:typ.lennox_5
-msgid "Lorem ipsum dolor sit amet consectetur adipisicing elit. Id non enim possimus ratione distinctio odio! Rerum officia alias tempore eaque facere ab animi, veritatis ducimus numquam? Maiores nihil inventore tenetur."
-msgstr "Lorem ipsum dolor sit amet consectetur adipisicing elit. Id non enim possimus ratione distinctio odio! Rerum officia alias tempore eaque facere ab animi, veritatis ducimus numquam? Maiores nihil inventore tenetur."
+#: model:ir.ui.view,arch_db:typ.loyalty
+msgid "Logotipo de Lealtad TyP"
+msgstr "Logotipo de Lealtad TyP"
 
 #. module: typ
 #: model:ir.ui.view,arch_db:typ.page_typ_hardi_ir_ui_view
@@ -1878,19 +2188,16 @@ msgid "Los mas de 1000 miembros asociados entre ellos distribuidores mayoristas,
 msgstr "Los mas de 1000 miembros asociados entre ellos distribuidores mayoristas, fabricantes y cooperativas de compra se extienden a todos los continentes con su mayor concentración en los Estados Unidos y Canadá. La asociación ayuda a crear alianzas estratégicas entre distribuidores fabricantes pues les brinda todo su apoyo para crecer, a través de reuniones regionales y convenciones anuales, con exhibiciones, exposiciones, seminarios y conferencias, ayudando así a sus miembros a darle valor agregado al canal de distribución."
 
 #. module: typ
-#: model:ir.ui.view,arch_db:typ.loyalty
-msgid "Loyalty TyP Logo"
-msgstr "Logotipo de Lealtad TyP"
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.about
-msgid "Loyalty."
-msgstr "Lealtad."
-
-#. module: typ
 #: model:ir.ui.view,arch_db:typ.pay_methods
 msgid "MY PAYMENT METHODS"
 msgstr "MIS MÉTODOS DE PAGO"
+
+#. module: typ
+#. openerp-web
+#: code:addons/typ/static/src/js/pos_models.js:77
+#, python-format
+msgid "Mandatory School Transportation Expenses"
+msgstr "Gastos de transportación escolar obligatoria"
 
 #. module: typ
 #: model:product.public.category,name:typ.manejadoras-residenciales
@@ -1902,11 +2209,6 @@ msgstr "Manejadoras Residenciales"
 #: model:ir.model.fields,help:typ.field_product_template_is_highlight
 msgid "Manual selector for featured products"
 msgstr "Selector manual de productos relacionados"
-
-#. module: typ
-#: model:product.attribute.value,name:typ.product_attribute1_value
-msgid "Manual, Semi, Auto"
-msgstr "Manual, Semi, Auto"
 
 #. module: typ
 #: model:ir.ui.view,arch_db:typ.month_name
@@ -1930,29 +2232,40 @@ msgid "May"
 msgstr "May"
 
 #. module: typ
+#. openerp-web
+#: code:addons/typ/static/src/js/pos_models.js:71
+#, python-format
+msgid "Medical expenses for disability"
+msgstr "Gastos médicos por incapacidad o discapacidad"
+
+#. module: typ
+#. openerp-web
+#: code:addons/typ/static/src/js/pos_models.js:76
+#, python-format
+msgid "Medical insurance premiums"
+msgstr "Primas por seguros de gastos médicos"
+
+#. module: typ
+#. openerp-web
+#: code:addons/typ/static/src/js/pos_models.js:70
+#, python-format
+msgid "Medical, dental and hospital expenses."
+msgstr "Honorarios médicos, dentales y gastos hospitalarios."
+
+#. module: typ
 #: model:product.public.category,name:typ.minisplits
 msgid "Mini Splits"
 msgstr "Mini Splits"
 
 #. module: typ
 #: model:ir.ui.view,arch_db:typ.about
-msgid "Minimum Purchases:"
-msgstr "Compras Mínimas:"
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.about
-msgid "Mision"
+msgid "Misión"
 msgstr "Misión"
 
 #. module: typ
 #: model:ir.ui.view,arch_db:typ.about
-msgid "Mision, vision and values"
+msgid "Misión, visión y valores"
 msgstr "Misión, visión y valores"
-
-#. module: typ
-#: model:product.attribute,name:typ.attribute-1
-msgid "Modes"
-msgstr "Modos"
 
 #. module: typ
 #: model:ir.ui.view,arch_db:typ.sort_by_orders
@@ -1967,8 +2280,11 @@ msgid "N.A.T.E. (National American Technician Excellence) Es una organización d
 msgstr "N.A.T.E. (National American Technician Excellence) Es una organización dedicada exclusivamente a la certificación de los conocimientos del personal de las empresas del ramo de la refrigeración y Aire Acondicionado y que tuvieran la necesidad de crecer para hacer mas productivas sus empresas a través de la adquisición de conocimientos tales que sus honorarios tuvieran un costo mas alto que aquellos que no cuentan con esta Certificación, y por lo tanto subir su índice de crecimiento como empresa."
 
 #. module: typ
+#. openerp-web
+#: code:addons/typ/static/src/xml/pos.xml:59
 #: model:ir.ui.view,arch_db:typ.contactus
 #: model:ir.ui.view,arch_db:typ.payment_complements
+#, python-format
 msgid "Name"
 msgstr "Nombre"
 
@@ -1976,6 +2292,11 @@ msgstr "Nombre"
 #: model:ir.ui.view,arch_db:typ.loyalty
 msgid "Name and Last Name"
 msgstr "Nombre y Apellido"
+
+#. module: typ
+#: model:ir.ui.view,arch_db:typ.download_modal
+msgid "Name*"
+msgstr "Nombre*"
 
 #. module: typ
 #: model:ir.ui.view,arch_db:typ.address_panel
@@ -2003,6 +2324,11 @@ msgid "Next"
 msgstr "Siguiente"
 
 #. module: typ
+#: model:ir.ui.view,arch_db:typ.about
+msgid "No existe un límite de compra mínima. Cualquier cantidad de productos, independientemente de su precio será atendida."
+msgstr "No existe un límite de compra mínima. Cualquier cantidad de productos, independientemente de su precio será atendida."
+
+#. module: typ
 #: model:ir.ui.view,arch_db:typ.products_list
 msgid "No results for \""
 msgstr "No hay resultados para \""
@@ -2010,12 +2336,12 @@ msgstr "No hay resultados para \""
 #. module: typ
 #: model:ir.ui.view,arch_db:typ.loyalty
 msgid "No. Ext"
-msgstr ""
+msgstr "No. Ext"
 
 #. module: typ
 #: model:ir.ui.view,arch_db:typ.loyalty
 msgid "No. Int"
-msgstr ""
+msgstr "No. Int"
 
 #. module: typ
 #: model:ir.ui.view,arch_db:typ.page_typ_nate_ir_ui_view
@@ -2040,6 +2366,11 @@ msgid "Now you are a <strong>Customer Titanium</strong>, with exclusive benefits
 msgstr "Ahora eres un <strong>Cliente Titanium</strong>, con beneficios exclusivos"
 
 #. module: typ
+#: model:ir.ui.view,arch_db:typ.homepage
+msgid "OPINIÓN DE NUESTROS CLIENTES"
+msgstr "OPINIÓN DE NUESTROS CLIENTES"
+
+#. module: typ
 #: model:ir.ui.view,arch_db:typ.my_orders
 #: model:ir.ui.view,arch_db:typ.my_quotations
 msgid "ORDERS HISTORY"
@@ -2056,9 +2387,23 @@ msgid "Oct"
 msgstr "Oct"
 
 #. module: typ
+#. openerp-web
+#: code:addons/typ/static/src/js/pos_models.js:63
+#, python-format
+msgid "Office furniture and equipment investment"
+msgstr "Mobilario y equipo de oficina por inversiones"
+
+#. module: typ
 #: model:ir.ui.view,arch_db:typ.contactus
 msgid "Offices"
 msgstr "Oficinas"
+
+#. module: typ
+#: model:ir.model.fields,help:typ.field_product_stock_warehouse_posx
+#: model:ir.model.fields,help:typ.field_product_stock_warehouse_posy
+#: model:ir.model.fields,help:typ.field_product_stock_warehouse_posz
+msgid "Optional product details, for information purpose only"
+msgstr "Detalles opcionales del producto, solo con fines informativos"
 
 #. module: typ
 #: model:ir.ui.view,arch_db:typ.portal_order_page
@@ -2133,6 +2478,13 @@ msgid "Original Amount"
 msgstr "Importe original"
 
 #. module: typ
+#. openerp-web
+#: code:addons/typ/static/src/js/pos_models.js:69
+#, python-format
+msgid "Other machinery and equipment"
+msgstr "Otra maquinaria y equipo"
+
+#. module: typ
 #: model:ir.ui.view,arch_db:typ.pay
 msgid "PAYMENT"
 msgstr "PAGO"
@@ -2143,11 +2495,26 @@ msgid "PAYMENT COMPLEMENTS"
 msgstr "COMPLEMENTOS DE PAGO"
 
 #. module: typ
+#: model:ir.ui.view,arch_db:typ.homepage
+msgid "PORTAFOLIO DE SERVICIOS&amp;nbsp;"
+msgstr "PORTAFOLIO DE SERVICIOS&amp;nbsp;"
+
+#. module: typ
+#: model:ir.ui.view,arch_db:typ.homepage
+msgid "PRODUCTOS LENNOX"
+msgstr "PRODUCTOS LENNOX"
+
+#. module: typ
 #: model:ir.ui.view,arch_db:typ.page_typ_providers_ir_ui_view
 #: model:ir.ui.view,arch_db:typ.typ_providers
 #: model:website.page,arch_db:typ.page_typ_providers
-msgid "PROVIDERS"
+msgid "PROVEEDORES"
 msgstr "PROVEEDORES"
+
+#. module: typ
+#: model:ir.model,name:typ.model_stock_move_line
+msgid "Packing Operation"
+msgstr "Operación de Empaque"
 
 #. module: typ
 #: model:ir.ui.view,arch_db:typ.page_typ_comfort_ir_ui_view
@@ -2164,6 +2531,11 @@ msgid "Paid"
 msgstr "Pagado"
 
 #. module: typ
+#: model:ir.ui.view,arch_db:typ.about
+msgid "Para el 2021 queremos ser reconocidos en la industria por nuestro profesionalismo y facilidad para hacer negocios, con cobertura en el Noroeste, Occidente y Bajío de México."
+msgstr "Para el 2021 queremos ser reconocidos en la industria por nuestro profesionalismo y facilidad para hacer negocios, con cobertura en el Noroeste, Occidente y Bajío de México."
+
+#. module: typ
 #: model:ir.ui.view,arch_db:typ.page_typ_fide_ir_ui_view
 #: model:ir.ui.view,arch_db:typ.typ_fide
 #: model:website.page,arch_db:typ.page_typ_fide
@@ -2177,8 +2549,8 @@ msgstr "Parcialidad"
 
 #. module: typ
 #: model:ir.ui.view,arch_db:typ.about
-msgid "Passion for the service."
-msgstr "Pasión por el servicio."
+msgid "Pasión por el servicio"
+msgstr "Pasión por el servicio"
 
 #. module: typ
 #: model:ir.ui.view,arch_db:typ.personal-info
@@ -2202,11 +2574,6 @@ msgid "Payment Date"
 msgstr "Fecha de Pago"
 
 #. module: typ
-#: model:ir.ui.view,arch_db:typ.about
-msgid "Payment Methods:"
-msgstr "Formas de Pago:"
-
-#. module: typ
 #: model:ir.ui.view,arch_db:typ.confirmation
 #: model:ir.ui.view,arch_db:typ.portal_order_page
 msgid "Payment method"
@@ -2221,6 +2588,13 @@ msgstr "Métodos de pago"
 #: model:ir.model,name:typ.model_account_payment
 msgid "Payments"
 msgstr "Pagos"
+
+#. module: typ
+#. openerp-web
+#: code:addons/typ/static/src/js/pos_models.js:79
+#, python-format
+msgid "Payments for educational services (Colegiatura)"
+msgstr "Pagos por servicios educativos (colegiaturas)"
 
 #. module: typ
 #: model:ir.ui.view,arch_db:typ.page_typ_acca_ir_ui_view
@@ -2256,11 +2630,31 @@ msgid "Please check your email for further instructions"
 msgstr "Por favor, revise su correo electrónico para más instrucciones"
 
 #. module: typ
+#: model:ir.model,name:typ.model_pos_order
+msgid "Point of Sale Orders"
+msgstr "Pedidos del Punto de Venta"
+
+#. module: typ
 #: model:ir.ui.view,arch_db:typ.page_typ_comfort_ir_ui_view
 #: model:ir.ui.view,arch_db:typ.typ_comfort
 #: model:website.page,arch_db:typ.page_typ_comfort
 msgid "Polvo excesivo"
 msgstr "Polvo excesivo"
+
+#. module: typ
+#: model:ir.ui.view,arch_db:typ.about
+msgid "Políticas de venta"
+msgstr "Políticas de venta"
+
+#. module: typ
+#: model:ir.ui.view,arch_db:typ.loyalty
+msgid "Portal de Clientes"
+msgstr "Portal de Clientes"
+
+#. module: typ
+#: model:ir.ui.view,arch_db:typ.about
+msgid "Precios:"
+msgstr "Precios:"
 
 #. module: typ
 #: model:ir.ui.view,arch_db:typ.address_panel
@@ -2290,23 +2684,14 @@ msgid "Price: Lowest"
 msgstr "Precio: Más Bajo"
 
 #. module: typ
-#: model:ir.ui.view,arch_db:typ.about
-msgid "Prices:"
-msgstr "Precios:"
-
-#. module: typ
 #: model:ir.ui.view,arch_db:typ.confirmation
 msgid "Print Order"
 msgstr "Imprimir Orden"
 
 #. module: typ
-#: model:ir.ui.view,arch_db:typ.about
-msgid "Proactivity"
-msgstr "Proactividad."
-
-#. module: typ
 #: model:ir.model,name:typ.model_product_product
 #: model:ir.model.fields,field_description:typ.field_helpdesk_ticket_product_id
+#: model:ir.model.fields,field_description:typ.field_product_stock_warehouse_product_id
 #: model:ir.model.fields,field_description:typ.field_user_wishlist_product_template_id
 #: model:ir.ui.view,arch_db:typ.cart_lines
 msgid "Product"
@@ -2329,18 +2714,19 @@ msgid "Products"
 msgstr "Productos"
 
 #. module: typ
-#: model:ir.ui.view,arch_db:typ.about
-msgid "Purchase orders will be filled upon receipt of the total payment of the products or it is suggested to make the payments \n"
-"                                       preferably using the electronic banking system, for the agile and secure of this type of transactions."
-msgstr "Las órdenes de compras serán surtidas al recibir el pago total de los productos o se sugiere realizar los pagos \n"
-"                                       utilizando preferentemente el sistema de banca electrónica, por lo ágil y seguro de este tipo de transacciones."
+#: model:ir.ui.view,arch_db:typ.loyalty
+msgid "Publicidad Compartida"
+msgstr "Publicidad Compartida"
+
+#. module: typ
+#: model:ir.ui.view,arch_db:typ.homepage
+msgid "QUEREMOS SER TUS SOCIOS"
+msgstr "QUEREMOS SER TUS SOCIOS"
 
 #. module: typ
 #: model:ir.ui.view,arch_db:typ.about
-msgid "Purchase orders will be invoiced at current prices on the date of shipment. \n"
-"                                        All prices are subject to change without notice as long as they are not billed."
-msgstr "Las órdenes de compra serán facturadas a precios vigentes en la fecha de envío.\n"
-"                                        Todos los precios están sujetos a cambio sin previo aviso en tanto no sean facturados."
+msgid "QUIENES SOMOS"
+msgstr "QUIENES SOMOS"
 
 #. module: typ
 #: model:ir.ui.view,arch_db:typ.s_image_banner_contact_us
@@ -2358,6 +2744,7 @@ msgid "Quantity"
 msgstr "Cantidad"
 
 #. module: typ
+#: model:ir.model,name:typ.model_sale_order
 #: model:ir.ui.view,arch_db:typ.portal_order_page
 msgid "Quotation"
 msgstr "Presupuesto"
@@ -2387,6 +2774,13 @@ msgstr "SOLICITA ACCESO PARA<br/>INICIAR SESIÓN"
 #: model:ir.ui.view,arch_db:typ.personal-info
 msgid "RFC:"
 msgstr "RFC:"
+
+#. module: typ
+#. openerp-web
+#: code:addons/typ/static/src/js/pos_models.js:74
+#, python-format
+msgid "Real interest effectively paid for mortgage loans (room house)"
+msgstr "Intereses reales efectivamente pagados por créditos hipotecarios (casa habitación)."
 
 #. module: typ
 #: model:ir.ui.view,arch_db:typ.s_banner_sales
@@ -2437,28 +2831,20 @@ msgstr "Restablecer"
 
 #. module: typ
 #: model:ir.ui.view,arch_db:typ.about
-msgid "Respect."
-msgstr "Respeto."
+msgid "Responsabilidad"
+msgstr "Responsabilidad"
 
 #. module: typ
-#: model:ir.ui.view,arch_db:typ.about
-msgid "Responsibility"
-msgstr "Responsabilidad."
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.about
-msgid "Returns:"
-msgstr "Devoluciones:"
+#. openerp-web
+#: code:addons/typ/static/src/js/pos_models.js:60
+#, python-format
+msgid "Returns, discounts or bonuses"
+msgstr "Devoluciones, descuentos o bonificaciones"
 
 #. module: typ
 #: model:ir.ui.view,arch_db:typ.products_list
 msgid "SEARCH RESULTS"
 msgstr "RESULTADOS DE BÚSQUEDA"
-
-#. module: typ
-#: model:product.attribute,name:typ.attribute-2
-msgid "SEER"
-msgstr "SEER"
 
 #. module: typ
 #: model:ir.ui.view,arch_db:typ.contactus
@@ -2469,6 +2855,11 @@ msgstr "ENVIAR COMENTARIO"
 #: model:ir.ui.view,arch_db:typ.loyalty
 msgid "SEND MY DATA"
 msgstr "ENVIAR MIS DATOS"
+
+#. module: typ
+#: model:ir.ui.view,arch_db:typ.homepage
+msgid "SERVICIOS DE LOGÍSTICA"
+msgstr "SERVICIOS DE LOGÍSTICA"
 
 #. module: typ
 #: model:ir.ui.view,arch_db:typ.account_address
@@ -2482,13 +2873,30 @@ msgstr "CARRITO"
 
 #. module: typ
 #: model:ir.ui.view,arch_db:typ.about
-msgid "Sale Policies"
-msgstr "Políticas de venta"
+msgid "SOLUCIONES PARA HACER NEGOCIOS"
+msgstr "SOLUCIONES PARA HACER NEGOCIOS"
+
+#. module: typ
+#: model:ir.ui.view,arch_db:typ.loyalty
+msgid "SOY T&amp;amp;P que trae beneficios exclusivos para ti. Es fácil, tu consumo de productos, refacciones y servicios de T&amp;amp;P se acumulan y te convierten en un cliente con beneficios únicos en el mercado."
+msgstr "SOY T&amp;amp;P que trae beneficios exclusivos para ti. Es fácil, tu consumo de productos, refacciones y servicios de T&amp;amp;P se acumulan y te convierten en un cliente con beneficios únicos en el mercado."
+
+#. module: typ
+#: model:ir.ui.view,arch_db:typ.loyalty
+msgid "SOY T&amp;amp;P que trae beneficios exclusivos para ti. Es fácil, tu consumo de productos, repuestos y servicios de T&amp;amp;P se acumulan y te convierten en un cliente con beneficios únicos en el mercado."
+msgstr "SOY T&amp;amp;P que trae beneficios exclusivos para ti. Es fácil, tu consumo de productos, repuestos y servicios de T&amp;amp;P se acumulan y te convierten en un cliente con beneficios únicos en el mercado."
 
 #. module: typ
 #: model:ir.ui.view,arch_db:typ.s_image_banner
 msgid "Sample"
 msgstr "Muestra"
+
+#. module: typ
+#. openerp-web
+#: code:addons/typ/static/src/js/pos_models.js:68
+#, python-format
+msgid "Satellite communications"
+msgstr "Comunicaciones satelitales"
 
 #. module: typ
 #: model:ir.ui.view,arch_db:typ.contact_edit
@@ -2502,9 +2910,23 @@ msgid "Scrolls"
 msgstr "Scrolls"
 
 #. module: typ
+#. openerp-web
+#: code:addons/typ/static/src/xml/pos.xml:35
+#, python-format
+msgid "Search Usage"
+msgstr "Search Usage"
+
+#. module: typ
 #: model:ir.ui.view,arch_db:typ.s-product-description
 msgid "Second title"
 msgstr "Segundo titulo"
+
+#. module: typ
+#. openerp-web
+#: code:addons/typ/static/src/xml/pos.xml:39
+#, python-format
+msgid "Select Usage"
+msgstr "Select Usage"
 
 #. module: typ
 #: model:ir.ui.view,arch_db:typ.address_panel
@@ -2525,9 +2947,7 @@ msgid "Send Partner Black loyalty email"
 msgstr "Enviar correo electrónico de fidelidad a Cliente Black"
 
 #. module: typ
-#: model:base.automation,name:typ.create_product_category_from_sale_order
 #: model:base.automation,name:typ.send_partner_titanium_loyalty_email
-#: model:ir.actions.server,name:typ.create_product_category_from_sale_order_ir_actions_server
 #: model:ir.actions.server,name:typ.send_partner_titanium_loyalty_email_ir_actions_server
 msgid "Send Partner Titanium loyalty email"
 msgstr "Enviar correo electrónico de fidelidad a Cliente Titanium"
@@ -2548,6 +2968,28 @@ msgid "Sep"
 msgstr "Sep"
 
 #. module: typ
+#: model:ir.ui.view,arch_db:typ.about
+msgid "Ser el proveedor preferido de nuestros clientes, satisfaciendo sus necesidades de productos y servicios de calidad, generando oportunidades de negocio mutuo, respaldados en nuestros valores y&amp;nbsp; atributos para lograr el desarrollo de nuestros colaboradores y accionistas"
+msgstr "Ser el proveedor preferido de nuestros clientes, satisfaciendo sus necesidades de productos y servicios de calidad, generando oportunidades de negocio mutuo, respaldados en nuestros valores y&amp;nbsp; atributos para lograr el desarrollo de nuestros colaboradores y accionistas"
+
+#. module: typ
+#. openerp-web
+#: code:addons/typ/static/src/js/pos_models.js:228
+#, python-format
+msgid "Set Usage"
+msgstr "Set Usage"
+
+#. module: typ
+#: model:ir.model.fields,help:typ.field_product_stock_warehouse_product_id
+msgid "Set the product"
+msgstr "Configurar el producto"
+
+#. module: typ
+#: model:ir.model.fields,help:typ.field_product_stock_warehouse_warehouse_id
+msgid "Set the warehouse"
+msgstr "Configurar el almacén"
+
+#. module: typ
 #: model:ir.ui.view,arch_db:typ.product-description
 msgid "Share product"
 msgstr "Compartir producto"
@@ -2556,6 +2998,11 @@ msgstr "Compartir producto"
 #: model:ir.ui.view,arch_db:typ.loyalty
 msgid "Shared Ads"
 msgstr "Publicidad Compartida"
+
+#. module: typ
+#: model:ir.model.fields,field_description:typ.field_product_stock_warehouse_posy
+msgid "Shelves (Y)"
+msgstr "Estantería (Y)"
 
 #. module: typ
 #: model:ir.ui.view,arch_db:typ.confirmation
@@ -2599,12 +3046,7 @@ msgstr "Sitio oficial:"
 #. module: typ
 #: model:ir.ui.view,arch_db:typ.view_partner_form_inherit_tanner
 msgid "Social Media"
-msgstr "Redes sociales"
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.about
-msgid "Social responsability."
-msgstr "Responsabilidad social."
+msgstr "Medios sociales"
 
 #. module: typ
 #: model:ir.ui.view,arch_db:typ.s_banner_sales
@@ -2645,8 +3087,8 @@ msgstr "Soy Typ"
 
 #. module: typ
 #: model:ir.ui.view,arch_db:typ.loyalty
-msgid "Soy<br/>Cliente T&amp;P"
-msgstr "Soy<br/>Cliente T&amp;P"
+msgid "Soy<br/>Cliente T&amp;amp;P"
+msgstr "Soy<br/>Cliente T&amp;amp;P"
 
 #. module: typ
 #: model:product.public.category,name:typ.spare-parts
@@ -2684,6 +3126,22 @@ msgid "Status:"
 msgstr "Estado:"
 
 #. module: typ
+#: model:ir.ui.view,arch_db:typ.loyalty
+msgid "Stock de Refacciones Lennox"
+msgstr "Stock de Refacciones Lennox"
+
+#. module: typ
+#: model:ir.ui.view,arch_db:typ.product_product_search_form_inherit_typ
+msgid "Storage Location"
+msgstr "Storage Location"
+
+#. module: typ
+#: model:ir.model.fields,field_description:typ.field_product_product_product_warehouse_ids
+#: model:ir.ui.view,arch_db:typ.view_product_normal_inherit_typ
+msgid "Storage location"
+msgstr "Ubicación de almacenamiento"
+
+#. module: typ
 #: model:ir.ui.view,arch_db:typ.contact_edit
 #: model:ir.ui.view,arch_db:typ.portal_my_details
 msgid "Street:"
@@ -2703,15 +3161,9 @@ msgid "Subtotal"
 msgstr "Subtotal"
 
 #. module: typ
-#: model:ir.ui.view,arch_db:typ.about
-msgid "T&amp;P Refrigeracion is a regional company specialized in the attention to contractor companies, which operates in the Northwest \n"
-"                                    of the Mexican Republic. Established more than 20 years ago, it has as its base of operations the city of \n"
-"                                    Hermosillo, Sonora, Mexico, and is dedicated to the commercialization of equipment, installation materials and refurbishments \n"
-"                                    for Air Conditioning, Refrigeration and Ventilation."
-msgstr "T&amp;P Refrigeración es una empresa regional especializada en la atención a empresas contratistas, que opera en el Noroeste \n"
-"                                    de la República Mexicana. Establecida hace más de 20 años, tiene como base de operaciones la ciudad de \n"
-"                                    Hermosillo, Sonora, México, y está dedicada a la comercialización de equipos, materiales de instalación y refacciones para  \n"
-"                                    Aire Acondicionado, Refrigeración y Ventilación."
+#: model:ir.ui.view,arch_db:typ.homepage
+msgid "T Y P REFRIGERACION SA DE CV"
+msgstr "T Y P REFRIGERACION SA DE CV"
 
 #. module: typ
 #: model:ir.ui.view,arch_db:typ.s_typ_header
@@ -2726,26 +3178,36 @@ msgid "Taxes"
 msgstr "Impuestos"
 
 #. module: typ
-#: model:ir.ui.view,arch_db:typ.about
-msgid "Teamwork."
-msgstr "Trabajo en equipo."
-
-#. module: typ
 #: model:ir.ui.view,arch_db:typ.contactus
 msgid "Telephone"
 msgstr "Teléfono"
 
 #. module: typ
+#. openerp-web
+#: code:addons/typ/static/src/js/pos_models.js:67
+#, python-format
+msgid "Telephone communications"
+msgstr "Comunicaciones telefónicas"
+
+#. module: typ
+#: model:ir.ui.view,arch_db:typ.download_modal
+msgid "Telephone*"
+msgstr "Teléfono*"
+
+#. module: typ
+#: model:ir.ui.view,arch_db:typ.homepage
 #: model:ir.ui.view,arch_db:typ.s_typ_testimonials
 msgid "Testimonial 1"
 msgstr "Testimonio 1"
 
 #. module: typ
+#: model:ir.ui.view,arch_db:typ.homepage
 #: model:ir.ui.view,arch_db:typ.s_typ_testimonials
 msgid "Testimonial 3"
 msgstr "Testimonio 3"
 
 #. module: typ
+#: model:ir.ui.view,arch_db:typ.homepage
 #: model:ir.ui.view,arch_db:typ.s_typ_testimonials
 msgid "Testimonial 4"
 msgstr "Testimonio 4"
@@ -2759,6 +3221,11 @@ msgstr "Testimonio 2"
 #: model:ir.ui.view,arch_db:typ.s_typ_header
 msgid "Text"
 msgstr "Texto"
+
+#. module: typ
+#: model:ir.ui.view,arch_db:typ.about
+msgid "Texto de Odoo y bloque de imagen"
+msgstr "Texto de Odoo y bloque de imagen"
 
 #. module: typ
 #: model:ir.ui.view,arch_db:typ.confirmation
@@ -2806,20 +3273,31 @@ msgid "There are currently no quotations for your account."
 msgstr "Actualmente no hay presupuestos para su cuenta."
 
 #. module: typ
-#: model:ir.ui.view,arch_db:typ.about
-msgid "There is no minimum purchase limit. Any number of products, regardless of their price will be attended."
-msgstr "No existe un límite de compra mínima. Cualquier cantidad de productos, independientemente de su precio será atendida."
-
-#. module: typ
 #: model:product.public.category,name:typ.thermostats
 msgid "Thermostats and controls for A / C"
 msgstr "Termostatos y controles para A/C"
+
+#. module: typ
+#: code:addons/typ/models/res_partner.py:37
+#, python-format
+msgid "This email already has upgraded or have portal access"
+msgstr "This email already has upgraded or have portal access"
 
 #. module: typ
 #: model:ir.model.fields,help:typ.field_account_payment_is_commission
 #: model:ir.model.fields,help:typ.field_account_register_payments_is_commission
 msgid "This must be True if the amount difference is because the bank take that amount to commissions."
 msgstr "Esto debe ser Verdadero si la diferencia de cantidad se debe a que el banco lleva esa cantidad a comisiones."
+
+#. module: typ
+#: model:ir.model.fields,help:typ.field_pos_order_l10n_mx_edi_usage
+msgid "This usage will be used instead of the default one for invoices."
+msgstr "This usage will be used instead of the default one for invoices."
+
+#. module: typ
+#: model:ir.model,name:typ.model_helpdesk_ticket
+msgid "Ticket"
+msgstr "Ticket"
 
 #. module: typ
 #: model:ir.ui.view,arch_db:typ.loyalty
@@ -2833,18 +3311,26 @@ msgid "Title"
 msgstr "Título"
 
 #. module: typ
-#: model:ir.ui.view,arch_db:typ.about
-msgid "To be a leading company in the marketing of air conditioning and refrigeration products in the northwest and with presence in other territories\n"
-"                                    of the Mexican Republic operating as an intelligent company."
-msgstr "Ser una empresa líder en la comercialización de productos de aire acondicionado y refrigeración en el noroeste y con presencia en otros territorios\n"
-"                                    de la República Mexicana operando como una empresa inteligente."
+#. openerp-web
+#: code:addons/typ/static/src/js/pos_models.js:80
+#, python-format
+msgid "To define"
+msgstr "Por definir"
 
 #. module: typ
 #: model:ir.ui.view,arch_db:typ.about
-msgid "To effectively satisfy the supply of products and services to our customers, generating mutual business opportunities,\n"
-"                                    backed by our values, innovation and development of our collaborators."
-msgstr "Satisfacer efectivamente el suministro de productos y servicios a nuestros clientes, generando oportunidades de negocio mutuo,\n"
-"                                    respaldados por nuestros valores, innovación y desarrollo de nuestros colaboradores."
+msgid "Toda devolución de productos originada por causas atribuibles al comprador, generará un cargo del 20% sobre el valor de su envío, será con flete pagado por el cliente a la sucursal que corresponda. Si los productos son devueltos por causas atribuibles a T&amp;amp;P Refrigeración o a los fabricantes del producto, se hará la devolución del dinero o se extenderá un crédito a la cuenta del cliente después de recibir y haber sido aceptada la devolución."
+msgstr "Toda devolución de productos originada por causas atribuibles al comprador, generará un cargo del 20% sobre el valor de su envío, será con flete pagado por el cliente a la sucursal que corresponda. Si los productos son devueltos por causas atribuibles a T&amp;amp;P Refrigeración o a los fabricantes del producto, se hará la devolución del dinero o se extenderá un crédito a la cuenta del cliente después de recibir y haber sido aceptada la devolución."
+
+#. module: typ
+#: model:ir.ui.view,arch_db:typ.about
+msgid "Todos los precios son L.A.B. punto de venta o surtido de T&amp;amp;P Refrigeración. Los fletes por envío de productos son con cargo al cliente, quien los pagará al momento de recibirlos. En caso de recibir productos dañados o con faltantes, el cliente deberá reclamar de inmediato a la compañía fletera."
+msgstr "Todos los precios son L.A.B. punto de venta o surtido de T&amp;amp;P Refrigeración. Los fletes por envío de productos son con cargo al cliente, quien los pagará al momento de recibirlos. En caso de recibir productos dañados o con faltantes, el cliente deberá reclamar de inmediato a la compañía fletera."
+
+#. module: typ
+#: model:ir.ui.view,arch_db:typ.about
+msgid "Todos nuestros productos están garantizados, sin embargo, los términos varían de acuerdo a las políticas y condiciones que establece cada proveedor o fabricante. Las partes eléctricas no tienen garantía."
+msgstr "Todos nuestros productos están garantizados, sin embargo, los términos varían de acuerdo a las políticas y condiciones que establece cada proveedor o fabricante. Las partes eléctricas no tienen garantía."
 
 #. module: typ
 #: model:product.public.category,name:typ.tools
@@ -2899,9 +3385,21 @@ msgid "Total:"
 msgstr "Total:"
 
 #. module: typ
+#: model:ir.ui.view,arch_db:typ.about
+msgid "Trabajo en equipo"
+msgstr "Trabajo en equipo"
+
+#. module: typ
 #: model:ir.ui.view,arch_db:typ.loyalty
 msgid "Trainning"
 msgstr "Capacitación + Entrenamiento"
+
+#. module: typ
+#. openerp-web
+#: code:addons/typ/static/src/js/pos_models.js:64
+#, python-format
+msgid "Transportation equipment"
+msgstr "Equipo de transporte"
 
 #. module: typ
 #: model:ir.ui.view,arch_db:typ.loyalty
@@ -2910,8 +3408,8 @@ msgstr "Viajes a Planta y Laboratorio"
 
 #. module: typ
 #: model:ir.ui.view,arch_db:typ.loyalty
-msgid "TyP Customer"
-msgstr "Cliente TyP"
+msgid "Tu preferencia te trajo aquí y queremos que lo disfrutes. Con tu nivel de consumo seguirás siendo un <strong>Cliente Black</strong>, pero recuerda que también puedes crecer y convertirte en un <strong>Cliente Titanium</strong>."
+msgstr "Tu preferencia te trajo aquí y queremos que lo disfrutes. Con tu nivel de consumo seguirás siendo un <strong>Cliente Black</strong>, pero recuerda que también puedes crecer y convertirte en un <strong>Cliente Titanium</strong>."
 
 #. module: typ
 #: model:ir.ui.view,arch_db:typ.product-description
@@ -2936,6 +3434,11 @@ msgid "UUID"
 msgstr "UUID"
 
 #. module: typ
+#: model:ir.ui.view,arch_db:typ.view_stock_move_line_kanban_limit
+msgid "Ubication"
+msgstr "Ubicación"
+
+#. module: typ
 #: model:ir.ui.view,arch_db:typ.page_typ_fide_ir_ui_view
 #: model:ir.ui.view,arch_db:typ.typ_fide
 #: model:website.page,arch_db:typ.page_typ_fide
@@ -2953,9 +3456,13 @@ msgid "Unpaid"
 msgstr "Sin pagar"
 
 #. module: typ
-#: model:ir.ui.view,arch_db:typ.about
-msgid "Unquestionable values:"
-msgstr "Valores incuestionables:"
+#. openerp-web
+#: code:addons/typ/static/src/js/pos_models.js:105
+#: code:addons/typ/static/src/xml/pos.xml:11
+#: model:ir.model.fields,field_description:typ.field_pos_order_l10n_mx_edi_usage
+#, python-format
+msgid "Usage"
+msgstr "Uso"
 
 #. module: typ
 #: model:ir.model.fields,field_description:typ.field_user_wishlist_user_id
@@ -2965,7 +3472,7 @@ msgstr "Usuario"
 #. module: typ
 #: model:res.groups,comment:typ.group_validate_landed
 msgid "Users can validate landed xosts"
-msgstr ""
+msgstr "Users can validate landed xosts"
 
 #. module: typ
 #: model:ir.ui.view,arch_db:typ.contact_edit
@@ -2980,8 +3487,8 @@ msgstr "Validar precios de entrega"
 
 #. module: typ
 #: model:ir.ui.view,arch_db:typ.about
-msgid "Values"
-msgstr "Valores"
+msgid "Valores &amp;nbsp;"
+msgstr "Valores &amp;nbsp;"
 
 #. module: typ
 #: model:ir.ui.view,arch_db:typ.report_invoice_document_typ
@@ -3006,13 +3513,15 @@ msgstr "Ver detalles"
 
 #. module: typ
 #: model:ir.ui.view,arch_db:typ.about
-msgid "Vision"
+msgid "Visión"
 msgstr "Visión"
 
 #. module: typ
-#: model:ir.ui.view,arch_db:typ.about
-msgid "WE SUPPORT THE SUCCESS OF YOUR BUSINESS"
-msgstr "RESPALDAMOS EL ÉXITO DE TUS NEGOCIOS"
+#. openerp-web
+#: code:addons/typ/static/src/js/pos_models.js:75
+#, python-format
+msgid "Voluntary contributions to SAR"
+msgstr "Aportaciones voluntarias al SAR"
 
 #. module: typ
 #: model:ir.ui.view,arch_db:typ.s_banner_homepage
@@ -3026,7 +3535,7 @@ msgstr "QUEREMOS SER TUS SOCIOS"
 
 #. module: typ
 #: model:ir.ui.view,arch_db:typ.about
-msgid "WHO WE ARE IN T&amp;P<br/>REFRIGERATION"
+msgid "WHO WE ARE IN T&amp;amp;P<br/>REFRIGERATION"
 msgstr "QUIENES SOMOS EN T&amp;P<br/>REFRIGERACIÓN"
 
 #. module: typ
@@ -3036,27 +3545,9 @@ msgid "Waiting"
 msgstr "En espera"
 
 #. module: typ
-#: model:ir.ui.view,arch_db:typ.about
-msgid "Warranty:"
-msgstr "Garantía:"
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.about
-msgid "We are dedicated to the commercialization of spare parts, installation materials and equipment for air conditioning, \n"
-"                                    refrigeration and air ventilation, being our primary objective to serve the contractors of these branches, both in the Northwest\n"
-"                                    of Mexico through our establishments and through of our new store option by phone and internet to serve the rest of the country."
-msgstr "Nos dedicamos a la comercialización de refacciones, materiales de instalación y equipos para aire acondicionado, \n"
-"                                    refrigeración y ventilación de aire, siendo nuestro objetivo primordial atender a las empresas contratistas de estos ramos, tanto en el Noroeste\n"
-"                                    de México a través de nuestros establecimientos como a través de nuestra nueva opción de tienda por teléfono e internet para atender al resto del país."
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.about
-msgid "We are distributors of important manufacturers of the products we sell, both in Mexico and the United States, which allows us to \n"
-"                                    provide a wide range of alternatives for market needs, technical support, guarantees and trained personnel to support investments \n"
-"                                    of those who use our services."
-msgstr "Somos distribuidores de importantes empresas fabricantes de los productos que comercializamos, tanto de México como de Estados Unidos, lo que nos permite \n"
-"                                    brindar una amplia gama de alternativas para las necesidades del mercado, el soporte técnico, las garantías y el personal capacitado que respalden las inversiones \n"
-"                                    de quienes utilizan nuestros servicios."
+#: model:ir.model.fields,field_description:typ.field_product_stock_warehouse_warehouse_id
+msgid "Warehouse"
+msgstr "Almacén"
 
 #. module: typ
 #: model:ir.ui.view,arch_db:typ.products_list
@@ -3073,11 +3564,6 @@ msgid "Website Product Category"
 msgstr "Categoría del Producto"
 
 #. module: typ
-#: model:ir.ui.view,arch_db:typ.loyalty
-msgid "Welcome"
-msgstr "Bienvenido"
-
-#. module: typ
 #: model:ir.model.fields,help:typ.field_product_public_category_landing_category
 msgid "When selected this category will be displayed on the homepage"
 msgstr "Cuando seleccionado esta categoría será mostrada en la pagina de inicio del website"
@@ -3088,7 +3574,7 @@ msgid "With T&amp;P you have support when you need it, now <br/> you have benefi
 msgstr "Con T&amp;P tienes soporte y respaldo cuando lo necesitas, ahora <br/> tambien tienes beneficios sólo para tí."
 
 #. module: typ
-#: code:addons/typ/models/res_partner.py:31
+#: code:addons/typ/models/res_partner.py:43
 #, python-format
 msgid "You are not elegible for upgrade"
 msgstr "Usted no es candidato para la actualización"
@@ -3128,11 +3614,6 @@ msgstr "Tu información se ha enviado correctamente. <br/> Espera nuestra respue
 #: model:ir.ui.view,arch_db:typ.confirmation
 msgid "Your payment has been registred with te following order number"
 msgstr "Tu pedido ha sido registrado con el siguiente número de orden:"
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.loyalty
-msgid "Your preferences got you here and we want you to  enjoy it. with your level of consumption you still a <strong>Customer Black</strong>, but remember that you can also grow to <strong>Customer Titanium</strong>"
-msgstr "Tu preferencia te trajo aquí y queremos que lo disfrutes. Con tu nivel de consumo seguirás siendo un <strong>Cliente Black</strong>, pero recuerda que también puedes crecer y convertirte en un <strong>Cliente Titanium</strong>."
 
 #. module: typ
 #: model:ir.ui.view,arch_db:typ.products_list
@@ -3233,22 +3714,8 @@ msgstr "astrocool"
 #: model:ir.ui.view,arch_db:typ.page_typ_providers_ir_ui_view
 #: model:ir.ui.view,arch_db:typ.typ_providers
 #: model:website.page,arch_db:typ.page_typ_providers
-msgid "atco"
-msgstr "atco"
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.page_typ_providers_ir_ui_view
-#: model:ir.ui.view,arch_db:typ.typ_providers
-#: model:website.page,arch_db:typ.page_typ_providers
 msgid "avaly"
 msgstr "avaly"
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.page_typ_providers_ir_ui_view
-#: model:ir.ui.view,arch_db:typ.typ_providers
-#: model:website.page,arch_db:typ.page_typ_providers
-msgid "bohn"
-msgstr "bohn"
 
 #. module: typ
 #: model:ir.ui.view,arch_db:typ.page_typ_providers_ir_ui_view
@@ -3263,20 +3730,6 @@ msgstr "bronzglow"
 #: model:website.page,arch_db:typ.page_typ_providers
 msgid "cain"
 msgstr "cain"
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.page_typ_providers_ir_ui_view
-#: model:ir.ui.view,arch_db:typ.typ_providers
-#: model:website.page,arch_db:typ.page_typ_providers
-msgid "carel"
-msgstr "carel"
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.page_typ_providers_ir_ui_view
-#: model:ir.ui.view,arch_db:typ.typ_providers
-#: model:website.page,arch_db:typ.page_typ_providers
-msgid "cerro"
-msgstr "cerro"
 
 #. module: typ
 #: model:ir.ui.view,arch_db:typ.page_typ_providers_ir_ui_view
@@ -3332,13 +3785,6 @@ msgstr "diversitech"
 #: model:ir.ui.view,arch_db:typ.page_typ_providers_ir_ui_view
 #: model:ir.ui.view,arch_db:typ.typ_providers
 #: model:website.page,arch_db:typ.page_typ_providers
-msgid "dupont"
-msgstr "dupont"
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.page_typ_providers_ir_ui_view
-#: model:ir.ui.view,arch_db:typ.typ_providers
-#: model:website.page,arch_db:typ.page_typ_providers
 msgid "embraco"
 msgstr "embraco"
 
@@ -3372,13 +3818,6 @@ msgstr "fasson"
 #: model:website.page,arch_db:typ.page_typ_organizations
 msgid "fide"
 msgstr "fide"
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.page_typ_providers_ir_ui_view
-#: model:ir.ui.view,arch_db:typ.typ_providers
-#: model:website.page,arch_db:typ.page_typ_providers
-msgid "flanders"
-msgstr "flanders"
 
 #. module: typ
 #: model:ir.ui.view,arch_db:typ.page_typ_hardi_ir_ui_view
@@ -3415,43 +3854,8 @@ msgstr "icm"
 #: model:ir.ui.view,arch_db:typ.page_typ_providers_ir_ui_view
 #: model:ir.ui.view,arch_db:typ.typ_providers
 #: model:website.page,arch_db:typ.page_typ_providers
-msgid "imperial"
-msgstr "imperial"
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.page_typ_providers_ir_ui_view
-#: model:ir.ui.view,arch_db:typ.typ_providers
-#: model:website.page,arch_db:typ.page_typ_providers
-msgid "iusa"
-msgstr "iusa"
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.page_typ_providers_ir_ui_view
-#: model:ir.ui.view,arch_db:typ.typ_providers
-#: model:website.page,arch_db:typ.page_typ_providers
 msgid "johnsoncontrols"
 msgstr "johnsoncontrols"
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.page_typ_providers_ir_ui_view
-#: model:ir.ui.view,arch_db:typ.typ_providers
-#: model:website.page,arch_db:typ.page_typ_providers
-msgid "kleerstrip"
-msgstr "kleerstrip"
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.page_typ_providers_ir_ui_view
-#: model:ir.ui.view,arch_db:typ.typ_providers
-#: model:website.page,arch_db:typ.page_typ_providers
-msgid "knauf"
-msgstr "knauf"
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.page_typ_providers_ir_ui_view
-#: model:ir.ui.view,arch_db:typ.typ_providers
-#: model:website.page,arch_db:typ.page_typ_providers
-msgid "kompress"
-msgstr "kompress"
 
 #. module: typ
 #: model:ir.ui.view,arch_db:typ.page_typ_providers_ir_ui_view
@@ -3487,13 +3891,6 @@ msgstr "malco"
 #: model:website.page,arch_db:typ.page_typ_providers
 msgid "mars"
 msgstr "mars"
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.page_typ_providers_ir_ui_view
-#: model:ir.ui.view,arch_db:typ.typ_providers
-#: model:website.page,arch_db:typ.page_typ_providers
-msgid "mason"
-msgstr "mason"
 
 #. module: typ
 #: model:ir.ui.view,arch_db:typ.page_typ_providers_ir_ui_view
@@ -3546,17 +3943,11 @@ msgid "password"
 msgstr "Contraseña"
 
 #. module: typ
-#: code:addons/typ/models/res_partner.py:32
+#: code:addons/typ/models/res_partner.py:39
+#: code:addons/typ/models/res_partner.py:44
 #, python-format
 msgid "please contact us if you think this is a mistake"
 msgstr "por favor contáctenos si cree que esto es un error"
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.page_typ_providers_ir_ui_view
-#: model:ir.ui.view,arch_db:typ.typ_providers
-#: model:website.page,arch_db:typ.page_typ_providers
-msgid "polyken"
-msgstr "polyken"
 
 #. module: typ
 #: model:ir.ui.view,arch_db:typ.page_typ_providers_ir_ui_view
@@ -3566,18 +3957,16 @@ msgid "polymer"
 msgstr "polymer"
 
 #. module: typ
-#: model:ir.ui.view,arch_db:typ.page_typ_providers_ir_ui_view
-#: model:ir.ui.view,arch_db:typ.typ_providers
-#: model:website.page,arch_db:typ.page_typ_providers
-msgid "ranco"
-msgstr "ranco"
+#: model:ir.model,name:typ.model_product_stock_warehouse
+msgid "product.stock.warehouse"
+msgstr "product.stock.warehouse"
 
 #. module: typ
 #: model:ir.ui.view,arch_db:typ.page_typ_providers_ir_ui_view
 #: model:ir.ui.view,arch_db:typ.typ_providers
 #: model:website.page,arch_db:typ.page_typ_providers
-msgid "sauermann"
-msgstr "sauermann"
+msgid "ranco"
+msgstr "ranco"
 
 #. module: typ
 #: model:ir.ui.view,arch_db:typ.portal_my_details
@@ -3623,13 +4012,6 @@ msgstr "teco"
 #: model:ir.ui.view,arch_db:typ.page_typ_providers_ir_ui_view
 #: model:ir.ui.view,arch_db:typ.typ_providers
 #: model:website.page,arch_db:typ.page_typ_providers
-msgid "tecumseh"
-msgstr "tecumseh"
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.page_typ_providers_ir_ui_view
-#: model:ir.ui.view,arch_db:typ.typ_providers
-#: model:website.page,arch_db:typ.page_typ_providers
 msgid "uei"
 msgstr "uei"
 
@@ -3644,13 +4026,6 @@ msgstr "usaire"
 #: model:ir.model,name:typ.model_user_wishlist
 msgid "user.wishlist"
 msgstr "user.wishlist"
-
-#. module: typ
-#: model:ir.ui.view,arch_db:typ.page_typ_providers_ir_ui_view
-#: model:ir.ui.view,arch_db:typ.typ_providers
-#: model:website.page,arch_db:typ.page_typ_providers
-msgid "vtronix"
-msgstr "vtronix"
 
 #. module: typ
 #: model:ir.ui.view,arch_db:typ.page_typ_acca_ir_ui_view
@@ -3693,6 +4068,13 @@ msgstr "www.comfortinstitute.org"
 #: model:website.page,arch_db:typ.page_typ_fide
 msgid "www.fide.org.mx"
 msgstr "www.fide.org.mx"
+
+#. module: typ
+#: model:ir.ui.view,arch_db:typ.page_typ_hardi_ir_ui_view
+#: model:ir.ui.view,arch_db:typ.typ_hardi
+#: model:website.page,arch_db:typ.page_typ_hardi
+msgid "www.hardimex.org"
+msgstr "www.hardimex.org"
 
 #. module: typ
 #: model:ir.ui.view,arch_db:typ.page_typ_hardi_ir_ui_view

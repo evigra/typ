@@ -14,7 +14,6 @@
             <script type="text/javascript" src="/typ/static/src/js/favorites.js"></script>
             <script type="text/javascript" src="/typ/static/src/js/share.js"></script>
             <script type="text/javascript" src="/typ/static/src/js/cart.js"></script>
-            <script type="text/javascript" src="/typ/static/src/js/web_link_editor.js"></script>
             <script type="text/javascript" src="/typ/static/src/js/download_catalog.js"></script>
         </xpath>
         <xpath expr="//link[last()]" position="after">
