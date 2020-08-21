@@ -11,3 +11,4 @@ from . import pos_order
 from . import account_journal
 from . import helpdesk_ticket
 from . import sale_order
+from . import crm_lead

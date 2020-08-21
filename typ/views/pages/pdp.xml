@@ -98,7 +98,7 @@
             <div class="col-md-10 col-md-offset-1  col-sm-12 col-sm-offset-1 col-xs-12 col-xs-offset-0 text-center mb48">
                 <a groups="website.group_website_designer" id="add_to_cart" class="btn btn-primary btn-block mt24 mb24 js_check_product a-submit"  t-if="website.user_id != user_id" href="#">Add to cart</a>
                 <!-- <a class="btn btn-primary btn-block mt24 mb24"  t-if="website.user_id == user_id" href="/contactus">Request a quote</a>  -->
-                <a class="btn btn-primary btn-block mt24 mb24" href="/contactus">Request a quote</a> 
+                <a class="btn btn-primary btn-block mt24 mb24" t-attf-href="/contactus?product=#{product.id}">Request a quote</a> 
                 <div class="row mt16 mb24 o_add_fav" t-if="website.user_id != user_id and product.website_published and 'on' or 'off' == 'on'" groups="website.group_website_designer">
                         <div id="favorite">
                             <t t-if="not product.is_favorite()">

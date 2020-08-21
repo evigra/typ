@@ -108,6 +108,7 @@
         'views/templates.xml',
         'views/helpdesk_views.xml',
         'views/sale_order_views.xml',
+        'views/crm_lead.xml',
         'views/pages/homepage.xml',
         'views/pages/shop.xml',
         'views/pages/pdp.xml',
