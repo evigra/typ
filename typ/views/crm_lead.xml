@@ -6,7 +6,7 @@
         <field name="inherit_id" ref="crm.crm_case_form_view_oppor"/>
         <field name="arch" type="xml">
             <xpath expr="//group" position="inside">
-                <group attrs="{'invisible': [('product_quotation_id','=', False)]}">
+                <group attrs="{'invisible': [('product_quotation_id', '=', False)]}">
                     <field name="product_quotation_id"/>
                 </group>
             </xpath>

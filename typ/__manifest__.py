@@ -99,6 +99,7 @@
         'data/categories.xml',
         'data/website.xml',
         'data/payment10.xml',
+        'data/website_crm.xml',
         # Website stuff
         'views/account_views.xml',
         'views/account_payment_views.xml',

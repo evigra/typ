@@ -6,5 +6,5 @@ class CRMLead(models.Model):
 
     product_quotation_id = fields.Many2one(
         'product.template',
-        string='Customer',
-        help="Product for which a quotation was requested on website")
+        string="Product Quotation Request",
+        help="Product for which a quotation was requested on website.")

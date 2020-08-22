@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 11.0+e\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-08-21 19:10+0000\n"
-"PO-Revision-Date: 2020-08-21 19:10+0000\n"
+"POT-Creation-Date: 2020-08-24 15:52+0000\n"
+"PO-Revision-Date: 2020-08-24 15:52+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -2145,6 +2145,11 @@ msgid "Last Updated on"
 msgstr "Última actualización en"
 
 #. module: typ
+#: model:ir.model,name:typ.model_crm_lead
+msgid "Lead/Opportunity"
+msgstr "Iniciativa/Oportunidad"
+
+#. module: typ
 #: model:ir.ui.view,arch_db:typ.loyalty
 msgid "Lennox Extended Warranty"
 msgstr "Garantía Extendida Lennox"
@@ -2703,9 +2708,19 @@ msgid "Product Name"
 msgstr "Nombre del producto"
 
 #. module: typ
+#: model:ir.model.fields,field_description:typ.field_crm_lead_product_quotation_id
+msgid "Product Quotation Request"
+msgstr "Producto de la Solicitud de Cotización"
+
+#. module: typ
 #: model:ir.model,name:typ.model_product_template
 msgid "Product Template"
 msgstr "Plantilla de producto"
+
+#. module: typ
+#: model:ir.model.fields,help:typ.field_crm_lead_product_quotation_id
+msgid "Product for which a quotation was requested on website."
+msgstr "Producto por el que se solicito una cotización en el sitio web."
 
 #. module: typ
 #: model:ir.ui.view,arch_db:typ.breadcrumb-categories

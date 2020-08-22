@@ -30,6 +30,12 @@
                     </div>
                     <div class="form-group">
                         <form action="/website_form/" class="s_website_form form-horizontal container-fluid mt24" data-model_name="crm.lead" data-success_page="/contactus-thank-you" enctype="multipart/form-data" method="post">
+                            <div t-if="product" class="form-group form-field">
+                                <input class="form-control o_website_form_input" placeholder="" t-attf-value="#{product.name}" readonly="True"/>
+                            </div>
+                            <div t-if="product" class="form-group form-field hidden">
+                                <input class="form-control o_website_form_input" name="product_quotation_id" placeholder="" t-attf-value="#{product.id}" type="hidden"/>
+                            </div>
                             <div class="form-group form-field o_website_form_required_custom">
                                 <input class="form-control o_website_form_input" name="contact_name" placeholder="Name" required="" t-att-value="request.params.get('contact_name', '')" type="text"/>
                             </div>
@@ -43,11 +49,8 @@
                                 <textarea class="form-control o_website_form_input" placeholder="Your Message..." name="description" required=""><t t-esc="request.params.get('description', '')"/></textarea>
                             </div>
                             <div class="form-group form-field hidden">
-                                <input t-if="product" class="form-control o_website_form_input" name="name" placeholder="" t-attf-value="Quotation Request from website" type="hidden"/>
-                                <input t-else="" class="form-control o_website_form_input" name="name" placeholder="" t-att-value="'Contact from website'" type="hidden"/>
-                            </div>
-                            <div t-if="product" class="form-group form-field hidden">
-                                <input class="form-control o_website_form_input" name="product_quotation_id" placeholder="" t-attf-value="#{product.id}" type="hidden"/>
+                                <input t-if="product" class="form-control o_website_form_input" name="name" placeholder="" t-attf-value="Quotation Request from Website" type="hidden"/>
+                                <input t-else="" class="form-control o_website_form_input" name="name" placeholder="" t-att-value="'Contact from Website'" type="hidden"/>
                             </div>
                             <div class="form-group mt32 hidden-xs">
                                 <div class="row text-center mb32">
