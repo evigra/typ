@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 {
     'name': "typ_default_warehouse_from_sale_team",
     'author': "Vauxoo",

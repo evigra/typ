@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 
 __name__ = "Update invoice field date_paid"
 

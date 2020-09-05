@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 ############################################################################
 #    Module Writen For Odoo, Open Source Management Solution
 #
@@ -12,7 +11,7 @@
     'author': 'Vauxoo',
     'category': 'Project Management',
     'website': 'http://www.typrefrigeracion.com.mx/',
-    'version': '8.0.0.1.1',
+    'version': '11.0.0.1.1',
 
     # any module necessary for this one to work correctly
     'depends': [

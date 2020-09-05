@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 {
     'name': "Typ Human Capital",
     'author': "Vauxoo, TyP refrigeracion",

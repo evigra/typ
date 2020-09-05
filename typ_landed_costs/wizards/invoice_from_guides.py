@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 
 from openerp import _, api, exceptions, fields, models
 

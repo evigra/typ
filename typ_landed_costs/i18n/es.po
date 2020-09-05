@@ -55,6 +55,7 @@ msgstr "Sucursal Cliente"
 msgid "Branch-Client Sale"
 msgstr "Venta Sucursal-Cliente"
 
+#. module: typ_landed_costs
 #: model:ir.model.fields,field_description:typ_landed_costs.field_stock_landed_cost_partner_id
 msgid "Broker"
 msgstr "Broker"

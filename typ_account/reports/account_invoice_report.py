@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 
 from openerp import models, fields
 import openerp.addons.typ_sale.models.res_partner as typ_sale_partner

@@ -1,4 +1,3 @@
-# coding: utf-8
 
 from openerp.exceptions import Warning as UserError
 from .common import TestTypStock

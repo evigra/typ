@@ -95,7 +95,7 @@
                     <span t-if="doc.state not in ['draft','sent']"><strong>Order Date</strong>:</span>
                     <span t-if="doc.state in ['draft','sent']"><strong>Quotation Date</strong>:</span>
                     <br/>
-                    <span t-field="doc.date_order" t-field-options='{"widget": "date"}'/><br/>
+                    <span t-field="doc.date_order" t-options='{"widget": "date"}'/><br/>
                 </div>
                 <div class="col-xs-3">
                     <span><strong>Salesman</strong>:

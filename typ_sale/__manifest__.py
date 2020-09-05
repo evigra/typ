@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 {
     'name': "typ_sale",
     'author': "Vauxoo",

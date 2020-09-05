@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 
 from openerp.exceptions import ValidationError as UserError
 from openerp.tests.common import TransactionCase

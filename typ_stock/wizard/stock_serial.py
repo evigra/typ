@@ -1,5 +1,3 @@
-# coding: utf-8
-
 from lxml import etree
 import simplejson
 from openerp import _, api, fields, models

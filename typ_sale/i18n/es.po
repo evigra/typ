@@ -20,6 +20,7 @@ msgstr ""
 msgid "1 year for parts and 5 years for compressor in American equipment. 1 year for parts and compressor for Asian equipment. Does not apply to equipment with power failures or burns."
 msgstr "1 año para partes y 5 años para compresor para equipos Americanos. 1 año en partes y compresor para equipos Asiáticos. No aplica para equipos con fallas eléctricas ni quemaduras."
 
+#. module: typ_sale
 #: code:addons/typ_sale/models/sale_order.py:133
 #, python-format
 msgid "%s has a fiscal position configuration, however it is recommended to apply the border fiscal position"
@@ -273,6 +274,7 @@ msgstr "Mercado final"
 msgid "Financing:"
 msgstr "Financiamiento:"
 
+#. module: typ_sale
 #: model:ir.model.fields,field_description:typ_sale.field_crm_team_fiscal_position_id
 msgid "Fiscal position"
 msgstr "Posición fiscal"

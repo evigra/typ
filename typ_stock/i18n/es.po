@@ -25,6 +25,8 @@ msgstr "<p class=\"oe_view_nocontent_create\">\n"
 "                Click para generar una transferencia manual.\n"
 "              </p>\n"
 "            "
+
+#. module: typ_stock
 #: model:ir.ui.view,arch_db:typ_stock.report_picking
 #: model:ir.ui.view,arch_db:typ_stock.report_picking_wobc
 msgid "<span><strong>Customer Address:</strong></span>"
@@ -36,6 +38,7 @@ msgstr "<span><strong>Dirección del Cliente:</strong></span>"
 msgid "<ul><li>shipment confirmed --> <b>Canceled</b></li></ul>"
 msgstr "<ul><li>embarque confirmado --> <b>Cancelado</b></li></ul>"
 
+#. module: typ_stock
 #: model:ir.ui.view,arch_db:typ_stock.report_picking
 #: model:ir.ui.view,arch_db:typ_stock.report_picking_wobc
 msgid "<span><strong>Delivery Address:</strong></span>"
@@ -47,6 +50,7 @@ msgstr "<span><strong>Dirección de Entrega:</strong></span>"
 msgid "<ul><li>shipment confirmed --> <b>ok</b></li></ul>"
 msgstr "<ul><li>embarque confirmado --> <b>ok</b></li></ul>"
 
+#. module: typ_stock
 #: model:ir.ui.view,arch_db:typ_stock.report_picking
 #: model:ir.ui.view,arch_db:typ_stock.report_picking_wobc
 msgid "<span><strong>Supplier Address:</strong></span>"
@@ -59,6 +63,7 @@ msgstr "<span><strong>Dirección del Proveedor:</strong></span>"
 msgid "AA"
 msgstr ""
 
+#. module: typ_stock
 #: model:ir.ui.view,arch_db:typ_stock.report_picking
 #: model:ir.ui.view,arch_db:typ_stock.report_picking_wobc
 msgid "<span><strong>Warehouse Address:</strong></span>"
@@ -69,6 +74,7 @@ msgstr "<span><strong>Dirección del Almacén:</strong></span>"
 msgid "Action compute supplier ref"
 msgstr "Accion para calcular codigo de proveedor"
 
+#. module: typ_stock
 #: model:ir.ui.view,arch_db:typ_stock.report_picking
 msgid "<strong>Barcode</strong>"
 msgstr "<strong>Código de Barras</strong>"
@@ -78,6 +84,7 @@ msgstr "<strong>Código de Barras</strong>"
 msgid "Action follower product manager"
 msgstr ""
 
+#. module: typ_stock
 #: model:ir.ui.view,arch_db:typ_stock.report_picking
 #: model:ir.ui.view,arch_db:typ_stock.report_picking_wobc
 msgid "<strong>Commitment Date</strong>"
@@ -88,6 +95,7 @@ msgstr "<strong>Fecha Compromiso</strong>"
 msgid "Action procurement cancel"
 msgstr "Accion para cancelar abastecimientos"
 
+#. module: typ_stock
 #: model:ir.ui.view,arch_db:typ_stock.report_picking
 #: model:ir.ui.view,arch_db:typ_stock.report_picking_wobc
 msgid "<strong>Destination</strong>"
@@ -98,6 +106,7 @@ msgstr "<strong>Destino</strong>"
 msgid "Active"
 msgstr "Activo"
 
+#. module: typ_stock
 #: model:ir.ui.view,arch_db:typ_stock.report_picking
 #: model:ir.ui.view,arch_db:typ_stock.report_picking_wobc
 msgid "<strong>Notes</strong>:"
@@ -108,6 +117,7 @@ msgstr "<strong>Notas</strong>:"
 msgid "Additional information"
 msgstr ""
 
+#. module: typ_stock
 #: model:ir.ui.view,arch_db:typ_stock.report_picking
 #: model:ir.ui.view,arch_db:typ_stock.report_picking_wobc
 msgid "<strong>Order (Origin)</strong>"
@@ -118,6 +128,7 @@ msgstr "<strong>Pedido (Origen)</strong>"
 msgid "Applicable on manual transfer"
 msgstr "Aplicable en transferencia manual"
 
+#. module: typ_stock
 #: model:ir.ui.view,arch_db:typ_stock.report_picking
 #: model:ir.ui.view,arch_db:typ_stock.report_picking_wobc
 msgid "<strong>Product</strong>"
@@ -128,6 +139,7 @@ msgstr "<strong>Producto</strong>"
 msgid "Automatic output"
 msgstr "Salida automatica"
 
+#. module: typ_stock
 #: model:ir.ui.view,arch_db:typ_stock.report_picking
 #: model:ir.ui.view,arch_db:typ_stock.report_picking_wobc
 msgid "<strong>Quantity</strong>"
@@ -138,6 +150,7 @@ msgstr "<strong>Cantidad</strong>"
 msgid "Automatic transit"
 msgstr "Transito automático"
 
+#. module: typ_stock
 #: model:ir.ui.view,arch_db:typ_stock.report_picking
 #: model:ir.ui.view,arch_db:typ_stock.report_picking_wobc
 msgid "<strong>Scheduled Date</strong>"
@@ -148,6 +161,7 @@ msgstr "<strong>Fecha Recepción</strong>"
 msgid "Balanced"
 msgstr "Balanceo"
 
+#. module: typ_stock
 #: model:ir.ui.view,arch_db:typ_stock.report_picking
 #: model:ir.ui.view,arch_db:typ_stock.report_picking_wobc
 msgid "<strong>Serie</strong>"

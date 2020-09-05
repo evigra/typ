@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 from openerp import api, SUPERUSER_ID
 
 __name__ = "Cleaning Warnings"

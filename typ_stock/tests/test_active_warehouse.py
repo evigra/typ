@@ -1,4 +1,3 @@
-# coding: utf-8
 
 from openerp.exceptions import ValidationError
 from .common import TestTypStock

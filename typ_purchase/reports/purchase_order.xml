@@ -176,7 +176,7 @@
                                 </td>
                                 <td class="text-right">
                                     <span t-field="line.price_subtotal"
-                                        t-field-options='{"widget": "monetary", "display_currency": o.currency_id}'/>
+                                        t-options='{"widget": "monetary", "display_currency": o.currency_id}'/>
                                 </td>
                             </tr>
                         </tbody>
@@ -188,21 +188,21 @@
                                     <td><strong>Subtotal</strong></td>
                                     <td class="text-right">
                                         <span t-field="o.amount_untaxed"
-                                            t-field-options='{"widget": "monetary", "display_currency": o.currency_id}'/>
+                                            t-options='{"widget": "monetary", "display_currency": o.currency_id}'/>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>Taxes</td>
                                     <td class="text-right">
                                         <span t-field="o.amount_tax"
-                                            t-field-options='{"widget": "monetary", "display_currency": o.currency_id}'/>
+                                            t-options='{"widget": "monetary", "display_currency": o.currency_id}'/>
                                     </td>
                                 </tr>
                                 <tr class="border-black">
                                     <td><strong>Total</strong></td>
                                     <td class="text-right">
                                         <span t-field="o.amount_total"
-                                            t-field-options='{"widget": "monetary", "display_currency": o.currency_id}'/>
+                                            t-options='{"widget": "monetary", "display_currency": o.currency_id}'/>
                                     </td>
                                 </tr>
                             </table>

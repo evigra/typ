@@ -1,4 +1,3 @@
-# coding: utf-8
 
 import collections
 from openerp import _, api, fields, models

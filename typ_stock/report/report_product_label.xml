@@ -32,7 +32,7 @@
                     <h6 class="text-left" t-field="doc.categ_id.name"/>
                     <h6 class="text-left" t-field="doc.name"/>
                     <p class="text-center" t-field="doc.ean13"
-                     t-field-options='
+                     t-options='
                      {
                      "widget": "barcode",
                      "type": "Code128"
@@ -53,7 +53,7 @@
                          <span t-field="doc.name" />
                     </h6>
                     <p class="text-center" t-field="doc.ean13"
-                     t-field-options='
+                     t-options='
                      {
                      "widget": "barcode",
                      "type": "Code128"
@@ -71,7 +71,7 @@
                     <h6 class="text-center" t-field="doc.default_code"/>
                     <h6 class="text-left" t-field="doc.name"/>
                     <p class="text-center" t-field="doc.ean13"
-                     t-field-options='
+                     t-options='
                      {
                      "widget": "barcode",
                      "type": "Code128"
