@@ -460,6 +460,7 @@ class StockLandedCost(models.Model):
         ('nac', 'NACO'),
         ('mzt', 'MAZATLAN'),
         ('elp', 'EL PASO'),
+        ('cdmx', 'CDMX'),
         ], help='Port of input',
     )
 
