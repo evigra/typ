@@ -24,4 +24,8 @@
         <field name="name">Users who can see the cancel payment button</field>
         <field name="comment">This group can see the cancel payment button in accounting.</field>
     </record>
+    <record id="res_group_analitic_invoice_lines" model="res.groups">
+        <field name="name">Users who can see analytic fields invoice lines</field>
+        <field name="comment">This group can see analytics fields in invoice lines</field>
+    </record>
 </odoo>

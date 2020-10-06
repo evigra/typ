@@ -65,6 +65,19 @@
                 </xpath>
             </field>
         </record>
+        <record id="account_invoice_tree_analitic_group" model="ir.ui.view">
+            <field name="name">account.invoice.line.analitic.group</field>
+            <field name="model">account.invoice</field>
+            <field name="inherit_id" ref="account.invoice_supplier_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='account_analytic_id']" position="attributes">
+                    <attribute name="groups" translation="off">typ_account.res_group_analitic_invoice_lines</attribute>
+                </xpath>
+                <xpath expr="//field[@name='analytic_tag_ids']" position="attributes">
+                    <attribute name="groups" translation="off">typ_account.res_group_analitic_invoice_lines</attribute>
+                </xpath>
+            </field>
+        </record>
 
         <record id="account_invoice_custom_search" model="ir.ui.view">
             <field name="name">account.invoice.select.search</field>
