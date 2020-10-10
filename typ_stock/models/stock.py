@@ -44,6 +44,11 @@ class StockPicking(models.Model):
         domain=lambda self:
         [('groups_id', '=', self.env.ref(
             "typ_stock.group_stock_validation_warranty_transfer").id)])
+    arrival_date_broker = fields.Date(
+        states={'done': [('readonly', True)]},
+        help='Arrival date at the customs broker')
+    input_cb = fields.Char(help='Custom Broker code')
+    guide_number = fields.Char(help='Guide number')
 
     @api.onchange('location_dest_id')
     def onchange_dest_warranty(self):

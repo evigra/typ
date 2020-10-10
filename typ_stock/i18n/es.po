@@ -129,6 +129,16 @@ msgid "Applicable on manual transfer"
 msgstr "Aplicable en transferencia manual"
 
 #. module: typ_stock
+#: model:ir.model.fields,field_description:typ_stock.field_stock_picking_arrival_date_broker
+msgid "Arrival Date Broker"
+msgstr "Fecha llegada a broker"
+
+#. module: typ_stock
+#: model:ir.model.fields,help:typ_stock.field_stock_picking_arrival_date_broker
+msgid "Arrival date at the customs broker"
+msgstr "Fecha de llegada a la agencia aduanal"
+
+#. module: typ_stock
 #: model:ir.ui.view,arch_db:typ_stock.report_picking
 #: model:ir.ui.view,arch_db:typ_stock.report_picking_wobc
 msgid "<strong>Product</strong>"
@@ -213,6 +223,11 @@ msgid "Created on"
 msgstr "Creado en"
 
 #. module: typ_stock
+#: model:ir.model.fields,help:typ_stock.field_stock_picking_input_cb
+msgid "Custom Broker code"
+msgstr "Código de agencia aduanal"
+
+#. module: typ_stock
 #: view:website:stock.report_picking
 msgid "Customer Address:"
 msgstr "Dirección del Cliente:"
@@ -243,6 +258,16 @@ msgstr "Nombre a mostrar"
 #: selection:stock.manual_transfer,state:0
 msgid "Draft"
 msgstr "Borrador"
+
+#. module: typ_stock
+#: model:ir.model.fields,field_description:typ_stock.field_stock_picking_guide_number
+msgid "Guide Number"
+msgstr "Número de Guía"
+
+#. module: typ_stock
+#: model:ir.model.fields,help:typ_stock.field_stock_picking_guide_number
+msgid "Guide number"
+msgstr "Número de guía"
 
 #. module: typ_stock
 #: model:ir.model,name:typ_stock.model_stock_manual_transfer
@@ -293,6 +318,11 @@ msgstr "Si seleccionas nuevos mensajes requieren tu atención."
 #: model:ir.model.fields,field_description:typ_stock.field_stock_warehouse_orderpoint_importance
 msgid "Importance"
 msgstr "Importancia"
+
+#. module: typ_stock
+#: model:ir.model.fields,field_description:typ_stock.field_stock_picking_input_cb
+msgid "Input Cb"
+msgstr "Entrada AA"
 
 #. module: typ_stock
 #: selection:product.product,state:0
