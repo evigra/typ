@@ -241,7 +241,7 @@ class StockLandedGuides (models.Model):
                 guide_brw.partner_id)
 
             line = [(0, 0,
-                     self.line_get_convert(l, part.id, date)) for l in gml]
+                     self.line_get_convert(li, part.id, date)) for li in gml]
             line = guide_brw.finalize_guide_move_lines(line)
             move_vals = {
                 'ref': guide_brw.reference or guide_brw.name,

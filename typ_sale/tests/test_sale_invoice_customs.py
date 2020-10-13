@@ -114,6 +114,6 @@ class TestSaleInvoiceCustoms(TransactionCase):
 
         customs = stock_landed_cost.l10n_mx_edi_customs_number
         lines_inv = invoice.invoice_line_ids
-        self.assertTrue(
-            all([l.l10n_mx_edi_customs_number == customs for l in lines_inv]),
+        self.assertTrue(all([
+            line.l10n_mx_edi_customs_number == customs for line in lines_inv]),
             'There is no landed cost related to origin movement')

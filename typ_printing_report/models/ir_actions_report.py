@@ -24,7 +24,8 @@ class IrActionsReport(models.Model):
             tree = etree.fromstring(arch)
             code = tree.xpath("//div[@class='code']")
             res = code[0].text if code else ''
-            res = '\n'.join([l.strip() for l in res.split('\n') if l.strip()])
+            res = '\n'.join(
+                [line.strip() for line in res.split('\n') if line.strip()])
             res += '\n'
             return res.encode(), doc_format
         return document, doc_format
