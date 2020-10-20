@@ -4,7 +4,7 @@
     'website': "http://www.typrefrigeracion.com",
     'license': 'LGPL-3',
     'category': '',
-    'version': '11.0.0.0.0',
+    'version': '11.0.0.0.1',
 
     'depends': [
         'hr_payroll',
