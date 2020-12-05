@@ -1,5 +1,5 @@
 ofxparse==0.14
 PyPDF2==1.26.0
-python-barcode
-pycups
+python-barcode==0.13.1
+pycups==2.0.1
 conekta==2.4.0
