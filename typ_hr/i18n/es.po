@@ -56,6 +56,11 @@ msgid "Beneficiary"
 msgstr "Beneficiario"
 
 #. module: typ_hr
+#: selection:hr.employee.indicator,metric_type:0
+msgid "Between range"
+msgstr "Entre rango"
+
+#. module: typ_hr
 #: view:website:typ_hr.hr_employee_expedient_report_pdf
 msgid "Birthday"
 msgstr "Fecha de nacimiento"
@@ -76,6 +81,22 @@ msgstr ""
 #: field:hr.employee,hr_employee_check_ids:0
 msgid "Checks"
 msgstr "Verificaciones"
+
+#. module: typ_hr
+#: model:ir.actions.act_window,help:typ_hr.open_module_tree_indicator
+msgid "Click to create a indicator."
+msgstr "Click para crear un indicador."
+
+#. module: typ_hr
+#: model:ir.actions.act_window,help:typ_hr.open_module_tree_report
+msgid "Click to create a report."
+msgstr "Click para crear un reporte."
+
+#. module: typ_hr
+#: model:ir.model.fields,field_description:typ_hr.field_hr_employee_indicator_indicator_code
+#: model:ir.model.fields,field_description:typ_hr.field_hr_employee_report_line_indicator_code
+msgid "Code"
+msgstr "Código"
 
 #. module: typ_hr
 #: view:website:typ_hr.hr_employee_expedient_report_pdf
@@ -102,7 +123,10 @@ msgstr "Contrato"
 #: field:hr.employee.auxiliar,create_uid:0
 #: field:hr.employee.beneficiary,create_uid:0
 #: field:hr.employee.check,create_uid:0
+#: model:ir.model.fields,field_description:typ_hr.field_hr_employee_indicator_create_uid
 #: field:hr.employee.reference,create_uid:0
+#: model:ir.model.fields,field_description:typ_hr.field_hr_employee_report_create_uid
+#: model:ir.model.fields,field_description:typ_hr.field_hr_employee_report_line_create_uid
 msgid "Created by"
 msgstr "Creado por"
 
@@ -110,9 +134,27 @@ msgstr "Creado por"
 #: field:hr.employee.auxiliar,create_date:0
 #: field:hr.employee.beneficiary,create_date:0
 #: field:hr.employee.check,create_date:0
+#: model:ir.model.fields,field_description:typ_hr.field_hr_employee_indicator_create_date
 #: field:hr.employee.reference,create_date:0
+#: model:ir.model.fields,field_description:typ_hr.field_hr_employee_report_create_date
+#: model:ir.model.fields,field_description:typ_hr.field_hr_employee_report_line_create_date
 msgid "Created on"
 msgstr "Creado en"
+
+#. module: typ_hr
+#: model:ir.model.fields,field_description:typ_hr.field_hr_employee_report_date_report
+msgid "Date"
+msgstr "Fecha"
+
+#. module: typ_hr
+#: model:ir.model.fields,field_description:typ_hr.field_hr_employee_birthday2
+msgid "Date of Birth"
+msgstr "Fecha de nacimiento"
+
+#. module: typ_hr
+#: model:ir.model.fields,field_description:typ_hr.field_hr_employee_report_department_id
+msgid "Department"
+msgstr "Departamento"
 
 #. module: typ_hr
 #: field:hr.contract,daily_salary:0
@@ -126,10 +168,19 @@ msgid "Deregister"
 msgstr "Baja"
 
 #. module: typ_hr
+#: model:ir.model.fields,field_description:typ_hr.field_hr_employee_indicator_description
+#: model:ir.model.fields,field_description:typ_hr.field_hr_employee_report_line_description
+msgid "Description"
+msgstr "Descripción"
+
+#. module: typ_hr
 #: field:hr.employee.auxiliar,display_name:0
 #: field:hr.employee.beneficiary,display_name:0
 #: field:hr.employee.check,display_name:0
+#: model:ir.model.fields,field_description:typ_hr.field_hr_employee_indicator_display_name
 #: field:hr.employee.reference,display_name:0
+#: model:ir.model.fields,field_description:typ_hr.field_hr_employee_report_display_name
+#: model:ir.model.fields,field_description:typ_hr.field_hr_employee_report_line_display_name
 msgid "Display Name"
 msgstr "Nombre a mostrar"
 
@@ -168,6 +219,7 @@ msgstr "Correo electrónico"
 #: field:hr.employee.beneficiary,hr_employee_beneficiary_id:0
 #: field:hr.employee.reference,hr_employee_reference_id:0
 #: model:ir.model,name:typ_hr.model_hr_employee
+#: model:ir.model.fields,field_description:typ_hr.field_hr_employee_report_employee_id
 msgid "Employee"
 msgstr "Empleado"
 
@@ -177,10 +229,25 @@ msgid "Employee Expedient No"
 msgstr "Expediente del empleado N°"
 
 #. module: typ_hr
+#: model:ir.model.fields,help:typ_hr.field_hr_employee_report_employee_id
+msgid "Employee, takes it from the system user."
+msgstr "Empleado, lo toma del usuario del sistema."
+
+#. module: typ_hr
 #: field:hr.employee,entry_date:0
 #: view:website:typ_hr.hr_employee_expedient_report_pdf
 msgid "Entry date"
 msgstr "Fecha de ingreso"
+
+#. module: typ_hr
+#: model:ir.model.fields,field_description:typ_hr.field_hr_employee_report_line_evaluation
+msgid "Evaluation"
+msgstr "Evaluación"
+
+#. module: typ_hr
+#: model:ir.model.fields,field_description:typ_hr.field_hr_employee_report_evaluation_report
+msgid "Evaluation Report"
+msgstr "Evaluación del reporte"
 
 #. module: typ_hr
 #: view:hr.employee:typ_hr.view_hr_employee_form_inherit
@@ -219,6 +286,11 @@ msgid "Gender"
 msgstr "Género"
 
 #. module: typ_hr
+#: selection:hr.employee.indicator,metric_type:0
+msgid "Greater equal to"
+msgstr "Mayor igual que"
+
+#. module: typ_hr
 #: selection:hr.employee,last_degree:0
 msgid "High school"
 msgstr "Preparatoria"
@@ -230,6 +302,26 @@ msgstr "Preparatoria"
 #: field:hr.employee.reference,id:0
 msgid "ID"
 msgstr "N° Empleado"
+
+#. module: typ_hr
+#: model:ir.model.fields,help:typ_hr.field_hr_employee_report_line_evaluation
+msgid "If the metric is fulfilled, it is worth the weighted weight of the indicator, value is zero in any other case."
+msgstr "Si se cumple la métrica vale el peso ponderado del indicador, vale cero en cualquier otro caso."
+
+#. module: typ_hr
+#: model:ir.model.fields,field_description:typ_hr.field_hr_employee_report_line_indicator
+#: model:ir.model.fields,help:typ_hr.field_hr_employee_report_line_indicator
+#: model:ir.ui.view,arch_db:typ_hr.view_hr_employee_indicator_form
+msgid "Indicator"
+msgstr "Indicador"
+
+#. module: typ_hr
+#: model:ir.actions.act_window,name:typ_hr.open_module_tree_indicator
+#: model:ir.ui.menu,name:typ_hr.menu_hr_employee_indicator_tree
+#: model:ir.ui.view,arch_db:typ_hr.view_hr_employee_report_form
+#: model:ir.ui.view,arch_db:typ_hr.view_indicator_filter
+msgid "Indicators"
+msgstr "Indicadores"
 
 #. module: typ_hr
 #: view:website:typ_hr.hr_employee_expedient_report_pdf
@@ -249,6 +341,11 @@ msgid "Integrate daily salary"
 msgstr "Salario diario integrado"
 
 #. module: typ_hr
+#: model:ir.model.fields,field_description:typ_hr.field_hr_employee_report_job_id
+msgid "Job Position"
+msgstr "Puesto de trabajo"
+
+#. module: typ_hr
 #: view:website:typ_hr.hr_employee_expedient_report_pdf
 msgid "Job title"
 msgstr "Titulo del trabajo"
@@ -262,7 +359,10 @@ msgstr "Último grado de estudio"
 #: field:hr.employee.auxiliar,__last_update:0
 #: field:hr.employee.beneficiary,__last_update:0
 #: field:hr.employee.check,__last_update:0
+#: model:ir.model.fields,field_description:typ_hr.field_hr_employee_indicator___last_update
 #: field:hr.employee.reference,__last_update:0
+#: model:ir.model.fields,field_description:typ_hr.field_hr_employee_report___last_update
+#: model:ir.model.fields,field_description:typ_hr.field_hr_employee_report_line___last_update
 msgid "Last Modified on"
 msgstr "Última modificación"
 
@@ -270,7 +370,10 @@ msgstr "Última modificación"
 #: field:hr.employee.auxiliar,write_uid:0
 #: field:hr.employee.beneficiary,write_uid:0
 #: field:hr.employee.check,write_uid:0
+#: model:ir.model.fields,field_description:typ_hr.field_hr_employee_indicator_write_uid
 #: field:hr.employee.reference,write_uid:0
+#: model:ir.model.fields,field_description:typ_hr.field_hr_employee_report_line_write_uid
+#: model:ir.model.fields,field_description:typ_hr.field_hr_employee_report_write_uid
 msgid "Last Updated by"
 msgstr "Última actualización por"
 
@@ -278,7 +381,10 @@ msgstr "Última actualización por"
 #: field:hr.employee.auxiliar,write_date:0
 #: field:hr.employee.beneficiary,write_date:0
 #: field:hr.employee.check,write_date:0
+#: model:ir.model.fields,field_description:typ_hr.field_hr_employee_indicator_write_date
 #: field:hr.employee.reference,write_date:0
+#: model:ir.model.fields,field_description:typ_hr.field_hr_employee_report_line_write_date
+#: model:ir.model.fields,field_description:typ_hr.field_hr_employee_report_write_date
 msgid "Last Updated on"
 msgstr "Última actualización en"
 
@@ -291,6 +397,11 @@ msgstr "Último grado de estudio"
 #: field:hr.employee,leaving_date:0
 msgid "Leaving date"
 msgstr "Fecha de baja"
+
+#. module: typ_hr
+#: selection:hr.employee.indicator,metric_type:0
+msgid "Less equal to"
+msgstr "Menor igual que"
 
 #. module: typ_hr
 #: view:website:typ_hr.hr_employee_expedient_report_pdf
@@ -308,9 +419,40 @@ msgid "Master degree"
 msgstr "Maestría"
 
 #. module: typ_hr
+#: model:ir.model.fields,field_description:typ_hr.field_hr_employee_indicator_metric
+#: model:ir.model.fields,field_description:typ_hr.field_hr_employee_report_line_metric
+msgid "Metric"
+msgstr "Métrica"
+
+#. module: typ_hr
+#: model:ir.model.fields,field_description:typ_hr.field_hr_employee_indicator_metric_great
+msgid "Metric Great"
+msgstr "Métrica mayor"
+
+#. module: typ_hr
+#: model:ir.model.fields,field_description:typ_hr.field_hr_employee_indicator_metric_less
+msgid "Metric Less"
+msgstr "Métrica menor"
+
+#. module: typ_hr
+#: model:ir.model.fields,field_description:typ_hr.field_hr_employee_indicator_metric_type
+msgid "Metric Type"
+msgstr "Tipo de métrica"
+
+#. module: typ_hr
+#: model:ir.model.fields,help:typ_hr.field_hr_employee_indicator_metric_type
+msgid "Metric of the Indicator, [Greater equal to], [Less equal to] and [Between range]"
+msgstr "Métrica del indicador, [Mayor igual que], [Menor igual que] y [Entre rango]"
+
+#. module: typ_hr
 #: selection:hr.employee,last_degree:0
 msgid "Middle school"
 msgstr "Secundaria"
+
+#. module: typ_hr
+#: model:ir.ui.view,arch_db:typ_hr.view_hr_employee_report_form
+msgid "Month+Year, ex: 'January2020'"
+msgstr "Mes+Año, ej: 'Enero2021'"
 
 #. module: typ_hr
 #: view:website:typ_hr.hr_employee_expedient_report_pdf
@@ -326,7 +468,10 @@ msgstr ""
 #: field:hr.employee.auxiliar,name:0
 #: field:hr.employee.beneficiary,name:0
 #: field:hr.employee.check,name:0
+#: model:ir.model.fields,field_description:typ_hr.field_hr_employee_indicator_name
 #: field:hr.employee.reference,name:0
+#: model:ir.model.fields,field_description:typ_hr.field_hr_employee_report_line_name
+#: model:ir.model.fields,field_description:typ_hr.field_hr_employee_report_name
 #: view:website:typ_hr.hr_employee_expedient_report_pdf
 msgid "Name"
 msgstr "Nombre"
@@ -340,6 +485,11 @@ msgstr "Número"
 #: field:hr.employee,number:0
 msgid "Number employee"
 msgstr "Número de empleado"
+
+#. module: typ_hr
+#: model:ir.ui.view,arch_db:typ_hr.view_report_filter
+msgid "Pending"
+msgstr "Pendiente"
 
 #. module: typ_hr
 #: field:hr.employee.beneficiary,percentage:0
@@ -379,10 +529,50 @@ msgid "Reference"
 msgstr "Referencias"
 
 #. module: typ_hr
+#: selection:hr.employee.report,state:0
+#: model:ir.ui.view,arch_db:typ_hr.view_hr_employee_report_form
+msgid "Report"
+msgstr "Reporte"
+
+#. module: typ_hr
+#: model:ir.model.fields,help:typ_hr.field_hr_employee_report_date_report
+msgid "Report date, usually the first or last day of the month being evaluated."
+msgstr "Fecha del reporte, normalmente se pone el primer o último día del mes que se evalúa."
+
+#. module: typ_hr
+#: model:ir.ui.view,arch_db:typ_hr.view_hr_employee_report_form
+msgid "Report lines"
+msgstr "Líneas de reporte"
+
+#. module: typ_hr
+#: model:ir.actions.act_window,name:typ_hr.open_module_tree_report
+#: model:ir.ui.menu,name:typ_hr.menu_hr_employee_report_tree
+#: model:ir.ui.view,arch_db:typ_hr.view_report_filter
+msgid "Reports"
+msgstr "Reportes"
+
+#. module: typ_hr
 #: model:ir.model.fields,field_description:typ_hr.field_fleet_vehicle_vehicle_manager
 #: model:ir.model.fields,help:typ_hr.field_fleet_vehicle_vehicle_manager
 msgid "Responsible for the vehicle"
 msgstr "Responsable del vehículo"
+
+#. module: typ_hr
+#: model:ir.model.fields,field_description:typ_hr.field_hr_employee_report_line_result
+msgid "Result"
+msgstr "Resultado"
+
+#. module: typ_hr
+#: selection:hr.employee.report,state:0
+#: model:ir.ui.view,arch_db:typ_hr.view_hr_employee_report_form
+#: model:ir.ui.view,arch_db:typ_hr.view_report_filter
+msgid "Revised"
+msgstr "Revisado"
+
+#. module: typ_hr
+#: model:ir.ui.menu,name:typ_hr.menu_hr_employee_report
+msgid "SED"
+msgstr "SED"
 
 #. module: typ_hr
 #: view:website:typ_hr.hr_employee_expedient_report_pdf
@@ -400,15 +590,40 @@ msgid "Skype user"
 msgstr "Skype"
 
 #. module: typ_hr
+#: model:ir.model.fields,field_description:typ_hr.field_hr_employee_report_state
+msgid "Status"
+msgstr "Estado"
+
+#. module: typ_hr
 #: view:website:typ_hr.hr_employee_expedient_report_pdf
 msgid "Street"
 msgstr "Calle"
+
+#. module: typ_hr
+#: model:ir.model.fields,help:typ_hr.field_hr_employee_report_evaluation_report
+msgid "Sum of the evaluations of your indicators."
+msgstr "Suma de las evaluaciones de tus indicadores."
+
+#. module: typ_hr
+#: model:ir.model.fields,help:typ_hr.field_hr_employee_report_total_weighted_weight
+msgid "Sum of the weighted weight, must be equal to 100"
+msgstr "Suma de los pesos ponderados, debe ser igual a 100"
+
+#. module: typ_hr
+#: model:ir.model.fields,help:typ_hr.field_hr_employee_report_employee
+msgid "System user, take it automatic."
+msgstr "Usuario del sistema, lo toma automático."
 
 #. module: typ_hr
 #: field:hr.employee.auxiliar,telephone:0
 #: view:website:typ_hr.hr_employee_expedient_report_pdf
 msgid "Telephone"
 msgstr "Teléfono"
+
+#. module: typ_hr
+#: model:ir.model.fields,help:typ_hr.field_hr_employee_report_line_result
+msgid "The result of your evaluation of this indicator."
+msgstr "El resultado de la evaluación de este indicador."
 
 #. module: typ_hr
 #: model:res.groups,comment:typ_hr.res_partner_accounting_employee_contact
@@ -419,6 +634,11 @@ msgstr "Este grupo puede ver el contacto del empleado, pero no puede ver sus dir
 #: model:res.groups,comment:typ_hr.fleet_group_manager_configuration
 msgid "This group can see fleet configuration menu"
 msgstr "Este grupo puede ver el menu configuración en Flota"
+
+#. module: typ_hr
+#: model:ir.model.fields,field_description:typ_hr.field_hr_employee_report_total_weighted_weight
+msgid "Total Weighted Weight"
+msgstr "Total Peso ponderado"
 
 #. module: typ_hr
 #: selection:hr.employee,last_degree:0
@@ -441,6 +661,11 @@ msgid "University degree"
 msgstr "Titulo universitario"
 
 #. module: typ_hr
+#: model:ir.ui.view,arch_db:typ_hr.view_hr_employee_report_form
+msgid "User"
+msgstr "Usuario"
+
+#. module: typ_hr
 #: field:hr.employee,user_boolean:0
 msgid "User boolean"
 msgstr "Usuario booleano"
@@ -454,6 +679,18 @@ msgstr "Usuarios que pueden ver los contactos del empleado en los clientes"
 #: view:website:typ_hr.hr_employee_expedient_report_pdf
 msgid "VAT"
 msgstr "RFC"
+
+#. module: typ_hr
+#: model:ir.model.fields,field_description:typ_hr.field_hr_employee_indicator_weight
+#: model:ir.model.fields,field_description:typ_hr.field_hr_employee_report_line_weight
+msgid "Weight"
+msgstr "Peso"
+
+#. module: typ_hr
+#: model:ir.model.fields,field_description:typ_hr.field_hr_employee_indicator_weighted_weight
+#: model:ir.model.fields,field_description:typ_hr.field_hr_employee_report_line_weighted_weight
+msgid "Weighted Weight"
+msgstr "Peso ponderado"
 
 #. module: typ_hr
 #: view:website:typ_hr.hr_employee_expedient_report_pdf

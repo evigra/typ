@@ -26,6 +26,7 @@
         'views/hr_contract_inherit_view.xml',
         'views/fleet_views.xml',
         'views/hr_expenses.xml',
+        'views/hr_employee_sed.xml',
     ],
     'installable': True,
 }
