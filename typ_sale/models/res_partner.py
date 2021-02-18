@@ -50,6 +50,7 @@ CLIENT_TYPE = [
     ('WHC', 'WHC'),
     ('WW', 'WW'),
     ('WI', 'WI'),
+    ('DH', 'DH'),
     ('NOT CLASSIFIED', 'NOT CLASSIFIED'),
     ('EMPLOYEE', 'EMPLOYEE'),
     ('PUBLIC', 'PUBLIC')
@@ -92,7 +93,8 @@ class ResPartner(models.Model):
                                     "OTH - Others\n"
                                     "WHC - Wholesaler contractor\n"
                                     "WW - Wholesaler wholesaler\n"
-                                    "WI - Wholesaler ironmonger")
+                                    "WI - Wholesaler ironmonger\n"
+                                    "DH - HVACR distributors")
     dealer = fields.Selection(DEALER_TYPE, 'Dealer type',
                               help="PD - Premier dealer\n"
                               "AD - Authorized dealer\n"
