@@ -12,6 +12,10 @@
         <field name="name">Users who can review indicator reports</field>
         <field name="comment">These users can review indicator reports</field>
     </record>
+    <record id="report_group_manager_view" model="res.groups">
+        <field name="name">Users who can see all reports</field>
+        <field name="comment">These users can see all reports</field>
+    </record>
     <record id="per_rule_manager_user" model="ir.rule">
         <field name="model_id" ref="model_hr_employee"/>
         <field name="name">For manager</field>
@@ -34,6 +38,6 @@
         <field name="model_id" ref="model_hr_employee_report"/>
         <field name="name">For Manager</field>
         <field name="domain_force">[(1,'=',1)]</field>
-        <field name="groups" eval="[(4,ref('hr.group_hr_manager'))]"/>
+        <field name="groups" eval="[(4,ref('typ_hr.report_group_manager_view'))]"/>
     </record>
 </odoo>
