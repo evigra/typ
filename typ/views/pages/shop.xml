@@ -23,7 +23,7 @@
 
         <!-- featured products in parent category -->
         <xpath expr="//div[hasclass('oe_website_sale')]"  position='after'>
-            <t t-call="typ.featured-products"  t-if="category and category.child_id and not category.parent_id" />
+            <!-- <t t-call="typ.featured-products"  t-if="category and category.child_id and not category.parent_id" /> -->
         </xpath>
 
         <xpath expr="/t[1]/t[1]/div[1]/div[2]/div[2]/div[2]/t[1]/div[1]" position="replace">
@@ -64,7 +64,7 @@
         </xpath>
 
         <xpath expr="//div[hasclass('oe_website_sale')]"  position='after'>
-            <t t-call="typ.featured-products"  t-if="search and not bins" />
+            <!-- <t t-call="typ.featured-products"  t-if="search and not bins" /> -->
         </xpath>
 
         
@@ -430,7 +430,7 @@
 
 
         <xpath expr="//div[hasclass('oe_website_sale')]"  position='after'>
-            <t t-call="typ.featured-products"  t-if="request.httprequest.path == '/shop/cart' and (not optional_products and website_sale_order and website_sale_order.website_order_line) " />
+            <!-- <t t-call="typ.featured-products"  t-if="request.httprequest.path == '/shop/cart' and (not optional_products and website_sale_order and website_sale_order.website_order_line) " /> -->
         </xpath>
                
     </template>

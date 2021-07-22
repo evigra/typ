@@ -5,6 +5,7 @@ class CRMLead(models.Model):
     _inherit = "crm.lead"
 
     product_quotation_id = fields.Many2one(
-        'product.template',
+        "product.template",
         string="Product Quotation Request",
-        help="Product for which a quotation was requested on website.")
+        help="Product for which a quotation was requested on website.",
+    )

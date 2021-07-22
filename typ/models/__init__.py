@@ -1,13 +1,22 @@
-
-from . import account_bank_statement
 from . import account_invoice
 from . import account_payment
-from . import res_partner, product_public_category, product, res_country
+from . import res_partner
+from . import product_public_category
+from . import product_category
+from . import product_market_type
+from . import product
+from . import res_country
+from . import res_partner_warehouse
 from . import user_wishlist
 from . import account_move
 from . import stock_move_line
 from . import pos_order
 from . import account_journal
 from . import helpdesk_ticket
+from . import sale_order_line
 from . import sale_order
 from . import crm_lead
+from . import res_config
+from . import res_company
+from . import purchase_order
+from . import sales_team

@@ -8,7 +8,7 @@
             <div class="">
                 <data data-transparent="transparent" id="transparency"/>
                 <!-- highlights products -->
-                <t t-call="typ.featured-products"/>
+                <!-- <t t-call="typ.featured-products"/> -->
             </div>
 
             <div class="oe_structure"/>
@@ -49,7 +49,7 @@
 
             <!-- contact us -->
             <section>
-                <t t-call="typ.contactus"/>
+                <!-- <t t-call="typ.contactus"/> -->
             </section>
 
             <div class="oe_structure"/>

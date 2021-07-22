@@ -135,7 +135,7 @@
         <!-- featured products -->
         <xpath expr="//div[@id='wrap']"  position='inside'>
             <!-- <t t-call="typ.product-specifications"/> -->
-            <t t-call="typ.featured-products"/>
+            <!-- <t t-call="typ.featured-products"/> -->
         </xpath>
 
         <!-- star rating -->

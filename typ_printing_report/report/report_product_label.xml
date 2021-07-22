@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
 <odoo>
-    <report id="rack_label_zebra"
+    <!-- <report id="rack_label_zebra"
         model="product.product"
         string="rack zebra big Label"
         name="typ_printing_report.rack_label_zebra_view"
@@ -71,7 +71,7 @@
         file="typ_printing_report.import_uk_label_zebra_view"
         report_type="qweb-pdf"
         usage="zebra"
-        />
+        /> -->
 
     <template id="product_label_zebra_view">
         <t t-call="web.basic_layout">

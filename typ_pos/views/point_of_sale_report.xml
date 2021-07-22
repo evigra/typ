@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <report
+    <!-- <report
             id="pos_orders"
             model="pos.order"
             string="Receipts"
             report_type="qweb-html"
             name="typ_pos.receipt_report"
             file="typ_pos.receipt_report"
-        />
+        /> -->
     <record id="pos_receipt_report" model="ir.actions.report">
         <field name="name">Receipt</field>
         <field name="model">pos.order</field>

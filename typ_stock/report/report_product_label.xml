@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
 <odoo>
-    <report id="product_label_large"
+    <!-- <report id="product_label_large"
         model="product.product"
         string="large Label"
         name="typ_stock.product_label_large_view"
@@ -22,7 +22,7 @@
         name="typ_stock.product_label_small_view"
         file="typ_stock.product_label_small"
         report_type="qweb-pdf"
-        />
+        /> -->
 
     <template id="product_label_large_view">
         <t t-foreach="docs" t-as="doc">

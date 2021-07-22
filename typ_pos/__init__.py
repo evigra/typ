@@ -1,16 +1,10 @@
-##############################################################################
-#
-#    Copyright (c) 2015-Present Webkul Software Pvt. Ltd.
-#    (<https://webkul.com/>)
-#
-##############################################################################
-
 from . import models
 from . import report
 
+
 def _set_new_group(cr, registry):
     cr.execute(
-        '''
+        """
         UPDATE
             pos_config AS c
         SET
@@ -21,5 +15,5 @@ def _set_new_group(cr, registry):
             d.module = 'typ_pos' AND
             d.name = 'allow_create_payment' AND
             d.model = 'res.groups'
-        '''
+        """
     )

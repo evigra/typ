@@ -40,7 +40,7 @@
                 </xpath>
             </field>
         </record>
-
+<!-- 
        <record id='view_partner_form_buyer_assignment' model='ir.ui.view'>
             <field name='name'>partner.form.buyer.assignment</field>
             <field name='model'>res.partner</field>
@@ -51,7 +51,7 @@
                             <field name="buyer_id"/>
                     </field>
             </field>
-        </record>
+        </record> -->
 
         <record id="view_res_partner_filter_buyer" model="ir.ui.view">
             <field name="name">res.partner.filter.buyer</field>

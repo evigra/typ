@@ -64,4 +64,37 @@
         </xpath>
     </template>
 
+    <!-- Global site tag -->
+    <template id="google_ads" name="Google Ads" inherit_id="portal.frontend_layout">
+        <xpath expr="//t[@t-call='web.layout']" position="before">
+            <!-- Global site tag (gtag.js) - Google Ads: 860666039 -->
+            <script async='1' src="https://www.googletagmanager.com/gtag/js?id=AW-860666039"></script>
+            <script>
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+
+              gtag('config', 'AW-860666039');
+            </script>
+
+            <!-- Event snippet for Contacto - TYP conversion page -->
+            <script>
+            function gtag_report_conversion(url) {
+              var callback = function () {
+                if (typeof(url) != 'undefined') {
+                  window.location = url;
+                }
+              };
+              gtag('event', 'conversion', {
+                  'send_to': 'AW-860666039/1UOYCMGmi54CELfxspoD',
+                  'value': 0.0,
+                  'currency': 'MXN',
+                  'event_callback': callback
+              });
+              return false;
+            }
+            </script>
+        </xpath>
+    </template>
+
 </odoo>

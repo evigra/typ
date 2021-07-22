@@ -2,8 +2,9 @@ enterprise git@github.com:Vauxoo/enterprise.git
 addons-vauxoo git@github.com:Vauxoo/addons-vauxoo.git
 mexico git@git.vauxoo.com:vauxoo/mexico.git
 stock-logistics-workflow git@github.com:Vauxoo/stock-logistics-workflow.git
-sale-workflow
-vendor-bills git@git.vauxoo.com:vauxoo/vendor-bills.git
-odoo-apps git@git.vauxoo.com:vauxoo/odoo-apps.git
+# sale-workflow
+mexico-document git@git.vauxoo.com:vauxoo/mexico-document.git
+# odoo-apps git@git.vauxoo.com:vauxoo/odoo-apps.git
 report-print-send git@github.com:Vauxoo/report-print-send.git
+credit-management git@git.vauxoo.com:vauxoo/credit-management.git
 stock-logistics-barcode git@github.com:Vauxoo-dev/stock-logistics-barcode.git 11.0-typ-stock_logistics_barcode-1b98292

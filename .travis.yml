@@ -7,44 +7,36 @@ cache:
     - $HOME/.cache/pip
 
 addons:
-  postgresql: "9.6"
-
-addons:
+  postgresql: "11"
   apt:
     packages:
       - expect-dev
-      - python-lxml
-      - python-simplejson
-      - python-yaml
-      - swig  # Required for m2crypto
-      - python-m2crypto
-      - xmlstarlet
-      - xsltproc
       - openssl
-      - poppler-utils
-      - antiword
-      - cups
-      - libcups2-dev
+
 python:
-  - "3.5"
+  - "3.6"  # travis2docker is not compatible with py3.8 but py3.6
 
 env:
   global:
-  - LINT_CHECK="0" TESTS="0" OPTIONS="--load=web,base_sparse_field"
+  - TESTS="0" LINT_CHECK="0"
+
   matrix:
   - LINT_CHECK="1"
-  - INCLUDE="typ" TESTS="1"
+  - TESTS="1"
 
 install:
   - source ${TRAVIS_BUILD_DIR}/variables.sh
+  - export TRAVIS_PYTHON_VERSION="3.6"  # CI docker image is not compatible with py3.8 but py3.6
   - git clone --single-branch --depth=1 https://github.com/vauxoo/maintainer-quality-tools.git -b master ${HOME}/maintainer-quality-tools
   - export PATH=${HOME}/maintainer-quality-tools/travis:${PATH}
   - travis_install_nightly
 
 script:
   - source ${TRAVIS_BUILD_DIR}/variables.sh
+  - export TRAVIS_PYTHON_VERSION="3.6"  # CI docker image is not compatible with py3.8 but py3.6
   - travis_run_tests
 
 after_success:
   - source ${TRAVIS_BUILD_DIR}/variables.sh
+  - export TRAVIS_PYTHON_VERSION="3.6"  # CI docker image is not compatible with py3.8 but py3.6
   - travis_after_tests_success

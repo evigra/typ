@@ -1,19 +1,18 @@
-
 {
     "name": "Landed Costs for TYP",
-    "version": "11.0.0.2.0",
+    "version": "14.0.0.2.0",
     "author": "Vauxoo",
     "category": "Generic Modules/Account",
     "website": "http://www.vauxoo.com/",
     "license": "AGPL-3",
     "depends": [
         "mrp",
-        "stock_landed_segmentation",
+        # "stock_landed_segmentation",
     ],
     "demo": [
-        'demo/journal_demo.xml',
-        # 'demo/purchase_order_demo.xml',
-        'demo/product_demo.xml',
+        "demo/journal_demo.xml",
+        'demo/purchase_demo.xml',
+        "demo/product_demo.xml",
     ],
     "data": [
         "data/res_groups.xml",

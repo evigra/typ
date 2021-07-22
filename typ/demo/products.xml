@@ -23,7 +23,7 @@
 
         <record id="attribute-lennox" model="product.attribute">
             <field name="name">Capacity</field>
-            <field name="type">select</field> 
+            <field name="display_type">select</field> 
         </record>
 
         <record id="attribute-lennox-1" model="product.attribute.value">
@@ -142,7 +142,7 @@
             <field name="value_ids" eval="[(6,0,[ref('attribute-lennox-1'), ref('attribute-lennox-2'), ref('attribute-lennox-3')])]"/>
         </record>
 
-        <record id="product.service_order_01" model="product.product">
+        <record id="product.product_product_1" model="product.product">
             <field name="l10n_mx_edi_code_sat_id" ref="l10n_mx_edi.prod_code_sat_01010101"/>
         </record>
 

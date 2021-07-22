@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <odoo>
-    <record id="view_partner_form_inherit_tanner" model="ir.ui.view">
-        <field name="name">res.partner.form.inherit.tanner</field>
+    <record id="view_partner_form_inherit_helpdesk" model="ir.ui.view">
+        <field name="name">res.partner.form.inherit</field>
         <field name="model">res.partner</field>
         <field name="inherit_id" ref="helpdesk.view_partner_form_inherit_helpdesk"/>
         <field name="arch" type="xml">
@@ -14,6 +14,42 @@
                     <field name="linkedin_profile" widget="url"/>
                     <field name="upgradable"/>
                 </group>
+            </xpath>
+        </field>
+    </record>
+    <record id="view_partner_tree" model="ir.ui.view">
+        <field name='name'>res.partner.tree.extra</field>
+        <field name='model'>res.partner</field>
+        <field name='inherit_id' ref='base.view_partner_tree'/>
+        <field name='type'>tree</field>
+        <field name='arch' type='xml'>
+            <xpath expr="//field[@name='user_id']" position="attributes">
+                <attribute name="invisible">0</attribute>
+            </xpath>
+            <xpath expr="//field[@name='email']" position="after">
+                <field name="importance"/>
+                <field name="total_invoiced"/>
+                <field name="credit_limit"/>
+            </xpath>
+            <xpath expr="//field[@name='user_id']" position="after">
+                <field name="create_date"/>
+                <field name="create_uid"/>
+            </xpath>
+        </field>
+    </record>
+    <record id="view_partner_form" model="ir.ui.view">
+        <field name='name'>res.partner.form.classification</field>
+        <field name='model'>res.partner</field>
+        <field name='inherit_id' ref='base.view_partner_form'/>
+        <field name='type'>form</field>
+        <field name='arch' type='xml'>
+            <xpath expr="/form/sheet/notebook/page/group/group/field[@name='supplier']" position="after">
+                <field name="importance" />
+                <field name="potential_importance" />
+                <field name="partner_type" required="1"/>
+                <field name="business_activity" required="1"/>
+                <field name="dealer" />
+                <field name="region" />
             </xpath>
         </field>
     </record>

@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <record id="group_validate_landed" model="res.groups">
         <field name="name">Validate Landed Costs</field>
@@ -6,4 +5,64 @@
         <field name="users" eval="[(4, ref('base.user_root'))]"/>
         <field name="category_id" ref="base.module_category_hidden"/>
     </record>
+    
+    <record model="res.groups" id="group_sale_order_invoice_payment_term_manager">
+        <field name="name">Sale order - Invoice - payment term manager</field>
+        <field name="comment">This group has access to modify field payment term in Sale Orders and Invoices.</field>
+    </record>
+
+    <record model="res.groups" id="group_res_partner_warehouse_manager">
+        <field name="name">Partner warehouse configuration manager</field>
+        <field name="comment">This group can register partner warehouse configurations.</field>
+    </record>
+
+    <record id="res_group_can_sell_below_minimum_margin" model="res.groups">
+      <field name="name">Users that can sell below the minimum margin</field>
+      <field name="comment">This group allow sale order bellow the minimum margin.</field>
+      <field name="users" eval="[(4, ref('base.user_root'))]"/>
+    </record>
+
+    <record id="res_group_margin_sale_order" model="res.groups">
+      <field name="name">Users that can see the margin of sale</field>
+      <field name="comment">This group can see margin in sale order.</field>
+    </record>
+
+    <record id="res_group_cancel_sale_order" model="res.groups">
+      <field name="name">Users that can cancel a sale order</field>
+      <field name="comment">This group can cancel the sale orders.</field>
+    </record>
+
+    <record id="group_invoiced_without_pedimento" model="res.groups">
+      <field name="name">Users that can invoiced a sale order without pedimento in entry quants</field>
+      <field name="comment">This group can invoiced a sale order without pedimento in entry quants.</field>
+    </record>
+
+    <record id="res_group_cost_audit" model="res.groups">
+      <field name="name">Users who can audit costs</field>
+    </record>
+
+    <record id="res_group_modify_price_sale" model="res.groups">
+        <field name="name">Modify price of sale in sale order</field>
+        <field name="comment">Users can modify price of sale in sale orders</field>
+        <field name="users" eval="[(4, ref('base.user_root'))]"/>
+    </record>
+
+    <record id="res_group_product_customer_code" model="res.groups">
+        <field name="name">Users can see product customer code field</field>
+        <field name="comment">This group can see product customer code field</field>
+    </record>
+    <!-- TODO: When default warehouse by salesteam this can be uncommented. -->
+    <!-- <record model="ir.rule" id="ir_typ_payment_from_sale_team">
+        <field name="name">payment from sale team</field>
+        <field name="model_id" ref="account.model_account_payment"/>
+        <field name="domain_force">[
+            '|', '|',
+            ('journal_id', 'in', [journal.id  for team in user.sale_team_ids for journal in team.journal_team_ids]),
+            ('journal_id.section_id', '=', False),('partner_id', '=', user.partner_id.id),
+        ]</field>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="True"/>
+        <field name="perm_unlink" eval="True"/>
+        <field name="perm_create" eval="True"/>
+    </record> -->
 </odoo>

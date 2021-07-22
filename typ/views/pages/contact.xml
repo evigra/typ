@@ -5,7 +5,7 @@
 
         <xpath expr="//div" position="replace">
             <div class="dark-white" id="wrap">
-                <t t-call="typ.contactus"/>                        
+                <!-- <t t-call="typ.contactus"/>                         -->
             </div>
             
         </xpath>
@@ -54,7 +54,7 @@
                             </div>
                             <div class="form-group mt32 hidden-xs">
                                 <div class="row text-center mb32">
-                                <a class="btn btn-primary btn-lg o_website_form_send">SEND COMMENT</a>
+                                <a class="btn btn-primary btn-lg o_website_form_send" onclick='gtag_report_conversion()'>SEND COMMENT</a>
                                 </div>
                                 <div class="row text-center">
                                 <span id="o_website_form_result"/>
@@ -62,7 +62,7 @@
                             </div>
                             <div class="form-group hidden-md hidden-sm hidden-lg">
                                 <div class="row text-center mb16">
-                                <a class="btn btn-primary btn-lg o_website_form_send">SEND COMMENT</a>
+                                <a class="btn btn-primary btn-lg o_website_form_send" onclick='gtag_report_conversion()'>SEND COMMENT</a>
                                 </div>
                                 <div class="row text-center">
                                 <span id="o_website_form_result"/>

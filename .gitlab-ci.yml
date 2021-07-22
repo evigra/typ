@@ -1,11 +1,10 @@
 image: vauxoo/odoo-80-image-shippable-auto
 stages:
-  - test
-  - test_build
+  - main
   - build
 
 lint:
-  stage: test
+  stage: main
   tags:
     - lint
   variables:
@@ -13,65 +12,92 @@ lint:
     TESTS: "0"
   script:
     - source variables.sh
-    - export TRAVIS_BUILD_DIR=$(pwd)
+    - git clone --depth=1 https://github.com/vauxoo/maintainer-quality-tools.git -b master ${HOME}/maintainer-quality-tools
+    - export PATH=${HOME}/maintainer-quality-tools/travis:${HOME}/gitlab_tools:${PATH}
     - pip3 install deployv-addon-gitlab-tools
     - deployvcmd gitlab_tools check_keys
-    - source ${REPO_REQUIREMENTS}/virtualenv/nodejs/bin/activate
+    - export TRAVIS_PYTHON_VERSION="3.6"  # CI docker image is not compatible with py3.8 but py3.6
     - source ${REPO_REQUIREMENTS}/virtualenv/python${TRAVIS_PYTHON_VERSION}/bin/activate
-    - git clone https://github.com/vauxoo/maintainer-quality-tools.git -b master ${HOME}/maintainer-quality-tools
-    - export PATH=${HOME}/maintainer-quality-tools/travis:${HOME}/gitlab_tools:${PATH}
+    - source ${REPO_REQUIREMENTS}/virtualenv/nodejs/bin/activate
+    - source /usr/local/rvm/scripts/rvm
     - travis_install_nightly
-      # Disable file-not-used because is the project in process of migration: Remove this line after migrate the xml files
-    - sed -i "/file-not-used/d" ${HOME}/maintainer-quality-tools/travis/cfg/travis_run_pylint_pr.cfg
     - travis_run_tests
 
-test:
-  stage: test
-  coverage: '/^TOTAL.*\s+(\d+\%)$/'
+odoo:
+  stage: main
+  coverage: '/^TOTAL.*\s+(\d+(?:\.\d+)\%)$/'
   tags:
     - odoo
     - test
   variables:
     LINT_CHECK: "0"
     TESTS: "1"
+    STDOUT_LOG: "./${CI_COMMIT_REF_SLUG}/odoo.log"
   script:
     - source variables.sh
-    - export TRAVIS_BUILD_DIR=$(pwd)
-    - pip3 install deployv-addon-gitlab-tools
-    - apt-get update
-    - apt-get install python3-dev python3-dev libcups2-dev gcc
-    - deployvcmd gitlab_tools check_keys
-    - source ${REPO_REQUIREMENTS}/virtualenv/nodejs/bin/activate
-    - source ${REPO_REQUIREMENTS}/virtualenv/python${TRAVIS_PYTHON_VERSION}/bin/activate
-    - git clone https://github.com/vauxoo/maintainer-quality-tools.git -b master ${HOME}/maintainer-quality-tools
+    - git clone --depth=1 https://github.com/vauxoo/maintainer-quality-tools.git -b master ${HOME}/maintainer-quality-tools
     - export PATH=${HOME}/maintainer-quality-tools/travis:${HOME}/gitlab_tools:${PATH}
+    - pip3 install deployv-addon-gitlab-tools
+    - deployvcmd gitlab_tools check_keys
+    - export TRAVIS_PYTHON_VERSION="3.6"  # CI docker image is not compatible with py3.8 but py3.6
+    - source ${REPO_REQUIREMENTS}/virtualenv/python${TRAVIS_PYTHON_VERSION}/bin/activate
+    - source ${REPO_REQUIREMENTS}/virtualenv/nodejs/bin/activate
+    - source /usr/local/rvm/scripts/rvm
     - travis_install_nightly
     - travis_run_tests
     - travis_after_tests_success || true
-    - coverage html --rcfile=${TRAVIS_BUILD_DIR}/.coveragerc -d $CI_COMMIT_REF_SLUG
-    - coverage report -m --show-missing --rcfile=${TRAVIS_BUILD_DIR}/.coveragerc || true
+    - coverage html --rcfile=${CI_PROJECT_DIR}/.coveragerc -d $CI_COMMIT_REF_SLUG || true
+    - coverage xml --rcfile=${CI_PROJECT_DIR}/.coveragerc -o $CI_COMMIT_REF_SLUG/coverage.xml || true
+    - coverage report -m --show-missing --rcfile=${CI_PROJECT_DIR}/.coveragerc || [[ $? != 2 ]]
   artifacts:
     paths:
       - $CI_COMMIT_REF_SLUG
+    reports:
+      cobertura: $CI_COMMIT_REF_SLUG/coverage.xml
 
-publish_coverage:
-  image: quay.io/vauxoo/dockerv:latest
-  stage: test_build
-  dependencies:
-    - test
-  script:
-    - source variables.sh
-    - deployvcmd gitlab_tools push_coverage
-  environment:
-    name: coverage
-    url: https://coverage.vauxoo.com/${CI_COMMIT_REF_SLUG}-${CI_PROJECT_NAME}
-
-build:
-  stage: build
+build_docker:
+  stage: main
   image: quay.io/vauxoo/dockerv:latest
   tags:
     - build
   script:
     - source variables.sh
     - deployvcmd gitlab_tools check_keys
-    - deployvcmd gitlab_tools test_images --push_image
+    - deployvcmd gitlab_tools build_image --push_image
+  artifacts:
+    paths:
+      - $CI_COMMIT_REF_NAME
+
+publish_coverage:
+  image: quay.io/vauxoo/dockerv
+  stage: build
+  allow_failure: true
+  dependencies:
+    - odoo
+  script:
+    - deployvcmd gitlab_tools push_coverage
+  environment:
+    name: coverage
+    url: https://coverage.vauxoo.com/${CI_COMMIT_REF_SLUG}-${CI_PROJECT_NAME}
+
+test_docker:
+  stage: build
+  image: quay.io/vauxoo/dockerv:latest
+  tags:
+    - build
+  dependencies:
+    - build_docker
+  script:
+    - source variables.sh
+    - source $CI_COMMIT_REF_NAME/image_name.env
+    - deployvcmd gitlab_tools check_keys
+    - deployvcmd gitlab_tools test_image
+
+odoo_warnings:
+  image: quay.io/vauxoo/dockerv:latest
+  stage: build
+  allow_failure: true
+  dependencies:
+    - odoo
+  script:
+    - deployvcmd gitlab_tools check_log --logpath="./$CI_COMMIT_REF_SLUG"

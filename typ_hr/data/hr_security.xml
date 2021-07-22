@@ -20,16 +20,16 @@
         <field name="perm_create" eval="False"/>
         <field name="domain_force">['|',('user_ids','=',user.id),('employee','=', False)]</field>
     </record>
-    <record model="ir.rule" id="res_partner_edit_all_employee_contact">
+    <!-- <record model="ir.rule" id="res_partner_edit_all_employee_contact"> TODO: Check  if this ACL is necessary in 14.0
         <field name="name">Edit all employees contact</field>
         <field name="model_id" search="[('model', '=', 'res.partner')]" model='ir.model'/>
-        <!--<field name="groups" eval="[(4,ref('base.group_hr_manager')), (4,ref('res_partner_accounting_employee_contact'))]"/>-->
+        <field name="groups" eval="[(4,ref('base.group_hr_manager')), (4,ref('res_partner_accounting_employee_contact'))]"/>
         <field name="groups" eval="[(4,ref('hr.group_hr_manager')), (4,ref('res_partner_accounting_employee_contact'))]"/>
         <field name="perm_read" eval="True"/>
         <field name="perm_write" eval="True"/>
         <field name="perm_unlink" eval="False"/>
         <field name="perm_create" eval="False"/>
         <field name="domain_force">['|',('is_employee','=',False),('is_employee','!=', False)]</field>
-        <!--<field name="domain_force">['|',('employee','=',False),('employee','!=', False)]</field>-->
-    </record>
+        <field name="domain_force">['|',('employee','=',False),('employee','!=', False)]</field>
+    </record> -->
 </odoo>

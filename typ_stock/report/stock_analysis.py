@@ -1,33 +1,31 @@
-# © 2016 Lorenzo Battistini - Agile Business Group
-# License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
-
-from openerp import tools
-from openerp import models, fields
-import openerp.addons.decimal_precision as dp
+from odoo import tools
+from odoo import models, fields
+import odoo.addons.decimal_precision as dp
 
 
 class StockAnalysis(models.Model):
-    _inherit = 'stock.analysis'
+    _inherit = "stock.analysis"
 
-    state = fields.Selection([
-        ('sellable', 'Normal'),
-        ('end', 'End of Lifecycle'),
-        ('obsolete', 'Obsolete'),
-    ], 'Status')
-    partner_id = fields.Many2one(
-        'res.partner', string='Partner', readonly=True)
-    product_min_qty = fields.Float('Minimum Quantity', readonly=True)
-    product_max_qty = fields.Float('Maximum Quantity', readonly=True)
-    warehouse_id = fields.Many2one('stock.warehouse', readonly=True)
-    importance = fields.Selection([
-        ('aa', 'AA'), ('a', 'A'), ('b', 'B'), ('c', 'C'), ('d', 'D')])
-    standard_price = fields.Float(digits=dp.get_precision(
-        'Product price'), readonly=True,
-        groups="typ_stock.res_group_standard_price")
+    state = fields.Selection(
+        [
+            ("sellable", "Normal"),
+            ("end", "End of Lifecycle"),
+            ("obsolete", "Obsolete"),
+        ],
+        "Status",
+    )
+    partner_id = fields.Many2one("res.partner", string="Partner", readonly=True)
+    product_min_qty = fields.Float("Minimum Quantity", readonly=True)
+    product_max_qty = fields.Float("Maximum Quantity", readonly=True)
+    warehouse_id = fields.Many2one("stock.warehouse", readonly=True)
+    importance = fields.Selection([("aa", "AA"), ("a", "A"), ("b", "B"), ("c", "C"), ("d", "D")])
+    standard_price = fields.Float(
+        digits=dp.get_precision("Product price"), readonly=True, groups="typ_stock.res_group_standard_price"
+    )
     balanced = fields.Boolean(readonly=True)
 
     def init(self, cr):
-        tools.drop_view_if_exists(cr, 'stock_analysis')
+        tools.drop_view_if_exists(cr, "stock_analysis")
         cr.execute(
             """CREATE or REPLACE VIEW stock_analysis AS (
             SELECT row_number() over (order by prod.id DESC) AS id,
@@ -112,4 +110,5 @@ class StockAnalysis(models.Model):
            FROM product_price_history
           ORDER BY product_template_id, datetime DESC
           ) pph ON pph.product_template_id=prod.product_tmpl_id
-            )""")
+            )"""
+        )
