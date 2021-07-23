@@ -1,0 +1,4 @@
+extra_addons/addons-vauxoo https://github.com/Vauxoo/addons-vauxoo/pull/1492.patch
+extra_addons/stock-logistics-workflow https://github.com/Vauxoo/stock-logistics-workflow/pull/29.patch
+extra_addons/sale-workflow https://github.com/Vauxoo/sale-workflow/pull/3.patch
+extra_addons/stock-logistics-barcode https://github.com/Vauxoo/stock-logistics-barcode/pull/3.patch

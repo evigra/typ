@@ -1,1 +1,2 @@
-from . import test_pos
+# TODO migrate tests
+# from . import test_pos

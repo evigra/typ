@@ -1068,7 +1068,7 @@
                                         </div>
                                         <div class="col-md-2 col-sm-2 mt16 mb16">
                                             <p t-field="l.quantity"/>
-                                            <p t-field="l.uom_id"  groups="product.group_uom"/>
+                                            <p t-field="l.uom_id"  groups="uom.group_uom"/>
                                         </div>
                                         <div class="col-md-3 col-sm-3 mt16 mb16 subtotal-product">
                                             <span class="taxed-price" t-field="l.price_subtotal"

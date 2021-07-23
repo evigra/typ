@@ -1,0 +1,4 @@
+# TODO remove after patch for stock-logistics-barcode is merged
+# Since patches are applied after dependencies and requirements are installed,
+# new requirements added by patches won't be taken into account
+barcode

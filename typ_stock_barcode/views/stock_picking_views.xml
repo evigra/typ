@@ -33,19 +33,19 @@
                                 <span>
                                     I:<t t-esc="record.initial_demand_qty.raw_value"/>
                                 </span>
-                                <field name="product_uom_id" string="Unit of Measure" groups="product.group_uom"/>
+                                <field name="product_uom_id" string="Unit of Measure" groups="uom.group_uom"/>
                             </div>
                             <div class="col-xs-4 text-left">
                                 <span>
                                     R:<t t-esc="record.product_uom_qty.raw_value"/>
                                 </span>
-                                <field name="product_uom_id" string="Unit of Measure" groups="product.group_uom"/>
+                                <field name="product_uom_id" string="Unit of Measure" groups="uom.group_uom"/>
                             </div>
                             <div class="col-xs-4 text-left">
                                 <span>
                                     H:<t t-esc="record.qty_done.raw_value"/>
                                 </span>
-                                <field name="product_uom_id" string="Unit of Measure" groups="product.group_uom"/>
+                                <field name="product_uom_id" string="Unit of Measure" groups="uom.group_uom"/>
                             </div>
                         </div>
                     </div>

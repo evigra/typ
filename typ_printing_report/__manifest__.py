@@ -16,6 +16,7 @@
         # "wizard/stock_product_print_label_view.xml",
         "report/report_product_label.xml",
         # "views/stock_picking_view.xml",
+        "security/ir.model.access.csv",
     ],
     # only loaded in demonstration mode
     "demo": [],

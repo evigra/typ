@@ -10,9 +10,10 @@
         "stock_landed_costs",
     ],
     "demo": [
-        "demo/journal_demo.xml",
-        'demo/purchase_demo.xml',
-        "demo/product_demo.xml",
+        # TODO migrate
+        # "demo/journal_demo.xml",
+        # 'demo/purchase_demo.xml',
+        # "demo/product_demo.xml",
     ],
     "data": [
         "data/res_groups.xml",

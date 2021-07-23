@@ -24,9 +24,10 @@
         # "views/stock_manual_transfer_view.xml",   -> TODO: review on v14.0
         "views/view_procurement_compute_wizard_inh.xml",
         "report/report_stock_views.xml",
-        "report/report_stockpicking.xml",
+        # TODO migrate
+        # "report/report_stockpicking.xml",
         "report/report_stockpicking_wobc.xml",
-        "report/stock_report_deliveryslip.xml",
+        # "report/stock_report_deliveryslip.xml",
         # "views/stock_account_view.xml",   -> TODO: review on v14.0
         # "views/stock_inventory_view.xml",   -> TODO: review on v14.0
     ],
