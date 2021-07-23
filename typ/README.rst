@@ -49,3 +49,8 @@ When install this app module, this dependencies will be added:
         * "typ_stock"
 
 
+- Ubicacion destino en las líneas de picking por que usan ambas ubicaciones.
+- Julio Validate-Pedimento.
+- Revisar secuencias de prueba.
+- Setting de vista en formulario del producto.
+- Opcionales en 11.0 lo vamos a usar con opcionales. (matar llo que está en 11.0)

@@ -1,6 +1,5 @@
 from odoo import tools
 from odoo import models, fields
-import odoo.addons.decimal_precision as dp
 
 
 class StockAnalysis(models.Model):
@@ -19,9 +18,7 @@ class StockAnalysis(models.Model):
     product_max_qty = fields.Float("Maximum Quantity", readonly=True)
     warehouse_id = fields.Many2one("stock.warehouse", readonly=True)
     importance = fields.Selection([("aa", "AA"), ("a", "A"), ("b", "B"), ("c", "C"), ("d", "D")])
-    standard_price = fields.Float(
-        digits=dp.get_precision("Product price"), readonly=True, groups="typ_stock.res_group_standard_price"
-    )
+    standard_price = fields.Float(readonly=True, groups="typ_stock.res_group_standard_price")
     balanced = fields.Boolean(readonly=True)
 
     def init(self, cr):

@@ -48,26 +48,27 @@ class StockPicking(models.Model):
     def onchange_dest_warranty(self):
         self.is_warranty = self.location_dest_id.warranty_location
 
-    def _check_allow_write(self, vals):
-        """Validate which fields the user can write when warehouse of the
-        picking is not the same of the sale team of the user"""
+    # def _check_allow_write(self, vals): TODO: check with Julio
+    #     """Validate which fields the user can write when warehouse of the
+    #     picking is not the same of the sale team of the user"""
 
-        if vals is None:
-            vals = {}
+    #     if vals is None:
+    #         vals = {}
 
-        allow_fields = safe_eval(self.sudo().env["ir.config_parameter"].get_param("stock_picking_allow_fields"))
+    #     allow_fields = safe_eval(self.sudo().env["ir.config_parameter"].get_param(
+    #                              "stock_picking_allow_fields"))
+    #     import pdb; pdb.set_trace()
+    #     if set(vals.keys()).difference(allow_fields):
+    #         raise UserError(_("You are not allowed to do this change"))
 
-        if set(vals.keys()).difference(allow_fields):
-            raise UserError(_("You are not allowed to do this change"))
-
-    def write(self, vals):
-        # check if the user can modify the fields depending of the sales team
-        for picking in self.filtered(
-            lambda dat: dat.warehouse_id not in (dat.env.user.sale_team_ids.mapped("default_warehouse"))
-            and dat.env.user.id != SUPERUSER_ID
-        ):
-            picking._check_allow_write(vals)
-        return super().write(vals)
+    # def write(self, vals): TODO: check with Julio
+    #     # check if the user can modify the fields depending of the sales team
+    #     for picking in self.filtered(
+    #         lambda dat: dat.warehouse_id not in (dat.env.user.sale_team_ids.mapped("default_warehouse"))
+    #         and dat.env.user.id != SUPERUSER_ID
+    #     ):
+    #         picking._check_allow_write(vals)
+    #     return super().write(vals)
 
     def action_confirm_trafic(self):
         """This fill the invoiced field automatically"""
@@ -206,23 +207,23 @@ class StockPicking(models.Model):
             )
         return super().button_validate()
 
-    def _create_backorder(self, backorder_moves=list):
-        """Send message a picking transit for new backorder picking."""
-        backorders = super()._create_backorder(backorder_moves)
-        moves_orig_with_transit = backorders.mapped("move_lines.move_orig_ids").filtered(
-            lambda mv: mv.location_dest_id.usage == "transit"
-        )
-        message = _("Back order has been created in destination: %s") % (
-            ",".join(
-                [
-                    "<a href=# data-oe-model=stock.picking data-oe-id=" + str(pick.id) + ">" + pick.name + "</a>"
-                    for pick in backorders
-                ]
-            )
-        )
-        for pick in moves_orig_with_transit.mapped("picking_id"):
-            pick.message_post(body=message)
-        return backorders
+    # def _create_backorder(self, backorder_moves=list):
+    #     """Send message a picking transit for new backorder picking."""
+    #     backorders = super()._create_backorder(backorder_moves)
+    #     moves_orig_with_transit = backorders.mapped("move_lines.move_orig_ids").filtered(
+    #         lambda mv: mv.location_dest_id.usage == "transit"
+    #     )
+    #     message = _("Back order has been created in destination: %s") % (
+    #         ",".join(
+    #             [
+    #                 "<a href=# data-oe-model=stock.picking data-oe-id=" + str(pick.id) + ">" + pick.name + "</a>"
+    #                 for pick in backorders
+    #             ]
+    #         )
+    #     )
+    #     for pick in moves_orig_with_transit.mapped("picking_id"):
+    #         pick.message_post(body=message)
+    #     return backorders
 
 
 class StockMoveLine(models.Model):
@@ -290,11 +291,11 @@ class StockMove(models.Model):
             merge = False
         return super()._action_confirm(merge=merge, merge_into=merge_into)
 
-    def _action_done(self):
-        for move in self.filtered(lambda dat: not dat.inventory_id):
-            if not move.location_id.should_bypass_reservation() and move.quantity_done > move.reserved_availability:
-                raise UserError(_("You can not transfer different reserved"))
-        return super()._action_done()
+    # def _action_done(self):
+    #     for move in self.filtered(lambda dat: not dat.inventory_id):
+    #         if not move.location_id.should_bypass_reservation() and move.quantity_done > move.reserved_availability:
+    #             raise UserError(_("You can not transfer different reserved"))
+    #     return super()._action_done()
 
 
 class ReturnPicking(models.TransientModel):

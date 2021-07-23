@@ -3,7 +3,7 @@ from odoo import models, fields, api
 # from odoo.addons.base.models.res_partner import WARNING_MESSAGE, WARNING_HELP  -> TODO: review on v14.0
 
 
-class Product(models.Model):
+class ProductTemplate(models.Model):
     _inherit = "product.template"
 
     is_highlight = fields.Boolean(
@@ -32,6 +32,14 @@ class Product(models.Model):
     #         limit=1,
     #     )
     #     return bool(result_wish)
+
+    # TODO: review in 14.0
+    # def price_compute(self, price_type, uom=False, currency=False,
+    #                   company=False):
+    #     if self.env.context.get('other_pricelist'):
+    #         return 0
+    #     return super(ProductTemplate, self).price_compute(
+    #         price_type, uom=uom, currency=currency, company=company)
 
 
 class ProductProduct(models.Model):
@@ -203,27 +211,3 @@ class ProductProduct(models.Model):
     #     res.extend(products.name_get())
     #     return res
 
-
-class ProductStockWarehouse(models.Model):
-
-    _name = "product.stock.warehouse"
-    _description = "TODO: Once talk with the team describe it for v14.0"
-
-    warehouse_id = fields.Many2one(
-        "stock.warehouse", string="Warehouse", help="Set the warehouse"
-    )
-    posx = fields.Char(
-        "Corridor (X)",
-        help="Optional product details, for information purpose only",
-    )
-    posy = fields.Char(
-        "Shelves (Y)",
-        help="Optional product details, for information purpose only",
-    )
-    posz = fields.Char(
-        "Height (Z)",
-        help="Optional product details, for information purpose only",
-    )
-    product_id = fields.Many2one(
-        "product.product", string="Product", help="Set the product"
-    )

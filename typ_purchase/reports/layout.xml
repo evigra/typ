@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <template id="typ_purchase.custom_external_layout">
+    <template id="custom_external_layout">
         <!-- Multicompany -->
         <t t-if="o and 'company_id' in o">
             <t t-set="company" t-value="o.company_id"></t>

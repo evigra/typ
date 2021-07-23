@@ -6,4 +6,5 @@ class ProductTemplate(models.Model):
 
     _inherit = "product.template"
 
-    split_method = fields.Selection(default="by_current_cost_price")
+    # TODO: It was spit_method in 11.0 then this need to be reviewed
+    split_method_landed_cost = fields.Selection(default="by_current_cost_price")

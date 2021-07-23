@@ -4,6 +4,7 @@ from odoo import _, api, exceptions, fields, models
 class InvoiceFromGuides(models.TransientModel):
 
     _name = "invoice.guides"
+    _description = "TODO: When talk document"
 
     date_invoice = fields.Date(
         "Invoice date", default=fields.Date.today(), help="Date which want to create the invoice"

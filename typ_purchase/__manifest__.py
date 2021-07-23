@@ -12,16 +12,14 @@
     ],
     # always loaded
     "data": [
-        "security/res_groups.xml",
-        "security/ir.model.access.csv",
-        "data/paperformat.xml",
+        # "security/res_groups.xml",
+        # "security/ir.model.access.csv",
         # "data/base_action_rule.xml",
-        "reports/layout.xml",
+        # "reports/layout.xml",
         "reports/purchase_order.xml",
         "reports/purchase_quotation.xml",
-        # "views/purchase_view.xml",
-        "views/partner_view.xml",
-        "views/res_company_view.xml",
+        # "views/partner_view.xml",
+        # "views/res_company_view.xml",
     ],
     # only loaded in demonstration mode
     "demo": [],

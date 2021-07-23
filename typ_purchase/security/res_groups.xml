@@ -1,31 +1,3 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <record model="res.groups" id="group_purchase_budget_manager">
-        <field name="name">Purchase Budget Manager</field>
-        <field name="comment">This group is for Managers of Budget.
-They can:
-- Make budget requests.</field>
-    </record>
-    <record model="res.groups" id="purchase_group_hidden_create_button">
-        <field name="name">Purchase restricted users</field>
-        <field name="comment">Users of this group:
-- Do not see the "Create" button on the purchase order.
-- Do not see the "Confirm" button on the purchase order.</field>
-    </record>
-    <record model="res.groups" id="partner_group_hidden_create_button">
-        <field name="name">Partner restricted users</field>
-        <field name="comment">Users of this group:
-- Do not see the "Create" button on the partner.</field>
-    </record>
-    <record model="res.groups" id="purchase_group_approve_order_button">
-        <field name="name">Approve purchase order users</field>
-        <field name="users" eval="[(4, ref('base.user_root'))]"/>
-        <field name="comment">Users of this group:
-They can:
-- Approve Purchase Order with restriction.</field>
-    </record>
-    <!-- Purchase managers are allowed to Approve Order Purchase -->
-    <record id="purchase.group_purchase_manager" model="res.groups">
-        <field name="implied_ids" eval="[(4, ref('typ_purchase.purchase_group_approve_order_button'))]"/>
-    </record>
 </odoo>

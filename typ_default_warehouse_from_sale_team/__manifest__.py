@@ -13,5 +13,5 @@
         "views/sales_team_view.xml",
     ],
     "demo": [],
-    "installable": True,
+    "installable": False,
 }

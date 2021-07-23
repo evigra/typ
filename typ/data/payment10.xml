@@ -50,4 +50,10 @@
             <attribute name="t-att-ImpSaldoInsoluto">'%0.*f' % (decimal_precision, amount_insoluto + (writeoff_vals.get(invoice.id, 0) if not multicurrency else 0))</attribute>
         </xpath>
     </template>
+
+    <template id="numoperacion_invoice" inherit_id="l10n_mx_edi.payment10">
+        <xpath expr="//*[name()='pago10:Pago']" position="attributes">
+            <attribute name="t-att-NumOperacion">None</attribute>
+        </xpath>
+    </template>
 </odoo>

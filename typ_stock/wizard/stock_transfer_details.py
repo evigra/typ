@@ -1,5 +1,4 @@
 from odoo import api, fields, models
-import odoo.addons.decimal_precision as dp
 
 
 class StockTransferDetails(models.TransientModel):
@@ -36,4 +35,4 @@ class StockTransferDetailsItems(models.TransientModel):
     _inherit = "stock.transfer_details_items"
 
     supplier_code = fields.Char()
-    expected_quantity = fields.Float(digits=dp.get_precision("Product Unit of Measure"), default=0.0, readonly=True)
+    expected_quantity = fields.Float(readonly=True)

@@ -7,7 +7,9 @@
     "website": "http://www.vauxoo.com/",
     # any module necessary for this one to work correctly
     "depends": [
-        "sale_stock",
+        "stock",
+        "sale",
+        "delivery",
         # 'stock_no_negative',
         # 'stock_picking_show_return',
     ],

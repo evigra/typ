@@ -7,7 +7,7 @@
     "license": "AGPL-3",
     "depends": [
         "mrp",
-        # "stock_landed_segmentation",
+        "stock_landed_costs",
     ],
     "demo": [
         "demo/journal_demo.xml",

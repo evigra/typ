@@ -1,6 +1,5 @@
 from odoo import _, api, fields, models
 from odoo.exceptions import ValidationError
-import odoo.addons.decimal_precision as dp
 
 
 class StockManualTransfer(models.Model):
@@ -83,9 +82,7 @@ class StockManualTransferLine(models.Model):
     product_id = fields.Many2one(
         "product.product", "Product", domain=[("type", "=", "product")], ondelete="restrict", required=True
     )
-    product_uom_qty = fields.Float(
-        string="Quantity", digits=dp.get_precision("Product Unit of Measure"), required=True, default=1.0
-    )
+    product_uom_qty = fields.Float("Quantity", required=True, default=1.0)
     product_uom = fields.Many2one("uom.uom", string="Unit of Measure", required=True)
 
     @api.onchange("product_id")

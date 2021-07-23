@@ -1,11 +1,11 @@
 from __future__ import division
 from odoo import api, fields, models, _
 from odoo.exceptions import except_orm, ValidationError
-import odoo.addons.decimal_precision as dp
 
 
 class StockLandedGuides(models.Model):
     _name = "stock.landed.cost.guide"
+    _description = "This controls the guides from delivery management to report them for administrative purposes"
 
     name = fields.Char(
         required=True, help="Name to identify the guide", readonly=True, states={"draft": [("readonly", False)]}
@@ -44,9 +44,7 @@ class StockLandedGuides(models.Model):
         states={"draft": [("readonly", False)]},
         help="Warehouse which this guide belongs to",
     )
-    amount_total = fields.Float(
-        string="Total", digits=dp.get_precision("Account"), store=True, readonly=True, compute="_compute_amount"
-    )
+    amount_total = fields.Monetary(store=True, readonly=True, compute="_compute_amount")
     journal_id = fields.Many2one(
         "account.journal",
         string="Journal",
@@ -322,6 +320,8 @@ class StockLandedGuides(models.Model):
 
 class StockLandedGuidesLine(models.Model):
     _name = "stock.landed.cost.guide.line"
+    _description = "This controls the guides from delivery management to report them for administrative purposes"
+
     guide_id = fields.Many2one("stock.landed.cost.guide", help="Guide which this line belongs to")
     product_id = fields.Many2one("product.product", string="Product", help="Product associated to this line")
     cost = fields.Float(help="Cost of the operation on this line")
@@ -502,7 +502,7 @@ class StockLandedCost(models.Model):
                     )
             landed_cost.update({"cost_lines": lines + line_invoice})
 
-
+# TODO: May be thi swill not be necessary in v14.0
 class StockLandedCostLines(models.Model):
     _inherit = "stock.landed.cost.lines"
 
