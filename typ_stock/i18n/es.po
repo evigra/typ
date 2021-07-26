@@ -1,14 +1,14 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
-#	* typ_stock
+# 	* typ_stock
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 11.0+e\n"
+"Project-Id-Version: Odoo Server 14.0+e\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-11-02 22:46+0000\n"
-"PO-Revision-Date: 2018-11-02 22:46+0000\n"
-"Last-Translator: <>\n"
+"POT-Creation-Date: 2021-07-26 23:46+0000\n"
+"PO-Revision-Date: 2021-07-26 23:46+0000\n"
+"Last-Translator: Luis González <lgonzalez@vauxoo.com\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -16,533 +16,394 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. module: typ_stock
-#: model:ir.actions.act_window,help:typ_stock.stock_manual_transfer_action
-msgid "<p class=\"oe_view_nocontent_create\">\n"
-"                Click to add a new manual transfer.\n"
-"              </p>\n"
-"            "
-msgstr "<p class=\"oe_view_nocontent_create\">\n"
-"                Click para generar una transferencia manual.\n"
-"              </p>\n"
-"            "
+#: model:ir.actions.report,print_report_name:typ_stock.action_report_picking_wobc
+msgid ""
+"'Picking Operations - %s - %s' % (object.partner_id.name or '', object.name)"
+msgstr ""
 
 #. module: typ_stock
-#: model:ir.ui.view,arch_db:typ_stock.report_picking
-#: model:ir.ui.view,arch_db:typ_stock.report_picking_wobc
+#: model_terms:ir.ui.view,arch_db:typ_stock.report_picking_wobc
 msgid "<span><strong>Customer Address:</strong></span>"
-msgstr "<span><strong>Dirección del Cliente:</strong></span>"
+msgstr ""
 
 #. module: typ_stock
-#: code:addons/typ_stock/models/stock.py:264
+#: model_terms:ir.ui.view,arch_db:typ_stock.report_picking_wobc
+msgid "<span><strong>Delivery Address:</strong></span>"
+msgstr ""
+
+#. module: typ_stock
+#: model_terms:ir.ui.view,arch_db:typ_stock.report_picking_wobc
+msgid "<span><strong>Supplier Address:</strong></span>"
+msgstr ""
+
+#. module: typ_stock
+#: model_terms:ir.ui.view,arch_db:typ_stock.report_picking_wobc
+msgid "<span><strong>Warehouse Address:</strong></span>"
+msgstr ""
+
+#. module: typ_stock
+#: model_terms:ir.ui.view,arch_db:typ_stock.report_picking_wobc
+msgid "<strong>Commitment Date</strong>"
+msgstr ""
+
+#. module: typ_stock
+#: model_terms:ir.ui.view,arch_db:typ_stock.report_picking_wobc
+msgid "<strong>Notes</strong>:"
+msgstr ""
+
+#. module: typ_stock
+#: model_terms:ir.ui.view,arch_db:typ_stock.report_picking_wobc
+msgid "<strong>Order (Origin)</strong>"
+msgstr ""
+
+#. module: typ_stock
+#: model_terms:ir.ui.view,arch_db:typ_stock.report_picking_wobc
+msgid "<strong>Product</strong>"
+msgstr ""
+
+#. module: typ_stock
+#: model_terms:ir.ui.view,arch_db:typ_stock.report_picking_wobc
+msgid "<strong>Quantity</strong>"
+msgstr ""
+
+#. module: typ_stock
+#: model_terms:ir.ui.view,arch_db:typ_stock.report_picking_wobc
+msgid "<strong>Scheduled Date</strong>"
+msgstr ""
+
+#. module: typ_stock
+#: model_terms:ir.ui.view,arch_db:typ_stock.report_picking_wobc
+msgid "<strong>State</strong>"
+msgstr ""
+
+#. module: typ_stock
+#: code:addons/typ_stock/models/stock.py:0
 #, python-format
 msgid "<ul><li>shipment confirmed --> <b>Canceled</b></li></ul>"
 msgstr "<ul><li>embarque confirmado --> <b>Cancelado</b></li></ul>"
 
 #. module: typ_stock
-#: model:ir.ui.view,arch_db:typ_stock.report_picking
-#: model:ir.ui.view,arch_db:typ_stock.report_picking_wobc
-msgid "<span><strong>Delivery Address:</strong></span>"
-msgstr "<span><strong>Dirección de Entrega:</strong></span>"
-
-#. module: typ_stock
-#: code:addons/typ_stock/models/stock.py:262
+#: code:addons/typ_stock/models/stock.py:0
 #, python-format
 msgid "<ul><li>shipment confirmed --> <b>ok</b></li></ul>"
 msgstr "<ul><li>embarque confirmado --> <b>ok</b></li></ul>"
 
 #. module: typ_stock
-#: model:ir.ui.view,arch_db:typ_stock.report_picking
-#: model:ir.ui.view,arch_db:typ_stock.report_picking_wobc
-msgid "<span><strong>Supplier Address:</strong></span>"
-msgstr "<span><strong>Dirección del Proveedor:</strong></span>"
-
-#. module: typ_stock
-#: selection:procurement.orderpoint.compute,importance:0
-#: selection:stock.analysis,importance:0
-#: selection:stock.warehouse.orderpoint,importance:0
+#: model:ir.model.fields.selection,name:typ_stock.selection__stock_scheduler_compute__importance__aa
+#: model:ir.model.fields.selection,name:typ_stock.selection__stock_warehouse_orderpoint__importance__aa
 msgid "AA"
 msgstr ""
 
 #. module: typ_stock
-#: model:ir.ui.view,arch_db:typ_stock.report_picking
-#: model:ir.ui.view,arch_db:typ_stock.report_picking_wobc
-msgid "<span><strong>Warehouse Address:</strong></span>"
-msgstr "<span><strong>Dirección del Almacén:</strong></span>"
-
-#. module: typ_stock
-#: model:ir.actions.server,name:typ_stock.server_action_product_supplier_ref
-msgid "Action compute supplier ref"
-msgstr "Accion para calcular codigo de proveedor"
-
-#. module: typ_stock
-#: model:ir.ui.view,arch_db:typ_stock.report_picking
-msgid "<strong>Barcode</strong>"
-msgstr "<strong>Código de Barras</strong>"
-
-#. module: typ_stock
-#: model:ir.actions.server,name:typ_stock.server_action_product_manager_follower
-msgid "Action follower product manager"
+#: model:ir.model.fields,field_description:typ_stock.field_stock_manual_transfer__message_needaction
+msgid "Action Needed"
 msgstr ""
 
 #. module: typ_stock
-#: model:ir.ui.view,arch_db:typ_stock.report_picking
-#: model:ir.ui.view,arch_db:typ_stock.report_picking_wobc
-msgid "<strong>Commitment Date</strong>"
-msgstr "<strong>Fecha Compromiso</strong>"
-
-#. module: typ_stock
-#: model:ir.actions.server,name:typ_stock.server_action_procurement_cancel
-msgid "Action procurement cancel"
-msgstr "Accion para cancelar abastecimientos"
-
-#. module: typ_stock
-#: model:ir.ui.view,arch_db:typ_stock.report_picking
-#: model:ir.ui.view,arch_db:typ_stock.report_picking_wobc
-msgid "<strong>Destination</strong>"
-msgstr "<strong>Destino</strong>"
-
-#. module: typ_stock
-#: field:stock.warehouse,active:0
-msgid "Active"
-msgstr "Activo"
-
-#. module: typ_stock
-#: model:ir.ui.view,arch_db:typ_stock.report_picking
-#: model:ir.ui.view,arch_db:typ_stock.report_picking_wobc
-msgid "<strong>Notes</strong>:"
-msgstr "<strong>Notas</strong>:"
-
-#. module: typ_stock
-#: view:stock.warehouse.orderpoint:typ_stock.stock_warehouse_orderpoint_form_inherit
-msgid "Additional information"
-msgstr ""
-
-#. module: typ_stock
-#: model:ir.ui.view,arch_db:typ_stock.report_picking
-#: model:ir.ui.view,arch_db:typ_stock.report_picking_wobc
-msgid "<strong>Order (Origin)</strong>"
-msgstr "<strong>Pedido (Origen)</strong>"
-
-#. module: typ_stock
-#: field:stock.location.route,manual_transfer_selectable:0
+#: model:ir.model.fields,field_description:typ_stock.field_stock_location_route__manual_transfer_selectable
 msgid "Applicable on manual transfer"
-msgstr "Aplicable en transferencia manual"
+msgstr ""
 
 #. module: typ_stock
-#: model:ir.model.fields,field_description:typ_stock.field_stock_picking_arrival_date_broker
+#: model:ir.model.fields,field_description:typ_stock.field_stock_picking__arrival_date_broker
 msgid "Arrival Date Broker"
 msgstr "Fecha llegada a broker"
 
 #. module: typ_stock
-#: model:ir.model.fields,help:typ_stock.field_stock_picking_arrival_date_broker
+#: model:ir.model.fields,help:typ_stock.field_stock_picking__arrival_date_broker
 msgid "Arrival date at the customs broker"
 msgstr "Fecha de llegada a la agencia aduanal"
 
 #. module: typ_stock
-#: model:ir.ui.view,arch_db:typ_stock.report_picking
-#: model:ir.ui.view,arch_db:typ_stock.report_picking_wobc
-msgid "<strong>Product</strong>"
-msgstr "<strong>Producto</strong>"
+#: model:ir.model.fields,field_description:typ_stock.field_stock_manual_transfer__message_attachment_count
+msgid "Attachment Count"
+msgstr ""
 
 #. module: typ_stock
-#: model:stock.picking.type,name:typ_stock.stock_picking_type_test_1
-msgid "Automatic output"
-msgstr "Salida automatica"
+#: model:ir.model.fields,help:typ_stock.field_stock_location__warranty_location
+msgid ""
+"Check this box to allow the use of this location for warranties in process."
+msgstr ""
+"Marque esta casilla para permitir el uso de esta ubicación para garantías en"
+" proceso."
 
 #. module: typ_stock
-#: model:ir.ui.view,arch_db:typ_stock.report_picking
-#: model:ir.ui.view,arch_db:typ_stock.report_picking_wobc
-msgid "<strong>Quantity</strong>"
-msgstr "<strong>Cantidad</strong>"
+#: model:ir.model.fields,help:typ_stock.field_stock_picking__requirements_for_warranty
+msgid ""
+"Check this box when the requirements for guarantee are fulfilled in order to"
+" transfer it to guarantees in process."
+msgstr ""
+"Marque esta casilla cuando se cumplan los requisitos de garantía para poder "
+"tranferirla a garantías en proceso."
 
 #. module: typ_stock
-#: model:stock.picking.type,name:typ_stock.stock_picking_type_test_2
-msgid "Automatic transit"
-msgstr "Transito automático"
+#: model_terms:ir.actions.act_window,help:typ_stock.stock_manual_transfer_action
+msgid "Click to add a new manual transfer."
+msgstr ""
 
 #. module: typ_stock
-#: model:ir.ui.view,arch_db:typ_stock.report_picking
-#: model:ir.ui.view,arch_db:typ_stock.report_picking_wobc
-msgid "<strong>Scheduled Date</strong>"
-msgstr "<strong>Fecha Recepción</strong>"
-
-#. module: typ_stock
-#: field:stock.analysis,balanced:0
-msgid "Balanced"
-msgstr "Balanceo"
-
-#. module: typ_stock
-#: model:ir.ui.view,arch_db:typ_stock.report_picking
-#: model:ir.ui.view,arch_db:typ_stock.report_picking_wobc
-msgid "<strong>Serie</strong>"
-msgstr "<strong>Serie</strong>"
-
-#. module: typ_stock
-#: model:ir.model.fields,help:typ_stock.field_stock_location_warranty_location
-msgid "Check this box to allow the use of this location for warranties in process."
-msgstr "Marque esta casilla para permitir el uso de esta ubicación para garantías en proceso."
-
-#. module: typ_stock
-#: model:ir.model.fields,help:typ_stock.field_stock_picking_requirements_for_warranty
-msgid "Check this box when the requirements for guarantee are fulfilled in order to transfer it to guarantees in process."
-msgstr "Marque esta casilla cuando se cumplan los requisitos de garantía para poder tranferirla a garantías en proceso."
-
-#. module: typ_stock
-#: model:ir.ui.view,arch_db:typ_stock.report_picking
-#: model:ir.ui.view,arch_db:typ_stock.report_picking_wobc
-msgid "<strong>State</strong>"
-msgstr "<strong>Estado</strong>"
-
-#. module: typ_stock
-#: view:pedimento.product:typ_stock.view_pedimento_product_wizard
-msgid "Cancel"
-msgstr "Cancelar"
-
-#. module: typ_stock
-#: view:website:stock.report_picking
-msgid "Commitment Date"
-msgstr "Fecha de Compromiso"
-
-#. module: typ_stock
-#: model:ir.model,name:typ_stock.model_procurement_orderpoint_compute
-msgid "Compute Minimum Stock Rules"
-msgstr "Reglas de Cálculo de Stock Mínimo"
-
-#. module: typ_stock
-#: field:pedimento.product,create_uid:0
-#: field:stock.manual_transfer,create_uid:0
-#: field:stock.manual_transfer_line,create_uid:0
+#: model:ir.model.fields,field_description:typ_stock.field_stock_manual_transfer__create_uid
+#: model:ir.model.fields,field_description:typ_stock.field_stock_manual_transfer_line__create_uid
 msgid "Created by"
-msgstr "Creado por"
+msgstr ""
 
 #. module: typ_stock
-#: field:pedimento.product,create_date:0
-#: field:stock.manual_transfer,create_date:0
-#: field:stock.manual_transfer_line,create_date:0
+#: model:ir.model.fields,field_description:typ_stock.field_stock_manual_transfer__create_date
+#: model:ir.model.fields,field_description:typ_stock.field_stock_manual_transfer_line__create_date
 msgid "Created on"
-msgstr "Creado en"
+msgstr ""
 
 #. module: typ_stock
-#: model:ir.model.fields,help:typ_stock.field_stock_picking_input_cb
+#: model:ir.model.fields,help:typ_stock.field_stock_picking__input_cb
 msgid "Custom Broker code"
 msgstr "Código de agencia aduanal"
 
 #. module: typ_stock
-#: view:website:stock.report_picking
-msgid "Customer Address:"
-msgstr "Dirección del Cliente:"
-
-#. module: typ_stock
-#: help:stock.manual_transfer,message_last_post:0
-msgid "Date of the last message posted on the record."
-msgstr "Fecha de el ultimo mensaje creado en el registro."
-
-#. module: typ_stock
-#: view:website:stock.report_picking
-msgid "Delivery Address:"
-msgstr "Dirección de Entrega:"
-
-#. module: typ_stock
-#: view:website:stock.report_picking
-msgid "Destination"
-msgstr "Destino"
-
-#. module: typ_stock
-#: field:pedimento.product,display_name:0
-#: field:stock.manual_transfer,display_name:0
-#: field:stock.manual_transfer_line,display_name:0
+#: model:ir.model.fields,field_description:typ_stock.field_procurement_group__display_name
+#: model:ir.model.fields,field_description:typ_stock.field_purchase_order_line__display_name
+#: model:ir.model.fields,field_description:typ_stock.field_report_stock_report_deliveryslip__display_name
+#: model:ir.model.fields,field_description:typ_stock.field_report_stock_report_picking__display_name
+#: model:ir.model.fields,field_description:typ_stock.field_report_typ_stock_report_picking_wobc__display_name
+#: model:ir.model.fields,field_description:typ_stock.field_stock_location__display_name
+#: model:ir.model.fields,field_description:typ_stock.field_stock_location_route__display_name
+#: model:ir.model.fields,field_description:typ_stock.field_stock_manual_transfer__display_name
+#: model:ir.model.fields,field_description:typ_stock.field_stock_manual_transfer_line__display_name
+#: model:ir.model.fields,field_description:typ_stock.field_stock_move__display_name
+#: model:ir.model.fields,field_description:typ_stock.field_stock_move_line__display_name
+#: model:ir.model.fields,field_description:typ_stock.field_stock_picking__display_name
+#: model:ir.model.fields,field_description:typ_stock.field_stock_return_picking__display_name
+#: model:ir.model.fields,field_description:typ_stock.field_stock_scheduler_compute__display_name
+#: model:ir.model.fields,field_description:typ_stock.field_stock_scrap__display_name
+#: model:ir.model.fields,field_description:typ_stock.field_stock_warehouse_orderpoint__display_name
 msgid "Display Name"
-msgstr "Nombre a mostrar"
+msgstr "Nombre mostrado"
 
 #. module: typ_stock
-#: selection:stock.manual_transfer,state:0
+#: model:ir.model.fields.selection,name:typ_stock.selection__stock_manual_transfer__state__draft
 msgid "Draft"
-msgstr "Borrador"
+msgstr ""
 
 #. module: typ_stock
-#: model:ir.model.fields,field_description:typ_stock.field_stock_picking_guide_number
+#: model:ir.model.fields,field_description:typ_stock.field_stock_manual_transfer__message_follower_ids
+msgid "Followers"
+msgstr ""
+
+#. module: typ_stock
+#: model:ir.model.fields,field_description:typ_stock.field_stock_manual_transfer__message_channel_ids
+msgid "Followers (Channels)"
+msgstr ""
+
+#. module: typ_stock
+#: model:ir.model.fields,field_description:typ_stock.field_stock_manual_transfer__message_partner_ids
+msgid "Followers (Partners)"
+msgstr ""
+
+#. module: typ_stock
+#: model:ir.model.fields,field_description:typ_stock.field_stock_picking__guide_number
 msgid "Guide Number"
 msgstr "Número de Guía"
 
 #. module: typ_stock
-#: model:ir.model.fields,help:typ_stock.field_stock_picking_guide_number
+#: model:ir.model.fields,help:typ_stock.field_stock_picking__guide_number
 msgid "Guide number"
 msgstr "Número de guía"
 
 #. module: typ_stock
-#: model:ir.model,name:typ_stock.model_stock_manual_transfer
-msgid "Email Thread"
-msgstr "Hilo Correo"
+#: model:ir.model.fields,field_description:typ_stock.field_procurement_group__id
+#: model:ir.model.fields,field_description:typ_stock.field_purchase_order_line__id
+#: model:ir.model.fields,field_description:typ_stock.field_report_stock_report_deliveryslip__id
+#: model:ir.model.fields,field_description:typ_stock.field_report_stock_report_picking__id
+#: model:ir.model.fields,field_description:typ_stock.field_report_typ_stock_report_picking_wobc__id
+#: model:ir.model.fields,field_description:typ_stock.field_stock_location__id
+#: model:ir.model.fields,field_description:typ_stock.field_stock_location_route__id
+#: model:ir.model.fields,field_description:typ_stock.field_stock_manual_transfer__id
+#: model:ir.model.fields,field_description:typ_stock.field_stock_manual_transfer_line__id
+#: model:ir.model.fields,field_description:typ_stock.field_stock_move__id
+#: model:ir.model.fields,field_description:typ_stock.field_stock_move_line__id
+#: model:ir.model.fields,field_description:typ_stock.field_stock_picking__id
+#: model:ir.model.fields,field_description:typ_stock.field_stock_return_picking__id
+#: model:ir.model.fields,field_description:typ_stock.field_stock_scheduler_compute__id
+#: model:ir.model.fields,field_description:typ_stock.field_stock_scrap__id
+#: model:ir.model.fields,field_description:typ_stock.field_stock_warehouse_orderpoint__id
+msgid "ID"
+msgstr "ID (identificación)"
 
 #. module: typ_stock
-#: selection:product.template,state:0
-msgid "End of Lifecycle"
-msgstr "Fin ciclo de vida"
-
-#. module: typ_stock
-#: field:stock.transfer_details_items,expected_quantity:0
-msgid "Expected quantity"
-msgstr "Cantidad esperada"
-
-#. module: typ_stock
-#: field:stock.manual_transfer,message_follower_ids:0
-msgid "Followers"
-msgstr "Seguidores"
-
-#. module: typ_stock
-#: model:email.template,body_html:typ_stock.email_template_product_manager
-msgid "Hi ${(object.product_manager.partner_id.name)}, there is new product\n"
-"            that needs check it.\n"
-"            "
+#: model:ir.model.fields,help:typ_stock.field_stock_manual_transfer__message_needaction
+#: model:ir.model.fields,help:typ_stock.field_stock_manual_transfer__message_unread
+msgid "If checked, new messages require your attention."
 msgstr ""
 
 #. module: typ_stock
-#: help:stock.manual_transfer,message_summary:0
-msgid "Holds the Chatter summary (number of messages, ...). This summary is directly in html format in order to be inserted in kanban views."
-msgstr "Contiene el resumen Chatter (número de mensajes, ...). Este resumen está directamente en formato html para poder ser insertado en las vistas de kanban."
+#: model:ir.model.fields,help:typ_stock.field_stock_manual_transfer__message_has_error
+#: model:ir.model.fields,help:typ_stock.field_stock_manual_transfer__message_has_sms_error
+msgid "If checked, some messages have a delivery error."
+msgstr ""
 
 #. module: typ_stock
-#: field:pedimento.product,id:0
-#: field:stock.manual_transfer,id:0
-#: field:stock.manual_transfer_line,id:0
-msgid "ID"
-msgstr "N° Empleado"
-
-#. module: typ_stock
-#: help:stock.manual_transfer,message_unread:0
-msgid "If checked new messages require your attention."
-msgstr "Si seleccionas nuevos mensajes requieren tu atención."
-
-#. module: typ_stock
-#: model:ir.model.fields,field_description:typ_stock.field_stock_scheduler_compute_importance
-#: model:ir.model.fields,field_description:typ_stock.field_stock_warehouse_orderpoint_importance
+#: model:ir.model.fields,field_description:typ_stock.field_stock_scheduler_compute__importance
+#: model:ir.model.fields,field_description:typ_stock.field_stock_warehouse_orderpoint__importance
 msgid "Importance"
 msgstr "Importancia"
 
 #. module: typ_stock
-#: model:ir.model.fields,field_description:typ_stock.field_stock_picking_input_cb
+#: model:ir.model.fields,field_description:typ_stock.field_stock_picking__input_cb
 msgid "Input Cb"
 msgstr "Entrada AA"
 
 #. module: typ_stock
-#: selection:product.product,state:0
-msgid "In Development"
-msgstr "En desarrollo"
-
-#. module: typ_stock
-#: code:addons/typ_stock/models/stock.py:314
+#: code:addons/typ_stock/models/stock.py:0
 #, python-format
 msgid "Internal movements don't allow locations in supplier or customer"
-msgstr "Los movimientos internos no permiten ubicaciones de proveedores o clientes"
+msgstr ""
+"Los movimientos internos no permiten ubicaciones de proveedores o clientes"
+
+#. module: typ_stock
+#: model:ir.model,name:typ_stock.model_stock_location
+msgid "Inventory Locations"
+msgstr "Ubicaciones de inventario"
 
 #. module: typ_stock
 #: model:ir.model,name:typ_stock.model_stock_location_route
 msgid "Inventory Routes"
-msgstr "Rutas de Inventario"
+msgstr "Rutas de inventario"
 
 #. module: typ_stock
-#: field:stock.picking,invoiced:0
+#: model:ir.model.fields,field_description:typ_stock.field_stock_picking__invoiced
 msgid "Invoiced complete"
-msgstr "Factura completa"
+msgstr ""
 
 #. module: typ_stock
-#: field:stock.manual_transfer,message_is_follower:0
-msgid "Is a Follower"
-msgstr "Es seguidor"
+#: model:ir.model.fields,field_description:typ_stock.field_stock_manual_transfer__message_is_follower
+msgid "Is Follower"
+msgstr ""
 
 #. module: typ_stock
-#: model:ir.model.fields,field_description:typ_stock.field_stock_picking_is_warranty
+#: model:ir.model.fields,field_description:typ_stock.field_stock_picking__is_warranty
 msgid "Is Warranty"
 msgstr "Es garantía"
 
 #. module: typ_stock
-#: model:ir.model.fields,field_description:typ_stock.field_stock_location_warranty_location
+#: model:ir.model.fields,field_description:typ_stock.field_stock_location__warranty_location
 msgid "Is a Warranty Location?"
 msgstr "¿Es una ubicación de garantía?"
 
 #. module: typ_stock
-#: field:stock.manual_transfer,message_last_post:0
-msgid "Last Message Date"
-msgstr "Fecha del último mensaje"
-
-#. module: typ_stock
-#: field:pedimento.product,__last_update:0
-#: field:stock.manual_transfer,__last_update:0
-#: field:stock.manual_transfer_line,__last_update:0
+#: model:ir.model.fields,field_description:typ_stock.field_procurement_group____last_update
+#: model:ir.model.fields,field_description:typ_stock.field_purchase_order_line____last_update
+#: model:ir.model.fields,field_description:typ_stock.field_report_stock_report_deliveryslip____last_update
+#: model:ir.model.fields,field_description:typ_stock.field_report_stock_report_picking____last_update
+#: model:ir.model.fields,field_description:typ_stock.field_report_typ_stock_report_picking_wobc____last_update
+#: model:ir.model.fields,field_description:typ_stock.field_stock_location____last_update
+#: model:ir.model.fields,field_description:typ_stock.field_stock_location_route____last_update
+#: model:ir.model.fields,field_description:typ_stock.field_stock_manual_transfer____last_update
+#: model:ir.model.fields,field_description:typ_stock.field_stock_manual_transfer_line____last_update
+#: model:ir.model.fields,field_description:typ_stock.field_stock_move____last_update
+#: model:ir.model.fields,field_description:typ_stock.field_stock_move_line____last_update
+#: model:ir.model.fields,field_description:typ_stock.field_stock_picking____last_update
+#: model:ir.model.fields,field_description:typ_stock.field_stock_return_picking____last_update
+#: model:ir.model.fields,field_description:typ_stock.field_stock_scheduler_compute____last_update
+#: model:ir.model.fields,field_description:typ_stock.field_stock_scrap____last_update
+#: model:ir.model.fields,field_description:typ_stock.field_stock_warehouse_orderpoint____last_update
 msgid "Last Modified on"
-msgstr "Última modificación"
+msgstr "Última modificación el"
 
 #. module: typ_stock
-#: field:pedimento.product,write_uid:0
-#: field:stock.manual_transfer,write_uid:0
-#: field:stock.manual_transfer_line,write_uid:0
+#: model:ir.model.fields,field_description:typ_stock.field_stock_manual_transfer__write_uid
+#: model:ir.model.fields,field_description:typ_stock.field_stock_manual_transfer_line__write_uid
 msgid "Last Updated by"
-msgstr "Última actualización por"
+msgstr ""
 
 #. module: typ_stock
-#: field:pedimento.product,write_date:0
-#: field:stock.manual_transfer,write_date:0
-#: field:stock.manual_transfer_line,write_date:0
+#: model:ir.model.fields,field_description:typ_stock.field_stock_manual_transfer__write_date
+#: model:ir.model.fields,field_description:typ_stock.field_stock_manual_transfer_line__write_date
 msgid "Last Updated on"
-msgstr "Última actualización en"
+msgstr ""
 
 #. module: typ_stock
-#: model:stock.location,name:typ_stock.location_scrapped_test
-msgid "Location scrapped test"
-msgstr "Ubicación de pruebas de desecho"
-
-#. module: typ_stock
-#: field:pedimento.product,lot_id:0
-msgid "Lot"
-msgstr "Lote"
-
-#. module: typ_stock
-#: view:stock.manual_transfer:typ_stock.stock_manual_transfer_form_view
-msgid "Make transfer"
-msgstr "Generar transferencia"
+#: model:ir.model.fields,field_description:typ_stock.field_stock_manual_transfer__message_main_attachment_id
+msgid "Main Attachment"
+msgstr ""
 
 #. module: typ_stock
 #: model:ir.actions.act_window,name:typ_stock.stock_manual_transfer_action
-#: model:ir.ui.menu,name:typ_stock.menu_stock_manual_transfer_act
-#: view:stock.manual_transfer:typ_stock.stock_manual_transfer_form_view
-#: view:stock.manual_transfer:typ_stock.stock_manual_transfer_tree_view
 msgid "Manual Transfer"
 msgstr "Transferencias manuales"
 
 #. module: typ_stock
-#: view:stock.location.route:typ_stock.stock_location_route_form_view_inherit
-msgid "Manual transfers"
-msgstr "Transferencias manuales"
-
-#. module: typ_stock
-#: model:ir.model.fields,field_description:typ_stock.field_stock_picking_requirements_for_warranty
+#: model:ir.model.fields,field_description:typ_stock.field_stock_picking__requirements_for_warranty
 msgid "Meets requirements for warranty?"
 msgstr "¿Cumple con los requisitos de garantía?"
 
 #. module: typ_stock
-#: field:stock.analysis,product_max_qty:0
-msgid "Maximum Quantity"
-msgstr "Maximo"
+#: model:ir.model.fields,field_description:typ_stock.field_stock_manual_transfer__message_has_error
+msgid "Message Delivery error"
+msgstr ""
 
 #. module: typ_stock
-#: model:ir.actions.report.xml,name:typ_stock.product_label_medium
-msgid "Medium Label"
-msgstr "Etiqueta mediana"
-
-#. module: typ_stock
-#: field:stock.manual_transfer,message_ids:0
+#: model:ir.model.fields,field_description:typ_stock.field_stock_manual_transfer__message_ids
 msgid "Messages"
-msgstr "Mensajes"
-
-#. module: typ_stock
-#: help:stock.manual_transfer,message_ids:0
-msgid "Messages and communication history"
-msgstr "Historial de mensajes y comunicación"
+msgstr ""
 
 #. module: typ_stock
 #: model:ir.model,name:typ_stock.model_stock_warehouse_orderpoint
 msgid "Minimum Inventory Rule"
-msgstr "Regla de Inventario Mínimo"
+msgstr "Regla de inventario mínimo"
 
 #. module: typ_stock
-#: field:stock.analysis,product_min_qty:0
-msgid "Minimum Quantity"
-msgstr "Mínimo"
-
-#. module: typ_stock
-#: field:stock.manual_transfer,name:0
+#: model:ir.model.fields,field_description:typ_stock.field_stock_manual_transfer__name
 msgid "Name"
-msgstr "Nombre"
+msgstr ""
 
 #. module: typ_stock
-#: code:addons/typ_stock/models/stock.py:100
-#, python-format
-msgid "Negative Quant creation error of the product %s. Contact Vauxoo personnel immediately"
-msgstr "Error en creacion de Quant negativo de el producto %s. Contacte al personal de Vauxoo inmediatamente"
-
-#. module: typ_stock
-#: view:stock.manual_transfer:typ_stock.stock_manual_transfer_form_view
-msgid "New Manual Transfer"
-msgstr "Nueva transferencia manual"
-
-#. module: typ_stock
-#: selection:product.product,state:0
-msgid "Normal"
-msgstr "Normal"
-
-#. module: typ_stock
-#: view:stock.analysis:typ_stock.stock_analysis_graph_search_inherit
-msgid "Not Balanced"
-msgstr "No balanceado"
-
-#. module: typ_stock
-#: field:stock.warehouse.orderpoint,note:0
+#: model:ir.model.fields,field_description:typ_stock.field_stock_warehouse_orderpoint__note
 msgid "Note"
 msgstr ""
 
 #. module: typ_stock
-#: view:website:stock.report_picking
-msgid "Notes"
-msgstr "Notas"
-
-#. module: typ_stock
-#: model:ir.model.fields,field_description:typ_stock.field_stock_picking_number_landing
+#: model:ir.model.fields,field_description:typ_stock.field_stock_picking__number_landing
 msgid "Number Landing"
 msgstr "Pedimento"
 
 #. module: typ_stock
-#: selection:product.product,state:0
-msgid "Obsolete"
-msgstr "Obsoleto"
-
-#. module: typ_stock
-#: view:website:stock.report_picking
-msgid "Order (Origin)"
-msgstr "Orden (Origen)"
-
-#. module: typ_stock
-#: model:stock.picking.type,name:typ_stock.stock_picking_type_test_3
-msgid "Output to customer"
-msgstr "Salida al cliente"
-
-#. module: typ_stock
-#: model:stock.location.route,name:typ_stock.stock_location_route_test_2
-msgid "PE TW1 - TW2"
+#: model:ir.model.fields,field_description:typ_stock.field_stock_manual_transfer__message_needaction_counter
+msgid "Number of Actions"
 msgstr ""
 
 #. module: typ_stock
-#: view:stock.analysis:typ_stock.stock_analysis_graph_search_inherit
-#: field:stock.analysis,partner_id:0
-#: view:stock.picking:typ_stock.view_origin_picking_internal_search_inherit
-msgid "Partner"
-msgstr "Empresa"
-
-#. module: typ_stock
-#: view:pedimento.product:typ_stock.view_pedimento_product_wizard
-#: field:pedimento.product,landed_id:0
-msgid "Pedimento"
+#: model:ir.model.fields,field_description:typ_stock.field_stock_manual_transfer__message_has_error_counter
+msgid "Number of errors"
 msgstr ""
 
 #. module: typ_stock
-#: view:pedimento.product:typ_stock.view_pedimento_product_wizard
-msgid "Pedimento/Serial-Product"
-msgstr "Pedimento/Serial-Producto"
+#: model:ir.model.fields,help:typ_stock.field_stock_manual_transfer__message_needaction_counter
+msgid "Number of messages which requires an action"
+msgstr ""
 
 #. module: typ_stock
-#: code:addons/typ_stock/models/stock.py:126
+#: model:ir.model.fields,help:typ_stock.field_stock_manual_transfer__message_has_error_counter
+msgid "Number of messages with delivery error"
+msgstr ""
+
+#. module: typ_stock
+#: model:ir.model.fields,help:typ_stock.field_stock_manual_transfer__message_unread_counter
+msgid "Number of unread messages"
+msgstr ""
+
+#. module: typ_stock
+#: code:addons/typ_stock/models/stock.py:0
 #, python-format
-msgid "Permission denied only manager/warehouse group. Contact personnel Vauxoo immediately"
-msgstr "Permiso denegado solamente el grupo administrador/almacenes. Contacte al personal de Vauxoo inmediatamente"
+msgid ""
+"Permission denied only manager/warehouse group. Contact personnel Vauxoo "
+"immediately"
+msgstr ""
+"Permiso denegado solamente el grupo administrador/almacenes. Contacte al "
+"personal de Vauxoo inmediatamente"
 
 #. module: typ_stock
-#: model:ir.model,name:typ_stock.model_stock_picking
-msgid "Picking List"
-msgstr "Lista de Albaranes"
-
-#. module: typ_stock
-#: field:stock.manual_transfer,picking_ids:0
-msgid "Picking ids"
-msgstr "id de picking"
+#: model:ir.model.fields,field_description:typ_stock.field_stock_manual_transfer__picking_ids
+msgid "Picking"
+msgstr ""
 
 #. module: typ_stock
 #: model:ir.actions.report,name:typ_stock.action_report_picking_wobc
@@ -550,149 +411,123 @@ msgid "Picking Operations wobc"
 msgstr "Operaciones de albarán wobc"
 
 #. module: typ_stock
-#: model:ir.model.fields,field_description:typ_stock.field_stock_picking_picking_shipment_date
+#: model:ir.model.fields,field_description:typ_stock.field_stock_move__product_shipment_date
+#: model:ir.model.fields,field_description:typ_stock.field_stock_picking__picking_shipment_date
 msgid "Picking Shipment Date"
 msgstr "Fecha de embarque"
 
 #. module: typ_stock
-#: model:ir.model,name:typ_stock.model_stock_transfer_details
-msgid "Picking wizard"
-msgstr "Asistente de albarán"
-
-#. module: typ_stock
-#: model:ir.model,name:typ_stock.model_stock_transfer_details_items
-msgid "Picking wizard items"
-msgstr "Items de asistente de albarán"
-
-#. module: typ_stock
-#: field:stock.manual_transfer,date_planned:0
+#: model:ir.model.fields,field_description:typ_stock.field_stock_manual_transfer__date_planned
 msgid "Planned Date"
-msgstr "Fecha planeada"
+msgstr ""
 
 #. module: typ_stock
-#: field:stock.manual_transfer,route_id:0
+#: model:ir.model.fields,field_description:typ_stock.field_stock_manual_transfer__route_id
 msgid "Preferred Routes"
-msgstr "Rutas preferidas"
+msgstr ""
 
 #. module: typ_stock
-#: model:ir.model,name:typ_stock.model_procurement_order
-msgid "Procurement"
-msgstr "Abastecimiento"
-
-#. module: typ_stock
-#: field:stock.manual_transfer,procurement_group_id:0
+#: model:ir.model,name:typ_stock.model_procurement_group
+#: model:ir.model.fields,field_description:typ_stock.field_stock_manual_transfer__procurement_group_id
 msgid "Procurement Group"
-msgstr "Grupo de abastecimiento"
+msgstr ""
 
 #. module: typ_stock
-#: model:ir.model,name:typ_stock.model_procurement_rule
-msgid "Procurement Rule"
-msgstr "Regla de Procura"
-
-#. module: typ_stock
-#: field:stock.manual_transfer_line,product_id:0
-#: view:website:stock.report_picking
+#: model:ir.model.fields,field_description:typ_stock.field_stock_manual_transfer_line__product_id
 msgid "Product"
-msgstr "Producto"
+msgstr ""
 
 #. module: typ_stock
-#: field:pedimento.product,product_id:0
-#: field:stock.serial.line,product_id:0
-msgid "Product id"
-msgstr "Id del Producto"
+#: model:ir.model,name:typ_stock.model_stock_move_line
+msgid "Product Moves (Stock Move Line)"
+msgstr "Movimientos de producto (Stock Move Line)"
 
 #. module: typ_stock
-#: model:ir.model.fields,help:typ_stock.field_stock_move_product_shipment_date
+#: model:ir.model.fields,help:typ_stock.field_stock_move__product_shipment_date
 msgid "Product picking shipment date"
 msgstr "Fecha de embarque del producto/picking"
 
 #. module: typ_stock
-#: model:ir.model.fields,field_description:typ_stock.field_stock_move_shipment_date
+#: model:ir.model.fields,field_description:typ_stock.field_stock_move__shipment_date
 msgid "Product shipment date"
 msgstr "Fecha de embarque"
 
 #. module: typ_stock
-#: model:ir.actions.server,name:typ_stock.server_action_propagate_picking_transfer
-msgid "Propagate picking transfer"
-msgstr "Propagar transferencia de albarán"
-
-#. module: typ_stock
-#: field:procurement.rule,propagate_transfer:0
-msgid "Propagate transfer"
-msgstr "Propagar transferencia"
-
-#. module: typ_stock
 #: model:ir.model,name:typ_stock.model_purchase_order_line
 msgid "Purchase Order Line"
-msgstr "Línea del Pedido de Compra"
+msgstr "Línea de orden de compra"
 
 #. module: typ_stock
-#: field:stock.manual_transfer_line,product_uom_qty:0
-#: view:website:stock.report_picking
+#: model:ir.model.fields,field_description:typ_stock.field_stock_manual_transfer_line__product_uom_qty
 msgid "Quantity"
-msgstr "Cantidad"
+msgstr ""
 
 #. module: typ_stock
-#: model:ir.model,name:typ_stock.model_stock_quant
-msgid "Quants"
-msgstr "Cuantos"
-
-#. module: typ_stock
-#: model:ir.model.fields,field_description:typ_stock.field_stock_warehouse_orderpoint_reorder_point
+#: model:ir.model.fields,field_description:typ_stock.field_stock_warehouse_orderpoint__reorder_point
 msgid "Reorder Point"
 msgstr "Punto de reorden"
 
 #. module: typ_stock
-#: model:ir.model.fields,field_description:typ_stock.field_stock_picking_responsible_for_warranty
+#: model:ir.model.fields,field_description:typ_stock.field_stock_picking__responsible_for_warranty
 msgid "Responsible For Warranty"
 msgstr "Responsable de la garantía"
 
 #. module: typ_stock
-#: model:email.template,subject:typ_stock.email_template_product_manager
-msgid "Responsable del producto"
+#: model:ir.model,name:typ_stock.model_stock_return_picking
+msgid "Return Picking"
+msgstr "Albarán de devolución"
+
+#. module: typ_stock
+#: model:ir.model,name:typ_stock.model_stock_scheduler_compute
+msgid "Run Scheduler Manually"
+msgstr "Ejecutar Planificador manualmente"
+
+#. module: typ_stock
+#: model:ir.model.fields,field_description:typ_stock.field_stock_manual_transfer__message_has_sms_error
+msgid "SMS Delivery error"
 msgstr ""
 
 #. module: typ_stock
-#: model:ir.model,name:typ_stock.model_stock_return_picking
-msgid "Return Picking"
-msgstr "Devolver Albarán"
+#: model:ir.model.fields,field_description:typ_stock.field_stock_move__sale_line_id
+msgid "Sale Line"
+msgstr "Línea de venta"
 
 #. module: typ_stock
-#: view:website:stock.report_picking
-msgid "Scheduled Date"
-msgstr "Fecha Programada"
-
-#. module: typ_stock
-#: code:addons/typ_stock/models/stock.py:97
+#: code:addons/typ_stock/models/stock.py:0
 #, python-format
 msgid "Sale order cancelled by %s"
 msgstr "Order de venta cancelada por %s"
 
 #. module: typ_stock
-#: model:ir.model.fields,help:typ_stock.field_stock_move_shipment_date
+#: model:ir.model.fields,help:typ_stock.field_stock_move__shipment_date
 msgid "Scheduled date for the shipment of this move"
 msgstr "Fecha programada para el envío de este traslado"
 
 #. module: typ_stock
-#: model:ir.actions.server,name:typ_stock.server_action_product_manager_send_email
-msgid "Send email product manager"
+#: model:ir.model,name:typ_stock.model_stock_scrap
+msgid "Scrap"
 msgstr ""
 
 #. module: typ_stock
-#: view:pedimento.product:typ_stock.view_pedimento_product_wizard
+#: model:ir.model.fields,field_description:typ_stock.field_stock_move_line__serial_id
 msgid "Serial"
-msgstr "No. Serie"
+msgstr ""
 
 #. module: typ_stock
-#: code:addons/typ_stock/wizard/stock_serial.py:162
+#: code:addons/typ_stock/wizard/stock_serial.py:0
 #, python-format
 msgid "Serial number %s not found"
 msgstr "El número serial %s no ha sido encontrado"
 
 #. module: typ_stock
-#: model:ir.model.fields,help:typ_stock.field_stock_picking_picking_shipment_date
+#: model:ir.model.fields,help:typ_stock.field_stock_picking__picking_shipment_date
 msgid "Shipment date of the picking"
 msgstr "Fecha de embarque del picking"
+
+#. module: typ_stock
+#: model:res.groups,name:typ_stock.group_stock_advanced_info
+msgid "Show advanced info"
+msgstr ""
 
 #. module: typ_stock
 #: model:res.groups,name:typ_stock.res_group_stock_move_button
@@ -700,169 +535,71 @@ msgid "Shows buttons in movements of stock"
 msgstr ""
 
 #. module: typ_stock
-#: model:ir.actions.report.xml,name:typ_stock.product_label_small
-msgid "Small Label"
-msgstr "Etiqueta pequeña"
-
-#. module: typ_stock
-#: view:website:stock.report_picking
-msgid "Source"
-msgstr "Origen"
-
-#. module: typ_stock
-#: field:stock.serial.line,source_loc_id:0
-msgid "Source loc id"
-msgstr "Fuente loc id"
-
-#. module: typ_stock
-#: field:stock.analysis,standard_price:0
-msgid "Standard price"
-msgstr "Costo promedio"
-
-#. module: typ_stock
-#: model:ir.model.fields,field_description:typ_stock.field_product_product_state
-#: model:ir.model.fields,field_description:typ_stock.field_stock_manual_transfer_state
+#: model:ir.model.fields,field_description:typ_stock.field_stock_manual_transfer__state
 msgid "State"
 msgstr "Estado"
 
 #. module: typ_stock
-#: model:ir.model.fields,help:typ_stock.field_product_product_state
-msgid "State of lifecycle of the product."
-msgstr "Estado ciclo de vida del producto."
-
-#. module: typ_stock
-#: model:ir.model,name:typ_stock.model_stock_invoice_onshipping
-msgid "Stock Invoice Onshipping"
-msgstr "Factura desde Almacén en el envio"
-
-#. module: typ_stock
 #: model:ir.model,name:typ_stock.model_stock_move
 msgid "Stock Move"
-msgstr "Movimiento de Inventario"
+msgstr "Movimiento de existencias"
 
 #. module: typ_stock
-#: field:stock.manual_transfer,message_summary:0
-msgid "Summary"
-msgstr "Resumen"
-
-#. module: typ_stock
-#: view:website:stock.report_picking
-msgid "Supplier Address:"
-msgstr "Dirección del Proveedor:"
-
-#. module: typ_stock
-#: field:stock.move,product_supplier_ref:0
+#: model:ir.model.fields,field_description:typ_stock.field_stock_move__product_supplier_ref
 msgid "Supplier Code"
-msgstr "Código de Proveedor"
-
-#. module: typ_stock
-#: field:stock.transfer_details_items,supplier_code:0
-msgid "Supplier code"
-msgstr "Código de proveedor"
-
-#. module: typ_stock
-#: model:stock.location.route,name:typ_stock.stock_location_route_test_1
-msgid "TW1 Supply from TW2"
-msgstr "Suministro TW1 desde TW2"
-
-#. module: typ_stock
-#: model:stock.picking.type,name:typ_stock.stock_picking_type_test_4
-msgid "TW1-Transit"
-msgstr "TW1-Transito"
-
-#. module: typ_stock
-#: model:procurement.rule,name:typ_stock.pull_rule_test_3_1
-msgid "TW1: Stock -> Transit"
-msgstr "TW1: Stock -> Transito"
-
-#. module: typ_stock
-#: model:procurement.rule,name:typ_stock.pull_rule_test_2_1
-msgid "TW1: purchase -> stock"
-msgstr "TW1: compra -> stock"
-
-#. module: typ_stock
-#: model:stock.location.route,name:typ_stock.stock_location_route_test_3
-msgid "TW2 Supply from TW1"
-msgstr "TW2 Abastece desde TW1"
-
-#. module: typ_stock
-#: model:procurement.rule,name:typ_stock.pull_rule_test_3_2
-msgid "TW2: Transit -> Stock"
-msgstr "TW2: Transito -> Stock"
-
-#. module: typ_stock
-#: model:procurement.rule,name:typ_stock.pull_rule_test_2_2
-msgid "TW2: purchase -> stock"
-msgstr "TW2: compra -> stock"
-
-#. module: typ_stock
-#: model:procurement.rule,name:typ_stock.pull_rule_test_2_3
-msgid "TW2: stock -> cliente"
 msgstr ""
 
 #. module: typ_stock
-#: model:procurement.rule,name:typ_stock.pull_rule_test_1
-msgid "Test Warehouse 1: customer"
-msgstr "Almacen de Prueba 1: cliente"
+#: model:ir.model,name:typ_stock.model_report_stock_report_deliveryslip
+#: model:ir.model,name:typ_stock.model_report_stock_report_picking
+#: model:ir.model,name:typ_stock.model_report_typ_stock_report_picking_wobc
+#: model:ir.model,name:typ_stock.model_stock_manual_transfer
+#: model:ir.model,name:typ_stock.model_stock_manual_transfer_line
+msgid "TODO: Once talk with the team describe it for v14.0"
+msgstr ""
 
 #. module: typ_stock
-#: model:procurement.rule,name:typ_stock.pull_rule_test_2
-msgid "Test Warehouse 1: transit"
-msgstr "Almacén de Prueba 1: tránsito"
-
-#. module: typ_stock
-#: model:procurement.rule,name:typ_stock.pull_rule_test_3
-msgid "Test Warehouse 2: stock"
-msgstr "Almacen de Prueba 2: stock"
-
-#. module: typ_stock
-#: code:addons/typ_stock/wizard/stock_serial.py:99
+#: code:addons/typ_stock/wizard/stock_serial.py:0
 #, python-format
 msgid "The Serial number %s already captured"
 msgstr "El número de Serie %s ya se capturó"
 
 #. module: typ_stock
-#: code:addons/typ_stock/models/stock.py:343
-#: code:addons/typ_stock/models/stock_return_picking.py:38
-#, python-format
-msgid "The return of the product %s, exceeds the amount invoiced"
-msgstr "El producto devuelto %s, excede la cantidad facturada"
-
-#. module: typ_stock
-#: code:addons/typ_stock/wizard/stock_serial.py:222
+#: code:addons/typ_stock/wizard/stock_serial.py:0
 #, python-format
 msgid "The serial number %s is already in stock"
 msgstr "El número de serie %s ya está en stock"
 
 #. module: typ_stock
-#: code:addons/typ_stock/wizard/stock_serial.py:165
+#: code:addons/typ_stock/wizard/stock_serial.py:0
 #, python-format
 msgid "The serial number %s is already reserved in another move"
 msgstr "El número serial %s está reservado en otro movimiento"
 
 #. module: typ_stock
-#: code:addons/typ_stock/wizard/stock_serial.py:145
-#: code:addons/typ_stock/wizard/stock_serial.py:157
+#: code:addons/typ_stock/wizard/stock_serial.py:0
+#: code:addons/typ_stock/wizard/stock_serial.py:0
 #, python-format
 msgid "The serial number %s is already stock"
 msgstr "El número serial %s ya se encuentra en existencia"
 
 #. module: typ_stock
-#: code:addons/typ_stock/wizard/stock_serial.py:127
+#: code:addons/typ_stock/wizard/stock_serial.py:0
 #, python-format
-msgid "The serial numbers loaded cannot be greater than the requested quantity of the product"
-msgstr "Los números seriales cargados no pueden ser mayores que la cantidad de productos requerida"
-
-#. module: typ_stock
-#: code:addons/typ_stock/models/stock.py:47
-#, python-format
-msgid "There are not availability in this location for the product %s. Contact Vauxoo personnel immediately"
-msgstr "No hay disponibilidad en esta ubicación para el producto %s. Contacte al personal de Vauxoo inmediatamente"
+msgid ""
+"The serial numbers loaded cannot be greater than the requested quantity of "
+"the product"
+msgstr ""
+"Los números seriales cargados no pueden ser mayores que la cantidad de "
+"productos requerida"
 
 #. module: typ_stock
 #: model:res.groups,comment:typ_stock.group_cancel_picking_with_move_not_in_transit_loc
-msgid "This group can cancel pickings that have not moves in transit locations"
-msgstr "Este grupo puede cancelar albaranes que no tienen movimientos en ubicaciones de tránsito"
+msgid ""
+"This group can cancel pickings that have not moves in transit locations"
+msgstr ""
+"Este grupo puede cancelar albaranes que no tienen movimientos en ubicaciones"
+" de tránsito"
 
 #. module: typ_stock
 #: model:res.groups,comment:typ_stock.res_group_cancel_picking
@@ -881,12 +618,13 @@ msgstr "Este grupo puede definir pedimentos, seriales y lotes"
 
 #. module: typ_stock
 #: model:res.groups,comment:typ_stock.res_group_stock_move_button
-msgid "This group can display buttons hidden of move\n"
-"            Buttons Hidden:\n"
-"                - Cancel Availability: In view move from picking\n"
-"                - Confirm: In view move from picking\n"
-"                - Scrap: In view move from picking\n"
-"          "
+msgid ""
+"This group can display buttons hidden of move\n"
+"        Buttons Hidden:\n"
+"            - Cancel Availability: In view move from picking\n"
+"            - Confirm: In view move from picking\n"
+"            - Scrap: In view move from picking\n"
+"      "
 msgstr ""
 
 #. module: typ_stock
@@ -905,6 +643,16 @@ msgid "This group can see price cost of product."
 msgstr "Este grupo puede ver el precio de costo del producto."
 
 #. module: typ_stock
+#: model:res.groups,comment:typ_stock.group_stock_menu_inform_configuration
+msgid "This group can see the Inform and Ubication menu"
+msgstr ""
+
+#. module: typ_stock
+#: model:res.groups,comment:typ_stock.group_stock_validation_button_inventory
+msgid "This group can see the button Validation in inventory adjustments"
+msgstr ""
+
+#. module: typ_stock
 #: model:res.groups,comment:typ_stock.group_reception_picking_attributes
 msgid "This group can see the reception attributes of the pickings"
 msgstr "Este grupo puede ver los atributos de recepción de los pickings"
@@ -915,26 +663,59 @@ msgid "This group can update cost standard of product."
 msgstr "Este grupo puede actualizar el costo estándar del producto."
 
 #. module: typ_stock
+#: model:res.groups,comment:typ_stock.group_stock_advanced_info
+msgid ""
+"This group will allow user to see operation, additional info and note pages on form piking view and other fields including put_in_pack button\n"
+"        "
+msgstr ""
+
+#. module: typ_stock
 #: model:res.groups,comment:typ_stock.group_stock_button_validation_transfer
 msgid "This group will not see the validation transfer button"
 msgstr "Este grupo no puede ver el botón validar tranferencia"
 
 #. module: typ_stock
-#: help:stock.picking,invoiced:0
-msgid "This must be checked only when the supplier have invoiced the whole order and there isn't a backorder. This activate a green highlight on tree view "
-msgstr "Este check debera ser activado solamente cuando el proveedor haya facturado la orden completa indicando así que no hay un backorder. Esto activara en la vista de arbol el color verde para este picking indicando que la orden esta embarcada sin ningún problema "
+#: model:ir.model.fields,help:typ_stock.field_stock_picking__invoiced
+msgid ""
+"This must be checked only when the supplier have invoiced the whole order "
+"and there isn't a backorder. This activate a green highlight on tree view "
+msgstr ""
 
 #. module: typ_stock
-#: code:addons/typ_stock/models/stock.py:400
+#: code:addons/typ_stock/models/stock.py:0
 #, python-format
-msgid "This picking cannot be cancelled."
-msgstr "Este albarán no puede ser cancelado."
+msgid "This order %s cannot be cancelled."
+msgstr ""
 
 #. module: typ_stock
-#: code:addons/typ_stock/models/stock.py:177
+#: code:addons/typ_stock/models/stock.py:0
 #, python-format
-msgid "To transfer this picking to guarantees in process, approval of the purchasing department is necessary, please contact them."
-msgstr "Para transferir este picking a garantías en proceso, es necesaria la aprobación del departamento de proveeduría, favor de contactarlos."
+msgid "This picking %s cannot be cancelled."
+msgstr ""
+
+#. module: typ_stock
+#: code:addons/typ_stock/models/stock.py:0
+#, python-format
+msgid ""
+"This picking cannot be confirmed because. You have processed more than what "
+"was initially planned"
+msgstr ""
+
+#. module: typ_stock
+#: code:addons/typ_stock/models/stock.py:0
+#, python-format
+msgid "This pickings has been canceled: %s"
+msgstr ""
+
+#. module: typ_stock
+#: code:addons/typ_stock/models/stock.py:0
+#, python-format
+msgid ""
+"To transfer this picking to guarantees in process, approval of the "
+"purchasing department is necessary, please contact them."
+msgstr ""
+"Para transferir este picking a garantías en proceso, es necesaria la "
+"aprobación del departamento de proveeduría, favor de contactarlos."
 
 #. module: typ_stock
 #: model:res.groups,name:typ_stock.group_traffic
@@ -942,40 +723,39 @@ msgid "Traffic"
 msgstr ""
 
 #. module: typ_stock
-#: view:stock.manual_transfer_line:typ_stock.stock_manual_transfer_line_tree_view
-msgid "Transfer Line"
-msgstr "Lineas de transferencia"
+#: model:ir.model,name:typ_stock.model_stock_picking
+msgid "Transfer"
+msgstr "Traslado"
 
 #. module: typ_stock
-#: view:stock.manual_transfer:typ_stock.stock_manual_transfer_form_view
-#: field:stock.manual_transfer,transfer_line:0
+#: model:ir.model.fields,field_description:typ_stock.field_stock_manual_transfer__transfer_line
 msgid "Transfer Lines"
-msgstr "Lineas de transferencia"
+msgstr ""
 
 #. module: typ_stock
-#: field:stock.manual_transfer_line,transfer_id:0
+#: model:ir.model.fields,field_description:typ_stock.field_stock_manual_transfer_line__transfer_id
 msgid "Transfer Reference"
-msgstr "Referencia de transferencia"
+msgstr ""
 
 #. module: typ_stock
-#: model:procurement.rule,name:typ_stock.pull_rule_test_2_4
-msgid "Transit Stock"
-msgstr "Stock de Tránsito"
-
-#. module: typ_stock
-#: model:stock.picking.type,name:typ_stock.stock_picking_type_test_5
-msgid "Transit-TW2"
-msgstr "Transito-TW2"
-
-#. module: typ_stock
-#: model:ir.model.fields,help:typ_stock.field_stock_picking_is_warranty
+#: model:ir.model.fields,help:typ_stock.field_stock_picking__is_warranty
 msgid "True if destiny is warranty location"
 msgstr "Verdadero si el destino es una ubicación de garantía en proceso"
 
 #. module: typ_stock
-#: field:stock.manual_transfer_line,product_uom:0
+#: model:ir.model.fields,field_description:typ_stock.field_stock_manual_transfer_line__product_uom
 msgid "Unit of Measure"
-msgstr "Unidad de medida"
+msgstr ""
+
+#. module: typ_stock
+#: model:ir.model.fields,field_description:typ_stock.field_stock_manual_transfer__message_unread
+msgid "Unread Messages"
+msgstr ""
+
+#. module: typ_stock
+#: model:ir.model.fields,field_description:typ_stock.field_stock_manual_transfer__message_unread_counter
+msgid "Unread Messages Counter"
+msgstr ""
 
 #. module: typ_stock
 #: model:res.groups,name:typ_stock.group_stock_validation_warranty_transfer
@@ -983,9 +763,14 @@ msgid "Users can confirm transfers for warranty"
 msgstr "Usuarios que pueden confirmar transferencias a garantías"
 
 #. module: typ_stock
-#: field:stock.manual_transfer,message_unread:0
-msgid "Unread Messages"
-msgstr "Mensajes sin leer"
+#: model:res.groups,name:typ_stock.group_stock_menu_inform_configuration
+msgid "Users can see the Inform and Ubications menu"
+msgstr ""
+
+#. module: typ_stock
+#: model:res.groups,name:typ_stock.group_stock_validation_button_inventory
+msgid "Users can see the button Validation in inventory adjustments"
+msgstr ""
 
 #. module: typ_stock
 #: model:res.groups,name:typ_stock.res_group_can_unreserve
@@ -999,8 +784,11 @@ msgstr "Usuarios que pueden cancelar un albarán"
 
 #. module: typ_stock
 #: model:res.groups,name:typ_stock.group_cancel_picking_with_move_not_in_transit_loc
-msgid "Users that can cancel pickings that have not moves in transit locations"
-msgstr "Usuarios que pueden cancelar albaranes que no tienen movimientos en ubicaciones de tránsito"
+msgid ""
+"Users that can cancel pickings that have not moves in transit locations"
+msgstr ""
+"Usuarios que pueden cancelar albaranes que no tienen movimientos en "
+"ubicaciones de tránsito"
 
 #. module: typ_stock
 #: model:res.groups,name:typ_stock.res_group_stock_manager
@@ -1033,16 +821,6 @@ msgid "Users that can run schedulers warehouse"
 msgstr "Usuarios que pueden ejecutar programadores de almacén"
 
 #. module: typ_stock
-#: model:res.groups,name:typ_stock.res_group_can_see_barcode_button
-msgid "Users that can see barcode button"
-msgstr "Usuarios que pueden ver el botón de código de barra"
-
-#. module: typ_stock
-#: model:res.groups,name:typ_stock.stock_current_inventory_valuation_hide
-msgid "Users that can see current inventory valuation "
-msgstr ""
-
-#. module: typ_stock
 #: model:res.groups,name:typ_stock.res_group_standard_price
 msgid "Users that can see standard price"
 msgstr "Usuarios que pueden ver el precio estándar"
@@ -1063,185 +841,58 @@ msgid "Users will not see the validation transfer button"
 msgstr "Usuarios que no pueden ver el botón validar transferencia"
 
 #. module: typ_stock
-#: view:website:stock.report_picking
+#: model_terms:ir.ui.view,arch_db:typ_stock.report_picking_wobc
 msgid "VAT:"
-msgstr "RFC:"
-
-#. module: typ_stock
-#: selection:stock.manual_transfer,state:0
-msgid "Valid"
-msgstr "Validado"
-
-#. module: typ_stock
-#: model:ir.actions.server,name:typ_stock.server_action_validate_move_internal
-msgid "Validate move internal locations"
-msgstr "Validar movimientos en ubicaciones internas"
-
-#. module: typ_stock
-#: model:ir.actions.server,name:typ_stock.server_action_validate_picking_negative
-msgid "Validate picking negative"
-msgstr "Validar albarán negativo"
-
-#. module: typ_stock
-#: model:ir.actions.server,name:typ_stock.server_action_validate_return_customer
-msgid "Validate return of customer"
-msgstr "Validar devolución de cliente"
-
-#. module: typ_stock
-#: model:ir.actions.server,name:typ_stock.server_action_procurement_migration
-msgid "Validation procurement in migration"
-msgstr "Validar procura en migración"
-
-#. module: typ_stock
-#: model:ir.actions.server,name:typ_stock.server_action_verify_user_scrap
-msgid "Verify user scrap"
-msgstr "Verificar usuario de desecho"
-
-#. module: typ_stock
-#: view:stock.manual_transfer:typ_stock.stock_manual_transfer_form_view
-msgid "View Pickings"
-msgstr "Ver pickings"
-
-#. module: typ_stock
-#: model:ir.model,name:typ_stock.model_stock_warehouse
-#: field:procurement.orderpoint.compute,warehouse_id:0
-#: view:stock.analysis:typ_stock.stock_analysis_graph_search_inherit
-#: field:stock.manual_transfer,warehouse_id:0
-msgid "Warehouse"
-msgstr "Almacén"
-
-#. module: typ_stock
-#: view:website:stock.report_picking
-msgid "Warehouse Address:"
-msgstr "Dirección de Almacén:"
-
-#. module: typ_stock
-#: field:stock.analysis,warehouse_id:0
-msgid "Warehouse id"
-msgstr "Almacen"
-
-#. module: typ_stock
-#: code:addons/typ_stock/wizard/stock_serial.py:97
-#: code:addons/typ_stock/wizard/stock_serial.py:220
-#, python-format
-msgid "Warning"
-msgstr "Advertencia"
-
-#. module: typ_stock
-#: code:addons/typ_stock/models/stock.py:46
-#: code:addons/typ_stock/models/stock.py:99
-#: code:addons/typ_stock/models/stock.py:125
-#: code:addons/typ_stock/models/stock.py:146
-#: code:addons/typ_stock/models/stock.py:313
-#: code:addons/typ_stock/models/stock.py:342
-#: code:addons/typ_stock/models/stock.py:399
-#: code:addons/typ_stock/models/stock_return_picking.py:37
-#: code:addons/typ_stock/models/stock_return_picking.py:54
-#, python-format
-msgid "Warning!"
-msgstr "¡Advertencia!"
-
-#. module: typ_stock
-#: help:procurement.rule,propagate_transfer:0
-msgid "When this field is check, the first stock move which is transferred triggers automatically the transfer to the other stock move related"
-msgstr "Cuando este campo está marcado, el primer movimiento de inventario que se transfiere dispara automáticamente la transferencia de otro movimiento de inventario relacionado"
-
-#. module: typ_stock
-#: model:product.template,name:typ_stock.product_product_whead_deluxe_product_template
-msgid "Wireless Headphones custom Deluxe"
-msgstr "Auriculares inalámbricos personalizados Deluxe"
-
-#. module: typ_stock
-#: model:product.template,name:typ_stock.product_product_whead_product_template
-msgid "Wireless Headphones custon"
-msgstr "Audífonos Inalámbricos personalizados"
-
-#. module: typ_stock
-#: view:pedimento.product:typ_stock.view_pedimento_product_wizard
-msgid "Wizard / write selected lot or quant"
-msgstr "Wizard / escritura de lote o cantidad seleccionada"
-
-#. module: typ_stock
-#: model:ir.actions.act_window,name:typ_stock.pedimento_product_action
-msgid "Wizard Pedimento Product"
-msgstr "Asistente Pedimento Producto"
-
-#. module: typ_stock
-#: code:addons/typ_stock/models/stock.py:237
-#, python-format
-msgid "You are not allowed to do this change"
 msgstr ""
 
 #. module: typ_stock
-#: code:addons/typ_stock/models/stock_manual_transfer.py:70
+#: model:ir.model.fields.selection,name:typ_stock.selection__stock_manual_transfer__state__valid
+msgid "Valid"
+msgstr ""
+
+#. module: typ_stock
+#: model:ir.model.fields,field_description:typ_stock.field_stock_manual_transfer__warehouse_id
+#: model:ir.model.fields,field_description:typ_stock.field_stock_scheduler_compute__warehouse_id
+msgid "Warehouse"
+msgstr ""
+
+#. module: typ_stock
+#: code:addons/typ_stock/wizard/stock_serial.py:0
+#: code:addons/typ_stock/wizard/stock_serial.py:0
+#, python-format
+msgid "Warning"
+msgstr ""
+
+#. module: typ_stock
+#: model:ir.model.fields,field_description:typ_stock.field_stock_manual_transfer__website_message_ids
+msgid "Website Messages"
+msgstr ""
+
+#. module: typ_stock
+#: model:ir.model.fields,help:typ_stock.field_stock_manual_transfer__website_message_ids
+msgid "Website communication history"
+msgstr ""
+
+#. module: typ_stock
+#: code:addons/typ_stock/models/stock_manual_transfer.py:0
 #, python-format
 msgid "You can not delete a valid transaction! (%s)"
 msgstr "No se puede borrar una transferencia en borrador! (%s 1)"
 
 #. module: typ_stock
-#: code:addons/typ_stock/models/stock.py:417
+#: code:addons/typ_stock/models/stock.py:0
 #, python-format
-msgid "You can not inactivate a warehouse with products on it, please adjust your inventories first and then come back and inactivate it."
-msgstr "No puede inactivar un almacén con productos en él, por favor, ajuste primero sus inventarios y luego vuelva a desactivarlo."
-
-#. module: typ_stock
-#: code:addons/typ_stock/models/stock_return_picking.py:55
-#, python-format
-msgid "You may only return one picking at a time!"
-msgstr "Debes retornar una albarán a la vez!"
-
-#. module: typ_stock
-#: code:addons/typ_stock/models/stock.py:147
-#, python-format
-msgid "You must assign a serial number for the product [%s] %s"
-msgstr "Debe asignar un número de serial para el producto [%s] %s"
-
-#. module: typ_stock
-#: model:ir.actions.report.xml,name:typ_stock.product_label_large
-msgid "large Label"
-msgstr "Etiqueta grande"
-
-#. module: typ_stock
-#: view:stock.inventory:typ_stock.view_inventory_filter_inherit
-msgid "location"
-msgstr "ubicacion"
-
-#. module: typ_stock
-#: view:pedimento.product:typ_stock.view_pedimento_product_wizard
-msgid "or"
-msgstr "o"
-
-#. module: typ_stock
-#: view:stock.quant:typ_stock.view_stock_quant_inherit
-msgid "pedimento/serial"
-msgstr "pedimento/no. serie"
-
-#. module: typ_stock
-#: model:product.template,name:typ_stock.product_test_01_product_template
-msgid "prueba 3"
+msgid "You need to supply a lot/serial number for %s."
 msgstr ""
 
 #. module: typ_stock
-#: help:pedimento.product,lot_id:0
-msgid "select lot"
-msgstr "seleccionar lote"
+#: code:addons/typ_stock/models/stock.py:0
+#, python-format
+msgid ""
+"[Product: %s, To return: %s] You can not return more quantity than delivered"
+msgstr ""
 
 #. module: typ_stock
-#: help:pedimento.product,landed_id:0
-msgid "select pedimento"
-msgstr "seleccionar pedimento"
-
-#. module: typ_stock
-#: help:procurement.orderpoint.compute,warehouse_id:0
+#: model:ir.model.fields,help:typ_stock.field_stock_scheduler_compute__warehouse_id
 msgid "select warehouse to running schedulers"
-msgstr "seleccione el almacén para ejecutar los programadores"
-
-#. module: typ_stock
-#: view:stock.picking:typ_stock.view_stock_picking_form_inherit
-msgid "shipped ok"
-msgstr "embarque ok"
-
-#. module: typ_stock
-#: view:pedimento.product:typ_stock.view_pedimento_product_wizard
-msgid "write data"
-msgstr "Escribir datos"
+msgstr ""

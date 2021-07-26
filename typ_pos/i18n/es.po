@@ -18,17 +18,17 @@ msgstr ""
 #. module: typ_pos
 #: model:ir.ui.view,arch_db:typ_pos.wk_pos_stock_qtys
 msgid "<b>Deny order when product qty is lower than</b>"
-msgstr ""
+msgstr "<b>Rechazar pedido cuando la cantidad de producto es menor que</b>"
 
 #. module: typ_pos
 #: model:ir.model.fields,field_description:typ_pos.field_pos_config_wk_continous_sale
 msgid "Allow Order When Out-of-Stock"
-msgstr ""
+msgstr "Permitir ordenar al estar fuera de inventario"
 
 #. module: typ_pos
 #: selection:pos.config,wk_stock_type:0
 msgid "Available Quantity(On hand)"
-msgstr ""
+msgstr "Cantidad disponible (a mano)"
 
 #. module: typ_pos
 #. openerp-web
@@ -40,42 +40,42 @@ msgstr "Cliente:"
 #. module: typ_pos
 #: model:ir.model.fields,field_description:typ_pos.field_pos_config_wk_error_msg
 msgid "Custom message"
-msgstr ""
+msgstr "Mensaje personalizado"
 
 #. module: typ_pos
 #: model:ir.model.fields,field_description:typ_pos.field_pos_config_wk_deny_val
 msgid "Deny order when product stock is lower than "
-msgstr ""
+msgstr "Rechazar pedido cuando el inventario del producto es menor a"
 
 #. module: typ_pos
 #: model:ir.model.fields,field_description:typ_pos.field_pos_config_wk_display_stock
 msgid "Display stock in POS"
-msgstr ""
+msgstr "Mostrar inventario en el PoS"
 
 #. module: typ_pos
 #: selection:pos.config,wk_stock_type:0
 msgid "Forecasted Quantity"
-msgstr ""
+msgstr "Cantidad prevista"
 
 #. module: typ_pos
 #: model:ir.model.fields,field_description:typ_pos.field_pos_config_wk_hide_out_of_stock
 msgid "Hide Out of Stock products"
-msgstr ""
+msgstr "Ocultar productos sin inventario"
 
 #. module: typ_pos
 #: model:ir.ui.view,arch_db:typ_pos.wk_pos_stock_qtys
 msgid "POS Stock"
-msgstr ""
+msgstr "Inventario del PoS"
 
 #. module: typ_pos
 #: selection:pos.config,wk_stock_type:0
 msgid "Quantity on Hand - Outgoing Qty"
-msgstr ""
+msgstr "Cantidad a mano - cantidad saliente"
 
 #. module: typ_pos
 #: model:ir.model.fields,field_description:typ_pos.field_pos_config_wk_stock_type
 msgid "Stock Type"
-msgstr ""
+msgstr "Tipo de inventario"
 
 #. module: typ_pos
 #. openerp-web
