@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+
+    <!-- Variants -->
+    <record id="attribute-1" model="product.attribute">
+        <field name="name">Modes</field>
+    </record>
+
+    <record id="product_attribute1_value" model="product.attribute.value">
+        <field name="name">Manual, Semi, Auto</field>
+        <field name="attribute_id" ref="attribute-1" />
+    </record>
+
+    <record id="attribute-2" model="product.attribute">
+        <field name="name">SEER</field>
+    </record>
+
+    <record id="product_attribute2_value" model="product.attribute.value">
+        <field name="name">16.0</field>
+        <field name="attribute_id" ref="attribute-2" />
+    </record>
+
+    <record id="attribute-lennox" model="product.attribute">
+        <field name="name">Capacity</field>
+        <field name="display_type">select</field>
+    </record>
+
+    <record id="attribute-lennox-1" model="product.attribute.value">
+        <field name="name">1.0 Tons</field>
+        <field name="attribute_id" ref="attribute-lennox" />
+    </record>
+
+    <record id="attribute-lennox-2" model="product.attribute.value">
+        <field name="name">1.5 Tons</field>
+        <field name="attribute_id" ref="attribute-lennox" />
+    </record>
+
+    <record id="attribute-lennox-3" model="product.attribute.value">
+        <field name="name">2.0 Tons</field>
+        <field name="attribute_id" ref="attribute-lennox" />
+    </record>
+
+    <!-- products -->
+
+    <record id="lennox_1" model="product.template">
+        <field name="name">LENNOX BCB321</field>
+        <field name="public_categ_ids" eval="[(6,0,[ref('minisplits')])]" />
+        <field name="standard_price">500.0</field>
+        <field name="list_price">750.0</field>
+        <field name="type">consu</field>
+        <field
+            name="description_sale"
+        >Lorem ipsum dolor sit amet consectetur adipisicing elit. Id non enim possimus ratione distinctio odio! Rerum officia alias tempore eaque facere ab animi, veritatis ducimus numquam? Maiores nihil inventore tenetur.</field>
+        <field
+            name="image_1920"
+            type="base64"
+            file="typ/static/img/categories/demo4.png"
+        />
+        <field name="website_published" eval="True" />
+    </record>
+
+    <record id="lennox_2" model="product.template">
+        <field name="name">LENNOX ARJZ829</field>
+        <field name="public_categ_ids" eval="[(6,0,[ref('minisplits')])]" />
+        <field name="standard_price">300.0</field>
+        <field name="list_price">750.0</field>
+        <field name="type">consu</field>
+        <field
+            name="description_sale"
+        >Lorem ipsum dolor sit amet consectetur adipisicing elit. Id non enim possimus ratione distinctio odio! Rerum officia alias tempore eaque facere ab animi, veritatis ducimus numquam? Maiores nihil inventore tenetur.</field>
+        <field
+            name="image_1920"
+            type="base64"
+            file="typ/static/img/categories/demo4.png"
+        />
+        <field name="website_published" eval="True" />
+    </record>
+
+    <record id="lennox_3" model="product.template">
+        <field name="name">LENNOX KLY101</field>
+        <field name="public_categ_ids" eval="[(6,0,[ref('minisplits')])]" />
+        <field name="standard_price">800.0</field>
+        <field name="list_price">1600.0</field>
+        <field name="type">consu</field>
+        <field
+            name="description_sale"
+        >Lorem ipsum dolor sit amet consectetur adipisicing elit. Id non enim possimus ratione distinctio odio! Rerum officia alias tempore eaque facere ab animi, veritatis ducimus numquam? Maiores nihil inventore tenetur.</field>
+        <field
+            name="image_1920"
+            type="base64"
+            file="typ/static/img/categories/demo1.png"
+        />
+        <field name="website_published" eval="True" />
+    </record>
+
+    <record id="lennox_4" model="product.template">
+        <field name="name">LENNOX POO29</field>
+        <field name="public_categ_ids" eval="[(6,0,[ref('minisplits')])]" />
+        <field name="standard_price">650.0</field>
+        <field name="list_price">900.0</field>
+        <field name="type">consu</field>
+        <field
+            name="description_sale"
+        >Lorem ipsum dolor sit amet consectetur adipisicing elit. Id non enim possimus ratione distinctio odio! Rerum officia alias tempore eaque facere ab animi, veritatis ducimus numquam? Maiores nihil inventore tenetur.</field>
+        <field
+            name="image_1920"
+            type="base64"
+            file="typ/static/img/categories/demo2.png"
+        />
+        <field name="website_published" eval="True" />
+    </record>
+
+    <record id="lennox_5" model="product.template">
+        <field name="name">LENNOX A2D2 3000</field>
+        <field name="public_categ_ids" eval="[(6,0,[ref('minisplits')])]" />
+        <field name="standard_price">700.0</field>
+        <field name="list_price">1500.0</field>
+        <field name="type">consu</field>
+        <field
+            name="description_sale"
+        >Lorem ipsum dolor sit amet consectetur adipisicing elit. Id non enim possimus ratione distinctio odio! Rerum officia alias tempore eaque facere ab animi, veritatis ducimus numquam? Maiores nihil inventore tenetur.</field>
+        <field
+            name="image_1920"
+            type="base64"
+            file="typ/static/img/categories/demo3.png"
+        />
+        <field name="website_published" eval="True" />
+    </record>
+
+    <record id="product.product_product_1" model="product.product">
+        <field name="unspsc_code_id" ref="product_unspsc.unspsc_code_01010101" />
+    </record>
+
+    <record id="product_product_whead" model="product.product">
+        <field name="name">Wireless Headphones custon</field>
+        <field name="categ_id" ref="product.product_category_4" />
+        <field name="standard_price">80.0</field>
+        <field name="list_price">70.0</field>
+        <field name="type">consu</field>
+        <field name="uom_id" ref="uom.product_uom_unit" />
+        <field name="uom_po_id" ref="uom.product_uom_unit" />
+        <field name="default_code">HEADPHONE-01</field>
+    </record>
+
+    <record id="product_product_whead_deluxe" model="product.product">
+        <field name="name">Wireless Headphones custom Deluxe</field>
+        <field name="categ_id" ref="product.product_category_4" />
+        <field name="standard_price">180.0</field>
+        <field name="list_price">170.0</field>
+        <field name="type">consu</field>
+        <field name="uom_id" ref="uom.product_uom_unit" />
+        <field name="uom_po_id" ref="uom.product_uom_unit" />
+        <field name="default_code">HEADPHONE-LUX</field>
+    </record>
+
+</odoo>

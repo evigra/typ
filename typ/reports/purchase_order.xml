@@ -1,0 +1,425 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+
+    <template
+        id="report_purchaseorder_document"
+        inherit_id="purchase.report_purchaseorder_document"
+    >
+        <xpath expr="//t[@t-call='web.external_layout']" position="attributes">
+            <attribute name="t-if">False</attribute>
+        </xpath>
+        <xpath expr="//t[@t-call='web.external_layout']" position="after">
+            <t t-call="typ.custom_external_layout">
+                <t t-set="o" t-value="o.with_context({'lang':o.partner_id.lang})" />
+                <div class="page">
+                    <h3 class="text-right">
+                        Purchase Order N°
+                        <span t-field="o.name" />
+                   </h3>
+                    <div class="row">
+                        <div class="col-xs-4">
+                            <strong>Invoice address:</strong>
+                            <div t-if="o.company_id.partner_id">
+                                <div>
+                                    <strong
+                                        t-if="o.company_id.partner_id.name"
+                                        t-esc="o.company_id.partner_id.name"
+                                    />
+                                </div>
+                                <div>
+                                    <span
+                                        t-if="o.company_id.partner_id.street_name"
+                                        t-esc="o.company_id.partner_id.street_name"
+                                    />
+                                    <span
+                                        t-if="o.company_id.partner_id.street_number"
+                                        t-esc="o.company_id.partner_id.street_number"
+                                    />
+                                    <span
+                                        t-if="o.company_id.partner_id.street2"
+                                        t-esc="o.company_id.partner_id.street2"
+                                    />
+                                    <br />
+                                    <span
+                                        t-if="o.company_id.partner_id.l10n_mx_edi_colony"
+                                        t-esc="o.company_id.partner_id.l10n_mx_edi_colony"
+                                    />
+                                    <span
+                                        t-if="o.company_id.partner_id.zip"
+                                        t-esc="o.company_id.partner_id.zip"
+                                    />
+                                    <br />
+                                    <span
+                                        t-if="o.company_id.partner_id.l10n_mx_edi_locality"
+                                        t-esc="o.company_id.partner_id.l10n_mx_edi_locality"
+                                    ><br /></span>
+                                    <span
+                                        t-if="o.company_id.partner_id.city"
+                                        t-esc="o.company_id.partner_id.city"
+                                    />
+                                    <span
+                                        t-if="o.company_id.partner_id.state_id.name"
+                                        t-esc="o.company_id.partner_id.state_id.name"
+                                    />
+                                    <span
+                                        t-if="o.company_id.partner_id.country_id.name"
+                                        t-esc="o.company_id.partner_id.country_id.name"
+                                    />
+                                </div>
+                                <span>VAT</span>: <span
+                                    t-field="o.company_id.partner_id.vat"
+                                />
+                            </div>
+                        </div>
+                        <div class="col-xs-4">
+                            <strong>Shipping address:</strong>
+                            <div t-if="o.broker_id">
+                                <div>
+                                    <strong
+                                        t-if="o.broker_id.name"
+                                        t-esc="o.broker_id.name"
+                                    />
+                                </div>
+                                <div>
+                                    <span
+                                        t-if="o.broker_id.street_name"
+                                        t-esc="o.broker_id.street_name"
+                                    />
+                                    <span
+                                        t-if="o.broker_id.street_number"
+                                        t-esc="o.broker_id.street_number"
+                                    />
+                                    <span
+                                        t-if="o.broker_id.street2"
+                                        t-esc="o.broker_id.street2"
+                                    />
+                                    <br />
+                                    <span
+                                        t-if="o.broker_id.l10n_mx_edi_colony"
+                                        t-esc="o.broker_id.l10n_mx_edi_colony"
+                                    />
+                                    <span
+                                        t-if="o.broker_id.zip"
+                                        t-esc="o.broker_id.zip"
+                                    />
+                                    <br />
+                                    <span
+                                        t-if="o.broker_id.l10n_mx_edi_locality"
+                                        t-esc="o.broker_id.l10n_mx_edi_locality"
+                                    ><br /></span>
+                                    <span
+                                        t-if="o.broker_id.city"
+                                        t-esc="o.broker_id.city"
+                                    />
+                                    <span
+                                        t-if="o.broker_id.state_id.name"
+                                        t-esc="o.broker_id.state_id.name"
+                                    />
+                                    <span
+                                        t-if="o.broker_id.country_id.name"
+                                        t-esc="o.broker_id.country_id.name"
+                                    />
+                                </div>
+                                <div>
+                                    <span
+                                        t-if="o.broker_id.phone"
+                                        t-esc="o.broker_id.phone"
+                                    />
+                                </div>
+                            </div>
+                            <t t-if="not o.broker_id">
+                                <div t-if="o.dest_address_id">
+                                <div>
+                                    <strong
+                                            t-if="o.dest_address_id.name"
+                                            t-esc="o.dest_address_id.name"
+                                        />
+                                </div>
+                                <div>
+                                    <span
+                                            t-if="o.dest_address_id.street_name"
+                                            t-esc="o.dest_address_id.street_name"
+                                        />
+                                    <span
+                                            t-if="o.dest_address_id.street_number"
+                                            t-esc="o.dest_address_id.street_number"
+                                        />
+                                    <span
+                                            t-if="o.dest_address_id.street2"
+                                            t-esc="o.dest_address_id.street2"
+                                        />
+                                    <br />
+                                    <span
+                                            t-if="o.dest_address_id.l10n_mx_edi_colony"
+                                            t-esc="o.dest_address_id.l10n_mx_edi_colony"
+                                        />
+                                    <span
+                                            t-if="o.dest_address_id.zip"
+                                            t-esc="o.dest_address_id.zip"
+                                        />
+                                    <br />
+                                    <span
+                                            t-if="o.dest_address_id.l10n_mx_edi_locality"
+                                            t-esc="o.dest_address_id.l10n_mx_edi_locality"
+                                        ><br /></span>
+                                    <span
+                                            t-if="o.dest_address_id.city"
+                                            t-esc="o.dest_address_id.city"
+                                        />
+                                    <span
+                                            t-if="o.dest_address_id.state_id.name"
+                                            t-esc="o.dest_address_id.state_id.name"
+                                        />
+                                    <span
+                                            t-if="o.dest_address_id.country_id.name"
+                                            t-esc="o.dest_address_id.country_id.name"
+                                        />
+                                </div>
+                                <div>
+                                    <span
+                                            t-if="o.dest_address_id.phone"
+                                            t-esc="o.dest_address.phone"
+                                        />
+                                </div>
+                                </div>
+                                <div
+                                    t-if="not o.dest_address_id and o.picking_type_id and o.picking_type_id.warehouse_id"
+                                >
+                                    <!--<span t-field="o.picking_type_id.warehouse_id.name" />
+                                    <div t-field="o.picking_type_id.warehouse_id.partner_id"
+                                        t-field-options='{"widget": "contact", "no_marker": true}'/>-->
+                                    <div>
+                                        <strong
+                                            t-if="o.picking_type_id.warehouse_id.name"
+                                            t-esc="o.picking_type_id.warehouse_id.name"
+                                        />
+                                    </div>
+                                    <div>
+                                        <span
+                                            t-if="o.picking_type_id.warehouse_id.partner_id.street_name"
+                                            t-esc="o.picking_type_id.warehouse_id.partner_id.street_name"
+                                        />
+                                        <span
+                                            t-if="o.picking_type_id.warehouse_id.partner_id.street_number"
+                                            t-esc="o.picking_type_id.warehouse_id.partner_id.street_number"
+                                        />
+                                        <span
+                                            t-if="o.picking_type_id.warehouse_id.partner_id.street2"
+                                            t-esc="o.picking_type_id.warehouse_id.partner_id.street2"
+                                        />
+                                        <br />
+                                        <span
+                                            t-if="o.picking_type_id.warehouse_id.partner_id.l10n_mx_edi_colony"
+                                            t-esc="o.picking_type_id.warehouse_id.partner_id.l10n_mx_edi_colony"
+                                        />
+                                        <span
+                                            t-if="o.picking_type_id.warehouse_id.partner_id.zip"
+                                            t-esc="o.picking_type_id.warehouse_id.partner_id.zip"
+                                        />
+                                        <br />
+                                        <span
+                                            t-if="o.picking_type_id.warehouse_id.partner_id.l10n_mx_edi_locality"
+                                            t-esc="o.picking_type_id.warehouse_id.partner_id.l10n_mx_edi_locality"
+                                        ><br /></span>
+                                        <span
+                                            t-if="o.picking_type_id.warehouse_id.partner_id.city"
+                                            t-esc="o.picking_type_id.warehouse_id.partner_id.city"
+                                        />
+                                        <span
+                                            t-if="o.picking_type_id.warehouse_id.partner_id.state_id.name"
+                                            t-esc="o.picking_type_id.warehouse_id.partner_id.state_id.name"
+                                        />
+                                        <span
+                                            t-if="o.picking_type_id.warehouse_id.partner_id.country_id.name"
+                                            t-esc="o.picking_type_id.warehouse_id.partner_id.country_id.name"
+                                        />
+                                    </div>
+                                    <div>
+                                        <span
+                                            t-if="o.picking_type_id.warehouse_id.partner_id.phone"
+                                            t-esc="o.picking_type_id.warehouse_id.partner_id.phone"
+                                        />
+                                    </div>
+                                </div>
+                            </t>
+                        </div>
+                        <div class="col-xs-4">
+                            <strong>Partner:</strong>
+                            <div>
+                                <strong
+                                    t-if="o.partner_id.name"
+                                    t-esc="o.partner_id.name"
+                                />
+                            </div>
+                            <div>
+                                <span
+                                    t-if="o.partner_id.street_name"
+                                    t-esc="o.partner_id.street_name"
+                                />
+                                <span
+                                    t-if="o.partner_id.street_number"
+                                    t-esc="o.partner_id.street_number"
+                                />
+                                <span
+                                    t-if="o.partner_id.street2"
+                                    t-esc="o.partner_id.street2"
+                                />
+                                <br />
+                                <span
+                                    t-if="o.partner_id.l10n_mx_edi_colony"
+                                    t-esc="o.partner_id.l10n_mx_edi_colony"
+                                />
+                                <span
+                                    t-if="o.partner_id.zip"
+                                    t-esc="o.partner_id.zip"
+                                />
+                                <br />
+                                <span
+                                    t-if="o.partner_id.l10n_mx_edi_locality"
+                                    t-esc="o.partner_id.l10n_mx_edi_locality"
+                                ><br /></span>
+                                <span
+                                    t-if="o.partner_id.city"
+                                    t-esc="o.partner_id.city"
+                                />
+                                <span
+                                    t-if="o.partner_id.state_id.name"
+                                    t-esc="o.partner_id.state_id.name"
+                                />
+                                <span
+                                    t-if="o.partner_id.country_id.name"
+                                    t-esc="o.partner_id.country_id.name"
+                                />
+                            </div>
+                            <div>
+                                <span
+                                    t-if="o.partner_id.phone"
+                                    t-esc="o.partner_id.phone"
+                                />
+                            </div>
+                            <p t-if="o.partner_id.vat"><span>VAT</span>: <span
+                                    t-field="o.partner_id.vat"
+                                /></p>
+                        </div>
+                    </div>
+                    <div class="row mt32 mb32 text-center">
+                        <div t-if="o.name" class="col-xs-3">
+                            <strong>Our Order Reference:</strong>
+                            <p t-field="o.name" />
+                        </div>
+                        <div t-if="o.currency_id" class="col-xs-3">
+                            <strong>Currency:</strong>
+                            <p>
+                                (<span
+                                    t-esc="o.currency_id and o.currency_id.symbol or ''"
+                                />)
+                                <span t-field="o.currency_id.name" />
+                            </p>
+                        </div>
+                        <div t-if="o.create_date" class="col-xs-3">
+                            <strong>Created on:</strong>
+                            <p t-field="o.create_date" />
+                        </div>
+                        <!--<div t-if="o.validator" class="col-xs-3">
+                            <strong>Validated By:</strong>
+                            <p t-field="o.validator" />
+                        </div>-->
+                    </div>
+                    <table class="table table-condensed">
+                        <thead>
+                            <tr>
+                                <th class="text-center"><strong
+                                    >Shipment Date</strong></th>
+                                <th><strong>Product Code</strong></th>
+                                <th><strong>Provider Code / Description</strong></th>
+                                <th class="text-right"><strong>Quantity</strong></th>
+                                <th class="text-right"><strong>Unit Price</strong></th>
+                                <th class="text-right"><strong>Net Price</strong></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr t-foreach="o.order_line" t-as="line">
+                                <td class="text-center">
+                                    <span t-field="line.shipment_date" />
+                                </td>
+                                <td>
+                                    <span t-field="line.product_id.default_code" />
+                                </td>
+                                <td>
+                                    <span t-field="line.name" />
+                                </td>
+                                <td class="text-right">
+                                    <span t-field="line.product_qty" />
+                                    <span
+                                        t-field="line.product_uom.name"
+                                        groups="uom.group_uom"
+                                    />
+                                </td>
+                                <td class="text-right">
+                                    <span t-field="line.price_unit" />
+                                </td>
+                                <td class="text-right">
+                                    <span
+                                        t-field="line.price_subtotal"
+                                        t-options='{"widget": "monetary", "display_currency": o.currency_id}'
+                                    />
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="row">
+                        <div class="col-xs-4 pull-right">
+                            <table class="table table-condensed">
+                                <tr class="border-black">
+                                    <td><strong>Subtotal</strong></td>
+                                    <td class="text-right">
+                                        <span
+                                            t-field="o.amount_untaxed"
+                                            t-options='{"widget": "monetary", "display_currency": o.currency_id}'
+                                        />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Taxes</td>
+                                    <td class="text-right">
+                                        <span
+                                            t-field="o.amount_tax"
+                                            t-options='{"widget": "monetary", "display_currency": o.currency_id}'
+                                        />
+                                    </td>
+                                </tr>
+                                <tr class="border-black">
+                                    <td><strong>Total</strong></td>
+                                    <td class="text-right">
+                                        <span
+                                            t-field="o.amount_total"
+                                            t-options='{"widget": "monetary", "display_currency": o.currency_id}'
+                                        />
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                    <t t-if="o.notes">
+                        <h3>Notes:</h3>
+                        <p t-field="o.notes" />
+                    </t>
+                </div>
+            </t>
+        </xpath>
+    </template>
+
+    <template id="report_purchaseorder" inherit_id="purchase.report_purchaseorder">
+        <xpath expr="//t[@t-call='web.html_container']" position="replace">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="o">
+                    <t
+                        t-call="typ_purchase.report_purchaseorder_document"
+                        t-lang="o.report_lang"
+                    />
+                </t>
+            </t>
+        </xpath>
+    </template>
+
+</odoo>

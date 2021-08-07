@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <!-- <report
+        string="Picking Operations wobc"
+        id="action_report_picking_wobc"
+        model="stock.picking"
+        report_type="qweb-pdf"
+        name="typ_stock.report_picking_wobc"
+        file="typ_stock.report_picking_wobc"
+        print_report_name="'Picking Operations - %s - %s' % (object.partner_id.name or '', object.name)"
+    /> -->
+</odoo>

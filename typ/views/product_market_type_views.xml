@@ -1,4 +1,6 @@
+<?xml version="1.0" encoding="utf-8" ?>
 <odoo>
+
     <record id="market_type_product_view" model="ir.ui.view">
         <field name="name">product.market.type.form</field>
         <field name="model">product.market.type</field>
@@ -6,21 +8,25 @@
             <form string="Product market type">
                 <sheet>
                     <group>
-                        <field name="name"/>
+                        <field name="name" />
                     </group>
                 </sheet>
             </form>
         </field>
     </record>
 
-    <record model="ir.actions.act_window" id="market_type_product_list_action">
+    <record id="market_type_product_list_action" model="ir.actions.act_window">
         <field name="name">Product market type</field>
         <field name="res_model">product.market.type</field>
         <field name="view_mode">tree,form</field>
     </record>
 
-    <menuitem action="market_type_product_list_action"
+    <menuitem
+        action="market_type_product_list_action"
         name="Product types market"
         id="menu_product_type_market_form_action"
-        parent="sale.prod_config_main" sequence="9"/>
+        parent="sale.prod_config_main"
+        sequence="9"
+    />
+
 </odoo>

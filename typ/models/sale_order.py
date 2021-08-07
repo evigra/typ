@@ -1,24 +1,36 @@
-from odoo import api, fields, models, _
+from odoo import _, api, fields, models
 from odoo.exceptions import ValidationError
 
 
 class SaleOrder(models.Model):
-
     _inherit = "sale.order"
 
-    has_order_lines = fields.Boolean(
-        compute="_compute_has_order_lines",
-        help="Helper field to disable partner edition in Form view",
+    # Make selectable only pricelists matching the SO's partner
+    pricelist_id = fields.Many2one(
+        domain="""[
+            ('partner_ids', '=', partner_id),
+            '|',
+            ('company_id', '=', False),
+            ('company_id', '=', company_id),
+        ]""",
     )
-
+    # Order date always readonly
+    date_order = fields.Datetime(states=None)
     type_payment_term = fields.Selection(
-        [("credit", "Credit"), ("cash", "Cash"), ("postdated_check", "Postdated check")], default="credit"
+        selection=[
+            ("credit", "Credit"),
+            ("cash", "Cash"),
+            ("postdated_check", "Postdated check"),
+        ],
+        default="credit",
     )
-    so = fields.Boolean(
-        string="Is Special Order", help="This or some product of the sales order " "will be purchased with a supplier?"
+    is_special = fields.Boolean(
+        string="Is Special Order",
+        help="This or some product of the sales order will be purchased with a vendor?",
     )
     stocksale = fields.Boolean(
-        string="Is Stock Sale", help="Check this box " "if it is a stock sale, if not, define " "the delivery method"
+        string="Is Stock Sale",
+        help="Check this box if it is a stock sale, if not, define the delivery method",
     )
     notest = fields.Text(
         string="Notes",
@@ -28,7 +40,7 @@ class SaleOrder(models.Model):
     )
     delivery_promise = fields.Date(help="Date in which we promise " "to deliver to the client")
     shipping_to = fields.Selection(
-        [
+        selection=[
             ("cliente", "CLIENTE"),
             ("t_hmo", "TIENDA HERMOSILLO"),
             ("t_cln", "TIENDA CULIACAN"),
@@ -46,17 +58,17 @@ class SaleOrder(models.Model):
             ("aa_cjs", "AGENCIA ADUANAL CD JUAREZ"),
             ("otro", "OTRO"),
         ],
-        help="Branch, customs agency or destination to which the " "merchandise will be sent from the supplier",
+        help="Branch, customs agency or destination to which the merchandise will be sent from the supplier",
     )
     partial_supply = fields.Selection(
-        [
+        selection=[
             ("si", "Si"),
             ("no", "No"),
         ],
         help="Partial delivery may or may not be possible",
     )
     type_of_import = fields.Selection(
-        [
+        selection=[
             ("semanal", "Semanal"),
             ("express", "Express"),
             ("na", "N/A"),
@@ -64,54 +76,30 @@ class SaleOrder(models.Model):
         help="This order crosses only through customs or in a consolidated",
     )
     shipping_by = fields.Selection(
-        [
+        selection=[
             ("paquetexpress", "Paquetexpress"),
             ("consolidado", "Consolidado"),
             ("otro", "Otro"),
         ],
-        help="It will be shipped by some freight company or " "in some consolidated of the provider",
+        help="It will be shipped by some freight company or in some consolidated of the provider",
     )
     purchase_currency = fields.Many2one("res.currency", help="USD / MXN")
     special_discounts = fields.Char(help="Any compensation granted by the provider")
 
-
-    @api.depends("order_line")
-    def _compute_has_order_lines(self):
-        self.has_order_lines = bool(self.order_line)
-
     def write(self, vals):
-
-        if not vals.get("partner_id"):
+        if "partner_id" not in vals:
             return super().write(vals)
 
-        so_partner_edited = self.filtered(
-            lambda r: r.partner_id.id != vals["partner_id"]
-            and r.has_order_lines
-        )
+        so_partner_edited = self.filtered(lambda so: so.partner_id.id != vals["partner_id"] and so.order_line)
         if so_partner_edited:
             raise ValidationError(
                 _(
-                    "You can't change Partner in Sales Orders with lines. Order IDs: %s."
+                    "You can't change Partner in Sales Orders with lines. Order IDs: %s.",
+                    so_partner_edited.ids,
                 )
-                % so_partner_edited.ids
             )
 
         return super().write(vals)
-
-    # @api.onchange("warehouse_id", "partner_id") # TODO: If fails in 14.0 really necessary?
-    # def _onchange_warehouse_id(self):
-    #     """Obtain Salesman depending on configuration warehouse in partner
-    #     related
-    #     """
-    #     partner_warehouse_model = self.env["res.partner.warehouse"]
-    #     res = super()._onchange_warehouse_id()
-    #     res_warehouse = partner_warehouse_model.search(
-    #         [("partner_id", "=", self.partner_id.id), ("warehouse_id", "=", self.warehouse_id.id)], limit=1
-    #     )
-    #     seller_id = res_warehouse.user_id
-    #     if seller_id:
-    #         self.user_id = seller_id
-    #     return res
 
     @api.model
     def _prepare_order_line_procurement(self, order, line, group_id=False):
@@ -120,13 +108,8 @@ class SaleOrder(models.Model):
         res.update({"origin": order.name})
         return res
 
-    # @api.onchange("type_payment_term", "partner_id")  TODO: Check if this necessary, it looks like a not necessary inheritance
-    # def get_payment_term(self):
-    #     """Get payment term depends on type payment term."""
-    #     self.env["account.move"].with_context({"res_id": self}).get_payment_term()
-
     @api.onchange("order_line")
-    def check_margin(self):
+    def _onchange_order_line(self):
         """Verify margin minimum in sale order by change in field."""
         for line in self.order_line:
             warning = line.check_margin_qty()
@@ -136,28 +119,10 @@ class SaleOrder(models.Model):
                     "warning": warning,
                 }
 
-    def action_cancel(self):
-        picking_done = self.picking_ids.filtered(lambda pick: pick.state == "done")
-        if picking_done:
-            raise ValidationError(
-                _("This order can not be canceled because " "some of their pickings already have been " "transfered.")
-            )
-        return super().action_cancel()
-
-    def _prepare_invoice(self):
-        res = super()._prepare_invoice()
-        res.update({"type_payment_term": self.type_payment_term})
-        return res
-
-    @api.onchange("order_line")
-    def onchange_special_order(self):
-        if self.order_line.filtered("special_sale") and not self.so:
-            self.so = True  # pylint: disable=invalid-name
-        if not self.order_line.filtered("special_sale") and self.so:
-            self.so = False  # pylint: disable=invalid-name
+        self.is_special = bool(self.order_line.filtered("special_sale"))
 
     @api.onchange("partner_id")
-    def onchange_partner_shipping_id(self):
+    def _onchange_partner_shipping_id(self):
         """Assignment of fiscal position, for clients with sales team in border
         location.
         """
@@ -195,74 +160,3 @@ class SaleOrder(models.Model):
             invoices.update({"origin": ", ".join(origin_old)})
             invoices_set |= invoices
         return res
-
-    # @api.onchange("partner_id", "warehouse_id") 
-    # todo: tHIS LOOKS LIKE IS ON PARTNER-CREDIT LIMIT check with 
-    # julio it was in typ_account
-    # def onchange_partner_id(self):
-    #     """Show warning message if partner selected has no credit limit."""
-    #     res_partner = self.env["res.partner"]
-    #     res = super().onchange_partner_id()
-    #     ctx = {
-    #         "new_amount": self.amount_total,
-    #         "new_currency": self.currency_id.id,
-    #         "warehouse_id": self.warehouse_id.id,
-    #     }
-    #     allowed_sale = res_partner.with_context(ctx).browse(self.partner_id.id).allowed_sale
-    #     partner_payment_term_id = self.partner_id.property_payment_term_id
-    #     is_cash = (
-    #         self.type_payment_term in ("cash", "postdated_check")
-    #         or not partner_payment_term_id
-    #         or partner_payment_term_id.payment_type == "cash"
-    #     )
-    #     if not partner_payment_term_id and is_cash and not self.payment_term_id:
-    #         self.payment_term_id = self.env.ref("account.account_payment_term_immediate")
-    #     if all([self.partner_id, not is_cash, not allowed_sale]):
-    #         credit_overloaded = res_partner.with_context(ctx).browse(self.partner_id.id).credit_overloaded
-    #         overdue_credit = (
-    #             res_partner.with_context({"warehouse_id": self.warehouse_id.id})
-    #             .browse(self.partner_id.id)
-    #             .overdue_credit
-    #         )
-    #         msg = _("The partner ")
-    #         if overdue_credit:
-    #             msg = msg + _("%s has overdue invoices")
-    #             if credit_overloaded:
-    #                 msg = msg + _(" and credit overloaded")
-    #         elif credit_overloaded:
-    #             msg = msg + _("%s has credit overloaded")
-    #         msg = msg + _(". Please request payment or sell cash!")
-    #         warning = {
-    #             "title": _("Warning!"),
-    #             "message": ((msg) % self.partner_id.name),
-    #         }
-    #         return {"warning": warning}
-    #     return res
-
-    # def check_limit(self):
-    #     for so in self.filtered(lambda dat: dat.payment_term_id.payment_type == "credit"):
-    #         allowed_sale = (
-    #             self.env["res.partner"]
-    #             .with_context(
-    #                 {
-    #                     "new_amount": so.amount_total,
-    #                     "new_currency": so.currency_id.id,
-    #                     "warehouse_id": self.warehouse_id.id,
-    #                 }
-    #             )
-    #             .browse(so.partner_id.id)
-    #             .allowed_sale
-    #         )
-    #         if allowed_sale:
-    #             return True
-    #         wh_config = so.partner_id.res_warehouse_ids.filtered(
-    #             lambda wh_conf: wh_conf.warehouse_id.id == self.warehouse_id.id
-    #         )
-    #         credit_limit = wh_config.credit_limit if wh_config else so.partner_id.credit_limit
-    #         msg = _(
-    #             "Can not confirm the Sale Order because Partner "
-    #             "has late payments or has exceeded the credit limit."
-    #             "\nPlease cover the late payment or check credit limit"
-    #             "\nCredit Limit : %s"
-    #         ) % (credit_limit)
-    #         raise exceptions.Warning(msg)

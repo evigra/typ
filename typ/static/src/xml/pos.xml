@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8" ?>
 <templates id="templates" xml:space="preserve">
     <t t-extend="PaymentScreenWidget">
         <t t-jquery="div.payment-buttons" t-operation="append">
@@ -6,7 +6,9 @@
                 <i class='fa fa-list' />
                 <span class='js_usage_name'>
                     <t t-if="widget.pos.get_order().get_usage()">
-                        <t t-esc="'('+ widget.pos.get_order().get_usage() +') ' + widget.pos.get_order().get_usage_byid().name"/>
+                        <t
+                            t-esc="'('+ widget.pos.get_order().get_usage() +') ' + widget.pos.get_order().get_usage_byid().name"
+                        />
                     </t>
                     <t t-if="!widget.pos.get_order().get_usage()">
                         Usage
@@ -28,30 +30,34 @@
             <div class="screen-content">
                 <section class="top-content">
                     <span class='button back'>
-                        <i class='fa fa-angle-double-left'></i>
+                        <i class='fa fa-angle-double-left' />
                         Cancel
                     </span>
                     <span class='searchbox'>
                         <input placeholder='Search Usage' />
-                        <span class='search-clear'></span>
+                        <span class='search-clear' />
                     </span>
-                    <span class='searchbox'></span>
+                    <span class='searchbox' />
                     <span class='button next oe_hidden highlight'>
                         Select Usage
-                        <i class='fa fa-angle-double-right'></i>
+                        <i class='fa fa-angle-double-right' />
                     </span>
                 </section>
                 <section class="full-content">
                     <div class='window'>
                         <section class='subwindow collapsed'>
                             <div class='subwindow-container collapsed'>
-                                <div class='subwindow-container-fix client-details-contents'>
+                                <div
+                                    class='subwindow-container-fix client-details-contents'
+                                >
                                 </div>
                             </div>
                         </section>
                         <section class='subwindow'>
                             <div class='subwindow-container'>
-                                <div class='subwindow-container-fix touch-scrollable scrollable-y'>
+                                <div
+                                    class='subwindow-container-fix touch-scrollable scrollable-y'
+                                >
                                     <table class='client-list'>
                                         <thead>
                                             <tr>

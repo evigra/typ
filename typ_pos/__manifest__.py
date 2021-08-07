@@ -22,7 +22,7 @@
         "static/src/xml/pos_stocks.xml",
         "static/src/xml/pos.xml",
     ],
-    "installable": True,
+    "installable": False,
     "auto_install": False,
     "post_init_hook": "_set_new_group",
 }

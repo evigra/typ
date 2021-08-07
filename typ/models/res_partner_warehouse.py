@@ -2,7 +2,6 @@ from odoo import fields, models
 
 
 class ResPartnerWarehouse(models.Model):
-
     _name = "res.partner.warehouse"
     _description = "TODO: Once talk with the team describe it for v14.0"
 

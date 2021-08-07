@@ -1,198 +1,176 @@
+<?xml version="1.0" encoding="utf-8" ?>
 <odoo>
-    <record id="view_origin_purchase_orden_search_inherit" model="ir.ui.view">
-        <field name="name">origin.purchase.order.search.inherit</field>
-        <field name="model">purchase.order</field>
-        <field name="inherit_id" ref="purchase.view_purchase_order_filter"/>
-        <field name="arch" type="xml">
-            <xpath expr="//field[@name='name']" position="after">
-                <field name="origin"/>
-            </xpath>
-        </field>
-    </record>
+
     <record id="purchase_order_form" model="ir.ui.view">
-        <field name="name">purchase.order.form</field>
+        <field name="name">purchase.order.form.inherit.typ</field>
         <field name="model">purchase.order</field>
-        <field name="inherit_id" ref="purchase.purchase_order_form"/>
-        <field name="arch" type="xml">
-            <xpath expr="//field[@name='order_line']" position="attributes">
-                <attribute name="attrs" translation="off">
-                    {'readonly':[('state', 'not in', ['sent', 'bid', 'draft'])]}</attribute>
-            </xpath>
-            <xpath expr="//field[@name='origin']" position="after">
-                <field name="sale_order_id"
-                    domain="[('so', '=', True)]"
-                    context="{
-                    'form_view_ref':'typ.sale_order_purchase_template',
-                    }"/>
-                <field name="supply_commitment_date" attrs="{'required': [('sale_order_id', '!=', False)]}"/>
-            </xpath>
-            <xpath expr="//button[@name='button_approve']" position="attributes">
-                <attribute name="groups" translation="off">purchase.group_purchase_manager,typ.purchase_group_approve_order_button</attribute>
-            </xpath>
-            <xpath expr="//field[@name='picking_type_id']" position="attributes">
-                <attribute name="domain" translation="off">[('code', '=', 'incoming'), ('default_location_src_id.usage', '=', 'supplier')]</attribute>
-            </xpath>
-            <field name="picking_type_id" position="before">
-                <field name="broker_id"/>
-            </field>
-            <field name="incoterm_id" position="after">
-                <field name="is_shipped"/>
-            </field>
-            <xpath expr="//field[@name='date_approve']" position="attributes">
-                <attribute name="groups" translation="off"></attribute>
-            </xpath>
-        </field>
-    </record>
-    <!-- Hides "Create" and "Confirm" Button to a Group -->
-    <!-- <record id="purchase_order_hide_button_form" model="ir.ui.view">
-        <field name="name">purchase.order.form.hide_button</field>
-        <field name="model">purchase.order</field>
-        <field name="inherit_id" ref="purchase.purchase_order_form"/>
-        <field name="groups_id" eval="[(6, 0, [ref('typ.purchase_group_hidden_create_button')])]"/>
-        <field name="arch" type="xml">
-            <xpath expr="//form" position="attributes">
-                <attribute name="create" translation="off">false</attribute>
-            </xpath>
-            <xpath expr="//button[@name='button_confirm']" position="attributes">
-                <attribute name="invisible" translation="off">1</attribute>
-            </xpath>
-        </field>
-    </record> -->
-    <!-- <record id="purchase_order_hide_button_tree" model="ir.ui.view">
-        <field name="name">purchase.order.tree.hide_button</field>
-        <field name="model">purchase.order</field>
-        <field name="inherit_id" ref="purchase.purchase_order_tree"/>
-        <field name="groups_id" eval="[(6, 0, [ref('typ.purchase_group_hidden_create_button')])]"/>
-        <field name="arch" type="xml">
-            <xpath expr="//tree" position="attributes">
-                <attribute name="create" translation="off">false</attribute>
-            </xpath>
-        </field>
-    </record> -->
-    <!-- <record id="view_state_purchase_order_search_inherit" model="ir.ui.view">
-        <field name="name">state.purchase.order.search.inherit</field>
-        <field name="model">purchase.order</field>
-        <field name="inherit_id" ref="purchase.view_purchase_order_filter"/>
-        <field name="arch" type="xml">
-            <xpath expr="//filter[@name='draft']" position="before">
-                <filter name="Orders" string="Orders" domain="[('state', '!=', 'cancel')]" context="{}"/>
-            </xpath>
-            <xpath expr="//group" position="inside">
-                <filter string="State" domain="[]" context="{'group_by':'state'}"/>
-            </xpath>
-        </field>
-    </record> -->
-    <record id="purchase.purchase_rfq" model="ir.actions.act_window">
-        <field name="context">{'search_default_Orders':1}</field>
-    </record>
-    <record id="purchase.purchase_form_action" model="ir.actions.act_window">
-        <field name="context">{'search_default_Orders':1}</field>
-    </record>
-    <record id="view_create_date_purchase_order_form" model="ir.ui.view">
-        <field name="name">create_date.purchase.order.inherit</field>
-        <field name="model">purchase.order</field>
-        <field name="inherit_id" ref="purchase.purchase_order_form"/>
-        <field name='type'>form</field>
-        <field name='arch' type='xml'>
-            <field name="date_order" position="before">
-                <field name="create_date"/>
-                <field name="shipment_date"/>
-            </field>
-            <field name="create_date" position="attributes">
-                <attribute name="readonly" translation="off">True</attribute>
-            </field>
-            <field name="shipment_date" position="attributes">
-                <attribute name="required" translation="off">True</attribute>
-            </field>
-            <field name="date_order" position="replace">
-                <field name="date_order" invisible="1"/>
-            </field>
-            <xpath expr="//field[@name='order_line']/tree/field[@name='date_planned']" position="before">
-                <field name="shipment_date" />
-            </xpath>
-            <field name="order_line" position="attributes">
-                    <attribute name="context" translation="off">{'shipment_date': shipment_date}</attribute>
-            </field>
-            <xpath expr="//field[@name='origin']" position="attributes">
-                <attribute name="attrs" translation="off"></attribute>
-            </xpath>
-            <xpath expr="//button[@name='action_rfq_send'][1]" position="attributes">
-                <attribute name="context" translation="off">{'send_rfq':False}</attribute>
-            </xpath>
-            <xpath expr="//button[@name='action_rfq_send'][2]" position="attributes">
-                <attribute name="context" translation="off">{'send_rfq':False}</attribute>
-            </xpath>
-        </field>
-    </record>
-    <record id="view_create_date_purchase_order_tree" model="ir.ui.view">
-        <field name='name'>create_date.purchase.order.tree</field>
-        <field name='model'>purchase.order</field>
-        <field name='inherit_id' ref='purchase.purchase_order_tree'/>
-        <field name='type'>tree</field>
-        <field name='arch' type='xml'>
-            <field name="date_planned" position="replace">
-            </field>
-            <field name="name" position="after">
-                <field name="partner_ref"/>
-            </field>
-            <field name="date_order" position="before">
-                <field name="create_date"/>
-                <field name="shipment_date"/>
-                <field name="date_planned"/>
-            </field>
-            <field name="date_order" position="replace">
-                <field name="date_order" invisible="1"/>
-            </field>
-        </field>
-    </record>
-    <!-- <record id="view_buyer_assignment_form" model="ir.ui.view">
-        <field name="name">buyer.assignment.form</field>
-        <field name="model">purchase.order</field>
-        <field name="inherit_id" ref="purchase.purchase_order_form"/>
+        <field name="inherit_id" ref="purchase.purchase_order_form" />
         <field name="arch" type="xml">
             <field name="partner_id" position="after">
-                <field name="buyer"/>
+                <field name="buyer_id" />
             </field>
-        </field>
-    </record> -->
-    <!-- <record id="view_buyer_purchase_order_filter" model="ir.ui.view">
-        <field name="name">buyer.purchase.order.filter</field>
-        <field name="model">purchase.order</field>
-        <field name="inherit_id" ref="purchase.view_purchase_order_filter"/>
-        <field name="arch" type="xml">
-            <xpath expr="//group" position="inside">
-                <filter string="Buyer" domain="[]" context="{'group_by':'buyer'}"/>
+            <field name="date_order" position="before">
+                <field name="create_date" />
+                <field name="shipment_date" required="1" />
+            </field>
+            <field name="date_order" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </field>
+            <xpath
+                expr="//field[@name='order_line']/tree/field[@name='date_planned']"
+                position="before"
+            >
+                <field name="shipment_date" />
             </xpath>
-        </field>
-    </record> -->
-    <!-- <record id="view_requisition_budget_form" model="ir.ui.view">
-        <field name="name">requisition.budget.form</field>
-        <field name="model">purchase.requisition</field>
-        <field name="inherit_id" ref="purchase_requisition.view_purchase_requisition_form"/>
-        <field name="arch" type="xml">
-            <button name="%(purchase_requisition.action_purchase_requisition_to_so)d" position="attributes">
-                <attribute name="groups" translation="off">typ.group_purchase_budget_manager</attribute>
-            </button>
-        </field>
-    </record> -->
-    <record id="purchase_order_line_search_inherit" model="ir.ui.view">
-        <field name="name">purchase.order.line.search.inherit</field>
-        <field name="model">purchase.order.line</field>
-        <field name="inherit_id" ref="purchase.purchase_order_line_search"/>
-        <field name="arch" type="xml">
-            <xpath expr="//filter[@name='hide_cancelled']" position="after">
-                <filter name="hide_order_cancelled" string="Hide lines in cancelled orders" domain="[('order_id.state', '!=', 'cancel')]"/>
+            <!-- Don't hide the origin field when it's empty -->
+            <xpath expr="//field[@name='origin']" position="attributes">
+                <attribute name="attrs" />
+            </xpath>
+            <xpath
+                expr="//button[@name='action_rfq_send' and @states='draft']"
+                position="attributes"
+            >
+                <attribute name="context">{'send_rfq': False}</attribute>
+            </xpath>
+            <xpath
+                expr="//button[@name='action_rfq_send' and @states='sent']"
+                position="attributes"
+            >
+                <attribute name="context">{'send_rfq': False}</attribute>
+            </xpath>
+            <xpath expr="//field[@name='order_line']" position="attributes">
+                <attribute name="context">{
+                    'shipment_date': shipment_date,
+                    'default_state': 'draft',
+                }</attribute>
+                <attribute name="attrs">{
+                    'readonly':[('state', 'not in', ['sent', 'bid', 'draft'])],
+                }</attribute>
+            </xpath>
+            <xpath expr="//field[@name='origin']" position="after">
+                <field
+                    name="sale_order_id"
+                    domain="[('is_special', '=', True)]"
+                    context="{
+                        'form_view_ref':'typ.sale_order_purchase_template',
+                    }"
+                />
+                <field
+                    name="supply_commitment_date"
+                    attrs="{'required': [('sale_order_id', '!=', False)]}"
+                />
+            </xpath>
+            <xpath expr="//button[@name='button_approve']" position="attributes">
+                <attribute
+                    name="groups"
+                    add="typ.purchase_group_approve_order_button"
+                />
+            </xpath>
+            <!-- Ensure picking type is selectable only if default src location is of type supplier -->
+            <xpath expr="//field[@name='picking_type_id']" position="attributes">
+                <attribute name="domain">[
+                    ('default_location_src_id.usage', '=', 'supplier'),
+                    ('code', '=', 'incoming'),
+                    '|',
+                    ('warehouse_id', '=', False),
+                    ('warehouse_id.company_id', '=', company_id),
+                ]</attribute>
+            </xpath>
+            <field name="picking_type_id" position="before">
+                <field name="broker_id" />
+            </field>
+            <field name="incoterm_id" position="after">
+                <field name="is_shipped" />
+            </field>
+            <xpath expr="//button[@id='bid_confirm']" position="attributes">
+                <attribute
+                    name="groups"
+                    add="!typ.purchase_group_hidden_create_button"
+                />
+            </xpath>
+            <xpath expr="//button[@id='draft_confirm']" position="attributes">
+                <attribute
+                    name="groups"
+                    add="!typ.purchase_group_hidden_create_button"
+                />
             </xpath>
         </field>
     </record>
-    <!-- <record id="purchase_view_stock_move_tree2" model="ir.ui.view">
-        <field name="name">purchase.stock.move.tree2</field>
-        <field name="model">stock.move</field>
-        <field name="inherit_id" ref="stock.view_move_tree_receipt_picking"/>
+
+    <!-- Hide the Create button to members of the group "Purchase restricted users" -->
+    <record id="purchase_order_form_hide_create" model="ir.ui.view">
+        <field name="name">purchase.order.form.inherit.typ.hide.create</field>
+        <field name="model">purchase.order</field>
+        <field name="inherit_id" ref="purchase.purchase_order_form" />
+        <field
+            name="groups_id"
+            eval="[(6, 0, [ref('purchase_group_hidden_create_button')])]"
+        />
         <field name="arch" type="xml">
-            <xpath expr="//field[@name='date_expected']" position="before">
-                <field name="product_shipment_date"/>
+            <xpath expr="//form" position="attributes">
+                <attribute name="create">false</attribute>
             </xpath>
         </field>
-    </record> -->
+    </record>
+
+    <record id="purchase_order_tree" model="ir.ui.view">
+        <field name="name">purchase.order.tree.inherit.typ</field>
+        <field name="model">purchase.order</field>
+        <field name="inherit_id" ref="purchase.purchase_order_tree" />
+        <field name="arch" type="xml">
+            <field name="partner_ref" position="attributes">
+                <attribute name="optional">show</attribute>
+            </field>
+            <field name="date_order" position="before">
+                <field name="create_date" optional="show" />
+                <field name="shipment_date" optional="show" />
+                <xpath expr="//field[@name='date_planned']" position="move" />
+            </field>
+            <field name="date_order" position="attributes">
+                <attribute name="optional">hide</attribute>
+            </field>
+        </field>
+    </record>
+
+    <record id="purchase_order_tree_hide_create" model="ir.ui.view">
+        <field name="name">purchase.order.tree.hide_button</field>
+        <field name="model">purchase.order</field>
+        <field name="inherit_id" ref="purchase.purchase_order_tree" />
+        <field
+            name="groups_id"
+            eval="[(6, 0, [ref('purchase_group_hidden_create_button')])]"
+        />
+        <field name="arch" type="xml">
+            <xpath expr="//tree" position="attributes">
+                <attribute name="create">false</attribute>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_purchase_order_filter" model="ir.ui.view">
+        <field name="name">request.quotation.select.inherit.typ</field>
+        <field name="model">purchase.order</field>
+        <field name="inherit_id" ref="purchase.view_purchase_order_filter" />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='name']" position="after">
+                <field name="origin" />
+            </xpath>
+            <xpath expr="//filter[@name='draft']" position="before">
+                <filter
+                    name="Orders"
+                    string="Orders"
+                    domain="[('state', '!=', 'cancel')]"
+                />
+            </xpath>
+            <xpath expr="//group" position="inside">
+                <filter string="State" name="state" context="{'group_by':'state'}" />
+                <filter
+                    string="Buyer_id"
+                    name="buyer_id"
+                    context="{'group_by':'buyer_id'}"
+                />
+            </xpath>
+        </field>
+    </record>
+
 </odoo>

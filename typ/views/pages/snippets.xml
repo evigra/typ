@@ -1,0 +1,358 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <template id="s-product-description" name="Product Specifications">
+        <section class="product-specifications">
+            <div class="container">
+                <div class="col-md-12 col-xs-12 mb48">
+                    <div class="col-md-5 col-xs-12">
+                        <div class="row s-content">
+                            <p class="s-title mt32">Title</p>
+                            <p class="mt16 mb24">
+                                Insert text here
+                            </p>
+                        </div>
+                        <div class="row s-content">
+                            <p class="s-subtitle mb0">Second title</p>
+                            <p class="mb24">
+                                Insert text here
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </template>
+
+    <template id="s-product-description-title" name="TYP Title">
+        <div class="row s-content">
+            <p class="s-title mt16">Title</p>
+            <p class="mt16 mb24">
+               Insert text here
+            </p>
+        </div>
+    </template>
+
+    <template id="s-product-description-subtitle" name="TYP Subtitle">
+        <div class="row s-content">
+            <p class="s-subtitle mb0">Subtitle</p>
+            <p class="mb24">
+                Insert text here
+            </p>
+        </div>
+    </template>
+
+    <template id="s_image_banner" name="Banner">
+        <section class="s_image_banner">
+            <img
+                class="img img-responsive"
+                src="/web/image/theme_typ.s-banner"
+                alt="Sample"
+            />
+        </section>
+    </template>
+
+     <template id="s_image_banner_contact_us" name="Banner Contact Us">
+        <section class="s_text_block_image_fw oe_img_bg oe_custom_bg text-center">
+                <div class="container oswald-text contact-banner">
+                    <div class="row">
+                        <div
+                        class="col-md-5 col-md-offset-0 col-sm-7 col-sm-offset-0 mt32 "
+                    >
+                            <span
+                            class="typ-img-logo-banner"
+                            t-field="res_company.logo"
+                            t-options="{'widget': 'image'}"
+                            t-att-alt="'Logo of %s' % res_company.name"
+                            t-att-title="res_company.name"
+                        />
+                            <h4
+                            class="banner mt16 mb16 col-xs-12"
+                        >WE WANT TO BE YOUR PARTNERS</h4>
+                            <a
+                            class="btn btn-primary btn-lg mb32"
+                            href="/contactus"
+                        >QUOTE YOUR PROJECT</a>
+                        </div>
+                    </div>
+                </div>
+        </section>
+    </template>
+
+    <template id="s_banner_homepage" name="Banner Homepage">
+        <section
+            class="s_text_block_image_fw oe_img_bg oe_custom_bg text-center background-header"
+            style="background-image: url(/web/image/theme_typ.home-hero);"
+        >
+            <div class="container">
+                <div class="row">
+                    <h1 class="header-titles">WE SUPPORT THE SUCCESS OF YOUR<br
+                        />BUSINESS</h1>
+                </div>
+                <div class="row">
+                    <h5 class="header-subtitles">Know our double stage system</h5>
+                </div>
+            </div>
+        </section>
+    </template>
+
+    <template id="s_banner_sales" name="Banner How to">
+        <section
+            class="s_text_block_image_fw oe_img_bg oe_custom_bg text-center background-body"
+            style="background-image: url(/web/image/theme_typ.img-back-ice);"
+        >
+            <div class="container oswald-text">
+                <!-- title -->
+                <div class="row mt24 mb32">
+                    <h5 class="banner">HOW TO BUY IN T&amp;P</h5>
+                </div>
+                <!-- steps to buy -->
+                <div class="row">
+                    <div class="col-md-3 col-sm-3 col-xs-6">
+                        <div class="row img-height">
+                            <img
+                                class="mt16"
+                                src="/web/image/theme_typ.icon-info"
+                                alt="Solicita Acceso"
+                            />
+                        </div>
+                        <div class="row mt16">
+                            <p>REQUEST ACCESS TO<br />SIGN IN</p>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-3 col-xs-6">
+                        <div class="row img-height">
+                            <img
+                                class="mt16"
+                                src="/web/image/theme_typ.icon-cart"
+                                alt="Agrega Productos al Carrito"
+                            />
+                        </div>
+                        <div class="row mt16">
+                            <p>ADD PRODUCTS TO<br />CART</p>
+                        </div>
+                    </div>
+                    <div class="clearfix hidden-md hidden-sm hidden-lg" />
+                    <div class="col-md-3 col-sm-3 col-xs-6">
+                        <div class="row img-height">
+                            <img
+                                class="mt16"
+                                src="/web/image/theme_typ.icon-payment"
+                                alt="Elige Metodo de Pago"
+                            />
+                        </div>
+                        <div class="row mt16">
+                            <p>CHOOSE YOUR PAYMENT<br />METHOD</p>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-3 col-xs-6">
+                        <div class="row img-height">
+                            <img
+                                src="/web/image/theme_typ.icon-enjoy"
+                                alt="Recibe o Recoge tu Pedido"
+                            />
+                        </div>
+                        <div class="row mt16">
+                            <p>RECEIVE OR COLLECT<br />YOUR EQUIPMENT</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--  Request Access  -->
+            <div class="row">
+                <div
+                    class="col-md-8 col-md-offset-2 col-xs-12 col-xs-offset-0 col-sm-8 col-sm-offset-2 text-center mt32 mb32"
+                >
+                <a href="/contactus" class="btn btn-lg btn-primary">REQUEST ACCESS</a>
+                </div>
+            </div>
+        </section>
+    </template>
+
+     <template id="s_typ_testimonials" name="Clients Opinions">
+        <section
+            class="s_text_block_image_fw oe_img_bg oe_custom_bg dark-white text-center"
+        >
+                <div class="container">
+                    <!-- title -->
+                    <div class="row mt32">
+                        <h5 class="sections">OUR CLIENTS OPINION</h5>
+                    </div>
+                    <!-- opinions -->
+                    <div class="row mt32 mb96">
+                        <div class="col-md-3 col-sm-3 col-xs-6">
+                            <div class="row img-height">
+                                <img
+                                class="testimonial"
+                                src="/web/image/theme_typ.t1"
+                                alt="Testimonial 1"
+                            />
+                            </div>
+                            <div class="row mt16">
+                                <p class="opinion-clients fade-effect">
+                                    “Tengo 10 años siendo cliente de T&amp;P, la confianza que tengo de encontrar lo que necesito, y sus políticas de sistema doble etapa hacen de ésta empresa la mejor opción”
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-sm-3 col-xs-6">
+                            <div class="row img-height">
+                                <img
+                                class="testimonial"
+                                src="/web/image/theme_typ.t4"
+                                alt="Testomonial 2"
+                            />
+                            </div>
+                            <div class="row mt16">
+                                <p class="opinion-clients fade-effect">
+                                    “Nuestros amigos de T&amp;P, han sido parte de nuestro recorrido desde el inicio de nuestra empresa, así como el crecimiento que hemos tenido, es siempre un placer trabajar con T&amp;P como nuestro proveedor”
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-sm-3 col-xs-6">
+                            <div class="row img-height">
+                                <img
+                                class="testimonial"
+                                src="/web/image/theme_typ.t2"
+                                alt="Testimonial 3"
+                            />
+                            </div>
+                            <div class="row mt16">
+                                <p class="opinion-clients fade-effect">
+                                    “Simplemente mantenemos nuestra fidelidad con T&amp;P, porque representan un gran profesionalismo, su equipo siempre está implicado y atento de nosotros, los productos son de la mejor calidad"
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-sm-3 col-xs-6">
+                            <div class="row img-height">
+                                <img
+                                class="testimonial"
+                                src="/web/image/theme_typ.t3"
+                                alt="Testimonial 4"
+                            />
+                            </div>
+                            <div class="row mt16">
+                                <p class="opinion-clients fade-effect">
+                                    “El equipo de T&amp;P siempre está atento de nuestras necesidades, y de cumplir con el proceso completo con un estándar de calidad muy alto, nos gusta ser sus clientes”
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+    </template>
+
+    <template id="s_cover_img" name="Slider Images">
+     <section class="s_image_banner">
+        <div
+                id="myCarouselImages"
+                class="carousel slide s_banner background-header-carousel"
+                data-interval="10000"
+            >
+            <!-- Indicators -->
+            <ol class="carousel-indicators hidden">
+                <li data-target="#myCarouselImages" data-slide-to="0" class="active" />
+            </ol>
+            <div class="carousel-inner">
+                <div class="item oe_img_bg active">
+                    <div class="col-sm-12 col-xs-12 no-padding">
+                        <img
+                                class="img-responsive"
+                                src="/theme_typ/static/img/home.png"
+                                alt="Banner Image"
+                            />
+                    </div>
+                </div>
+            </div>
+            <div
+                    class="carousel-control left hidden"
+                    data-target="#myCarousel"
+                    data-slide="prev"
+                    style="width: 10%"
+                ><i class="fa fa-chevron-left" /></div>
+            <div
+                    class="carousel-control right hidden"
+                    data-target="#myCarousel"
+                    data-slide="next"
+                    style="width: 10%"
+                ><i class="fa fa-chevron-right" /></div>
+        </div>
+    </section>
+    </template>
+
+    <template id="s_typ_header" name="Header Section">
+       <section
+            class="s_text_block_image_fw oe_img_bg oe_custom_bg text-center background-header-org"
+            style="background-image: url(/web/image/theme_typ.hero-org);"
+        >
+            <div class="container">
+                <div class="row">
+                    <h1 class="header-titles">TITLE</h1>
+                </div>
+                <div class="row">
+                    <h5 class="header-subtitles">Text</h5>
+                </div>
+            </div>
+        </section>
+    </template>
+
+    <!-- TODO migrate to 14.0 (frontend team) -->
+    <template id="snippets" inherit_id="website.snippets" active="False">
+        <xpath expr="//div[@id='o_scroll']" position="inside">
+            <div id="snippet_typ" class="o_panel">
+                <div class="o_panel_header">
+                    <i class="fa fa-th-large" /> TYP
+                </div>
+                <div class="o_panel_body">
+                    <t
+                        t-snippet="typ.s_image_banner"
+                        t-thumbnail="/theme_typ/static/img/banner.png"
+                    />
+                    <t
+                        t-snippet="typ.s_image_banner_contact_us"
+                        t-thumbnail="/theme_typ/static/img/contact-us.png"
+                    />
+                    <t
+                        t-snippet="typ.s_banner_homepage"
+                        t-thumbnail="/theme_typ/static/img/banner-text-home.png"
+                    />
+                    <t
+                        t-snippet="typ.s_banner_sales"
+                        t-thumbnail="/theme_typ/static/img/how-to.png"
+                    />
+                    <t
+                        t-snippet="typ.s_typ_testimonials"
+                        t-thumbnail="/theme_typ/static/img/clients-opinion.png"
+                    />
+                    <t
+                        t-snippet="typ.s_cover_img"
+                        t-thumbnail="/theme_typ/static/img/carousel_image.png"
+                    />
+                    <t
+                        t-snippet="typ.s_typ_header"
+                        t-thumbnail="/theme_typ/static/img/header-text.png"
+                    />
+                </div>
+            </div>
+        </xpath>
+    </template>
+
+    <!-- TODO migrate to 14.0 (frontend team) -->
+    <template id="snippet_options" inherit_id="website.snippet_options" active="False">
+        <xpath expr="//div[@data-js='content']" position="attributes">
+            <attribute name="data-selector" add=".s-content" separator=", " />
+            <attribute name="data-drop-near" add=".s-content" separator=", " />
+        </xpath>
+        <xpath expr="//div[@data-js='background']" position="after">
+            <div data-selector=".s_three_columns a">
+                <li class="dropdown-submenu">
+                    <a tabindex="-2" href="#"><i class="fa fa-edit" />Form</a>
+                    <ul class="dropdown-menu">
+                        <li data-toggle-class="has-form-download">
+                            <a href="#">Add Download Form</a>
+                        </li>
+                    </ul>
+                </li>
+            </div>
+        </xpath>
+    </template>
+
+</odoo>

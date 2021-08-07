@@ -1,40 +1,8 @@
-# odoo/odoo gitignore
-# sphinx build directories
-_build/
-
-# dotfiles
-.*
-!.gitignore
-# compiled python files
-*.py[co]
-# setup.py egg_info
-*.egg-info
-# emacs backup files
-*~
-# hg stuff
-*.orig
-status
-# odoo filestore
-openerp/filestore
-# generated for windows installer?
-install/win32/*.bat
-install/win32/meta.py
-
-# various virtualenv
-/bin/
-/build/
-/dist/
-/include/
-/lib/
-/man/
-/share/
-/src/
-
-
-# oca gitignore
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
+
+*.DS_Store*
 
 # C extensions
 *.so
@@ -47,7 +15,6 @@ build/
 develop-eggs/
 dist/
 eggs/
-lib/
 lib64/
 parts/
 sdist/
@@ -64,15 +31,23 @@ pip-delete-this-directory.txt
 htmlcov/
 .tox/
 .coverage
+.coveragerc
+.coverage.*
+et
 .cache
 nosetests.xml
 coverage.xml
+*,cover
+.hypothesis/
 
 # Translations
 *.mo
 
 # Pycharm
 .idea
+
+# VS Code
+.vscode
 
 # Mr Developer
 .mr.developer.cfg
@@ -89,3 +64,8 @@ docs/_build/
 *~
 *.swp
 
+# docker package-lock.json
+package-lock.json
+
+# docker node_modules
+node_modules/

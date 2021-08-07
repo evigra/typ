@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+
+    <record id="guide_form_view" model="ir.ui.view">
+        <field name="name">stock.landed.cost.guide.form</field>
+        <field name="model">stock.landed.cost.guide</field>
+        <field name="arch" type="xml">
+            <form string="Guide">
+                <header>
+                    <button
+                        name="action_draft"
+                        type="object"
+                        string="Reset to draft"
+                        states="valid,cancel"
+                        groups="typ.group_landed_guide_manager"
+                    />
+                    <button
+                        name="action_valid"
+                        type="object"
+                        string="Validate"
+                        states="draft"
+                        class="oe_highlight"
+                    />
+                    <button
+                        name="action_cancel"
+                        type="object"
+                        string="Cancel"
+                        states="valid"
+                        attrs="{'invisible':[('landed_cost_id', '=', False)]}"
+                        groups="typ.group_landed_guide_manager"
+                    />
+                    <field name="state" widget="statusbar" />
+                </header>
+                <sheet string="Guide">
+                    <div class="oe_button_box" name="buttons">
+                        <button
+                            type="object"
+                            string="Stock Accruals"
+                            name="view_accrual"
+                            class="oe_stat_button"
+                            icon="fa-truck"
+                        />
+                    </div>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name" />
+                        </h1>
+                    </div>
+                    <group col="4">
+                        <field name="partner_id" />
+                        <field name="date" />
+                        <field name="warehouse_id" />
+                        <field name="journal_id" />
+                        <field name="reference" widget="selection" required="True" />
+                        <field name="currency_id" />
+                        <field name="landed_cost_id" />
+                        <field name="invoice_id" readonly="True" />
+                        <field name="comments" required="True" />
+                        <field name="carrier_invoice" />
+                    </group>
+                    <notebook>
+                        <page name="guidelines" string="Guide Lines">
+                            <field name="line_ids" nolabel="1" />
+                                <group>
+                                <group
+                                    name="totals"
+                                    class="oe_subtotal_footer oe_right"
+                                >
+                                    <field
+                                        name="amount_total"
+                                        class="oe_subtotal_footer_separator"
+                                        widget="monetary"
+                                    />
+                                </group>
+                            </group>
+                        </page>
+                        <page name="other" string="Other info">
+                            <group col="4">
+                                <field name="landed" />
+                                <field name="invoiced" />
+                                <field name="company_id" />
+                                <field name="move_id" />
+                            </group>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="guide_tree_view" model="ir.ui.view">
+        <field name="name">stock.landed.cost.guide.tree</field>
+        <field name="model">stock.landed.cost.guide</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name" />
+                <field name="reference" />
+                <field name="partner_id" optional="show" />
+                <field name="warehouse_id" optional="show" />
+                <field name="invoice_id" optional="show" />
+                <field name="date" optional="show" />
+                <field name="landed_cost_id" optional="show" />
+                <field name="amount_total" optional="show" />
+                <field name="state" optional="show" />
+            </tree>
+        </field>
+    </record>
+
+    <record id="guide_search_view" model="ir.ui.view">
+        <field name="name">stock.landed.cost.guide.tree</field>
+        <field name="model">stock.landed.cost.guide</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name" />
+                <field name="partner_id" />
+                <field name="journal_id" />
+                <field name="carrier_invoice" />
+                <field name="reference" />
+                <field name="date" />
+                <group string="Group by">
+                    <filter
+                        name="by_journal"
+                        string="Journal"
+                        context="{'group_by': 'journal_id'}"
+                    />
+                    <filter
+                        name="by_warehouse"
+                        string="Warehouse"
+                        context="{'group_by': 'warehouse_id'}"
+                    />
+                    <filter
+                        name="by_partner"
+                        string="Partner"
+                        context="{'group_by': 'partner_id'}"
+                    />
+                    <filter
+                        name="by_landed_cost"
+                        string="Landed Cost"
+                        context="{'group_by': 'landed_cost_id'}"
+                    />
+                    <filter
+                        name="by_invoice"
+                        string="Invoice"
+                        context="{'group_by': 'invoice_id'}"
+                    />
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="guide_line_tree_view" model="ir.ui.view">
+        <field name="name">stock.landed.cost.guide.line.tree</field>
+        <field name="model">stock.landed.cost.guide.line</field>
+        <field name="arch" type="xml">
+            <tree editable="bottom">
+                <field name="product_id" />
+                <field name="cost" />
+                <field name="freight_type" required="True" />
+            </tree>
+        </field>
+    </record>
+
+    <record id="action_landed_cost_guides" model="ir.actions.act_window">
+        <field name="name">Landed Cost Guides</field>
+        <field name="res_model">stock.landed.cost.guide</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem
+        id="menu_landed_cost_guides"
+        parent="stock.menu_stock_warehouse_mgmt"
+        name="Guides"
+        sequence="10"
+        action="action_landed_cost_guides"
+    />
+
+</odoo>

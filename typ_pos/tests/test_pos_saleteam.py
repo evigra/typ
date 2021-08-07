@@ -1,9 +1,9 @@
-import odoo
-from .common import TestPointOfSaleCommon
 from odoo.tests import tagged
 
+from .common import TestPointOfSaleCommon
 
-@tagged('post_install', '-at_install')
+
+@tagged("post_install", "-at_install")
 class TestPosSaleTeam(TestPointOfSaleCommon):
     def test_10_saleteam_invoice(self):
         """Test to validate invoice's team configured from the pos config"""

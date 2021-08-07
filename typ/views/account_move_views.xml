@@ -2,83 +2,83 @@
     <!-- <record id="view_account_invoice_filter" model="ir.ui.view">
         <field name="name">account.move.filter</field>
         <field name="model">account.invoice</field>
-        <field name="inherit_id" ref="account.view_account_invoice_filter"/>
+        <field name="inherit_id" ref="account.view_account_invoice_filter" />
         <field name="arch" type="xml">
             <xpath expr="//field[@name='number']" position="before">
-                <field name="origin"/>
+                <field name="origin" />
             </xpath>
             <xpath expr="//field[@name='number']" position="after">
                 <field name="supplier_invoice_number"
-                    filter_domain="[('supplier_invoice_number', 'ilike', self)]"/>
+                    filter_domain="[('supplier_invoice_number', 'ilike', self)]" />
             </xpath>
         </field>
     </record> -->
     <!-- <record id="view_move_form" model="ir.ui.view">
         <field name="name">account.move.form</field>
         <field name="model">account.invoice</field>
-        <field name="inherit_id" ref="account.view_move_form"/>
+        <field name="inherit_id" ref="account.view_move_form" />
         <field name="arch" type="xml">
             <xpath expr="//field[@name='date_due']" position="after">
-                <field name="date_paid" readonly="1"/>
+                <field name="date_paid" readonly="1" />
             </xpath>
             <xpath expr="//field[@name='invoice_payment_term_id']" position="after">
-                <field name="type_payment_term" attrs="{'readonly': [('state', '!=', 'draft')],'required': [('state', '=', 'draft')],}"/>
+                <field name="type_payment_term" attrs="{'readonly': [('state', '!=', 'draft')],'required': [('state', '=', 'draft')],}" />
             </xpath>
             <xpath expr="//field[@name='invoice_payment_term_id']" position="attributes">
-                <attribute name="groups" translation="off">typ.group_sale_order_invoice_payment_term_manager</attribute>
-                <attribute name="required" translation="off">1</attribute>
+                <attribute name="groups">typ.group_sale_order_invoice_payment_term_manager</attribute>
+                <attribute name="required">1</attribute>
             </xpath>
             <xpath expr="//field[@name='user_id']" position="attributes">
-                <attribute name="attrs" translation="off">{'readonly':[('state', '!=', 'draft')]}</attribute>
+                <attribute name="attrs">{'readonly':[('state', '!=', 'draft')]}</attribute>
             </xpath>
             <xpath expr="//field[@name='user_id']" position="attributes">
-                <attribute name="attrs" translation="off">{'readonly': 0}</attribute>
+                <attribute name="attrs">{'readonly': 0}</attribute>
             </xpath>
         </field>
     </record> -->
     <!-- <record id="account_invoice_tree_analitic_group" model="ir.ui.view">
         <field name="name">account.invoice.line.analitic.group</field>
         <field name="model">account.invoice</field>
-        <field name="inherit_id" ref="account.invoice_supplier_form"/>
+        <field name="inherit_id" ref="account.invoice_supplier_form" />
         <field name="arch" type="xml">
             <xpath expr="//field[@name='account_analytic_id']" position="attributes">
-                <attribute name="groups" translation="off">typ_account.res_group_analitic_invoice_lines</attribute>
+                <attribute name="groups">typ_account.res_group_analitic_invoice_lines</attribute>
             </xpath>
             <xpath expr="//field[@name='analytic_tag_ids']" position="attributes">
-                <attribute name="groups" translation="off">typ_account.res_group_analitic_invoice_lines</attribute>
+                <attribute name="groups">typ_account.res_group_analitic_invoice_lines</attribute>
             </xpath>
             <xpath expr="//field[@name='date']" position="after">
-                <field name="validation_date"/>
+                <field name="validation_date" />
             </xpath>
             <field name="reference" position="after">
-                <field name="supplier_invoice_number"/>
+                <field name="supplier_invoice_number" />
             </field>
             <field name="validation_date" position="after">
-                <field name="expense_id"/>
+                <field name="expense_id" />
             </field>
         </field>
     </record> -->
     <!-- <record id="invoice_tree" model="ir.ui.view">
         <field name="name">account.invoice.customer.tree</field>
         <field name="model">account.invoice</field>
-        <field name="inherit_id" ref="account.invoice_tree"/>
+        <field name="inherit_id" ref="account.invoice_tree" />
         <field name="arch" type="xml">
             <field name="user_id" position="after">
-                <field name="team_id"/>
+                <field name="team_id" />
             </field>
             <field name="amount_total_signed" position="before">
-                <field name="amount_untaxed"/>
+                <field name="amount_untaxed" />
             </field>
         </field>
     </record> -->
     <!-- <record id="invoice_supplier_tree" model="ir.ui.view">
         <field name="name">account.invoice.supplier.tree</field>
         <field name="model">account.invoice</field>
-        <field name="inherit_id" ref="account.view_in_invoice_tree"/>
+        <field name="inherit_id" ref="account.view_in_invoice_tree" />
         <field name="arch" type="xml">
             <field name="amount_total_signed" position="before">
-                <field name="team_id"/>
-                <field name="amount_untaxed"/>
+                <field name="team_id" />
+                <field name="amount_untaxed" />
             </field>
         </field>
     </record> -->

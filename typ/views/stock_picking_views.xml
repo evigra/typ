@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+
+    <record id="view_picking_form" model="ir.ui.view">
+        <field name="name">stock.picking.form.inherit.typ</field>
+        <field name="model">stock.picking</field>
+        <field name="inherit_id" ref="stock.view_picking_form" />
+        <field name="arch" type="xml">
+            <xpath
+                expr="//field[@name='move_ids_without_package']/tree"
+                position="inside"
+            >
+                <field name="normalized_barcode" invisible="1" />
+                <field name="location_usage" invisible="1" />
+                <button
+                    name="typ.print_label_action"
+                    string="Print Label"
+                    type="action"
+                    icon="fa-print"
+                    groups="stock.group_stock_user"
+                    attrs="{
+                        'invisible': [
+                            '|',
+                            ('normalized_barcode', '=', True),
+                            ('location_usage', '!=', 'supplier')
+                        ],
+                    }"
+                />
+            </xpath>
+           <button name="action_cancel" position="attributes">
+                <attribute name="groups">typ.res_group_cancel_picking</attribute>
+           </button>
+            <field name="origin" position="before">
+                <field name="arrival_date_broker" />
+                <field name="picking_shipment_date" />
+            </field>
+            <xpath expr="//page[@name='operations']" position="attributes">
+                <attribute name="groups">typ.group_stock_advanced_info</attribute>
+            </xpath>
+            <xpath expr="//page[@name='extra']" position="attributes">
+                <attribute name="groups">typ.group_stock_advanced_info</attribute>
+            </xpath>
+            <xpath expr="//page[@name='note']" position="attributes">
+                <attribute name="groups">typ.group_stock_advanced_info</attribute>
+            </xpath>
+            <xpath
+                expr="//page[@name='detailed_operations_shown']//button[@name='action_put_in_pack']"
+                position="attributes"
+            >
+                <attribute name="groups">typ.group_stock_advanced_info</attribute>
+            </xpath>
+            <xpath
+                expr="//page[@name='detailed_operations_hidden']//button[@name='action_put_in_pack']"
+                position="attributes"
+            >
+                <attribute name="groups">typ.group_stock_advanced_info</attribute>
+            </xpath>
+            <xpath expr="//field[@name='origin']" position="after">
+                <field name="number_landing" groups="typ.group_stock_advanced_info" />
+                <field name="input_cb" />
+                <field name="guide_number" />
+            </xpath>
+            <xpath expr="//field[@name='backorder_id']" position="after">
+                <field
+                    name="invoiced"
+                    readonly="1"
+                    groups="typ.group_stock_advanced_info"
+                />
+            </xpath>
+            <xpath expr="//button[@name='button_validate']" position="attributes">
+                <attribute
+                    name="groups"
+                    add="!typ.group_stock_button_validation_transfer"
+                />
+            </xpath>
+            <xpath expr="//button[@name='button_validate']" position="after">
+                <button
+                    name="action_confirm_trafic"
+                    type="object"
+                    string="shipped ok"
+                    attrs="{'invisible': [('state', 'in', ('draft', 'cancel', 'done'))]}"
+                    groups="purchase.group_purchase_manager"
+                />
+            </xpath>
+            <xpath
+                expr="//button[@name='%(stock.act_stock_return_picking)d']"
+                position="attributes"
+            >
+                <attribute name="groups">typ.res_group_reverse_transfer</attribute>
+            </xpath>
+            <field name="partner_id" position="attributes">
+                <attribute
+                    name="attrs"
+                >{'readonly': [('state', '=', 'assigned')]}</attribute>
+            </field>
+            <xpath
+                expr="//field[@name='move_ids_without_package']//field[@name='product_uom_qty']"
+                position="before"
+            >
+                <field name="shipment_date" />
+                <field name="forecast_expected_date" />
+            </xpath>
+            <xpath
+                expr="//field[@name='location_dest_id'][not(ancestor::field)]"
+                position="after"
+            >
+                <field
+                    name="requirements_for_warranty"
+                    attrs="{
+                        'invisible': [('is_warranty', '=', False)],
+                        'readonly': True
+                    }"
+                />
+                <field name="is_warranty" invisible="1" />
+                <field
+                    name="responsible_for_warranty"
+                    attrs="{
+                        'invisible': [('is_warranty', '=', False)],
+                        'required': [('is_warranty', '=', True)]
+                    }"
+                />
+            </xpath>
+            <xpath expr="//button[@name='do_unreserve']" position="attributes">
+                <attribute
+                    name="groups"
+                >typ.res_group_force_stock_move,typ.res_group_can_unreserve</attribute>
+            </xpath>
+            <field name="has_move_lines" position="after">
+                <field
+                    name="product_supplier_ref"
+                    groups="typ.group_reception_picking_attributes"
+                    readonly="1"
+                />
+            </field>
+        </field>
+    </record>
+
+    <record id="view_picking_form_edit_requirements_for_warranty" model="ir.ui.view">
+        <field name="name">stock.picking.form.inherit.typ.guarranty</field>
+        <field name="model">stock.picking</field>
+        <field name="inherit_id" ref="stock.view_picking_form" />
+        <field
+            name="groups_id"
+            eval="[(6, 0, [ref('group_stock_validation_warranty_transfer')])]"
+        />
+        <field name="arch" type="xml">
+            <xpath
+                expr="//field[@name='requirements_for_warranty']"
+                position="attributes"
+            >
+                <attribute name="readonly">False</attribute>
+            </xpath>
+        </field>
+    </record>
+
+    <!-- Hide create button to the group "Users that can not create picking" -->
+    <record id="view_picking_form_no_create" model="ir.ui.view">
+        <field name="name">stock.picking.form.inherit.typ.nocreate</field>
+        <field name="model">stock.picking</field>
+        <field name="inherit_id" ref="stock.view_picking_form" />
+        <field
+            name="groups_id"
+            eval="[(6, 0, [ref('typ.res_group_can_not_create_picking')])]"
+        />
+        <field name="arch" type="xml">
+            <xpath expr="//form" position="attributes">
+                <attribute name="create">false</attribute>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="vpicktree" model="ir.ui.view">
+        <field name="name">stock.picking.tree.inherit.typ</field>
+        <field name="model">stock.picking</field>
+        <field name="inherit_id" ref="stock.vpicktree" />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='scheduled_date']" position="after">
+                <field name="create_date" optional="show" />
+                <field name="arrival_date_broker" optional="show" />
+                <field name="picking_shipment_date" optional="show" />
+                <field name="invoiced" invisible="1" />
+            </xpath>
+            <xpath expr="//field[@name='origin']" position="before">
+                <field name="date_done" optional="show" />
+            </xpath>
+            <xpath expr="//field[@name='origin']" position="after">
+                <field name="number_landing" optional="show" />
+            </xpath>
+            <xpath expr="//tree" position="attributes">
+                <attribute name="decoration-danger">(
+                    not invoiced
+                    and state not in ('cancel', 'done')
+                    and scheduled_date &lt; current_date
+                )</attribute>
+                <attribute name="decoration-success">(
+                    invoiced
+                    and picking_shipment_date &lt;= current_date
+                    and current_date &lt;= scheduled_date
+                )</attribute>
+                <attribute name="decoration-warning">(
+                    state not in ('cancel','done')
+                    and picking_shipment_date &lt; current_date
+                    and scheduled_date &lt; current_date
+                )</attribute>
+            </xpath>
+            </field>
+    </record>
+
+    <record id="vpicktree_no_create" model="ir.ui.view">
+        <field name="name">stock.picking.tree.inherit.typ.nocreate</field>
+        <field name="model">stock.picking</field>
+        <field name="inherit_id" ref="stock.vpicktree" />
+        <field
+            name="groups_id"
+            eval="[(6, 0, [ref('typ.res_group_can_not_create_picking')])]"
+        />
+        <field name="arch" type="xml">
+            <xpath expr="//tree" position="attributes">
+                 <attribute name="create">false</attribute>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_picking_internal_search" model="ir.ui.view">
+        <field name="name">stock.picking.internal.search.inherit.typ</field>
+        <field name="model">stock.picking</field>
+        <field name="inherit_id" ref="stock.view_picking_internal_search" />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='partner_id']" position="before">
+                <field name="origin" />
+                <field name="input_cb" />
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

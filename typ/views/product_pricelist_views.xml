@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+
+    <record id="product_pricelist_view" model="ir.ui.view">
+        <field name="name">product.pricelist.form.inherit.typ</field>
+        <field name="model">product.pricelist</field>
+        <field name="inherit_id" ref="product.product_pricelist_view" />
+        <field name="arch" type="xml">
+            <!-- Pointing to the first field instead of a specific one so this works correctly
+                 with and without the advanced pricelist view enabled
+             -->
+            <xpath expr="//field[@name='item_ids']/tree/field[1]" position="before">
+                <field name="sequence" widget="handle" />
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

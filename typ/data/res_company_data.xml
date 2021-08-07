@@ -1,0 +1,208 @@
+<odoo noupdate="1">
+
+    <record id="base.main_company" model="res.company">
+        <field name="name">TYP REFRIGERACION</field>
+        <field name="website">http://www.typrefrigeracion.com.mx</field>
+        <field name="phone">(662)261-1110</field>
+        <field name="email">contacto@typrefrigeracion.com.mx</field>
+        <field name="street_name">Nayarit</field>
+        <field name="street_number">291</field>
+        <field name="street2">San Benito</field>
+        <field name="zip">83190</field>
+        <field name="city">Hermosillo</field>
+        <field name="state_id" ref="base.state_mx_son" />
+        <field name="country_id" ref="base.mx" />
+        <field name="l10n_mx_edi_fiscal_regime">601</field>
+    </record>
+
+    <record id="partner_cedis" model="res.partner">
+        <field name="name">CEDIS</field>
+        <field name="street_name">Blvd. Agustín Gómez del Campo</field>
+        <field name="phone">(662) 261-1110</field>
+        <field name="email">contacto@typrefrigeracion.com.mx</field>
+        <field name="street_number">61</field>
+        <field name="street2">El Llano</field>
+        <field name="zip">83210</field>
+        <field name="city">Hermosillo</field>
+        <field name="state_id" ref="base.state_mx_son" />
+        <field name="parent_id" ref="base.main_partner" />
+        <field name="website_published" eval="1" />
+        <field name="country_id" ref="base.mx" />
+        <field name="type">other</field>
+        <field
+            name="map_location"
+        >https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d13945.389662099937!2d-111.00892286863035!3d29.09542306442042!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x86ce83f7f632fc93%3A0x5ff89521e6e56ab3!2sT+%26+P+Refrigeracion+S.A.+de+C.V.!5e0!3m2!1sen!2smx!4v1539987215828</field>
+    </record>
+
+    <record id="partner_hermosillo" model="res.partner">
+        <field name="name">Hermosillo</field>
+        <field name="street_name">Nayarit</field>
+        <field name="phone">(662) 210-6677</field>
+        <field name="email">typhillo@typrefrigeracion.com.mx</field>
+        <field name="street_number">291</field>
+        <field name="street2">San Benito</field>
+        <field name="zip">83190</field>
+        <field name="city">Hermosillo</field>
+        <field name="state_id" ref="base.state_mx_son" />
+        <field name="parent_id" ref="base.main_partner" />
+        <field name="website_published" eval="1" />
+        <field name="country_id" ref="base.mx" />
+        <field name="type">other</field>
+        <field
+            name="map_location"
+        >https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d13944.042231788188!2d-111.00892286862802!3d29.10536966254726!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x86ce843d4187e739%3A0xc7da3efe448293e7!2sT+%26+P+REFRIGERATION!5e0!3m2!1sen!2smx!4v1539799008117"</field>
+    </record>
+
+    <record id="partner_tijuana" model="res.partner">
+        <field name="name">Tijuana</field>
+        <field name="street_name">Av. Rápida Oriente</field>
+        <field name="phone">(664) 607-5678</field>
+        <field name="email">typtij@typrefrigeracion.com.mx</field>
+        <field name="street_number">17220-2</field>
+        <field name="street2">Río Tijuana 3era. Etapa</field>
+        <field name="zip">22226</field>
+        <field name="city">Tijuana</field>
+        <field name="state_id" ref="base.state_mx_bc" />
+        <field name="parent_id" ref="base.main_partner" />
+        <field name="website_published" eval="1" />
+        <field name="country_id" ref="base.mx" />
+        <field name="type">other</field>
+        <field
+            name="map_location"
+        >https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d841.2734928873479!2d-116.94331631186027!3d32.49691742992538!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80d938613eed54db%3A0xfe5b54500ae54a8e!2sTYP+Refrigeracion!5e0!3m2!1sen!2smx!4v1539798295477</field>
+    </record>
+
+    <record id="partner_mexicali" model="res.partner">
+        <field name="name">Mexicali</field>
+        <field name="street_name">Apozol Sur</field>
+        <field name="phone">(686) 555-4707</field>
+        <field name="email">typmex@typrefrigeracion.com.mx</field>
+        <field name="street_number">96-A</field>
+        <field name="street2">Ex-Ejido Zacatecas</field>
+        <field name="zip">21070</field>
+        <field name="city">Mexicali</field>
+        <field name="state_id" ref="base.state_mx_bc" />
+        <field name="parent_id" ref="base.main_partner" />
+        <field name="website_published" eval="1" />
+        <field name="country_id" ref="base.mx" />
+        <field name="type">other</field>
+        <field
+            name="map_location"
+        >https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3359.9895964057155!2d-115.4633657878493!3d32.63310051404658!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80d77a9f7db51b4b%3A0x419cfd5964474c22!2sTyP+Refrigeraci%C3%B3n!5e0!3m2!1sen!2smx!4v1539798933985</field>
+    </record>
+
+    <record id="partner_paz" model="res.partner">
+        <field name="name">La Paz</field>
+        <field name="street_name">Héroes de Independencia</field>
+        <field name="phone">(612) 129-3261</field>
+        <field name="email">typlpz@typrefrigeracion.com.mx</field>
+        <field name="street_number">s/n</field>
+        <field name="street2">Pueblo Nuevo</field>
+        <field name="zip">23060</field>
+        <field name="city">La Paz</field>
+        <field name="state_id" ref="base.state_mx_bcs" />
+        <field name="parent_id" ref="base.main_partner" />
+        <field name="website_published" eval="1" />
+        <field name="country_id" ref="base.mx" />
+        <field name="type">other</field>
+        <field
+            name="map_location"
+        >https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3640.896750054593!2d-110.3240040489596!3d24.140263879610142!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x86afd337d28ec113%3A0x5a438d7587e458bf!2sT+Y+P+Refrigeraci%C3%B3n%2C+S.A.+De+C.V.+La+Paz!5e0!3m2!1sen!2smx!4v1539799088958</field>
+    </record>
+
+    <record id="partner_nogales" model="res.partner">
+        <field name="name">Nogales</field>
+        <field name="street_name">Blvd. Luis Donaldo Colosio</field>
+        <field name="phone">(631) 313-9265</field>
+        <field name="email">typnog@typrefrigeracion.com.mx</field>
+        <field name="street_number">2680</field>
+        <field name="street2">Kennedy</field>
+        <field name="zip">84063</field>
+        <field name="city">Nogales</field>
+        <field name="state_id" ref="base.state_mx_son" />
+        <field name="parent_id" ref="base.main_partner" />
+        <field name="website_published" eval="1" />
+        <field name="country_id" ref="base.mx" />
+        <field name="type">other</field>
+        <field
+            name="map_location"
+        >https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3409.4760792081606!2d-110.94938719886112!3d31.290584315491472!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x86d152de22a5e495%3A0x68ee1a52be0e51f3!2sT+and+P+Cooling!5e0!3m2!1sen!2smx!4v1539799202005</field>
+    </record>
+
+    <record id="partner_obregon" model="res.partner">
+        <field name="name">Cd. Obregón</field>
+        <field name="street_name">Priv. Juárez</field>
+        <field name="phone">(644) 414-1950</field>
+        <field name="email">typobr@typrefrigeracion.com.mx</field>
+        <field name="street_number">934</field>
+        <field name="street2">Municipio Libre</field>
+        <field name="zip">85080</field>
+        <field name="city">Cd. Obregón</field>
+        <field name="state_id" ref="base.state_mx_son" />
+        <field name="parent_id" ref="base.main_partner" />
+        <field name="website_published" eval="1" />
+        <field name="country_id" ref="base.mx" />
+        <field name="type">other</field>
+        <field
+            name="map_location"
+        >https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7078.887712166168!2d-109.9389121017213!3d27.486568398971084!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x86c815e19e6583d5%3A0x1e6f72c1b1aa352c!2sT+and+P+Cooling!5e0!3m2!1sen!2smx!4v1539803114372</field>
+    </record>
+
+    <record id="partner_mochis" model="res.partner">
+        <field name="name">Los Mochis</field>
+        <field name="street_name">Lázaro Cárdenas</field>
+        <field name="phone">(668) 812-2679</field>
+        <field name="email">typlmo@typrefrigeracion.com.mx</field>
+        <field name="street_number">61</field>
+        <field name="street2">Centro</field>
+        <field name="zip">81200</field>
+        <field name="city">Los Mochis</field>
+        <field name="state_id" ref="base.state_mx_sin" />
+        <field name="parent_id" ref="base.main_partner" />
+        <field name="website_published" eval="1" />
+        <field name="country_id" ref="base.mx" />
+        <field name="type">other</field>
+        <field
+            name="map_location"
+        >https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3592.3435479496165!2d-108.98928204893942!3d25.792237813549274!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x86ba2f51db5b4919%3A0xfe2a747a08bb1289!2sT+and+P+Cooling!5e0!3m2!1sen!2smx!4v1539803157573</field>
+    </record>
+
+    <record id="partner_culiacan" model="res.partner">
+        <field name="name">Culiacán</field>
+        <field name="street_name">Calzada Aeropuerto</field>
+        <field name="phone">(667) 712-1220</field>
+        <field name="email">typcul@typrefrigeracion.com.mx</field>
+        <field name="street_number">4868-A</field>
+        <field name="street2">San Rafael</field>
+        <field name="zip">80151</field>
+        <field name="city">Culiacán</field>
+        <field name="state_id" ref="base.state_mx_sin" />
+        <field name="parent_id" ref="base.main_partner" />
+        <field name="website_published" eval="1" />
+        <field name="country_id" ref="base.mx" />
+        <field name="type">other</field>
+        <field
+            name="map_location"
+        >https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3622.473500531705!2d-107.44059604895189!3d24.77923485453152!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x86bcd0bb83c620db%3A0x695b47abee8108c1!2sT+%26+P+Refrigeration%2C+SA+de+CV!5e0!3m2!1sen!2smx!4v1539803221052</field>
+    </record>
+
+    <record id="partner_guadalajara" model="res.partner">
+        <field name="name">Guadalajara</field>
+        <field name="street_name">Calle Delicias</field>
+        <field name="phone">(33) 1578-1211</field>
+        <field name="email">typgdl@typrefrigeracion.com.mx</field>
+        <field name="street_number">271</field>
+        <field name="street2">El Álamo</field>
+        <field name="zip">45560</field>
+        <field name="city">Guadalajara</field>
+        <field name="state_id" ref="base.state_mx_jal" />
+        <field name="parent_id" ref="base.main_partner" />
+        <field name="website_published" eval="1" />
+        <field name="country_id" ref="base.mx" />
+        <field name="type">other</field>
+        <field
+            name="map_location"
+        >https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3734.902963451821!2d-103.31438704899692!3d20.59202000785119!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8428b32756d1fdfd%3A0xff7146c43d77034e!2sT+y+P+Refrigeraci%C3%B3n%2C+S.A+de+C.V.+Guadalajara!5e0!3m2!1sen!2smx!4v1539803260234</field>
+    </record>
+
+</odoo>

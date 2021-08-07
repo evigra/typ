@@ -1,6 +1,0 @@
-id,name,model_id/id,group_id/id,perm_read,perm_write,perm_create,perm_unlink
-landed_cost_guide_manager,landed_cost_guide_manager,model_stock_landed_cost_guide,stock.group_stock_manager,1,1,1,1
-landed_cost_guide_user,landed_cost_guide_user,model_stock_landed_cost_guide,stock.group_stock_user,1,1,1,0
-landed_cost_guide_line_manager,landed_cost_guide_line_manager,model_stock_landed_cost_guide_line,stock.group_stock_manager,1,1,1,1
-landed_cost_guide_line_user,landed_cost_guide_line_user,model_stock_landed_cost_guide_line,stock.group_stock_user,1,1,1,0
-access_invoice_guides,access_invoice_guides,model_invoice_guides,base.group_user,1,1,1,1

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+
+    <record id="print_label_form_view" model="ir.ui.view">
+        <field name="name">Print Label Form View</field>
+        <field name="model">stock.print_label</field>
+        <field name="arch" type="xml">
+            <form string="Print Label">
+                <group>
+                    <field name="product_id" readonly="1" />
+                    <field name="qty" />
+                    <field name="report_id" />
+                </group>
+                <footer>
+                    <button
+                        name="print_label"
+                        string="Print label(s)"
+                        type="object"
+                        class="oe_highlight"
+                    />
+                    or
+                    <button string="Cancel" class="oe_link" special="cancel" />
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="print_label_action" model="ir.actions.act_window">
+        <field name="name">Print Label</field>
+        <field name="res_model">stock.print_label</field>
+        <field name="binding_model_id" ref="model_product_product" />
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+
+</odoo>

@@ -1,0 +1,153 @@
+<odoo>
+
+    <record id="product_product_tree_view" model="ir.ui.view">
+        <field name="name">product.product.tree</field>
+        <field name="model">product.product</field>
+        <field name="inherit_id" ref="product.product_product_tree_view" />
+        <field name="arch" type="xml">
+            <xpath
+                expr="//field[@name='product_template_attribute_value_ids']"
+                position="after"
+            >
+                <field name="state" optional="show" />
+            </xpath>
+            <xpath expr="//field[@name='qty_available']" position="after">
+                <field name="incoming_qty" optional="show" />
+            </xpath>
+            <xpath expr="//field[@name='virtual_available']" position="after">
+                <field name="reordering_max_qty" optional="show" />
+                <field name="reordering_min_qty" optional="show" />
+            </xpath>
+            <xpath expr="//field[@name='barcode']" position="after">
+                <field name="create_date" optional="show" />
+            </xpath>
+            <xpath expr="//field[@name='name']" position="after">
+                <field name="sales_count" optional="show" />
+                <field name="purchased_product_qty" optional="show" />
+            </xpath>
+            <field name="lst_price" position="attributes">
+                <attribute name="groups">typ.res_group_standard_price</attribute>
+            </field>
+        </field>
+    </record>
+
+    <record id="product_normal_form_view" model="ir.ui.view">
+        <field name="name">product.normal.form.inherit.typ</field>
+        <field name="model">product.product</field>
+        <field name="inherit_id" ref="product.product_normal_form_view" />
+        <field name="arch" type="xml">
+            <group name="packaging" position="after">
+                <separator string="Storage location" />
+                <field name="product_warehouse_ids">
+                    <tree editable="bottom">
+                        <field name="warehouse_id" required="True" />
+                        <field name="posx" />
+                        <field name="posy" />
+                        <field name="posz" />
+                    </tree>
+                </field>
+            </group>
+            <xpath expr="//group[@name='group_lots_and_weight']" position="inside">
+                <field name="state" />
+            </xpath>
+            <xpath expr="//field[@name='default_code']" position="before">
+                <field name="normalized_barcode" />
+                <field name="report_id" />
+            </xpath>
+            <xpath expr="//page[@name='inventory']" position="after">
+                <page string="Market" name="market">
+                    <group>
+                        <group>
+                            <field name="product_market_type" />
+                            <field name="project_or_replacement" />
+                            <field name="ref_ac" />
+                            <field name="final_market" />
+                            <field name="main_customer_activity" />
+                        </group>
+                        <group>
+                            <field name="wait_time" />
+                            <field name="type_of_client" />
+                            <field name="price_sensitivity" />
+                            <field name="product_nature" />
+                        </group>
+                    </group>
+                </page>
+            </xpath>
+            <xpath expr="//field[@name='alternative_product_ids']" position="after">
+                <field name="alternative_variant_ids" widget="many2many_tags" />
+            </xpath>
+            <xpath expr="//field[@name='barcode_base']" position="attributes">
+                <attribute name="attrs">{
+                    'invisible': [
+                        '|',
+                        ('barcode_rule_id', '=', False),
+                        ('normalized_barcode', '!=', False),
+                    ],
+                    'readonly': [('generate_type', '!=', 'manual')],
+                }</attribute>
+            </xpath>
+            <xpath expr="//button[@name='generate_base']" position="attributes">
+                <attribute name="attrs">{
+                    'invisible': [
+                        '|', '|',
+                        ('generate_type', '!=', 'sequence'),
+                        ('barcode_base', '!=', 0),
+                        ('normalized_barcode', '!=', False)
+                    ]
+                }</attribute>
+            </xpath>
+            <xpath expr="//field[@name='barcode']" position="attributes">
+                <attribute name="attrs">{
+                    'invisible': [('normalized_barcode', '!=', False)],
+                    'readonly': [('generate_type', '=', 'sequence')],
+                }</attribute>
+            </xpath>
+            <xpath expr="//button[@name='generate_barcode']" position="attributes">
+                <attribute name="attrs">{
+                    'invisible': [
+                        '|', '|',
+                        ('barcode_rule_id', '=', False),
+                        ('normalized_barcode', '!=', False),
+                        ('barcode_base', '=', 0)
+                    ]
+                }</attribute>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="product_search_form_view" model="ir.ui.view">
+        <field name="name">product.template.search.inherit.typ</field>
+        <field name="model">product.product</field>
+        <field name="inherit_id" ref="product.product_search_form_view" />
+        <field name="arch" type="xml">
+            <field name="product_tmpl_id" position="after">
+                <field name="product_warehouse_ids" string="Storage Location" />
+            </field>
+            <field name="pricelist_id" position="after">
+                <field
+                    name="product_market_type"
+                    string="Product market type"
+                    filter_domain="[('product_market_type','ilike',self)]"
+                />
+            </field>
+        </field>
+    </record>
+
+    <record id="product_kanban_view" model="ir.ui.view">
+        <field name="name">Product Kanban Inherit typ</field>
+        <field name="model">product.product</field>
+        <field name="inherit_id" ref="product.product_kanban_view" />
+        <field name="arch" type="xml">
+            <xpath expr="//kanban/field[@name='lst_price']" position="attributes">
+                <attribute name="groups">typ.res_group_standard_price</attribute>
+            </xpath>
+            <xpath
+                expr="//ul[descendant::field[@name='lst_price']]"
+                position="attributes"
+            >
+                <attribute name="groups">typ.res_group_standard_price</attribute>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

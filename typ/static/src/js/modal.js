@@ -1,4 +1,4 @@
-odoo.define('type.modal', function () {
+odoo.define("type.modal", function () {
     /**
      * This module saves the screen position when a modal
      * its opened and scroll the view into that position
@@ -9,9 +9,9 @@ odoo.define('type.modal', function () {
         return $.Deferred().reject("No Modal pluggin found.");
     }
 
-    function getTarget () {
-        var $oContent = $('html .o_web_client .o_content');
-        return $oContent.css('overflow') == 'visible' ? $(window) : $oContent;
+    function getTarget() {
+        var $oContent = $("html .o_web_client .o_content");
+        return $oContent.css("overflow") == "visible" ? $(window) : $oContent;
     }
 
     var Modal = $.fn.modal.Constructor;
@@ -25,6 +25,6 @@ odoo.define('type.modal', function () {
     var hide = Modal.prototype.hide;
     Modal.prototype.hide = function () {
         hide.apply(this, arguments);
-        getTarget()[0].scrollTo({ top: this.lastScroll, behavior: 'smooth' });
+        getTarget()[0].scrollTo({top: this.lastScroll, behavior: "smooth"});
     };
 });

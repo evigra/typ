@@ -1,13 +1,11 @@
-from odoo import models, fields
+from odoo import fields, models
 
 
 class ProductStockWarehouse(models.Model):
     _name = "product.stock.warehouse"
     _description = "TODO: Once talk with the team describe it for v14.0"
 
-    warehouse_id = fields.Many2one(
-        "stock.warehouse", string="Warehouse", help="Set the warehouse"
-    )
+    warehouse_id = fields.Many2one("stock.warehouse", string="Warehouse", help="Set the warehouse")
     posx = fields.Char(
         "Corridor (X)",
         help="Optional product details, for information purpose only",
@@ -20,6 +18,4 @@ class ProductStockWarehouse(models.Model):
         "Height (Z)",
         help="Optional product details, for information purpose only",
     )
-    product_id = fields.Many2one(
-        "product.product", string="Product", help="Set the product"
-    )
+    product_id = fields.Many2one("product.product", string="Product", help="Set the product")

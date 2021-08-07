@@ -1,0 +1,491 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo noupdate="1">
+
+    <record id="res_group_cancel_invoice" model="res.groups">
+        <field name="name">Users that can cancel a invoice</field>
+        <field name="comment">This group can cancel invoices.</field>
+        <field
+            name="users"
+            eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]"
+        />
+    </record>
+
+    <record id="res_group_button_credit_note" model="res.groups">
+        <field name="name">Users that can see the button add credit note</field>
+        <field name="comment">This group can see the button add credit note.</field>
+        <field
+            name="users"
+            eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]"
+        />
+    </record>
+
+    <record id="res_group_account_adviser" model="res.groups">
+        <field name="name">Users that can see the adviser menu in accounting</field>
+        <field name="comment">This group can see the adviser menu in accounting.</field>
+        <field
+            name="users"
+            eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]"
+        />
+    </record>
+
+    <record id="res_group_invoices_report" model="res.groups">
+        <field name="name">Users that can see Invoices Report</field>
+        <field
+            name="comment"
+        >This group can see the Invoices report menu in accounting.</field>
+        <field
+            name="users"
+            eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]"
+        />
+    </record>
+
+    <record id="res_group_lock_dates" model="res.groups">
+        <field name="name">Users that can see lock dates menu</field>
+        <field name="comment">This group can see lock dates menu in accounting.</field>
+        <field
+            name="users"
+            eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]"
+        />
+    </record>
+
+    <record id="res_group_button_cancel_payment" model="res.groups">
+        <field name="name">Users who can see the cancel payment button</field>
+        <field
+            name="comment"
+        >This group can see the cancel payment button in accounting.</field>
+        <field
+            name="users"
+            eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]"
+        />
+    </record>
+
+    <record id="res_group_analitic_invoice_lines" model="res.groups">
+        <field name="name">Users who can see analytic fields invoice lines</field>
+        <field
+            name="comment"
+        >This group can see analytics fields in invoice lines</field>
+        <field
+            name="users"
+            eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]"
+        />
+    </record>
+
+    <record id="res_group_force_stock_move" model="res.groups">
+        <field name="name">Users that can force availability and unassign</field>
+        <field
+            name="users"
+            eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]"
+        />
+    </record>
+
+    <record id="res_group_can_unreserve" model="res.groups">
+        <field name="name">Users than can unreserve</field>
+        <field
+            name="users"
+            eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]"
+        />
+    </record>
+
+    <record id="res_group_can_run_scheduler" model="res.groups">
+        <field name="name">Users that can run schedulers warehouse</field>
+        <field
+            name="users"
+            eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]"
+        />
+    </record>
+
+    <record id="res_group_can_not_create_picking" model="res.groups">
+        <field name="name">Users that can not create picking</field>
+    </record>
+
+    <record id="res_group_standard_price" model="res.groups">
+        <field name="name">Users that can see standard price</field>
+        <field name="comment">This group can see price cost of product.</field>
+        <field
+            name="users"
+            eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]"
+        />
+    </record>
+
+    <record id="res_group_cancel_picking" model="res.groups">
+        <field name="name">Users that can cancel a picking</field>
+        <field name="comment">This group can cancel the pickings</field>
+        <field
+            name="users"
+            eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]"
+        />
+    </record>
+
+    <record id="res_group_reverse_transfer" model="res.groups">
+        <field name="name">Users that can reverse transfer in picking</field>
+        <field name="comment">This group can reverse transfer in pickings</field>
+        <field
+            name="users"
+            eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]"
+        />
+    </record>
+
+    <record id="res_group_stock_manager" model="res.groups">
+        <field name="name">Users that can define pedimentos serial and lot</field>
+        <field
+            name="users"
+            eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]"
+        />
+    </record>
+
+    <record id="res_group_standard_price_button" model="res.groups">
+        <field name="name">Users that can see standard price button</field>
+        <field name="comment">This group can update cost standard of product.</field>
+        <field
+            name="users"
+            eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]"
+        />
+    </record>
+
+    <record id="group_cancel_picking_with_move_not_in_transit_loc" model="res.groups">
+        <field
+            name="name"
+        >Users that can cancel pickings that have not moves in transit locations</field>
+        <field
+            name="comment"
+        >This group can cancel pickings that have not moves in transit locations</field>
+        <field
+            name="users"
+            eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]"
+        />
+    </record>
+
+    <record id="group_reception_picking_attributes" model="res.groups">
+        <field name="name">Users who see picking reception attributes</field>
+        <field
+            name="comment"
+        >This group can see the reception attributes of the pickings</field>
+        <field
+            name="users"
+            eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]"
+        />
+    </record>
+
+    <record id="group_stock_manual_transfer" model="res.groups">
+        <field name="name">Users that can make manual transfers</field>
+        <field name="comment">This group can make manual transfers</field>
+        <field
+            name="users"
+            eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]"
+        />
+    </record>
+
+    <record id="res_group_stock_move_button" model="res.groups">
+        <field name="name">Shows buttons in movements of stock</field>
+        <field name="comment">This group can display buttons hidden of move
+        Buttons Hidden:
+            - Cancel Availability: In view move from picking
+            - Confirm: In view move from picking
+            - Scrap: In view move from picking
+        </field>
+        <field
+            name="users"
+            eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]"
+        />
+    </record>
+
+    <record id="group_traffic" model="res.groups">
+        <field name="name">Traffic</field>
+    </record>
+
+    <record id="group_stock_menu_inform_configuration" model="res.groups">
+        <field name="name">Users can see the Inform and Ubications menu</field>
+        <field name="comment">This group can see the Inform and Ubication menu</field>
+        <field
+            name="users"
+            eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]"
+        />
+    </record>
+
+    <record id="group_stock_validation_button_inventory" model="res.groups">
+        <field
+            name="name"
+        >Users can see the button Validation in inventory adjustments</field>
+        <field
+            name="comment"
+        >This group can see the button Validation in inventory adjustments</field>
+        <field
+            name="users"
+            eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]"
+        />
+    </record>
+
+    <record id="group_stock_validation_warranty_transfer" model="res.groups">
+        <field name="name">Users can confirm transfers for warranty</field>
+        <field name="comment">This group can confirm transfers for warranty</field>
+        <field
+            name="users"
+            eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]"
+        />
+    </record>
+
+    <record id="group_stock_button_validation_transfer" model="res.groups">
+        <field name="name">Users will not see the validation transfer button</field>
+        <field
+            name="comment"
+        >This group will not see the validation transfer button</field>
+    </record>
+
+    <record id="group_stock_advanced_info" model="res.groups">
+        <field name="name">Show advanced info</field>
+        <field
+            name="comment"
+        >This group will allow user to see operation, additional info and note pages on form piking view and other fields including put_in_pack button
+        </field>
+        <field name="category_id" ref="base.module_category_hidden" />
+        <field
+            name="users"
+            eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]"
+        />
+    </record>
+
+    <record id="group_validate_landed" model="res.groups">
+        <field name="name">Validate Landed Costs</field>
+        <field name="comment">Users can validate landed xosts</field>
+        <field
+            name="users"
+            eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]"
+        />
+        <field name="category_id" ref="base.module_category_hidden" />
+    </record>
+
+    <record id="group_sale_order_invoice_payment_term_manager" model="res.groups">
+        <field name="name">Sale order - Invoice - payment term manager</field>
+        <field
+            name="comment"
+        >This group has access to modify field payment term in Sale Orders and Invoices.</field>
+        <field
+            name="users"
+            eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]"
+        />
+    </record>
+
+    <record id="group_res_partner_warehouse_manager" model="res.groups">
+        <field name="name">Partner warehouse configuration manager</field>
+        <field
+            name="comment"
+        >This group can register partner warehouse configurations.</field>
+        <field
+            name="users"
+            eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]"
+        />
+    </record>
+
+    <record id="res_group_can_sell_below_minimum_margin" model="res.groups">
+        <field name="name">Users that can sell below the minimum margin</field>
+        <field
+            name="comment"
+        >This group allow sale order bellow the minimum margin.</field>
+        <field
+            name="users"
+            eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]"
+        />
+    </record>
+
+    <record id="res_group_margin_sale_order" model="res.groups">
+        <field name="name">Users that can see the margin of sale</field>
+        <field name="comment">This group can see margin in sale order.</field>
+        <field
+            name="users"
+            eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]"
+        />
+    </record>
+
+    <record id="res_group_cancel_sale_order" model="res.groups">
+        <field name="name">Users that can cancel a sale order</field>
+        <field name="comment">This group can cancel the sale orders.</field>
+        <field
+            name="users"
+            eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]"
+        />
+    </record>
+
+    <record id="group_invoiced_without_pedimento" model="res.groups">
+        <field
+            name="name"
+        >Users that can invoiced a sale order without pedimento in entry quants</field>
+        <field
+            name="comment"
+        >This group can invoiced a sale order without pedimento in entry quants.</field>
+        <field
+            name="users"
+            eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]"
+        />
+    </record>
+
+    <record id="res_group_cost_audit" model="res.groups">
+        <field name="name">Users who can audit costs</field>
+        <field
+            name="users"
+            eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]"
+        />
+    </record>
+
+    <record id="res_group_modify_price_sale" model="res.groups">
+        <field name="name">Modify price of sale in sale order</field>
+        <field name="comment">Users can modify price of sale in sale orders</field>
+        <field
+            name="users"
+            eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]"
+        />
+    </record>
+
+    <record id="res_group_product_customer_code" model="res.groups">
+        <field name="name">Users can see product customer code field</field>
+        <field name="comment">This group can see product customer code field</field>
+        <field
+            name="users"
+            eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]"
+        />
+    </record>
+
+    <record id="res_partner_accounting_employee_contact" model="res.groups">
+        <field name="name">Users that can see contact employee in partner</field>
+        <field
+            name="comment"
+        >This group can see contact employee, but not see their address</field>
+        <field
+            name="users"
+            eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]"
+        />
+    </record>
+
+    <record id="fleet_group_manager_configuration" model="res.groups">
+        <field name="name">Users that can see fleet configuration menu</field>
+        <field name="comment">This group can see fleet configuration menu</field>
+        <field
+            name="users"
+            eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]"
+        />
+    </record>
+
+    <record id="report_group_manager_revised" model="res.groups">
+        <field name="name">Users who can review indicator reports</field>
+        <field
+            name="users"
+            eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]"
+        />
+    </record>
+
+    <record id="report_group_manager_view" model="res.groups">
+        <field name="name">Users who can see all reports</field>
+        <field
+            name="users"
+            eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]"
+        />
+    </record>
+
+    <record id="per_rule_manager_user" model="ir.rule">
+        <field name="model_id" ref="model_hr_employee" />
+        <field name="name">For manager</field>
+        <field name="domain_force">[(1,'=',1)]</field>
+        <field name="groups" eval="[(4,ref('base.group_user'))]" />
+    </record>
+
+    <record id="per_rule_employee_user" model="ir.rule">
+        <field name="model_id" ref="model_hr_employee" />
+        <field name="name">For employee</field>
+        <field name="domain_force">[('employee_id.user_id','=',user.id)]</field>
+        <field name="groups" eval="[(4,ref('base.group_user'))]" />
+    </record>
+
+    <record id="per_rule_report_employee_user" model="ir.rule">
+        <field name="model_id" ref="model_hr_employee_report" />
+        <field name="name">For employee</field>
+        <field
+            name="domain_force"
+        >['|',('user_id.id','=',user.id),('employee_id.parent_id.user_id','=',user.id)]</field>
+        <field name="groups" eval="[(4,ref('base.group_user'))]" />
+    </record>
+
+    <record id="res_partner_edit_own_employee_contact" model="ir.rule">
+        <field name="name">Edit employee contact only</field>
+        <field
+            name="model_id"
+            search="[('model', '=', 'res.partner')]"
+            model='ir.model'
+        />
+        <field name="groups" eval="[(4,ref('base.group_user'))]" />
+        <field name="perm_read" eval="True" />
+        <field name="perm_write" eval="True" />
+        <field name="perm_unlink" eval="False" />
+        <field name="perm_create" eval="False" />
+        <field
+            name="domain_force"
+        >['|',('user_ids','=',user.id),('employee','=', False)]</field>
+    </record>
+
+    <record model="res.groups" id="group_purchase_budget_manager">
+        <field name="name">Purchase Budget Manager</field>
+        <field name="comment">This group is for Managers of Budget.
+They can:
+- Make budget requests.</field>
+    </record>
+
+    <record id="purchase_group_hidden_create_button" model="res.groups">
+        <field name="name">Purchase restricted users</field>
+        <field name="comment">Users of this group:
+- Do not see the "Create" button on the purchase order.
+- Do not see the "Confirm" button on the purchase order.</field>
+    </record>
+
+    <record model="res.groups" id="partner_group_hidden_create_button">
+        <field name="name">Partner restricted users</field>
+        <field name="comment">Users of this group:
+- Do not see the "Create" button on the partner.</field>
+    </record>
+
+    <record model="res.groups" id="purchase_group_approve_order_button">
+        <field name="name">Approve purchase order users</field>
+        <field name="users" eval="[(4, ref('base.user_root'))]" />
+        <field name="comment">Users of this group:
+They can:
+- Approve Purchase Order with restriction.</field>
+    </record>
+
+    <!-- Purchase managers are allowed to Approve Order Purchase -->
+    <record id="purchase.group_purchase_manager" model="res.groups">
+        <field
+            name="implied_ids"
+            eval="[(4, ref('purchase_group_approve_order_button'))]"
+        />
+    </record>
+
+    <record id="group_landed_guide_manager" model="res.groups">
+        <field name="name">Landed Cost Guide Manager</field>
+        <field name="comment">This group is for Managers of Landed Cost Guides.
+
+They can:
+- Reset guides to Draft state.</field>
+    </record>
+
+    <record id="fleet.fleet_rule_vehicle_visibility_user" model="ir.rule">
+        <field
+            name="domain_force"
+        >[('vehicle_manager', '=', user.partner_id.id)]</field>
+    </record>
+
+    <record id="fleet.fleet_rule_odometer_visibility_user" model="ir.rule">
+        <field
+            name="domain_force"
+        >[('vehicle_id.vehicle_manager', '=', user.partner_id.id)]</field>
+    </record>
+
+    <record id="fleet.fleet_rule_service_visibility_user" model="ir.rule">
+        <field
+            name="domain_force"
+        >[('vehicle_id.vehicle_manager', '=', user.partner_id.id)]</field>
+    </record>
+
+    <record id="fleet.fleet_rule_contract_visibility_user" model="ir.rule">
+        <field
+            name="domain_force"
+        >[('vehicle_id.vehicle_manager', '=', user.partner_id.id)]</field>
+    </record> -->
+
+</odoo>

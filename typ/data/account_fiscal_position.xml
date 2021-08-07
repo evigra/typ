@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<odoo noupdate="1">      
-
-    <record id="l10n_mx.1_account_fiscal_position_601_fr" model="account.fiscal.position">
-        <field name="l10n_mx_edi_code">601</field>
-    </record>
-      
-</odoo>

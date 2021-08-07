@@ -5,7 +5,6 @@ stages:
 
 lint:
   stage: main
-  allow_failure: true  # TODO remove once lints are fixed
   tags:
     - lint
   variables:

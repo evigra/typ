@@ -4,14 +4,14 @@ from odoo import api, fields, models
 class PosOrder(models.Model):
     _inherit = "pos.order"
 
-    def _get_usage_selection(self):
-        return self.env["res.partner"]._get_usage_selection()
-
     l10n_mx_edi_usage = fields.Selection(
-        _get_usage_selection,
-        "Usage",
+        selection=lambda self: self._get_usage_selection(),
+        string="Usage",
         help="This usage will be used instead of the default one for invoices.",
     )
+
+    def _get_usage_selection(self):
+        return self.env["res.partner"]._get_usage_selection()
 
     @api.model
     def _order_fields(self, ui_order):
@@ -23,7 +23,7 @@ class PosOrder(models.Model):
         )
         return res
 
-    def _prepare_invoice(self):
+    def _prepare_invoice_vals(self):
         res = super()._prepare_invoice()
         max_pay = max(self.statement_ids.mapped("amount"))
         journal = self.statement_ids.filtered(lambda s: s.amount == max_pay)[0]

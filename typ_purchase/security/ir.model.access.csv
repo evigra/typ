@@ -1,3 +1,0 @@
-id,name,model_id/id,group_id/id,perm_read,perm_write,perm_create,perm_unlink
-purchase_budget_manager,purchase_budget_manager,purchase_requisition.model_purchase_requisition,typ_purchase.group_purchase_budget_manager,1,1,1,1
-purchase_hidden_create_button,purchase_hidden_create_button,purchase.model_purchase_order,typ_purchase.purchase_group_hidden_create_button,1,1,0,1

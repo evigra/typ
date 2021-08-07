@@ -1,4 +1,4 @@
-from odoo import models, fields, api
+from odoo import api, fields, models
 
 
 class StockMoveLine(models.Model):
@@ -11,20 +11,21 @@ class StockMoveLine(models.Model):
         compute="_compute_product_warehouse_id",
         store=True,
     )
-
     posy = fields.Char(
         "Shelves (Y)",
         help="Optional product details, for information purpose only",
         compute="_compute_product_warehouse_id",
         store=True,
     )
-
     posz = fields.Char(
         "Height (Z)",
         help="Optional product details, for information purpose only",
         compute="_compute_product_warehouse_id",
         store=True,
     )
+    normalized_barcode = fields.Boolean(related="product_id.normalized_barcode")
+    location_usage = fields.Selection(related="location_id.usage")
+    serial_id = fields.Many2one("stock.production.lot", "Serial")
 
     @api.depends(
         "product_id",
@@ -36,17 +37,11 @@ class StockMoveLine(models.Model):
     )
     def _compute_product_warehouse_id(self):
         for line in self:
-            product_warehouse_id = (
-                line.product_id.product_warehouse_ids.filtered(  # noqa
-                    lambda x: x.warehouse_id == line.picking_id.warehouse_id
-                )
+            product_warehouse_id = line.product_id.product_warehouse_ids.filtered(
+                lambda x: x.warehouse_id == line.picking_id.warehouse_id
             )
             # Because there could be more than one ubication
-            product_warehouse_id = (
-                product_warehouse_id[0]
-                if product_warehouse_id
-                else product_warehouse_id
-            )
+            product_warehouse_id = product_warehouse_id[0] if product_warehouse_id else product_warehouse_id
             line.update(
                 {
                     "posx": product_warehouse_id.posx,
@@ -54,3 +49,11 @@ class StockMoveLine(models.Model):
                     "posz": product_warehouse_id.posz,
                 }
             )
+
+    @api.onchange("lot_name", "lot_id", "serial_id")
+    def _onchange_serial_number(self):
+        res = super().onchange_serial_number()
+
+        self.lot_id = self.serial_id
+        self.qty_done = 0
+        return res

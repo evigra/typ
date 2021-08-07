@@ -1,153 +1,196 @@
+<?xml version="1.0" encoding="utf-8" ?>
 <odoo>
-    <record id="view_origin_sale_order_filter_inherit" model="ir.ui.view">
-        <field name="name">origin.sale.order.filter.inherit</field>
+
+    <record id="view_sales_order_filter" model="ir.ui.view">
+        <field name="name">sale.order.filter.inherit.typ</field>
         <field name="model">sale.order</field>
-        <field name="inherit_id" ref="sale.view_sales_order_filter"/>
+        <field name="inherit_id" ref="sale.view_sales_order_filter" />
         <field name="arch" type="xml">
             <xpath expr="//field[@name='name']" position="after">
-                <field name="origin"/>
+                <field name="origin" />
+            </xpath>
+            <xpath expr="//group" position="inside">
+                <filter string="State" name="state" context="{'group_by':'state'}" />
             </xpath>
         </field>
     </record>
-    <record id="view_order_form_inherit_sale_stock" model="ir.ui.view">
-        <field name="name">sale.order.line</field>
+
+    <record id="view_order_form" model="ir.ui.view">
+        <field name="name">sale.order.form.inherit.typ</field>
         <field name="model">sale.order</field>
-        <field name="inherit_id" ref="sale_stock.view_order_form_inherit_sale_stock"/>
+        <field name="inherit_id" ref="sale.view_order_form" />
         <field name="arch" type="xml">
-            <xpath expr="//field[@name='order_line']/form/group/group/field[@name='route_id']" position="after">
-                <!-- <field name="purchase_partner_id" attrs="{'invisible': [('special_sale', '=', False)],
-                    'required': [('special_sale', '=', True)]}"
-                    groups="sale_stock.group_route_so_lines"/> -->
-                <field name="special_sale" invisible="1"/>
+            <xpath expr="//field[@name='payment_term_id']" position="attributes">
+                <attribute
+                    name="groups"
+                >typ.group_sale_order_invoice_payment_term_manager</attribute>
             </xpath>
-            <xpath expr="//field[@name='order_line']/form/group/group[2]" position="inside">
+            <xpath
+                expr="//field[@name='order_line']/form//field[@name='route_id']"
+                position="after"
+            >
+                <field
+                    name="purchase_partner_id"
+                    attrs="{
+                        'invisible': [('special_sale', '=', False)],
+                        'required': [('special_sale', '=', True)],
+                    }"
+                    groups="stock.group_adv_location"
+                />
+                <field name="special_sale" invisible="1" />
+            </xpath>
+            <xpath
+                expr="//field[@name='order_line']/form/group/group[2]"
+                position="inside"
+            >
                 <field name="alternative_variant_line_ids" widget="many2many">
                     <tree create="0">
-                        <field name="default_code"/>
-                        <field name="name"/>
+                        <field name="default_code" />
+                        <field name="name" />
                     </tree>
                 </field>
             </xpath>
-       </field>
-    </record>
-    <record id="sale_order_purchase_template" model="ir.ui.view">
-        <field name="name">sale.order.purchase.template</field>
-        <field name="model">sale.order</field>
-        <field name="arch" type="xml">
-            <form string="Pedido especial" create="0" edit="0">
-                <group>
-                    <field name="create_uid" readonly="1"/>
-                    <field name="partner_id" readonly="1" domain="[]"/>
-                    <field name="delivery_promise" readonly="1"/>
-                    <field name="shipping_to" readonly="1"/>
-                    <field name="partial_supply" readonly="1"/>
-                    <field name="type_of_import" readonly="1"/>
-                    <field name="shipping_by" readonly="1"/>
-                    <field name="purchase_currency" readonly="1"/>
-                    <field name="special_discounts" readonly="1"/>
-                </group>
-                <group>
-                    <field name="notest"/>
-                </group>
-            </form>
-        </field>
-    </record>
-    <record model="ir.ui.view" id="view_order_form">
-        <field name="name">sale.order.form</field>
-        <field name="model">sale.order</field>
-        <field name="inherit_id" ref="sale.view_order_form"/>
-        <field name="arch" type="xml">
-            <xpath expr="//h1" position="after">
-                <h3>
-                    <label for="origin" class="oe_inline"/>
-                    <field name="origin"/>
-                </h3>
-            </xpath>
-            <xpath expr="//group" position="inside">
-                <filter string="State" domain="[]" context="{'group_by':'state'}"/>
-            </xpath>
-            <xpath expr="//field[@name='pricelist_id']" position="after">
-                <field name="type_payment_term" attrs="{'readonly': [('state', '!=', 'draft')],'required': [('state', '=', 'draft')],}"/>
-            </xpath>
-            <xpath expr="//field[@name='payment_term_id']" position="attributes">
-                <attribute name="groups" translation="off">typ.group_sale_order_invoice_payment_term_manager</attribute>
-            </xpath>
-           <field name="client_order_ref" position="attributes">
-                <attribute name="string" translation="off">Reference/Customer</attribute>
-           </field>
            <button name="action_cancel" position="attributes">
-                <attribute name="groups" translation="off">typ.res_group_cancel_sale_order</attribute>
+                <attribute name="groups">typ.res_group_cancel_sale_order</attribute>
            </button>
-           <xpath expr="//field[@name='date_order']" position="attributes">
-                <attribute name="readonly" translation="off">1</attribute>
+            <xpath expr="//field[@name='payment_term_id']" position="after">
+                <field name="is_special" />
+                <field name="carrier_id" />
+                <field
+                    name="stocksale"
+                    attrs="{'invisible': [('carrier_id', '!=', False)]}"
+                />
             </xpath>
-            <xpath expr="//group[2]" position="after">
-                <group>
-                    <field name="so"/>
-                </group>
-            </xpath>
-            <!-- <xpath expr="//group[3]" position="after">
-                <group>
-                    <field name="stocksale" attrs="{'invisible': [('carrier_id', '!=', False)]}"/>
-                </group>
-            </xpath> -->
-            <!-- <xpath expr="//field[@name='carrier_id']" position="attributes">
-                <attribute name="attrs" translation="off">{'required': [('stocksale', '=', False)]}</attribute>
-            </xpath> -->
-            <xpath expr="//notebook/page[2]" position="after">
-                <page string="Special Order" attrs="{'invisible': [('so', '=', False)]}">
+            <xpath expr="//page[@name='other_information']" position="after">
+                <page
+                    name="special_order"
+                    string="Special Order"
+                    attrs="{'invisible': [('is_special', '=', False)]}"
+                >
                     <group>
                         <group>
-                            <field name="delivery_promise" attrs="{'required': [('so', '=', True)]}"/>
-                            <field name="shipping_to" attrs="{'required': [('so', '=', True)]}"/>
-                            <field name="partial_supply" attrs="{'required': [('so', '=', True)]}"/>
-                            <field name="type_of_import" attrs="{'required': [('so', '=', True)]}"/>
-                            <field name="shipping_by" attrs="{'required': [('so', '=', True)]}"/>
-                            <field name="purchase_currency" attrs="{'required': [('so', '=', True)]}"/>
-                            <field name="special_discounts" attrs="{'required': [('so', '=', True)]}"/>
+                            <field
+                                name="delivery_promise"
+                                attrs="{'required': [('is_special', '=', True)]}"
+                            />
+                            <field
+                                name="shipping_to"
+                                attrs="{'required': [('is_special', '=', True)]}"
+                            />
+                            <field
+                                name="partial_supply"
+                                attrs="{'required': [('is_special', '=', True)]}"
+                            />
+                            <field
+                                name="type_of_import"
+                                attrs="{'required': [('is_special', '=', True)]}"
+                            />
+                            <field
+                                name="shipping_by"
+                                attrs="{'required': [('is_special', '=', True)]}"
+                            />
+                            <field
+                                name="purchase_currency"
+                                attrs="{'required': [('is_special', '=', True)]}"
+                            />
+                            <field
+                                name="special_discounts"
+                                attrs="{'required': [('is_special', '=', True)]}"
+                            />
                         </group>
                         <group>
-                            <field name="notest" string="Notes (Shipping Address, if applicable)" attrs="{'required': [('so', '=', True)]}"/>
+                            <field
+                                name="notest"
+                                string="Notes (Shipping Address, if applicable)"
+                                attrs="{'required': [('is_special', '=', True)]}"
+                            />
                         </group>
                     </group>
                 </page>
             </xpath>
-            <xpath expr="//group[1]" position="after">
-                    <field name="has_order_lines" invisible="1"/>
-            </xpath>
             <field name="partner_id" position="attributes">
-               <attribute name="attrs" translation="off">{'readonly': ['|', ('has_order_lines', '!=', False), ('state', 'not in', ['draft', 'sent'])]}</attribute>
-               <attribute name="force_save" translation="off">1</attribute>
+               <attribute name="attrs">{
+                'readonly': [
+                    '|',
+                    ('order_line', '!=', []),
+                    ('state', 'not in', ['draft', 'sent']),
+                ],
+            }</attribute>
+               <attribute name="force_save">1</attribute>
             </field>
+            <xpath
+                expr="//field[@name='order_line']/tree/field[@name='product_customer_code']"
+                position="attributes"
+            >
+                <attribute name="groups">typ.res_group_product_customer_code</attribute>
+            </xpath>
+            <xpath
+                expr="//field[@name='order_line']/form//field[@name='product_customer_code']"
+                position="attributes"
+            >
+                <attribute name="groups">typ.res_group_product_customer_code</attribute>
+            </xpath>
+           <xpath
+                expr="//group[@name='sale_total']//label[@for='margin']"
+                position="attributes"
+            >
+                <attribute name="groups">typ.res_group_margin_sale_order</attribute>
+           </xpath>
+           <xpath
+                expr="//group[@name='sale_total']//field[@name='margin']/.."
+                position="attributes"
+            >
+                <attribute name="groups">typ.res_group_standard_price</attribute>
+            </xpath>
+            <xpath
+                expr="//field[@name='order_line']/form//field[@name='purchase_price']"
+                position="attributes"
+            >
+                <attribute name="groups">typ.res_group_standard_price</attribute>
+            </xpath>
+            <xpath
+                expr="//field[@name='order_line']/tree/field[@name='purchase_price']"
+                position="attributes"
+            >
+                <attribute name="groups">typ.res_group_standard_price</attribute>
+            </xpath>
+            <xpath
+                expr="//field[@name='order_line']/tree/field[@name='margin']"
+                position="attributes"
+            >
+                <attribute name="groups">typ.res_group_standard_price</attribute>
+            </xpath>
+            <xpath
+                expr="//field[@name='order_line']/tree/field[@name='margin_percent']"
+                position="attributes"
+            >
+                <attribute name="groups">typ.res_group_standard_price</attribute>
+            </xpath>
+       </field>
+    </record>
+
+    <record id="sale_order_purchase_template" model="ir.ui.view">
+        <field name="name">sale.order.purchase.template</field>
+        <field name="model">sale.order</field>
+        <field name="arch" type="xml">
+            <form string="Special Order" create="0" edit="0">
+                <group>
+                    <field name="create_uid" />
+                    <field name="partner_id" />
+                    <field name="delivery_promise" />
+                    <field name="shipping_to" />
+                    <field name="partial_supply" />
+                    <field name="type_of_import" />
+                    <field name="shipping_by" />
+                    <field name="purchase_currency" />
+                    <field name="special_discounts" />
+                </group>
+                <group>
+                    <field name="notest" />
+                    <field name="company_id" invisible="1" />
+                </group>
+            </form>
         </field>
     </record>
-    <!-- <record model="ir.ui.view" id="product_supplierinfo_for_customer_sale_view_order_form"> TODO: when this module is migrated
-        <field name="name">sale.order.product.customer.code.view.order.form</field>
-        <field name="model">sale.order</field>
-        <field name="inherit_id" ref="product_supplierinfo_for_customer_sale.view_order_form"/>
-        <field name="arch" type="xml">
-            <xpath expr="//form//tree//field[@name='product_customer_code']" position="attributes">
-                <attribute name="groups" translation="off">typ.res_group_product_customer_code</attribute>
-            </xpath>
-            <xpath expr="//form//form//field[@name='product_customer_code']" position="attributes">
-                <attribute name="groups" translation="off">typ.res_group_product_customer_code</attribute>
-            </xpath>
-        </field>
-    </record> -->
-    <record id="sale_margin_sale_order_line" model="ir.ui.view">
-        <field name="name">sale.order.line</field>
-        <field name="model">sale.order</field>
-        <field name="inherit_id" ref="sale_margin.sale_margin_sale_order_line"/>
-        <field name="arch" type="xml">
-            <!-- <xpath expr="//field[@name='order_line']/form//field[@name='purchase_price']" position="attributes"> TODO: when migrated module
-                <attribute name="groups" translation="off">typ_stock.res_group_standard_price</attribute>
-            </xpath> -->
-           <field name="margin" position="attributes">
-                <attribute name="groups" translation="off">typ.res_group_margin_sale_order</attribute>
-           </field>
-        </field>
-    </record>
-    
-    <menuitem id="sale_order_traffic_menu" parent="sale.sale_menu_root" name="Traffic"/>
-    <menuitem id="sale_order_traffic" parent="typ.sale_order_traffic_menu" name="Traffic" action="stock.stock_picking_type_action" sequence="10"/>
+
 </odoo>

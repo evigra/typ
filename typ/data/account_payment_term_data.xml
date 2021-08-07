@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo noupdate="1">
+
+    <record id="typ_account_payment_term_immediate" model="account.payment.term">
+        <field name="name">Immediate Payment</field>
+        <field name="note">Immediate Payment</field>
+    </record>
+
+    <record
+        id="typ_account_payment_term_line_immediate"
+        model="account.payment.term.line"
+    >
+        <field name="value">balance</field>
+        <field name="days" eval="0" />
+        <field name="payment_id" ref="typ_account_payment_term_immediate" />
+    </record>
+
+</odoo>

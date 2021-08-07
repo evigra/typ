@@ -1,4 +1,4 @@
-from odoo import models, fields, api
+from odoo import fields, models
 
 
 class HrEmployeeAuxiliar(models.Model):
@@ -9,4 +9,3 @@ class HrEmployeeAuxiliar(models.Model):
     address = fields.Char()
     telephone = fields.Char()
     hr_employee_auxiliar_id = fields.Many2one("hr.employee", "Employee")
-    

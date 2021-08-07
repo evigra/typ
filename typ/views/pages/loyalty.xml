@@ -1,5 +1,6 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8" ?>
 <odoo>
+
     <template id="loyalty" name="TyP Loyalty Program">
         <t t-call="website.layout">
             <div id="wrap">
@@ -8,46 +9,90 @@
                         <div class="container">
                             <div class="row">
                                 <div class="col-md-12">
-                                    <div class="media_iframe_video" data-oe-expression="//www.youtube.com/embed/ceLh7vEJIOk?autoplay=1&amp;mute=1&amp;rel=0&amp;loop=1&amp;playlist=ceLh7vEJIOk&amp;fs=0&amp;modestbranding=1">
-                                        <div class="css_editable_mode_display" data-original-title="" title=""></div>
-                                        <div class="media_iframe_video_size"></div>
-                                        <iframe src="//www.youtube.com/embed/ceLh7vEJIOk?autoplay=1&amp;mute=1&amp;rel=0&amp;loop=1&amp;playlist=ceLh7vEJIOk&amp;fs=0&amp;modestbranding=1" frameborder="0"/>
+                                    <div
+                                        class="media_iframe_video"
+                                        data-oe-expression="//www.youtube.com/embed/ceLh7vEJIOk?autoplay=1&amp;mute=1&amp;rel=0&amp;loop=1&amp;playlist=ceLh7vEJIOk&amp;fs=0&amp;modestbranding=1"
+                                    >
+                                        <div
+                                            class="css_editable_mode_display"
+                                            data-original-title=""
+                                            title=""
+                                        />
+                                        <div class="media_iframe_video_size" />
+                                        <iframe
+                                            src="//www.youtube.com/embed/ceLh7vEJIOk?autoplay=1&amp;mute=1&amp;rel=0&amp;loop=1&amp;playlist=ceLh7vEJIOk&amp;fs=0&amp;modestbranding=1"
+                                            frameborder="0"
+                                        />
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </section>
-                    <section class="s_text_block_image_fw oe_img_bg oe_custom_bg" style="background-image: url(/website/image/theme_typ.fondo_azul); background-position: 0% 0%">
+                    <section
+                        class="s_text_block_image_fw oe_img_bg oe_custom_bg"
+                        style="background-image: url(/website/image/theme_typ.fondo_azul); background-position: 0% 0%"
+                    >
                         <div class="container pseudo-header">
                             <div class="col-xs-6 col-sm-2 pull-left">
-                                <img src="/website/image/theme_typ.soy_typ" alt="Soy Typ" class="img img-responsive"/>
+                                <img
+                                    src="/website/image/theme_typ.soy_typ"
+                                    alt="Soy Typ"
+                                    class="img img-responsive"
+                                />
                             </div>
                             <div class="col-xs-6 col-sm-2 pull-right">
-                                <img src="/website/image/theme_typ.loyalty_typ_logo" alt="Loyalty TyP Logo" class="img img-responsive mt16"/>
+                                <img
+                                    src="/website/image/theme_typ.loyalty_typ_logo"
+                                    alt="Loyalty TyP Logo"
+                                    class="img img-responsive mt16"
+                                />
                             </div>
                         </div>
                         <div class="container">
                             <div class="row">
-                                <div class="col-xs-12 col-md-6 text-block hidden-xs hidden-sm">
-                                    <h1 class="o_default_snippet_text">Soy<br/>Cliente T&amp;P</h1>
-                                    <p class="o_default_snippet_text">At T&amp;P we value being your favorite provider, because of that we created our program <strong>SOY T&amp;P</strong> which brings exclusive benefits for you. It's easy, all your purchases, spare parts and T&amp;P services are acumulated and they turn you into a customer with unique benefits in the market.</p>
+                                <div
+                                    class="col-xs-12 col-md-6 text-block hidden-xs hidden-sm"
+                                >
+                                    <h1 class="o_default_snippet_text">Soy<br
+                                        />Cliente T&amp;P</h1>
+                                    <p
+                                        class="o_default_snippet_text"
+                                    >At T&amp;P we value being your favorite provider, because of that we created our program <strong
+                                        >SOY T&amp;P</strong> which brings exclusive benefits for you. It's easy, all your purchases, spare parts and T&amp;P services are acumulated and they turn you into a customer with unique benefits in the market.</p>
                                 </div>
-                                <div class="col-xs-12 col-md-6 text-block-sm hidden-md hidden-lg">
-                                    <h1 class="o_default_snippet_text">Soy<br/>Cliente T&amp;P</h1>
-                                    <p class="o_default_snippet_text">At T&amp;P we value being your favorite provider, because of that we created our program <strong>SOY T&amp;P</strong> which brings exclusive benefits for you. It's easy, all your purchases, spare parts and T&amp;P services are acumulated and they turn you into a customer with unique benefits in the market.</p>
+                                <div
+                                    class="col-xs-12 col-md-6 text-block-sm hidden-md hidden-lg"
+                                >
+                                    <h1 class="o_default_snippet_text">Soy<br
+                                        />Cliente T&amp;P</h1>
+                                    <p
+                                        class="o_default_snippet_text"
+                                    >At T&amp;P we value being your favorite provider, because of that we created our program <strong
+                                        >SOY T&amp;P</strong> which brings exclusive benefits for you. It's easy, all your purchases, spare parts and T&amp;P services are acumulated and they turn you into a customer with unique benefits in the market.</p>
                                 </div>
                                 <div class="col-md-6 hidden-sm hidden-xs mt64 mb64">
-                                    <img src="/website/image/theme_typ.chairman" alt="TyP Customer" class="img img-responsive"/>
+                                    <img
+                                        src="/website/image/theme_typ.chairman"
+                                        alt="TyP Customer"
+                                        class="img img-responsive"
+                                    />
                                 </div>
                             </div>
                         </div>
                     </section>
-                    <section t-if="category == 'black'" class="oe_img_bg oe_custom_bg section section-black" style="background-image: url(/website/image/theme_typ.black); background-size: cover;">
+                    <section
+                        t-if="category == 'black'"
+                        class="oe_img_bg oe_custom_bg section section-black"
+                        style="background-image: url(/website/image/theme_typ.black); background-size: cover;"
+                    >
                         <div class="container">
                             <div class="col-xs-12 col-md-4 mt64 section-title">
                                 <h2 class="mb16">Welcome</h2>
                                 <strong><h2 class="mb48">Customer Black</h2></strong>
-                                <p>Your preferences got you here and we want you to  enjoy it. with your level of consumption you still a <strong>Customer Black</strong>, but remember that you can also grow to <strong>Customer Titanium</strong></p>
+                                <p
+                                >Your preferences got you here and we want you to  enjoy it. with your level of consumption you still a <strong
+                                    >Customer Black</strong>, but remember that you can also grow to <strong
+                                    >Customer Titanium</strong></p>
                             </div>
                             <div class="col-xs-6 col-md-4 mt64">
                                 <ul class="list-unstyled">
@@ -55,55 +100,83 @@
                                     <li class="garantia">Lennox Extended Warranty</li>
                                     <li class="stock">Lennox Spare Parts Stock</li>
                                     <li class="portal">Customer Portal</li>
-                                    <li class="credito hidden-xs hidden-sm">Encapsulated Credits For Projects</li>
+                                    <li
+                                        class="credito hidden-xs hidden-sm"
+                                    >Encapsulated Credits For Projects</li>
                                 </ul>
                             </div>
-                            <div class="col-xs-6 col-md-4 last-column hidden-sm hidden-xs">
+                            <div
+                                class="col-xs-6 col-md-4 last-column hidden-sm hidden-xs"
+                            >
                                 <ul class="list-unstyled">
                                     <li class="publicidad">Shared Ads</li>
-                                    <li class="acompanamiento">Final Customer Support</li>
+                                    <li
+                                        class="acompanamiento"
+                                    >Final Customer Support</li>
                                     <li class="capacitacion">Trainning</li>
                                     <li class="flete">Free Delivery</li>
                                 </ul>
                             </div>
                             <div class="col-xs-6 mt64 hidden-md hidden-lg">
                                 <ul class="list-unstyled">
-                                    <li class="credito">Encapsulated Credits For Projects</li>
+                                    <li
+                                        class="credito"
+                                    >Encapsulated Credits For Projects</li>
                                     <li class="publicidad">Shared Ads</li>
-                                    <li class="acompanamiento">Final Customer Support</li>
+                                    <li
+                                        class="acompanamiento"
+                                    >Final Customer Support</li>
                                     <li class="capacitacion">Trainning</li>
                                     <li class="flete">Free Delivery</li>
                                 </ul>
                             </div>
                         </div>
                     </section>
-                    <section t-if="category == 'titanium'" class="oe_custom_bg section section-titanium" style="background-image: url(/website/image/theme_typ.titanium); background-size: cover;">
+                    <section
+                        t-if="category == 'titanium'"
+                        class="oe_custom_bg section section-titanium"
+                        style="background-image: url(/website/image/theme_typ.titanium); background-size: cover;"
+                    >
                         <div class="container">
                             <div class="col-xs-12 col-md-4 mt64 section-title">
                                 <h3 class="mb16">You have become</h3>
                                 <strong><h2 class="mb48">Titanium</h2></strong>
-                                <p>That's it, your projects start with T&amp;P and we want to thank you for your preference.</p>
-                                <p>Now you are a <strong>Customer Titanium</strong>, with exclusive benefits</p>
+                                <p
+                                >That's it, your projects start with T&amp;P and we want to thank you for your preference.</p>
+                                <p>Now you are a <strong
+                                    >Customer Titanium</strong>, with exclusive benefits</p>
                             </div>
                             <div class="col-xs-6 col-md-4 mt64">
                                 <ul class="list-unstyled">
-                                    <li class="flete-blue">Lennox authorized distributor</li>
-                                    <li class="garantia-blue">Lennox Extended Warranty</li>
+                                    <li
+                                        class="flete-blue"
+                                    >Lennox authorized distributor</li>
+                                    <li
+                                        class="garantia-blue"
+                                    >Lennox Extended Warranty</li>
                                     <li class="stock-blue">Lennox Spare Parts Stock</li>
                                     <li class="portal-blue">Customer Portal</li>
-                                    <li class="credito-blue">Encapsulated Credits For Projects</li>
+                                    <li
+                                        class="credito-blue"
+                                    >Encapsulated Credits For Projects</li>
                                     <li class="publicidad-blue">Shared Ads</li>
                                     <li class="flete-blue">Free Delivery</li>
                                 </ul>
                             </div>
                             <div class="col-xs-6 col-md-4 mt64">
                                 <ul class="list-unstyled">
-                                    <li class="acompanamiento-blue">Final Customer Support</li>
+                                    <li
+                                        class="acompanamiento-blue"
+                                    >Final Customer Support</li>
                                     <li class="capacitacion-blue">Trainning</li>
                                     <li class="avion-blue">Travel to Plant and Labs</li>
                                     <li class="grua-blue">First Hour of Tow Free</li>
-                                    <li class="acompanamiento-blue">Contractor Development Program</li>
-                                    <li class="reembolso-blue">2% of Yearly Reinbursment</li>
+                                    <li
+                                        class="acompanamiento-blue"
+                                    >Contractor Development Program</li>
+                                    <li
+                                        class="reembolso-blue"
+                                    >2% of Yearly Reinbursment</li>
                                 </ul>
                             </div>
                         </div>
@@ -113,68 +186,187 @@
                             <div class="row">
                                 <div class="col-md-8 col-md-offset-2 text-center">
                                     <h3 class="mt64">Start enjoying your beneftits</h3>
-                                    <p>Confirm your address and social media accounts so we can send you your welcome kit to the SOY T&amp;P Program.</p>
+                                    <p
+                                    >Confirm your address and social media accounts so we can send you your welcome kit to the SOY T&amp;P Program.</p>
                                 </div>
                                 <div class="col-md-6 col-md-offset-3">
                                     <div class="form-group">
-                                        <form action="/loyalty/" class="container-fluid mt24" enctype="multipart/form-data" method="post">
-                                            <div class="form-group form-field o_website_form_required_custom">
-                                                <input class="form-control o_website_form_input" name="csrf_token" t-att-value="request.csrf_token()" type="hidden"/>
+                                        <form
+                                            action="/loyalty/"
+                                            class="container-fluid mt24"
+                                            enctype="multipart/form-data"
+                                            method="post"
+                                        >
+                                            <div
+                                                class="form-group form-field o_website_form_required_custom"
+                                            >
+                                                <input
+                                                    class="form-control o_website_form_input"
+                                                    name="csrf_token"
+                                                    t-att-value="request.csrf_token()"
+                                                    type="hidden"
+                                                />
                                             </div>
-                                            <div class="form-group form-field o_website_form_required_custom">
-                                                <input class="form-control o_website_form_input" name="email" placeholder="E-mail" required="" t-att-value="request.params.get('email', '')" type="email"/>
+                                            <div
+                                                class="form-group form-field o_website_form_required_custom"
+                                            >
+                                                <input
+                                                    class="form-control o_website_form_input"
+                                                    name="email"
+                                                    placeholder="E-mail"
+                                                    required=""
+                                                    t-att-value="request.params.get('email', '')"
+                                                    type="email"
+                                                />
                                             </div>
-                                            <div class="form-group form-field o_website_form_required_custom">
-                                                <input class="form-control o_website_form_input" name="password" placeholder="password" required="" t-att-value="request.params.get('email', '')" type="password"/>
+                                            <div
+                                                class="form-group form-field o_website_form_required_custom"
+                                            >
+                                                <input
+                                                    class="form-control o_website_form_input"
+                                                    name="password"
+                                                    placeholder="password"
+                                                    required=""
+                                                    t-att-value="request.params.get('email', '')"
+                                                    type="password"
+                                                />
                                             </div>
-                                            <div class="form-group form-field o_website_form_required_custom">
-                                                <input class="form-control o_website_form_input" name="name" placeholder="Name and Last Name" required="" t-att-value="request.params.get('name', '')" type="text"/>
+                                            <div
+                                                class="form-group form-field o_website_form_required_custom"
+                                            >
+                                                <input
+                                                    class="form-control o_website_form_input"
+                                                    name="name"
+                                                    placeholder="Name and Last Name"
+                                                    required=""
+                                                    t-att-value="request.params.get('name', '')"
+                                                    type="text"
+                                                />
                                             </div>
                                             <div class="row">
-                                                <div class="form-group form-field col-md-6 col-sm-12">
-                                                    <input class="form-control o_website_form_input" name="street_name" placeholder="Address" required="" t-att-value="request.params.get('street_name', '')" type="text"/>
+                                                <div
+                                                    class="form-group form-field col-md-6 col-sm-12"
+                                                >
+                                                    <input
+                                                        class="form-control o_website_form_input"
+                                                        name="street_name"
+                                                        placeholder="Address"
+                                                        required=""
+                                                        t-att-value="request.params.get('street_name', '')"
+                                                        type="text"
+                                                    />
                                                 </div>
-                                                <div class="form-group form-field col-md-3 col-xs-6">
-                                                    <input class="form-control o_website_form_input" name="street_number" placeholder="No. Ext" required="" t-att-value="request.params.get('street_number', '')" type="text"/>
+                                                <div
+                                                    class="form-group form-field col-md-3 col-xs-6"
+                                                >
+                                                    <input
+                                                        class="form-control o_website_form_input"
+                                                        name="street_number"
+                                                        placeholder="No. Ext"
+                                                        required=""
+                                                        t-att-value="request.params.get('street_number', '')"
+                                                        type="text"
+                                                    />
                                                 </div>
-                                                <div class="form-group form-field col-md-3 col-xs-6">
-                                                    <input class="form-control o_website_form_input" name="street_number2" placeholder="No. Int" t-att-value="request.params.get('street_number2', '')" type="text"/>
+                                                <div
+                                                    class="form-group form-field col-md-3 col-xs-6"
+                                                >
+                                                    <input
+                                                        class="form-control o_website_form_input"
+                                                        name="street_number2"
+                                                        placeholder="No. Int"
+                                                        t-att-value="request.params.get('street_number2', '')"
+                                                        type="text"
+                                                    />
                                                 </div>
                                             </div>
                                             <div class="row">
-                                                <div class="form-group form-field col-xs-9">
-                                                    <input class="form-control o_website_form_input" name="l10n_mx_edi_colony" placeholder="Colony" required="" t-att-value="request.params.get('l10n_mx_edi_colony', '')" type="text"/>
+                                                <div
+                                                    class="form-group form-field col-xs-9"
+                                                >
+                                                    <input
+                                                        class="form-control o_website_form_input"
+                                                        name="l10n_mx_edi_colony"
+                                                        placeholder="Colony"
+                                                        required=""
+                                                        t-att-value="request.params.get('l10n_mx_edi_colony', '')"
+                                                        type="text"
+                                                    />
                                                 </div>
-                                                <div class="form-group form-field col-xs-3">
-                                                    <input class="form-control o_website_form_input" name="zip" placeholder="Zip" required="" t-att-value="request.params.get('zip', '')" type="text"/>
+                                                <div
+                                                    class="form-group form-field col-xs-3"
+                                                >
+                                                    <input
+                                                        class="form-control o_website_form_input"
+                                                        name="zip"
+                                                        placeholder="Zip"
+                                                        required=""
+                                                        t-att-value="request.params.get('zip', '')"
+                                                        type="text"
+                                                    />
                                                 </div>
                                             </div>
                                             <div class="form-group form-field">
-                                                <input class="form-control o_website_form_input" name="facebook_profile" placeholder="Facebook" t-att-value="request.params.get('facebook_profile', '')" type="text"/>
+                                                <input
+                                                    class="form-control o_website_form_input"
+                                                    name="facebook_profile"
+                                                    placeholder="Facebook"
+                                                    t-att-value="request.params.get('facebook_profile', '')"
+                                                    type="text"
+                                                />
                                             </div>
                                             <div class="form-group form-field">
-                                                <input class="form-control o_website_form_input" name="linkedin_profile" placeholder="LinkedIn" t-att-value="request.params.get('linkedin_profile', '')" type="text"/>
+                                                <input
+                                                    class="form-control o_website_form_input"
+                                                    name="linkedin_profile"
+                                                    placeholder="LinkedIn"
+                                                    t-att-value="request.params.get('linkedin_profile', '')"
+                                                    type="text"
+                                                />
                                             </div>
                                             <div class="form-group form-field">
-                                                <input class="form-control o_website_form_input" name="category" t-att-value="category" type="hidden"/>
+                                                <input
+                                                    class="form-control o_website_form_input"
+                                                    name="category"
+                                                    t-att-value="category"
+                                                    type="hidden"
+                                                />
                                             </div>
                                             <div class="form-group form-field">
-                                                <input class="form-control o_website_form_input" name="submitted" value="yes" type="hidden"/>
+                                                <input
+                                                    class="form-control o_website_form_input"
+                                                    name="submitted"
+                                                    value="yes"
+                                                    type="hidden"
+                                                />
                                             </div>
                                             <div class="form-group mt32">
                                                 <div class="row text-center mb32">
-                                                    <button class="btn btn-typ btn-lg">SEND MY DATA</button>
+                                                    <button
+                                                        class="btn btn-typ btn-lg"
+                                                    >SEND MY DATA</button>
                                                 </div>
-                                                <div class="row text-center alert alert-danger" t-if="error">
-                                                    <span id="o_website_form_result"><strong><t t-esc="error_title"/></strong>: <t t-esc="error"/></span>
+                                                <div
+                                                    class="row text-center alert alert-danger"
+                                                    t-if="error"
+                                                >
+                                                    <span
+                                                        id="o_website_form_result"
+                                                    ><strong><t
+                                                                t-esc="error_title"
+                                                            /></strong>: <t
+                                                            t-esc="error"
+                                                        /></span>
                                                 </div>
                                             </div>
                                         </form>
                                     </div>
                                 </div>
                                 <div class="col-md-8 col-md-offset-2 text-center">
-                                    <strong><p>With T&amp;P you have support when you need it, now <br/> you have benefits only for you</p></strong>
-                                    <br/>
+                                    <strong><p
+                                        >With T&amp;P you have support when you need it, now <br
+                                            /> you have benefits only for you</p></strong>
+                                    <br />
                                     <small>
                                         <p>
                                             Hermosillo ·
@@ -192,22 +384,29 @@
                             </div>
                         </div>
                     </section>
-                    <div class="col-md-12 oe_structure"/>
+                    <div class="col-md-12 oe_structure" />
                 </div>
             </div>
         </t>
     </template>
+
     <template id="loyalty_success" name="TyP Loyalty Success">
         <t t-call="website.layout">
             <div id="wrap">
-                <div class="oe_structure"/>
+                <div class="oe_structure" />
                 <div class="container">
-                    <h1>Thanks!  <t t-esc="partner.name"/></h1>
+                    <h1>Thanks!  <t t-esc="partner.name" /></h1>
                     <div class="row loyalty-success">
                         <div class="col-md-8">
                             <div class="alert alert-success">
-                                Now you are a <strong><t t-esc="category"/></strong> customer
-                                <button type="button" class="close" data-dismiss="alert">&amp;times;</button>
+                                Now you are a <strong><t
+                                        t-esc="category"
+                                    /></strong> customer
+                                <button
+                                    type="button"
+                                    class="close"
+                                    data-dismiss="alert"
+                                >&amp;times;</button>
                             </div>
                             <p>
                                 Please check your email for further instructions
@@ -215,17 +414,22 @@
                                 If you have an emergency, do not hesitate to contact us by phone:
                             </p>
                             <ul class="list-unstyled">
-                                <li><i class="fa fa-phone"></i> : <span t-field="res_company.phone"/></li>
-                                <li><i class="fa fa-envelope"></i> : <span t-field="res_company.email"/></li>
+                                <li><i class="fa fa-phone" /> : <span
+                                        t-field="res_company.phone"
+                                    /></li>
+                                <li><i class="fa fa-envelope" /> : <span
+                                        t-field="res_company.email"
+                                    /></li>
                             </ul>
                         </div>
                         <div class="col-md-4">
-                            <t t-call="website.company_description"/>
+                            <t t-call="website.company_description" />
                         </div>
                     </div>
                 </div>
-                <div class="oe_structure"/>
+                <div class="oe_structure" />
             </div>
         </t>
     </template>
+
 </odoo>

@@ -1,16 +1,15 @@
-from odoo import fields, models
-
+import base64
 import io
 import zipfile
-import base64
+
+from odoo import fields, models
 
 
 class AccountPayment(models.Model):
     _inherit = "account.payment"
 
     is_commission = fields.Boolean(
-        help="This must be True if the amount difference is because the bank "
-        "take that amount to commissions."
+        help="This must be True if the amount difference is because the bank take that amount to commissions."
     )
 
     def l10n_mx_edi_amount_to_text(self):
@@ -28,11 +27,7 @@ class AccountPayment(models.Model):
         amount_i, amount_d = divmod(self.amount, 1)
         amount_d = round(amount_d, 2)
         amount_d = int(round(amount_d * 100, 2))
-        words = (
-            self.currency_id.with_context(lang=self.partner_id.lang or "es_ES")
-            .amount_to_text(amount_i)
-            .upper()
-        )
+        words = self.currency_id.with_context(lang=self.partner_id.lang or "es_ES").amount_to_text(amount_i).upper()
         invoice_words = "%(words)s %(amount_d)02d/100 %(curr_t)s" % dict(
             words=words, amount_d=amount_d, curr_t=currency_type
         )
@@ -55,11 +50,7 @@ class AccountPayment(models.Model):
         if attachment_file_id:
             return attachment_file_id
         if attachments_ids:
-            attachment_file_id = (
-                self.create_zip(attachments_ids)
-                if len(attachments_ids) > 1
-                else attachments_ids[0]
-            )
+            attachment_file_id = self.create_zip(attachments_ids) if len(attachments_ids) > 1 else attachments_ids[0]
 
         return attachment_file_id
 
@@ -76,9 +67,7 @@ class AccountPayment(models.Model):
         zip_stream = io.BytesIO()
         with zipfile.ZipFile(zip_stream, "w") as myzip:
             for attachment in attachments_ids:
-                myzip.writestr(
-                    attachment.name, base64.b64decode(attachment.datas)
-                )
+                myzip.writestr(attachment.name, base64.b64decode(attachment.datas))
             myzip.close()
             zip_name = attachments_ids[0].name.replace(".xml", ".zip")
             values = {

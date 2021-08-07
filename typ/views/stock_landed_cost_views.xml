@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+
+    <record id="view_stock_landed_cost_form" model="ir.ui.view">
+        <field name="name">stock.landed.cost.form.inherit.typ</field>
+        <field name="model">stock.landed.cost</field>
+        <field name="inherit_id" ref="stock_landed_costs.view_stock_landed_cost_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//button[@name='button_validate']" position="attributes">
+               <attribute name="groups">typ.group_validate_landed</attribute>
+            </xpath>
+            <xpath expr="//field[@name='picking_ids']" position="after">
+                <field name="guide_ids" widget="many2many_tags" />
+            </xpath>
+            <xpath expr="//field[@name='date']/.." position="after">
+                <group string="Pedimento">
+                    <field name="port_input" />
+                    <field name="partner_id" />
+                </group>
+            </xpath>
+            <xpath expr="//field[@name='cost_line_id']" position="after">
+                <field name="picking_id" readonly="True" />
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_stock_landed_cost_tree" model="ir.ui.view">
+        <field name="name">stock.landed.cost.tree.inherit.typ</field>
+        <field name="model">stock.landed.cost</field>
+        <field name="inherit_id" ref="stock_landed_costs.view_stock_landed_cost_tree" />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='date']" position="after">
+                <field name="create_date" />
+            </xpath>
+        </field>
+    </record>
+
+    <record id="action_attachment_landed_cost" model="ir.actions.act_window">
+        <field name="name">Landed Costs Attachments</field>
+        <field name="res_model">ir.attachment</field>
+        <field name="domain">[("res_model","=","stock.landed.cost")]</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem
+        id="typ.menu_attachment_landed_cost"
+        action="action_attachment_landed_cost"
+        parent="stock.menu_warehouse_report"
+        sequence="60"
+    />
+
+</odoo>

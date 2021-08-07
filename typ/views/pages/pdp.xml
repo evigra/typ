@@ -1,178 +1,336 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8" ?>
 <odoo>
-<!-- Product template -->
-    <template id="product-description" inherit_id="website_sale.product">
+
+    <!-- Product template -->
+    <!-- TODO migrate to 14.0 (frontend team) -->
+    <template id="product-description" inherit_id="website_sale.product" active="False">
         <!-- search bar deleted -->
-        <xpath expr="//section//div//div[2]" position="replace"/> 
+        <xpath expr="//section//div//div[2]" position="replace" />
         <!-- change size of breadcrumb -->
-        <xpath expr="//section//div//div[1]"  position='attributes'>
-            <attribute name="class" add="col-lg-12 col-md-12 col-sm-12 col-xs-12" remove="col-sm-4" separator=" "/> 
+        <xpath expr="//section//div//div[1]" position='attributes'>
+            <attribute
+                name="class"
+                add="col-lg-12 col-md-12 col-sm-12 col-xs-12"
+                remove="col-sm-4"
+                separator=" "
+            />
         </xpath>
         <!-- change the background color -->
-        <xpath expr="//div[@id='wrap']"  position='attributes'>
-            <attribute name="class" add="dark-white"  separator=" "/>
+        <xpath expr="//div[@id='wrap']" position='attributes'>
+            <attribute name="class" add="dark-white" separator=" " />
         </xpath>
         <!-- Add margin to product descrition row -->
-        <xpath expr="//div//section[@id='product_detail']/div[2]"  position='attributes'>
-            <attribute name="class" add="container mt16 mb32" remove="row" separator=" "/> 
+        <xpath expr="//div//section[@id='product_detail']/div[2]" position='attributes'>
+            <attribute
+                name="class"
+                add="container mt16 mb32"
+                remove="row"
+                separator=" "
+            />
         </xpath>
         <!-- dropdown public pricelist delted -->
-        <xpath expr="//section//div//div[3]" position="replace"/> 
+        <xpath expr="//section//div//div[3]" position="replace" />
 
         <!-- remove mt8 class -->
-        <xpath expr="//div//section[@id='product_detail']"  position='attributes'>
-            <attribute name="t-attf-class" remove="mt8 container" separator=" "/> 
+        <xpath expr="//div//section[@id='product_detail']" position='attributes'>
+            <attribute name="t-attf-class" remove="mt8 container" separator=" " />
         </xpath>
 
         <!-- change the size of cols -->
-        <xpath expr="//div//section[@id='product_detail']//div[2]//div"  position='attributes'>
-            <attribute name="class" remove="col-sm-7" add="col-xs-12 col-xs-offset-0 col-sm-6 col-sm-offset-0 col-md-5 col-md-offset-1 col-lg-5 col-lg-offset-1" separator=" "/> 
+        <xpath
+            expr="//div//section[@id='product_detail']//div[2]//div"
+            position='attributes'
+        >
+            <attribute
+                name="class"
+                remove="col-sm-7"
+                add="col-xs-12 col-xs-offset-0 col-sm-6 col-sm-offset-0 col-md-5 col-md-offset-1 col-lg-5 col-lg-offset-1"
+                separator=" "
+            />
         </xpath>
         <!-- New breadcrumb -->
-        <xpath expr="//div//section[@id='product_detail']/div"  position='attributes'>
-            <attribute name="class" remove="row" add="container" separator=" "/> 
+        <xpath expr="//div//section[@id='product_detail']/div" position='attributes'>
+            <attribute name="class" remove="row" add="container" separator=" " />
         </xpath>
-        <xpath expr="//div//section[@id='product_detail']/div/div"  position='replace'>
+        <xpath expr="//div//section[@id='product_detail']/div/div" position='replace'>
             <div class="col-md-12 col-sm-12 col-lg-12 col-xs-12 mt16">
             <ol class="breadcrumb mb0 no-padding-left no-padding-top">
                 <li t-if="not category">
                     <a t-att-href="keep(category=0)">Products</a>
                 </li>
-                <li t-if="category and category.parent_id.parent_id.parent_id.parent_id">
-                    <a t-att-href="'/shop/category/%s' % slug(category.parent_id.parent_id.parent_id.parent_id)" t-field="category.parent_id.parent_id.parent_id.parent_id.name" />
-                </li> 
+                <li
+                        t-if="category and category.parent_id.parent_id.parent_id.parent_id"
+                    >
+                    <a
+                            t-att-href="'/shop/category/%s' % slug(category.parent_id.parent_id.parent_id.parent_id)"
+                            t-field="category.parent_id.parent_id.parent_id.parent_id.name"
+                        />
+                </li>
                 <li t-if="category and category.parent_id.parent_id.parent_id">
-                    <a t-att-href="'/shop/category/%s' % slug(category.parent_id.parent_id.parent_id)" t-field="category.parent_id.parent_id.parent_id.name" />
-                </li>  
+                    <a
+                            t-att-href="'/shop/category/%s' % slug(category.parent_id.parent_id.parent_id)"
+                            t-field="category.parent_id.parent_id.parent_id.name"
+                        />
+                </li>
                 <li t-if="category and category.parent_id.parent_id">
-                    <a t-att-href="'/shop/category/%s' % slug(category.parent_id.parent_id)" t-field="category.parent_id.parent_id.name" />
-                </li>                     
+                    <a
+                            t-att-href="'/shop/category/%s' % slug(category.parent_id.parent_id)"
+                            t-field="category.parent_id.parent_id.name"
+                        />
+                </li>
                 <li t-if="category and category.parent_id">
-                    <a t-att-href="'/shop/category/%s' % slug(category.parent_id)" t-field="category.parent_id.name" />
+                    <a
+                            t-att-href="'/shop/category/%s' % slug(category.parent_id)"
+                            t-field="category.parent_id.name"
+                        />
                 </li>
                 <li t-if="category">
-                     <a t-att-href="'/shop/category/%s' % slug(category)" t-field="category.name" />
+                     <a
+                            t-att-href="'/shop/category/%s' % slug(category)"
+                            t-field="category.name"
+                        />
                 </li>
                 <li t-if="product" class="active">
                      <span t-field="product.name" />
                 </li>
             </ol>
         </div>
-        </xpath>       
-        <!-- delete first hr  -->
-        <xpath expr="//hr"  position='replace'/>        
-        <!-- delete product description -->
-        <xpath expr="//div[hasclass('o_not_editable')]"  position='replace'/>  
-        <!-- delete second hr -->
-        <xpath expr="/t[1]/t[1]/div[1]/section[1]/div[2]/div[2]/hr[1]"  position='replace'/> 
-        <!-- delete shipping policies  -->
-        <xpath expr="/t[1]/t[1]/div[1]/section[1]/div[2]/div[2]/p[1]"  position='replace'/>
-        <!-- change the product description -->
-        <xpath expr="//div[@id='wrap']//section//div[@id='product_details']"  position='attributes'>
-          <attribute name="class" remove="col-sm-5 col-lg-4 col-lg-offset-1" add="col-sm-6 col-sm-offset-0 col-md-5 col-md-offset-1 col-lg-5 col-lg-offset-1 col-xs-12 col-xs-offset-0" separator=" "/> 
         </xpath>
-        <xpath expr="//div[@id='wrap']//section//div[@id='product_details']/h1"  position='replace'>
+        <!-- delete first hr  -->
+        <xpath expr="//hr" position='replace' />
+        <!-- delete product description -->
+        <xpath expr="//div[hasclass('o_not_editable')]" position='replace' />
+        <!-- delete second hr -->
+        <xpath
+            expr="/t[1]/t[1]/div[1]/section[1]/div[2]/div[2]/hr[1]"
+            position='replace'
+        />
+        <!-- delete shipping policies  -->
+        <xpath
+            expr="/t[1]/t[1]/div[1]/section[1]/div[2]/div[2]/p[1]"
+            position='replace'
+        />
+        <!-- change the product description -->
+        <xpath
+            expr="//div[@id='wrap']//section//div[@id='product_details']"
+            position='attributes'
+        >
+          <attribute
+                name="class"
+                remove="col-sm-5 col-lg-4 col-lg-offset-1"
+                add="col-sm-6 col-sm-offset-0 col-md-5 col-md-offset-1 col-lg-5 col-lg-offset-1 col-xs-12 col-xs-offset-0"
+                separator=" "
+            />
+        </xpath>
+        <xpath
+            expr="//div[@id='wrap']//section//div[@id='product_details']/h1"
+            position='replace'
+        >
             <div class="text-center hidden-lg hidden-md hidden-sm">
                 <!--product name -->
                 <h5 itemprop="name" t-field="product.name">Product Name</h5>
                 <!-- product price -->
-                <t t-call="website_sale.product_price" t-if="website.user_id != user_id" />
+                <t
+                    t-call="website_sale.product_price"
+                    t-if="website.user_id != user_id"
+                />
             </div>
             <div class="hidden-xs">
                 <!--product name -->
                 <h5 itemprop="name" t-field="product.name">Product Name</h5>
                 <!-- product price -->
-                <t t-call="website_sale.product_price" t-if="website.user_id != user_id" groups="website.group_website_designer"/>
+                <t
+                    t-call="website_sale.product_price"
+                    t-if="website.user_id != user_id"
+                    groups="website.group_website_designer"
+                />
             </div>
         </xpath>
         <!-- Product description -->
-        <xpath expr="//div[@id='wrap']//section//div[@id='product_details']//form"  position='before'>
+        <xpath
+            expr="//div[@id='wrap']//section//div[@id='product_details']//form"
+            position='before'
+        >
             <div class="o_not_editable mb24">
                 <p t-field="product.description_sale" />
             </div>
         </xpath>
         <!-- delete price -->
-        <xpath expr="//div[@id='wrap']//section//div[@id='product_details']//div[hasclass('js_product')]/t[2]"  position='replace'/>
+        <xpath
+            expr="//div[@id='wrap']//section//div[@id='product_details']//div[hasclass('js_product')]/t[2]"
+            position='replace'
+        />
         <!-- Add cart, favorite and share buttons -->
-        <xpath expr="//div[@id='wrap']//section//div[@id='product_details']//a[@id='add_to_cart']"  position='replace'>
-            <div class="col-md-10 col-md-offset-1  col-sm-12 col-sm-offset-1 col-xs-12 col-xs-offset-0 text-center mb48">
-                <a groups="website.group_website_designer" id="add_to_cart" class="btn btn-primary btn-block mt24 mb24 js_check_product a-submit"  t-if="website.user_id != user_id" href="#">Add to cart</a>
+        <xpath
+            expr="//div[@id='wrap']//section//div[@id='product_details']//a[@id='add_to_cart']"
+            position='replace'
+        >
+            <div
+                class="col-md-10 col-md-offset-1  col-sm-12 col-sm-offset-1 col-xs-12 col-xs-offset-0 text-center mb48"
+            >
+                <a
+                    groups="website.group_website_designer"
+                    id="add_to_cart"
+                    class="btn btn-primary btn-block mt24 mb24 js_check_product a-submit"
+                    t-if="website.user_id != user_id"
+                    href="#"
+                >Add to cart</a>
                 <!-- <a class="btn btn-primary btn-block mt24 mb24"  t-if="website.user_id == user_id" href="/contactus">Request a quote</a>  -->
-                <a class="btn btn-primary btn-block mt24 mb24" t-attf-href="/contactus?product=#{product.id}">Request a quote</a> 
-                <div class="row mt16 mb24 o_add_fav" t-if="website.user_id != user_id and product.website_published and 'on' or 'off' == 'on'" groups="website.group_website_designer">
+                <a
+                    class="btn btn-primary btn-block mt24 mb24"
+                    t-attf-href="/contactus?product=#{product.id}"
+                >Request a quote</a>
+                <div
+                    class="row mt16 mb24 o_add_fav"
+                    t-if="website.user_id != user_id and product.website_published and 'on' or 'off' == 'on'"
+                    groups="website.group_website_designer"
+                >
                         <div id="favorite">
                             <t t-if="not product.is_favorite()">
-                                <a id="add_product" class="add-fav-js js_add_remove_wish_list_json no-favorite-js" data-href="/add_to_wishlist"  t-att-data-product-id="product.id" data-toggle="tooltip" title="Favorite">                            
-                                    <i class="fa fa-heart-o fa-lg mr16 heart-fav"></i>Add to favorites
+                                <a
+                                id="add_product"
+                                class="add-fav-js js_add_remove_wish_list_json no-favorite-js"
+                                data-href="/add_to_wishlist"
+                                t-att-data-product-id="product.id"
+                                data-toggle="tooltip"
+                                title="Favorite"
+                            >
+                                    <i
+                                    class="fa fa-heart-o fa-lg mr16 heart-fav"
+                                />Add to favorites
                                 </a>
-                                 <a id="add_product" class="add-fav-js js_add_remove_wish_list_json favorite-js hidden" data-href="/add_to_wishlist"  t-att-data-product-id="product.id" data-toggle="tooltip" title="Favorite"> 
-                                    <i class="fa fa-heart fa-lg mr16 heart-fav"></i>Remove from favorites
+                                 <a
+                                id="add_product"
+                                class="add-fav-js js_add_remove_wish_list_json favorite-js hidden"
+                                data-href="/add_to_wishlist"
+                                t-att-data-product-id="product.id"
+                                data-toggle="tooltip"
+                                title="Favorite"
+                            >
+                                    <i
+                                    class="fa fa-heart fa-lg mr16 heart-fav"
+                                />Remove from favorites
                                 </a>
                             </t>
                             <t t-if="product.is_favorite()">
-                                <a id="add_product" class="add-fav-js js_add_remove_wish_list_json favorite-js" data-href="/add_to_wishlist"  t-att-data-product-id="product.id" data-toggle="tooltip" title="Favorite"> 
-                                    <i class="fa fa-heart fa-lg mr16 heart-fav"></i>Remove from favorites
+                                <a
+                                id="add_product"
+                                class="add-fav-js js_add_remove_wish_list_json favorite-js"
+                                data-href="/add_to_wishlist"
+                                t-att-data-product-id="product.id"
+                                data-toggle="tooltip"
+                                title="Favorite"
+                            >
+                                    <i
+                                    class="fa fa-heart fa-lg mr16 heart-fav"
+                                />Remove from favorites
                                 </a>
-                                <a id="add_product" class="add-fav-js js_add_remove_wish_list_json no-favorite-js hidden" data-href="/add_to_wishlist"  t-att-data-product-id="product.id" data-toggle="tooltip" title="Favorite">                            
-                                    <i class="fa fa-heart-o fa-lg mr16 heart-fav"></i>Add to favorites
+                                <a
+                                id="add_product"
+                                class="add-fav-js js_add_remove_wish_list_json no-favorite-js hidden"
+                                data-href="/add_to_wishlist"
+                                t-att-data-product-id="product.id"
+                                data-toggle="tooltip"
+                                title="Favorite"
+                            >
+                                    <i
+                                    class="fa fa-heart-o fa-lg mr16 heart-fav"
+                                />Add to favorites
                                 </a>
                             </t>
                         </div>
                 </div>
-                <div class="row mt16 o_share_product" groups="website.group_website_designer">
-                    <a id="share_product" class="share-product-js" t-attf-data-value="https://www.typ.com/shop/product/{{product.id}}"> 
-                            <img src="/web/image/theme_typ.share-icon" class="mr16" alt="Facebook" />Share product</a>
-                            <p class="alert alert-success mt24 hidden copy-alert">URL Copied to clipboard!</p>
+                <div
+                    class="row mt16 o_share_product"
+                    groups="website.group_website_designer"
+                >
+                    <a
+                        id="share_product"
+                        class="share-product-js"
+                        t-attf-data-value="https://www.typ.com/shop/product/{{product.id}}"
+                    >
+                            <img
+                            src="/web/image/theme_typ.share-icon"
+                            class="mr16"
+                            alt="Facebook"
+                        />Share product</a>
+                            <p
+                        class="alert alert-success mt24 hidden copy-alert"
+                    >URL Copied to clipboard!</p>
                 </div>
             </div>
         </xpath>
 
         <!-- hidden carousel in xs -->
-        <xpath expr="//div//section[@id='product_detail']//ol[hasclass('carousel-indicators')]"  position='attributes'>
-            <attribute name="class" add="hidden-xs" separator=" "/> 
+        <xpath
+            expr="//div//section[@id='product_detail']//ol[hasclass('carousel-indicators')]"
+            position='attributes'
+        >
+            <attribute name="class" add="hidden-xs" separator=" " />
         </xpath>
 
         <!-- featured products -->
-        <xpath expr="//div[@id='wrap']"  position='inside'>
-            <!-- <t t-call="typ.product-specifications"/> -->
-            <!-- <t t-call="typ.featured-products"/> -->
+        <xpath expr="//div[@id='wrap']" position='inside'>
+            <!-- <t t-call="typ.product-specifications" /> -->
+            <!-- <t t-call="typ.featured-products" /> -->
         </xpath>
 
         <!-- star rating -->
-        <xpath expr="//div[@id='wrap']//section//div[@id='product_details']//div[3]"  position='before'>
-            <js_rating t-att-data-res_model="product._name" t-att-data-res_id="product.id" groups="website.group_website_designer"/>
+        <xpath
+            expr="//div[@id='wrap']//section//div[@id='product_details']//div[3]"
+            position='before'
+        >
+            <js_rating
+                t-att-data-res_model="product._name"
+                t-att-data-res_id="product.id"
+                groups="website.group_website_designer"
+            />
         </xpath>
         <!-- <xpath expr="//div[@id='product_full_description']" position="after">
-            <t t-call="typ.product-specifications"/>
+            <t t-call="typ.product-specifications" />
         </xpath> -->
-        <xpath expr="//div//section[@id='product_detail']/div[2]"  position='after'>
-            <t t-call="typ.product-specifications"/>
+        <xpath expr="//div//section[@id='product_detail']/div[2]" position='after'>
+            <t t-call="typ.product-specifications" />
         </xpath>
-        <xpath expr="//t//t[@t-set='additional_title']" position="before"> 
+        <xpath expr="//t//t[@t-set='additional_title']" position="before">
             <t t-set="disable_composer" t-value="True" />
         </xpath>
     </template>
 
-    <template id="variants" inherit_id="website_sale.variants">
+    <!-- TODO migrate to 14.0 (frontend team) -->
+    <template id="variants" inherit_id="sale.variants" active="False">
         <xpath expr="//li" position="replace">
             <li t-if="len(variant_id.value_ids) > 1">
 
                 <t t-if="variant_id.attribute_id.type == 'select'">
                     <div class="row mb24">
-                        <div class="col-md-4 col-md-offset-1 col-xs-4 col-xs-offset-1 col-sm-4 col-sm-offset-1 mt4">
-                            <div class="pull-right"><span t-field="variant_id.attribute_id.name"/><span>:</span></div>
+                        <div
+                            class="col-md-4 col-md-offset-1 col-xs-4 col-xs-offset-1 col-sm-4 col-sm-offset-1 mt4"
+                        >
+                            <div class="pull-right"><span
+                                    t-field="variant_id.attribute_id.name"
+                                /><span>:</span></div>
                         </div>
                         <div class="col-md-6  col-xs-6 col-sm-6">
-                        <select t-attf-class="form-control #{'js_variant_change' if variant_id.attribute_id.create_variant else ''}" t-att-name="'attribute-%s-%s' % (product.id, variant_id.attribute_id.id)">
+                        <select
+                                t-attf-class="form-control #{'js_variant_change' if variant_id.attribute_id.create_variant else ''}"
+                                t-att-name="'attribute-%s-%s' % (product.id, variant_id.attribute_id.id)"
+                            >
                                 <t t-foreach="variant_id.value_ids" t-as="value_id">
                                     <option t-att-value="value_id.id">
-                                        <span t-field="value_id.name"/>
+                                        <span t-field="value_id.name" />
                                         <span t-if="value_id.price_extra">
-                                            <t t-esc="value_id.price_extra > 0 and '+' or ''"/><span t-field="value_id.price_extra" style="white-space: nowrap;" t-options='{
+                                            <t
+                                                t-esc="value_id.price_extra > 0 and '+' or ''"
+                                            /><span
+                                                t-field="value_id.price_extra"
+                                                style="white-space: nowrap;"
+                                                t-options='{
                                                     "widget": "monetary",
                                                         "from_currency": product.currency_id,
                                                     "display_currency": website.currency_id
-                                                }'/>
+                                                }'
+                                            />
                                         </span>
                                     </option>
                                 </t>
@@ -183,27 +341,53 @@
 
                 <t t-if="variant_id.attribute_id.type == 'radio'">
                     <div class="row mb24">
-                        <div class="col-md-4 col-md-offset-1 col-xs-4 col-xs-offset-1 col-sm-4 col-sm-offset-1 mt4">
-                            <div class="pull-right"><span t-field="variant_id.attribute_id.name"/><span>:</span></div>
+                        <div
+                            class="col-md-4 col-md-offset-1 col-xs-4 col-xs-offset-1 col-sm-4 col-sm-offset-1 mt4"
+                        >
+                            <div class="pull-right"><span
+                                    t-field="variant_id.attribute_id.name"
+                                /><span>:</span></div>
                         </div>
                         <div class="col-md-7 col-xs-7 col-sm-7">
                             <ul class="list-unstyled">
-                                <t t-set="inc" t-value="0"/>
+                                <t t-set="inc" t-value="0" />
                                 <t t-foreach="variant_id.value_ids" t-as="value_id">
-                                    <li class="form-group js_attribute_value" style="margin: 0;">
-                                        <label class="control-label" style="margin: 0 20px;">
-                                            <input type="radio" t-att-class="'js_variant_change' if variant_id.attribute_id.create_variant else None" t-att-checked="'checked' if not inc else None" t-att-name="'attribute-%s-%s' % (product.id, variant_id.attribute_id.id)" t-att-value="value_id.id" style="vertical-align: top; margin-right: 10px;"/>
-                                            <span t-field="value_id.name"/>
-                                            <span class="badge" t-if="value_id.price_extra">
-                                                <t t-esc="value_id.price_extra > 0 and '+' or ''"/><span t-field="value_id.price_extra" style="white-space: nowrap;" t-options='{
+                                    <li
+                                        class="form-group js_attribute_value"
+                                        style="margin: 0;"
+                                    >
+                                        <label
+                                            class="control-label"
+                                            style="margin: 0 20px;"
+                                        >
+                                            <input
+                                                type="radio"
+                                                t-att-class="'js_variant_change' if variant_id.attribute_id.create_variant else None"
+                                                t-att-checked="'checked' if not inc else None"
+                                                t-att-name="'attribute-%s-%s' % (product.id, variant_id.attribute_id.id)"
+                                                t-att-value="value_id.id"
+                                                style="vertical-align: top; margin-right: 10px;"
+                                            />
+                                            <span t-field="value_id.name" />
+                                            <span
+                                                class="badge"
+                                                t-if="value_id.price_extra"
+                                            >
+                                                <t
+                                                    t-esc="value_id.price_extra > 0 and '+' or ''"
+                                                /><span
+                                                    t-field="value_id.price_extra"
+                                                    style="white-space: nowrap;"
+                                                    t-options='{
                                                         "widget": "monetary",
                                                         "from_currency": product.currency_id,
                                                         "display_currency": website.currency_id
-                                                    }'/>
+                                                    }'
+                                                />
                                             </span>
                                         </label>
                                     </li>
-                                    <t t-set="inc" t-value="inc+1"/>
+                                    <t t-set="inc" t-value="inc+1" />
                                 </t>
                             </ul>
                         </div>
@@ -212,49 +396,69 @@
 
                 <t t-if="variant_id.attribute_id.type == 'color'">
                     <div class="row mb24">
-                        <div class="col-md-4 col-md-offset-1 col-xs-4 col-xs-offset-1 col-sm-4 col-sm-offset-1 mt4">
-                            <div class="pull-right"><span t-field="variant_id.attribute_id.name"/><span>:</span></div>
+                        <div
+                            class="col-md-4 col-md-offset-1 col-xs-4 col-xs-offset-1 col-sm-4 col-sm-offset-1 mt4"
+                        >
+                            <div class="pull-right"><span
+                                    t-field="variant_id.attribute_id.name"
+                                /><span>:</span></div>
                         </div>
                         <div class="col-md-7 col-xs-7 col-sm-7">
                             <ul class="list-inline">
-                                <t t-set="inc" t-value="0"/>
+                                <t t-set="inc" t-value="0" />
                                 <li t-foreach="variant_id.value_ids" t-as="value_id">
-                                    <label t-attf-style="background-color:#{value_id.html_color or value_id.name}"
-                                        t-attf-class="css_attribute_color #{'active' if not inc else ''}">
-                                        <input type="radio" t-att-class="'js_variant_change' if variant_id.attribute_id.create_variant else None"
-                                        t-att-checked="'checked' if not inc else None"
-                                        t-att-name="'attribute-%s-%s' % (product.id, variant_id.attribute_id.id)"
-                                        t-att-value="value_id.id"
-                                        t-att-title="value_id.name"/>
+                                    <label
+                                        t-attf-style="background-color:#{value_id.html_color or value_id.name}"
+                                        t-attf-class="css_attribute_color #{'active' if not inc else ''}"
+                                    >
+                                        <input
+                                            type="radio"
+                                            t-att-class="'js_variant_change' if variant_id.attribute_id.create_variant else None"
+                                            t-att-checked="'checked' if not inc else None"
+                                            t-att-name="'attribute-%s-%s' % (product.id, variant_id.attribute_id.id)"
+                                            t-att-value="value_id.id"
+                                            t-att-title="value_id.name"
+                                        />
                                     </label>
-                                    <t t-set="inc" t-value="inc+1"/>
+                                    <t t-set="inc" t-value="inc+1" />
                                 </li>
                             </ul>
                         </div>
                     </div>
                 </t>
-          </li>
+            </li>
         </xpath>
     </template>
 
     <template id="product-specifications">
-        <t t-set="attachments" t-value="env['ir.attachment'].search([('res_id', '=', product.id),('res_model', '=', 'product.template'),('mimetype', '=', 'application/pdf')], limit=3)"/>      
-        <t t-set="attribute_value_ids" t-value="product.product_variant_ids"/>
-        <div t-if="attachments or product.description_sale" class="col-md-12 col-sm-12 col-xs-12 product-specifications">
+        <t
+            t-set="attachments"
+            t-value="env['ir.attachment'].search([('res_id', '=', product.id),('res_model', '=', 'product.template'),('mimetype', '=', 'application/pdf')], limit=3)"
+        />
+        <t t-set="attribute_value_ids" t-value="product.product_variant_ids" />
+        <div
+            t-if="attachments or product.description_sale"
+            class="col-md-12 col-sm-12 col-xs-12 product-specifications"
+        >
             <div class="container">
                 <div t-if="product.description_sale" class="col-md-5 col-xs-12">
                     <div class="row">
                         <p class="s-title mt16">Description</p>
-                        <p class="mt16 mb24" t-field="product.description_sale"/>
+                        <p class="mt16 mb24" t-field="product.description_sale" />
                     </div>
                 </div>
             </div>
         </div>
     </template>
 
-    <template id="product_quantity" inherit_id="website_sale.product_quantity">
+    <!-- TODO migrate to 14.0 (frontend team) -->
+    <template
+        id="product_quantity"
+        inherit_id="website_sale.product_quantity"
+        active="False"
+    >
       <xpath expr="//div[starts-with(@class,'css_quantity')]" position="attributes">
-        <attribute name="groups" add="website.group_website_designer" separator=" "/>
+        <attribute name="groups" add="website.group_website_designer" separator=" " />
       </xpath>
     </template>
 

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+
+    <record id="stock.menu_warehouse_report" model="ir.ui.menu">
+        <field
+            name="groups_id"
+            eval="[(4, ref('group_stock_menu_inform_configuration'))]"
+        />
+    </record>
+
+    <menuitem
+        id="menu_hr_employee_report"
+        parent="hr.menu_hr_root"
+        name="SED"
+        sequence="90"
+        groups="base.group_user"
+    />
+
+    <menuitem
+        id="sale_order_traffic_menu"
+        parent="sale.sale_menu_root"
+        name="Traffic"
+    />
+
+    <menuitem
+        id="sale_order_traffic"
+        parent="sale_order_traffic_menu"
+        name="Traffic"
+        action="stock.stock_picking_type_action"
+        sequence="10"
+    />
+
+    <menuitem
+        id="menu_account_reports_management"
+        name="Management"
+        parent="account.menu_finance_receivables"
+        sequence="4"
+    />
+
+</odoo>

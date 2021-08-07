@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+
+    <record id="view_hr_employee_indicator_form" model="ir.ui.view">
+        <field name="name">hr.employee.indicator.form</field>
+        <field name="model">hr.employee.indicator</field>
+        <field name="arch" type="xml">
+            <form string="Indicator">
+                <form>
+                    <group>
+                        <group>
+                            <field name="name" />
+                            <field name="indicator_code" />
+                            <field name="description" />
+                            <field name="weight" />
+                            <field name="weighted_weight" />
+                        </group>
+                        <group>
+                            <field name="metric_type" />
+                            <field
+                                name="metric_great"
+                                attrs="{
+                                    'invisible': [('metric_type', '=', 'less')],
+                                    'required': [('metric_type', '=', 'greater')]
+                                }"
+                            />
+                            <field
+                                name="metric_less"
+                                attrs="{
+                                    'invisible': [('metric_type', '=', 'greater')],
+                                    'required': [('metric_type', '=', 'less')]
+                                }"
+                            />
+                            <field name="metric" />
+                        </group>
+                    </group>
+                </form>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_hr_employee_indicator_tree" model="ir.ui.view">
+        <field name="name">hr.employee.indicator.tree</field>
+        <field name="model">hr.employee.indicator</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name" />
+                <field name="indicator_code" />
+                <field name="description" />
+                <field name="weight" optional="show" />
+                <field name="weighted_weight" optional="show" />
+                <field name="metric" optional="show" />
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_indicator_filter" model="ir.ui.view">
+        <field name="name">hr.employee.indicator.search</field>
+        <field name="model">hr.employee.indicator</field>
+        <field name="arch" type="xml">
+            <search string="Indicators">
+                <field name="name" string="Indicators" />
+                <field name="indicator_code" />
+            </search>
+        </field>
+    </record>
+
+    <record id="open_module_tree_indicator" model="ir.actions.act_window">
+        <field name="name">Indicators</field>
+        <field name="res_model">hr.employee.indicator</field>
+        <field name="view_mode">tree,form</field>
+        <field name="search_view_id" ref="view_indicator_filter" />
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+            Click to create an indicator.
+            </p><p>
+                Indicators.
+            </p>
+        </field>
+    </record>
+
+    <menuitem
+        action="open_module_tree_indicator"
+        id="menu_hr_employee_indicator_tree"
+        parent="menu_hr_employee_report"
+        sequence="20"
+        groups="hr.group_hr_user"
+    />
+
+</odoo>

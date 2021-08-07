@@ -1,13 +1,13 @@
-from __future__ import division
 from werkzeug.exceptions import Forbidden
 
-from odoo import http, tools, _
-from odoo.http import request, Controller
-from odoo.addons.website_sale.controllers.main import WebsiteSale
+from odoo import _, http, tools
+from odoo.exceptions import ValidationError
+from odoo.http import Controller, request
+
+from odoo.addons.account.controllers.portal import PortalAccount
 from odoo.addons.portal.controllers.portal import CustomerPortal
 from odoo.addons.sale.controllers.portal import CustomerPortal as SP
-from odoo.addons.account.controllers.portal import PortalAccount
-from odoo.exceptions import ValidationError
+from odoo.addons.website_sale.controllers.main import WebsiteSale
 
 
 class WebsiteAccount(WebsiteSale):
@@ -40,9 +40,7 @@ class WebsiteAccount(WebsiteSale):
         values["active_page"] = "/my/address"
         return request.render("typ.account_address", values)
 
-    @http.route(
-        ["/my/account/reset_password"], type="http", auth="user", website=True
-    )
+    @http.route(["/my/account/reset_password"], type="http", auth="user", website=True)
     def account_reset_pass(self, **kw):
         request.env.user.partner_id.signup_prepare(signup_type="reset")
         return request.redirect(request.env.user.partner_id.signup_url)
@@ -61,9 +59,7 @@ class WebsiteAccount(WebsiteSale):
 
     @http.route()
     def shop(self, page=0, category=None, search="", ppg=False, **post):
-        res = super().shop(
-            page, category, search, ppg, **post
-        )
+        res = super().shop(page, category, search, ppg, **post)
         sort_by = post.get("order")
         res.qcontext["ppg"] = ppg
         res.qcontext["sort_by"] = sort_by
@@ -73,9 +69,7 @@ class WebsiteAccount(WebsiteSale):
 class MyAccountInvoices(PortalAccount):
     @http.route()
     def portal_my_invoices(self, *arg, **kw):
-        response = super().portal_my_invoices(
-            *arg, **kw
-        )
+        response = super().portal_my_invoices(*arg, **kw)
 
         response.qcontext["in_view"] = "invoices"
 
@@ -88,42 +82,32 @@ class MyAccountInvoices(PortalAccount):
         invoices = response.qcontext.get("invoices")
 
         if status_filter == "open":
-            my_invoices = invoices.filtered(
-                lambda rec: rec.state == "open" and rec.type == "out_invoice"
-            )
+            my_invoices = invoices.filtered(lambda rec: rec.state == "open" and rec.type == "out_invoice")
             response.qcontext.update({"invoices": my_invoices})
         elif status_filter == "paid":
-            my_invoices = invoices.filtered(
-                lambda rec: rec.state == "paid" and rec.type == "out_invoice"
-            )
+            my_invoices = invoices.filtered(lambda rec: rec.state == "paid" and rec.type == "out_invoice")
             response.qcontext.update({"invoices": my_invoices})
         else:
-            my_invoices = invoices.filtered(
-                lambda rec: rec.type == "out_invoice"
-            )
+            my_invoices = invoices.filtered(lambda rec: rec.type == "out_invoice")
             response.qcontext.update({"invoices": my_invoices})
 
-        total_unpaid_usd = my_invoices.filtered(
-            lambda rec: rec.currency_id.name == "USD"
-        ).mapped("residual")
+        total_unpaid_usd = my_invoices.filtered(lambda rec: rec.currency_id.name == "USD").mapped("residual")
         sum_unpaid_usd = sum(total_unpaid_usd)
         response.qcontext["total_unpaid_usd"] = sum_unpaid_usd
 
-        total_unpaid_mxn = my_invoices.filtered(
-            lambda rec: rec.currency_id.name == "MXN"
-        ).mapped("residual")
+        total_unpaid_mxn = my_invoices.filtered(lambda rec: rec.currency_id.name == "MXN").mapped("residual")
         sum_unpaid_mxn = sum(total_unpaid_mxn)
         response.qcontext["total_unpaid_mxn"] = sum_unpaid_mxn
 
-        amount_usd = my_invoices.filtered(
-            lambda rec: rec.currency_id.name == "USD" and rec.state != "cancel"
-        ).mapped("amount_total")
+        amount_usd = my_invoices.filtered(lambda rec: rec.currency_id.name == "USD" and rec.state != "cancel").mapped(
+            "amount_total"
+        )
         to_paid_usd = sum(amount_usd) - sum_unpaid_usd
         response.qcontext["total_to_paid_usd"] = to_paid_usd
 
-        amount_mxn = my_invoices.filtered(
-            lambda rec: rec.currency_id.name == "MXN" and rec.state != "cancel"
-        ).mapped("amount_total")
+        amount_mxn = my_invoices.filtered(lambda rec: rec.currency_id.name == "MXN" and rec.state != "cancel").mapped(
+            "amount_total"
+        )
         to_paid_mxn = sum(amount_mxn) - sum_unpaid_mxn
         response.qcontext["total_to_paid_mxn"] = to_paid_mxn
 
@@ -131,9 +115,7 @@ class MyAccountInvoices(PortalAccount):
 
     @http.route(["/my/credit_notes"], type="http", auth="user", website=True)
     def my_credit_notes(self, *arg, **kw):
-        response = super().portal_my_invoices(
-            *arg, **kw
-        )
+        response = super().portal_my_invoices(*arg, **kw)
 
         response.qcontext["in_view"] = "credit_notes"
 
@@ -146,59 +128,41 @@ class MyAccountInvoices(PortalAccount):
         invoices = response.qcontext.get("invoices")
 
         if status_filter == "open":
-            my_credit_notes = invoices.filtered(
-                lambda rec: rec.state == "open" and rec.type == "out_refund"
-            )
+            my_credit_notes = invoices.filtered(lambda rec: rec.state == "open" and rec.type == "out_refund")
             response.qcontext.update({"invoices": my_credit_notes})
         elif status_filter == "paid":
-            my_credit_notes = invoices.filtered(
-                lambda rec: rec.state == "paid" and rec.type == "out_refund"
-            )
+            my_credit_notes = invoices.filtered(lambda rec: rec.state == "paid" and rec.type == "out_refund")
             response.qcontext.update({"invoices": my_credit_notes})
         else:
-            my_credit_notes = invoices.filtered(
-                lambda rec: rec.type == "out_refund"
-            )
+            my_credit_notes = invoices.filtered(lambda rec: rec.type == "out_refund")
             response.qcontext.update({"invoices": my_credit_notes})
 
         response.qcontext.update({"default_url": "/my/credit_notes"})
 
-        total_unpaid_usd = my_credit_notes.filtered(
-            lambda rec: rec.currency_id.name == "USD"
-        ).mapped("residual")
+        total_unpaid_usd = my_credit_notes.filtered(lambda rec: rec.currency_id.name == "USD").mapped("residual")
         sum_unpaid_usd = sum(total_unpaid_usd)
         response.qcontext["total_unpaid_usd"] = sum_unpaid_usd
 
-        total_unpaid_mxn = my_credit_notes.filtered(
-            lambda rec: rec.currency_id.name == "MXN"
-        ).mapped("residual")
+        total_unpaid_mxn = my_credit_notes.filtered(lambda rec: rec.currency_id.name == "MXN").mapped("residual")
         sum_unpaid_mxn = sum(total_unpaid_mxn)
         response.qcontext["total_unpaid_mxn"] = sum_unpaid_mxn
 
-        amount_usd = my_credit_notes.filtered(
-            lambda rec: rec.currency_id.name == "USD"
-        ).mapped("amount_total")
+        amount_usd = my_credit_notes.filtered(lambda rec: rec.currency_id.name == "USD").mapped("amount_total")
         to_paid_usd = sum(amount_usd) - sum_unpaid_usd
         response.qcontext["total_to_paid_usd"] = to_paid_usd
 
-        amount_mxn = my_credit_notes.filtered(
-            lambda rec: rec.currency_id.name == "MXN"
-        ).mapped("amount_total")
+        amount_mxn = my_credit_notes.filtered(lambda rec: rec.currency_id.name == "MXN").mapped("amount_total")
         to_paid_mxn = sum(amount_mxn) - sum_unpaid_mxn
         response.qcontext["total_to_paid_mxn"] = to_paid_mxn
 
         return request.render("typ.my_invoices", response.qcontext)
 
-    @http.route(
-        ["/my/payment_complements"], type="http", auth="user", website=True
-    )
+    @http.route(["/my/payment_complements"], type="http", auth="user", website=True)
     def my_payment_complements(self, **kw):
         partner = request.env.user.partner_id.ids
         account_payments = request.env["account.payment"]
 
-        complements = account_payments.sudo().search(
-            [("partner_id", "=", partner), ("state", "=", "reconciled")]
-        )
+        complements = account_payments.sudo().search([("partner_id", "=", partner), ("state", "=", "reconciled")])
 
         values = {
             "payment_partner": complements,
@@ -217,15 +181,14 @@ class MyAccountOrders(SP):
         response.qcontext["month_filter"] = month_filter
 
         amount_usd = orders.filtered(
-            lambda rec: rec.state == "sale"
-            and rec.pricelist_id.currency_id.name == "USD"
+            lambda rec: rec.state == "sale" and rec.pricelist_id.currency_id.name == "USD"
         ).mapped("amount_total")
         amount_total_usd = sum(amount_usd)
         response.qcontext["total_amount_usd"] = amount_total_usd
 
-        amount_mxn = orders.filtered(
-            lambda rec: rec.state == "sale" and rec.currency_id.name == "MXN"
-        ).mapped("amount_total")
+        amount_mxn = orders.filtered(lambda rec: rec.state == "sale" and rec.currency_id.name == "MXN").mapped(
+            "amount_total"
+        )
         amount_total_mxn = sum(amount_mxn)
         response.qcontext["total_amount_mxn"] = amount_total_mxn
 
@@ -240,15 +203,14 @@ class MyAccountOrders(SP):
         response.qcontext["month_filter"] = month_filter
 
         amount_usd = quotations.filtered(
-            lambda rec: rec.state == "sent"
-            and rec.pricelist_id.currency_id.name == "USD"
+            lambda rec: rec.state == "sent" and rec.pricelist_id.currency_id.name == "USD"
         ).mapped("amount_total")
         amount_total_usd = sum(amount_usd)
         response.qcontext["total_amount_usd"] = amount_total_usd
 
-        amount_mxn = quotations.filtered(
-            lambda rec: rec.state == "sent" and rec.currency_id.name == "MXN"
-        ).mapped("amount_total")
+        amount_mxn = quotations.filtered(lambda rec: rec.state == "sent" and rec.currency_id.name == "MXN").mapped(
+            "amount_total"
+        )
         amount_total_mxn = sum(amount_mxn)
         response.qcontext["total_amount_mxn"] = amount_total_mxn
 
@@ -270,9 +232,7 @@ class MyAccount(CustomerPortal):
 
     @http.route(["/my/contact/edit"], type="http", auth="user", website=True)
     def contact_edit(self, redirect=None, **post):
-        partner_obj = (
-            request.env["res.partner"].with_context(show_address=1).sudo()
-        )
+        partner_obj = request.env["res.partner"].with_context(show_address=1).sudo()
         logued_partner = request.env.user.partner_id
         mode = (False, False)
         values = errors = {}
@@ -307,9 +267,7 @@ class MyAccount(CustomerPortal):
                 contact_dict, errors, error_msg = self.values_postprocess(
                     logued_partner, mode, post, errors, error_msg
                 )
-                partner_id = self._contact_details_save(
-                    mode, contact_dict, post
-                )
+                partner_id = self._contact_details_save(mode, contact_dict, post)
                 if not errors:
                     return request.redirect("/my/address")
 
@@ -338,43 +296,28 @@ class MyAccount(CustomerPortal):
         error_message = []
         # Required fields from mandatory field function
         required_fields = (
-            mode[1] == "shipping"
-            and self._get_mandatory_shipping_fields()
-            or self._get_mandatory_billing_fields()
+            mode[1] == "shipping" and self._get_mandatory_shipping_fields() or self._get_mandatory_billing_fields()
         )
         # Check if state required
         if data.get("country_id"):
-            country = request.env["res.country"].browse(
-                int(data.get("country_id"))
-            )
-            if (
-                "state_code" in country.get_address_fields()
-                and country.state_ids
-            ):
+            country = request.env["res.country"].browse(int(data.get("country_id")))
+            if "state_code" in country.get_address_fields() and country.state_ids:
                 required_fields += ["state_id"]
         # error message for empty required fields
         for field_name in required_fields:
             if not data.get(field_name):
                 error[field_name] = "missing"
         # email validation
-        if data.get("email") and not tools.single_email_re.match(
-            data.get("email")
-        ):
+        if data.get("email") and not tools.single_email_re.match(data.get("email")):
             error["email"] = "error"
-            error_message.append(
-                _("Invalid Email! Please enter a valid email address.")
-            )
+            error_message.append(_("Invalid Email! Please enter a valid email address."))
         # vat validation
         partner = request.env["res.partner"]
         if data.get("vat") and hasattr(partner, "check_vat"):
             partner_dummy = partner.new(
                 {
                     "vat": data["vat"],
-                    "country_id": (
-                        int(data["country_id"])
-                        if data.get("country_id")
-                        else False
-                    ),
+                    "country_id": (int(data["country_id"]) if data.get("country_id") else False),
                 }
             )
             try:
@@ -395,10 +338,7 @@ class MyAccount(CustomerPortal):
                 partner = partner_obj.browse(partner_id)
                 # double check
                 shippings = partner._get_partner_shippings()
-                if (
-                    partner_id not in shippings.mapped("id")
-                    and partner_id != partner_id.id
-                ):
+                if partner_id not in shippings.mapped("id") and partner_id != partner_id.id:
                     return Forbidden()
                 partner_obj.browse(partner_id).sudo().write(checkout)
         return partner_id
@@ -409,21 +349,12 @@ class MyAccount(CustomerPortal):
     def _get_mandatory_billing_fields(self):
         return WebsiteAccount()._get_mandatory_billing_fields()
 
-    def values_postprocess(
-        self, logued_partner, mode, values, errors, error_msg
-    ):
+    def values_postprocess(self, logued_partner, mode, values, errors, error_msg):
         new_values = {
             "customer": True,
-            "team_id": (
-                request.website.salesteam_id
-                and request.website.salesteam_id.id
-            ),
+            "team_id": (request.website.salesteam_id and request.website.salesteam_id.id),
         }
-        lang = (
-            request.lang
-            if request.lang in request.website.mapped("language_ids.code")
-            else None
-        )
+        lang = request.lang if request.lang in request.website.mapped("language_ids.code") else None
         if lang:
             new_values["lang"] = lang
         if mode == ("edit", "billing") and logued_partner.type == "contact":
@@ -513,9 +444,7 @@ class WebsiteUserWishList(http.Controller):
 
 
 class WebsiteLoyalty(http.Controller):
-    @http.route(
-        ["/loyalty"], type="http", auth="public", website=True, sitemap=False
-    )
+    @http.route(["/loyalty"], type="http", auth="public", website=True, sitemap=False)
     def create_partner(self, **post):
         category = post.get("category", False)
         values = {"category": category}

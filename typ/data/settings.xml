@@ -1,69 +1,77 @@
-<odoo noupdate="1">
-
-  <!-- Install Spanish language (if not installed yet) -->
-    <record id="lang_settings_es_mx" model="base.language.install">
-        <field name="lang">es_MX</field>
-        <field name="website_ids" model="website" eval="[
-            (6, 0, [ref('website.default_website')]),
-        ]"/>
-    </record>
-
-    <function model="base.language.install" name="lang_install" eval="[ref('lang_settings_es_mx')]"/>
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
 
   <!-- Configuration Settings -->
     <record id="config_settings" model="res.config.settings">
         <!-- # General Settings -->
         <field name="auth_signup_uninvited">b2b</field>
         <field name="alias_domain">erp.typrefrigeracion.com</field>
-        <field name="auth_signup_reset_password" eval="True"/>
-        <field name="auth_oauth_google_enabled" eval="True"/>
-        <field name="group_warning_account" eval="True"/>
-        <field name="group_product_variant" eval="True"/>
-        <field name="group_uom" eval="True"/>
+        <field name="auth_signup_reset_password" eval="True" />
+        <field name="auth_oauth_google_enabled" eval="True" />
+        <field name="group_warning_account" eval="True" />
+        <field name="group_product_variant" eval="True" />
+        <field name="group_uom" eval="True" />
         <!-- # Sale Settings -->
-        <field name="group_discount_per_so_line" eval="True"/>
-        <field name="group_product_pricelist" eval="True"/>
+        <field name="group_discount_per_so_line" eval="True" />
+        <field name="group_product_pricelist" eval="True" />
         <field name="product_pricelist_setting">advanced</field>
         <field name="margin_allowed">7.0</field>
-        <field name="group_warning_sale" eval="True"/>
-        <field name="group_sale_delivery_address" eval="True"/>
+        <field name="group_warning_sale" eval="True" />
+        <field name="group_sale_delivery_address" eval="True" />
         <field name="show_line_subtotals_tax_selection">tax_excluded</field>
-        <!-- <field name="user_default_rights" eval="True"/> -->
-        <field name="use_invoice_terms" eval="True"/>
+        <field name="use_invoice_terms" eval="True" />
         <field name="default_invoice_policy">delivery</field>
         <!-- # Purchase Settings -->
-        <field name="default_invoice_policy">delivery</field>
-        <field name="group_warning_purchase" eval="True"/>
+        <field name="group_warning_purchase" eval="True" />
         <field name="default_purchase_method">receive</field>
         <!-- # Stock Settings -->
-        <field name="group_warning_stock" eval="True"/>
-        <field name="group_stock_production_lot" eval="True"/>
-        <field name="group_stock_multi_locations" eval="True"/>
-        <field name="group_stock_adv_location" eval="True"/>
+        <field name="group_warning_stock" eval="True" />
+        <field name="group_stock_production_lot" eval="True" />
+        <field name="group_stock_multi_locations" eval="True" />
+        <field name="group_stock_adv_location" eval="True" />
         <field name="default_picking_policy">direct</field>
         <!-- # Account Settings -->
-        <field name="group_multi_currency" eval="True"/>
+        <field name="group_multi_currency" eval="True" />
         <field name="currency_provider">banxico</field>
         <field name="currency_interval_unit">daily</field>
         <!-- # Website Settings -->
-        <!-- <field name="website_name">typ.mx</field>
-        <field name="has_google_analytics_dashboard" eval="True"/>
-        <field name="group_multi_currency" eval="True"/>
-        <field name="website_default_lang_id" ref="base.lang_es"/>
-        <field name="language_ids" eval="[(6,0,[
+        <field name="website_name">typ.mx</field>
+        <field name="has_google_analytics_dashboard" eval="True" />
+        <field name="website_default_lang_id" ref="base.lang_es" />
+        <field
+            name="language_ids"
+            eval="[(6, 0, [
             ref('base.lang_es'),
             ref('base.lang_en'),
-            ])]"/>
-        <field name="group_multi_website" eval="False"/> -->
+        ])]"
+        />
+        <field name="group_multi_website" eval="False" />
     </record>
-    <function model="res.config.settings" name="execute" eval="[[ref('config_settings')]]"/>
 
-    <!-- Load chart of accounts for companies -->
+    <function
+        model="res.config.settings"
+        name="execute"
+        eval="[[ref('config_settings')]]"
+    />
+
+    <delete id="config_settings" model="res.config.settings" />
+
+  <!-- Install Spanish language (if not installed yet) -->
     <data noupdate="1">
-        <function model="account.chart.template" name="try_loading">
-            <value eval="ref('l10n_mx.mx_coa')"/>
-             <value model="res.company" eval="obj(ref('base.main_company'))"/>
-        </function>
+        <record id="lang_settings_es_mx" model="base.language.install">
+            <field name="lang">es_MX</field>
+            <field
+                name="website_ids"
+                model="website"
+                eval="[(6, 0, [ref('website.default_website')])]"
+            />
+        </record>
+
+        <function
+            model="base.language.install"
+            name="lang_install"
+            eval="[ref('lang_settings_es_mx')]"
+        />
     </data>
 
 </odoo>

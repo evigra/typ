@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+
+    <record id="hr_employe_check_01" model="hr.employee.check">
+        <field name="name">Curriculum vitae</field>
+        <field name="doc_type">RD</field>
+    </record>
+
+    <record model="hr.employee.check" id="hr_employe_check_02">
+        <field name="name">Copia de credencial oficial INE</field>
+        <field name="doc_type">RD</field>
+    </record>
+
+    <record model="hr.employee.check" id="hr_employe_check_03">
+        <field name="name">Copia simple de acta de nacimiento</field>
+        <field name="doc_type">RD</field>
+    </record>
+
+    <record model="hr.employee.check" id="hr_employe_check_04">
+        <field name="name">Registro de número de seguro social</field>
+        <field name="doc_type">RD</field>
+    </record>
+
+    <record model="hr.employee.check" id="hr_employe_check_05">
+        <field name="name">CURP</field>
+        <field name="doc_type">RD</field>
+    </record>
+
+    <record model="hr.employee.check" id="hr_employe_check_06">
+        <field name="name">Comprobante de domicilio</field>
+        <field name="doc_type">RD</field>
+    </record>
+
+    <record model="hr.employee.check" id="hr_employe_check_07">
+        <field name="name">Aviso de retención</field>
+        <field name="doc_type">RD</field>
+    </record>
+
+    <record model="hr.employee.check" id="hr_employe_check_08">
+        <field name="name">Alta RFC</field>
+        <field name="doc_type">RD</field>
+    </record>
+
+    <record model="hr.employee.check" id="hr_employe_check_09">
+        <field name="name">Constancia laboral</field>
+        <field name="doc_type">RD</field>
+    </record>
+
+    <record model="hr.employee.check" id="hr_employe_check_10">
+        <field name="name">Recomendación personal</field>
+        <field name="doc_type">RD</field>
+    </record>
+
+    <record model="hr.employee.check" id="hr_employe_check_11">
+        <field name="name">Carta de antecedentes no penales</field>
+        <field name="doc_type">RD</field>
+    </record>
+
+    <record model="hr.employee.check" id="hr_employe_check_12">
+        <field name="name">Licencia de conducir</field>
+        <field name="doc_type">RD</field>
+    </record>
+
+    <record model="hr.employee.check" id="hr_employe_check_13">
+        <field name="name">2 Fotografias tamaño infantil</field>
+        <field name="doc_type">RD</field>
+    </record>
+
+    <record model="hr.employee.check" id="hr_employe_check_14">
+        <field name="name">Constancia de último grado de estudios</field>
+        <field name="doc_type">RD</field>
+    </record>
+
+    <record model="hr.employee.check" id="hr_employe_check_15">
+        <field name="name">Solicitud TyP Refrigeración</field>
+        <field name="doc_type">CD</field>
+    </record>
+
+    <record model="hr.employee.check" id="hr_employe_check_16">
+        <field name="name">Psicometría</field>
+        <field name="doc_type">CD</field>
+    </record>
+
+    <record model="hr.employee.check" id="hr_employe_check_17">
+        <field name="name">Referencias laborales</field>
+        <field name="doc_type">CD</field>
+    </record>
+
+    <record model="hr.employee.check" id="hr_employe_check_18">
+        <field name="name">Contrato a prueba</field>
+        <field name="doc_type">CD</field>
+    </record>
+    <record model="hr.employee.check" id="hr_employe_check_19">
+        <field name="name">Contrato indeterminado</field>
+        <field name="doc_type">CD</field>
+    </record>
+
+    <record model="hr.employee.check" id="hr_employe_check_20">
+        <field name="name">Convenio de confidencialidad</field>
+        <field name="doc_type">CD</field>
+    </record>
+
+    <record model="hr.employee.check" id="hr_employe_check_21">
+        <field name="name">Aviso de privacidad</field>
+        <field name="doc_type">CD</field>
+    </record>
+
+    <record model="hr.employee.check" id="hr_employe_check_22">
+        <field name="name">Constancia de alta ante el IMSS</field>
+        <field name="doc_type">CD</field>
+    </record>
+    <record model="hr.employee.check" id="hr_employe_check_23">
+        <field name="name">Seguro de vida</field>
+        <field name="doc_type">CD</field>
+    </record>
+    <record model="hr.employee.check" id="hr_employe_check_24">
+        <field name="name">Reglamento interior de trabajo</field>
+        <field name="doc_type">CD</field>
+    </record>
+    <record model="hr.employee.check" id="hr_employe_check_25">
+        <field name="name">Exámenes médicos</field>
+        <field name="doc_type">CD</field>
+    </record>
+</odoo>

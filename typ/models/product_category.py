@@ -1,8 +1,7 @@
-from odoo import models, fields
+from odoo import fields, models
 
 
 class ProductCategory(models.Model):
-
     _inherit = "product.category"
 
     allow_change_price_sale = fields.Boolean(
@@ -10,3 +9,4 @@ class ProductCategory(models.Model):
         "consumable products attached to this category. The options doesn't "
         "apply to products attached to sub-categories of this category."
     )
+    report_id = fields.Many2one("ir.actions.report", "Label report", domain="[('model','=','product.product')]")

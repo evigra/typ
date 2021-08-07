@@ -2,27 +2,41 @@
 <odoo>
     <template id="assets_backend" inherit_id="website.assets_backend">
         <xpath expr="//script[last()]" position="after">
-            <script type="text/javascript" src="/typ/static/src/js/modal.js"></script>
+            <script type="text/javascript" src="/typ/static/src/js/modal.js" />
         </xpath>
     </template>
 
-    <template id="assets_frontend" inherit_id="website.assets_frontend" name="Assets Frontend">
+    <template
+        id="assets_frontend"
+        inherit_id="website.assets_frontend"
+        name="Assets Frontend"
+    >
         <xpath expr="//script[last()]" position="after">
-            <script type="text/javascript" src="/typ/static/src/js/portal_account.js"></script>
-            <script type="text/javascript" src="/typ/static/src/js/edit_information.js"></script>
-            <script type="text/javascript" src="/typ/static/src/js/shipping.js"></script>
-            <script type="text/javascript" src="/typ/static/src/js/favorites.js"></script>
-            <script type="text/javascript" src="/typ/static/src/js/share.js"></script>
-            <script type="text/javascript" src="/typ/static/src/js/cart.js"></script>
-            <script type="text/javascript" src="/typ/static/src/js/download_catalog.js"></script>
+            <script type="text/javascript" src="/typ/static/src/js/portal_account.js" />
+            <script
+                type="text/javascript"
+                src="/typ/static/src/js/edit_information.js"
+            />
+            <script type="text/javascript" src="/typ/static/src/js/shipping.js" />
+            <script type="text/javascript" src="/typ/static/src/js/favorites.js" />
+            <script type="text/javascript" src="/typ/static/src/js/share.js" />
+            <script type="text/javascript" src="/typ/static/src/js/cart.js" />
+            <script
+                type="text/javascript"
+                src="/typ/static/src/js/download_catalog.js"
+            />
         </xpath>
         <xpath expr="//link[last()]" position="after">
-            <link href="/typ/static/src/less/main.less" rel="stylesheet" type="text/less"/>
+            <link
+                href="/typ/static/src/less/main.less"
+                rel="stylesheet"
+                type="text/less"
+            />
         </xpath>
     </template>
     <template id="pos_assets" inherit_id="point_of_sale.assets">
         <xpath expr="//link[last()]" position="after">
-            <script type="text/javascript" src="/typ/static/src/js/pos_models.js"></script>
+            <script type="text/javascript" src="/typ/static/src/js/pos_models.js" />
         </xpath>
     </template>
 </odoo>

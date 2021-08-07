@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+
+    <record id="view_stock_move_line_operation_tree" model="ir.ui.view">
+        <field name="name">stock.move.line.operations.tree.inherit.typ</field>
+        <field name="model">stock.move.line</field>
+        <field name="inherit_id" ref="stock.view_stock_move_line_operation_tree" />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='lot_id']" position="after">
+                <field name="serial_id" invisible="context.get('show_lots_text')" />
+            </xpath>
+            <xpath expr="//field[@name='lot_id']" position="attributes">
+                <attribute name="groups">typ.res_group_can_unreserve</attribute>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_stock_move_line_kanban" model="ir.ui.view">
+        <field name="name">stock.move.line.kanban.limit</field>
+        <field name="model">stock.move.line</field>
+        <field name="inherit_id" ref="stock.view_stock_move_line_kanban" />
+        <field name="arch" type="xml">
+            <field name="picking_id" position="after">
+                <field name="posx" invisible="1" />
+                <field name="posy" invisible="1" />
+                <field name="posz" invisible="1" />
+                <span
+                    t-if="record.posx.raw_value || record.posy.raw_value || record.posz.raw_value"
+                >
+                    Location
+                    <t t-if="record.posx.raw_value" t-esc="record.posx.raw_value" />
+                    <t t-if="record.posy.raw_value" t-esc="record.posy.raw_value" />
+                    <t t-if="record.posz.raw_value" t-esc="record.posz.raw_value" />
+                </span>
+            </field>
+        </field>
+    </record>
+
+</odoo>
