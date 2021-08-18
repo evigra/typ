@@ -10,7 +10,7 @@
     "version": "14.0.1.0.0",
     "depends": [
         "account_budget",
-        "account_check_printing",
+        # "account_check_printing",
         "account_payment",
         "account_reports_cash_basis",
         "auth_oauth",
@@ -33,6 +33,7 @@
         "sale_credit_management",
         "sale_margin",
         "stock_landed_costs",
+        "stock_picking_show_return",
         "website_blog",
         "website_sale",
     ],
