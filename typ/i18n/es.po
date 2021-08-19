@@ -1368,6 +1368,16 @@ msgid ""
 msgstr ""
 
 #. module: typ
+#: model_terms:ir.ui.view,arch_db:typ.view_invoice_tree_inherit
+msgid "Amount Due"
+msgstr "Importe adeudado"
+
+#. module: typ
+#: model_terms:ir.ui.view,arch_db:typ.view_invoice_tree_inherit
+msgid "Amount Due (Currency)"
+msgstr "Importe adeudado (moneda)"
+
+#. module: typ
 #: model_terms:ir.ui.view,arch_db:typ.report_payment_receipt_document
 msgid "Amount Paid"
 msgstr ""
@@ -6367,6 +6377,16 @@ msgid "TW2: stock -> customer"
 msgstr ""
 
 #. module: typ
+#: model_terms:ir.ui.view,arch_db:typ.view_invoice_tree_inherit
+msgid "Tax (Currency)"
+msgstr "Impuesto (moneda)"
+
+#. module: typ
+#: model_terms:ir.ui.view,arch_db:typ.view_invoice_tree_inherit
+msgid "Tax Excluded (Currency)"
+msgstr "Impuestos no incluidos (moneda)"
+
+#. module: typ
 #: model_terms:ir.ui.view,arch_db:typ.confirmation
 #: model_terms:ir.ui.view,arch_db:typ.portal_invoice_page
 #: model_terms:ir.ui.view,arch_db:typ.portal_order_page
@@ -6969,8 +6989,14 @@ msgstr "Herramientas"
 #: model_terms:ir.ui.view,arch_db:typ.my_quotations
 #: model_terms:ir.ui.view,arch_db:typ.portal_invoice_page
 #: model_terms:ir.ui.view,arch_db:typ.portal_order_page
+#: model_terms:ir.ui.view,arch_db:typ.view_invoice_tree_inherit
 msgid "Total"
 msgstr ""
+
+#. module: typ
+#: model_terms:ir.ui.view,arch_db:typ.view_invoice_tree_inherit
+msgid "Total (Currency)"
+msgstr "Total (moneda)"
 
 #. module: typ
 #: model_terms:ir.ui.view,arch_db:typ.my_orders
