@@ -6,10 +6,15 @@ _logger = logging.getLogger(__name__)
 
 
 def migrate(cr, version):
+    remove_deprecated(cr)
+    remove_uncertified_data(cr)
     use_native_hr_marital_cohabitant(cr)
     sanitize_employee_blood_types(cr)
     rename_field_so_is_special(cr)
     deactivate_default_filters(cr)
+    set_account_type_internal_group(cr)
+    set_missing_company_stock_moves_lines(cr)
+    set_missing_hr_expense_sheet_company(cr)
 
 
 def use_native_hr_marital_cohabitant(cr):
@@ -71,7 +76,7 @@ def sanitize_employee_blood_types(cr):
 
 
 def rename_field_so_is_special(cr):
-    """Rname sale order field "so" -> "is_special"
+    """Rename sale order field "so" -> "is_special"
 
     The field name "so" doesn't give any useful information and it's not allowed by lints.
     """
@@ -93,3 +98,194 @@ def deactivate_default_filters(cr):
             AND create_uid > 2
     """
     cr.execute(query)
+
+
+def set_account_type_internal_group(cr):
+    """Set Missing internal_group on manual account type 'Cuentas de Orden'"""
+    cr.execute("""UPDATE account_account_type SET internal_group='off_balance' WHERE internal_group IS NULL""")
+
+
+def set_missing_company_stock_moves_lines(cr):
+    """Some stock move lines missing company id"""
+    cr.execute("""UPDATE stock_move_line SET company_id = (SELECT id FROM res_company LIMIT 1) WHERE company_id IS NULL""")
+
+
+def set_missing_hr_expense_sheet_company(cr):
+    """Some hr.expense.sheet got to done and paid status without journal_id so setting the default journal"""
+    cr.execute(
+        """
+        UPDATE
+            hr_expense_sheet
+        SET
+            journal_id = (
+                SELECT id FROM account_journal WHERE type = 'purchase' LIMIT 1
+            )
+        """)
+
+MODELS_TO_DELETE = (
+    'ir.actions.act_window',
+    'ir.actions.act_window.view',
+    'ir.actions.report.xml',
+    'ir.actions.todo',
+    'ir.actions.url',
+    'ir.actions.wizard',
+    'ir.cron',
+    'ir.model',
+    'ir.model.access',
+    'ir.model.fields',
+    'ir.module.repository',
+    'ir.property',
+    'ir.report.custom',
+    'ir.report.custom.fields',
+    'ir.rule',
+    'ir.sequence',
+    'ir.sequence.type',
+    'ir.ui.menu',
+    'ir.ui.view',
+    'ir.ui.view_sc',
+    'ir.values',
+    'res.groups',
+)
+
+
+MODULES_TO_CLEAN = [
+    'dev_invoice_multi_payment',
+    'l10n_mx_edi_bank_statement',
+    'l10n_mx_edi_vendor_bills',
+    'l10n_mx_edi_bank',
+    'l10n_mx_pos_cogs',
+    'login',
+    'partner_credit_limit',
+    'payment_conekta',
+    'payment_term_type',
+    'stock_cost_segmentation',
+    'stock_landed_segmentation',
+    'theme_typ',
+    'typ_account',
+    'typ_default_warehouse_from_sale_team',
+    'typ_hr',
+    'typ_landed_costs',
+    'typ_pos',
+    'typ_printing_report',
+    'typ_purchase',
+    'typ_sale',
+    'typ_stock',
+    'typ_stock_barcode',
+]
+
+
+def model_to_table(model):
+    """
+    Get a table name according to a model name In case the table name is set on
+    an specific model manually instead the replacement, then you need to add it
+    in the mapped dictionary.
+    """
+    model_table_map = {
+        'ir.actions.client': 'ir_act_client',
+        'ir.actions.actions': 'ir_actions',
+        'ir.actions.report.custom': 'ir_act_report_custom',
+        'ir.actions.report.xml': 'ir_act_report_xml',
+        'ir.actions.act_window': 'ir_act_window',
+        'ir.actions.act_window.view': 'ir_act_window_view',
+        'ir.actions.url': 'ir_act_url',
+        'ir.actions.act_url': 'ir_act_url',
+        'ir.actions.server': 'ir_act_server',
+    }
+    name = model_table_map.get(model)
+    if name is not None:
+        return name.replace('.', '_')
+    if model is not None:
+        return model.replace('.', '_')
+    return ''
+
+
+def remove_deprecated(cr):
+    for m in MODULES_TO_CLEAN:
+        cr.execute(
+            """UPDATE ir_module_module
+               SET (state, latest_version) = ('uninstalled', False)
+               WHERE name = %s
+            """, [m])
+
+
+def module_delete(cr, module_name):
+    _logger.info('deleting module {0}'.format(module_name))
+
+    def table_exists(table_name):
+        cr.execute(
+            """SELECT count(1)
+                FROM information_schema.tables
+                WHERE table_name = %s and table_schema='public'""",
+                   [table_name])
+        return cr.fetchone()[0]
+
+    cr.execute("""
+        SELECT res_id, model
+        FROM ir_model_data
+        WHERE module=%s
+            AND model IN %s ORDER BY res_id desc""",
+               (module_name, MODELS_TO_DELETE))
+    data_to_delete = cr.fetchall()
+    for rec in data_to_delete:
+        table = model_to_table(rec[1])
+        cr.execute("SELECT count(*) "
+                   "FROM ir_model_data "
+                   "WHERE model = %s and res_id = %s", [rec[1], rec[0]])
+        count1 = cr.dictfetchone()['count']
+        if count1 > 1:
+            continue
+        try:
+            # ir_ui_view
+            if table == 'ir_ui_view':
+                cr.execute('SELECT model '
+                           'FROM ir_ui_view WHERE id = %s', (rec[0],))
+                t_name = cr.fetchone()
+                table_name = model_to_table(t_name[0])
+                cr.execute("SELECT viewname "
+                           "FROM pg_catalog.pg_views "
+                           "WHERE viewname = %s", [table_name])
+                if cr.fetchall():
+                    cr.execute('drop view ' + table_name + ' CASCADE')
+                cr.execute('DELETE FROM ir_model_constraint '
+                           'WHERE model=%s', (rec[0],))
+                cr.execute('DELETE FROM ' + table + ' WHERE inherit_id=%s',
+                           (rec[0],))
+                view_exists = cr.fetchone()
+                if bool(view_exists):
+                    cr.execute('DELETE FROM ' + table + ' WHERE id=%s',
+                               (rec[0],))
+
+            if table == 'ir_model':
+                if table_exists('ir_model_constraint'):
+                    cr.execute('DELETE FROM ir_model_constraint '
+                               'WHERE model=%s', (rec[0],))
+                if table_exists('ir_model_relation'):
+                    cr.execute('DELETE FROM ir_model_relation '
+                               'WHERE model=%s', (rec[0],))
+                cr.execute('DELETE FROM ' + table + ' WHERE id=%s', (rec[0],))
+            else:
+                cr.execute('DELETE FROM ' + table + ' WHERE id=%s', (rec[0],))
+
+            # also DELETE dependencies:
+            cr.execute('DELETE FROM ir_module_module_dependency '
+                       'WHERE module_id = %s', (rec[0],))
+        except Exception as ex:
+            msg = (
+                """Module delete error\n
+                   Model: %s, id: %s\n
+                   Query: %s\n
+                   Error: %s\n"
+                   On Module: %s\n
+                   """) % (rec[1], rec[0], cr.query, str(ex), module_name)
+            _logger.info(msg)
+        else:
+            _logger.info('Query on Else is %s' % cr.query)
+
+    cr.execute("DELETE FROM ir_model_data WHERE module=%s", (module_name,))
+    cr.execute('UPDATE ir_module_module set state=%s WHERE name=%s',
+               ('uninstalled', module_name))
+
+
+def remove_uncertified_data(cr):
+    for m in MODULES_TO_CLEAN:
+        module_delete(cr, m)
