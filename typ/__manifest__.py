@@ -37,6 +37,7 @@
         "default_warehouse_from_sale_team",
         "website_blog",
         "website_sale",
+        "website_sale_delivery",
     ],
     "data": [
         # Data

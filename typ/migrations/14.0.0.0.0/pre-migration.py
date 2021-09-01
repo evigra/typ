@@ -107,7 +107,21 @@ def set_account_type_internal_group(cr):
 
 def set_missing_company_stock_moves_lines(cr):
     """Some stock move lines missing company id"""
-    cr.execute("""UPDATE stock_move_line SET company_id = (SELECT id FROM res_company LIMIT 1) WHERE company_id IS NULL""")
+    query = """
+        UPDATE
+            stock_move_line
+        SET
+            company_id = (
+                SELECT
+                    id
+                FROM
+                    res_company
+                LIMIT 1
+            )
+        WHERE
+            company_id IS NULL
+    """
+    cr.execute(query)
 
 
 def set_missing_hr_expense_sheet_company(cr):
@@ -121,6 +135,7 @@ def set_missing_hr_expense_sheet_company(cr):
                 SELECT id FROM account_journal WHERE type = 'purchase' LIMIT 1
             )
         """)
+
 
 MODELS_TO_DELETE = (
     'ir.actions.act_window',
@@ -212,11 +227,16 @@ def module_delete(cr, module_name):
     _logger.info('deleting module {0}'.format(module_name))
 
     def table_exists(table_name):
-        cr.execute(
-            """SELECT count(1)
-                FROM information_schema.tables
-                WHERE table_name = %s and table_schema='public'""",
-                   [table_name])
+        query = """
+            SELECT
+                count(1)
+            FROM
+                information_schema.tables
+            WHERE
+                table_name = %s
+                AND table_schema = 'public'
+        """
+        cr.execute(query, (table_name, ))
         return cr.fetchone()[0]
 
     cr.execute("""

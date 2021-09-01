@@ -27,7 +27,10 @@ class TestPartner(TypTransactionCase):
     def test_02_default_pricelist_salesteam(self):
         """When creating a partner, default pricelist should be taken from sales team"""
         # Set a pricelist and create partner
-        self.env.user.sale_team_id = self.salesteam
+        self.env.user.write({
+            'sale_team_ids': [[4, self.salesteam.id, 0]],
+            'sale_team_id': self.salesteam.id,
+        })
         partner = self.env["res.partner"].create({"name": "To test Team Pricelist"})
         self.assertEqual(partner.property_product_pricelist, self.pricelist)
 
