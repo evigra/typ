@@ -9,6 +9,7 @@ def migrate(cr, version):
     use_native_hr_marital_cohabitant(cr)
     sanitize_employee_blood_types(cr)
     rename_field_so_is_special(cr)
+    deactivate_default_filters(cr)
 
 
 def use_native_hr_marital_cohabitant(cr):
@@ -77,3 +78,18 @@ def rename_field_so_is_special(cr):
     if tools.column_exists(cr, "sale_order", "so"):
         _logger.info("Renaming sale order field `so` -> `is_special`")
         tools.rename_column(cr, "sale_order", "so", "is_special")
+
+
+def deactivate_default_filters(cr):
+    """Deactivate user created filters, as some of them use old field names or unexisting models
+    """
+    query = """
+        UPDATE
+            ir_filters
+        SET
+            is_default = false
+        WHERE
+            is_default = true
+            AND create_uid > 2
+    """
+    cr.execute(query)
