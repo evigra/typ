@@ -82,20 +82,20 @@ class MyAccountInvoices(PortalAccount):
         invoices = response.qcontext.get("invoices")
 
         if status_filter == "open":
-            my_invoices = invoices.filtered(lambda rec: rec.state == "open" and rec.type == "out_invoice")
+            my_invoices = invoices.filtered(lambda rec: rec.state == "open" and rec.move_type == "out_invoice")
             response.qcontext.update({"invoices": my_invoices})
         elif status_filter == "paid":
-            my_invoices = invoices.filtered(lambda rec: rec.state == "paid" and rec.type == "out_invoice")
+            my_invoices = invoices.filtered(lambda rec: rec.state == "paid" and rec.move_type == "out_invoice")
             response.qcontext.update({"invoices": my_invoices})
         else:
-            my_invoices = invoices.filtered(lambda rec: rec.type == "out_invoice")
+            my_invoices = invoices.filtered(lambda rec: rec.move_type == "out_invoice")
             response.qcontext.update({"invoices": my_invoices})
 
-        total_unpaid_usd = my_invoices.filtered(lambda rec: rec.currency_id.name == "USD").mapped("residual")
+        total_unpaid_usd = my_invoices.filtered(lambda rec: rec.currency_id.name == "USD").mapped("amount_residual")
         sum_unpaid_usd = sum(total_unpaid_usd)
         response.qcontext["total_unpaid_usd"] = sum_unpaid_usd
 
-        total_unpaid_mxn = my_invoices.filtered(lambda rec: rec.currency_id.name == "MXN").mapped("residual")
+        total_unpaid_mxn = my_invoices.filtered(lambda rec: rec.currency_id.name == "MXN").mapped("amount_residual")
         sum_unpaid_mxn = sum(total_unpaid_mxn)
         response.qcontext["total_unpaid_mxn"] = sum_unpaid_mxn
 
@@ -128,22 +128,24 @@ class MyAccountInvoices(PortalAccount):
         invoices = response.qcontext.get("invoices")
 
         if status_filter == "open":
-            my_credit_notes = invoices.filtered(lambda rec: rec.state == "open" and rec.type == "out_refund")
+            my_credit_notes = invoices.filtered(lambda rec: rec.state == "open" and rec.move_type == "out_refund")
             response.qcontext.update({"invoices": my_credit_notes})
         elif status_filter == "paid":
-            my_credit_notes = invoices.filtered(lambda rec: rec.state == "paid" and rec.type == "out_refund")
+            my_credit_notes = invoices.filtered(lambda rec: rec.state == "paid" and rec.move_type == "out_refund")
             response.qcontext.update({"invoices": my_credit_notes})
         else:
-            my_credit_notes = invoices.filtered(lambda rec: rec.type == "out_refund")
+            my_credit_notes = invoices.filtered(lambda rec: rec.move_type == "out_refund")
             response.qcontext.update({"invoices": my_credit_notes})
 
         response.qcontext.update({"default_url": "/my/credit_notes"})
 
-        total_unpaid_usd = my_credit_notes.filtered(lambda rec: rec.currency_id.name == "USD").mapped("residual")
+        total_unpaid_usd = my_credit_notes.filtered(
+            lambda rec: rec.currency_id.name == "USD").mapped("amount_residual")
         sum_unpaid_usd = sum(total_unpaid_usd)
         response.qcontext["total_unpaid_usd"] = sum_unpaid_usd
 
-        total_unpaid_mxn = my_credit_notes.filtered(lambda rec: rec.currency_id.name == "MXN").mapped("residual")
+        total_unpaid_mxn = my_credit_notes.filtered(
+            lambda rec: rec.currency_id.name == "MXN").mapped("amount_residual")
         sum_unpaid_mxn = sum(total_unpaid_mxn)
         response.qcontext["total_unpaid_mxn"] = sum_unpaid_mxn
 
@@ -155,7 +157,8 @@ class MyAccountInvoices(PortalAccount):
         to_paid_mxn = sum(amount_mxn) - sum_unpaid_mxn
         response.qcontext["total_to_paid_mxn"] = to_paid_mxn
 
-        return request.render("typ.my_invoices", response.qcontext)
+        # TODO: change back to template typ.my_invoices when it is migrated
+        return request.render("account.portal_my_invoices", response.qcontext)
 
     @http.route(["/my/payment_complements"], type="http", auth="user", website=True)
     def my_payment_complements(self, **kw):
