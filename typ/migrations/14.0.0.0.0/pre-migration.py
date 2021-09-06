@@ -6,6 +6,7 @@ _logger = logging.getLogger(__name__)
 
 
 def migrate(cr, version):
+    rename_extids_typ_modules(cr)
     remove_deprecated(cr)
     remove_uncertified_data(cr)
     use_native_hr_marital_cohabitant(cr)
@@ -15,6 +16,24 @@ def migrate(cr, version):
     set_account_type_internal_group(cr)
     set_missing_company_stock_moves_lines(cr)
     set_missing_hr_expense_sheet_company(cr)
+
+
+def rename_extids_typ_modules(cr):
+    """Rename external IDs from __typ__** -> typ
+
+    Since all typ_** modules will be combined with the main app (typ), all references
+    was renamed to __typ__ in order to avoid data being deleted on app updating
+    so now need to be renamed so records are not duplicated.
+    """
+    # Then, rename external IDs
+    cr.execute("""
+        UPDATE
+            ir_model_data
+        SET
+            module = 'typ'
+        WHERE
+            module ilike '__typ__';
+    """)
 
 
 def use_native_hr_marital_cohabitant(cr):

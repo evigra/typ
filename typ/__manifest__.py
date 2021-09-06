@@ -30,7 +30,7 @@
         "point_of_sale",
         "product_supplierinfo_for_customer_sale",
         "purchase_requisition",
-        "sale_credit_management",
+        # "sale_credit_management",
         "sale_margin",
         "stock_landed_costs",
         "stock_picking_show_return",
