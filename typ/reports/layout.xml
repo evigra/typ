@@ -6,7 +6,7 @@
         </xpath>
     </template>
 
-    <template id="typ.custom_external_layout">
+    <!-- <template id="typ.custom_external_layout">
         <t t-if="not o and doc">
             <t t-set="o" t-value="doc" />
         </t>
@@ -120,7 +120,7 @@
                 <li><span class="topage" /></li>
             </ul>
         </div>
-    </template>
+    </template> -->
 
 
     <template id="custom_external_layout">
@@ -131,7 +131,7 @@
         <t t-if="not o or not 'company_id' in o">
             <t t-set="company" t-value="res_company" />
         </t>
-        <t t-call="typ.custom_external_layout_background"><t t-raw="0" /></t>
+        <t t-call="web.external_layout_background"><t t-raw="0" /></t>
     </template>
     <template id="custom_external_layout_with_address">
         <!-- Multicompany -->

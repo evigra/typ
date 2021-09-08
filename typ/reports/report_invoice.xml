@@ -40,7 +40,7 @@
         <field name="paperformat_id" ref="typ.typ_paperformat_invoice_letter" />
     </record>
 
-    <template id="report_invoice_document" inherit_id="account.report_invoice_document">
+    <template id="report_invoice_document" inherit_id="account.report_invoice_document" active="False">
         <xpath expr="//t[@t-call='web.external_layout']" position="attributes">
             <attribute name="t-call">typ.custom_external_layout</attribute>
         </xpath>
@@ -991,7 +991,4 @@
         <xpath expr="//div[hasclass('page')]/div[6]" position="replace">
         </xpath>
     </template>
-    <record id="l10n_mx_edi.report_invoice_document_mx" model="ir.ui.view">
-        <field name="active" eval='False' />
-    </record>
 </odoo>

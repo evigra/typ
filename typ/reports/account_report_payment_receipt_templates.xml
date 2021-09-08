@@ -18,6 +18,7 @@
     <template
         id="report_payment_receipt_document"
         inherit_id="account.report_payment_receipt_document"
+        active="False"
     >
         <xpath expr="//t[@t-call='web.external_layout']" position="attributes">
             <attribute name="t-call">typ.custom_external_layout</attribute>

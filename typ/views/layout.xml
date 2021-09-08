@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <odoo>
 
-    <template id="custom_external_layout_background">
+    <!-- <template id="custom_external_layout_background">
         <div class="header">
             <div class="row">
                 <div class="col-xs-6">
@@ -101,7 +101,7 @@
                 <li><span class="topage" /></li>
             </ul>
         </div>
-    </template>
+    </template> -->
 
     <template id="report_assets" inherit_id="web.report_assets_common">
         <xpath expr="." position="inside">
@@ -109,7 +109,7 @@
         </xpath>
     </template>
 
-    <template id="custom_external_layout">
+    <!-- <template id="custom_external_layout">
         <t t-if="not o and doc">
             <t t-set="o" t-value="doc" />
         </t>
@@ -121,7 +121,7 @@
             <t t-set="company" t-value="res_company" />
         </t>
         <t t-call="typ.custom_external_layout_background"><t t-raw="0" /></t>
-    </template>
+    </template> -->
 
     <!-- <template id="custom_external_layout_background">
         <div class="header">

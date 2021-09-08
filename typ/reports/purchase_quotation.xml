@@ -9,7 +9,7 @@
             <attribute name="t-if">False</attribute>
         </xpath>
         <xpath expr="//t[@t-call='web.external_layout']" position="after">
-            <t t-call="typ.custom_external_layout_with_address">
+            <t t-call="typ.custom_external_layout">
                 <t t-set="o" t-value="o.with_context({'lang':o.partner_id.lang})" />
                 <div class="page">
                     <div class="row mt32 mb32" style="padding-top: 20px;">
@@ -276,7 +276,7 @@
             <t t-call="web.html_container">
                 <t t-foreach="docs" t-as="o">
                     <t
-                        t-call="typ_purchase.report_purchasequotation_document"
+                        t-call="typ.report_purchasequotation_document"
                         t-lang="o.report_lang"
                     />
                 </t>
