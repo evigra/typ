@@ -10,3 +10,4 @@ export COUNTRY="MX"
 export CUSTOMER="typ"
 export COVERAGE_MIN=80
 export COVERAGE_PRECISION=2
+export DOCKER_IMAGE_REPO="quay.io/vauxoo/typ"
