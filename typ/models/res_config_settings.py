@@ -12,5 +12,6 @@ class ResConfiguration(models.TransientModel):
     margin_allowed = fields.Float(
         related="company_id.margin_allowed",
         string="Margin Allowed on Sale Order",
+        readonly=False,
         help="Percent (%) margin allowed to be modified on sales orders",
     )
