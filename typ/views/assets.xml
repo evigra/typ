@@ -28,9 +28,9 @@
         </xpath>
         <xpath expr="//link[last()]" position="after">
             <link
-                href="/typ/static/src/less/main.less"
+                href="/typ/static/src/scss/main.scss"
                 rel="stylesheet"
-                type="text/less"
+                type="text/scss"
             />
         </xpath>
     </template>

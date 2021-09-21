@@ -3,9 +3,9 @@
     <template id="assets_common_l10n_mx_edi_typ" inherit_id="web.report_assets_pdf">
         <xpath expr="." position="inside">
             <link
-                href="/l10n_mx_edi/static/src/less/report.less"
+                href="/l10n_mx_edi/static/src/scss/report.scss"
                 rel="stylesheet"
-                type="text/less"
+                type="text/scss"
             />
         </xpath>
     </template>
