@@ -12,24 +12,17 @@
 
     <!-- QWeb Reports -->
     <record id="account.action_report_payment_receipt" model="ir.actions.report">
-        <field name="paperformat_id" ref="typ_paperformat_invoice_letter" />
+        <field name="paperformat_id" ref="typ_paperformat_invoice_letter"/>
     </record>
 
-    <template
-        id="report_payment_receipt_document"
-        inherit_id="account.report_payment_receipt_document"
-        active="False"
-    >
+    <template id="report_payment_receipt_document" inherit_id="account.report_payment_receipt_document" active="True">
         <xpath expr="//t[@t-call='web.external_layout']" position="attributes">
-            <attribute name="t-call">typ.custom_external_layout</attribute>
+            <attribute name="t-call">typ.invoice_custom_external_layout</attribute>
         </xpath>
         <xpath expr="//t[@t-set='o']" position="after">
-            <t t-if="o.l10n_mx_edi_cfdi_uuid">
-                <!--New global variables-->
-                <t t-set="xml" t-value="o.l10n_mx_edi_get_xml_etree()" />
-                <t t-set="tfd" t-value="o.l10n_mx_edi_get_tfd_etree(xml)" />
-                <t t-set="tfd_original_string" t-value="o._get_l10n_mx_edi_cadena()" />
-            </t>
+            <!--New global variables-->
+            <t t-set="cfdi_vals" t-value="o.move_id._l10n_mx_edi_decode_cfdi()"/>
+            <t t-set="is_cfdi_signed" t-value="bool(o.move_id._get_l10n_mx_edi_signed_edi_document())"/>
         </xpath>
         <xpath expr="//div[hasclass('page')]/div[1]" position="replace">
         </xpath>
@@ -39,344 +32,227 @@
         </xpath>
         <xpath expr="//h3" position="replace">
             <div class="row">
-                <div class="col-xs-3" style="margin: 0px; padding: 0px;">
-                    <img
-                        t-if="o.company_id.logo"
-                        t-att-src="'data:image/png;base64,%s' % to_text(o.company_id.logo)"
-                        style="max-height: 60px;"
-                    />
+                <div class="col-3" style="margin: 0px; padding: 0px;">
+                    <img t-if="o.company_id.logo" t-att-src="'data:image/png;base64,%s' % to_text(o.company_id.logo)" style="max-height: 60px;"/>
                 </div>
-                <div class="col-xs-offset-4 col-xs-5 text-right">
+                <div class="offset-4 col-5 text-right">
                     <div class="row" style="font-size: 12;">
-                        <div
-                            class="col-xs-4 text-center bg-primary"
-                            style="border-top-left-radius: 0.4em; padding-top: 0.0em;"
-                        >
+                        <div class="col-4 text-center bg-primary" style="border-top-left-radius: 0.4em; padding-top: 0.0em;">
                             <span>Payment</span>
                         </div>
-                        <div
-                            class="col-xs-8 text-center bg-primary"
-                            style="border-top-right-radius: 0.4em; padding-top: 0.0em;"
-                        >
+                        <div class="col-8 text-center bg-primary" style="border-top-right-radius: 0.4em; padding-top: 0.0em;">
                             <span>Document Date</span>
                         </div>
                     </div>
-                    <div
-                        class="row"
-                        style="border: 2px solid #deeff5; border-bottom-left-radius: 0.4em; border-bottom-right-radius: 0.4em;"
-                    >
-                        <div
-                            class="col-xs-4 text-center"
-                            style="padding-top: 0.0em; border-right: 2px solid #deeff5;"
-                        >
+                    <div class="row" style="border: 2px solid #deeff5; border-bottom-left-radius: 0.4em; border-bottom-right-radius: 0.4em;">
+                        <div class="col-4 text-center" style="padding-top: 0.0em; border-right: 2px solid #deeff5;">
                             <h4 style="color:red;">
                                 <t>
-                                    <strong t-esc="o.name" />
+                                    <strong t-esc="o.name"/>
                                 </t>
                             </h4>
                         </div>
-                        <div
-                            class="col-xs-8 text-center"
-                            style="padding-top: 1.0em; font-size: 10;"
-                        >
-                            <t t-if="o.l10n_mx_edi_cfdi_uuid">
-                                <t t-set="date" t-value="xml.get('Fecha')" />
-                                <span
-                                    t-esc="o.l10n_mx_edi_cfdi_uuid and time.strftime('%d/%m/%Y %H:%M:%S', time.strptime(date, '%Y-%m-%dT%H:%M:%S')) or 'o.payment_date'"
-                                />
+                        <div class="col-8 text-center" style="padding-top: 1.0em; font-size: 10;">
+                            <t t-if="is_cfdi_signed">
+                                <t t-set="date" t-value="cfdi_vals.get('stamp_date')"/>
+                                <span t-esc="time.strftime('%d/%m/%Y %H:%M:%S', time.strptime(date, '%Y-%m-%dT%H:%M:%S')) or 'o.date'"/>
                             </t>
-                            <t t-if="not o.l10n_mx_edi_cfdi_uuid">
-                                <span t-esc="o.payment_date" />
+                            <t t-else="">
+                                <span t-esc="o.date"/>
                             </t>
                         </div>
                     </div>
                 </div>
             </div>
-            <t t-if="not o.l10n_mx_edi_cfdi_uuid and o.l10n_mx_edi_is_required()">
+            <t t-if="o.l10n_mx_edi_cfdi_request in ('on_invoice', 'on_refund') and not is_cfdi_signed and o.edi_state != 'cancelled'">
                 <div class="btn btn-danger">
-                    <h1
-                    >A signature of this invoice is required, but it is not signed.</h1>
+                    <h1>A signature of this invoice is required, but it is not signed.</h1>
                 </div>
             </t>
-            <div class="row" style="padding-top: 0.5em; font-size: 12;">
-                <div
-                    class="col-xs-5"
-                    style="padding-left: 0.0em; padding-right: 0.2em;"
-                >
-                    <div
-                        class="text-center bg-primary"
-                        style="border-top-t-radius: 0.4em; border-top-left-radius: 0.4em; padding-top: 0.0em;"
-                    >
+            <div class="row" style="padding-top: 0.5em; font-size: 15;">
+                <div class="col-5" style="padding-left: 0.0em; padding-right: 0.2em;">
+                    <div class="text-center bg-primary" style="border-top-t-radius: 0.4em; border-top-left-radius: 0.4em; padding-top: 0.0em;">
                         <span>Client Reference</span>
                     </div>
                 </div>
-                <div
-                    class="col-xs-4"
-                    style="padding-right: 0.2em; padding-left: 0.2em;"
-                >
-                    <div
-                        class="text-center bg-primary"
-                        style="border-top-right-radius: 0.4em; border-top-left-radius: 0.4em; padding-top: 0.0em;"
-                    >
+                <div class="col-4" style="padding-right: 0.2em; padding-left: 0.2em;">
+                    <div class="text-center bg-primary" style="border-top-right-radius: 0.4em; border-top-left-radius: 0.4em; padding-top: 0.0em;">
                         <span>Fiscal Regime</span>
                     </div>
                 </div>
+                <div class="col-3">
+                </div>
             </div>
             <div class="row">
-                <div>
-                    <div
-                        class="col-xs-5"
-                        style="padding-left: 0.0em; padding-right: 0.2em;"
-                    >
-                        <div
-                            class="text-center"
-                            style="border-bottom-right-radius: 0.4em; border-bottom-left-radius: 0.4em; border: 2px solid #deeff5; padding-top: 0.0em; font-size: 10;"
-                        >
-                            <span
-                                t-if="o.invoice_ids"
-                                t-esc="','.join(o.invoice_ids.filtered('name').mapped('name'))"
-                            />
-                        </div>
+                <div class="col-5" style="padding-left: 0.0em; padding-right: 0.2em;">
+                    <div class="text-center" style="border-bottom-right-radius: 0.4em; border-bottom-left-radius: 0.4em; border: 2px solid #deeff5; padding-top: 0.0em; font-size: 10;">
+                        <span t-if="o.invoice_line_ids" t-esc="','.join(o.invoice_line_ids.filtered('name').mapped('name'))"/>
                     </div>
-                    <div
-                        class="col-xs-4"
-                        style="padding-right: 0.2em; padding-left: 0.2em;"
-                    >
-                        <div
-                            class="text-center"
-                            style="border-bottom-right-radius: 0.4em; border-bottom-left-radius: 0.4em; border: 2px solid #deeff5; padding-top: 0.0em; font-size: 10;"
-                        >
-                            <t t-if="o.l10n_mx_edi_cfdi_uuid">
-                                <span t-esc="xml.Emisor.get('RegimenFiscal')" />
+                </div>
+                <div class="col-4" style="padding-right: 0.2em; padding-left: 0.2em;">
+                    <div class="text-center" style="border-bottom-right-radius: 0.4em; border-bottom-left-radius: 0.4em; border: 2px solid #deeff5; padding-top: 0.0em; font-size: 10;">
+                        <t t-if="is_cfdi_signed">
+                            <span t-esc="cfdi_vals.get('fiscal_regime')"/>
+                        </t>
+                    </div>
+                </div>
+                <div class="col-3">
+                </div>
+            </div>
+            <div class="row" style="padding-top: 0.5em; font-size: 15;">
+                <div class="col-4" style="padding-right: 0.2em; padding-left: 0.0em;">
+                    <div class="text-center bg-primary" style="border-top-right-radius: 0.4em; border-top-left-radius: 0.4em; padding-top: 0.0em;">
+                        <span>Issuer</span>
+                    </div>
+                </div>
+                <div class="col-4" style="padding-right: 0.0em; padding-left: 0.2em;">
+                    <div class="text-center bg-primary" style="border-top-right-radius: 0.4em; border-top-left-radius: 0.4em; padding-top: 0.0em;">
+                        <span>Customer</span>
+                    </div>
+                </div>
+                <div class="col-4" style="padding-right: 0.0em; padding-left: 0.2em;">
+                    <div class="text-center bg-primary" style="border-top-right-radius: 0.4em; border-top-left-radius: 0.4em; padding-top: 0.0em;">
+                        <span>Issued at</span>
+                    </div>
+                </div>
+            </div>
+            <div class="row" style="font-size: 12;">
+                <div class="col-4" style="padding-right: 0.2em; padding-left: 0.0em;">
+                    <div class="text-left" style="border-bottom-right-radius: 0.4em; border-bottom-left-radius: 0.4em; border: 2px solid #deeff5; padding-top: 0.0em;">
+                        <div>
+                            <t t-if="is_cfdi_signed">
+                                <strong t-esc="cfdi_node.Emisor.get('Nombre', '')"/>
+                            </t>
+                            <t t-else="">
+                                <strong t-esc="o.company_id.name"/>
                             </t>
                         </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row" style="padding-top: 0.5em; font-size: 12;">
-                <div>
-                    <div
-                        class="col-xs-4"
-                        style="padding-right: 0.2em; padding-left: 0.0em;"
-                    >
-                        <div
-                            class="text-center bg-primary"
-                            style="border-top-right-radius: 0.4em; border-top-left-radius: 0.4em; padding-top: 0.0em;"
-                        >
-                            <span>Issuer</span>
+                        <div>
+                            <span t-esc="o.company_id.street_name"/>
+                            <span t-esc="o.company_id.street_number"/>
+                            <span t-esc="o.company_id.street2"/>
+                            <br/>
+                            <span t-esc="o.company_id.l10n_mx_edi_colony"/>
+                            <span t-esc="o.company_id.zip"/>
+                            <br/>
+                            <span t-esc="o.company_id.l10n_mx_edi_locality"/>
+                            <br/>
+                            <span t-esc="o.company_id.city"/>
+                            <span t-esc="o.company_id.state_id.name"/>
+                            <span t-esc="o.company_id.country_id.name"/>
                         </div>
-                    </div>
-                    <div
-                        class="col-xs-4"
-                        style="padding-right: 0.0em; padding-left: 0.2em;"
-                    >
-                        <div
-                            class="text-center bg-primary"
-                            style="border-top-right-radius: 0.4em; border-top-left-radius: 0.4em; padding-top: 0.0em;"
-                        >
-                            <span>Customer</span>
+                        <div>
+                            <span t-if="o.company_id.phone" t-esc="o.company_id.phone"/>
                         </div>
-                    </div>
-                    <div
-                        class="col-xs-4"
-                        style="padding-right: 0.0em; padding-left: 0.2em;"
-                    >
-                        <div
-                            class="text-center bg-primary"
-                            style="border-top-right-radius: 0.4em; border-top-left-radius: 0.4em; padding-top: 0.0em;"
-                        >
-                            <span>Issued at</span>
+                        <div>
+                            <strong t-esc="('RFC. %s') % o.l10n_mx_edi_cfdi_supplier_rfc"/>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="row">
-                <div style="font-size: 10;">
-                    <div
-                        class="col-xs-4"
-                        style="padding-right: 0.2em; padding-left: 0.0em;"
-                    >
-                        <div
-                            class="text-left"
-                            style="border-bottom-right-radius: 0.4em; border-bottom-left-radius: 0.4em; border: 2px solid #deeff5; padding-top: 0.0em;"
-                        >
-                            <div>
-                                <t t-if="o.l10n_mx_edi_cfdi_uuid">
-                                     <strong t-esc="xml.Emisor.get('Nombre', '')" />
-                                </t>
-                                <t t-if="not o.l10n_mx_edi_cfdi_uuid">
-                                     <strong t-esc="o.company_id.name" />
-                                </t>
-                            </div>
-                            <div>
-                                <span t-esc="o.company_id.street_name" />
-                                <span t-esc="o.company_id.street_number" />
-                                <span t-esc="o.company_id.street2" />
-                                <br />
-                                <span t-esc="o.company_id.l10n_mx_edi_colony" />
-                                <span t-esc="o.company_id.zip" />
-                                <br />
-                                <span t-esc="o.company_id.l10n_mx_edi_locality" />
-                                <br />
-                                <span t-esc="o.company_id.city" />
-                                <span t-esc="o.company_id.state_id.name" />
-                                <span t-esc="o.company_id.country_id.name" />
-                            </div>
-                            <div>
-                                 <span
-                                    t-if="o.company_id.phone"
-                                    t-esc="o.company_id.phone"
-                                />
-                            </div>
-                            <div>
-                                 <strong
-                                    t-esc="('RFC. %s') % o.l10n_mx_edi_cfdi_supplier_rfc"
-                                />
-                            </div>
+                <div class="col-4" style="padding-right: 0.0em; padding-left: 0.2em;">
+                    <div class="text-center" style="border-bottom-right-radius: 0.4em; border-bottom-left-radius: 0.4em; border: 2px solid #deeff5; padding-top: 0.0em;">
+                        <div>
+                            <t t-if="is_cfdi_signed">
+                                <strong t-esc="cfdi_vals.get('cfdi_node').Receptor.get('Nombre', '')"/>
+                            </t>
+                            <t t-else="">
+                                <strong t-esc="o.partner_id.name"/>
+                            </t>
+                        </div>
+                        <div>
+                            <span t-esc="o.partner_id.street_name"/>
+                            <span t-esc="o.partner_id.street_number"/>
+                            <span t-esc="o.partner_id.street2"/>
+                            <br/>
+                            <span t-esc="o.partner_id.l10n_mx_edi_colony"/>
+                            <span t-esc="o.partner_id.zip"/>
+                            <br/>
+                            <span t-esc="o.partner_id.l10n_mx_edi_locality"/>
+                            <br/>
+                            <span t-esc="o.partner_id.city"/>
+                            <span t-esc="o.partner_id.state_id.name"/>
+                            <span t-esc="o.partner_id.country_id.name"/>
+                        </div>
+                        <br/>
+                        <div>
+                            <strong t-esc="('RFC. %s') % o.l10n_mx_edi_cfdi_customer_rfc"/>
                         </div>
                     </div>
-                    <div
-                        class="col-xs-4"
-                        style="padding-right: 0.0em; padding-left: 0.2em;"
-                    >
-                        <div
-                            class="text-center"
-                            style="border-bottom-right-radius: 0.4em; border-bottom-left-radius: 0.4em; border: 2px solid #deeff5; padding-top: 0.0em;"
-                        >
-                            <div>
-                                <t t-if="o.l10n_mx_edi_cfdi_uuid">
-                                     <strong t-esc="xml.Receptor.get('Nombre', '')" />
-                                </t>
-                                <t t-if="not o.l10n_mx_edi_cfdi_uuid">
-                                     <strong t-esc="o.partner_id.name" />
-                                </t>
-                            </div>
-                            <div>
-                                <span t-esc="o.partner_id.street_name" />
-                                <span t-esc="o.partner_id.street_number" />
-                                <span t-esc="o.partner_id.street2" />
-                                <br />
-                                <span t-esc="o.partner_id.l10n_mx_edi_colony" />
-                                <span t-esc="o.partner_id.zip" />
-                                <br />
-                                <span t-esc="o.partner_id.l10n_mx_edi_locality" />
-                                <br />
-                                <span t-esc="o.partner_id.city" />
-                                <span t-esc="o.partner_id.state_id.name" />
-                                <span t-esc="o.partner_id.country_id.name" />
-                            </div>
-                            <br />
-                            <div>
-                                <strong
-                                    t-esc="('RFC. %s') % o.l10n_mx_edi_cfdi_customer_rfc"
-                                />
-                            </div>
+                </div>
+                <div class="col-4" style="padding-right: 0.0em; padding-left: 0.2em;">
+                    <div class="text-right" style="border-bottom-right-radius: 0.4em; border-bottom-left-radius: 0.4em; border: 2px solid #deeff5; padding-top: 0.0em;">
+                        <div>
+                            <t t-if="is_cfdi_signed">
+                                <strong t-esc="cfdi_node.Emisor.get('Nombre', '')"/>
+                            </t>
+                            <t t-else="">
+                                <strong t-esc="o.company_id.name"/>
+                            </t>
                         </div>
-                    </div>
-                    <div
-                        class="col-xs-4"
-                        style="padding-right: 0.0em; padding-left: 0.2em;"
-                    >
-                        <div
-                            class="text-right"
-                            style="border-bottom-right-radius: 0.4em; border-bottom-left-radius: 0.4em; border: 2px solid #deeff5; padding-top: 0.0em;"
-                        >
-                            <div>
-                                <t t-if="o.l10n_mx_edi_cfdi_uuid">
-                                     <strong t-esc="xml.Emisor.get('Nombre', '')" />
-                                </t>
-                                <t t-if="not o.l10n_mx_edi_cfdi_uuid">
-                                     <strong t-esc="o.company_id.name" />
-                                </t>
-                            </div>
-                            <div>
-                                <span
-                                    t-esc="o.journal_id.l10n_mx_address_issued_id.street_name"
-                                />
-                                <span
-                                    t-esc="o.journal_id.l10n_mx_address_issued_id.street_number"
-                                />
-                                <span
-                                    t-esc="o.journal_id.l10n_mx_address_issued_id.street2"
-                                />
-                                <br />
-                                <span
-                                    t-esc="o.journal_id.l10n_mx_address_issued_id.l10n_mx_edi_colony"
-                                />
-                                <span
-                                    t-esc="o.journal_id.l10n_mx_address_issued_id.zip"
-                                />
-                                <br />
-                                <span
-                                    t-esc="o.journal_id.l10n_mx_address_issued_id.l10n_mx_edi_locality"
-                                />
-                                <br />
-                                <span
-                                    t-esc="o.journal_id.l10n_mx_address_issued_id.city"
-                                />
-                                <span
-                                    t-esc="o.journal_id.l10n_mx_address_issued_id.state_id.name"
-                                />
-                                <span
-                                    t-esc="o.journal_id.l10n_mx_address_issued_id.country_id.name"
-                                />
-                            </div>
-                            <br />
-                            <br />
+                        <div>
+                            <span t-esc="o.journal_id.l10n_mx_address_issued_id.street_name"/>
+                            <span t-esc="o.journal_id.l10n_mx_address_issued_id.street_number"/>
+                            <span t-esc="o.journal_id.l10n_mx_address_issued_id.street2"/>
+                            <br/>
+                            <span t-esc="o.journal_id.l10n_mx_address_issued_id.l10n_mx_edi_colony"/>
+                            <span t-esc="o.journal_id.l10n_mx_address_issued_id.zip"/>
+                            <br/>
+                            <span t-esc="o.journal_id.l10n_mx_address_issued_id.l10n_mx_edi_locality"/>
+                            <br/>
+                            <span t-esc="o.journal_id.l10n_mx_address_issued_id.city"/>
+                            <span t-esc="o.journal_id.l10n_mx_address_issued_id.state_id.name"/>
+                            <span t-esc="o.journal_id.l10n_mx_address_issued_id.country_id.name"/>
                         </div>
+                        <br/>
+                        <br/>
                     </div>
                 </div>
             </div>
         </xpath>
         <xpath expr="//table" position="replace">
-            <t t-if="o.l10n_mx_edi_cfdi_uuid">
-                <t
-                    t-set="docs_related"
-                    t-value="o.l10n_mx_edi_get_payment_etree(xml)"
-                />
-                    <table
-                    class="table table-striped"
-                    style="font-size:9px; border-collapse: collapse;"
-                >
-                        <thead>
-                            <tr>
-                                <th class="text-center bg-primary">Invoice</th>
-                                <th class="text-center bg-primary">UUID</th>
-                                <th class="text-center bg-primary">Partiality</th>
-                                <th class="text-center bg-primary">Previous balance</th>
-                                <th class="text-center bg-primary">Amount Paid</th>
-                                <th class="text-center bg-primary">Balance</th>
-                                <th class="text-center bg-primary">Currency</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr t-foreach="docs_related" t-as="inv">
-                                <td><span
-                                    t-esc="o.invoice_ids.filtered(lambda i: i.l10n_mx_edi_cfdi_uuid == inv.get('IdDocumento')).number or ''"
-                                /></td>
-                                <td><span t-esc="inv.get('IdDocumento')" /></td>
-                                <td class="text-right"><span
-                                    t-esc="inv.get('NumParcialidad', '')"
-                                /></td>
-                                <td class="text-right"><span
-                                    t-esc="inv.get('ImpSaldoAnt', '')"
-                                /></td>
-                                <td class="text-right"><span
-                                    t-esc="inv.get('ImpPagado', '')"
-                                /></td>
-                                <td class="text-right"><span
-                                    t-esc="inv.get('ImpSaldoInsoluto', '')"
-                                /></td>
-                                <td><span t-esc="inv.get('MonedaDR')" /></td>
-                            </tr>
-                        </tbody>
-                    </table>
+            <t t-if="is_cfdi_signed">
+            <t t-set="docs_related" t-value="cfdi_vals.get('cfdi_node') and cfdi_vals['cfdi_node'].Complemento.xpath('//pago10:DoctoRelacionado', namespaces={'pago10': 'http://www.sat.gob.mx/Pagos'})"/>
+                <table class="table table-striped" style="font-size:15px; border-collapse: collapse;">
+                    <thead>
+                        <tr>
+                            <th class="text-center bg-primary">Invoice</th>
+                            <th class="text-center bg-primary">UUID</th>
+                            <th class="text-center bg-primary">Partiality</th>
+                            <th class="text-center bg-primary">Previous balance</th>
+                            <th class="text-center bg-primary">Amount Paid</th>
+                            <th class="text-center bg-primary">Balance</th>
+                            <th class="text-center bg-primary">Currency</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr t-foreach="docs_related" t-as="inv">
+                            <td>
+                                <span t-esc="o.invoice_line_ids.filtered(lambda i: i.l10n_mx_edi_cfdi_uuid == inv.get('IdDocumento')).number or ''"/>
+                            </td>
+                            <td>
+                                <span t-esc="inv.get('IdDocumento')"/>
+                            </td>
+                            <td class="text-right">
+                                <span t-esc="inv.get('NumParcialidad', '')"/>
+                            </td>
+                            <td class="text-right">
+                            <span t-esc="inv.get('ImpSaldoAnt', '')"/>
+                            </td>
+                            <td class="text-right">
+                                <span t-esc="inv.get('ImpPagado', '')"/>
+                            </td>
+                            <td class="text-right">
+                                <span t-esc="inv.get('ImpSaldoInsoluto', '')"/>
+                            </td>
+                            <td>
+                                <span t-esc="inv.get('MonedaDR')"/>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
             </t>
-            <t t-if="not o.l10n_mx_edi_cfdi_uuid">
-                <table
-                    class="table table-striped"
-                    style="font-size:9px; border-collapse: collapse;"
-                >
+            <t t-else="">
+                <table class="table table-striped" style="font-size:15px; border-collapse: collapse;">
                     <thead>
                         <tr>
                             <th class="text-center bg primary">Invoice Date</th>
@@ -387,171 +263,112 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr t-foreach="o.invoice_ids" t-as="inv">
-                            <td><span t-field="inv.date_invoice" /></td>
-                            <td><span t-field="inv.number" /></td>
-                            <td class="text-right"><span
-                                    t-field="inv.amount_total"
-                                /></td>
-                            <td class="text-right"><span
-                                    t-esc="inv.amount_total - inv.residual"
-                                    t-options="{'widget': 'monetary', 'display_currency': o.currency_id}"
-                                /></td>
-                            <td class="text-right"><span t-field="inv.residual" /></td>
+                        <tr t-foreach="o.move_id._get_reconciled_invoices_partials()" t-as="rec">
+                            <t t-set="amount" t-value="rec[1]"/>
+                            <t t-set="inv" t-value="rec[2].move_id"/>
+                            <t t-if="inv.move_type != 'entry'">
+                                <td>
+                                    <span t-field="inv.invoice_date"/>
+                                </td>
+                                <td>
+                                    <span t-field="inv.name"/>
+                                </td>
+                                <td class="text-right">
+                                    <span t-field="inv.amount_total"/>
+                                </td>
+                                <td class="text-right">
+                                    <span t-esc="inv.amount_total - inv.amount_residual" t-options="{'widget': 'monetary', 'display_currency': o.currency_id}"/>
+                                </td>
+                                <td class="text-right">
+                                    <span t-field="inv.amount_residual"/>
+                                </td>
+                            </t>
                         </tr>
                     </tbody>
                 </table>
             </t>
             <div id="total" class="row">
-                <div class="row col-xs-offset-9 col-xs-3">
-                    <table class="col-xs-12" style="font-size:10px">
+                <div class="row offset-9 col-3">
+                    <table class="col-12" style="font-size:15px">
                         <tr align="left">
-                            <th
-                                class="text-left"
-                                style="border-top: solid 1.5px #5689bc;"
-                            ><b><span>Total</span></b></th>
-                            <td
-                                class="text-right"
-                                align="right"
-                                style="border-top: solid 1.5px #5689bc;"
-                            ><b><span
-                                        t-field="o.amount"
-                                        t-options='{"widget": "monetary", "display_currency": o.currency_id}'
-                                    /></b></td>
+                            <th class="text-left" style="border-top: solid 1.5px #5689bc;">
+                                <b>
+                                    <span>Total</span>
+                                </b>
+                            </th>
+                            <td class="text-right" align="right" style="border-top: solid 1.5px #5689bc;">
+                                <b>
+                                    <span t-field="o.amount" t-options='{"widget": "monetary", "display_currency": o.currency_id}'/>
+                                </b>
+                            </td>
                         </tr>
                     </table>
                 </div>
             </div>
-            <div class="row" style="font-size: 10;">
-                <div class="col-xs-12">
+            <div class="row" style="font-size: 12;">
+                <div class="col-12">
                     <span>Amount In Letters</span>
                 </div>
-                <div class="col-xs-12 text-center">
-                    <span t-esc="o.l10n_mx_edi_amount_to_text()" />
+                <div class="col-12 text-center">
+                    <span t-esc="o.l10n_mx_edi_amount_to_text()"/>
                 </div>
-                <div class="col-xs-12">
-                    <p
-                        class="text-center"
-                    >Deadline for returns of 15 calendar days from delivery. Product must be presented in original packaging. Warranties: American 1 year parts and 5 years compressor equipment. Asia 1 year parts and compressor equipment. Does not apply to equipment with power failures or burns.</p>
+                <div class="col-12">
+                    <p class="text-center">Deadline for returns of 15 calendar days from delivery. Product must be presented in original packaging. Warranties: American 1 year parts and 5 years compressor equipment. Asia 1 year parts and compressor equipment. Does not apply to equipment with power failures or burns.</p>
                 </div>
             </div>
             <t t-if="o.l10n_mx_edi_cfdi_uuid">
                 <div class="row" style="padding-top: 0.5em; font-size: 12;">
-                    <div
-                        class="col-xs-4"
-                        style="padding-left: 0.0em; padding-right: 0.2em;"
-                    >
-                        <div
-                            class="text-center bg-primary"
-                            style="border-top-right-radius: 0.4em; border-top-left-radius: 0.4em; padding-top: 0.0em;"
-                        >
+                    <div class="col-4" style="padding-left: 0.0em; padding-right: 0.2em;">
+                        <div class="text-center bg-primary" style="border-top-right-radius: 0.4em; border-top-left-radius: 0.4em; padding-top: 0.0em;">
                             <span>Fiscal Folio</span>
                         </div>
                     </div>
-                    <div
-                        class="col-xs-4"
-                        style="padding-right: 0.2em; padding-left: 0.2em;"
-                    >
-                        <div
-                            class="text-center bg-primary"
-                            style="border-top-right-radius: 0.4em; border-top-left-radius: 0.4em; padding-top: 0.0em;"
-                        >
+                    <div class="col-4" style="padding-right: 0.2em; padding-left: 0.2em;">
+                        <div class="text-center bg-primary" style="border-top-right-radius: 0.4em; border-top-left-radius: 0.4em; padding-top: 0.0em;">
                             <span>Account Last 4 Numbers</span>
                         </div>
                     </div>
-                    <div
-                        class="col-xs-4"
-                        style="padding-right: 0.0em; padding-left: 0.2em;"
-                    >
-                        <div
-                            class="text-center bg-primary"
-                            style="border-top-right-radius: 0.4em; border-top-left-radius: 0.4em; padding-top: 0.0em;"
-                        >
+                    <div class="col-4" style="padding-right: 0.0em; padding-left: 0.2em;">
+                        <div class="text-center bg-primary" style="border-top-right-radius: 0.4em; border-top-left-radius: 0.4em; padding-top: 0.0em;">
                             <span>Issuer Certificate</span>
                         </div>
                     </div>
                 </div>
                 <div class="row">
                     <div>
-                        <div
-                            class="col-xs-4"
-                            style="padding-left: 0.0em; padding-right: 0.2em;"
-                        >
-                            <div
-                                class="text-center"
-                                style="border-bottom-right-radius: 0.4em; border-bottom-left-radius: 0.4em; border: 2px solid #deeff5; padding-top: 0.0em; font-size: 10;"
-                            >
-                                <span t-esc="tfd.get('UUID', 'No identificado')" />
+                        <div class="col-4" style="padding-left: 0.0em; padding-right: 0.2em;">
+                            <div class="text-center" style="border-bottom-right-radius: 0.4em; border-bottom-left-radius: 0.4em; border: 2px solid #deeff5; padding-top: 0.0em; font-size: 10;">
+                                <span t-esc="tfd.get('UUID', 'No identificado')"/>
                             </div>
                         </div>
-                        <div
-                            class="col-xs-4"
-                            style="padding-right: 0.2em; padding-left: 0.2em;"
-                        >
-                            <div
-                                class="text-center"
-                                style="border-bottom-right-radius: 0.4em; border-bottom-left-radius: 0.4em; border: 2px solid #deeff5; padding-top: 0.0em; font-size: 10;"
-                            >
-                                <t
-                                    t-set="docs_related"
-                                    t-value="o.l10n_mx_edi_get_payment_etree(xml)"
-                                />
-                                <t
-                                    t-set="acc_em"
-                                    t-value="docs_related[0].getparent().get('CtaOrdenante', '') if docs_related else ''"
-                                />
-                                <span
-                                    t-esc="acc_em and acc_em[-4:] or 'No identificado'"
-                                />
+                        <div class="col-4" style="padding-right: 0.2em; padding-left: 0.2em;">
+                            <div class="text-center" style="border-bottom-right-radius: 0.4em; border-bottom-left-radius: 0.4em; border: 2px solid #deeff5; padding-top: 0.0em; font-size: 10;">
+                                <t t-set="docs_related" t-value="cfdi_vals.get('cfdi_node') and cfdi_vals['cfdi_node'].Complemento.xpath('//pago10:DoctoRelacionado', namespaces={'pago10': 'http://www.sat.gob.mx/Pagos'})"/>
+                                <t t-set="acc_em" t-value="docs_related[0].getparent().get('CtaOrdenante', '') if docs_related else ''"/>
+                                <span t-esc="acc_em and acc_em[-4:] or 'No identificado'"/>
                             </div>
                         </div>
-                        <div
-                            class="col-xs-4"
-                            style="padding-right: 0.0em; padding-left: 0.2em;"
-                        >
-                            <div
-                                class="text-center"
-                                style="border-bottom-right-radius: 0.4em; border-bottom-left-radius: 0.4em; border: 2px solid #deeff5; padding-top: 0.0em; font-size: 10;"
-                            >
-                                <span
-                                    t-esc="xml.get('NoCertificado', 'No identificado')"
-                                />
+                        <div class="col-4" style="padding-right: 0.0em; padding-left: 0.2em;">
+                            <div class="text-center" style="border-bottom-right-radius: 0.4em; border-bottom-left-radius: 0.4em; border: 2px solid #deeff5; padding-top: 0.0em; font-size: 10;">
+                                <span t-esc="cfdi_vals.get('certificate_number', 'No identificado')"/>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="row" style="padding-top: 0.5em; font-size: 12;">
                     <div>
-                        <div
-                            class="col-xs-4"
-                            style="padding-left: 0.0em; padding-right: 0.2em;"
-                        >
-                            <div
-                                class="text-center bg-primary"
-                                style="border-top-right-radius: 0.4em; border-top-left-radius: 0.4em; padding-top: 0.0em;"
-                            >
+                        <div class="col-4" style="padding-left: 0.0em; padding-right: 0.2em;">
+                            <div class="text-center bg-primary" style="border-top-right-radius: 0.4em; border-top-left-radius: 0.4em; padding-top: 0.0em;">
                                 <span>Form of Payment</span>
                             </div>
                         </div>
-                        <div
-                            class="col-xs-4"
-                            style="padding-left: 0.2em; padding-right: 0.2em;"
-                        >
-                            <div
-                                class="text-center bg-primary"
-                                style="border-top-right-radius: 0.4em; border-top-left-radius: 0.4em; padding-top: 0.0em;"
-                            >
+                        <div class="col-4" style="padding-left: 0.2em; padding-right: 0.2em;">
+                            <div class="text-center bg-primary" style="border-top-right-radius: 0.4em; border-top-left-radius: 0.4em; padding-top: 0.0em;">
                                 <span>Date Stamp</span>
                             </div>
                         </div>
-                        <div
-                            class="col-xs-4"
-                            style="padding-left: 0.2em; padding-right: 0.0em;"
-                        >
-                            <div
-                                class="text-center bg-primary"
-                                style="border-top-right-radius: 0.4em; border-top-left-radius: 0.4em; padding-top: 0.0em;"
-                            >
+                        <div class="col-4" style="padding-left: 0.2em; padding-right: 0.0em;">
+                            <div class="text-center bg-primary" style="border-top-right-radius: 0.4em; border-top-left-radius: 0.4em; padding-top: 0.0em;">
                                 <span>SAT Certificate</span>
                             </div>
                         </div>
@@ -559,100 +376,48 @@
                 </div>
                 <div class="row">
                     <div>
-                        <div
-                            class="col-xs-4"
-                            style="padding-left: 0.0em; padding-right: 0.2em;"
-                        >
-                            <div
-                                class="text-center"
-                                style="border-bottom-right-radius: 0.4em; border-bottom-left-radius: 0.4em; border: 2px solid #deeff5; padding-top: 0.0em; font-size: 10;"
-                            >
+                        <div class="col-4" style="padding-left: 0.0em; padding-right: 0.2em;">
+                            <div class="text-center" style="border-bottom-right-radius: 0.4em; border-bottom-left-radius: 0.4em; border: 2px solid #deeff5; padding-top: 0.0em; font-size: 10;">
                                 <t t-if="o.l10n_mx_edi_payment_method_id">
-                                    <span
-                                        t-esc="' - '.join([o.l10n_mx_edi_payment_method_id.code, o.l10n_mx_edi_payment_method_id.name])"
-                                    />
+                                    <span t-esc="' - '.join([o.l10n_mx_edi_payment_method_id.code, o.l10n_mx_edi_payment_method_id.name])"/>
                                 </t>
                             </div>
                         </div>
-                        <div
-                            class="col-xs-4"
-                            style="padding-left: 0.2em; padding-right: 0.2em;"
-                        >
-                            <div
-                                class="text-center"
-                                style="border-bottom-right-radius: 0.4em; border-bottom-left-radius: 0.4em; border: 2px solid #deeff5; padding-top: 0.0em; font-size: 10;"
-                            >
-                                <span
-                                    t-esc="time.strftime('%d/%m/%Y %H:%M:%S', time.strptime(tfd.get('FechaTimbrado'), '%Y-%m-%dT%H:%M:%S')) or 'No identificado'"
-                                />
+                        <div class="col-4" style="padding-left: 0.2em; padding-right: 0.2em;">
+                            <div class="text-center" style="border-bottom-right-radius: 0.4em; border-bottom-left-radius: 0.4em; border: 2px solid #deeff5; padding-top: 0.0em; font-size: 10;">
+                                <span t-esc="time.strftime('%d/%m/%Y %H:%M:%S', time.strptime(tfd.get('FechaTimbrado'), '%Y-%m-%dT%H:%M:%S')) or 'No identificado'"/>
                             </div>
                         </div>
-                        <div
-                            class="col-xs-4"
-                            style="padding-left: 0.2em; padding-right: 0.0em;"
-                        >
-                            <div
-                                class="text-center"
-                                style="border-bottom-right-radius: 0.4em; border-bottom-left-radius: 0.4em; border: 2px solid #deeff5; padding-top: 0.0em; font-size: 10;"
-                            >
-                                <span
-                                    t-esc="tfd.get('NoCertificadoSAT', 'No identificado')"
-                                />
+                        <div class="col-4" style="padding-left: 0.2em; padding-right: 0.0em;">
+                            <div class="text-center" style="border-bottom-right-radius: 0.4em; border-bottom-left-radius: 0.4em; border: 2px solid #deeff5; padding-top: 0.0em; font-size: 10;">
+                                <span t-esc="tfd.get('NoCertificadoSAT', 'No identificado')"/>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div
-                    t-if="o.l10n_mx_edi_origin"
-                    class="row"
-                    style="padding-top: 0.5em; font-size: 12;"
-                >
-                    <div
-                        class="col-xs-6"
-                        style="padding-left: 0.0em; padding-right: 0.2em;"
-                    >
-                        <div
-                            class="text-center bg-primary"
-                            style="border-top-right-radius: 0.4em; border-top-left-radius: 0.4em; padding-top: 0.0em;"
-                        >
+                <div t-if="o.l10n_mx_edi_origin" class="row" style="padding-top: 0.5em; font-size: 12;">
+                    <div class="col-6" style="padding-left: 0.0em; padding-right: 0.2em;">
+                        <div class="text-center bg-primary" style="border-top-right-radius: 0.4em; border-top-left-radius: 0.4em; padding-top: 0.0em;">
                             <span>Related CFDI</span>
                         </div>
                     </div>
-                    <div
-                        class="col-xs-6"
-                        style="padding-right: 0.2em; padding-left: 0.2em;"
-                    >
-                        <div
-                            class="text-center bg-primary"
-                            style="border-top-right-radius: 0.4em; border-top-left-radius: 0.4em; padding-top: 0.0em;"
-                        >
+                    <div class="col-6" style="padding-right: 0.2em; padding-left: 0.2em;">
+                        <div class="text-center bg-primary" style="border-top-right-radius: 0.4em; border-top-left-radius: 0.4em; padding-top: 0.0em;">
                             <span>Related type</span>
                         </div>
                     </div>
                 </div>
                 <div t-if="o.l10n_mx_edi_origin" class="row">
                     <div>
-                        <div
-                            class="col-xs-6"
-                            style="padding-left: 0.0em; padding-right: 0.2em;"
-                        >
-                            <div
-                                class="text-center"
-                                style="border-bottom-right-radius: 0.4em; border-bottom-left-radius: 0.4em; border: 2px solid #deeff5; padding-top: 0.0em; font-size: 10;"
-                            >
+                        <div class="col-6" style="padding-left: 0.0em; padding-right: 0.2em;">
+                            <div class="text-center" style="border-bottom-right-radius: 0.4em; border-bottom-left-radius: 0.4em; border: 2px solid #deeff5; padding-top: 0.0em; font-size: 10;">
                                 <t>
                                     <span t-esc="o.l10n_mx_edi_origin[3:]" />
                                 </t>
                             </div>
                         </div>
-                        <div
-                            class="col-xs-6"
-                            style="padding-left: 0.2em; padding-right: 0.2em;"
-                        >
-                            <div
-                                class="text-center"
-                                style="border-bottom-right-radius: 0.4em; border-bottom-left-radius: 0.4em; border: 2px solid #deeff5; padding-top: 0.0em; font-size: 10;"
-                            >
+                        <div class="col-6" style="padding-left: 0.2em; padding-right: 0.2em;">
+                            <div class="text-center" style="border-bottom-right-radius: 0.4em; border-bottom-left-radius: 0.4em; border: 2px solid #deeff5; padding-top: 0.0em; font-size: 10;">
                                 <t>
                                     <t t-if="o.l10n_mx_edi_origin[:2] == '01'">
                                         <span>01 Credit note of related documents</span>
@@ -661,30 +426,25 @@
                                         <span>02 Debit note of related documents</span>
                                     </t>
                                     <t t-if="o.l10n_mx_edi_origin[:2] == '03'">
-                                        <span
-                                        >03 Return of merchandise on previous invoices or transfers</span>
+                                        <span>03 Return of merchandise on previous invoices or transfers</span>
                                     </t>
                                     <t t-if="o.l10n_mx_edi_origin[:2] == '04'">
                                         <span>04 Replacement of previous CFDI</span>
                                     </t>
                                     <t t-if="o.l10n_mx_edi_origin[:2] == '05'">
-                                        <span
-                                        >05 Transfers of goods previously invoiced</span>
+                                        <span>05 Transfers of goods previously invoiced</span>
                                     </t>
                                     <t t-if="o.l10n_mx_edi_origin[:2] == '06'">
-                                        <span
-                                        >06 Invoice generated by previous transfers</span>
+                                        <span>06 Invoice generated by previous transfers</span>
                                     </t>
                                     <t t-if="o.l10n_mx_edi_origin[:2] == '07'">
                                         <span>07 CFDI by advance application</span>
                                     </t>
                                     <t t-if="o.l10n_mx_edi_origin[:2] == '08'">
-                                        <span
-                                        >08 Invoice generated by partial payments</span>
+                                        <span>08 Invoice generated by partial payments</span>
                                     </t>
                                     <t t-if="o.l10n_mx_edi_origin[:2] == '09'">
-                                        <span
-                                        >09 Invoice generated by deferred payments</span>
+                                        <span>09 Invoice generated by deferred payments</span>
                                     </t>
                                     <t t-else="">
                                         <span />
@@ -695,86 +455,50 @@
                     </div>
                 </div>
                 <div class="row" id="complement" style="padding-top: 0.5em;">
-                    <div
-                        class="col-xs-12 img-rounded"
-                        style="page-break-inside:avoid; border: 2px solid #deeff5;"
-                    >
-                        <div class="barcode col-xs-3">
-                            <t
-                                t-set="sello"
-                                t-value="xml.get('Sello', 'No identificado')[-8:]"
-                            />
-                            <img
-                                t-att-src="'/report/barcode/?type=QR&amp;value=%s' % quote_plus(                             'https://verificacfdi.facturaelectronica.sat.gob.mx/default.aspx?' + keep_query(                                 re=o.l10n_mx_edi_cfdi_supplier_rfc, rr=o.l10n_mx_edi_cfdi_customer_rfc,                                 tt=0, id=o.l10n_mx_edi_cfdi_uuid)                                 + '&amp;fe=%s' % quote_plus(sello, 'utf-8', 'strict', '=/').replace('%2B', '+'))"
-                            />
+                    <div class="col-12 img-rounded" style="page-break-inside:avoid; border: 2px solid #deeff5;">
+                        <div class="barcode col-3">
+                            <t t-set="sello" t-value="cfdi_vals.get('sello', 'No identificado')"/>
+                            <img t-att-src="'/report/barcode/?type=QR&amp;value=%s' % quote_plus(                             'https://verificacfdi.facturaelectronica.sat.gob.mx/default.aspx?' + keep_query(                                 re=o.l10n_mx_edi_cfdi_supplier_rfc, rr=o.l10n_mx_edi_cfdi_customer_rfc,                                 tt=0, id=o.l10n_mx_edi_cfdi_uuid)                                 + '&amp;fe=%s' % quote_plus(sello, 'utf-8', 'strict', '=/').replace('%2B', '+'))"/>
                         </div>
-                        <div class="complement-details col-xs-9">
+                        <div class="complement-details col-9">
                             <div class="digital-stamp">
                                 <span>Digital stamp of the emitter</span>
                             </div>
                             <div class="digital-stamp-content">
-                                <span t-esc="xml.get('Sello', 'No identificado')" />
+                                <span t-esc="cfdi_vals.get('sello', 'No identificado')"/>
                             </div>
                             <div class="digital-stamp">
                                 <span>Digital stamp SAT</span>
                             </div>
                             <div class="digital-stamp-content">
-                                <span t-esc="tfd.get('SelloSAT', 'No identificado')" />
+                                <span t-esc="cfdi_vals.get('sello_sat', 'No identificado')"/>
                             </div>
                             <div class="digital-stamp">
-                                <span
-                                >Original chain complement of digital certification SAT</span>
+                                <span>Original chain complement of digital certification SAT</span>
                             </div>
                             <div class="digital-stamp-content">
-                                <span class="nowrap" t-esc="tfd_original_string" />
+                                <span class="nowrap" t-esc="cfdi_vals.get('cadena')"/>
                             </div>
-                            <div
-                                t-if="xml.Emisor.xpath('cfdi:ExpedidoEn', namespaces=xml.nsmap)"
-                                class="digital-stamp"
-                            >
+                            <div t-if="cfdi_node.Emisor.xpath('cfdi:ExpedidoEn', namespaces=cfdi_node.nsmap)" class="digital-stamp">
                                 <span>Issued from</span>
                             </div>
-                            <div
-                                t-if="xml.Emisor.xpath('cfdi:ExpedidoEn', namespaces=xml.nsmap)"
-                                class="digital-stamp-content"
-                            >
-                                <span
-                                    t-esc="xml.get('LugarExpedicion', 'No identificado')"
-                                />
+                            <div t-if="cfdi_node.Emisor.xpath('cfdi:ExpedidoEn', namespaces=cfdi_node.nsmap)" class="digital-stamp-content">
+                                <span t-esc="cfdi_vals.get('expedition')"/>
                             </div>
                             <div class="digital-stamp">
                                 <span>Extra Info</span>
                             </div>
                             <div class="digital-stamp-content">
-                                <span>Emitter certificate:</span> <span
-                                    t-esc="xml.get('NoCertificado')"
-                                />
-                                <span> | SAT Certificate:</span> <span
-                                    t-esc="tfd.get('NoCertificadoSAT')"
-                                />
-                                <span> | Expedition place:</span> <span
-                                    t-esc="xml.get('LugarExpedicion')"
-                                />
-                                <span> | Fiscal Regime:</span>
-                                    <t t-if="xml.get('version', '') == '3.2'"> <span
-                                        t-esc="xml.Emisor.RegimenFiscal.get('Regimen')"
-                                    /></t>
-                                    <t t-if="xml.get('Version', '') == '3.3'"> <span
-                                        t-esc="xml.Emisor.get('RegimenFiscal', '')"
-                                    /></t>
-                                <span> | Emission Date:</span> <span
-                                    t-esc="xml.get('Fecha', '').replace('T', ' ')"
-                                />
-                                <span> | Certification Date:</span> <span
-                                    t-esc="tfd.get('FechaTimbrado', '').replace('T', ' ')"
-                                />
-                                <span> | Fiscal Folio:</span> <span
-                                    t-esc="tfd.get('UUID')"
-                                />
+                                <span>Emitter certificate:</span> <span t-esc="cfdi_vals.get('certificate_number')"/>
+                                <span> | SAT Certificate:</span> <span t-esc="cfdi_vals.get('certificate_sat_number')"/>
+                                <span> | Expedition place:</span> <span t-esc="cfdi_vals.get('expedition')"/>
+                                <span> | Fiscal Regime:</span> <span t-esc="cfdi_vals.get('fiscal_regime')"/>
+                                <span> | Emission Date:</span> <span t-esc="cfdi_vals.get('emission_date_str')"/>
+                                <span> | Certification Date:</span> <span t-esc="cfdi_vals.get('stamp_date')"/>
+                                <span> | Fiscal Folio:</span> <span t-esc="cfdi_vals.get('uuid')"/>
                             </div>
                             <div class="digital-stamp-content text-center">
-                                <strong
-                                >This document is a printed representation of a CFDI</strong>
+                                <strong>This document is a printed representation of a CFDI</strong>
                             </div>
                         </div>
                     </div>

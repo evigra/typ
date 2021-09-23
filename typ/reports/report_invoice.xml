@@ -10,9 +10,7 @@
         </xpath>
     </template>
     <template id="custom_external_layout_standard">
-        <div class="header">
-        </div>
-        <div class="article o_report_layout_standard" t-att-data-oe-model="o and o._name" t-att-data-oe-id="o and o.id" t-att-data-oe-lang="o and o.env.context.get('lang')">
+        <div class="article" t-att-data-oe-model="o and o._name" t-att-data-oe-id="o and o.id" t-att-data-oe-lang="o and o.env.context.get('lang')">
             <t t-raw="0" />
         </div>
     </template>
@@ -31,7 +29,10 @@
                 <t t-set="company" t-value="res_company"/>
             </t>
         </t>
-        <t t-call="typ.custom_external_layout_standard"><t t-raw="0" /></t>
+        <div class="article" t-att-data-oe-model="o and o._name" t-att-data-oe-id="o and o.id" t-att-data-oe-lang="o and o.env.context.get('lang')">
+            <t t-raw="0" />
+        </div>
+        <!--<t t-call="typ.custom_external_layout_standard"><t t-raw="0" /></t>-->
     </template>
 
     <!-- QWeb Reports -->
@@ -119,159 +120,143 @@
                 </div>
             </div>
             <div class="row">
-                <div>
-                    <div class="col-5" style="padding-left: 0.0em; padding-right: 0.2em;">
-                        <div class="text-center" style="border-bottom-right-radius: 0.4em; border-bottom-left-radius: 0.4em; border: 2px solid #deeff5; padding-top: 0.0em; font-size: 10;">
-                            <span t-esc="o.name" />
-                        </div>
+                <div class="col-5" style="padding-left: 0.0em; padding-right: 0.2em;">
+                    <div class="text-center" style="border-bottom-right-radius: 0.4em; border-bottom-left-radius: 0.4em; border: 2px solid #deeff5; padding-top: 0.0em; font-size: 10;">
+                        <span t-esc="o.name" />
                     </div>
-                    <div class="col-4" style="padding-right: 0.2em; padding-left: 0.2em;">
-                        <div class="text-center" style="border-bottom-right-radius: 0.4em; border-bottom-left-radius: 0.4em; border: 2px solid #deeff5; padding-top: 0.0em; font-size: 10;" >
-                            <t t-if="is_cfdi_signed">
-                                <span t-esc="cfdi_vals.get('fiscal_regime')" />
-                            </t>
-                        </div>
+                </div>
+                <div class="col-4" style="padding-right: 0.2em; padding-left: 0.2em;">
+                    <div class="text-center" style="border-bottom-right-radius: 0.4em; border-bottom-left-radius: 0.4em; border: 2px solid #deeff5; padding-top: 0.0em; font-size: 10;" >
+                        <t t-if="is_cfdi_signed">
+                            <span t-esc="cfdi_vals.get('fiscal_regime')" />
+                        </t>
                     </div>
-                    <div class="col-3" style="padding-right: 0.0em; padding-left: 0.2em;">
-                        <div class="text-center" style="border-bottom-right-radius: 0.4em; border-bottom-left-radius: 0.4em; border: 2px solid #deeff5; padding-top: 0.0em; font-size: 10;">
-                            <span t-field="o.invoice_payment_term_id" />
-                        </div>
+                </div>
+                <div class="col-3" style="padding-right: 0.0em; padding-left: 0.2em;">
+                    <div class="text-center" style="border-bottom-right-radius: 0.4em; border-bottom-left-radius: 0.4em; border: 2px solid #deeff5; padding-top: 0.0em; font-size: 10;">
+                        <span t-field="o.invoice_payment_term_id" />
                     </div>
                 </div>
             </div>
             <div class="row" style="padding-top: 0.5em; font-size: 12;">
-                <div>
-                    <div class="col-4" style="padding-right: 0.2em; padding-left: 0.0em;">
-                        <div class="text-center bg-primary" style="border-top-right-radius: 0.4em; border-top-left-radius: 0.4em; padding-top: 0.0em;">
-                            <span>Issuer</span>
-                        </div>
+                <div class="col-4" style="padding-right: 0.2em; padding-left: 0.0em;">
+                    <div class="text-center bg-primary" style="border-top-right-radius: 0.4em; border-top-left-radius: 0.4em; padding-top: 0.0em;">
+                        <span>Issuer</span>
                     </div>
-                    <div class="col-4" style="padding-right: 0.0em; padding-left: 0.2em;">
-                        <div class="text-center bg-primary" style="border-top-right-radius: 0.4em; border-top-left-radius: 0.4em; padding-top: 0.0em;">
-                            <span>Customer</span>
-                        </div>
+                </div>
+                <div class="col-4" style="padding-right: 0.0em; padding-left: 0.2em;">
+                    <div class="text-center bg-primary" style="border-top-right-radius: 0.4em; border-top-left-radius: 0.4em; padding-top: 0.0em;">
+                        <span>Customer</span>
                     </div>
-                    <div class="col-4" style="padding-right: 0.0em; padding-left: 0.2em;">
-                        <div class="text-center bg-primary" style="border-top-right-radius: 0.4em; border-top-left-radius: 0.4em; padding-top: 0.0em;">
-                            <span>Issued at</span>
-                        </div>
+                </div>
+                <div class="col-4" style="padding-right: 0.0em; padding-left: 0.2em;">
+                    <div class="text-center bg-primary" style="border-top-right-radius: 0.4em; border-top-left-radius: 0.4em; padding-top: 0.0em;">
+                        <span>Issued at</span>
                     </div>
                 </div>
             </div>
-            <div class="row">
-                <div style="font-size: 10;">
-                    <div class="col-4" style="padding-right: 0.2em; padding-left: 0.0em;">
-                        <div class="text-left" style="border-bottom-right-radius: 0.4em; border-bottom-left-radius: 0.4em; border: 2px solid #deeff5; padding-top: 0.0em;">
-                            <div>
-                                <t t-if="is_cfdi_signed">
-                                    <strong t-esc="cfdi_node.Emisor.get('Nombre', '')" />
-                                </t>
-                                <t t-else="">
-                                    <strong t-esc="o.company_id.name" />
-                                </t>
-                            </div>
-                            <div>
-                                <span t-esc="o.company_id.street" />
-                                <br />
-                                <span t-esc="o.company_id.l10n_mx_edi_colony" />
-                                <span t-esc="o.company_id.zip" />
-                                <br />
-                                <span t-esc="o.company_id.l10n_mx_edi_locality" />
-                                <br />
-                                <span t-esc="o.company_id.city" />
-                                <span t-esc="o.company_id.state_id.name" />
-                                <span t-esc="o.company_id.country_id.name" />
-                            </div>
-                            <div>
-                                <strong t-esc="('RFC. %s') % o.l10n_mx_edi_cfdi_supplier_rfc"/>
-                            </div>
+            <div class="row" style="font-size: 10;">
+                <div class="col-4" style="padding-right: 0.2em; padding-left: 0.0em;">
+                    <div class="text-left" style="border-bottom-right-radius: 0.4em; border-bottom-left-radius: 0.4em; border: 2px solid #deeff5; padding-top: 0.0em;">
+                        <div>
+                            <t t-if="is_cfdi_signed">
+                                <strong t-esc="cfdi_node.Emisor.get('Nombre', '')" />
+                            </t>
+                            <t t-else="">
+                                <strong t-esc="o.company_id.name" />
+                            </t>
+                        </div>
+                        <div>
+                            <span t-esc="o.company_id.street" />
+                            <br />
+                            <span t-esc="o.company_id.l10n_mx_edi_colony" />
+                            <span t-esc="o.company_id.zip" />
+                            <br />
+                            <span t-esc="o.company_id.l10n_mx_edi_locality" />
+                            <br />
+                            <span t-esc="o.company_id.city" />
+                            <span t-esc="o.company_id.state_id.name" />
+                            <span t-esc="o.company_id.country_id.name" />
+                        </div>
+                        <div>
+                            <strong t-esc="('RFC. %s') % o.l10n_mx_edi_cfdi_supplier_rfc"/>
                         </div>
                     </div>
-                    <div class="col-4" style="padding-right: 0.0em; padding-left: 0.2em;">
-                        <div class="text-center" style="border-bottom-right-radius: 0.4em; border-bottom-left-radius: 0.4em; border: 2px solid #deeff5; padding-top: 0.0em;">
-                            <div>
-                                <t t-if="is_cfdi_signed">
-                                    <strong t-esc="cfdi_node.Receptor.get('Nombre', '')" />
-                                </t>
-                                <t t-else="">
-                                    <strong t-esc="o.partner_id.name" />
-                                </t>
-                            </div>
-                            <div>
-                                <span t-esc="o.partner_id.street" />
-                                <br />
-                                <span t-esc="o.partner_id.l10n_mx_edi_colony" />
-                                <span t-esc="o.partner_id.zip" />
-                                <br />
-                                <span t-esc="o.partner_id.l10n_mx_edi_locality" />
-                                <br />
-                                <span t-esc="o.partner_id.city" />
-                                <span t-esc="o.partner_id.state_id.name" />
-                                <span t-esc="o.partner_id.country_id.name" />
-                            </div>
+                </div>
+                <div class="col-4" style="padding-right: 0.0em; padding-left: 0.2em;">
+                    <div class="text-center" style="border-bottom-right-radius: 0.4em; border-bottom-left-radius: 0.4em; border: 2px solid #deeff5; padding-top: 0.0em;">
+                        <div>
+                            <t t-if="is_cfdi_signed">
+                                <strong t-esc="cfdi_node.Receptor.get('Nombre', '')" />
+                            </t>
+                            <t t-else="">
+                                <strong t-esc="o.partner_id.name" />
+                            </t>
+                        </div>
+                        <div>
+                            <span t-esc="o.partner_id.street" />
                             <br />
-                            <div>
-                                <strong t-esc="('RFC. %s') % o.l10n_mx_edi_cfdi_customer_rfc"/>
-                            </div>
+                            <span t-esc="o.partner_id.l10n_mx_edi_colony" />
+                            <span t-esc="o.partner_id.zip" />
+                            <br />
+                            <span t-esc="o.partner_id.l10n_mx_edi_locality" />
+                            <br />
+                            <span t-esc="o.partner_id.city" />
+                            <span t-esc="o.partner_id.state_id.name" />
+                            <span t-esc="o.partner_id.country_id.name" />
+                        </div>
+                        <br />
+                        <div>
+                            <strong t-esc="('RFC. %s') % o.l10n_mx_edi_cfdi_customer_rfc"/>
                         </div>
                     </div>
-                    <div class="col-4" style="padding-right: 0.0em; padding-left: 0.2em;">
-                        <div class="text-right" style="border-bottom-right-radius: 0.4em; border-bottom-left-radius: 0.4em; border: 2px solid #deeff5; padding-top: 0.0em;">
-                            <div>
-                                <t t-if="is_cfdi_signed">
-                                    <strong t-esc="cfdi_node.Emisor.get('Nombre', '')" />
-                                </t>
-                                <t t-else="">
-                                    <strong t-esc="o.company_id.name" />
-                                </t>
-                            </div>
-                            <div>
-                                <span t-esc="o.journal_id.l10n_mx_address_issued_id.street"/>
-                                <br />
-                                <span t-esc="o.journal_id.l10n_mx_address_issued_id.l10n_mx_edi_colony"/>
-                                <span t-esc="o.journal_id.l10n_mx_address_issued_id.zip"/>
-                                <br />
-                                <span t-esc="o.journal_id.l10n_mx_address_issued_id.l10n_mx_edi_locality"/>
-                                <br />
-                                <span t-esc="o.journal_id.l10n_mx_address_issued_id.city"/>
-                                <span t-esc="o.journal_id.l10n_mx_address_issued_id.state_id.name"/>
-                                <span t-esc="o.journal_id.l10n_mx_address_issued_id.country_id.name"/>
-                            </div>
-                            <div>
-                                <span t-esc="o.journal_id.l10n_mx_address_issued_id.phone"/>
-                            </div>
-                            <br />
-                            <br />
+                </div>
+                <div class="col-4" style="padding-right: 0.0em; padding-left: 0.2em;">
+                    <div class="text-right" style="border-bottom-right-radius: 0.4em; border-bottom-left-radius: 0.4em; border: 2px solid #deeff5; padding-top: 0.0em;">
+                        <div>
+                            <t t-if="is_cfdi_signed">
+                                <strong t-esc="cfdi_node.Emisor.get('Nombre', '')" />
+                            </t>
+                            <t t-else="">
+                                <strong t-esc="o.company_id.name" />
+                            </t>
                         </div>
+                        <div>
+                            <span t-esc="o.journal_id.l10n_mx_address_issued_id.street"/>
+                            <br />
+                            <span t-esc="o.journal_id.l10n_mx_address_issued_id.l10n_mx_edi_colony"/>
+                            <span t-esc="o.journal_id.l10n_mx_address_issued_id.zip"/>
+                            <br />
+                            <span t-esc="o.journal_id.l10n_mx_address_issued_id.l10n_mx_edi_locality"/>
+                            <br />
+                            <span t-esc="o.journal_id.l10n_mx_address_issued_id.city"/>
+                            <span t-esc="o.journal_id.l10n_mx_address_issued_id.state_id.name"/>
+                            <span t-esc="o.journal_id.l10n_mx_address_issued_id.country_id.name"/>
+                        </div>
+                        <div>
+                            <span t-esc="o.journal_id.l10n_mx_address_issued_id.phone"/>
+                        </div>
+                        <br />
+                        <br />
                     </div>
                 </div>
             </div>
         </xpath>
         <xpath expr="//table" position="replace">
-            <div class="row" style="font-size:10px; padding-top: 0.5em;">
-                <div class="col-1 text-center bg-primary">
-                    <span>Quantity</span>
-                </div>
-                <t t-if="is_cfdi_signed and xml.get('Version')">
-                    <div class="col-1 text-center bg-primary">
-                        <span>Unit</span>
-                    </div>
-                    <div class="col-1 text-center bg-primary">
-                        <span>SAT Key</span>
-                    </div>
-                </t>
-                <div class="col-5 text-center bg-primary">
-                    <span>Description</span>
-                </div>
-                <div class="col-2 text-center bg-primary">
-                    <span>Unit Price</span>
-                </div>
-                <div class="col-2 text-center bg-primary">
-                    <span>Amount</span>
-                </div>
-            </div>
-            <div class="row">
-                <table class="table table-striped" style="font-size:9px; border-collapse: collapse;">
+            <table class="table table-striped" style="font-size:15px; border-collapse: collapse; padding-top: 0.5em;">
+                <thead>
+                    <tr>
+                        <th class="text-center bg primary">Quantity</th>
+                        <t t-if="is_cfdi_signed and xml.get('Version')">
+                            <th class="text-center bg-primary">Unit</th>
+                            <th class="text-center bg-primary">SAT Key</th>
+                        </t>
+                        <th class="text-center bg-primary">Description</th>
+                        <th class="text-center bg-primary">Unit Price</th>
+                        <th class="text-center bg-primary">Amount</th>
+                    </tr>
+                </thead>
+                <tbody>
                     <t t-foreach="o.invoice_line_ids" t-as="l">
                         <tr class="text-center">
                             <td class="col-1 text-right">
@@ -307,13 +292,13 @@
                             </td>
                         </tr>
                     </t>
-                </table>
-            </div>
+                </tbody>
+            </table>
         </xpath>
         <xpath expr="//div[hasclass('clearfix')]" position="replace">
             <div id="total" class="row">
                 <div class="row offset-9 col-3">
-                    <table class="col-12" style="font-size:10px">
+                    <table class="col-12" style="font-size:15px">
                         <tr>
                             <th class="text-left" style="border-top: solid 1.5px #5689bc;">
                                 <span>Sub Total</span>
@@ -391,62 +376,56 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div>
-                        <div class="col-4" style="padding-left: 0.0em; padding-right: 0.2em;">
-                            <div class="text-center" style="border-bottom-right-radius: 0.4em; border-bottom-left-radius: 0.4em; border: 2px solid #deeff5; padding-top: 0.0em; font-size: 10;">
-                                <span t-esc="cfdi_vals.get('uuid', 'No identificado')" />
-                            </div>
+                    <div class="col-4" style="padding-left: 0.0em; padding-right: 0.2em;">
+                        <div class="text-center" style="border-bottom-right-radius: 0.4em; border-bottom-left-radius: 0.4em; border: 2px solid #deeff5; padding-top: 0.0em; font-size: 10;">
+                            <span t-esc="cfdi_vals.get('uuid', 'No identificado')" />
                         </div>
-                        <div class="col-4" style="padding-right: 0.2em; padding-left: 0.2em;">
-                            <div class="text-center" style="border-bottom-right-radius: 0.4em; border-bottom-left-radius: 0.4em; border: 2px solid #deeff5; padding-top: 0.0em; font-size: 10;">
-                                <t t-set="bank" t-value="o.partner_bank_id"/>
-                                <span t-esc="bank and bank.acc_number[-4:] or 'No identificado'"/>
-                            </div>
+                    </div>
+                    <div class="col-4" style="padding-right: 0.2em; padding-left: 0.2em;">
+                        <div class="text-center" style="border-bottom-right-radius: 0.4em; border-bottom-left-radius: 0.4em; border: 2px solid #deeff5; padding-top: 0.0em; font-size: 10;">
+                            <t t-set="bank" t-value="o.partner_bank_id"/>
+                            <span t-esc="bank and bank.acc_number[-4:] or 'No identificado'"/>
                         </div>
-                        <div class="col-4" style="padding-right: 0.0em; padding-left: 0.2em;">
-                            <div class="text-center" style="border-bottom-right-radius: 0.4em; border-bottom-left-radius: 0.4em; border: 2px solid #deeff5; padding-top: 0.0em; font-size: 10;">
-                                <span t-esc="cfdi_vals.get('certificate_number', 'No identificado')"/>
-                            </div>
+                    </div>
+                    <div class="col-4" style="padding-right: 0.0em; padding-left: 0.2em;">
+                        <div class="text-center" style="border-bottom-right-radius: 0.4em; border-bottom-left-radius: 0.4em; border: 2px solid #deeff5; padding-top: 0.0em; font-size: 10;">
+                            <span t-esc="cfdi_vals.get('certificate_number', 'No identificado')"/>
                         </div>
                     </div>
                 </div>
                 <div class="row" style="padding-top: 0.5em; font-size: 12;">
-                    <div>
-                        <div class="col-4" style="padding-left: 0.0em; padding-right: 0.2em;">
-                            <div class="text-center bg-primary" style="border-top-right-radius: 0.4em; border-top-left-radius: 0.4em; padding-top: 0.0em;">
-                                <span>Form of Payment</span>
-                            </div>
+                    <div class="col-4" style="padding-left: 0.0em; padding-right: 0.2em;">
+                        <div class="text-center bg-primary" style="border-top-right-radius: 0.4em; border-top-left-radius: 0.4em; padding-top: 0.0em;">
+                            <span>Form of Payment</span>
                         </div>
-                        <div class="col-4" style="padding-left: 0.2em; padding-right: 0.2em;">
-                            <div class="text-center bg-primary" style="border-top-right-radius: 0.4em; border-top-left-radius: 0.4em; padding-top: 0.0em;">
-                                <span>Date Stamp</span>
-                            </div>
+                    </div>
+                    <div class="col-4" style="padding-left: 0.2em; padding-right: 0.2em;">
+                        <div class="text-center bg-primary" style="border-top-right-radius: 0.4em; border-top-left-radius: 0.4em; padding-top: 0.0em;">
+                            <span>Date Stamp</span>
                         </div>
-                        <div class="col-4" style="padding-left: 0.2em; padding-right: 0.0em;">
-                            <div class="text-center bg-primary" style="border-top-right-radius: 0.4em; border-top-left-radius: 0.4em; padding-top: 0.0em;">
-                                <span>SAT Certificate</span>
-                            </div>
+                    </div>
+                    <div class="col-4" style="padding-left: 0.2em; padding-right: 0.0em;">
+                        <div class="text-center bg-primary" style="border-top-right-radius: 0.4em; border-top-left-radius: 0.4em; padding-top: 0.0em;">
+                            <span>SAT Certificate</span>
                         </div>
                     </div>
                 </div>
                 <div class="row">
-                    <div>
-                        <div class="col-4" style="padding-left: 0.0em; padding-right: 0.2em;">
-                            <div class="text-center" style="border-bottom-right-radius: 0.4em; border-bottom-left-radius: 0.4em; border: 2px solid #deeff5; padding-top: 0.0em; font-size: 10;">
-                                <t t-if="o.l10n_mx_edi_payment_method_id">
-                                    <span t-esc="' - '.join([o.l10n_mx_edi_payment_method_id.code, o.l10n_mx_edi_payment_method_id.name])"/>
-                                </t>
-                            </div>
+                    <div class="col-4" style="padding-left: 0.0em; padding-right: 0.2em;">
+                        <div class="text-center" style="border-bottom-right-radius: 0.4em; border-bottom-left-radius: 0.4em; border: 2px solid #deeff5; padding-top: 0.0em; font-size: 10;">
+                            <t t-if="o.l10n_mx_edi_payment_method_id">
+                                <span t-esc="' - '.join([o.l10n_mx_edi_payment_method_id.code, o.l10n_mx_edi_payment_method_id.name])"/>
+                            </t>
                         </div>
-                        <div class="col-4" style="padding-left: 0.2em; padding-right: 0.2em;">
-                            <div class="text-center" style="border-bottom-right-radius: 0.4em; border-bottom-left-radius: 0.4em; border: 2px solid #deeff5; padding-top: 0.0em; font-size: 10;">
-                                <span t-esc="time.strftime('%d/%m/%Y %H:%M:%S', time.strptime(cfdi_vals.get('stamp_date'), '%Y-%m-%d %H:%M:%S')) or 'No identificado'"/>
-                            </div>
+                    </div>
+                    <div class="col-4" style="padding-left: 0.2em; padding-right: 0.2em;">
+                        <div class="text-center" style="border-bottom-right-radius: 0.4em; border-bottom-left-radius: 0.4em; border: 2px solid #deeff5; padding-top: 0.0em; font-size: 10;">
+                            <span t-esc="time.strftime('%d/%m/%Y %H:%M:%S', time.strptime(cfdi_vals.get('stamp_date'), '%Y-%m-%d %H:%M:%S')) or 'No identificado'"/>
                         </div>
-                        <div class="col-4" style="padding-left: 0.2em; padding-right: 0.0em;">
-                            <div class="text-center" style="border-bottom-right-radius: 0.4em; border-bottom-left-radius: 0.4em; border: 2px solid #deeff5; padding-top: 0.0em; font-size: 10;">
-                                <span t-esc="cfdi_vals.get('certificate_sat_number', 'No identificado')"/>
-                            </div>
+                    </div>
+                    <div class="col-4" style="padding-left: 0.2em; padding-right: 0.0em;">
+                        <div class="text-center" style="border-bottom-right-radius: 0.4em; border-bottom-left-radius: 0.4em; border: 2px solid #deeff5; padding-top: 0.0em; font-size: 10;">
+                            <span t-esc="cfdi_vals.get('certificate_sat_number', 'No identificado')"/>
                         </div>
                     </div>
                 </div>
@@ -463,27 +442,25 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div>
-                        <div class="col-6" style="padding-left: 0.0em; padding-right: 0.2em;">
-                            <div class="text-center" style="border-bottom-right-radius: 0.4em; border-bottom-left-radius: 0.4em; border: 2px solid #deeff5; padding-top: 0.0em; font-size: 10;">
-                                <t t-set="payment_method" t-value="cfdi_vals.get('payment_method')"/>
-                                <t t-if="payment_method == 'PPD'">
-                                    <span> PPD Payment in partials or deferred</span>
-                                </t>
-                                <t t-elif="payment_method == 'PUE'">
-                                    <span> PUE Payment in single exhibition</span>
-                                </t>
-                                <t t-else="">
-                                    <span t-esc="payment_method"/>
-                                </t>
-                            </div>
+                    <div class="col-6" style="padding-left: 0.0em; padding-right: 0.2em;">
+                        <div class="text-center" style="border-bottom-right-radius: 0.4em; border-bottom-left-radius: 0.4em; border: 2px solid #deeff5; padding-top: 0.0em; font-size: 10;">
+                            <t t-set="payment_method" t-value="cfdi_vals.get('payment_method')"/>
+                            <t t-if="payment_method == 'PPD'">
+                                <span> PPD Payment in partials or deferred</span>
+                            </t>
+                            <t t-elif="payment_method == 'PUE'">
+                                <span> PUE Payment in single exhibition</span>
+                            </t>
+                            <t t-else="">
+                                <span t-esc="payment_method"/>
+                            </t>
                         </div>
-                        <div class="col-6" style="padding-left: 0.2em; padding-right: 0.2em;">
-                            <div class="text-center" style="border-bottom-right-radius: 0.4em; border-bottom-left-radius: 0.4em; border: 2px solid #deeff5; padding-top: 0.0em; font-size: 10;">
-                                <t t-if="cfdi_vals.get('usage', False)">
-                                    <span t-esc="cfdi_vals['usage']"/> - <span t-field="o.l10n_mx_edi_usage"/>
-                                </t>
-                            </div>
+                    </div>
+                    <div class="col-6" style="padding-left: 0.2em; padding-right: 0.2em;">
+                        <div class="text-center" style="border-bottom-right-radius: 0.4em; border-bottom-left-radius: 0.4em; border: 2px solid #deeff5; padding-top: 0.0em; font-size: 10;">
+                            <t t-if="cfdi_vals.get('usage', False)">
+                                <span t-esc="cfdi_vals['usage']"/> - <span t-field="o.l10n_mx_edi_usage"/>
+                            </t>
                         </div>
                     </div>
                 </div>
@@ -597,8 +574,6 @@
                     </div>
                 </div>
             </t>
-        </xpath>
-        <xpath expr="//div[hasclass('page')]/div[6]" position="replace">
         </xpath>
     </template>
     <record id="l10n_mx_edi.report_invoice_document_mx" model="ir.ui.view">
