@@ -105,7 +105,7 @@
 
     <template id="report_assets" inherit_id="web.report_assets_common">
         <xpath expr="." position="inside">
-            <link href="/typ/static/src/css/layout.css" rel="stylesheet" />
+            <link href="/typ/static/css/layout.css" rel="stylesheet" />
         </xpath>
     </template>
 

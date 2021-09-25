@@ -3,7 +3,7 @@ from odoo import api, models
 
 class ReportZebraProduct(models.AbstractModel):
 
-    _name = "report.typ_printing_report.product_label_zebra_view"
+    _name = "report.typ.product_label_zebra_view"
     _description = "TODO: Once talk with the team describe it for v14.0"
 
     @api.model
@@ -12,7 +12,7 @@ class ReportZebraProduct(models.AbstractModel):
             data = {}
 
         datas = {"docs": self.env["product.product"].browse(data.get("ids", docids)), "qty": data.get("qty", 1)}
-        return self.env["report"].render("typ_printing_report.product_label_zebra_view", datas)
+        return self.env["report"].render("typ.product_label_zebra_view", datas)
 
     def _get_report_values(self, docids, data):
         products = self.env["product.product"].browse(docids)
@@ -21,7 +21,7 @@ class ReportZebraProduct(models.AbstractModel):
 
 class ReportZebraProductM(models.AbstractModel):
 
-    _name = "report.typ_printing_report.product_label_medium_zebra_view"
+    _name = "report.typ.product_label_medium_zebra_view"
     _description = "TODO: Once talk with the team describe it for v14.0"
 
     @api.model
@@ -30,7 +30,7 @@ class ReportZebraProductM(models.AbstractModel):
             data = {}
 
         datas = {"docs": self.env["product.product"].browse(data.get("ids", docids)), "qty": data.get("qty", 1)}
-        return self.env["report"].render("typ_printing_report.product_label_zebra_view", datas)
+        return self.env["report"].render("typ.product_label_zebra_view", datas)
 
     def _get_report_values(self, docids, data):
         products = self.env["product.product"].browse(docids)
@@ -39,7 +39,7 @@ class ReportZebraProductM(models.AbstractModel):
 
 class ReportZebraProductE(models.AbstractModel):
 
-    _name = "report.typ_printing_report.product_label_extra_zebra_view"
+    _name = "report.typ.product_label_extra_zebra_view"
     _description = "TODO: Once talk with the team describe it for v14.0"
 
     @api.model
@@ -48,7 +48,7 @@ class ReportZebraProductE(models.AbstractModel):
             data = {}
 
         datas = {"docs": self.env["product.product"].browse(data.get("ids", docids)), "qty": data.get("qty", 1)}
-        return self.env["report"].render("typ_printing_report.product_label_zebra_view", datas)
+        return self.env["report"].render("typ.product_label_zebra_view", datas)
 
     def _get_report_values(self, docids, data):
         products = self.env["product.product"].browse(docids)
@@ -57,7 +57,7 @@ class ReportZebraProductE(models.AbstractModel):
 
 class ReportZebraRack(models.AbstractModel):
 
-    _name = "report.typ_printing_report.rack_label_zebra_view"
+    _name = "report.typ.rack_label_zebra_view"
     _description = "TODO: Once talk with the team describe it for v14.0"
 
     def _get_report_values(self, docids, data):
@@ -67,7 +67,7 @@ class ReportZebraRack(models.AbstractModel):
 
 class ReportZebraRackM(models.AbstractModel):
 
-    _name = "report.typ_printing_report.rack_label_medium_zebra_view"
+    _name = "report.typ.rack_label_medium_zebra_view"
     _description = "TODO: Once talk with the team describe it for v14.0"
 
     def _get_report_values(self, docids, data):
@@ -77,7 +77,7 @@ class ReportZebraRackM(models.AbstractModel):
 
 class ReportZebraRackE(models.AbstractModel):
 
-    _name = "report.typ_printing_report.rack_label_extra_zebra_view"
+    _name = "report.typ.rack_label_extra_zebra_view"
     _description = "TODO: Once talk with the team describe it for v14.0"
 
     def _get_report_values(self, docids, data):
@@ -87,7 +87,7 @@ class ReportZebraRackE(models.AbstractModel):
 
 class ReportZebraImportUSA(models.AbstractModel):
 
-    _name = "report.typ_printing_report.import_usa_label_zebra_view"
+    _name = "report.typ.import_usa_label_zebra_view"
     _description = "TODO: Once talk with the team describe it for v14.0"
 
     def _get_report_values(self, docids, data):
@@ -97,7 +97,7 @@ class ReportZebraImportUSA(models.AbstractModel):
 
 class ReportZebraImportCAN(models.AbstractModel):
 
-    _name = "report.typ_printing_report.import_can_label_zebra_view"
+    _name = "report.typ.import_can_label_zebra_view"
     _description = "TODO: Once talk with the team describe it for v14.0"
 
     def _get_report_values(self, docids, data):
@@ -107,7 +107,7 @@ class ReportZebraImportCAN(models.AbstractModel):
 
 class ReportZebraImportUK(models.AbstractModel):
 
-    _name = "report.typ_printing_report.import_uk_label_zebra_view"
+    _name = "report.typ.import_uk_label_zebra_view"
     _description = "TODO: Once talk with the team describe it for v14.0"
 
     def _get_report_values(self, docids, data):
