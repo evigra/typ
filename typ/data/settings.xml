@@ -37,13 +37,13 @@
         <!-- # Website Settings -->
         <field name="website_name">typ.mx</field>
         <field name="has_google_analytics_dashboard" eval="True" />
-        <field name="website_default_lang_id" ref="base.lang_es" />
+        <field name="website_default_lang_id" ref="base.lang_es_MX" />
         <field
             name="language_ids"
             eval="[(6, 0, [
-            ref('base.lang_es'),
-            ref('base.lang_en'),
-        ])]"
+                ref('base.lang_es_MX'),
+                ref('base.lang_en'),
+            ])]"
         />
         <field name="group_multi_website" eval="False" />
     </record>
