@@ -16,11 +16,8 @@ class PosOrder(models.Model):
     @api.model
     def _order_fields(self, ui_order):
         res = super()._order_fields(ui_order)
-        res.update(
-            {
-                "l10n_mx_edi_usage": ui_order["l10n_mx_edi_usage"],
-            }
-        )
+        if "l10n_mx_edi_usage" in ui_order:
+            res["l10n_mx_edi_usage"] = ui_order["l10n_mx_edi_usage"]
         return res
 
     def _prepare_invoice_vals(self):
