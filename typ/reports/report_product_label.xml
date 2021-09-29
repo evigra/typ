@@ -7,6 +7,8 @@
         <field name="report_file">typ.rack_label_zebra_view</field>
         <field name="report_type">qweb-pdf</field>
         <field name="usage">zebra</field>
+        <field name="binding_model_id" ref="product.model_product_product"/>
+        <field name="binding_type">report</field>
     </record>
     <record id="rack_label_medium_zebra" model="ir.actions.report">
         <field name="model">product.product</field>
@@ -15,6 +17,8 @@
         <field name="report_file">typ.rack_label_medium_zebra_view</field>
         <field name="report_type">qweb-pdf</field>
         <field name="usage">zebra</field>
+        <field name="binding_model_id" ref="product.model_product_product"/>
+        <field name="binding_type">report</field>
     </record>
     <record id="rack_label_extra_zebra" model="ir.actions.report">
         <field name="model">product.product</field>
@@ -23,6 +27,8 @@
         <field name="report_file">typ.rack_label_extra_zebra_view</field>
         <field name="report_type">qweb-pdf</field>
         <field name="usage">zebra</field>
+        <field name="binding_model_id" ref="product.model_product_product"/>
+        <field name="binding_type">report</field>
     </record>
     <record id="product_label_zebra" model="ir.actions.report">
         <field name="model">product.product</field>
@@ -31,6 +37,8 @@
         <field name="report_file">typ.product_label_zebra_view</field>
         <field name="report_type">qweb-pdf</field>
         <field name="usage">zebra</field>
+        <field name="binding_model_id" ref="product.model_product_product"/>
+        <field name="binding_type">report</field>
     </record>
     <record id="product_label_medium_zebra" model="ir.actions.report">
         <field name="model">product.product</field>
@@ -39,6 +47,8 @@
         <field name="report_file">typ.product_label_medium_zebra_view</field>
         <field name="report_type">qweb-pdf</field>
         <field name="usage">zebra</field>
+        <field name="binding_model_id" ref="product.model_product_product"/>
+        <field name="binding_type">report</field>
     </record>
     <record id="product_label_extra_zebra" model="ir.actions.report">
         <field name="model">product.product</field>
@@ -47,6 +57,8 @@
         <field name="report_file">typ.product_label_extra_zebra_view</field>
         <field name="report_type">qweb-pdf</field>
         <field name="usage">zebra</field>
+        <field name="binding_model_id" ref="product.model_product_product"/>
+        <field name="binding_type">report</field>
     </record>
     <record id="product_import_usa_label_zebra" model="ir.actions.report">
         <field name="model">product.product</field>
@@ -55,6 +67,8 @@
         <field name="report_file">typ.import_usa_label_zebra_view</field>
         <field name="report_type">qweb-pdf</field>
         <field name="usage">zebra</field>
+        <field name="binding_model_id" ref="product.model_product_product"/>
+        <field name="binding_type">report</field>
     </record>
     <record id="product_import_can_label_zebra" model="ir.actions.report">
         <field name="model">product.product</field>
@@ -63,6 +77,8 @@
         <field name="report_file">typ.import_can_label_zebra_view</field>
         <field name="report_type">qweb-pdf</field>
         <field name="usage">zebra</field>
+        <field name="binding_model_id" ref="product.model_product_product"/>
+        <field name="binding_type">report</field>
     </record>
     <record id="product_import_uk_label_zebra" model="ir.actions.report">
         <field name="model">product.product</field>
@@ -71,6 +87,8 @@
         <field name="report_file">typ.import_uk_label_zebra_view</field>
         <field name="report_type">qweb-pdf</field>
         <field name="usage">zebra</field>
+        <field name="binding_model_id" ref="product.model_product_product"/>
+        <field name="binding_type">report</field>
     </record>
     <template id="product_label_report_assets" inherit_id="web.report_assets_common">
         <xpath expr="." position="inside">
