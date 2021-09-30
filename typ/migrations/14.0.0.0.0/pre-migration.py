@@ -16,6 +16,7 @@ def migrate(cr, version):
     set_account_type_internal_group(cr)
     set_missing_company_stock_moves_lines(cr)
     set_missing_hr_expense_sheet_company(cr)
+    remove_inconsistent_partner_bank(cr)
 
 
 def rename_extids_typ_modules(cr):
@@ -328,3 +329,15 @@ def module_delete(cr, module_name):
 def remove_uncertified_data(cr):
     for m in MODULES_TO_CLEAN:
         module_delete(cr, m)
+
+
+def remove_inconsistent_partner_bank(cr):
+    """There is one inconsistent partner bank, which is one without partner"""
+    cr.execute("""
+        DELETE  FROM
+            res_partner_bank
+        WHERE
+            partner_id IS NULL;
+    """)
+    qty_removed = cr.rowcount
+    assert qty_removed in (0, 1), qty_removed
