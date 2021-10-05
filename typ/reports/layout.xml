@@ -6,6 +6,7 @@
         </xpath>
     </template>
 
+
     <!-- <template id="typ.custom_external_layout">
         <t t-if="not o and doc">
             <t t-set="o" t-value="doc" />
@@ -157,8 +158,15 @@
                         style="max-height: 90px;"
                     />
                 </div>
-                <div class="col-xs-9" style="padding-top: 25px;">
+                <div class="col-xs-6" style="padding-top: 25px;">
                     <h3 class="text-center" t-field="company.name" />
+                </div>
+                <div class="col-xs-3">
+                    <h3 class="text-right" style="padding-top: 45px;">
+                        <span t-if="doc.state not in ['draft','sent']">Order N°</span>
+                        <span t-if="doc.state in ['draft','sent']">Quotation N°</span>
+                        <span t-field="doc.name" />
+                    </h3>
                 </div>
             </div>
             <div class="clearfix mb8" />
@@ -177,9 +185,7 @@
             </div>
             <ul class="list-inline hidden-md hidden-lg hidden-sm text-right">
                 <li>Page:</li>
-                <li><span class="page" /></li>
-                <li>/</li>
-                <li><span class="topage" /></li>
+                <li><span class="page" />/<span class="topage" /></li>
             </ul>
         </div>
     </template>

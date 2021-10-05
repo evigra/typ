@@ -68,7 +68,6 @@
         "reports/report_stockpicking_wobc.xml",
         "reports/report_stockpicking.xml",
         "reports/report_stock_views.xml",
-        "reports/sale_order_report.xml",
         "reports/stock_report_deliveryslip.xml",
         "reports/report_product_label.xml",
         # Wizards

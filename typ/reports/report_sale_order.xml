@@ -1,7 +1,7 @@
 <odoo>
     <template id='typ.report_saleorder_document' inherit_id="sale.report_saleorder_document">
         <xpath expr="//t[@t-call='web.external_layout']" position="replace">
-            <t t-call="typ. ">
+            <t t-call="typ.custom_external_layout">
                 <t t-set="doc" t-value="doc.with_context({'lang':doc.partner_id.lang})" />
                 <div class="page">
                     <div class="oe_structure" />
@@ -11,18 +11,18 @@
                             </h5>
                             <address>
                                 <t t-esc="doc.partner_shipping_id and doc.partner_shipping_id.name or ''"/>
-                                <br/>
+                                <br />
                                 <t t-if="doc.partner_shipping_id.street">
                                     <span t-raw="doc.partner_shipping_id.street" />
                                 </t>
-                                <br/>
+                                <br />
                                 <t t-if="doc.partner_shipping_id.l10n_mx_edi_colony">
                                     <span t-raw="doc.partner_shipping_id.l10n_mx_edi_colony" />
                                 </t>
                                 <t t-if="doc.partner_shipping_id.city">
                                     <span t-raw="doc.partner_shipping_id.city" />
                                 </t>
-                                <br/>
+                                <br />
                                 <t t-if="doc.partner_shipping_id.state_id">
                                     <span t-raw="doc.partner_shipping_id.state_id.name" />
                                 </t>
@@ -32,14 +32,14 @@
                                 <t t-if="doc.partner_shipping_id.zip">
                                     <span t-raw="doc.partner_shipping_id.zip" />
                                 </t>
-                                <br/>
+                                <br />
                             </address>
                             <h5 style="border-bottom: 1px solid #ccc; line-height: 2em;"><strong>Invoice address:</strong>
                             </h5>
                             <address class="address">
                             <!-- respect this order in all places always -->
                                 <t t-esc="doc.partner_invoice_id and doc.partner_invoice_id.name or ''"/>
-                                <br/>
+                                <br />
                                 <t t-if="doc.partner_invoice_id.street">
                                     <span t-raw="doc.partner_invoice_id.street" />
                                 </t>
@@ -50,7 +50,7 @@
                                 <t t-if="doc.partner_invoice_id.city">
                                     <span t-raw="doc.partner_invoice_id.city" />
                                 </t>
-                                <br/>
+                                <br />
                                 <t t-if="doc.partner_invoice_id.state_id">
                                     <span t-raw="doc.partner_invoice_id.state_id.name" />
                                 </t>
@@ -60,7 +60,7 @@
                                 <t t-if="doc.partner_invoice_id.zip">
                                     <span t-raw="doc.partner_invoice_id.zip" />
                                 </t>
-                                <br/>
+                                <br />
                                 <span>RFC:</span> <t t-esc="doc.partner_invoice_id and doc.partner_invoice_id.vat or ''"/>
                                 <br />
                             </address>
@@ -74,14 +74,14 @@
                                 <t t-if="doc.partner_id.street">
                                     <span t-raw="doc.partner_id.street" />
                                 </t>
-                                <br/>
+                                <br />
                                 <t t-if="doc.partner_id.l10n_mx_edi_colony">
                                     <span t-raw="doc.partner_id.l10n_mx_edi_colony" />
                                 </t>
                                 <t t-if="doc.partner_id.city">
                                     <span t-raw="doc.partner_id.city" />
                                 </t>
-                                <br/>
+                                <br />
                                 <t t-if="doc.partner_id.state_id">
                                     <span t-raw="doc.partner_id.state_id.name" />
                                 </t>
@@ -91,14 +91,15 @@
                                 <t t-if="doc.partner_id.zip">
                                     <span t-raw="doc.partner_id.zip" />
                                 </t>
-                                <br/>
+                                <br />
                             </address>
                         </div>
                     </div>
+                    <br />
                     <div class="row">
                         <div class="col-3">
                             <span><strong>Your reference: </strong></span>
-                            <br/>
+                            <br />
                             <span t-raw="doc.client_order_ref" />
                         </div>
                         <div class="col-3">
@@ -106,7 +107,7 @@
                             <span t-if="doc.state in ['draft','sent']"><strong>Quotation Date</strong>:</span>
                             <br />
                             <span t-field="doc.date_order" t-options='{"widget": "date"}' />
-                            <br/>
+                            <br />
                         </div>
                         <div class="col-3">
                             <span><strong>Salesman</strong>:
@@ -115,26 +116,26 @@
                         </div>
                         <div class="col-3">
                             <span><strong>Currency: </strong></span>
-                            <br/>
+                            <br />
                             (<span  t-esc="doc.pricelist_id and doc.pricelist_id.currency_id and doc.pricelist_id.currency_id.symbol or ''"/>)
                             <span t-esc="doc.pricelist_id and doc.pricelist_id.currency_id and doc.pricelist_id.currency_id.name or ''"/>
-                            <br/>
+                            <br />
                         </div>
                     </div>
                     <div class="row">
                     <div class="col-12">
-                    <table class="table-striped table-bordered  table-condensed table" width="100%">
+                    <table class="table-striped table-bordered  table" width="100%">
                         <thead class="text-center">
                         <tr>
-                            <th> <span>Description</span> </th>
-                            <th> <span>Quantity</span> </th>
-                            <th> <span>Unit Price</span> </th>
-                            <th> <span>Price</span> </th>
+                            <th class="col-sm-6"> <span>Description</span> </th>
+                            <th class="col-sm-2"> <span>Quantity</span> </th>
+                            <th class="col-sm-2"> <span>Unit Price</span> </th>
+                            <th class="col-sm-2"> <span>Price</span> </th>
                         </tr>
                         </thead>
                         <tbody>
                             <tr t-foreach="doc.order_line" t-as="line">
-                                <td class="col-6 vauxoo" style="font-size: 12px;">
+                                <td class="text-left" style="font-size: 12px;">
                                     <t t-raw="line.name" />
                                 </td>
                                 <td class="text-right">
@@ -155,19 +156,18 @@
                     </div>
                     </div>
                     <div class="row vauxoo">
-                        <div class="col-6 col-md-8">
+                        <div class="col-7">
                         <!-- TODO Delete div or use it for something -->
                         </div>
-                        <div class="col-6 col-md-4 text-right">
-                            <div class="row">
-                                <span class="col-4 text-left"><strong>SubTotal</strong>:</span> <span class="col-7 text-right" t-field="doc.amount_untaxed"/>
-                            </div>
-                            <div class="row">
-                                <span class="col-4 text-left"><strong>IVA</strong>:</span> <span class="col-7 text-right" t-field="doc.amount_tax"/>
-                            </div>
-                            <div class="row" name='total'>
-                                <span class="col-4 text-left"><strong>Total</strong>:</span> <span class="col-7 text-right" t-field="doc.amount_total"/>
-                            </div>
+                        <div class="col-2 text-left">
+                            <span><strong>SubTotal</strong>:</span><br />
+                            <span><strong>IVA</strong>:</span><br />
+                            <span><strong>Total</strong>:</span><br />
+                        </div>
+                        <div class="col-2 text-right">
+                            <span t-field="doc.amount_untaxed"/><br />
+                            <span t-field="doc.amount_tax"/><br />
+                            <span t-field="doc.amount_total"/><br />
                         </div>
                     </div>
                     <br />
