@@ -70,6 +70,7 @@
         "reports/report_stock_views.xml",
         "reports/stock_report_deliveryslip.xml",
         "reports/report_product_label.xml",
+        "reports/pos_receipt_report.xml",
         # Wizards
         "wizards/invoice_from_guides_views.xml",
         "wizards/stock_product_print_label_views.xml",
