@@ -9,31 +9,6 @@
             />
         </xpath>
     </template>
-    <template id="custom_external_layout_standard">
-        <div class="article" t-att-data-oe-model="o and o._name" t-att-data-oe-id="o and o.id" t-att-data-oe-lang="o and o.env.context.get('lang')">
-            <t t-raw="0" />
-        </div>
-    </template>
-
-    <template id="invoice_custom_external_layout">
-        <t t-if="not o" t-set="o" t-value="doc"/>
-        <t t-if="not company">
-            <!-- Multicompany -->
-            <t t-if="company_id">
-                <t t-set="company" t-value="company_id"/>
-            </t>
-            <t t-elif="o and 'company_id' in o and o.company_id.sudo()">
-                <t t-set="company" t-value="o.company_id.sudo()"/>
-            </t>
-            <t t-else="else">
-                <t t-set="company" t-value="res_company"/>
-            </t>
-        </t>
-        <div class="article" t-att-data-oe-model="o and o._name" t-att-data-oe-id="o and o.id" t-att-data-oe-lang="o and o.env.context.get('lang')">
-            <t t-raw="0" />
-        </div>
-        <!--<t t-call="typ.custom_external_layout_standard"><t t-raw="0" /></t>-->
-    </template>
 
     <!-- QWeb Reports -->
     <record id="account.account_invoices" model="ir.actions.report">
@@ -46,7 +21,7 @@
 
     <template id="report_invoice_document" inherit_id="account.report_invoice_document">
         <xpath expr="//t[@t-call='web.external_layout']" position="attributes">
-            <attribute name="t-call">typ.invoice_custom_external_layout</attribute>
+            <attribute name="t-call">typ.external_layout</attribute>
         </xpath>
         <xpath expr="//div[1]" position="before">
             <!-- Global variables -->

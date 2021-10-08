@@ -17,7 +17,8 @@
 
     <template id="report_payment_receipt_document" inherit_id="account.report_payment_receipt_document" active="True">
         <xpath expr="//t[@t-call='web.external_layout']" position="attributes">
-            <attribute name="t-call">typ.invoice_custom_external_layout</attribute>
+            <t t-set="invoice" t-value="True"/>
+            <attribute name="t-call">typ.external_layout</attribute>
         </xpath>
         <xpath expr="//t[@t-set='o']" position="after">
             <!--New global variables-->
