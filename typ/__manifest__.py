@@ -25,6 +25,7 @@
         "l10n_mx_edi_extended",
         "l10n_mx_edi_hr_expense",
         "l10n_mx_edi_partner_defaults",
+        "l10n_mx_edi_pos",
         "mrp",
         "note",
         "point_of_sale",
