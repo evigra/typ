@@ -219,7 +219,7 @@
             <table class="table table-striped" style="font-size:15px; border-collapse: collapse; padding-top: 0.5em;">
                 <thead>
                     <tr>
-                        <th class="text-center bg primary">Quantity</th>
+                        <th class="text-center bg-primary">Quantity</th>
                         <t t-if="is_cfdi_signed">
                             <th class="text-center bg-primary">Unit</th>
                             <th class="text-center bg-primary">SAT Key</th>
@@ -232,16 +232,16 @@
                 <tbody>
                     <t t-foreach="o.invoice_line_ids" t-as="l">
                         <tr class="text-center">
-                            <td class="col-1 text-right">
+                            <td class="text-right">
                                 <span t-field="l.quantity"/>
                             </td>
-                            <td class="col-1 text-left" t-if="is_cfdi_signed">
+                            <td class="text-left" t-if="is_cfdi_signed">
                                 <span t-field="l.product_uom_id.unspsc_code_id.code"/>
                             </td>
-                            <td class="col-1 text-left" t-if="is_cfdi_signed">
+                            <td class="text-left" t-if="is_cfdi_signed">
                                 <span t-field="l.product_id.unspsc_code_id.code"/>
                             </td>
-                            <td class="col-5 text-left">
+                            <td class="text-left">
                                 <span t-field="l.name" />
                                 <t t-foreach="l.mapped('sale_line_ids.move_ids.move_line_ids.lot_id')" t-as="lot">
                                     <br />
@@ -257,10 +257,10 @@
                                     </ul>
                                 </t>
                             </td>
-                            <td class="col-2 text-right">
+                            <td class="text-right">
                                 <span t-field="l.price_unit"/>
                             </td>
-                            <td class="col-2 text-right" id="subtotal">
+                            <td class="text-right" id="subtotal">
                                 <span t-field="l.price_subtotal" t-options='{"widget": "monetary", "display_currency": o.currency_id}'/>
                             </td>
                         </tr>
@@ -545,6 +545,16 @@
                         </div>
                 </div>
             </t>
+        </xpath>
+    </template>
+    <template id="report_invoice" inherit_id="account.report_invoice">
+        <xpath expr="//t[@t-call='account.report_invoice_document']" position="before">
+            <t t-set="account" t-value="True"/>
+        </xpath>
+    </template>
+    <template id="report_invoice_with_payments" inherit_id="account.report_invoice_with_payments">
+        <xpath expr="//t[@t-call='account.report_invoice_document']" position="before">
+            <t t-set="account" t-value="True"/>
         </xpath>
     </template>
     <record id="l10n_mx_edi.report_invoice_document_mx" model="ir.ui.view">

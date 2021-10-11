@@ -199,4 +199,14 @@
             </t>
         </xpath>
     </template>
+    <template id="report_saleorder" inherit_id="sale.report_saleorder">
+        <xpath expr="//t[@t-call='sale.report_saleorder_document']" position="before">
+            <t t-set="sale" t-value="True"/>
+        </xpath>
+    </template>
+    <template id="report_saleorder_pro_forma" inherit_id="sale.report_saleorder_pro_forma">
+        <xpath expr="//t[@t-call='sale.report_saleorder_document']" position="before">
+            <t t-set="sale" t-value="True"/>
+        </xpath>
+    </template>
 </odoo>

@@ -15,7 +15,7 @@
         <field name="paperformat_id" ref="typ_paperformat_invoice_letter"/>
     </record>
 
-    <template id="report_payment_receipt_document" inherit_id="account.report_payment_receipt_document" active="True">
+    <template id="report_payment_receipt_document" inherit_id="account.report_payment_receipt_document">
         <xpath expr="//t[@t-call='web.external_layout']" position="attributes">
             <t t-set="invoice" t-value="True"/>
             <attribute name="t-call">typ.external_layout</attribute>
@@ -254,7 +254,7 @@
                 <table class="table table-striped" style="font-size:15px; border-collapse: collapse;">
                     <thead>
                         <tr>
-                            <th class="text-center bg primary">Invoice Date</th>
+                            <th class="text-center bg-primary">Invoice Date</th>
                             <th class="text-center bg-primary">Invoice Number</th>
                             <th class="text-center bg-primary">Original Amount</th>
                             <th class="text-center bg-primary">Amount Paid</th>
@@ -501,6 +501,11 @@
                         </div>
                 </div>
             </t>
+        </xpath>
+    </template>
+    <template id="report_payment_receipt" inherit_id="account.report_payment_receipt">
+        <xpath expr="//t[@t-call='account.report_payment_receipt_document']" position="before">
+            <t t-set="account" t-value="True"/>
         </xpath>
     </template>
     <record id="l10n_mx_edi.report_payment_document_mx" model="ir.ui.view">

@@ -8,13 +8,13 @@
 
     <template id="external_layout" inherit_id="web.external_layout" active="True">
         <xpath expr="//t[@t-if='company.external_report_layout_id']" position="replace">
-            <t t-if="o._name=='account.move' or o._name=='account.payment'">
+            <t t-if="account">
                 <div class="article" t-att-data-oe-model="o and o._name" t-att-data-oe-id="o and o.id" t-att-data-oe-lang="o and o.env.context.get('lang')">
                     <t t-raw="0" />
                 </div>
-                <t t-call="typ.custom_external_layout_standard"><t t-raw="0" /></t>
+                <!--<t t-call="typ.custom_external_layout_standard"><t t-raw="0" /></t>-->
             </t>
-            <t t-elif="o._name=='sale.order'">
+            <t t-elif="sale">
                 <t t-call="typ.custom_external_layout_background"><t t-raw="0" /></t>
             </t>
         </xpath>
@@ -44,7 +44,7 @@
     <template id="custom_external_layout_background">
         <div class="header">
             <div class="row">
-                <div class="col-xs-3" style="padding-top: 20px;">
+                <div class="col-3" style="padding-top: 20px;">
                     <img
                         t-if="company.logo"
                         t-att-src="'data:image/png;base64,%s' % to_text(company.logo)"
@@ -52,10 +52,10 @@
                         style="max-height: 90px;"
                     />
                 </div>
-                <div class="col-xs-6" style="padding-top: 25px;">
-                    <h3 class="text-center" t-field="company.name" />
+                <div class="col-6" style="padding-top: 25px;">
+                    <t t-set="address" t-value="o.company_id" />
                 </div>
-                <div class="col-xs-3">
+                <div class="col-3">
                     <h3 class="text-right" style="padding-top: 45px;">
                         <span t-if="doc.state not in ['draft','sent']">Order N°</span>
                         <span t-if="doc.state in ['draft','sent']">Quotation N°</span>
