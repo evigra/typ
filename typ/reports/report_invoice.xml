@@ -23,15 +23,13 @@
         <xpath expr="//t[@t-call='web.external_layout']" position="attributes">
             <attribute name="t-call">typ.external_layout</attribute>
         </xpath>
-        <xpath expr="//div[1]" position="before">
+        <xpath expr="//div[hasclass('row')]" position="replace">
+        </xpath>
+        <xpath expr="//h2" position="replace">
             <!-- Global variables -->
             <t t-set="cfdi_vals" t-value="o._l10n_mx_edi_decode_cfdi()"/>
             <t t-set="cfdi_node" t-value="cfdi_vals.get('cfdi_node')"/>
             <t t-set="is_cfdi_signed" t-value="bool(o._get_l10n_mx_edi_signed_edi_document())"/>
-        </xpath>
-        <xpath expr="//div[hasclass('row')]" position="replace">
-        </xpath>
-        <xpath expr="//h2" position="replace">
             <div class="row">
                 <div class="col-3" style="margin: 0px; padding: 0px;">
                     <img t-if="o.company_id.logo" t-att-src="'data:image/png;base64,%s' % to_text(o.company_id.logo)" style="max-height: 60px;"/>
@@ -222,7 +220,7 @@
                 <thead>
                     <tr>
                         <th class="text-center bg primary">Quantity</th>
-                        <t t-if="is_cfdi_signed and xml.get('Version')">
+                        <t t-if="is_cfdi_signed">
                             <th class="text-center bg-primary">Unit</th>
                             <th class="text-center bg-primary">SAT Key</th>
                         </t>
@@ -494,8 +492,7 @@
                         </div>
                     </div>
                 </t>
-                <div t-if="is_cfdi_signed" class="row" id="complement" style="padding-top: 0.5em;">
-                    <div class="col-12 img-rounded" style="page-break-inside:avoid; border: 2px solid #deeff5;">
+                <div t-if="is_cfdi_signed" class="row img-rounded" id="complement" style="padding-top: 0.5em; border: 2px solid #deeff5;">
                         <div class="barcode col-3">
                             <t t-set="sello" t-value="cfdi_vals.get('sello', 'No identificado')"/>
                             <img alt="Barcode" t-att-src="'/report/barcode/?type=QR&amp;value=%s&amp;width=180&amp;height=180' % quote_plus(
@@ -546,7 +543,6 @@
                                 <strong>This document is a printed representation of a CFDI</strong>
                             </div>
                         </div>
-                    </div>
                 </div>
             </t>
         </xpath>

@@ -20,11 +20,6 @@
             <t t-set="invoice" t-value="True"/>
             <attribute name="t-call">typ.external_layout</attribute>
         </xpath>
-        <xpath expr="//t[@t-set='o']" position="after">
-            <!--New global variables-->
-            <t t-set="cfdi_vals" t-value="o.move_id._l10n_mx_edi_decode_cfdi()"/>
-            <t t-set="is_cfdi_signed" t-value="bool(o.move_id._get_l10n_mx_edi_signed_edi_document())"/>
-        </xpath>
         <xpath expr="//div[hasclass('page')]/div[1]" position="replace">
         </xpath>
         <xpath expr="//div[hasclass('page')]/div[2]" position="replace">
@@ -32,6 +27,9 @@
         <xpath expr="//div[hasclass('page')]/div[1]" position="replace">
         </xpath>
         <xpath expr="//h3" position="replace">
+            <!--New global variables-->
+            <t t-set="cfdi_vals" t-value="o.move_id._l10n_mx_edi_decode_cfdi()"/>
+            <t t-set="is_cfdi_signed" t-value="bool(o.move_id._get_l10n_mx_edi_signed_edi_document())"/>
             <div class="row">
                 <div class="col-3" style="margin: 0px; padding: 0px;">
                     <img t-if="o.company_id.logo" t-att-src="'data:image/png;base64,%s' % to_text(o.company_id.logo)" style="max-height: 60px;"/>
@@ -455,8 +453,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="row" id="complement" style="padding-top: 0.5em;">
-                    <div class="col-12 img-rounded" style="page-break-inside:avoid; border: 2px solid #deeff5;">
+                <div class="row img-rounded" id="complement" style="padding-top: 0.5em; border: 2px solid #deeff5;">
                         <div class="barcode col-3">
                             <t t-set="sello" t-value="cfdi_vals.get('sello', 'No identificado')"/>
                             <img t-att-src="'/report/barcode/?type=QR&amp;value=%s' % quote_plus(                             'https://verificacfdi.facturaelectronica.sat.gob.mx/default.aspx?' + keep_query(                                 re=o.l10n_mx_edi_cfdi_supplier_rfc, rr=o.l10n_mx_edi_cfdi_customer_rfc,                                 tt=0, id=o.l10n_mx_edi_cfdi_uuid)                                 + '&amp;fe=%s' % quote_plus(sello, 'utf-8', 'strict', '=/').replace('%2B', '+'))"/>
@@ -502,7 +499,6 @@
                                 <strong>This document is a printed representation of a CFDI</strong>
                             </div>
                         </div>
-                    </div>
                 </div>
             </t>
         </xpath>
