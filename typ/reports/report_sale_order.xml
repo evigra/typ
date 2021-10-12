@@ -127,10 +127,10 @@
                     <table class="table-striped table-bordered  table" width="100%">
                         <thead class="text-center">
                         <tr>
-                            <th class="col-sm-6"> <span>Description</span> </th>
-                            <th class="col-sm-2"> <span>Quantity</span> </th>
-                            <th class="col-sm-2"> <span>Unit Price</span> </th>
-                            <th class="col-sm-2"> <span>Price</span> </th>
+                            <th> <span>Description</span> </th>
+                            <th> <span>Quantity</span> </th>
+                            <th> <span>Unit Price</span> </th>
+                            <th> <span>Price</span> </th>
                         </tr>
                         </thead>
                         <tbody>

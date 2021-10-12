@@ -8,7 +8,7 @@
         <field name="binding_model_id" ref="point_of_sale.model_pos_order"/>
     </record>
 
-    <template id="receipt_report_document">
+    <template id="pos_receipt_report_document">
         <t t-call="web.external_layout">
             <t t-set="o" t-value="o.with_context({'lang':o.partner_id.lang})" />
             <div class="page">

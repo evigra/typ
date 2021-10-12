@@ -54,6 +54,42 @@
                 </div>
                 <div class="col-6" style="padding-top: 25px;">
                     <t t-set="address" t-value="o.company_id" />
+                    <address t-if="address" style="font-size: 12px; line-height: 13px;">
+                        <i class="fa fa-map-marker"/>
+                        <strong t-esc="address.name or ''"/>
+                        <br/>
+                        <t t-if="address.vat">
+                            <span>VAT</span>: <span t-raw="address.partner_id.vat"/>
+                            <br/>
+                        </t>
+                        <span t-if="address.street" t-raw="address.street" />
+                        <br />
+                        <t t-if="address.l10n_mx_edi_colony" t-raw="address.l10n_mx_edi_colony" />
+                        <t t-if="address.city" t-raw="address.city" />
+                        <br />
+                        <t t-if="address.state_id" t-raw="address.state_id.name" />
+                        <t t-if="address.country_id" t-raw="address.country_id.name" />
+                        <t t-if="address.zip" t-raw="address.zip" />
+                        <br />
+                        <i t-if="address.phone or o.team_id.sale_phone" class="fa fa-phone"/>
+                        <span
+                            t-if="not o.team_id.sale_phone"
+                            class="text-muted"
+                            style="font-size: 12px; line-height: 13px;"
+                            t-raw="address.phone"
+                        />
+                        <span 
+                            t-if="o.team_id.sale_phone" 
+                            class="text-muted" 
+                            style="font-size: 12px; line-height: 13px;" 
+                            t-raw="o.team_id.name"
+                        />:
+                        <span 
+                            t-if="o.team_id.sale_phone" 
+                            class="text-muted" 
+                            style="font-size: 12px; line-height: 13px;" 
+                            t-raw="o.team_id.sale_phone"/>
+                    </address>
                 </div>
                 <div class="col-3">
                     <h3 class="text-right" style="padding-top: 45px;">
@@ -101,28 +137,15 @@
                             <span>VAT</span>: <span t-raw="address.partner_id.vat" /><br
                             />
                         </t>
-                        <t t-if="address.street">
-                            <span t-raw="address.street" />
-                        </t>
+                        <t t-if="address.street" t-raw="address.street" />
                         <br />
-                        <t t-if="address.l10n_mx_edi_colony">
-                            <span t-raw="address.l10n_mx_edi_colony" />
-                        </t>
-                        <t t-if="address.l10n_mx_edi_colony and address.city"><span
-                            >,</span></t>
-                        <t t-if="address.city">
-                            <span t-raw="address.city" />
-                        </t>
+                        <t t-if="address.l10n_mx_edi_colony" t-raw="address.l10n_mx_edi_colony" />
+                        <t t-if="address.l10n_mx_edi_colony and address.city"><span>,</span></t>
+                        <t t-if="address.city" t-raw="address.city" />
                         <br />
-                        <t t-if="address.state_id">
-                            <span t-raw="address.state_id.name" />
-                        </t>
-                        <t t-if="address.country_id">
-                            <span t-raw="address.country_id.name" />
-                        </t>
-                        <t t-if="address.zip">
-                            <span t-raw="address.zip" />
-                        </t>
+                        <t t-if="address.state_id" t-raw="address.state_id.name" />
+                        <t t-if="address.country_id" t-raw="address.country_id.name" />
+                        <t t-if="address.zip" t-raw="address.zip" />
                         <br />
                         <t t-if="address.email">
                             <i class="fa fa-envelope" />

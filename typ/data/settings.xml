@@ -34,6 +34,7 @@
         <field name="group_multi_currency" eval="True" />
         <field name="currency_provider">banxico</field>
         <field name="currency_interval_unit">daily</field>
+        <field name="l10n_mx_edi_fiscal_regime">601</field>
         <!-- # Website Settings -->
         <field name="website_name">typ.mx</field>
         <field name="has_google_analytics_dashboard" eval="True" />

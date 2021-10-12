@@ -29,6 +29,7 @@
         <xpath expr="//h3" position="replace">
             <!--New global variables-->
             <t t-set="cfdi_vals" t-value="o.move_id._l10n_mx_edi_decode_cfdi()"/>
+            <t t-set="cfdi_node" t-value="cfdi_vals.get('cfdi_node')"/>
             <t t-set="is_cfdi_signed" t-value="bool(o.move_id._get_l10n_mx_edi_signed_edi_document())"/>
             <div class="row">
                 <div class="col-3" style="margin: 0px; padding: 0px;">
@@ -54,7 +55,7 @@
                         <div class="col-8 text-center" style="padding-top: 1.0em; font-size: 10;">
                             <t t-if="is_cfdi_signed">
                                 <t t-set="date" t-value="cfdi_vals.get('stamp_date')"/>
-                                <span t-esc="time.strftime('%d/%m/%Y %H:%M:%S', time.strptime(date, '%Y-%m-%dT%H:%M:%S')) or 'o.date'"/>
+                                <span t-esc="time.strftime('%d/%m/%Y %H:%M:%S', time.strptime(date, '%Y-%m-%d %H:%M:%S')) or 'o.date'"/>
                             </t>
                             <t t-else="">
                                 <span t-esc="o.date"/>
@@ -226,7 +227,7 @@
                     <tbody>
                         <tr t-foreach="docs_related" t-as="inv">
                             <td>
-                                <span t-esc="o.invoice_line_ids.filtered(lambda i: i.l10n_mx_edi_cfdi_uuid == inv.get('IdDocumento')).number or ''"/>
+                                <span t-esc="o.reconciled_invoice_ids.filtered(lambda i: i.l10n_mx_edi_cfdi_uuid == inv.get('IdDocumento')).name or ''"/>
                             </td>
                             <td>
                                 <span t-esc="inv.get('IdDocumento')"/>
@@ -334,63 +335,57 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div>
-                        <div class="col-4" style="padding-left: 0.0em; padding-right: 0.2em;">
-                            <div class="text-center" style="border-bottom-right-radius: 0.4em; border-bottom-left-radius: 0.4em; border: 2px solid #deeff5; padding-top: 0.0em; font-size: 10;">
-                                <span t-esc="tfd.get('UUID', 'No identificado')"/>
-                            </div>
+                    <div class="col-4" style="padding-left: 0.0em; padding-right: 0.2em;">
+                        <div class="text-center" style="border-bottom-right-radius: 0.4em; border-bottom-left-radius: 0.4em; border: 2px solid #deeff5; padding-top: 0.0em; font-size: 10;">
+                            <span t-esc="cfdi_vals.get('uuid', 'No identificado')"/>
                         </div>
-                        <div class="col-4" style="padding-right: 0.2em; padding-left: 0.2em;">
-                            <div class="text-center" style="border-bottom-right-radius: 0.4em; border-bottom-left-radius: 0.4em; border: 2px solid #deeff5; padding-top: 0.0em; font-size: 10;">
-                                <t t-set="docs_related" t-value="cfdi_vals.get('cfdi_node') and cfdi_vals['cfdi_node'].Complemento.xpath('//pago10:DoctoRelacionado', namespaces={'pago10': 'http://www.sat.gob.mx/Pagos'})"/>
-                                <t t-set="acc_em" t-value="docs_related[0].getparent().get('CtaOrdenante', '') if docs_related else ''"/>
-                                <span t-esc="acc_em and acc_em[-4:] or 'No identificado'"/>
-                            </div>
+                    </div>
+                    <div class="col-4" style="padding-right: 0.2em; padding-left: 0.2em;">
+                        <div class="text-center" style="border-bottom-right-radius: 0.4em; border-bottom-left-radius: 0.4em; border: 2px solid #deeff5; padding-top: 0.0em; font-size: 10;">
+                            <t t-set="docs_related" t-value="cfdi_vals.get('cfdi_node') and cfdi_vals['cfdi_node'].Complemento.xpath('//pago10:DoctoRelacionado', namespaces={'pago10': 'http://www.sat.gob.mx/Pagos'})"/>
+                            <t t-set="acc_em" t-value="docs_related[0].getparent().get('CtaOrdenante', '') if docs_related else ''"/>
+                            <span t-esc="acc_em and acc_em[-4:] or 'No identificado'"/>
                         </div>
-                        <div class="col-4" style="padding-right: 0.0em; padding-left: 0.2em;">
-                            <div class="text-center" style="border-bottom-right-radius: 0.4em; border-bottom-left-radius: 0.4em; border: 2px solid #deeff5; padding-top: 0.0em; font-size: 10;">
-                                <span t-esc="cfdi_vals.get('certificate_number', 'No identificado')"/>
-                            </div>
+                    </div>
+                    <div class="col-4" style="padding-right: 0.0em; padding-left: 0.2em;">
+                        <div class="text-center" style="border-bottom-right-radius: 0.4em; border-bottom-left-radius: 0.4em; border: 2px solid #deeff5; padding-top: 0.0em; font-size: 10;">
+                            <span t-esc="cfdi_vals.get('certificate_number', 'No identificado')"/>
                         </div>
                     </div>
                 </div>
                 <div class="row" style="padding-top: 0.5em; font-size: 12;">
-                    <div>
-                        <div class="col-4" style="padding-left: 0.0em; padding-right: 0.2em;">
-                            <div class="text-center bg-primary" style="border-top-right-radius: 0.4em; border-top-left-radius: 0.4em; padding-top: 0.0em;">
-                                <span>Form of Payment</span>
-                            </div>
+                    <div class="col-4" style="padding-left: 0.0em; padding-right: 0.2em;">
+                        <div class="text-center bg-primary" style="border-top-right-radius: 0.4em; border-top-left-radius: 0.4em; padding-top: 0.0em;">
+                            <span>Form of Payment</span>
                         </div>
-                        <div class="col-4" style="padding-left: 0.2em; padding-right: 0.2em;">
-                            <div class="text-center bg-primary" style="border-top-right-radius: 0.4em; border-top-left-radius: 0.4em; padding-top: 0.0em;">
-                                <span>Date Stamp</span>
-                            </div>
+                    </div>
+                    <div class="col-4" style="padding-left: 0.2em; padding-right: 0.2em;">
+                        <div class="text-center bg-primary" style="border-top-right-radius: 0.4em; border-top-left-radius: 0.4em; padding-top: 0.0em;">
+                            <span>Date Stamp</span>
                         </div>
-                        <div class="col-4" style="padding-left: 0.2em; padding-right: 0.0em;">
-                            <div class="text-center bg-primary" style="border-top-right-radius: 0.4em; border-top-left-radius: 0.4em; padding-top: 0.0em;">
-                                <span>SAT Certificate</span>
-                            </div>
+                    </div>
+                    <div class="col-4" style="padding-left: 0.2em; padding-right: 0.0em;">
+                        <div class="text-center bg-primary" style="border-top-right-radius: 0.4em; border-top-left-radius: 0.4em; padding-top: 0.0em;">
+                            <span>SAT Certificate</span>
                         </div>
                     </div>
                 </div>
                 <div class="row">
-                    <div>
-                        <div class="col-4" style="padding-left: 0.0em; padding-right: 0.2em;">
-                            <div class="text-center" style="border-bottom-right-radius: 0.4em; border-bottom-left-radius: 0.4em; border: 2px solid #deeff5; padding-top: 0.0em; font-size: 10;">
-                                <t t-if="o.l10n_mx_edi_payment_method_id">
-                                    <span t-esc="' - '.join([o.l10n_mx_edi_payment_method_id.code, o.l10n_mx_edi_payment_method_id.name])"/>
-                                </t>
-                            </div>
+                    <div class="col-4" style="padding-left: 0.0em; padding-right: 0.2em;">
+                        <div class="text-center" style="border-bottom-right-radius: 0.4em; border-bottom-left-radius: 0.4em; border: 2px solid #deeff5; padding-top: 0.0em; font-size: 10;">
+                            <t t-if="o.l10n_mx_edi_payment_method_id">
+                                <span t-esc="' - '.join([o.l10n_mx_edi_payment_method_id.code, o.l10n_mx_edi_payment_method_id.name])"/>
+                            </t>
                         </div>
-                        <div class="col-4" style="padding-left: 0.2em; padding-right: 0.2em;">
-                            <div class="text-center" style="border-bottom-right-radius: 0.4em; border-bottom-left-radius: 0.4em; border: 2px solid #deeff5; padding-top: 0.0em; font-size: 10;">
-                                <span t-esc="time.strftime('%d/%m/%Y %H:%M:%S', time.strptime(tfd.get('FechaTimbrado'), '%Y-%m-%dT%H:%M:%S')) or 'No identificado'"/>
-                            </div>
+                    </div>
+                    <div class="col-4" style="padding-left: 0.2em; padding-right: 0.2em;">
+                        <div class="text-center" style="border-bottom-right-radius: 0.4em; border-bottom-left-radius: 0.4em; border: 2px solid #deeff5; padding-top: 0.0em; font-size: 10;">
+                            <span t-esc="time.strftime('%d/%m/%Y %H:%M:%S', time.strptime(cfdi_vals.get('stamp_date'), '%Y-%m-%d %H:%M:%S')) or 'No identificado'"/>
                         </div>
-                        <div class="col-4" style="padding-left: 0.2em; padding-right: 0.0em;">
-                            <div class="text-center" style="border-bottom-right-radius: 0.4em; border-bottom-left-radius: 0.4em; border: 2px solid #deeff5; padding-top: 0.0em; font-size: 10;">
-                                <span t-esc="tfd.get('NoCertificadoSAT', 'No identificado')"/>
-                            </div>
+                    </div>
+                    <div class="col-4" style="padding-left: 0.2em; padding-right: 0.0em;">
+                        <div class="text-center" style="border-bottom-right-radius: 0.4em; border-bottom-left-radius: 0.4em; border: 2px solid #deeff5; padding-top: 0.0em; font-size: 10;">
+                            <span t-esc="cfdi_vals.get('certificate_sat_number', 'No identificado')"/>
                         </div>
                     </div>
                 </div>
@@ -454,51 +449,55 @@
                     </div>
                 </div>
                 <div class="row img-rounded" id="complement" style="padding-top: 0.5em; border: 2px solid #deeff5;">
-                        <div class="barcode col-3">
-                            <t t-set="sello" t-value="cfdi_vals.get('sello', 'No identificado')"/>
-                            <img t-att-src="'/report/barcode/?type=QR&amp;value=%s' % quote_plus(                             'https://verificacfdi.facturaelectronica.sat.gob.mx/default.aspx?' + keep_query(                                 re=o.l10n_mx_edi_cfdi_supplier_rfc, rr=o.l10n_mx_edi_cfdi_customer_rfc,                                 tt=0, id=o.l10n_mx_edi_cfdi_uuid)                                 + '&amp;fe=%s' % quote_plus(sello, 'utf-8', 'strict', '=/').replace('%2B', '+'))"/>
+                    <div class="barcode col-3">
+                        <t t-set="sello" t-value="cfdi_vals.get('sello', 'No identificado')"/>
+                        <img t-att-src="'/report/barcode/?type=QR&amp;value=%s&amp;width=180&amp;height=180' % quote_plus(
+                            'https://verificacfdi.facturaelectronica.sat.gob.mx/default.aspx?' + keep_query(
+                            re=o.l10n_mx_edi_cfdi_supplier_rfc, rr=o.l10n_mx_edi_cfdi_customer_rfc,
+                            tt=0, id=o.l10n_mx_edi_cfdi_uuid)
+                            + '&amp;fe=%s' % quote_plus(sello, 'utf-8', 'strict', '=/').replace('%2B', '+'))"/>
+                    </div>
+                    <div class="complement-details col-9">
+                        <div class="digital-stamp">
+                            <span>Digital stamp of the emitter</span>
                         </div>
-                        <div class="complement-details col-9">
-                            <div class="digital-stamp">
-                                <span>Digital stamp of the emitter</span>
-                            </div>
-                            <div class="digital-stamp-content">
-                                <span t-esc="cfdi_vals.get('sello', 'No identificado')"/>
-                            </div>
-                            <div class="digital-stamp">
-                                <span>Digital stamp SAT</span>
-                            </div>
-                            <div class="digital-stamp-content">
-                                <span t-esc="cfdi_vals.get('sello_sat', 'No identificado')"/>
-                            </div>
-                            <div class="digital-stamp">
-                                <span>Original chain complement of digital certification SAT</span>
-                            </div>
-                            <div class="digital-stamp-content">
-                                <span class="nowrap" t-esc="cfdi_vals.get('cadena')"/>
-                            </div>
-                            <div t-if="cfdi_node.Emisor.xpath('cfdi:ExpedidoEn', namespaces=cfdi_node.nsmap)" class="digital-stamp">
-                                <span>Issued from</span>
-                            </div>
-                            <div t-if="cfdi_node.Emisor.xpath('cfdi:ExpedidoEn', namespaces=cfdi_node.nsmap)" class="digital-stamp-content">
-                                <span t-esc="cfdi_vals.get('expedition')"/>
-                            </div>
-                            <div class="digital-stamp">
-                                <span>Extra Info</span>
-                            </div>
-                            <div class="digital-stamp-content">
-                                <span>Emitter certificate:</span> <span t-esc="cfdi_vals.get('certificate_number')"/>
-                                <span> | SAT Certificate:</span> <span t-esc="cfdi_vals.get('certificate_sat_number')"/>
-                                <span> | Expedition place:</span> <span t-esc="cfdi_vals.get('expedition')"/>
-                                <span> | Fiscal Regime:</span> <span t-esc="cfdi_vals.get('fiscal_regime')"/>
-                                <span> | Emission Date:</span> <span t-esc="cfdi_vals.get('emission_date_str')"/>
-                                <span> | Certification Date:</span> <span t-esc="cfdi_vals.get('stamp_date')"/>
-                                <span> | Fiscal Folio:</span> <span t-esc="cfdi_vals.get('uuid')"/>
-                            </div>
-                            <div class="digital-stamp-content text-center">
-                                <strong>This document is a printed representation of a CFDI</strong>
-                            </div>
+                        <div class="digital-stamp-content">
+                            <span t-esc="cfdi_vals.get('sello', 'No identificado')"/>
                         </div>
+                        <div class="digital-stamp">
+                            <span>Digital stamp SAT</span>
+                        </div>
+                        <div class="digital-stamp-content">
+                            <span t-esc="cfdi_vals.get('sello_sat', 'No identificado')"/>
+                        </div>
+                        <div class="digital-stamp">
+                            <span>Original chain complement of digital certification SAT</span>
+                        </div>
+                        <div class="digital-stamp-content">
+                            <span class="nowrap" t-esc="cfdi_vals.get('cadena')"/>
+                        </div>
+                        <div t-if="cfdi_node.Emisor.xpath('cfdi:ExpedidoEn', namespaces=cfdi_node.nsmap)" class="digital-stamp">
+                            <span>Issued from</span>
+                        </div>
+                        <div t-if="cfdi_node.Emisor.xpath('cfdi:ExpedidoEn', namespaces=cfdi_node.nsmap)" class="digital-stamp-content">
+                            <span t-esc="cfdi_vals.get('expedition')"/>
+                        </div>
+                        <div class="digital-stamp">
+                            <span>Extra Info</span>
+                        </div>
+                        <div class="digital-stamp-content">
+                            <span>Emitter certificate:</span> <span t-esc="cfdi_vals.get('certificate_number')"/>
+                            <span> | SAT Certificate:</span> <span t-esc="cfdi_vals.get('certificate_sat_number')"/>
+                            <span> | Expedition place:</span> <span t-esc="cfdi_vals.get('expedition')"/>
+                            <span> | Fiscal Regime:</span> <span t-esc="cfdi_vals.get('fiscal_regime')"/>
+                            <span> | Emission Date:</span> <span t-esc="cfdi_vals.get('emission_date_str')"/>
+                            <span> | Certification Date:</span> <span t-esc="cfdi_vals.get('stamp_date')"/>
+                            <span> | Fiscal Folio:</span> <span t-esc="cfdi_vals.get('uuid')"/>
+                        </div>
+                        <div class="digital-stamp-content text-center">
+                            <strong>This document is a printed representation of a CFDI</strong>
+                        </div>
+                    </div>
                 </div>
             </t>
         </xpath>
