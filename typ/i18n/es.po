@@ -5785,6 +5785,11 @@ msgid "Sales Team"
 msgstr "Equipo de ventas"
 
 #. module: typ
+#: model:ir.model.fields,field_description:typ.field_stock_warehouse__sales_teams_ids
+msgid "Sales teams"
+msgstr "Equipos de ventas"
+
+#. module: typ
 #: model:ir.model.fields,field_description:typ.field_account_bank_statement_line__invoice_user_id
 #: model:ir.model.fields,field_description:typ.field_account_move__invoice_user_id
 #: model:ir.model.fields,field_description:typ.field_account_payment__invoice_user_id

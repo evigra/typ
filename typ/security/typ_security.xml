@@ -488,4 +488,61 @@ They can:
         >[('vehicle_id.vehicle_manager', '=', user.partner_id.id)]</field>
     </record> -->
 
+    <record id="rule_account_move_by_sale_team" model="ir.rule">
+        <field name="name">Limited access to Journal Entry (filtered by sale teams)</field>
+        <field name="model_id" ref="model_account_move" />
+        <field name="domain_force">[
+            '|',
+            ('journal_id', 'in', user.sale_team_ids.journal_team_ids.ids),
+            ('journal_id.section_id', '=', False),
+        ]</field>
+    </record>
+    <record id="rule_account_move_line_by_sale_team" model="ir.rule">
+        <field name="name">Limited access to Journal Item (filtered by sale teams)</field>
+        <field name="model_id" ref="model_account_move_line" />
+        <field name="domain_force">[
+            '|', '|',
+            ('journal_id', '=', False),
+            ('journal_id', 'in', user.sale_team_ids.journal_team_ids.ids),
+            ('journal_id.section_id', '=', False),
+        ]</field>
+    </record>
+
+    <record id="rule_account_payment_by_sale_team" model="ir.rule">
+        <field name="name">Limited access to Payments (filtered by sale teams)</field>
+        <field name="model_id" ref="model_account_payment" />
+        <field name="domain_force">[
+            '|', '|',
+            ('journal_id', 'in', user.sale_team_ids.journal_team_ids.ids),
+            ('journal_id.section_id', '=', False),('partner_id', '=', user.partner_id.id),
+        ]</field>
+    </record>
+
+    <record id="rule_sale_order_by_sale_team" model="ir.rule">
+        <field name="name">Limited access to Sale Order (filtered by sale teams)</field>
+        <field name="model_id" ref="model_sale_order" />
+        <field name="domain_force">[
+            '|',
+            ('warehouse_id', 'in', user.sale_team_ids.default_warehouse_id.ids),
+            ('warehouse_id.sales_teams_ids', '=', False),
+        ]</field>
+    </record>
+
+    <record id="rule_purchase_order_by_sale_team" model="ir.rule">
+        <field name="name">Limited access to Purchase Order (filtered by sale teams)</field>
+        <field name="model_id" ref="model_purchase_order" />
+        <field name="domain_force">[
+            '|',
+            ('picking_type_id.warehouse_id', 'in', user.sale_team_ids.default_warehouse_id.ids),
+            ('picking_type_id.warehouse_id.sales_teams_ids', '=', False),
+        ]</field>
+    </record>
+
+    <record id="rule_pos_config_by_sale_team" model="ir.rule">
+        <field name="name">Limited access to POS (filtered by sale teams)</field>
+        <field name="model_id" ref="point_of_sale.model_pos_config" />
+        <field name="domain_force">[
+            ('crm_team_id', 'in', user.sale_team_ids.ids),
+        ]</field>
+    </record>
 </odoo>
