@@ -187,18 +187,16 @@ class StockLandedCostGuide(models.Model):
         account_move = self.env["account.move"]
         for guide in self:
             guide = guide.with_context(lang=guide.partner_id.lang or guide.company_id.partner_id.lang)
-            if not guide.journal_id.sequence_id:
-                raise UserError(_("Error!\nPlease define sequence on the journal related to this guide."))
             if not guide.line_ids:
-                raise UserError(_("No Guide Lines!"), _("Please create some guide lines."))
+                raise UserError(
+                    _(
+                        "There are no Guide Lines!\n\n"
+                        "Please create some guide lines before validating this document."
+                    )
+                )
             if guide.move_id:
                 continue
             journal = guide.journal_id
-
-            if not guide.date:
-                guide.write({"date": fields.Date.context_today(self)})
-            date = guide.date
-
             ref = guide.reference or guide.name
             company_currency = guide.company_id.currency_id
             gml = self.env["stock.landed.cost.guide.line"].move_line_get(self.id)
@@ -207,13 +205,13 @@ class StockLandedCostGuide(models.Model):
 
             part = self.env["res.partner"]._find_accounting_partner(guide.partner_id)
 
-            line = [(0, 0, self.line_get_convert(li, part.id, date)) for li in gml]
+            line = [(0, 0, self.line_get_convert(li, part.id, guide.date)) for li in gml]
             line = guide.finalize_guide_move_lines(line)
             move_vals = {
                 "ref": ref,
                 "line_ids": line,
                 "journal_id": journal.id,
-                "date": date,
+                "date": guide.date,
                 "company_id": guide.company_id.id,
             }
             if guide.account_move_name:
@@ -227,7 +225,7 @@ class StockLandedCostGuide(models.Model):
             # the same
             # account move reference when creating the same guide after a
             # cancelled one:
-            move.post()
+            move.action_post()
             guide.account_move_name = move.name
         return True
 

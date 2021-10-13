@@ -47,7 +47,7 @@ odoo:
     - travis_run_tests
     - travis_after_tests_success || true
       # TODO remove once tests are migrated
-    - export COVERAGE_MIN=40
+    - export COVERAGE_MIN=51
     - coverage html --rcfile=${CI_PROJECT_DIR}/.coveragerc -d $CI_COMMIT_REF_SLUG || true
     - coverage xml --rcfile=${CI_PROJECT_DIR}/.coveragerc -o $CI_COMMIT_REF_SLUG/coverage.xml || true
     - coverage report -m --show-missing --rcfile=${CI_PROJECT_DIR}/.coveragerc || [[ $? != 2 ]]

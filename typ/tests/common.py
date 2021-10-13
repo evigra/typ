@@ -13,9 +13,11 @@ class TypCase:
         self.customer = self.env.ref("base.res_partner_12")
         self.vendor = self.env.ref("base.res_partner_2")
         self.product = self.env.ref("product.product_product_16")
+        self.product_cost = self.env.ref("typ.product_landing_cost")
         self.salesteam = self.env.ref("sales_team.crm_team_1")
         self.pricelist = self.env.ref("website_sale.list_benelux")
         self.company = self.env.ref("base.main_company")
+        self.journal_expense = self.env["account.journal"].search([("name", "=", "Expense")], limit=1)
         self.today = fields.Date.context_today(self.company)
 
     def create_sale_order(self, partner=None, team=None, **line_kwargs):

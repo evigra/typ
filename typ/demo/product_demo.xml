@@ -153,4 +153,13 @@
         <field name="default_code">HEADPHONE-LUX</field>
     </record>
 
+    <record id="product_landing_cost" model="product.product">
+        <field name="name">Landing Cost</field>
+        <field name="categ_id" ref="product.cat_expense" />
+        <field name="list_price">75.0</field>
+        <field name="type">service</field>
+        <field name="default_code">LANDING</field>
+        <field name="landed_cost_ok" eval="True" />
+    </record>
+
 </odoo>
