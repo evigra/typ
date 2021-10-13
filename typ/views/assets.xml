@@ -34,9 +34,4 @@
             />
         </xpath>
     </template>
-    <template id="pos_assets" inherit_id="point_of_sale.assets">
-        <xpath expr="//link[last()]" position="after">
-            <script type="text/javascript" src="/typ/static/src/js/pos_models.js" />
-        </xpath>
-    </template>
 </odoo>
