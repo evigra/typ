@@ -114,7 +114,7 @@ class AccountMove(models.Model):
             )
             if not mail or errored:
                 continue
-            record.write({"sent": False})
+            record.write({"is_move_sent": False})
             record.message_post(
                 subject=_("Error when try send invoice by email"),
                 # Validate that mail exists, because the search can return a
