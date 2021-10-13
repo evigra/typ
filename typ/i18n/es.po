@@ -413,13 +413,13 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:typ.report_picking
 #: model_terms:ir.ui.view,arch_db:typ.report_picking_wobc
 msgid "<span><strong>Customer Address:</strong></span>"
-msgstr ""
+msgstr "<span><strong>Dirección del Cliente:</strong></span>"
 
 #. module: typ
 #: model_terms:ir.ui.view,arch_db:typ.report_picking
 #: model_terms:ir.ui.view,arch_db:typ.report_picking_wobc
 msgid "<span><strong>Delivery Address:</strong></span>"
-msgstr ""
+msgstr "<span><strong>Dirección de Entrega:</strong></span>"
 
 #. module: typ
 #: model_terms:ir.ui.view,arch_db:typ.report_saleorder_document
@@ -438,13 +438,13 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:typ.report_picking
 #: model_terms:ir.ui.view,arch_db:typ.report_picking_wobc
 msgid "<span><strong>Supplier Address:</strong></span>"
-msgstr ""
+msgstr "<span><strong>Dirección del Proveedor:</strong></span>"
 
 #. module: typ
 #: model_terms:ir.ui.view,arch_db:typ.report_picking
 #: model_terms:ir.ui.view,arch_db:typ.report_picking_wobc
 msgid "<span><strong>Warehouse Address:</strong></span>"
-msgstr ""
+msgstr "<span><strong>Dirección del Almacén:</strong></span>"
 
 #. module: typ
 #: model_terms:ir.ui.view,arch_db:typ.report_saleorder_document
@@ -781,7 +781,7 @@ msgstr ""
 #. module: typ
 #: model_terms:ir.ui.view,arch_db:typ.report_picking
 msgid "<strong>Barcode</strong>"
-msgstr ""
+msgstr "<strong>Código de Barras</strong>"
 
 #. module: typ
 #: model_terms:ir.ui.view,arch_db:typ.report_saleorder_document
@@ -792,7 +792,7 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:typ.report_picking
 #: model_terms:ir.ui.view,arch_db:typ.report_picking_wobc
 msgid "<strong>Commitment Date</strong>"
-msgstr ""
+msgstr "<strong>Fecha Compromiso</strong>"
 
 #. module: typ
 #: model_terms:ir.ui.view,arch_db:typ.report_purchaseorder_document
@@ -851,14 +851,14 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:typ.report_picking
 #: model_terms:ir.ui.view,arch_db:typ.report_picking_wobc
 msgid "<strong>Notes</strong>:"
-msgstr ""
+msgstr "<strong>Notas</strong>:"
 
 #. module: typ
 #: model_terms:ir.ui.view,arch_db:typ.report_delivery_document_inherit_typ
 #: model_terms:ir.ui.view,arch_db:typ.report_picking
 #: model_terms:ir.ui.view,arch_db:typ.report_picking_wobc
 msgid "<strong>Order (Origin)</strong>"
-msgstr ""
+msgstr "<strong>Pedido (Origen)</strong>"
 
 #. module: typ
 #: model_terms:ir.ui.view,arch_db:typ.report_saleorder_document
@@ -893,7 +893,7 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:typ.report_picking
 #: model_terms:ir.ui.view,arch_db:typ.report_picking_wobc
 msgid "<strong>Product</strong>"
-msgstr ""
+msgstr "<strong>Producto</strong>"
 
 #. module: typ
 #: model_terms:ir.ui.view,arch_db:typ.report_purchaseorder_document
@@ -907,7 +907,7 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:typ.report_purchaseorder_document
 #: model_terms:ir.ui.view,arch_db:typ.report_purchasequotation_document
 msgid "<strong>Quantity</strong>"
-msgstr ""
+msgstr "<strong>Cantidad</strong>"
 
 #. module: typ
 #: model_terms:ir.ui.view,arch_db:typ.report_saleorder_document
@@ -918,7 +918,7 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:typ.report_picking
 #: model_terms:ir.ui.view,arch_db:typ.report_picking_wobc
 msgid "<strong>Scheduled Date</strong>"
-msgstr ""
+msgstr "<strong>Fecha Recepción</strong>"
 
 #. module: typ
 #: model_terms:ir.ui.view,arch_db:typ.report_picking
@@ -941,7 +941,7 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:typ.report_picking
 #: model_terms:ir.ui.view,arch_db:typ.report_picking_wobc
 msgid "<strong>State</strong>"
-msgstr ""
+msgstr "<strong>Estado</strong>"
 
 #. module: typ
 #: model_terms:ir.ui.view,arch_db:typ.report_purchaseorder_document
@@ -1544,7 +1544,7 @@ msgstr ""
 #. module: typ
 #: model_terms:ir.ui.view,arch_db:typ.report_picking
 msgid "Barcode"
-msgstr ""
+msgstr "Código de Barras"
 
 #. module: typ
 #: model:ir.model,name:typ.model_hr_employee_base
@@ -7460,7 +7460,7 @@ msgstr "Usuarios que no pueden ver el botón validar transferencia"
 #: model_terms:ir.ui.view,arch_db:typ.report_picking
 #: model_terms:ir.ui.view,arch_db:typ.report_picking_wobc
 msgid "VAT:"
-msgstr ""
+msgstr "RFC:"
 
 #. module: typ
 #: model:ir.model.fields.selection,name:typ.selection__stock_landed_cost_guide__state__valid
