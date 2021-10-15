@@ -9,3 +9,4 @@ credit-management git@git.vauxoo.com:vauxoo/credit-management.git
 stock-logistics-barcode git@github.com:Vauxoo/stock-logistics-barcode.git
 product-attribute git@github.com:Vauxoo/product-attribute.git
 design-themes git@github.com:odoo/design-themes.git
+stock-psycho-account git@git.vauxoo.com:vauxoo/stock-psycho-account.git

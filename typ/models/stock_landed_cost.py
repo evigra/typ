@@ -101,6 +101,17 @@ class StockLandedCostLines(models.Model):
     _inherit = "stock.landed.cost.lines"
 
     split_method = fields.Selection(default="by_current_cost_price")
+    # Todo remove field segmentation_cost after the following is merged:
+    # https://git.vauxoo.com/vauxoo/stock-psycho-account/-/merge_requests/8
+    segmentation_cost = fields.Selection(
+        selection=[
+            ("landed_cost", "Landed Cost"),
+            ("subcontracting_cost", "Subcontracting Cost"),
+            ("material_cost", "Material Cost"),
+            ("production_cost", "Production Cost"),
+        ],
+        string="Segmentation",
+    )
 
     @api.onchange("product_id")
     def onchange_product_id(self):

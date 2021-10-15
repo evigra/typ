@@ -21,6 +21,12 @@
             <xpath expr="//field[@name='cost_line_id']" position="after">
                 <field name="picking_id" readonly="True" />
             </xpath>
+            <xpath
+                expr="//field[@name='cost_lines']/tree/field[@name='split_method']"
+                position="after"
+            >
+                <field name="segmentation_cost" invisible="1" />
+            </xpath>
         </field>
     </record>
 

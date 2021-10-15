@@ -33,6 +33,8 @@
         "purchase_requisition",
         "sale_credit_management",
         "sale_margin",
+        # TODO replace by stock_segmentation_cost_fraction once the following is merged:
+        #  https://git.vauxoo.com/vauxoo/stock-psycho-account/-/merge_requests/8
         "stock_landed_costs",
         "stock_picking_show_return",
         "default_warehouse_from_sale_team",

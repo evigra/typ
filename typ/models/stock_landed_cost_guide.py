@@ -171,11 +171,11 @@ class StockLandedCostGuide(models.Model):
         # First, detach the move ids
         self.write({"move_id": False})
         # second, invalidate the move(s)
-        moves.button_cancel()
+        moves.button_draft()
         # delete the move this guide was pointing to
         # Note that the corresponding move_lines and move_reconciles
         # will be automatically deleted too
-        moves.unlink()
+        moves.with_context(force_delete=True).unlink()
         return True
 
     def action_valid(self):

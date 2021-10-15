@@ -1,11 +1,11 @@
-from odoo.exceptions import UserError
+from odoo.exceptions import UserError, ValidationError
 from odoo.tests import Form, tagged
 
 from .common import TypTransactionCase
 
 
-@tagged("cost_guide")
-class TestCostGuide(TypTransactionCase):
+@tagged("landed_cost")
+class TestLandedCost(TypTransactionCase):
     def create_cost_guide(
         self,
         name="Guide 1",
@@ -42,11 +42,30 @@ class TestCostGuide(TypTransactionCase):
             line.cost = cost
             line.freight_type = freight_type
 
+    def create_landed_cost(self, guide=None, cost_date=None):
+        landed_cost = Form(self.env["stock.landed.cost"])
+        if cost_date is not None:
+            landed_cost.date = cost_date
+        if guide is not None:
+            # Adding existing records to o2m is not natively supported yet, so we do it manually
+            landed_cost._values["guide_ids"].append((4, guide.id, False))
+            landed_cost._perform_onchange(["guide_ids"])
+        landed_cost = landed_cost.save()
+        return landed_cost
+
     def test_01_guide_flow(self):
         """Test creating & validating a cost guide, ensuring a journal entry is created"""
         # Create guide
         guide = self.create_cost_guide()
-        self.assertEqual(guide.state, "draft")
+        self.assertRecordValues(
+            guide,
+            [
+                {
+                    "state": "draft",
+                    "landed": False,
+                },
+            ],
+        )
 
         # Validate guide
         guide.action_valid()
@@ -66,6 +85,32 @@ class TestCostGuide(TypTransactionCase):
             ],
         )
         self.assertEqual(guide.account_move_name, guide.move_id.name)
+
+        # When already validated, we shouldn't be able to delete it
+        error_msg = "cannot be removed when it is/was validated"
+        with self.assertRaisesRegex(ValidationError, error_msg):
+            guide.unlink()
+
+        # Create a landed cost and attach the guide to it, cost lines should be automatically created
+        landed_cost = self.create_landed_cost(guide=guide)
+        self.assertRecordValues(
+            landed_cost.cost_lines,
+            [
+                {
+                    "product_id": self.product_cost.id,
+                    "price_unit": 150,
+                    "split_method": "by_current_cost_price",
+                    "segmentation_cost": "landed_cost",
+                },
+            ],
+        )
+
+        # Once the guide has a landed cost, we should be able to cancel it, but not resetting it to draft
+        guide.action_cancel()
+        self.assertEqual(guide.state, "cancel")
+        error_msg = "You cannot reset this guide to draft while it is associated to a Landed Cost"
+        with self.assertRaisesRegex(ValidationError, error_msg):
+            guide.action_draft()
 
     def test_02_validate_wo_lines(self):
         """Try to validate a guide without lines"""
