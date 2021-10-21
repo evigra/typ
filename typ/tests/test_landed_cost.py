@@ -13,11 +13,13 @@ class TestLandedCost(TypTransactionCase):
         journal=None,
         guide_date=None,
         reference="charged",
+        currency=None,
+        company=None,
         create_line=True,
         **line_kwargs
     ):
         if partner is None:
-            partner = self.customer
+            partner = self.vendor
         if journal is None:
             journal = self.journal_expense
         if guide_date is None:
@@ -29,6 +31,10 @@ class TestLandedCost(TypTransactionCase):
         guide.date = guide_date
         guide.reference = reference
         guide.comments = "Guide comments"
+        if currency is not None:
+            guide.currency_id = currency
+        if company is not None:
+            guide.company_id = company
         guide = guide.save()
         if create_line:
             self.create_guide_line(guide, **line_kwargs)
@@ -53,6 +59,21 @@ class TestLandedCost(TypTransactionCase):
         landed_cost = landed_cost.save()
         return landed_cost
 
+    def create_invoice_from_guide(self, guides, journal=None):
+        if journal is None:
+            journal = self.journal_bills
+        ctx = {
+            "active_model": guides._name,
+            "active_ids": guides.ids,
+            "active_id": guides[0].id,
+        }
+        wizard = Form(self.env["invoice.guides"].with_context(**ctx))
+        wizard.journal_id = journal
+        wizard = wizard.save()
+        wizard_res = wizard.create_invoice()
+        invoice = self.env[wizard_res["res_model"]].browse(wizard_res["res_id"])
+        return invoice
+
     def test_01_guide_flow(self):
         """Test creating & validating a cost guide, ensuring a journal entry is created"""
         # Create guide
@@ -63,6 +84,7 @@ class TestLandedCost(TypTransactionCase):
                 {
                     "state": "draft",
                     "landed": False,
+                    "invoiced": False,
                 },
             ],
         )
@@ -85,6 +107,33 @@ class TestLandedCost(TypTransactionCase):
             ],
         )
         self.assertEqual(guide.account_move_name, guide.move_id.name)
+
+        # Create invoice from guide
+        invoice = self.create_invoice_from_guide(guide)
+        self.assertRecordValues(
+            records=invoice.invoice_line_ids,
+            expected_values=[
+                {
+                    "product_id": self.product_cost.id,
+                    "quantity": 1.0,
+                    "price_unit": 150.0,
+                    "guide_line_id": guide.line_ids.id,
+                }
+            ],
+        )
+        self.assertTrue(guide.invoiced)
+
+        # We shouldn't be able to invoice again
+        error_msg = "The following guides are already invoiced"
+        with self.assertRaisesRegex(ValidationError, error_msg):
+            self.create_invoice_from_guide(guide)
+
+        # Open stock accruals
+        aml_credit = guide.move_id.line_ids.filtered("credit")
+        self.assertEqual(aml_credit.credit, 150)
+        action_accrual = guide.view_accrual()
+        amls_on_accrual = self.env[action_accrual["res_model"]].search(action_accrual["domain"])
+        self.assertEqual(amls_on_accrual, aml_credit + invoice.invoice_line_ids)
 
         # When already validated, we shouldn't be able to delete it
         error_msg = "cannot be removed when it is/was validated"
@@ -118,3 +167,32 @@ class TestLandedCost(TypTransactionCase):
         error_msg = "Please create some guide lines before validating this document."
         with self.assertRaisesRegex(UserError, error_msg):
             guide.action_valid()
+
+    def test_03_invoice_guide_diff_partner(self):
+        """Try to invoice cost guides that have different partners"""
+        guides = self.create_cost_guide() + self.create_cost_guide(partner=self.customer)
+        error_msg = "All selected guides must have the same partner."
+        with self.assertRaisesRegex(ValidationError, error_msg):
+            self.create_invoice_from_guide(guides)
+
+    def test_04_invoice_guide_diff_currency(self):
+        """Try to invoice cost guides that have different currencies"""
+        guides = self.create_cost_guide() + self.create_cost_guide(currency=self.usd)
+        error_msg = "All selected guides must have the same currency."
+        with self.assertRaisesRegex(ValidationError, error_msg):
+            self.create_invoice_from_guide(guides)
+
+    def test_05_invoice_guide_diff_company(self):
+        """Try to invoice cost guides that have different companies"""
+        guides = self.create_cost_guide() + self.create_cost_guide(company=self.company_secondary)
+        error_msg = "All selected guides must have the same company."
+        with self.assertRaisesRegex(ValidationError, error_msg):
+            self.create_invoice_from_guide(guides)
+
+    def test_06_invoice_guide_product_wo_account(self):
+        """Try to invoice cost guide containing a product without stock input account"""
+        guides = self.create_cost_guide()
+        self.product_cost.categ_id.property_stock_account_input_categ_id = False
+        error_msg = "Please configure a stock input account for the product '\\[LANDING\\] Landing Cost'."
+        with self.assertRaisesRegex(ValidationError, error_msg):
+            self.create_invoice_from_guide(guides)

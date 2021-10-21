@@ -1289,18 +1289,6 @@ msgid "All Products"
 msgstr ""
 
 #. module: typ
-#: code:addons/typ/wizards/invoice_from_guides.py:0
-#, python-format
-msgid "All guides selected must have the same currency"
-msgstr ""
-
-#. module: typ
-#: code:addons/typ/wizards/invoice_from_guides.py:0
-#, python-format
-msgid "All guides selected must have the same partner"
-msgstr ""
-
-#. module: typ
 #: model_terms:ir.ui.view,arch_db:typ.report_delivery_document_inherit_typ
 msgid ""
 "All items couldn't be shipped, the remaining ones will be shipped as soon as"
@@ -1320,6 +1308,24 @@ msgid ""
 "All prices are L.A.B. point of sale or assortment of T&amp;P Refrigeration. The freight charges for shipping products are charged to the customer,\n"
 "                                  who will pay them when they are received. In case of receiving damaged or missing products, the customer must immediately claim the freight company."
 msgstr ""
+
+#. module: typ
+#: code:addons/typ/wizards/invoice_from_guides.py:0
+#, python-format
+msgid "All selected guides must have the same company."
+msgstr "Todas las guías seleccionadas deben tener la misma compañía."
+
+#. module: typ
+#: code:addons/typ/wizards/invoice_from_guides.py:0
+#, python-format
+msgid "All selected guides must have the same currency."
+msgstr "Todas las guías seleccionadas deben tener la misma moneda."
+
+#. module: typ
+#: code:addons/typ/wizards/invoice_from_guides.py:0
+#, python-format
+msgid "All selected guides must have the same partner."
+msgstr "Todas las guías seleccionadas deben tener el mismo contacto."
 
 #. module: typ
 #: model_terms:ir.ui.view,arch_db:typ.confirmation
@@ -2321,7 +2327,7 @@ msgid "Date that the supplier undertakes to deliver."
 msgstr "Fecha en la que proveeduría se compromete a entregar."
 
 #. module: typ
-#: model:ir.model.fields,help:typ.field_invoice_guides__date_invoice
+#: model:ir.model.fields,help:typ.field_invoice_guides__invoice_date
 msgid "Date which want to create the invoice"
 msgstr ""
 
@@ -2899,14 +2905,6 @@ msgid "Error when try to send invoice by email"
 msgstr ""
 
 #. module: typ
-#: code:addons/typ/models/stock_landed_cost_guide.py:0
-#, python-format
-msgid ""
-"Error!\n"
-"Please define sequence on the journal related to this guide."
-msgstr ""
-
-#. module: typ
 #: model_terms:ir.ui.view,arch_db:typ.typ_americ
 #: model_terms:website.page,arch_db:typ.page_typ_americ
 msgid ""
@@ -3184,7 +3182,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:typ.field_stock_landed_cost__guide_ids
 #: model:ir.ui.menu,name:typ.menu_landed_cost_guides
 msgid "Guides"
-msgstr ""
+msgstr "Guías"
 
 #. module: typ
 #: model:ir.model.fields,help:typ.field_stock_landed_cost__guide_ids
@@ -3533,7 +3531,7 @@ msgid "Invoice Status"
 msgstr ""
 
 #. module: typ
-#: model:ir.model.fields,field_description:typ.field_invoice_guides__date_invoice
+#: model:ir.model.fields,field_description:typ.field_invoice_guides__invoice_date
 msgid "Invoice date"
 msgstr ""
 
@@ -5008,16 +5006,10 @@ msgid "Please check your email for further instructions"
 msgstr ""
 
 #. module: typ
-#: code:addons/typ/models/stock_landed_cost_guide.py:0
-#, python-format
-msgid "Please create some guide lines."
-msgstr ""
-
-#. module: typ
 #: code:addons/typ/wizards/invoice_from_guides.py:0
 #, python-format
-msgid "Please define expense account for this product: \"%s\""
-msgstr ""
+msgid "Please configure a stock input account for the product '%s'."
+msgstr "Por favor configure una cuenta de entrada de stock para el producto '%s'."
 
 #. module: typ
 #: model:ir.model,name:typ.model_pos_order
@@ -6520,8 +6512,12 @@ msgstr ""
 #. module: typ
 #: code:addons/typ/wizards/invoice_from_guides.py:0
 #, python-format
-msgid "The guide(s) "
+msgid ""
+"The following guides are already invoiced:\n"
+"- %s"
 msgstr ""
+"Las siguientes guías ya se encuentran facturadas:\n"
+"- %s"
 
 #. module: typ
 #: model_terms:ir.ui.view,arch_db:typ.email_sent
@@ -6602,6 +6598,18 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:typ.my_quotations
 msgid "There are currently no quotations for your account."
 msgstr ""
+
+#. module: typ
+#: code:addons/typ/models/stock_landed_cost_guide.py:0
+#, python-format
+msgid ""
+"There are no Guide Lines!\n"
+"\n"
+"Please create some guide lines before validating this document."
+msgstr ""
+"¡No hay líneas de guía!\n"
+"\n"
+"Por favor, cree líneas de guía antes de validar este documento."
 
 #. module: typ
 #: code:addons/typ/models/res_partner.py:0
@@ -8073,12 +8081,6 @@ msgstr ""
 #: model_terms:website.page,arch_db:typ.page_typ_providers
 msgid "imperial"
 msgstr ""
-
-#. module: typ
-#: code:addons/typ/wizards/invoice_from_guides.py:0
-#, python-format
-msgid "is already invoiced"
-msgstr "Ya está facturado"
 
 #. module: typ
 #: model_terms:ir.ui.view,arch_db:typ.typ_providers

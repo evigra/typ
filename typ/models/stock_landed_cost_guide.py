@@ -279,27 +279,15 @@ class StockLandedCostGuide(models.Model):
         return move_lines
 
     def view_accrual(self):
-        """Launches a view with the account.move.lines related to the current
-        guide"""
-        res = []
-        for guide in self:
-            res += guide.line_ids.ids
-
-        domain = (
-            "[('guide_line_id', 'in', \
-            ["
-            + ",".join([str(item) for item in res])
-            + "])]"
+        """Launches a view with the account.move.lines related to the current guide"""
+        action = self.env.ref("account.action_move_line_select").read()[0]
+        action.update(
+            {
+                "domain": [("guide_line_id", "in", self.line_ids.ids)],
+                "context": {},
+            }
         )
-        return {
-            "domain": domain,
-            "name": _("Journal Items"),
-            "view_type": "form",
-            "view_mode": "tree,form",
-            "res_model": "account.move.line",
-            "view_id": False,
-            "type": "ir.actions.act_window",
-        }
+        return action
 
 
 class StockLandedGuidesLine(models.Model):
