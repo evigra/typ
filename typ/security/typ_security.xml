@@ -524,7 +524,7 @@ They can:
         <field name="domain_force">[
             '|',
             ('warehouse_id', 'in', user.sale_team_ids.default_warehouse_id.ids),
-            ('warehouse_id.sales_teams_ids', '=', False),
+            ('warehouse_id.sale_team_ids', '=', False),
         ]</field>
     </record>
 
@@ -534,7 +534,7 @@ They can:
         <field name="domain_force">[
             '|',
             ('picking_type_id.warehouse_id', 'in', user.sale_team_ids.default_warehouse_id.ids),
-            ('picking_type_id.warehouse_id.sales_teams_ids', '=', False),
+            ('picking_type_id.warehouse_id.sale_team_ids', '=', False),
         ]</field>
     </record>
 

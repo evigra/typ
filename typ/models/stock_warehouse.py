@@ -1,12 +1,8 @@
-from odoo import models, fields
+from odoo import models
 
 
 class StockWarehouse(models.Model):
     _inherit = "stock.warehouse"
-
-    sales_teams_ids = fields.One2many(
-        'crm.team', 'default_warehouse_id', string="Sales teams",
-    )
 
     def _load_records(self, data_list, update=False):
         """Create external IDs for locations and picking types, for convenience"""
