@@ -38,6 +38,8 @@ odoo:
     - git clone --depth=1 https://github.com/vauxoo/maintainer-quality-tools.git -b master ${HOME}/maintainer-quality-tools
     - export PATH=${HOME}/maintainer-quality-tools/travis:${HOME}/gitlab_tools:${PATH}
     - pip3 install deployv-addon-gitlab-tools
+    - apt-get update
+    - apt-get install python3-dev python3-dev libcups2-dev gcc
     - deployvcmd gitlab_tools check_keys
     - export TRAVIS_PYTHON_VERSION="3.6"  # CI docker image is not compatible with py3.8 but py3.6
     - source ${REPO_REQUIREMENTS}/virtualenv/python${TRAVIS_PYTHON_VERSION}/bin/activate

@@ -2,3 +2,4 @@
 # Since patches are applied after dependencies and requirements are installed,
 # new requirements added by patches won't be taken into account
 barcode
+pycups==2.0.1
