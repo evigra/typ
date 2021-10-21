@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+
+    <record id="journal_cost_guide" model="account.journal">
+        <field name="name">Landed Cost Guides</field>
+        <field name="type">sale</field>
+        <field name="code">GUID</field>
+        <field name="sequence" eval="15" />
+        <field
+            name="default_account_id"
+            model="ir.property"
+            eval="obj()._get('property_account_income_categ_id', 'product.category').id"
+        />
+    </record>
+
+</odoo>

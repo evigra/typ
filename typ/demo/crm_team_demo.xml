@@ -3,6 +3,8 @@
 
     <record id="sales_team.crm_team_1" model="crm.team">
         <field name="sale_pricelist_id" ref="website_sale.list_benelux" />
+        <field name="journal_guide_id" ref="journal_cost_guide" />
+        <field name="default_warehouse_id" ref="whr_test_01" />
     </record>
 
 </odoo>

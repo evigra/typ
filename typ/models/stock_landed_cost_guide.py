@@ -46,7 +46,8 @@ class StockLandedCostGuide(models.Model):
     amount_total = fields.Monetary(store=True, readonly=True, compute="_compute_amount")
     journal_id = fields.Many2one(
         "account.journal",
-        string="Journal",
+        compute="_compute_journal",
+        store=True,
         required=True,
         readonly=True,
         states={"draft": [("readonly", False)]},
@@ -121,6 +122,11 @@ class StockLandedCostGuide(models.Model):
     def _compute_amount(self):
         for guide in self:
             guide.amount_total = sum(guide.line_ids.mapped("cost"))
+
+    @api.depends("warehouse_id")
+    def _compute_journal(self):
+        for guide in self:
+            guide.journal_id = guide.warehouse_id.sale_team_ids.filtered("journal_guide_id")[:1].journal_guide_id
 
     def _compute_landed(self):
         """Set 'landed' field to True if the Landed Cost document of this guide
@@ -292,7 +298,7 @@ class StockLandedCostGuide(models.Model):
 
 class StockLandedGuidesLine(models.Model):
     _name = "stock.landed.cost.guide.line"
-    _description = "This controls the guides from delivery management to report them for administrative purposes"
+    _description = "Landed Cost Guide Line"
 
     guide_id = fields.Many2one("stock.landed.cost.guide", help="Guide which this line belongs to")
     product_id = fields.Many2one(

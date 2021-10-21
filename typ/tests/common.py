@@ -20,6 +20,8 @@ class TypCase:
         self.company_secondary = self.env.ref("stock.res_company_1")
         self.journal_expense = self.env["account.journal"].search([("name", "=", "Expense")], limit=1)
         self.journal_bills = self.env["account.journal"].search([("name", "=", "Vendor Bills")], limit=1)
+        self.journal_guide = self.env.ref("typ.journal_cost_guide")
+        self.warehouse_test1 = self.env.ref("typ.whr_test_01")
         self.usd = self.env.ref("base.USD")
         self.mxn = self.env.ref("base.MXN")
         self.today = fields.Date.context_today(self.company)

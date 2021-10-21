@@ -10,6 +10,7 @@ class TestLandedCost(TypTransactionCase):
         self,
         name="Guide 1",
         partner=None,
+        warehouse=None,
         journal=None,
         guide_date=None,
         reference="charged",
@@ -20,17 +21,19 @@ class TestLandedCost(TypTransactionCase):
     ):
         if partner is None:
             partner = self.vendor
-        if journal is None:
-            journal = self.journal_expense
+        if warehouse is None:
+            warehouse = self.warehouse_test1
         if guide_date is None:
             guide_date = self.today
         guide = Form(self.env["stock.landed.cost.guide"])
         guide.name = name
         guide.partner_id = partner
-        guide.journal_id = journal
         guide.date = guide_date
         guide.reference = reference
         guide.comments = "Guide comments"
+        guide.warehouse_id = warehouse
+        if journal is not None:
+            guide.journal_id = journal
         if currency is not None:
             guide.currency_id = currency
         if company is not None:
@@ -102,7 +105,7 @@ class TestLandedCost(TypTransactionCase):
                     "state": "posted",
                     "amount_total": 150.0,
                     "ref": "charged",
-                    "journal_id": self.journal_expense.id,
+                    "journal_id": self.journal_guide.id,
                 }
             ],
         )

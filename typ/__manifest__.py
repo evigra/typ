@@ -130,10 +130,11 @@
         "views/pages/snippets.xml",
     ],
     "demo": [
+        "demo/account_journal_demo.xml",
+        "demo/stock_demo.xml",
         "demo/crm_team_demo.xml",
         "demo/product_demo.xml",
         "demo/res_partner_demo.xml",
-        "demo/stock_demo.xml",
     ],
     "qweb": [],
     "installable": True,
