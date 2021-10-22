@@ -1,0 +1,1 @@
+extra_addons/report-print-send https://github.com/OCA/report-print-send/pull/258.patch

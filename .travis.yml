@@ -12,8 +12,6 @@ addons:
     packages:
       - expect-dev
       - openssl
-      - cups
-      - libcups2-dev
 
 python:
   - "3.6"  # travis2docker is not compatible with py3.8 but py3.6
