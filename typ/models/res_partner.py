@@ -228,3 +228,26 @@ class ResPartner(models.Model):
             order="id desc",
         )
         return shippings
+
+    def _inverse_product_pricelist(self):
+        """Allow to set an empty pricelist on the partner
+
+        By default, when trying to clear a partner's pricelist (the property), Odoo does
+        nothing [1]. This means, once the property is set, it's only possible to change
+        it but not clearing it.
+
+        Clearing a pricelist is a valid case for us, because, for some partners, we want the
+        pricelist to be taken from the sales team, which is not possible if there's one set in the
+        partner, as the latter would have priority.
+
+        [1] https://github.com/odoo/odoo/blob/475e6b3cb027/addons/product/models/res_partner.py#L34
+        """
+        partners_with_pricelist = self.filtered("property_product_pricelist")
+        res = super(ResPartner, partners_with_pricelist)._inverse_product_pricelist()
+        partners_wo_pricelist = self - partners_with_pricelist
+        self.env["ir.property"]._set_multi(
+            name="property_product_pricelist",
+            model=self._name,
+            values={partner.id: False for partner in partners_wo_pricelist},
+        )
+        return res

@@ -16,6 +16,7 @@ class TypCase:
         self.product_cost = self.env.ref("typ.product_landing_cost")
         self.salesteam = self.env.ref("sales_team.crm_team_1")
         self.pricelist = self.env.ref("website_sale.list_benelux")
+        self.pricelist_christmas = self.env.ref("website_sale.list_christmas")
         self.company = self.env.ref("base.main_company")
         self.company_secondary = self.env.ref("stock.res_company_1")
         self.journal_expense = self.env["account.journal"].search([("name", "=", "Expense")], limit=1)

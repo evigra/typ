@@ -3,6 +3,7 @@
 
     <record id="base.res_partner_12" model="res.partner">
         <field name="is_strategic" eval="True" />
+        <field name="property_product_pricelist" ref="website_sale.list_christmas" />
     </record>
 
 </odoo>

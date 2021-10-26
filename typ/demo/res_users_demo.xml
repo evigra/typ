@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+
+    <record id="base.user_admin" model="res.users">
+        <field name="sale_team_id" ref="sales_team.crm_team_1" />
+        <!-- Grant access to all teams to the admin, for convenience -->
+        <field name="sale_team_ids" search="[]" />
+    </record>
+
+</odoo>

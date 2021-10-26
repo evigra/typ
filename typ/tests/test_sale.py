@@ -8,6 +8,16 @@ from .common import TypTransactionCase
 class TestSale(TypTransactionCase):
     def test_01_sale_flow(self):
         sale_order = self.create_sale_order()
+        self.assertRecordValues(
+            records=sale_order,
+            expected_values=[
+                {
+                    "state": "draft",
+                    # Pricelist set on the partner
+                    "pricelist_id": self.pricelist_christmas.id,
+                }
+            ],
+        )
 
         # We shouldn't be able to edit partner once the SO has lines
         error_msg = "You can't change Partner in Sales Orders with lines."
@@ -26,3 +36,9 @@ class TestSale(TypTransactionCase):
 
         sale_order.action_confirm()
         self.assertEqual(sale_order.state, "sale")
+
+    def test_02_pricelist_from_salesteam(self):
+        """When the selected customer has no pricelist, it should be taken from the salesteam"""
+        self.customer.property_product_pricelist = False
+        sale_order = self.create_sale_order()
+        self.assertEqual(sale_order.pricelist_id, self.pricelist)

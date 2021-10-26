@@ -14,11 +14,32 @@ class ProductPricelist(models.Model):
     )
 
     def _get_partner_pricelist_multi(self, partner_ids, company_id=None):
-        """Check for a pricelist in the user's sales team to use it by default"""
+        """Define new priority when determining applicable pricelist
+
+        The new priority is as follows:
+        - Pricelist set on the partner
+        - Pricelist set on current user's sales team
+        - Fallback to default beavior (generic property, country group, etc)
+        """
+        # 1. Check pricelist set on the partner (ir.property)
+        company_id = company_id or self.env.company.id
+        result = (
+            self.env["ir.property"]
+            .with_company(company_id)
+            ._get_multi("property_product_pricelist", "res.partner", partner_ids)
+        )
+
+        # 2. Take pricelist from sales team
+        remaining_partner_ids = [
+            pid for pid, val in result.items() if not val or not val._get_partner_pricelist_multi_filter_hook()
+        ]
         pricelist_on_team = self.env.user.sale_team_id.sale_pricelist_id
-        if pricelist_on_team:
-            return {partner_id: pricelist_on_team for partner_id in partner_ids}
-        return super()._get_partner_pricelist_multi(partner_ids, company_id=None)
+        result.update({partner_id: pricelist_on_team for partner_id in remaining_partner_ids})
+
+        # 3. Fallback to default behavior
+        remaining_partner_ids = [pid for pid in remaining_partner_ids if not result[pid]]
+        result.update(super()._get_partner_pricelist_multi(remaining_partner_ids, company_id))
+        return result
 
     def get_product_price_rule_from_ui(self, product, quantity, partner):
         self.ensure_one()

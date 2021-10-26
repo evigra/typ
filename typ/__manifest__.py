@@ -135,6 +135,7 @@
         "demo/crm_team_demo.xml",
         "demo/product_demo.xml",
         "demo/res_partner_demo.xml",
+        "demo/res_users_demo.xml",
     ],
     "qweb": [],
     "installable": True,

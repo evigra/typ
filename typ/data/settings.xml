@@ -57,6 +57,19 @@
 
     <delete id="config_settings" model="res.config.settings" />
 
+    <!-- By default, a default pricelist is created per company, but we don't want any default,
+         as it would break our feature to compute pricelist from sales teams giving priority to
+         the one set in the partner
+    -->
+    <delete
+        model="ir.property"
+        search="[
+            ('fields_id', '=', ref('product.field_res_partner__property_product_pricelist')),
+            ('res_id', '=', False),
+            ('value_reference', '!=', False),
+        ]"
+    />
+
   <!-- Install Spanish language (if not installed yet) -->
     <data noupdate="1">
         <record id="lang_settings_es_mx" model="base.language.install">
