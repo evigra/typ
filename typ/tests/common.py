@@ -31,6 +31,7 @@ class TypCase:
             partner = self.customer
         sale_order = Form(self.env["sale.order"])
         sale_order.partner_id = partner
+        sale_order.stocksale = True
         if team is not None:
             sale_order.team_id = team
         sale_order = sale_order.save()
