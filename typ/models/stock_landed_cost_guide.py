@@ -286,7 +286,7 @@ class StockLandedCostGuide(models.Model):
 
     def view_accrual(self):
         """Launches a view with the account.move.lines related to the current guide"""
-        action = self.env.ref("account.action_move_line_select").read()[0]
+        action = self.env["ir.actions.actions"]._for_xml_id("account.action_move_line_select")
         action.update(
             {
                 "domain": [("guide_line_id", "in", self.line_ids.ids)],

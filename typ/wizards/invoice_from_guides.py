@@ -62,7 +62,7 @@ class InvoiceFromGuides(models.TransientModel):
         invoice_vals = self._prepare_invoice_vals(self.guide_ids)
         invoice = self.env["account.move"].with_context(default_move_type="in_invoice").create(invoice_vals)
         self.guide_ids.write({"invoiced": True, "invoice_id": invoice.id})
-        action = self.env.ref("account.action_move_in_invoice_type").read()[0]
+        action = self.env["ir.actions.actions"]._for_xml_id("account.action_move_in_invoice_type")
         action.update(
             {
                 "res_id": invoice.id,
