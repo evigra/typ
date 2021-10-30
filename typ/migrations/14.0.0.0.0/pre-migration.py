@@ -17,6 +17,7 @@ def migrate(cr, version):
     set_missing_company_stock_moves_lines(cr)
     set_missing_hr_expense_sheet_company(cr)
     remove_inconsistent_partner_bank(cr)
+    create_missing_edi_payments(cr)
 
 
 def rename_extids_typ_modules(cr):
@@ -341,3 +342,87 @@ def remove_inconsistent_partner_bank(cr):
     )
     qty_removed = cr.rowcount
     assert qty_removed in (0, 1), qty_removed
+
+
+def create_missing_edi_payments(cr):
+    """Create EDI documents (account.edi.document) for payments
+
+    Odoo doesn't create EDI documents when migrating payments, which makes CFDI-related fields
+    (e.g. CFDI UUID) to don't be accessible.
+
+    Issue reported to Odoo:
+    https://www.odoo.com/my/task/2679440
+    """
+    _logger.info("Creating missing EDI documents for payments")
+    cr.execute(
+        """
+        WITH payment_cfdi AS (
+            SELECT
+                MAX(id) AS id,
+                res_id AS payment_id
+            FROM
+                ir_attachment
+            WHERE
+                res_model = 'account.payment'
+                AND name ilike '%.xml'
+            GROUP BY
+                res_id
+        ),
+        payment_wo_edi AS (
+            SELECT
+                payment.id,
+                payment.move_id
+            FROM
+                account_payment AS payment
+            LEFT OUTER JOIN
+                account_edi_document AS edi
+                ON edi.move_id = payment.move_id
+            WHERE
+                edi.id IS NULL
+        ),
+        edi_format AS (
+            SELECT
+                id
+            FROM
+                account_edi_format
+            WHERE
+                code = 'cfdi_3_3'
+            LIMIT 1
+        )
+        INSERT INTO account_edi_document (
+            move_id,
+            edi_format_id,
+            attachment_id,
+            state,
+            create_uid,
+            create_date,
+            write_uid,
+            write_date
+        )
+        SELECT
+            payment.move_id,
+            edi_format.id AS edi_format_id,
+            cfdi.id AS attachment_id,
+            CASE
+                WHEN l10n_mx_edi_sat_status = 'cancelled' THEN 'cancelled'
+                ELSE 'sent'
+                END AS state,
+            1 AS create_uid,
+            NOW() at time zone 'UTC' AS create_date,
+            1 AS write_uid,
+            NOW() at time zone 'UTC' AS write_date
+        FROM
+            payment_wo_edi AS payment
+        INNER JOIN
+            account_move AS move
+            ON move.id = payment.move_id
+        INNER JOIN
+            payment_cfdi AS cfdi
+            ON cfdi.payment_id = payment.id
+        CROSS JOIN
+            edi_format
+        WHERE
+            move.state = 'posted';
+        """
+    )
+    _logger.info("Created %d documents", cr.rowcount)
