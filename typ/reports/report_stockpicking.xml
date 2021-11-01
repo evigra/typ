@@ -22,21 +22,29 @@
                             <span><strong>Customer Address:</strong></span>
                         </div>
                         <div t-if="o.partner_id" name="partner_header">
-                            <div t-field="o.partner_id"
+                            <div
+                                t-field="o.partner_id"
                                 t-options='{"widget": "contact", "fields": ["address", "name", "phone", "fax"], "no_marker": true}'
                             />
-                            <p t-if="o.partner_id.vat" style="font-size:13px;">VAT: <span t-field="o.partner_id.vat"/></p>
+                            <p
+                                t-if="o.partner_id.vat"
+                                style="font-size:13px;"
+                            >VAT: <span t-field="o.partner_id.vat" /></p>
                         </div>
                     </div>
                     <div class="col-5 col-offset-1">
-                        <div t-if="o.move_lines and o.move_lines[0].partner_id and o.move_lines[0].partner_id.id != o.partner_id.id">
+                        <div
+                            t-if="o.move_lines and o.move_lines[0].partner_id and o.move_lines[0].partner_id.id != o.partner_id.id"
+                        >
                             <span><strong>Delivery Address:</strong></span>
                             <div
                                 t-field="o.move_lines[0].partner_id"
                                 t-options='{"widget": "contact", "fields": ["address", "name", "phone", "fax"], "no_marker": true}'
                             />
                         </div>
-                        <div t-if="o.picking_type_id.code != 'internal' and (not o.move_lines or not o.move_lines[0].partner_id) and o.picking_type_id.warehouse_id.partner_id">
+                        <div
+                            t-if="o.picking_type_id.code != 'internal' and (not o.move_lines or not o.move_lines[0].partner_id) and o.picking_type_id.warehouse_id.partner_id"
+                        >
                             <span><strong>Warehouse Address:</strong></span>
                             <div
                                 t-field="o.picking_type_id.warehouse_id.partner_id"
@@ -45,7 +53,7 @@
                         </div>
                     </div>
                 </div>
-                <br/>
+                <br />
                 <h2>
                     <span t-field="o.picking_type_id" />:
                     <span t-field="o.name" />
@@ -56,7 +64,8 @@
                             <th width="50"><strong>Order (Origin)</strong></th>
                             <th width="10%"><strong>State</strong></th>
                             <th width="20%"><strong>Commitment Date</strong></th>
-                            <th width="20%" name="td_sched_date_h"><strong>Scheduled Date</strong></th>
+                            <th width="20%" name="td_sched_date_h"><strong
+                                >Scheduled Date</strong></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -82,22 +91,29 @@
                     <thead>
                         <tr>
                             <th width="35%"><strong>Product</strong></th>
-                            <th class="text-right" width="15%"><strong>Quantity</strong></th>
-                            <th class="text-center" width="25%"><strong>Serie</strong></th>
-                            <th class="text-center" width="25%"><strong>Barcode</strong></th>
+                            <th class="text-right" width="15%"><strong
+                                >Quantity</strong></th>
+                            <th class="text-center" width="25%"><strong
+                                >Serie</strong></th>
+                            <th class="text-center" width="25%"><strong
+                                >Barcode</strong></th>
                         </tr>
                     </thead>
                     <tbody>
                         <t t-foreach="o.move_line_ids" t-as="ml">
                             <tr>
-                                <t t-if="(ml.qty_done > 0 and o.picking_type_id.code in ('mrp_operation')) or o.picking_type_id.code in ('outgoing', 'incoming', 'internal')">
+                                <t
+                                    t-if="(ml.qty_done > 0 and o.picking_type_id.code in ('mrp_operation')) or o.picking_type_id.code in ('outgoing', 'incoming', 'internal')"
+                                >
                                     <td>
                                         <span t-field="ml.product_id.display_name" />
                                         <t t-if="ml.package_id"><span
                                                 t-field="ml.package_id"
                                             /></t>
                                     </td>
-                                    <t t-if="o.picking_type_id.code in ('outgoing', 'incoming', 'internal')">
+                                    <t
+                                        t-if="o.picking_type_id.code in ('outgoing', 'incoming', 'internal')"
+                                    >
                                         <td class="text-right">
                                             <t t-if="o.state == 'done'">
                                                 <span t-field="ml.qty_done" /> <span
@@ -115,7 +131,9 @@
                                             </t>
                                         </td>
                                     </t>
-                                    <t t-if="o.picking_type_id.code in ('mrp_operation')">
+                                    <t
+                                        t-if="o.picking_type_id.code in ('mrp_operation')"
+                                    >
                                         <td class="text-right">
                                             <span t-field="ml.qty_done" /> <span
                                                 t-field="ml.move_id.product_id.uom_id"
@@ -132,7 +150,9 @@
                                         </span>
                                     </td>
                                     <td class="text-center">
-                                        <span t-if="ml.product_id and ml.product_id.barcode">
+                                        <span
+                                            t-if="ml.product_id and ml.product_id.barcode"
+                                        >
                                             <img
                                                 t-if="len(ml.product_id.barcode) == 13"
                                                 t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;width=%s&amp;height=%s' % ('EAN13', ml.product_id.barcode, 600, 100)"

@@ -1,4 +1,4 @@
-<?xml version='1.0' encoding='utf-8'?>
+<?xml version="1.0" encoding="utf-8" ?>
 <odoo>
     <record id="rack_label_zebra" model="ir.actions.report">
         <field name="model">product.product</field>
@@ -7,7 +7,7 @@
         <field name="report_file">typ.rack_label_zebra_view</field>
         <field name="report_type">qweb-pdf</field>
         <field name="usage">zebra</field>
-        <field name="binding_model_id" ref="product.model_product_product"/>
+        <field name="binding_model_id" ref="product.model_product_product" />
         <field name="binding_type">report</field>
     </record>
     <record id="rack_label_medium_zebra" model="ir.actions.report">
@@ -17,7 +17,7 @@
         <field name="report_file">typ.rack_label_medium_zebra_view</field>
         <field name="report_type">qweb-pdf</field>
         <field name="usage">zebra</field>
-        <field name="binding_model_id" ref="product.model_product_product"/>
+        <field name="binding_model_id" ref="product.model_product_product" />
         <field name="binding_type">report</field>
     </record>
     <record id="rack_label_extra_zebra" model="ir.actions.report">
@@ -27,7 +27,7 @@
         <field name="report_file">typ.rack_label_extra_zebra_view</field>
         <field name="report_type">qweb-pdf</field>
         <field name="usage">zebra</field>
-        <field name="binding_model_id" ref="product.model_product_product"/>
+        <field name="binding_model_id" ref="product.model_product_product" />
         <field name="binding_type">report</field>
     </record>
     <record id="product_label_zebra" model="ir.actions.report">
@@ -37,7 +37,7 @@
         <field name="report_file">typ.product_label_zebra_view</field>
         <field name="report_type">qweb-pdf</field>
         <field name="usage">zebra</field>
-        <field name="binding_model_id" ref="product.model_product_product"/>
+        <field name="binding_model_id" ref="product.model_product_product" />
         <field name="binding_type">report</field>
     </record>
     <record id="product_label_medium_zebra" model="ir.actions.report">
@@ -47,7 +47,7 @@
         <field name="report_file">typ.product_label_medium_zebra_view</field>
         <field name="report_type">qweb-pdf</field>
         <field name="usage">zebra</field>
-        <field name="binding_model_id" ref="product.model_product_product"/>
+        <field name="binding_model_id" ref="product.model_product_product" />
         <field name="binding_type">report</field>
     </record>
     <record id="product_label_extra_zebra" model="ir.actions.report">
@@ -57,7 +57,7 @@
         <field name="report_file">typ.product_label_extra_zebra_view</field>
         <field name="report_type">qweb-pdf</field>
         <field name="usage">zebra</field>
-        <field name="binding_model_id" ref="product.model_product_product"/>
+        <field name="binding_model_id" ref="product.model_product_product" />
         <field name="binding_type">report</field>
     </record>
     <record id="product_import_usa_label_zebra" model="ir.actions.report">
@@ -67,7 +67,7 @@
         <field name="report_file">typ.import_usa_label_zebra_view</field>
         <field name="report_type">qweb-pdf</field>
         <field name="usage">zebra</field>
-        <field name="binding_model_id" ref="product.model_product_product"/>
+        <field name="binding_model_id" ref="product.model_product_product" />
         <field name="binding_type">report</field>
     </record>
     <record id="product_import_can_label_zebra" model="ir.actions.report">
@@ -77,7 +77,7 @@
         <field name="report_file">typ.import_can_label_zebra_view</field>
         <field name="report_type">qweb-pdf</field>
         <field name="usage">zebra</field>
-        <field name="binding_model_id" ref="product.model_product_product"/>
+        <field name="binding_model_id" ref="product.model_product_product" />
         <field name="binding_type">report</field>
     </record>
     <record id="product_import_uk_label_zebra" model="ir.actions.report">
@@ -87,7 +87,7 @@
         <field name="report_file">typ.import_uk_label_zebra_view</field>
         <field name="report_type">qweb-pdf</field>
         <field name="usage">zebra</field>
-        <field name="binding_model_id" ref="product.model_product_product"/>
+        <field name="binding_model_id" ref="product.model_product_product" />
         <field name="binding_type">report</field>
     </record>
     <template id="product_label_report_assets" inherit_id="web.report_assets_common">
@@ -105,9 +105,11 @@
                     <div class="code">
                     <t t-foreach="docs" t-as="product">
     N
-    A30,50,0,4,1,1,N,"<t t-raw='product.default_code.upper()'/>"
-    B30,100,0,1,1,6,40,B,<t t-if="product.barcode">"<t t-raw="product.barcode"/>"</t><t t-if="not product.barcode">"<t t-raw='product.default_code.upper()'/>"</t>
-    P<t t-esc="data.get('qty')"/>
+    A30,50,0,4,1,1,N,"<t t-raw='product.default_code.upper()' />"
+    B30,100,0,1,1,6,40,B,<t t-if="product.barcode">"<t t-raw="product.barcode" />"</t><t
+                                t-if="not product.barcode"
+                            >"<t t-raw='product.default_code.upper()' />"</t>
+    P<t t-esc="data.get('qty')" />
                     </t>
                     </div>
                 </div>
@@ -125,9 +127,13 @@
                     <div class="code">
                     <t t-foreach="docs" t-as="product">
     N
-    A200,50,0,4,1,1,N,"<t t-raw='product.default_code.upper()'/>"
-    B200,100,0,1,2,6,40,B,<t t-if="product.barcode">"<t t-raw="product.barcode"/>"</t><t t-if="not product.barcode">"<t t-raw='product.default_code.upper()'/>"</t>
-    P<t t-esc="data.get('qty')"/>
+    A200,50,0,4,1,1,N,"<t t-raw='product.default_code.upper()' />"
+    B200,100,0,1,2,6,40,B,<t t-if="product.barcode">"<t
+                                    t-raw="product.barcode"
+                                />"</t><t t-if="not product.barcode">"<t
+                                    t-raw='product.default_code.upper()'
+                                />"</t>
+    P<t t-esc="data.get('qty')" />
                     </t>
                     </div>
                 </div>
@@ -145,9 +151,11 @@
                     <div class="code">
                     <t t-foreach="docs" t-as="product">
     N
-    A30,50,0,4,1,1,N,"<t t-raw='product.default_code.upper()'/>"
-    B30,100,0,1,1,6,40,B,<t t-if="product.barcode">"<t t-raw="product.barcode"/>"</t><t t-if="not product.barcode">"<t t-raw='product.default_code.upper()'/>"</t>
-    P<t t-esc="data.get('qty')"/>
+    A30,50,0,4,1,1,N,"<t t-raw='product.default_code.upper()' />"
+    B30,100,0,1,1,6,40,B,<t t-if="product.barcode">"<t t-raw="product.barcode" />"</t><t
+                                t-if="not product.barcode"
+                            >"<t t-raw='product.default_code.upper()' />"</t>
+    P<t t-esc="data.get('qty')" />
                     </t>
                     </div>
                 </div>
@@ -165,11 +173,13 @@
                     <div class="code">
                     <t t-foreach="docs" t-as="product">
     N
-    A50,5,0,3,2,1,N,"<t t-raw='product.default_code.upper()'/>"
-    A50,50,0,3,1,1,N,"<t t-raw='product.categ_id.name.upper()'/>"
-    A50,90,0,1,0,1,N,"<t t-raw='product.name.upper()'/>"
-    B50,130,0,3,2,6,80,B,<t t-if="product.barcode">"<t t-raw="product.barcode"/>"</t><t t-if="not product.barcode">"<t t-raw='product.default_code.upper()'/>"</t>
-    P<t t-esc="data.get('qty')"/>
+    A50,5,0,3,2,1,N,"<t t-raw='product.default_code.upper()' />"
+    A50,50,0,3,1,1,N,"<t t-raw='product.categ_id.name.upper()' />"
+    A50,90,0,1,0,1,N,"<t t-raw='product.name.upper()' />"
+    B50,130,0,3,2,6,80,B,<t t-if="product.barcode">"<t t-raw="product.barcode" />"</t><t
+                                t-if="not product.barcode"
+                            >"<t t-raw='product.default_code.upper()' />"</t>
+    P<t t-esc="data.get('qty')" />
                     </t>
                     </div>
                 </div>
@@ -187,11 +197,15 @@
                     <div class="code">
                     <t t-foreach="docs" t-as="product">
     N
-    A50,50,0,5,1,1,N,"<t t-raw='product.default_code.upper()'/>"
-    A50,150,0,3,1,1,N,"<t t-raw='product.categ_id.name.upper()'/>"
-    A50,180,0,3,1,1,N,"<t t-raw='product.name.upper()'/>"
-    B50,220,0,1,5,6,120,B,<t t-if="product.barcode">"<t t-raw="product.barcode"/>"</t><t t-if="not product.barcode">"<t t-raw='product.default_code.upper()'/>"</t>
-    P<t t-esc="data.get('qty')"/>
+    A50,50,0,5,1,1,N,"<t t-raw='product.default_code.upper()' />"
+    A50,150,0,3,1,1,N,"<t t-raw='product.categ_id.name.upper()' />"
+    A50,180,0,3,1,1,N,"<t t-raw='product.name.upper()' />"
+    B50,220,0,1,5,6,120,B,<t t-if="product.barcode">"<t
+                                    t-raw="product.barcode"
+                                />"</t><t t-if="not product.barcode">"<t
+                                    t-raw='product.default_code.upper()'
+                                />"</t>
+    P<t t-esc="data.get('qty')" />
                     </t>
                     </div>
                 </div>
@@ -209,11 +223,15 @@
                     <div class="code">
                     <t t-foreach="docs" t-as="product">
     N
-    A100,10,0,5,1,1,N,"<t t-raw='product.default_code.upper()'/>"
-    A100,80,0,3,1,1,N,"<t t-raw='product.categ_id.name.upper()'/>"
-    A100,120,0,3,1,1,N,"<t t-raw='product.name.upper()'/>"
-    B100,200,0,1,2,6,40,B,<t t-if="product.barcode">"<t t-raw="product.barcode"/>"</t><t t-if="not product.barcode">"<t t-raw='product.default_code.upper()'/>"</t>
-    P<t t-esc="data.get('qty')"/>
+    A100,10,0,5,1,1,N,"<t t-raw='product.default_code.upper()' />"
+    A100,80,0,3,1,1,N,"<t t-raw='product.categ_id.name.upper()' />"
+    A100,120,0,3,1,1,N,"<t t-raw='product.name.upper()' />"
+    B100,200,0,1,2,6,40,B,<t t-if="product.barcode">"<t
+                                    t-raw="product.barcode"
+                                />"</t><t t-if="not product.barcode">"<t
+                                    t-raw='product.default_code.upper()'
+                                />"</t>
+    P<t t-esc="data.get('qty')" />
                     </t>
                     </div>
                 </div>
@@ -231,14 +249,18 @@
                     <div class="code">
                     <t t-foreach="docs" t-as="product">
     N
-    A30,50,0,4,1,1,N,"<t t-raw='product.name.upper()'/>"
-    A30,100,0,3,1,1,N,"1 <t t-raw='product.uom_id.name'/> Hecho en EE.UU."
+    A30,50,0,4,1,1,N,"<t t-raw='product.name.upper()' />"
+    A30,100,0,3,1,1,N,"1 <t t-raw='product.uom_id.name' /> Hecho en EE.UU."
     A30,140,0,3,1,1,N,"Importado por TYP REFRIGERACION SA DE CV"
     A30,180,0,3,1,1,N,"Nayarit 291 col. San Benito CP 83190"
     A30,220,0,3,1,1,N,"Hermosillo, Sonora, Mexico. RFC TPR920625G68"
     A30,260,0,3,1,1,N,"Instrucciones en el empaque"
-    B30,300,0,1,5,6,120,B,<t t-if="product.barcode">"<t t-raw="product.barcode"/>"</t><t t-if="not product.barcode">"<t t-raw='product.default_code.upper()'/>"</t>
-    P<t t-esc="data.get('qty')"/>
+    B30,300,0,1,5,6,120,B,<t t-if="product.barcode">"<t
+                                    t-raw="product.barcode"
+                                />"</t><t t-if="not product.barcode">"<t
+                                    t-raw='product.default_code.upper()'
+                                />"</t>
+    P<t t-esc="data.get('qty')" />
                     </t>
                     </div>
                 </div>
@@ -256,14 +278,18 @@
                     <div class="code">
                     <t t-foreach="docs" t-as="product">
     N
-    A30,50,0,4,1,1,N,"<t t-raw='product.name.upper()'/>"
-    A30,100,0,3,1,1,N,"1 <t t-raw='product.uom_id.name'/> Hecho en Canada."
+    A30,50,0,4,1,1,N,"<t t-raw='product.name.upper()' />"
+    A30,100,0,3,1,1,N,"1 <t t-raw='product.uom_id.name' /> Hecho en Canada."
     A30,140,0,3,1,1,N,"Importado por TYP REFRIGERACION SA DE CV"
     A30,180,0,3,1,1,N,"Nayarit 291 col. San Benito CP 83190"
     A30,220,0,3,1,1,N,"Hermosillo, Sonora, Mexico. RFC TPR920625G68"
     A30,260,0,3,1,1,N,"Instrucciones en el empaque"
-    B30,300,0,1,5,6,120,B,<t t-if="product.barcode">"<t t-raw="product.barcode"/>"</t><t t-if="not product.barcode">"<t t-raw='product.default_code.upper()'/>"</t>
-    P<t t-esc="data.get('qty')"/>
+    B30,300,0,1,5,6,120,B,<t t-if="product.barcode">"<t
+                                    t-raw="product.barcode"
+                                />"</t><t t-if="not product.barcode">"<t
+                                    t-raw='product.default_code.upper()'
+                                />"</t>
+    P<t t-esc="data.get('qty')" />
                     </t>
                     </div>
                 </div>
@@ -281,14 +307,18 @@
                     <div class="code">
                     <t t-foreach="docs" t-as="product">
     N
-    A30,50,0,4,1,1,N,"<t t-raw='product.name.upper()'/>"
-    A30,100,0,3,1,1,N,"1 <t t-raw='product.uom_id.name'/> Hecho en Reino Unido"
+    A30,50,0,4,1,1,N,"<t t-raw='product.name.upper()' />"
+    A30,100,0,3,1,1,N,"1 <t t-raw='product.uom_id.name' /> Hecho en Reino Unido"
     A30,140,0,3,1,1,N,"Importado por TYP REFRIGERACION SA DE CV"
     A30,180,0,3,1,1,N,"Nayarit 291 col. San Benito CP 83190"
     A30,220,0,3,1,1,N,"Hermosillo, Sonora, Mexico. RFC TPR920625G68"
     A30,260,0,3,1,1,N,"Instrucciones en el empaque"
-    B30,300,0,1,5,6,120,B,<t t-if="product.barcode">"<t t-raw="product.barcode"/>"</t><t t-if="not product.barcode">"<t t-raw='product.default_code.upper()'/>"</t>
-    P<t t-esc="data.get('qty')"/>
+    B30,300,0,1,5,6,120,B,<t t-if="product.barcode">"<t
+                                    t-raw="product.barcode"
+                                />"</t><t t-if="not product.barcode">"<t
+                                    t-raw='product.default_code.upper()'
+                                />"</t>
+    P<t t-esc="data.get('qty')" />
                     </t>
                     </div>
                 </div>

@@ -55,7 +55,10 @@
            </button>
             <xpath expr="//field[@name='payment_term_id']" position="after">
                 <field name="is_special" />
-                <field name="carrier_id" attrs="{'required': [('stocksale', '=', False)]}"/>
+                <field
+                    name="carrier_id"
+                    attrs="{'required': [('stocksale', '=', False)]}"
+                />
                 <field
                     name="stocksale"
                     attrs="{'invisible': [('carrier_id', '!=', False)]}"

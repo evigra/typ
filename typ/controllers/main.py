@@ -139,13 +139,15 @@ class MyAccountInvoices(PortalAccount):
 
         response.qcontext.update({"default_url": "/my/credit_notes"})
 
-        total_unpaid_usd = my_credit_notes.filtered(
-            lambda rec: rec.currency_id.name == "USD").mapped("amount_residual")
+        total_unpaid_usd = my_credit_notes.filtered(lambda rec: rec.currency_id.name == "USD").mapped(
+            "amount_residual"
+        )
         sum_unpaid_usd = sum(total_unpaid_usd)
         response.qcontext["total_unpaid_usd"] = sum_unpaid_usd
 
-        total_unpaid_mxn = my_credit_notes.filtered(
-            lambda rec: rec.currency_id.name == "MXN").mapped("amount_residual")
+        total_unpaid_mxn = my_credit_notes.filtered(lambda rec: rec.currency_id.name == "MXN").mapped(
+            "amount_residual"
+        )
         sum_unpaid_mxn = sum(total_unpaid_mxn)
         response.qcontext["total_unpaid_mxn"] = sum_unpaid_mxn
 

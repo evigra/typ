@@ -9,8 +9,8 @@
             <label for="module_sale_margin" position="after">
                 <div class="content-group">
                     <div class="row mt16">
-                        <label for="margin_allowed" class="col-lg-4 o_light_label"/>
-                        <field name="margin_allowed"/>
+                        <label for="margin_allowed" class="col-lg-4 o_light_label" />
+                        <field name="margin_allowed" />
                     </div>
                 </div>
             </label>

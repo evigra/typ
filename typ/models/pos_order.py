@@ -26,9 +26,9 @@ class PosOrder(models.Model):
             max_pay = max(self.payment_ids.mapped("amount"))
             payment_method = self.payment_ids.filtered(lambda s: s.amount == max_pay)[:1].payment_method_id
             l10n_mx_payment_method = payment_method.l10n_mx_edi_payment_method_id.id
-            res['l10n_mx_edi_payment_method_id'] = l10n_mx_payment_method
+            res["l10n_mx_edi_payment_method_id"] = l10n_mx_payment_method
         if self.l10n_mx_edi_usage:
-            res['l10n_mx_edi_usage'] = self.l10n_mx_edi_usage
+            res["l10n_mx_edi_usage"] = self.l10n_mx_edi_usage
         return res
 
     def action_pos_order_invoice(self):

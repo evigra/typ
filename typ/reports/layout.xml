@@ -9,7 +9,12 @@
     <template id="external_layout" inherit_id="web.external_layout" active="True">
         <xpath expr="//t[@t-if='company.external_report_layout_id']" position="replace">
             <t t-if="account">
-                <div class="article" t-att-data-oe-model="o and o._name" t-att-data-oe-id="o and o.id" t-att-data-oe-lang="o and o.env.context.get('lang')">
+                <div
+                    class="article"
+                    t-att-data-oe-model="o and o._name"
+                    t-att-data-oe-id="o and o.id"
+                    t-att-data-oe-lang="o and o.env.context.get('lang')"
+                >
                     <t t-raw="0" />
                 </div>
                 <!--<t t-call="typ.custom_external_layout_standard"><t t-raw="0" /></t>-->
@@ -18,8 +23,8 @@
                 <t t-call="typ.custom_external_layout_background"><t t-raw="0" /></t>
             </t>
         </xpath>
-    </template>   
-    
+    </template>
+
     <!--
     <template id="custom_external_layout_with_address">
         Multicompany
@@ -32,11 +37,16 @@
         <t t-call="typ.custom_external_layout_background_with_address"><t
                 t-raw="0"
             /></t>
-    </template> 
+    </template>
     -->
 
     <template id="custom_external_layout_standard">
-        <div class="article" t-att-data-oe-model="o and o._name" t-att-data-oe-id="o and o.id" t-att-data-oe-lang="o and o.env.context.get('lang')">
+        <div
+            class="article"
+            t-att-data-oe-model="o and o._name"
+            t-att-data-oe-id="o and o.id"
+            t-att-data-oe-lang="o and o.env.context.get('lang')"
+        >
             <t t-raw="0" />
         </div>
     </template>
@@ -55,40 +65,47 @@
                 <div class="col-6" style="padding-top: 25px;">
                     <t t-set="address" t-value="o.company_id" />
                     <address t-if="address" style="font-size: 12px; line-height: 13px;">
-                        <i class="fa fa-map-marker"/>
-                        <strong t-esc="address.name or ''"/>
-                        <br/>
+                        <i class="fa fa-map-marker" />
+                        <strong t-esc="address.name or ''" />
+                        <br />
                         <t t-if="address.vat">
-                            <span>VAT</span>: <span t-raw="address.partner_id.vat"/>
-                            <br/>
+                            <span>VAT</span>: <span t-raw="address.partner_id.vat" />
+                            <br />
                         </t>
                         <span t-if="address.street" t-raw="address.street" />
                         <br />
-                        <t t-if="address.l10n_mx_edi_colony" t-raw="address.l10n_mx_edi_colony" />
+                        <t
+                            t-if="address.l10n_mx_edi_colony"
+                            t-raw="address.l10n_mx_edi_colony"
+                        />
                         <t t-if="address.city" t-raw="address.city" />
                         <br />
                         <t t-if="address.state_id" t-raw="address.state_id.name" />
                         <t t-if="address.country_id" t-raw="address.country_id.name" />
                         <t t-if="address.zip" t-raw="address.zip" />
                         <br />
-                        <i t-if="address.phone or o.team_id.sale_phone" class="fa fa-phone"/>
+                        <i
+                            t-if="address.phone or o.team_id.sale_phone"
+                            class="fa fa-phone"
+                        />
                         <span
                             t-if="not o.team_id.sale_phone"
                             class="text-muted"
                             style="font-size: 12px; line-height: 13px;"
                             t-raw="address.phone"
                         />
-                        <span 
-                            t-if="o.team_id.sale_phone" 
-                            class="text-muted" 
-                            style="font-size: 12px; line-height: 13px;" 
+                        <span
+                            t-if="o.team_id.sale_phone"
+                            class="text-muted"
+                            style="font-size: 12px; line-height: 13px;"
                             t-raw="o.team_id.name"
                         />:
-                        <span 
-                            t-if="o.team_id.sale_phone" 
-                            class="text-muted" 
-                            style="font-size: 12px; line-height: 13px;" 
-                            t-raw="o.team_id.sale_phone"/>
+                        <span
+                            t-if="o.team_id.sale_phone"
+                            class="text-muted"
+                            style="font-size: 12px; line-height: 13px;"
+                            t-raw="o.team_id.sale_phone"
+                        />
                     </address>
                 </div>
                 <div class="col-3">
@@ -139,8 +156,12 @@
                         </t>
                         <t t-if="address.street" t-raw="address.street" />
                         <br />
-                        <t t-if="address.l10n_mx_edi_colony" t-raw="address.l10n_mx_edi_colony" />
-                        <t t-if="address.l10n_mx_edi_colony and address.city"><span>,</span></t>
+                        <t
+                            t-if="address.l10n_mx_edi_colony"
+                            t-raw="address.l10n_mx_edi_colony"
+                        />
+                        <t t-if="address.l10n_mx_edi_colony and address.city"><span
+                            >,</span></t>
                         <t t-if="address.city" t-raw="address.city" />
                         <br />
                         <t t-if="address.state_id" t-raw="address.state_id.name" />
