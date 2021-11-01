@@ -8,20 +8,22 @@ lint:
   tags:
     - lint
   variables:
-    LINT_CHECK: "1"
+    LINT_CHECK: "0"
     TESTS: "0"
+    PRE_COMMIT_HOME: $CI_PROJECT_DIR/pre-commit-cache
+  cache:
+    paths:
+      - pre-commit-cache/
   script:
     - source variables.sh
-    - git clone --depth=1 https://github.com/vauxoo/maintainer-quality-tools.git -b master ${HOME}/maintainer-quality-tools
-    - export PATH=${HOME}/maintainer-quality-tools/travis:${HOME}/gitlab_tools:${PATH}
     - pip3 install deployv-addon-gitlab-tools
     - deployvcmd gitlab_tools check_keys
     - export TRAVIS_PYTHON_VERSION="3.6"  # CI docker image is not compatible with py3.8 but py3.6
     - source ${REPO_REQUIREMENTS}/virtualenv/python${TRAVIS_PYTHON_VERSION}/bin/activate
     - source ${REPO_REQUIREMENTS}/virtualenv/nodejs/bin/activate
     - source /usr/local/rvm/scripts/rvm
-    - travis_install_nightly
-    - travis_run_tests
+    - pip install pre-commit
+    - pre-commit run --all
 
 odoo:
   stage: main

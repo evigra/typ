@@ -297,7 +297,7 @@ class MyAccount(CustomerPortal):
     def _contact_details_validate(self, mode, data):
         # mode: tuple ('new|edit', 'billing|shipping')
         # data: values after preprocess
-        error = dict()
+        error = {}
         error_message = []
         # Required fields from mandatory field function
         required_fields = (

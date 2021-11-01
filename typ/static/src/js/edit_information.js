@@ -38,10 +38,12 @@ odoo.define("theme_typ.edit_information", function (require) {
     }
 
     if ($(".account-form").length) {
-        $(".checkout_autoformat").on("change", "select[name='country_id']", function (
-            env
-        ) {
-            populate_states(env);
-        });
+        $(".checkout_autoformat").on(
+            "change",
+            "select[name='country_id']",
+            function (env) {
+                populate_states(env);
+            }
+        );
     }
 });
