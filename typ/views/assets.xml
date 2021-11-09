@@ -6,6 +6,7 @@
         name="Assets Frontend"
     >
         <xpath expr="//script[last()]" position="after">
+            <!-- TODO migrate to 14.0 (frontend team)
             <script type="text/javascript" src="/typ/static/src/js/portal_account.js" />
             <script
                 type="text/javascript"
@@ -19,6 +20,7 @@
                 type="text/javascript"
                 src="/typ/static/src/js/download_catalog.js"
             />
+            -->
         </xpath>
         <xpath expr="//link[last()]" position="after">
             <link
@@ -28,4 +30,14 @@
             />
         </xpath>
     </template>
+
+    <template id="assets_common" inherit_id="web.assets_common">
+        <xpath expr="." position="inside">
+            <script
+                type="text/javascript"
+                src="/typ/static/src/js/tours/lead_from_product_tour.js"
+            />
+        </xpath>
+    </template>
+
 </odoo>

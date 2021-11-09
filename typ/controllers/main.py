@@ -466,9 +466,9 @@ class WebsiteLoyalty(http.Controller):
 class WebsiteContactUS(http.Controller):
     @http.route(["/contactus"], type="http", auth="public", website=True)
     def product_quotation(self, **post):
-        product = post.get("product", False)
-        product_id = request.env["product.template"].browse(int(product))
+        product_tmpl_id = post.get("product", False)
+        product_tmpl = request.env["product.template"].browse(int(product_tmpl_id))
         values = {
-            "product": product_id,
+            "product_tmpl": product_tmpl,
         }
         return request.render("website.contactus", values)

@@ -5798,6 +5798,11 @@ msgid "Request for Quotation"
 msgstr ""
 
 #. module: typ
+#: model_terms:ir.ui.view,arch_db:typ.product-description
+msgid "Request quotation"
+msgstr "Solicitar cotización"
+
+#. module: typ
 #: model_terms:ir.ui.view,arch_db:typ.personal-info
 msgid "Reset"
 msgstr ""
