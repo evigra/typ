@@ -1,5 +1,6 @@
 from odoo import fields
 from odoo.tests import Form, HttpCase, TransactionCase
+from odoo.tools.safe_eval import safe_eval
 
 
 class TypCase:
@@ -14,6 +15,7 @@ class TypCase:
         self.vendor = self.env.ref("base.res_partner_2")
         self.product = self.env.ref("product.product_product_16")
         self.product_cost = self.env.ref("typ.product_landing_cost")
+        self.product_serial = self.env.ref("mrp.product_product_computer_desk")
         self.salesteam = self.env.ref("sales_team.crm_team_1")
         self.pricelist = self.env.ref("website_sale.list_benelux")
         self.pricelist_christmas = self.env.ref("website_sale.list_christmas")
@@ -68,6 +70,26 @@ class TypCase:
                 line.product_id = product
                 line.product_qty = quantity
                 line.price_unit = price
+
+    def assign_lots(self, move, lot_names):
+        action_detailed_operation = move.action_show_details()
+        move = move.with_context(action_detailed_operation["context"])
+        with Form(move, view=action_detailed_operation["view_id"]) as mv:
+            # Serial assignation will vary depending on wheter they need to be input as text or selected
+            if move.env.context["show_lots_text"]:
+                with mv.move_line_nosuggest_ids.new() as line:
+                    line.lot_name = "\n".join(lot_names)
+            else:
+                for lot_name in lot_names[::-1]:
+                    with mv.move_line_ids.new() as line:
+                        line.lot_id = self._get_lot_from_name(line, lot_name)
+
+    def _get_lot_from_name(self, line, lot_name):
+        domain_str = line._view["fields"]["lot_id"]["domain"]
+        domain = safe_eval(domain_str, line._values) + [("name", "=", lot_name)]
+        lot = self.env["stock.production.lot"].search(domain, limit=1)
+        self.assertTrue(lot, "lot not found for domain %s" % domain)
+        return lot
 
 
 class TypTransactionCase(TypCase, TransactionCase):

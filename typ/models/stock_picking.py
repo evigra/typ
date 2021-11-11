@@ -141,51 +141,19 @@ class StockPicking(models.Model):
         """Validates internal movements so that when a movement is generated,
         do not allow to customers or suppliers
         """
-        self.ensure_one()
+        internal_pickings = self.filtered(lambda pick: pick.picking_type_id.code == "internal")
+        unallowed_locations = ("customer", "supplier")
+        for move in internal_pickings.move_lines:
+            if move.location_id.usage in unallowed_locations or move.location_dest_id.usage in unallowed_locations:
+                raise UserError(_("Internal movements don't allow locations in supplier or customer"))
 
-        move_line_ids = self.move_line_ids.filtered(
-            lambda dat: dat.product_id.tracking != "none"
-            and not dat.move_id.move_orig_ids
-            and not dat.serial_id
-            and dat.location_id.usage == "internal"
-        )
-        if move_line_ids:
-            raise UserError(
-                _("You need to supply a lot/serial number for %s.") % move_line_ids.mapped("product_id.name")
-            )
-
-        if self.picking_type_id.code != "internal":
-            return super().button_validate()
-        for move in self.move_lines:
-            if move.location_id.usage in ("customer", "supplier") or move.location_dest_id.usage in (
-                "customer",
-                "supplier",
-            ):
-                raise UserError(_("Internal movements don't allow locations in " "supplier or customer"))
-        if self.is_warranty and not self.requirements_for_warranty:
-            raise UserError(
-                _(
-                    "To transfer this picking to guarantees in process, "
-                    "approval of the purchasing department is necessary, "
-                    "please contact them."
+        for picking in self:
+            if picking.is_warranty and not picking.requirements_for_warranty:
+                raise UserError(
+                    _(
+                        "To transfer this picking to guarantees in process, "
+                        "approval of the purchasing department is necessary, "
+                        "please contact them."
+                    )
                 )
-            )
         return super().button_validate()
-
-    # def _create_backorder(self, backorder_moves=list):
-    #     """Send message a picking transit for new backorder picking."""
-    #     backorders = super()._create_backorder(backorder_moves)
-    #     moves_orig_with_transit = backorders.mapped("move_lines.move_orig_ids").filtered(
-    #         lambda mv: mv.location_dest_id.usage == "transit"
-    #     )
-    #     message = _("Back order has been created in destination: %s") % (
-    #         ",".join(
-    #             [
-    #                 "<a href=# data-oe-model=stock.picking data-oe-id=" + str(pick.id) + ">" + pick.name + "</a>"
-    #                 for pick in backorders
-    #             ]
-    #         )
-    #     )
-    #     for pick in moves_orig_with_transit.mapped("picking_id"):
-    #         pick.message_post(body=message)
-    #     return backorders

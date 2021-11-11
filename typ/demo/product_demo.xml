@@ -131,6 +131,10 @@
         <field name="unspsc_code_id" ref="product_unspsc.unspsc_code_01010101" />
     </record>
 
+    <record id="mrp.product_product_computer_desk" model="product.product">
+        <field name="unspsc_code_id" ref="product_unspsc.unspsc_code_01010101" />
+    </record>
+
     <record id="product_product_whead" model="product.product">
         <field name="name">Wireless Headphones custon</field>
         <field name="categ_id" ref="product.product_category_4" />

@@ -25,7 +25,6 @@ class StockMoveLine(models.Model):
     )
     normalized_barcode = fields.Boolean(related="product_id.normalized_barcode")
     location_usage = fields.Selection(related="location_id.usage")
-    serial_id = fields.Many2one("stock.production.lot", "Serial")
 
     @api.depends(
         "product_id",
@@ -49,11 +48,3 @@ class StockMoveLine(models.Model):
                     "posz": product_warehouse_id.posz,
                 }
             )
-
-    @api.onchange("lot_name", "lot_id", "serial_id")
-    def _onchange_serial_number(self):
-        res = super().onchange_serial_number()
-
-        self.lot_id = self.serial_id
-        self.qty_done = 0
-        return res
