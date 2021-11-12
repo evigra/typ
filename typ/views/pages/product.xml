@@ -10,12 +10,18 @@
         </xpath>
         <xpath expr="//a[@id='add_to_cart']" position="after">
             <a
-                t-if="user_id == website.user_id"
+                t-else=""
                 role="button"
                 id="request_quotation"
                 class="btn btn-primary btn-lg mt16 d-block d-sm-inline-block"
                 t-attf-href="/contactus?product=#{product.id}"
             >Request quotation</a>
+        </xpath>
+    </template>
+
+    <template id="products_item" inherit_id="website_sale.products_item">
+        <xpath expr="//div[hasclass('product_price')]" position="attributes">
+            <attribute name="t-if">user_id != website.user_id</attribute>
         </xpath>
     </template>
 
