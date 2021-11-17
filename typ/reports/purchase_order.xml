@@ -9,7 +9,7 @@
             <attribute name="t-if">False</attribute>
         </xpath>
         <xpath expr="//t[@t-call='web.external_layout']" position="after">
-            <t t-call="typ.custom_external_layout">
+            <t t-call="typ.external_layout">
                 <t t-set="o" t-value="o.with_context({'lang':o.partner_id.lang})" />
                 <div class="page">
                     <h3 class="text-right">
