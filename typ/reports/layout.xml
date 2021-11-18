@@ -25,21 +25,6 @@
         </xpath>
     </template>
 
-    <!--
-    <template id="custom_external_layout_with_address">
-        Multicompany
-        <t t-if="o and 'company_id' in o">
-            <t t-set="company" t-value="o.company_id" />
-        </t>
-        <t t-if="not o or not 'company_id' in o">
-            <t t-set="company" t-value="res_company" />
-        </t>
-        <t t-call="typ.custom_external_layout_background_with_address"><t
-                t-raw="0"
-            /></t>
-    </template>
-    -->
-
     <template id="custom_external_layout_standard">
         <div
             class="article"
@@ -208,6 +193,38 @@
                 <li>/</li>
                 <li><span class="topage" /></li>
             </ul>
+        </div>
+    </template>
+
+    <template id="external_layout_expedient">
+        <t t-if="o and 'company_id' in o">
+            <t t-set="company" t-value="o.company_id" />
+        </t>
+        <t t-if="not o or not 'company_id' in o">
+            <t t-set="company" t-value="res_company" />
+        </t>
+        <t t-call="typ.external_layout_expedient_header" />
+        <t t-raw="0" />
+    </template>
+
+    <template id="external_layout_expedient_header">
+        <div class="header">
+            <div class="row">
+                <div class="col-xs-6">
+                    <img
+                        class="img img-responsive"
+                        t-if="company.logo"
+                        t-att-src="'data:image/png;base64,%s' % company.logo"
+                        style="max-width: 100px;"
+                    />
+                </div>
+                <div class="col-xs-6">
+                    <h4 class="text-right" style="padding-top: 45px;">
+                        <span>Employee Expedient No</span>
+                        <span t-field="o.number" />
+                    </h4>
+                </div>
+            </div>
         </div>
     </template>
 

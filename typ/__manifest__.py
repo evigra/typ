@@ -92,7 +92,6 @@
         "views/hr_employee_beneficiary_views.xml",
         "views/hr_employee_reference_views.xml",
         "views/hr_employee_views.xml",
-        "views/layout.xml",
         "views/product_category_views.xml",
         "views/product_market_type_views.xml",
         "views/product_pricelist_item_views.xml",
