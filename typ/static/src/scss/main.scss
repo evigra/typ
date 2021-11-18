@@ -205,3 +205,29 @@
         text-transform: uppercase;
     }
 }
+
+// List of branches in the "contact us" page
+.branch-list {
+    border: 0;
+    > li {
+        padding: 0;
+        > a {
+            white-space: nowrap;
+            border: 0 !important;
+            padding-left: 10px;
+            padding-right: 0;
+            padding-bottom: 0 !important;
+        }
+        > a:hover {
+            color: $typ-cobalt;
+            border-bottom: 2px solid $typ-cobalt !important;
+        }
+        > a.active {
+            color: $typ-greyish-brown !important;
+            font-weight: 100;
+        }
+        > a.active:hover {
+            border-bottom: none !important;
+        }
+    }
+}

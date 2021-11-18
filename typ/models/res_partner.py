@@ -16,7 +16,7 @@ class ResPartner(models.Model):
         help="Choose the Pricelist that partner can see",
     )
     buyer_id = fields.Many2one("res.users")
-    map_location = fields.Text(help="Embeded url from google maps")
+    map_location = fields.Text(help="Embedded url from google maps")
     facebook_profile = fields.Char(help="URL for the Facebook profile")
     linkedin_profile = fields.Char()
     upgradable = fields.Boolean(

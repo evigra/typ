@@ -11,3 +11,14 @@ class ResCompany(models.Model):
     )
     report_id = fields.Many2one("ir.actions.report", "Label report", domain="[('model','=','product.product')]")
     email_purchase = fields.Char()
+
+    def _get_published_branches(self):
+        """Get all published branches, i.e. main company's contacts that are published on website"""
+        branches = self.env["res.partner"].search(
+            [
+                ("id", "child_of", self.partner_id.id),
+                ("id", "!=", self.partner_id.id),
+                ("website_published", "=", True),
+            ]
+        )
+        return branches

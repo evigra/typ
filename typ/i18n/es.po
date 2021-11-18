@@ -340,6 +340,11 @@ msgid "<span class=\"mr16 filter\">Visualize: </span>"
 msgstr ""
 
 #. module: typ
+#: model_terms:ir.ui.view,arch_db:typ.contactus_form
+msgid "<span class=\"s_website_form_label_content\">Product Name</span>"
+msgstr "<span class=\"s_website_form_label_content\">Nombre del producto</span>"
+
+#. module: typ
 #: model_terms:ir.ui.view,arch_db:typ.featured-products
 msgid "<span class=\"sr-only\">Next</span>"
 msgstr ""
@@ -2906,8 +2911,8 @@ msgstr ""
 #. module: typ
 #: model:ir.model.fields,help:typ.field_res_partner__map_location
 #: model:ir.model.fields,help:typ.field_res_users__map_location
-msgid "Embeded url from google maps"
-msgstr "Embeber URL de Google Maps"
+msgid "Embedded url from google maps"
+msgstr "URL empotrada de Google Maps"
 
 #. module: typ
 #: model:ir.model,name:typ.model_hr_employee
@@ -4830,6 +4835,11 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:typ.month_name
 msgid "Oct"
 msgstr ""
+
+#. module: typ
+#: model_terms:ir.ui.view,arch_db:typ.contactus_form
+msgid "Offices"
+msgstr "Oficinas"
 
 #. module: typ
 #. openerp-web
