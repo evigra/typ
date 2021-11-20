@@ -38,16 +38,16 @@
                 </div>
             </div>
         </xpath>
+
+        <!-- Make left pane smaller and right pane bigger so there's enough space for branches -->
+        <xpath expr="//div[hasclass('mr-lg-auto')]" position="attributes">
+            <attribute name="class" remove="col-lg-7" add="col-lg-6" separator=" " />
+        </xpath>
         <xpath
             expr="//t[@t-call='website.company_description']/.."
             position="attributes"
         >
-            <attribute
-                name="class"
-                remove="col-lg-4"
-                add="col-md-6 col-sm-6 col-xs-12"
-                separator=" "
-            />
+            <attribute name="class" remove="col-lg-4" add="col-lg-6" separator=" " />
         </xpath>
         <xpath expr="//t[@t-call='website.company_description']" position="before">
             <div class="row justify-content-center">
@@ -68,21 +68,21 @@
                 <div
                     t-foreach="branches"
                     t-as="branch"
-                    t-attf-class="tab-pane branch-content#{' active' if branch_first else ''}"
+                    t-attf-class="tab-pane branch-content #{'active' if branch_first else ''}"
                     t-att-id="'branch-%d' % branch_index"
                     role="tabpanel"
                     t-att-aria-labelledby="'tab-branch-%d' % branch_index"
                 />
             </div>
-            <div class="col-sm-12 col-md-12 col-xs-12 mt8 mb64">
+            <div class="col-12 mt8 mb64">
                 <ul class="nav nav-tabs branch-list" id="branches" role="tablist">
                     <li
                         t-foreach="branches"
                         t-as="branch"
-                        class="nav-item col-md-3 col-sm-3 col-xs-4"
+                        class="nav-item col-6 col-sm-3"
                     >
                         <a
-                            t-attf-class="nav-link#{' active' if branch_first else ''}"
+                            t-attf-class="nav-link #{'active' if branch_first else ''}"
                             t-att-id="'tab-branch-%s' % branch_index"
                             data-toggle="tab"
                             t-att-href="'#branch-%s' % branch_index"
