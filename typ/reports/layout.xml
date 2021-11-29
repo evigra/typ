@@ -19,7 +19,9 @@
                 </div>
                 <!--<t t-call="typ.custom_external_layout_standard"><t t-raw="0" /></t>-->
             </t>
-            <t t-elif="sale">
+            <t
+                t-elif="o and o._name in ('sale.order', 'purchase.order', 'purchase.requisition')"
+            >
                 <t t-call="typ.custom_external_layout_background"><t t-raw="0" /></t>
             </t>
         </xpath>
@@ -49,6 +51,8 @@
                 </div>
                 <div class="col-6" style="padding-top: 25px;">
                     <t t-set="address" t-value="o.company_id" />
+                    <t t-if="'team_id' in o" t-set="salesteam" t-value="o.team_id" />
+                    <t t-else="" t-set="salesteam" t-value="env['crm.team']" />
                     <address t-if="address" style="font-size: 12px; line-height: 13px;">
                         <i class="fa fa-map-marker" />
                         <strong t-esc="address.name or ''" />
@@ -70,30 +74,30 @@
                         <t t-if="address.zip" t-raw="address.zip" />
                         <br />
                         <i
-                            t-if="address.phone or o.team_id.sale_phone"
+                            t-if="address.phone or salesteam.sale_phone"
                             class="fa fa-phone"
                         />
                         <span
-                            t-if="not o.team_id.sale_phone"
+                            t-if="not salesteam.sale_phone"
                             class="text-muted"
                             style="font-size: 12px; line-height: 13px;"
                             t-raw="address.phone"
                         />
                         <span
-                            t-if="o.team_id.sale_phone"
+                            t-if="salesteam.sale_phone"
                             class="text-muted"
                             style="font-size: 12px; line-height: 13px;"
-                            t-raw="o.team_id.name"
+                            t-raw="salesteam.name"
                         />:
                         <span
-                            t-if="o.team_id.sale_phone"
+                            t-if="salesteam.sale_phone"
                             class="text-muted"
                             style="font-size: 12px; line-height: 13px;"
-                            t-raw="o.team_id.sale_phone"
+                            t-raw="salesteam.sale_phone"
                         />
                     </address>
                 </div>
-                <div class="col-3">
+                <div t-if="doc and doc._name == 'sale.order'" class="col-3">
                     <h3 class="text-right" style="padding-top: 45px;">
                         <span t-if="doc.state not in ['draft','sent']">Order N°</span>
                         <span t-if="doc.state in ['draft','sent']">Quotation N°</span>
