@@ -7,4 +7,11 @@
         <field name="default_warehouse_id" ref="whr_test_01" />
     </record>
 
+    <record id="sales_team.team_sales_department" model="crm.team">
+        <field
+            name="fiscal_position_id"
+            ref="l10n_mx.1_account_fiscal_position_foreign"
+        />
+    </record>
+
 </odoo>

@@ -119,16 +119,6 @@ msgid "#Order"
 msgstr ""
 
 #. module: typ
-#: code:addons/typ/models/sale_order.py:0
-#, python-format
-msgid ""
-"%s has a fiscal position configuration, however it is recommended to apply "
-"the border fiscal position"
-msgstr ""
-"%s tiene configuración posición fiscal,, sin embargo se recomienda aplicar "
-"la posición fiscal de frontera"
-
-#. module: typ
 #: model_terms:ir.ui.view,arch_db:typ.report_invoice_document
 msgid "&amp;nbsp;<span>on</span>"
 msgstr "&amp;nbsp;<span>en</span>"
@@ -6771,8 +6761,12 @@ msgstr ""
 #. module: typ
 #: code:addons/typ/models/sale_order.py:0
 #, python-format
-msgid "The partner "
+msgid ""
+"The partner '%s' has a configured fiscal position (%s), however it is "
+"recommended to apply the fiscal position '%s'."
 msgstr ""
+"El contacto '%s' tiene una posición fiscal configurada, (%s), sin embargo "
+"se recomienda aplicar la posición fiscal '%s'."
 
 #. module: typ
 #: code:addons/typ/models/sale_order_line.py:0

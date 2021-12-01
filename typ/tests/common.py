@@ -17,6 +17,8 @@ class TypCase:
         self.product_cost = self.env.ref("typ.product_landing_cost")
         self.product_serial = self.env.ref("mrp.product_product_computer_desk")
         self.salesteam = self.env.ref("sales_team.crm_team_1")
+        self.salesteam_europe = self.env.ref("sales_team.team_sales_department")
+        self.fiscal_position_foreign = self.env.ref("l10n_mx.1_account_fiscal_position_foreign")
         self.pricelist = self.env.ref("website_sale.list_benelux")
         self.pricelist_christmas = self.env.ref("website_sale.list_christmas")
         self.company = self.env.ref("base.main_company")

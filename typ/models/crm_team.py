@@ -7,7 +7,6 @@ class CrmTeam(models.Model):
     sale_phone = fields.Char(string="Phone", help="Phone for contact sales team")
     fiscal_position_id = fields.Many2one(
         "account.fiscal.position",
-        string="Fiscal position",
         help="It indicates the fiscal position to be used when sale order is created",
     )
     journal_guide_id = fields.Many2one(

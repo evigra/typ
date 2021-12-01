@@ -16,6 +16,12 @@ class SaleOrder(models.Model):
     )
     # Order date always readonly
     date_order = fields.Datetime(states=None)
+    # Fiscal position always taken from the sales team, never from the partner
+    fiscal_position_id = fields.Many2one(
+        compute="_compute_fiscal_position",
+        store=True,
+        readonly=False,
+    )
     type_payment_term = fields.Selection(
         selection=[
             ("credit", "Credit"),
@@ -86,6 +92,11 @@ class SaleOrder(models.Model):
     purchase_currency = fields.Many2one("res.currency", help="USD / MXN")
     special_discounts = fields.Char(help="Any compensation granted by the provider")
 
+    @api.depends("team_id")
+    def _compute_fiscal_position(self):
+        for order in self:
+            order.fiscal_position_id = order.team_id.fiscal_position_id
+
     def write(self, vals):
         if "partner_id" not in vals:
             return super().write(vals)
@@ -121,25 +132,36 @@ class SaleOrder(models.Model):
 
         self.is_special = bool(self.order_line.filtered("special_sale"))
 
-    @api.onchange("partner_id")
-    def _onchange_partner_shipping_id(self):
-        """Assignment of fiscal position, for clients with sales team in border
-        location.
+    @api.onchange("partner_shipping_id", "partner_id", "company_id")
+    def onchange_partner_shipping_id(self):
+        """Leave with no effect this native onchange
+
+        The only purpose of the native onchange is to set fiscal position according to
+        the partner. Since the fiscal position will always be taken from the sales team,
+        it's not useful for us.
         """
-        res = super().onchange_partner_shipping_id()
-        self.fiscal_position_id = self.team_id.fiscal_position_id
-        if self.partner_id.property_account_position_id and self.team_id.fiscal_position_id:
-            msg = _("The partner ")
-            msg = msg + _(
-                "%s has a fiscal position configuration, however it "
-                "is recommended to apply the border fiscal position"
-            )
-            warning = {
+        return {}
+
+    @api.onchange("team_id", "partner_id")
+    def _onchange_team_id(self):
+        """Display a warning message when the partner has a fiscal position set"""
+        fp_in_partner = self.partner_id.property_account_position_id
+        fp_in_team = self.team_id.fiscal_position_id
+        if not fp_in_partner or not fp_in_team or fp_in_partner == fp_in_team:
+            return {}
+        warning_msg = _(
+            "The partner '%s' has a configured fiscal position (%s), however it "
+            "is recommended to apply the fiscal position '%s'.",
+            self.partner_id.display_name,
+            fp_in_partner.display_name,
+            fp_in_team.display_name,
+        )
+        return {
+            "warning": {
                 "title": _("Warning!"),
-                "message": ((msg) % self.partner_id.name),
-            }
-            return {"warning": warning}
-        return res
+                "message": warning_msg,
+            },
+        }
 
     def action_invoice_create(self, grouped=False, final=False):
         """Inherited method, to add picking name in origin field to the

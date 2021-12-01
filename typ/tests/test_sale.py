@@ -15,6 +15,7 @@ class TestSale(TypTransactionCase):
                     "state": "draft",
                     # Pricelist set on the partner
                     "pricelist_id": self.pricelist_christmas.id,
+                    "fiscal_position_id": False,
                 }
             ],
         )
@@ -42,3 +43,17 @@ class TestSale(TypTransactionCase):
         self.customer.property_product_pricelist = False
         sale_order = self.create_sale_order()
         self.assertEqual(sale_order.pricelist_id, self.pricelist)
+
+    def test_03_fiscal_position_salesteam(self):
+        """Fiscal position should always be taken from the sales team, not from the partner"""
+        customer_fiscal_position = self.env["account.fiscal.position"].create(
+            {
+                "name": "Customer Position",
+            }
+        )
+        self.customer.property_account_position_id = customer_fiscal_position
+        warning_msg = "however it is recommended to apply the fiscal position 'Foreign Customer'"
+        with self.assertLogs("odoo.tests.common.onchange", level="WARNING") as warns:
+            sale_order = self.create_sale_order(team=self.salesteam_europe)
+        self.assertIn(warning_msg, warns.output[0])
+        self.assertEqual(sale_order.fiscal_position_id, self.fiscal_position_foreign)
