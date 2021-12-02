@@ -46,3 +46,9 @@ class ProductPricelist(models.Model):
         product = self.env["product.product"].browse(product)
         partner = self.env["res.partner"].browse(partner)
         return self._compute_price_rule([(product, quantity, partner)])
+
+    def _query_price_rule_get_items(self):
+        """Order pricelist items by sequence also when they're retrieved by SQL"""
+        query = super()._query_price_rule_get_items()
+        query = query.replace("item.applied_on", "item.sequence, item.applied_on")
+        return query
