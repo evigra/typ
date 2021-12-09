@@ -52,8 +52,5 @@ class TestSale(TypTransactionCase):
             }
         )
         self.customer.property_account_position_id = customer_fiscal_position
-        warning_msg = "however it is recommended to apply the fiscal position 'Foreign Customer'"
-        with self.assertLogs("odoo.tests.common.onchange", level="WARNING") as warns:
-            sale_order = self.create_sale_order(team=self.salesteam_europe)
-        self.assertIn(warning_msg, warns.output[0])
+        sale_order = self.create_sale_order(team=self.salesteam_europe)
         self.assertEqual(sale_order.fiscal_position_id, self.fiscal_position_foreign)

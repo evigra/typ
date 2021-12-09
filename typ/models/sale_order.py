@@ -142,27 +142,6 @@ class SaleOrder(models.Model):
         """
         return {}
 
-    @api.onchange("team_id", "partner_id")
-    def _onchange_team_id(self):
-        """Display a warning message when the partner has a fiscal position set"""
-        fp_in_partner = self.partner_id.property_account_position_id
-        fp_in_team = self.team_id.fiscal_position_id
-        if not fp_in_partner or not fp_in_team or fp_in_partner == fp_in_team:
-            return {}
-        warning_msg = _(
-            "The partner '%s' has a configured fiscal position (%s), however it "
-            "is recommended to apply the fiscal position '%s'.",
-            self.partner_id.display_name,
-            fp_in_partner.display_name,
-            fp_in_team.display_name,
-        )
-        return {
-            "warning": {
-                "title": _("Warning!"),
-                "message": warning_msg,
-            },
-        }
-
     def action_invoice_create(self, grouped=False, final=False):
         """Inherited method, to add picking name in origin field to the
         dict of values to create the new invoice for a sales order.

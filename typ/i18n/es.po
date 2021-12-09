@@ -6759,16 +6759,6 @@ msgid "The invoice has been sent"
 msgstr ""
 
 #. module: typ
-#: code:addons/typ/models/sale_order.py:0
-#, python-format
-msgid ""
-"The partner '%s' has a configured fiscal position (%s), however it is "
-"recommended to apply the fiscal position '%s'."
-msgstr ""
-"El contacto '%s' tiene una posición fiscal configurada, (%s), sin embargo "
-"se recomienda aplicar la posición fiscal '%s'."
-
-#. module: typ
 #: code:addons/typ/models/sale_order_line.py:0
 #, python-format
 msgid ""
@@ -7879,12 +7869,6 @@ msgstr ""
 #. module: typ
 #: model:ir.model.fields,help:typ.field_stock_landed_cost_guide__warehouse_id
 msgid "Warehouse which this guide belongs to"
-msgstr ""
-
-#. module: typ
-#: code:addons/typ/models/sale_order.py:0
-#, python-format
-msgid "Warning!"
 msgstr ""
 
 #. module: typ
