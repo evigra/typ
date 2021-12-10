@@ -51,4 +51,14 @@
         </xpath>
     </template>
 
+    <template id="assets_report_common" inherit_id="web.report_assets_common">
+        <xpath expr="//link[last()]" position="after">
+            <link
+                href="/typ/static/src/scss/report_templates.scss"
+                type="text/scss"
+                rel="stylesheet"
+            />
+        </xpath>
+    </template>
+
 </odoo>
