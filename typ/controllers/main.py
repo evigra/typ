@@ -65,6 +65,14 @@ class WebsiteAccount(WebsiteSale):
         res.qcontext["sort_by"] = sort_by
         return res
 
+    @http.route("/shop/products/autocomplete", type="json", auth="public", website=True)
+    def products_autocomplete(self, term, options=None, **kwargs):
+        """Hide prices for public users when displaying suggestions for product searches"""
+        options = options or {}
+        if request.env.user._is_public():
+            options["display_price"] = False
+        return super().products_autocomplete(term, options, **kwargs)
+
 
 class MyAccountInvoices(PortalAccount):
     @http.route()
