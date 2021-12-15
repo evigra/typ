@@ -14,6 +14,18 @@ _logger = logging.getLogger(__name__)
 class AccountMove(models.Model):
     _inherit = "account.move"
 
+    # Only the partner's payment term and immediate ones may be selected in customer invoices
+    partner_payment_term_id = fields.Many2one("account.payment.term", compute="_compute_partner_payment_term_id")
+    invoice_payment_term_id = fields.Many2one(
+        domain="""[
+            '|', '|',
+            ('is_immediate', '=', True),
+            ('id', '=', partner_payment_term_id),
+            (move_type not in ('out_invoice', 'out_refund', 'out_receipt'), '=', True),
+        ]""",
+    )
+    # Due date won't be editable, even in draft
+    invoice_date_due = fields.Date(states=None)
     invoice_user_id = fields.Many2one(tracking=True)
     validation_date = fields.Date(
         string="Invoice validation date",
@@ -32,6 +44,12 @@ class AccountMove(models.Model):
     stock_landed_cost_id = fields.Many2one("stock.landed.cost")
     guide_line_id = fields.Many2one("stock.landed.cost.guide.line", help="Guide line associated to this" " move")
 
+    @api.depends("partner_id", "journal_id")
+    def _compute_partner_payment_term_id(self):
+        for move in self:
+            move = move.with_company(move.journal_id.company_id)
+            move.partner_payment_term_id = move.partner_id.property_payment_term_id
+
     @api.model
     def line_get_convert(self, line, part):
         res = super().line_get_convert(line, part)
@@ -48,7 +66,7 @@ class AccountMove(models.Model):
             self.partner_id
             and self.is_invoice()
             and self.pos_order_ids
-            and sum(self.invoice_payment_term_id.line_ids.mapped("days"))
+            and not self.invoice_payment_term_id.is_immediate
         ):
             immediate_payment = self.env.ref("account.account_payment_term_immediate")
             self.invoice_payment_term_id = immediate_payment

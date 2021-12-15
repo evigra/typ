@@ -1,89 +1,53 @@
+<?xml version="1.0" encoding="utf-8" ?>
 <odoo>
-    <!-- <record id="view_account_invoice_filter" model="ir.ui.view">
-        <field name="name">account.move.filter</field>
-        <field name="model">account.invoice</field>
-        <field name="inherit_id" ref="account.view_account_invoice_filter" />
-        <field name="arch" type="xml">
-            <xpath expr="//field[@name='number']" position="before">
-                <field name="origin" />
-            </xpath>
-            <xpath expr="//field[@name='number']" position="after">
-                <field name="supplier_invoice_number"
-                    filter_domain="[('supplier_invoice_number', 'ilike', self)]" />
-            </xpath>
-        </field>
-    </record> -->
-    <!-- <record id="view_move_form" model="ir.ui.view">
-        <field name="name">account.move.form</field>
-        <field name="model">account.invoice</field>
+
+    <record id="view_move_form" model="ir.ui.view">
+        <field name="name">account.move.form.inherit.typ</field>
+        <field name="model">account.move</field>
         <field name="inherit_id" ref="account.view_move_form" />
+        <field name="priority" eval="100" />
         <field name="arch" type="xml">
-            <xpath expr="//field[@name='date_due']" position="after">
-                <field name="date_paid" readonly="1" />
+            <!-- Show always bot payment terms and due date, but only terms will be editable -->
+            <xpath expr="//label[@for='invoice_payment_term_id']" position="attributes">
+                <attribute name="invisible">1</attribute>
             </xpath>
-            <xpath expr="//field[@name='invoice_payment_term_id']" position="after">
-                <field name="type_payment_term" attrs="{'readonly': [('state', '!=', 'draft')],'required': [('state', '=', 'draft')],}" />
+            <xpath expr="//label[@for='invoice_payment_term_id']" position="after">
+                <xpath
+                    expr="//field[@name='invoice_payment_term_id']"
+                    position="move"
+                />
+                <xpath expr="//field[@name='invoice_date_due']" position="move" />
+                <field name="partner_payment_term_id" invisible="1" />
             </xpath>
-            <xpath expr="//field[@name='invoice_payment_term_id']" position="attributes">
-                <attribute name="groups">typ.group_sale_order_invoice_payment_term_manager</attribute>
-                <attribute name="required">1</attribute>
+            <!-- Not even making the div invisible would work, so remove it -->
+            <xpath
+                expr="//span[hasclass('o_form_label') and contains(@attrs, 'invoice_payment_term_id')]/.."
+                position="replace"
+            />
+            <xpath
+                expr="//field[@name='invoice_payment_term_id']"
+                position="attributes"
+            >
+                <attribute name="attrs">{
+                    'invisible': [
+                        ('move_type', 'not in', ('out_invoice', 'out_refund', 'in_invoice', 'in_refund', 'out_receipt', 'in_receipt')),
+                    ],
+                    'required': [
+                        ('move_type', 'in', ('out_invoice', 'out_refund', 'in_invoice', 'in_refund')),
+                    ],
+                }</attribute>
+                <attribute name="options">{'no_create': True}</attribute>
             </xpath>
-            <xpath expr="//field[@name='user_id']" position="attributes">
-                <attribute name="attrs">{'readonly':[('state', '!=', 'draft')]}</attribute>
-            </xpath>
-            <xpath expr="//field[@name='user_id']" position="attributes">
-                <attribute name="attrs">{'readonly': 0}</attribute>
+            <xpath expr="//field[@name='invoice_date_due']" position="attributes">
+                <attribute name="attrs">{
+                    'invisible': [('invoice_date_due', '=', False)],
+                }</attribute>
             </xpath>
         </field>
-    </record> -->
-    <!-- <record id="account_invoice_tree_analitic_group" model="ir.ui.view">
-        <field name="name">account.invoice.line.analitic.group</field>
-        <field name="model">account.invoice</field>
-        <field name="inherit_id" ref="account.invoice_supplier_form" />
-        <field name="arch" type="xml">
-            <xpath expr="//field[@name='account_analytic_id']" position="attributes">
-                <attribute name="groups">typ_account.res_group_analitic_invoice_lines</attribute>
-            </xpath>
-            <xpath expr="//field[@name='analytic_tag_ids']" position="attributes">
-                <attribute name="groups">typ_account.res_group_analitic_invoice_lines</attribute>
-            </xpath>
-            <xpath expr="//field[@name='date']" position="after">
-                <field name="validation_date" />
-            </xpath>
-            <field name="reference" position="after">
-                <field name="supplier_invoice_number" />
-            </field>
-            <field name="validation_date" position="after">
-                <field name="expense_id" />
-            </field>
-        </field>
-    </record> -->
-    <!-- <record id="invoice_tree" model="ir.ui.view">
-        <field name="name">account.invoice.customer.tree</field>
-        <field name="model">account.invoice</field>
-        <field name="inherit_id" ref="account.invoice_tree" />
-        <field name="arch" type="xml">
-            <field name="user_id" position="after">
-                <field name="team_id" />
-            </field>
-            <field name="amount_total_signed" position="before">
-                <field name="amount_untaxed" />
-            </field>
-        </field>
-    </record> -->
-    <!-- <record id="invoice_supplier_tree" model="ir.ui.view">
-        <field name="name">account.invoice.supplier.tree</field>
-        <field name="model">account.invoice</field>
-        <field name="inherit_id" ref="account.view_in_invoice_tree" />
-        <field name="arch" type="xml">
-            <field name="amount_total_signed" position="before">
-                <field name="team_id" />
-                <field name="amount_untaxed" />
-            </field>
-        </field>
-    </record> -->
+    </record>
+
     <record id="view_invoice_tree_inherit" model="ir.ui.view">
-        <field name="name">account.invoice.tree.inherit</field>
+        <field name="name">account.invoice.tree.inherit.typ</field>
         <field name="model">account.move</field>
         <field name="inherit_id" ref="account.view_invoice_tree" />
         <field name="arch" type="xml">
