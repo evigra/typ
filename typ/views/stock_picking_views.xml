@@ -94,11 +94,10 @@
                 >{'readonly': [('state', '=', 'assigned')]}</attribute>
             </field>
             <xpath
-                expr="//field[@name='move_ids_without_package']//field[@name='product_uom_qty']"
+                expr="//field[@name='move_ids_without_package']/tree/field[@name='date']"
                 position="before"
             >
-                <field name="shipment_date" />
-                <field name="forecast_expected_date" />
+                <field name="shipment_date" optional="show" />
             </xpath>
             <xpath
                 expr="//field[@name='location_dest_id'][not(ancestor::field)]"

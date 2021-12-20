@@ -29,6 +29,8 @@ class AccountMove(models.Model):
     invoice_user_id = fields.Many2one(tracking=True)
     validation_date = fields.Date(
         string="Invoice validation date",
+        copy=False,
+        readonly=True,
         help="This date indicates when the invoice was validated",
     )
     date_paid = fields.Date(
@@ -74,10 +76,16 @@ class AccountMove(models.Model):
         return res
 
     def _post(self, soft=True):
-        """If this invoice comes from the PoS, send it by e-mail automatically"""
-        res = super()._post(soft)
-        self.filtered("pos_order_ids").send_invoice_mail()
-        return res
+        """Perform some tasks when posting
+
+        The following is performed:
+        - Write validation date
+        - If It's an invoice coming from the PoS, send it by e-mail automatically
+        """
+        to_post = super()._post(soft)
+        to_post.write({"validation_date": fields.Date.context_today(self)})
+        to_post.filtered("pos_order_ids").send_invoice_mail()
+        return to_post
 
     def send_invoice_mail(self):
         """Try to send the XML and Invoice report by email to customer.

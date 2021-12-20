@@ -43,6 +43,19 @@
                     'invisible': [('invoice_date_due', '=', False)],
                 }</attribute>
             </xpath>
+
+            <xpath expr="//field[@name='date' and not(@readonly)]" position="after">
+                <field
+                    name="validation_date"
+                    attrs="{
+                        'invisible': [
+                            '|',
+                            ('validation_date', '=', False),
+                            ('move_type', 'not in', ('in_invoice', 'in_refund', 'in_receipt')),
+                        ],
+                    }"
+                />
+            </xpath>
         </field>
     </record>
 
