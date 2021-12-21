@@ -1532,7 +1532,7 @@ G                    </div>
                         </t>
                     </div>
                     <div class="row">
-                        <h6 class="sections">Billing Adddres</h6>
+                        <h6 class="sections">Billing Adddress</h6>
                         <p class="mb0" t-field="order.partner_invoice_id.name" />
                         <p t-if="order.partner_invoice_id.vat" class="mb0">
                             <span>RFC: </span><span
