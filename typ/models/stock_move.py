@@ -18,11 +18,3 @@ class StockMove(models.Model):
     )
     normalized_barcode = fields.Boolean(related="product_id.normalized_barcode")
     location_usage = fields.Selection(related="location_id.usage")
-
-    def _action_confirm(self, merge=True, merge_into=False):
-        group_id = self._context.get("scheduler_group_id")
-        if group_id:
-            moves_wo_group = self - self.filtered("move_id")
-            moves_wo_group.write({"group_id": group_id})
-            merge = False
-        return super()._action_confirm(merge=merge, merge_into=merge_into)

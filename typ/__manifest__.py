@@ -46,6 +46,7 @@
         # Data
         "data/account_payment_term_data.xml",
         "data/hr_employee_check_data.xml",
+        "data/ir_cron_data.xml",
         "data/ir_sequence_data.xml",
         "data/product_pricelist_data.xml",
         "data/product_public_category_data.xml",

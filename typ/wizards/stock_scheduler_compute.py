@@ -1,4 +1,4 @@
-from odoo import fields, models
+from odoo import api, fields, models
 
 
 class StockSchedulerCompute(models.TransientModel):
@@ -6,7 +6,6 @@ class StockSchedulerCompute(models.TransientModel):
 
     warehouse_id = fields.Many2one(
         "stock.warehouse",
-        string="Warehouse",
         help="select warehouse to running schedulers",
     )
     importance = fields.Selection(
@@ -20,13 +19,17 @@ class StockSchedulerCompute(models.TransientModel):
     )
 
     def _procure_calculation_orderpoint(self):
-        """Pass warehouse and importance by context so they are added to the procurement domain later"""
-        group = self.env["procurement.group"].create({})
-        context = {
-            "scheduler_warehouse_id": self.warehouse_id.id,
-            "scheduler_importance": self.importance,
-        }
-        if self.warehouse_id or self.importance:
-            group = self.env["procurement.group"].create({})
-            context["scheduler_group_id"] = group.id
-        return super(StockSchedulerCompute, self.with_context(**context)).procure_calculation()
+        """Pass current wizard ID by context so warehouse & importance may be added to the procurement domain later
+
+        Note:
+        Not passing warehouse and importance directly because current cursor may be closed, and
+        not creating a new one because Odoo will also do so in the native method [1], it's
+        better to reuse the cursor created by Odoo.
+
+        [1] https://github.com/odoo/odoo/blob/930734991ac2/addons/stock/wizard/stock_scheduler_compute.py#L25
+        """
+        # Environment.manage() is required because we're in a new thread where there are no envs yet,
+        # so with_context() would fail without it
+        with api.Environment.manage():
+            self_ctx = self.with_context(wizard_scheduler_id=self.id)
+        return super(StockSchedulerCompute, self_ctx)._procure_calculation_orderpoint()
