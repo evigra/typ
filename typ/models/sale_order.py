@@ -22,13 +22,17 @@ class SaleOrder(models.Model):
         store=True,
         readonly=False,
     )
-    type_payment_term = fields.Selection(
-        selection=[
-            ("credit", "Credit"),
-            ("cash", "Cash"),
-            ("postdated_check", "Postdated check"),
-        ],
-        default="credit",
+    # Only the partner's payment term and immediate ones may be selected
+    partner_payment_term_id = fields.Many2one("account.payment.term", compute="_compute_partner_payment_term_id")
+    payment_term_id = fields.Many2one(
+        domain="""[
+            '|',
+            ('company_id', '=', False),
+            ('company_id', '=', company_id),
+            '|',
+            ('is_immediate', '=', True),
+            ('id', '=', partner_payment_term_id),
+        ]""",
     )
     is_special = fields.Boolean(
         string="Is Special Order",
@@ -96,6 +100,12 @@ class SaleOrder(models.Model):
     def _compute_fiscal_position(self):
         for order in self:
             order.fiscal_position_id = order.team_id.fiscal_position_id
+
+    @api.depends("partner_id", "company_id")
+    def _compute_partner_payment_term_id(self):
+        for order in self:
+            order = order.with_company(order.company_id)
+            order.partner_payment_term_id = order.partner_id.property_payment_term_id
 
     def write(self, vals):
         if "partner_id" not in vals:

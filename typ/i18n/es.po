@@ -1912,11 +1912,6 @@ msgid "Carrier Invoice"
 msgstr ""
 
 #. module: typ
-#: model:ir.model.fields.selection,name:typ.selection__sale_order__type_payment_term__cash
-msgid "Cash"
-msgstr "Efectivo"
-
-#. module: typ
 #: model:product.public.category,name:typ.cassette
 msgid "Cassette"
 msgstr ""
@@ -2278,11 +2273,6 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:typ.portal_order_page
 msgid "Creation date:"
 msgstr "Fecha de creación:"
-
-#. module: typ
-#: model:ir.model.fields.selection,name:typ.selection__sale_order__type_payment_term__credit
-msgid "Credit"
-msgstr "Crédito"
 
 #. module: typ
 #: model:ir.model.fields,field_description:typ.field_res_partner_warehouse__credit_limit
@@ -5118,11 +5108,6 @@ msgid "Port of input"
 msgstr "Puerto de entrada"
 
 #. module: typ
-#: model:ir.model.fields.selection,name:typ.selection__sale_order__type_payment_term__postdated_check
-msgid "Postdated check"
-msgstr "Chequeo después de la factura"
-
-#. module: typ
 #: model:ir.model.fields,field_description:typ.field_res_partner__potential_importance
 #: model:ir.model.fields,field_description:typ.field_res_users__potential_importance
 msgid "Potential Importance"
@@ -7142,11 +7127,6 @@ msgstr "Tipo De Cliente"
 #: model:ir.model.fields,field_description:typ.field_sale_order__type_of_import
 msgid "Type Of Import"
 msgstr "Tipo de importación"
-
-#. module: typ
-#: model:ir.model.fields,field_description:typ.field_sale_order__type_payment_term
-msgid "Type Payment Term"
-msgstr ""
 
 #. module: typ
 #: model:ir.model.fields,help:typ.field_product_product__type_of_client
