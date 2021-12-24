@@ -331,17 +331,18 @@ def remove_uncertified_data(cr):
 
 
 def remove_inconsistent_partner_bank(cr):
-    """There is one inconsistent partner bank, which is one without partner"""
+    """There are some inconsistent partner banks, which are ones without partner"""
     cr.execute(
         """
         DELETE  FROM
             res_partner_bank
         WHERE
-            partner_id IS NULL;
+            partner_id IS NULL
+        RETURNING acc_number;
         """
     )
-    qty_removed = cr.rowcount
-    assert qty_removed in (0, 1), qty_removed
+    removed_accounts = [x[0] for x in cr.fetchall()]
+    _logger.info("%s partner bank accounts were removed: %s", len(removed_accounts), removed_accounts)
 
 
 def create_missing_edi_payments(cr):
