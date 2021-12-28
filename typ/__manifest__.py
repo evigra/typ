@@ -29,6 +29,7 @@
         "mrp",
         "note",
         "point_of_sale",
+        "portal_multicurrency_totals",
         "product_supplierinfo_for_customer_sale",
         "purchase_requisition",
         "sale_credit_management",
@@ -119,7 +120,6 @@
         "views/templates.xml",
         # Pages
         "views/pages/about.xml",
-        "views/pages/account.xml",
         "views/pages/catalog.xml",
         "views/pages/contactus.xml",
         "views/pages/loyalty.xml",

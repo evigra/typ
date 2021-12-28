@@ -2,11 +2,9 @@ from werkzeug.exceptions import Forbidden
 
 from odoo import _, http, tools
 from odoo.exceptions import ValidationError
-from odoo.http import Controller, request
+from odoo.http import request
 
-from odoo.addons.account.controllers.portal import PortalAccount
 from odoo.addons.portal.controllers.portal import CustomerPortal
-from odoo.addons.sale.controllers.portal import CustomerPortal as SP
 from odoo.addons.website_sale.controllers.main import WebsiteSale
 
 
@@ -72,162 +70,6 @@ class WebsiteAccount(WebsiteSale):
         if request.env.user._is_public():
             options["display_price"] = False
         return super().products_autocomplete(term, options, **kwargs)
-
-
-class MyAccountInvoices(PortalAccount):
-    @http.route()
-    def portal_my_invoices(self, *arg, **kw):
-        response = super().portal_my_invoices(*arg, **kw)
-
-        response.qcontext["in_view"] = "invoices"
-
-        status_filter = kw.get("invoices_status")
-        response.qcontext["invoices_status"] = status_filter
-
-        month_filter = kw.get("month")
-        response.qcontext["month_filter"] = month_filter
-
-        invoices = response.qcontext.get("invoices")
-
-        if status_filter == "open":
-            my_invoices = invoices.filtered(lambda rec: rec.state == "open" and rec.move_type == "out_invoice")
-            response.qcontext.update({"invoices": my_invoices})
-        elif status_filter == "paid":
-            my_invoices = invoices.filtered(lambda rec: rec.state == "paid" and rec.move_type == "out_invoice")
-            response.qcontext.update({"invoices": my_invoices})
-        else:
-            my_invoices = invoices.filtered(lambda rec: rec.move_type == "out_invoice")
-            response.qcontext.update({"invoices": my_invoices})
-
-        total_unpaid_usd = my_invoices.filtered(lambda rec: rec.currency_id.name == "USD").mapped("amount_residual")
-        sum_unpaid_usd = sum(total_unpaid_usd)
-        response.qcontext["total_unpaid_usd"] = sum_unpaid_usd
-
-        total_unpaid_mxn = my_invoices.filtered(lambda rec: rec.currency_id.name == "MXN").mapped("amount_residual")
-        sum_unpaid_mxn = sum(total_unpaid_mxn)
-        response.qcontext["total_unpaid_mxn"] = sum_unpaid_mxn
-
-        amount_usd = my_invoices.filtered(lambda rec: rec.currency_id.name == "USD" and rec.state != "cancel").mapped(
-            "amount_total"
-        )
-        to_paid_usd = sum(amount_usd) - sum_unpaid_usd
-        response.qcontext["total_to_paid_usd"] = to_paid_usd
-
-        amount_mxn = my_invoices.filtered(lambda rec: rec.currency_id.name == "MXN" and rec.state != "cancel").mapped(
-            "amount_total"
-        )
-        to_paid_mxn = sum(amount_mxn) - sum_unpaid_mxn
-        response.qcontext["total_to_paid_mxn"] = to_paid_mxn
-
-        return response
-
-    @http.route(["/my/credit_notes"], type="http", auth="user", website=True)
-    def my_credit_notes(self, *arg, **kw):
-        response = super().portal_my_invoices(*arg, **kw)
-
-        response.qcontext["in_view"] = "credit_notes"
-
-        status_filter = kw.get("invoices_status")
-        response.qcontext["invoices_status"] = status_filter
-
-        month_filter = kw.get("month")
-        response.qcontext["month_filter"] = month_filter
-
-        invoices = response.qcontext.get("invoices")
-
-        if status_filter == "open":
-            my_credit_notes = invoices.filtered(lambda rec: rec.state == "open" and rec.move_type == "out_refund")
-            response.qcontext.update({"invoices": my_credit_notes})
-        elif status_filter == "paid":
-            my_credit_notes = invoices.filtered(lambda rec: rec.state == "paid" and rec.move_type == "out_refund")
-            response.qcontext.update({"invoices": my_credit_notes})
-        else:
-            my_credit_notes = invoices.filtered(lambda rec: rec.move_type == "out_refund")
-            response.qcontext.update({"invoices": my_credit_notes})
-
-        response.qcontext.update({"default_url": "/my/credit_notes"})
-
-        total_unpaid_usd = my_credit_notes.filtered(lambda rec: rec.currency_id.name == "USD").mapped(
-            "amount_residual"
-        )
-        sum_unpaid_usd = sum(total_unpaid_usd)
-        response.qcontext["total_unpaid_usd"] = sum_unpaid_usd
-
-        total_unpaid_mxn = my_credit_notes.filtered(lambda rec: rec.currency_id.name == "MXN").mapped(
-            "amount_residual"
-        )
-        sum_unpaid_mxn = sum(total_unpaid_mxn)
-        response.qcontext["total_unpaid_mxn"] = sum_unpaid_mxn
-
-        amount_usd = my_credit_notes.filtered(lambda rec: rec.currency_id.name == "USD").mapped("amount_total")
-        to_paid_usd = sum(amount_usd) - sum_unpaid_usd
-        response.qcontext["total_to_paid_usd"] = to_paid_usd
-
-        amount_mxn = my_credit_notes.filtered(lambda rec: rec.currency_id.name == "MXN").mapped("amount_total")
-        to_paid_mxn = sum(amount_mxn) - sum_unpaid_mxn
-        response.qcontext["total_to_paid_mxn"] = to_paid_mxn
-
-        # TODO: change back to template typ.my_invoices when it is migrated
-        return request.render("account.portal_my_invoices", response.qcontext)
-
-    @http.route(["/my/payment_complements"], type="http", auth="user", website=True)
-    def my_payment_complements(self, **kw):
-        partner = request.env.user.partner_id.ids
-        account_payments = request.env["account.payment"]
-
-        complements = account_payments.sudo().search([("partner_id", "=", partner), ("state", "=", "reconciled")])
-
-        values = {
-            "payment_partner": complements,
-        }
-
-        return request.render("typ.payment_complements", values)
-
-
-class MyAccountOrders(SP):
-    @http.route()
-    def portal_my_orders(self, *arg, **kw):
-        response = super().portal_my_orders(*arg, **kw)
-        orders = response.qcontext.get("orders")
-
-        month_filter = kw.get("month")
-        response.qcontext["month_filter"] = month_filter
-
-        amount_usd = orders.filtered(
-            lambda rec: rec.state == "sale" and rec.pricelist_id.currency_id.name == "USD"
-        ).mapped("amount_total")
-        amount_total_usd = sum(amount_usd)
-        response.qcontext["total_amount_usd"] = amount_total_usd
-
-        amount_mxn = orders.filtered(lambda rec: rec.state == "sale" and rec.currency_id.name == "MXN").mapped(
-            "amount_total"
-        )
-        amount_total_mxn = sum(amount_mxn)
-        response.qcontext["total_amount_mxn"] = amount_total_mxn
-
-        return response
-
-    @http.route()
-    def portal_my_quotes(self, *arg, **kw):
-        response = super().portal_my_quotes(*arg, **kw)
-        quotations = response.qcontext.get("quotations")
-
-        month_filter = kw.get("month")
-        response.qcontext["month_filter"] = month_filter
-
-        amount_usd = quotations.filtered(
-            lambda rec: rec.state == "sent" and rec.pricelist_id.currency_id.name == "USD"
-        ).mapped("amount_total")
-        amount_total_usd = sum(amount_usd)
-        response.qcontext["total_amount_usd"] = amount_total_usd
-
-        amount_mxn = quotations.filtered(lambda rec: rec.state == "sent" and rec.currency_id.name == "MXN").mapped(
-            "amount_total"
-        )
-        amount_total_mxn = sum(amount_mxn)
-        response.qcontext["total_amount_mxn"] = amount_total_mxn
-
-        return response
 
 
 class MyAccount(CustomerPortal):
@@ -379,27 +221,6 @@ class MyAccount(CustomerPortal):
         new_values.pop("partner_id")
         new_values.pop("submitted")
         return new_values, errors, error_msg
-
-
-class SendInvoiceAndXML(Controller):
-    @http.route(
-        [
-            "/send_invoice_mail/<int:invoice_id>",
-        ],
-        type="http",
-        auth="user",
-        website=True,
-    )
-    def send_invoice_and_xml(self, invoice_id=None, **data):
-        invoice_obj = request.env["account.move"]
-        invoice = invoice_obj.browse(invoice_id)
-        invoice.sudo().send_invoice_mail()
-        values = {
-            "company": request.website.company_id,
-            "user": request.env.user,
-            "invoice": invoice,
-        }
-        return request.render("typ.email_sent", values)
 
 
 class WebsiteUserWishList(http.Controller):
