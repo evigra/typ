@@ -18,6 +18,7 @@ def migrate(cr, version):
     set_missing_hr_expense_sheet_company(cr)
     remove_inconsistent_partner_bank(cr)
     create_missing_edi_payments(cr)
+    set_pay_account_cash_journals(cr)
 
 
 def rename_extids_typ_modules(cr):
@@ -427,3 +428,28 @@ def create_missing_edi_payments(cr):
         """
     )
     _logger.info("Created %d documents", cr.rowcount)
+
+
+def set_pay_account_cash_journals(cr):
+    """Set payment accounts for cash journals
+
+    Set outstanding receipts and payment accounts with the default account so
+    cash journals don't need to be reconciled when paying invoices and invoices
+    are considered paid once payments are registered.
+    """
+    cr.execute(
+        """
+        UPDATE
+            account_journal
+        SET
+            payment_debit_account_id = default_account_id,
+            payment_credit_account_id = default_account_id
+        WHERE
+            type = 'cash'
+            AND (
+                payment_debit_account_id != default_account_id
+                OR payment_credit_account_id != default_account_id
+            );
+        """
+    )
+    _logger.info("Payment accounts were set for %d journals", cr.rowcount)
