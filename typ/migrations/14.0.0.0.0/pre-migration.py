@@ -19,6 +19,7 @@ def migrate(cr, version):
     remove_inconsistent_partner_bank(cr)
     create_missing_edi_payments(cr)
     set_pay_account_cash_journals(cr)
+    set_missing_company_stock_locations(cr)
 
 
 def rename_extids_typ_modules(cr):
@@ -453,3 +454,62 @@ def set_pay_account_cash_journals(cr):
         """
     )
     _logger.info("Payment accounts were set for %d journals", cr.rowcount)
+
+
+def set_missing_company_stock_locations(cr):
+    """Set missing company to non-external locations
+
+    Company is missing in some locations that should have one, e.g. internal ones. That
+    causes routes involving them to don't work correctly.
+
+    In addition, quants are also updated, for consistency.
+    """
+    cr.execute(
+        """
+        WITH main_company AS (
+            SELECT
+                id
+            FROM
+                res_company
+            LIMIT 1
+        )
+        UPDATE
+            stock_location AS location
+        SET
+            company_id = main_company.id
+        FROM
+            main_company
+        WHERE
+            company_id IS NULL
+            AND usage NOT IN ('view', 'customer', 'supplier')
+        RETURNING location.id;
+        """
+    )
+    location_ids = tuple(x[0] for x in cr.fetchall())
+    _logger.info("Missing company was set for %d locations", len(location_ids))
+    cr.execute(
+        """
+        WITH main_company AS (
+            SELECT
+                id
+            FROM
+                res_company
+            LIMIT 1
+        )
+        UPDATE
+            stock_quant
+        SET
+            company_id = main_company.id
+        FROM
+            main_company
+        WHERE
+            company_id IS NULL
+            AND location_id IN %s
+        """,
+        [location_ids],
+    )
+    _logger.info(
+        "Missing company was set for %d quants, corresponding to the %d locations just fixed",
+        cr.rowcount,
+        len(location_ids),
+    )
