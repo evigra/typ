@@ -1,5 +1,6 @@
 enterprise git@github.com:Vauxoo/enterprise.git
 addons-vauxoo git@github.com:Vauxoo/addons-vauxoo.git
+apps git@git.vauxoo.com:vauxoo/apps.git
 mexico git@git.vauxoo.com:vauxoo/mexico.git
 stock-logistics-workflow git@github.com:Vauxoo/stock-logistics-workflow.git
 sale-workflow git@github.com:Vauxoo/sale-workflow.git

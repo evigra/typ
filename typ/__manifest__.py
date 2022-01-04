@@ -40,6 +40,7 @@
         "stock_picking_show_return",
         "default_warehouse_from_sale_team",
         "website_blog",
+        "website_crm_form",
         "website_sale",
         "website_sale_delivery",
     ],
