@@ -37,6 +37,7 @@
         "stock_by_warehouse_sale",
         # TODO replace by stock_segmentation_cost_fraction once the following is merged:
         #  https://git.vauxoo.com/vauxoo/stock-psycho-account/-/merge_requests/8
+        "stock_barcode",
         "stock_landed_costs",
         "stock_picking_show_return",
         "default_warehouse_from_sale_team",
@@ -138,6 +139,9 @@
         "demo/res_partner_demo.xml",
         "demo/res_partner_warehouse_demo.xml",
         "demo/res_users_demo.xml",
+    ],
+    "qweb": [
+        "static/src/xml/stock_barcode_templates.xml",
     ],
     "installable": True,
     "application": True,

@@ -7755,6 +7755,22 @@ msgid ""
 msgstr ""
 
 #. module: typ
+#: code:addons/typ/models/stock_picking.py:0
+#, python-format
+msgid ""
+"You cannot validate more products than were ordered.\n"
+"\n"
+"Product: %s\n"
+"Required quantity: %s\n"
+"Processed quantity: %s"
+msgstr ""
+"No puede validar más productos de los que fueron ordenados.\n"
+"\n"
+"Producto: %s\n"
+"Cantidad requerida: %s\n"
+"Cantidad procesada: %s"
+
+#. module: typ
 #: model_terms:ir.ui.view,arch_db:typ.loyalty
 msgid "You have become"
 msgstr ""

@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<templates
+    id="stock_barcode_template_typ"
+    inherit_id="stock_barcode.template"
+    xml:space="preserve"
+>
+    <t t-extend="stock_barcode_lines_template">
+        <t t-jquery='t[t-as="line"]' t-operation="before">
+            <t t-if="lines['__groupLines__']">
+                <t t-set="group_lines" t-value="lines['__groupLines__']" />
+                <t t-set="lines_mode" t-value="lines['__mode__']" />
+                <t
+                    t-set="show_group_lines"
+                    t-value="model === 'stock.picking' and lines_mode === 'receipt'"
+                />
+                <t t-foreach="group_lines" t-as="g_line">
+                    <div
+                        class="o_barcode_line group_lines list-group-item d-flex flex-row flex-nowrap"
+                        t-if="show_group_lines"
+                        t-att-data-id="(group_lines[g_line].line_products[0].virtual_id || group_lines[g_line].line_products[0].id)"
+                        t-att-data-group-product-id="group_lines[g_line].product_id.id"
+                        t-att-data-lines-ids="group_lines[g_line].line_ids"
+                    >
+                        <div
+                            class="o_barcode_line_details flex-grow-1 flex-column flex-nowrap"
+                        >
+                            <div class="o_barcode_line_title pb-1">
+                                <i class="fa fa-fw fa-tags" />
+                                <span class="product-label">
+                                    <t t-esc="group_lines[g_line].display_name" />
+                                </span>
+                            </div>
+                            <div>
+                                <i class="fa fa-fw fa-cube" />
+                                <span
+                                    t-attf-class="o_barcode_scanner_qty text-monospace badge #{' '}"
+                                >
+                                    <span
+                                        class="qty-done d-inline-block text-left"
+                                        t-esc="group_lines[g_line].total_qty_done"
+                                    />
+                                    <span
+                                        t-if="group_lines[g_line].total_qty"
+                                        t-esc="'/ ' + group_lines[g_line].total_qty"
+                                    />
+                                </span>
+                                <span
+                                    t-if="groups.group_uom"
+                                    t-esc="group_lines[g_line].product_uom_id[1]"
+                                />
+                            </div>
+                            <div
+                                t-if="group_lines[g_line].product_id.tracking !== 'none'"
+                            >
+                                <i class="fa fa-barcode" />
+                                <span class="o_line_lot_name">
+                                    <t
+                                        t-if="group_lines[g_line].lot_name"
+                                        t-esc="group_lines[g_line].lot_name"
+                                    />
+                                </span>
+                                <span class="o_line_lot_id">
+                                    <t
+                                        t-if="! group_lines[g_line].lot_name &amp;&amp; group_lines[g_line].lot_id &amp;&amp; group_lines[g_line].lot_id[1]"
+                                        t-esc="group_lines[g_line].lot_id[1]"
+                                    />
+                                </span>
+                            </div>
+                        </div>
+                        <div
+                            t-if="state != 'done' and state != 'cancel' and (group_lines[g_line].product_id.tracking !== 'serial')"
+                            class="o_barcode_line_actions d-flex align-items-center pl-4"
+                        >
+                            <a class="o_edit text-muted" href="#" title="Edit"><i
+                                    class="fa fa-2x fa-pencil"
+                                /></a>
+                        </div>
+                        <button
+                            t-if="!isPickingRelated || (group_lines[g_line].product_id.tracking !== 'serial')"
+                            class="o_line_button o_add_unit btn btn-primary ml-2 ml-sm-4"
+                            t-att-data-reserved="(group_lines[g_line].product_uom_qty - group_lines[g_line].qty_done)"
+                        >
+                            + 1
+                        </button>
+                        <button
+                            t-if="istouchSupported &amp;&amp; isPickingRelated &amp;&amp; (group_lines[g_line].product_id.tracking !== 'serial')"
+                            class="o_line_button o_add_reserved btn btn-primary ml-2 ml-sm-4"
+                            t-att-data-reserved="(group_lines[g_line].product_uom_qty - group_lines[g_line].qty_done)"
+                        >
+                            <t
+                                t-esc="'+ ' + (group_lines[g_line].product_uom_qty - group_lines[g_line].qty_done)"
+                            />
+                        </button>
+                    </div>
+                </t>
+            </t>
+        </t>
+        <t t-jquery='t[t-as="line"] > div.o_barcode_line' t-operation="attributes">
+            <attribute
+                name="t-attf-data-product-id"
+            >#{show_group_lines and line.product_id.id or ''}</attribute>
+            <attribute
+                name="t-attf-style"
+            >#{show_group_lines and 'display: none !important' or ' ' }</attribute>
+        </t>
+    </t>
+</templates>

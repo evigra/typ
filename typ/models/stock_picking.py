@@ -1,5 +1,5 @@
 from odoo import _, api, fields, models
-from odoo.exceptions import UserError
+from odoo.exceptions import UserError, ValidationError
 
 
 class StockPicking(models.Model):
@@ -138,8 +138,10 @@ class StockPicking(models.Model):
         return res
 
     def button_validate(self):
-        """Validates internal movements so that when a movement is generated,
-        do not allow to customers or suppliers
+        """
+        - Validates internal movements so that when a movement is generated,
+        do not allow to customers or suppliers.
+        - Validates that a picking cannot be processed if has items that weren't ordered.
         """
         internal_pickings = self.filtered(lambda pick: pick.picking_type_id.code == "internal")
         unallowed_locations = ("customer", "supplier")
@@ -156,4 +158,24 @@ class StockPicking(models.Model):
                         "please contact them."
                     )
                 )
+
+            products_per_picking = picking.mapped("move_line_ids.product_id")
+
+            for product in products_per_picking:
+                qty_done, required_qty = 0, 0
+                lines_with_product = picking.move_line_ids.filtered(lambda l: l.product_id == product)
+                for line in lines_with_product:
+                    qty_done += line.qty_done
+                    required_qty += line.product_uom_qty
+
+                if qty_done > required_qty:
+                    raise ValidationError(
+                        _(
+                            "You cannot validate more products than were ordered.\n\n"
+                            "Product: %s\n"
+                            "Required quantity: %s\n"
+                            "Processed quantity: %s" % (product.name, required_qty, qty_done)
+                        )
+                    )
+
         return super().button_validate()

@@ -41,7 +41,7 @@ class TypCase:
     def create_sale_order(self, partner=None, team=None, pricelist=None, **line_kwargs):
         if partner is None:
             partner = self.customer
-        sale_order = Form(self.env["sale.order"])
+        sale_order = Form(self.env["sale.order"].sudo())
         sale_order.partner_id = partner
         sale_order.stocksale = True
         if team is not None:
