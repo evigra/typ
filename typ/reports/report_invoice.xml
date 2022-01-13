@@ -33,6 +33,14 @@
                 t-set="is_cfdi_signed"
                 t-value="bool(o._get_l10n_mx_edi_signed_edi_document())"
             />
+            <t
+                t-set="font_size_subtitles"
+                t-value="'font-size: %dpx;' % (15 if report_type == 'html' else 16)"
+            />
+            <t
+                t-set="font_size_body"
+                t-value="'font-size: %dpx;' % (12 if report_type == 'html' else 16)"
+            />
             <div class="row">
                 <div class="col-3" style="margin: 0px; padding: 0px;">
                     <img
@@ -42,7 +50,7 @@
                     />
                 </div>
                 <div class="offset-3 col-6 text-right">
-                    <div class="row" style="font-size: 12;">
+                    <div class="row" t-attf-style="#{font_size_subtitles}">
                         <div
                             class="col-4 text-center bg-primary-typ"
                             style="border-top-left-radius: 0.4em; padding-top: 0.0em;"
@@ -87,7 +95,7 @@
                         </div>
                         <div
                             class="col-8 text-center"
-                            style="padding-top: 1.0em; font-size: 10;"
+                            t-attf-style="padding-top: 1.0em; #{font_size_body}"
                         >
                             <t t-if="is_cfdi_signed">
                                 <t
@@ -115,7 +123,7 @@
                     >A signature of this invoice is required, but it is not signed.</h1>
                 </div>
             </t>
-            <div class="row" style="padding-top: 0.5em; font-size: 12;">
+            <div class="row" t-attf-style="padding-top: 0.5em; #{font_size_subtitles}">
                 <div class="col-5" style="padding-left: 0.0em; padding-right: 0.2em;">
                     <div
                         class="text-center bg-primary-typ"
@@ -145,7 +153,7 @@
                 <div class="col-5" style="padding-left: 0.0em; padding-right: 0.2em;">
                     <div
                         class="text-center"
-                        style="border-bottom-right-radius: 0.4em; border-bottom-left-radius: 0.4em; border: 2px solid #deeff5; padding-top: 0.0em; font-size: 10;"
+                        t-attf-style="border-bottom-right-radius: 0.4em; border-bottom-left-radius: 0.4em; border: 2px solid #deeff5; padding-top: 0.0em; #{font_size_body}"
                     >
                         <span t-esc="o.name" />
                     </div>
@@ -153,7 +161,7 @@
                 <div class="col-4" style="padding-right: 0.2em; padding-left: 0.2em;">
                     <div
                         class="text-center"
-                        style="border-bottom-right-radius: 0.4em; border-bottom-left-radius: 0.4em; border: 2px solid #deeff5; padding-top: 0.0em; font-size: 10;"
+                        t-attf-style="border-bottom-right-radius: 0.4em; border-bottom-left-radius: 0.4em; border: 2px solid #deeff5; padding-top: 0.0em; #{font_size_body}"
                     >
                         <t t-if="is_cfdi_signed">
                             <span t-esc="cfdi_vals.get('fiscal_regime')" />
@@ -163,13 +171,13 @@
                 <div class="col-3" style="padding-right: 0.0em; padding-left: 0.2em;">
                     <div
                         class="text-center"
-                        style="border-bottom-right-radius: 0.4em; border-bottom-left-radius: 0.4em; border: 2px solid #deeff5; padding-top: 0.0em; font-size: 10;"
+                        t-attf-style="border-bottom-right-radius: 0.4em; border-bottom-left-radius: 0.4em; border: 2px solid #deeff5; padding-top: 0.0em; #{font_size_body}"
                     >
                         <span t-field="o.invoice_payment_term_id" />
                     </div>
                 </div>
             </div>
-            <div class="row" style="padding-top: 0.5em; font-size: 12;">
+            <div class="row" t-attf-style="padding-top: 0.5em; #{font_size_subtitles}">
                 <div class="col-4" style="padding-right: 0.2em; padding-left: 0.0em;">
                     <div
                         class="text-center bg-primary-typ"
@@ -195,10 +203,10 @@
                     </div>
                 </div>
             </div>
-            <div class="row" style="font-size: 10;">
+            <div class="row pb-1" t-attf-style="#{font_size_body}">
                 <div class="col-4" style="padding-right: 0.2em; padding-left: 0.0em;">
                     <div
-                        class="text-left"
+                        class="text-left px-1 pb-1 h-100"
                         style="border-bottom-right-radius: 0.4em; border-bottom-left-radius: 0.4em; border: 2px solid #deeff5; padding-top: 0.0em;"
                     >
                         <div>
@@ -230,7 +238,7 @@
                 </div>
                 <div class="col-4" style="padding-right: 0.0em; padding-left: 0.2em;">
                     <div
-                        class="text-center"
+                        class="text-center px-1 pb-1 h-100"
                         style="border-bottom-right-radius: 0.4em; border-bottom-left-radius: 0.4em; border: 2px solid #deeff5; padding-top: 0.0em;"
                     >
                         <div>
@@ -253,7 +261,6 @@
                             <span t-esc="o.partner_id.state_id.name" />
                             <span t-esc="o.partner_id.country_id.name" />
                         </div>
-                        <br />
                         <div>
                             <strong
                                 t-esc="('RFC. %s') % o.l10n_mx_edi_cfdi_customer_rfc"
@@ -263,7 +270,7 @@
                 </div>
                 <div class="col-4" style="padding-right: 0.0em; padding-left: 0.2em;">
                     <div
-                        class="text-right"
+                        class="text-right px-1 pb-1 h-100"
                         style="border-bottom-right-radius: 0.4em; border-bottom-left-radius: 0.4em; border: 2px solid #deeff5; padding-top: 0.0em;"
                     >
                         <div>
@@ -301,8 +308,6 @@
                                 t-esc="o.journal_id.l10n_mx_address_issued_id.phone"
                             />
                         </div>
-                        <br />
-                        <br />
                     </div>
                 </div>
             </div>
@@ -451,7 +456,7 @@
                     </table>
                 </div>
             </div>
-            <div class="row" style="font-size: 10;">
+            <div class="row" t-attf-style="#{font_size_body}">
                 <div class="col-12">
                     <span>Amount In Letters</span>
                 </div>
@@ -470,7 +475,10 @@
         </xpath>
         <xpath expr="//p[@t-if='o.invoice_payment_term_id']" position="replace">
             <t t-if="is_cfdi_signed">
-                <div class="row" style="padding-top: 0.5em; font-size: 12;">
+                <div
+                    class="row"
+                    t-attf-style="padding-top: 0.5em; #{font_size_subtitles}"
+                >
                     <div
                         class="col-4"
                         style="padding-left: 0.0em; padding-right: 0.2em;"
@@ -512,7 +520,7 @@
                     >
                         <div
                             class="text-center"
-                            style="border-bottom-right-radius: 0.4em; border-bottom-left-radius: 0.4em; border: 2px solid #deeff5; padding-top: 0.0em; font-size: 10;"
+                            t-attf-style="border-bottom-right-radius: 0.4em; border-bottom-left-radius: 0.4em; border: 2px solid #deeff5; padding-top: 0.0em;  #{font_size_body}"
                         >
                             <span t-esc="cfdi_vals.get('uuid', 'No identificado')" />
                         </div>
@@ -523,7 +531,7 @@
                     >
                         <div
                             class="text-center"
-                            style="border-bottom-right-radius: 0.4em; border-bottom-left-radius: 0.4em; border: 2px solid #deeff5; padding-top: 0.0em; font-size: 10;"
+                            t-attf-style="border-bottom-right-radius: 0.4em; border-bottom-left-radius: 0.4em; border: 2px solid #deeff5; padding-top: 0.0em; #{font_size_body}"
                         >
                             <t t-set="bank" t-value="o.partner_bank_id" />
                             <span
@@ -537,7 +545,7 @@
                     >
                         <div
                             class="text-center"
-                            style="border-bottom-right-radius: 0.4em; border-bottom-left-radius: 0.4em; border: 2px solid #deeff5; padding-top: 0.0em; font-size: 10;"
+                            t-attf-style="border-bottom-right-radius: 0.4em; border-bottom-left-radius: 0.4em; border: 2px solid #deeff5; padding-top: 0.0em; #{font_size_body}"
                         >
                             <span
                                 t-esc="cfdi_vals.get('certificate_number', 'No identificado')"
@@ -545,7 +553,10 @@
                         </div>
                     </div>
                 </div>
-                <div class="row" style="padding-top: 0.5em; font-size: 12;">
+                <div
+                    class="row"
+                    t-attf-style="padding-top: 0.5em; #{font_size_subtitles}"
+                >
                     <div
                         class="col-4"
                         style="padding-left: 0.0em; padding-right: 0.2em;"
@@ -587,7 +598,7 @@
                     >
                         <div
                             class="text-center"
-                            style="border-bottom-right-radius: 0.4em; border-bottom-left-radius: 0.4em; border: 2px solid #deeff5; padding-top: 0.0em; font-size: 10;"
+                            t-attf-style="border-bottom-right-radius: 0.4em; border-bottom-left-radius: 0.4em; border: 2px solid #deeff5; padding-top: 0.0em;  #{font_size_body}"
                         >
                             <t t-if="o.l10n_mx_edi_payment_method_id">
                                 <span
@@ -602,7 +613,7 @@
                     >
                         <div
                             class="text-center"
-                            style="border-bottom-right-radius: 0.4em; border-bottom-left-radius: 0.4em; border: 2px solid #deeff5; padding-top: 0.0em; font-size: 10;"
+                            t-attf-style="border-bottom-right-radius: 0.4em; border-bottom-left-radius: 0.4em; border: 2px solid #deeff5; padding-top: 0.0em; #{font_size_body}"
                         >
                             <span
                                 t-esc="time.strftime('%d/%m/%Y %H:%M:%S', time.strptime(cfdi_vals.get('stamp_date'), '%Y-%m-%d %H:%M:%S')) or 'No identificado'"
@@ -615,7 +626,7 @@
                     >
                         <div
                             class="text-center"
-                            style="border-bottom-right-radius: 0.4em; border-bottom-left-radius: 0.4em; border: 2px solid #deeff5; padding-top: 0.0em; font-size: 10;"
+                            t-attf-style="border-bottom-right-radius: 0.4em; border-bottom-left-radius: 0.4em; border: 2px solid #deeff5; padding-top: 0.0em; #{font_size_body}"
                         >
                             <span
                                 t-esc="cfdi_vals.get('certificate_sat_number', 'No identificado')"
@@ -623,7 +634,10 @@
                         </div>
                     </div>
                 </div>
-                <div class="row" style="padding-top: 0.5em; font-size: 12;">
+                <div
+                    class="row"
+                    t-attf-style="padding-top: 0.5em; #{font_size_subtitles}"
+                >
                     <div
                         class="col-6"
                         style="padding-left: 0.0em; padding-right: 0.2em;"
@@ -654,7 +668,7 @@
                     >
                         <div
                             class="text-center"
-                            style="border-bottom-right-radius: 0.4em; border-bottom-left-radius: 0.4em; border: 2px solid #deeff5; padding-top: 0.0em; font-size: 10;"
+                            t-attf-style="border-bottom-right-radius: 0.4em; border-bottom-left-radius: 0.4em; border: 2px solid #deeff5; padding-top: 0.0em; #{font_size_body}"
                         >
                             <t
                                 t-set="payment_method"
@@ -677,7 +691,7 @@
                     >
                         <div
                             class="text-center"
-                            style="border-bottom-right-radius: 0.4em; border-bottom-left-radius: 0.4em; border: 2px solid #deeff5; padding-top: 0.0em; font-size: 10;"
+                            t-attf-style="border-bottom-right-radius: 0.4em; border-bottom-left-radius: 0.4em; border: 2px solid #deeff5; padding-top: 0.0em; #{font_size_body}"
                         >
                             <t t-if="cfdi_vals.get('usage', False)">
                                 <span t-esc="cfdi_vals['usage']" /> - <span
@@ -688,7 +702,10 @@
                     </div>
                 </div>
                 <t t-if="o.l10n_mx_edi_origin">
-                    <div class="row" style="padding-top: 0.5em; font-size: 12;">
+                    <div
+                        class="row"
+                        t-attf-style="padding-top: 0.5em; #{font_size_subtitles}"
+                    >
                         <div
                             class="col-6"
                             style="padding-left: 0.0em; padding-right: 0.2em;"
@@ -720,7 +737,7 @@
                             >
                                 <div
                                     class="text-center"
-                                    style="border-bottom-right-radius: 0.4em; border-bottom-left-radius: 0.4em; border: 2px solid #deeff5; padding-top: 0.0em; font-size: 10;"
+                                    t-attf-style="border-bottom-right-radius: 0.4em; border-bottom-left-radius: 0.4em; border: 2px solid #deeff5; padding-top: 0.0em; #{font_size_body}"
                                 >
                                     <span t-esc="o.l10n_mx_edi_origin[3:]" />
                                 </div>
@@ -731,7 +748,7 @@
                             >
                                 <div
                                     class="text-center"
-                                    style="border-bottom-right-radius: 0.4em; border-bottom-left-radius: 0.4em; border: 2px solid #deeff5; padding-top: 0.0em; font-size: 10;"
+                                    t-attf-style="border-bottom-right-radius: 0.4em; border-bottom-left-radius: 0.4em; border: 2px solid #deeff5; padding-top: 0.0em; #{font_size_body}"
                                 >
                                     <t
                                         t-set="edi_origin"
