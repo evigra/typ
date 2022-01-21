@@ -191,6 +191,7 @@ MODELS_TO_DELETE = (
 MODULES_TO_CLEAN = [
     "dev_invoice_multi_payment",
     "l10n_mx_edi_bank_statement",
+    "l10n_mx_edi_cancellation_fields",
     "l10n_mx_edi_vendor_bills",
     "l10n_mx_edi_bank",
     "l10n_mx_pos_cogs",
