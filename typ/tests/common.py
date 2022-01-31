@@ -73,6 +73,14 @@ class TypCase:
                 line.product_qty = quantity
                 line.price_unit = price
 
+    def create_employee(self, name="John Doe", birthday=None):
+        employee = Form(self.env["hr.employee"])
+        employee.name = name
+        employee.tz = self.env.user.tz
+        if birthday:
+            employee.birthday = birthday
+        return employee.save()
+
     def assign_lots(self, move, lot_names):
         action_detailed_operation = move.action_show_details()
         move = move.with_context(action_detailed_operation["context"])

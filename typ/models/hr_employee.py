@@ -1,3 +1,5 @@
+from dateutil.relativedelta import relativedelta
+
 from odoo import api, fields, models
 
 
@@ -65,13 +67,12 @@ class HrEmployee(models.Model):
         groups="hr.group_hr_user",
     )
 
-    @api.depends("birthday")
+    @api.depends("birthday", "tz")
     def _compute_age(self):
         """Obtain an integer number from birthday to get age"""
         for employee in self:
-            if employee.birthday:
-                today_birth = fields.Date.from_string(employee.birthday)
-                today = fields.Date.from_string(fields.Date.today())
-                employee.age = (
-                    today.year - today_birth.year - ((today.month, today.day) < (today_birth.month, today_birth.day))
-                )
+            tz = employee.tz or employee.user_id.tz or self.env.user.tz
+            employee = employee.with_context(tz=tz)
+            today = fields.Date.context_today(employee)
+            birthday = employee.birthday or today
+            employee.age = relativedelta(today, birthday).years
