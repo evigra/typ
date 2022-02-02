@@ -6241,11 +6241,6 @@ msgid "Supplier Invoice Number"
 msgstr "Número de factura de proveedor"
 
 #. module: typ
-#: model:ir.model.fields,field_description:typ.field_sale_order_line__purchase_partner_id
-msgid "Supplier for purchase"
-msgstr "Proveedor para la compra"
-
-#. module: typ
 #: model:ir.model.fields,field_description:typ.field_purchase_order__supply_commitment_date
 msgid "Supply Commitment Date"
 msgstr "Fecha compromiso de proveeduría"
@@ -7454,6 +7449,11 @@ msgid "Valid"
 msgstr ""
 
 #. module: typ
+#: model:ir.model.fields,field_description:typ.field_sale_order_line__valid_seller_ids
+msgid "Valid sellers"
+msgstr "Vendedores válidos"
+
+#. module: typ
 #: model_terms:ir.ui.view,arch_db:typ.guide_form_view
 msgid "Validate"
 msgstr ""
@@ -7487,6 +7487,11 @@ msgstr "Factura del Vendedor"
 #: model_terms:ir.ui.view,arch_db:typ.report_invoice_document
 msgid "Vendor Credit Note"
 msgstr "Nota de Crédito del Vendedor"
+
+#. module: typ
+#: model:ir.model.fields,field_description:typ.field_sale_order_line__purchase_partner_id
+msgid "Vendor for purchase"
+msgstr "Proveedor para la compra"
 
 #. module: typ
 #: model:product.public.category,name:typ.ventilation

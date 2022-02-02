@@ -13,6 +13,7 @@ class TypCase:
         self.group_user = self.env.ref("base.group_user")
         self.customer = self.env.ref("base.res_partner_12")
         self.vendor = self.env.ref("base.res_partner_2")
+        self.vendor2 = self.env.ref("base.res_partner_3")
         self.product = self.env.ref("product.product_product_16")
         self.product_cost = self.env.ref("typ.product_landing_cost")
         self.product_serial = self.env.ref("mrp.product_product_computer_desk")
@@ -27,6 +28,8 @@ class TypCase:
         self.journal_bills = self.env["account.journal"].search([("name", "=", "Vendor Bills")], limit=1)
         self.journal_guide = self.env.ref("typ.journal_cost_guide")
         self.warehouse_test1 = self.env.ref("typ.whr_test_01")
+        self.orderpoint = self.env.ref("typ.stock_warehouse_orderpoint_1")
+        self.route_buy = self.env.ref("purchase_stock.route_warehouse0_buy")
         self.usd = self.env.ref("base.USD")
         self.mxn = self.env.ref("base.MXN")
         self.today = fields.Date.context_today(self.company)
@@ -43,7 +46,7 @@ class TypCase:
         self.create_so_line(sale_order, **line_kwargs)
         return sale_order
 
-    def create_so_line(self, sale_order, product=None, quantity=1, price=100):
+    def create_so_line(self, sale_order, product=None, quantity=1, price=100, vendor=None):
         if product is None:
             product = self.product
         with Form(sale_order) as so:
@@ -51,6 +54,21 @@ class TypCase:
                 line.product_id = product
                 line.product_uom_qty = quantity
                 line.price_unit = price
+                if vendor is not None:
+                    line.route_id = self.route_buy
+                    line.purchase_partner_id = vendor
+                    self.fill_so_delivery_fields(so)
+
+    def fill_so_delivery_fields(self, sale_order):
+        sale_order.delivery_promise = self.today
+        sale_order.shipping_to = "cliente"
+        sale_order.partial_supply = "no"
+        sale_order.type_of_import = "na"
+        sale_order.shipping_by = "paquetexpress"
+        sale_order.purchase_currency = sale_order.currency_id
+        sale_order.special_discounts = "N/A"
+        sale_order.notest = "A few notes"
+        return sale_order
 
     def create_purchase_order(self, partner=None, shipment_date=None, **line_kwargs):
         if partner is None:

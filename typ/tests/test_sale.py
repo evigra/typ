@@ -54,3 +54,55 @@ class TestSale(TypTransactionCase):
         self.customer.property_account_position_id = customer_fiscal_position
         sale_order = self.create_sale_order(team=self.salesteam_europe)
         self.assertEqual(sale_order.fiscal_position_id, self.fiscal_position_foreign)
+
+    def test_04_special_so(self):
+        """Test creation a special sale order, i.e. an SO that creates a purchase order with a specific vendor"""
+        # Create an SO with two lines using two different vendors
+        sale_order = self.create_sale_order(vendor=self.vendor, quantity=5)
+        self.create_so_line(sale_order, vendor=self.vendor2, quantity=3)
+        sale_order.action_confirm()
+        self.assertEqual(sale_order.state, "sale")
+
+        # There should be two new purchase orders, one per vendor
+        purchase_orders = self.env["purchase.order"].search(
+            [
+                ("create_date", ">=", sale_order.create_date),
+            ],
+            order="id",
+        )
+        self.assertRecordValues(
+            records=purchase_orders,
+            expected_values=[
+                {
+                    "partner_id": self.vendor.id,
+                    "currency_id": self.mxn.id,
+                    "origin": self.orderpoint.name,
+                    "picking_type_id": self.warehouse_test1.in_type_id.id,
+                },
+                {
+                    "partner_id": self.vendor2.id,
+                    "currency_id": self.mxn.id,
+                    "origin": self.orderpoint.name,
+                    "picking_type_id": self.warehouse_test1.in_type_id.id,
+                },
+            ],
+        )
+        self.assertRecordValues(
+            records=purchase_orders.order_line,
+            expected_values=[
+                {
+                    "order_id": purchase_orders[0].id,
+                    "product_id": self.product.id,
+                    "product_qty": 5.0,
+                    "price_unit": 25.0,
+                    "orderpoint_id": self.orderpoint.id,
+                },
+                {
+                    "order_id": purchase_orders[1].id,
+                    "product_id": self.product.id,
+                    "product_qty": 3.0,
+                    "price_unit": 20.0,
+                    "orderpoint_id": self.orderpoint.id,
+                },
+            ],
+        )

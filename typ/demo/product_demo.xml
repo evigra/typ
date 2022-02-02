@@ -131,6 +131,14 @@
         <field name="unspsc_code_id" ref="product_unspsc.unspsc_code_01010101" />
     </record>
 
+    <record id="product.product_product_16" model="product.product">
+        <field name="unspsc_code_id" ref="product_unspsc.unspsc_code_01010101" />
+        <field
+            name="route_ids"
+            eval="[(4, ref('purchase_stock.route_warehouse0_buy'))]"
+        />
+    </record>
+
     <record id="mrp.product_product_computer_desk" model="product.product">
         <field name="unspsc_code_id" ref="product_unspsc.unspsc_code_01010101" />
     </record>
@@ -164,6 +172,24 @@
         <field name="type">service</field>
         <field name="default_code">LANDING</field>
         <field name="landed_cost_ok" eval="True" />
+    </record>
+
+    <!-- Supplier infos -->
+
+    <record id="product.product_supplierinfo_10" model="product.supplierinfo">
+        <field name="currency_id" ref="base.MXN" />
+    </record>
+
+    <!-- Unless native supplierinfo, use product variant and empty company -->
+    <record id="product_supplierinfo_demo" model="product.supplierinfo">
+        <field
+            name="product_tmpl_id"
+            ref="product.product_product_16_product_template"
+        />
+        <field name="product_id" ref="product.product_product_16" />
+        <field name="name" ref="base.res_partner_2" />
+        <field name="company_id" eval="False" />
+        <field name="price">25</field>
     </record>
 
 </odoo>

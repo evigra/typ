@@ -38,9 +38,23 @@
                         'invisible': [('special_sale', '=', False)],
                         'required': [('special_sale', '=', True)],
                     }"
+                    context="{'res_partner_search_mode': 'supplier'}"
+                    options="{'no_create': True}"
                     groups="stock.group_adv_location"
                 />
                 <field name="special_sale" invisible="1" />
+                <field name="valid_seller_ids" invisible="1" />
+            </xpath>
+            <xpath
+                expr="//field[@name='order_line']/tree/field[@name='route_id']"
+                position="after"
+            >
+                <field
+                    name="purchase_partner_id"
+                    optional="hide"
+                    readonly="1"
+                    groups="stock.group_adv_location"
+                />
             </xpath>
             <xpath
                 expr="//field[@name='order_line']/form/group/group[2]"
