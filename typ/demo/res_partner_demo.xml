@@ -2,8 +2,22 @@
 <odoo>
 
     <record id="base.res_partner_12" model="res.partner">
-        <field name="is_strategic" eval="True" />
+        <field name="credit_status">ok</field>
         <field name="property_product_pricelist" ref="website_sale.list_christmas" />
     </record>
+
+    <!-- Fill partner's mandatory fields introduced on this module -->
+    <function model="res.partner" name="write" context="{'active_test': False}">
+        <value
+            model="res.partner"
+            eval="obj().search([('partner_type', '=', False)]).ids"
+        />
+        <value
+            eval="{
+                'partner_type': 'OC',
+                'business_activity': 'PUBLIC',
+            }"
+        />
+    </function>
 
 </odoo>

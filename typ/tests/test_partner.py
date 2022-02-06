@@ -1,4 +1,4 @@
-from odoo.tests import tagged
+from odoo.tests import Form, tagged
 
 from .common import TypTransactionCase
 
@@ -36,3 +36,35 @@ class TestPartner(TypTransactionCase):
         partner = self.env["res.partner"].create({"name": "To test Native Pricelist"})
         self.assertEqual(partner.property_product_pricelist, default_pricelist)
         self.assertNotEqual(partner.property_product_pricelist, self.pricelist)
+
+    def test_03_credit_from_warehouses(self):
+        """Check credit limit computation
+
+        Credit limit should:
+        - Be computed with the sum of credit limits available in all wharehouses
+        - Be readonly if there's more than one warehouse
+        - When editable, it should update the related warehouse configuration
+        """
+        # Credit limit should be 3000 (2000 + 1000)
+        self.assertEqual(self.customer.credit_limit, 3000.0)
+        self.assertEqual(
+            self.customer.res_warehouse_ids.mapped("credit_limit"),
+            [2000.0, 1000.0],
+        )
+
+        # If updating credit limit on one of the warehouse configs, partner's value should be recomputed
+        self.customer.res_warehouse_ids[1].credit_limit = 500.0
+        self.assertEqual(self.customer.credit_limit, 2500.0)
+
+        # Credit limit should be readonly, as there are more than one warehouse config
+        error_msg = "can't write on readonly field credit_limit"
+        with Form(self.customer) as partner, self.assertRaisesRegex(AssertionError, error_msg):
+            partner.credit_limit = 2200.0
+
+        # But if there's only one warehouse config, it should be editable and it should update the config
+        self.customer.res_warehouse_ids[1].unlink()
+        self.assertEqual(self.customer.credit_limit, 2000.0)
+        with Form(self.customer) as partner:
+            partner.credit_limit = 4000.0
+        self.assertEqual(self.customer.credit_limit, 4000.0)
+        self.assertEqual(self.customer.res_warehouse_ids.credit_limit, 4000.0)

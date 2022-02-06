@@ -11,6 +11,7 @@ class TypCase:
         self.uid = self.user_admin
         self.group_admin = self.env.ref("base.group_system")
         self.group_user = self.env.ref("base.group_user")
+        self.group_validate_credit = self.env.ref("credit_management.allow_to_validate_credit_limit")
         self.customer = self.env.ref("base.res_partner_12")
         self.vendor = self.env.ref("base.res_partner_2")
         self.vendor2 = self.env.ref("base.res_partner_3")
@@ -28,6 +29,7 @@ class TypCase:
         self.journal_bills = self.env["account.journal"].search([("name", "=", "Vendor Bills")], limit=1)
         self.journal_guide = self.env.ref("typ.journal_cost_guide")
         self.warehouse_test1 = self.env.ref("typ.whr_test_01")
+        self.warehouse_test2 = self.env.ref("typ.whr_test_02")
         self.orderpoint = self.env.ref("typ.stock_warehouse_orderpoint_1")
         self.route_buy = self.env.ref("purchase_stock.route_warehouse0_buy")
         self.usd = self.env.ref("base.USD")

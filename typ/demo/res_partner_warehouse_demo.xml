@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+
+    <record id="res_partner_wh_01" model="res.partner.warehouse">
+        <field name="warehouse_id" ref="whr_test_01" />
+        <field name="credit_limit" eval="2000.0" />
+        <field name="partner_id" ref="base.res_partner_12" />
+    </record>
+
+    <record id="res_partner_wh_02" model="res.partner.warehouse">
+        <field name="warehouse_id" ref="whr_test_02" />
+        <field name="credit_limit" eval="1000.0" />
+        <field name="partner_id" ref="base.res_partner_12" />
+    </record>
+
+</odoo>

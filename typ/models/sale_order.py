@@ -152,6 +152,14 @@ class SaleOrder(models.Model):
         """
         return {}
 
+    def _check_credit_limit(self):
+        """Pass warehouse by context so it's considered when computing credit limit"""
+        res = True
+        for order in self:
+            order = order.with_context(credit_limit_warehouse_id=order.warehouse_id.id)
+            res = super(SaleOrder, order)._check_credit_limit()
+        return res
+
     def action_invoice_create(self, grouped=False, final=False):
         """Inherited method, to add picking name in origin field to the
         dict of values to create the new invoice for a sales order.

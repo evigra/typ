@@ -20,6 +20,7 @@ def migrate(cr, version):
     create_missing_edi_payments(cr)
     set_pay_account_cash_journals(cr)
     set_missing_company_stock_locations(cr)
+    remove_inconsistent_partner_warehouse(cr)
 
 
 def rename_extids_typ_modules(cr):
@@ -514,3 +515,52 @@ def set_missing_company_stock_locations(cr):
         cr.rowcount,
         len(location_ids),
     )
+
+
+def remove_inconsistent_partner_warehouse(cr):
+    """Remove inconsistent partner warehouse configurations
+
+    This includes:
+    - Duplicated records
+    - Records without warehouse
+    - Records without partner
+    """
+    # Remove duplicates
+    cr.execute(
+        """
+        WITH duplicate_partner_warehouse AS (
+            SELECT
+                MIN(id) AS original_id,
+                partner_id,
+                warehouse_id
+            FROM
+                res_partner_warehouse
+            GROUP BY
+                partner_id,
+                warehouse_id
+            HAVING
+                COUNT(*) > 1
+        )
+        DELETE FROM
+            res_partner_warehouse AS config
+        USING
+            duplicate_partner_warehouse AS duplicate
+        WHERE
+            config.partner_id = duplicate.partner_id
+            AND config.warehouse_id = duplicate.warehouse_id
+            AND config.id != duplicate.original_id;
+        """
+    )
+    _logger.info("Removed %d duplicated partner warehouse configurations", cr.rowcount)
+
+    # Remove missing partner or warehouse
+    cr.execute(
+        """
+        DELETE FROM
+            res_partner_warehouse
+        WHERE
+            partner_id IS NULL
+            OR warehouse_id IS NULL;
+        """
+    )
+    _logger.info("Removed %d partner warehouse configurations without partner or warehouse", cr.rowcount)

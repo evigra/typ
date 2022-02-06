@@ -1,4 +1,4 @@
-from odoo.exceptions import ValidationError
+from odoo.exceptions import UserError, ValidationError
 from odoo.tests import Form, tagged
 
 from .common import TypTransactionCase
@@ -6,6 +6,18 @@ from .common import TypTransactionCase
 
 @tagged("sale")
 class TestSale(TypTransactionCase):
+    def create_invoices_from_sale_orders(self, sale_orders):
+        ctx = {
+            "active_model": sale_orders._name,
+            "active_ids": sale_orders.ids,
+            "active_id": sale_orders[0].id,
+            "open_invoices": True,
+        }
+        wizard = self.env["sale.advance.payment.inv"].with_context(**ctx).create({})
+        wizard_res = wizard.create_invoices()
+        invoices = self.env[wizard_res["res_model"]].browse(wizard_res["res_id"])
+        return invoices
+
     def test_01_sale_flow(self):
         sale_order = self.create_sale_order()
         self.assertRecordValues(
@@ -106,3 +118,51 @@ class TestSale(TypTransactionCase):
                 },
             ],
         )
+
+    def test_05_credit_limit(self):
+        """Test the multi-warehouse credit limit feature for sales"""
+        self.env.user.groups_id -= self.group_validate_credit
+
+        # Global credit limit is 3000, but only 2000 for the current warehouse.
+        # If using 2500, it should fail
+        sale_order = self.create_sale_order(price=2500)
+        error_msg = "has exceeded the credit limit. Credit available to use is %s"
+        with self.assertRaisesRegex(UserError, error_msg % "2,000.00"):
+            sale_order.action_confirm()
+
+        # In 2nd warehouse, it should be 1000
+        with Form(sale_order) as so:
+            so.warehouse_id = self.warehouse_test2
+        with self.assertRaisesRegex(UserError, error_msg % "1,000.00"):
+            sale_order.action_confirm()
+
+        # But if using 1500 in 1st warehouse, it should succeed
+        sale_order = self.create_sale_order(price=1500)
+        sale_order.action_confirm()
+        self.assertEqual(sale_order.state, "sale")
+
+        # Create invoice from order
+        invoice = self.create_invoices_from_sale_orders(sale_order)
+        self.assertRecordValues(
+            records=invoice,
+            expected_values=[
+                {
+                    "invoice_origin": sale_order.name,
+                    "state": "draft",
+                    "amount_untaxed": 1500.0,
+                },
+            ],
+        )
+
+        # Try to invoice 2500, it should fail as did the sale order
+        with Form(invoice) as inv, inv.invoice_line_ids.edit(0) as inv_line:
+            inv_line.price_unit = 2500.0
+        invoice.action_post()
+        self.assertEqual(invoice.state, "draft")
+        self.assertIn(error_msg % 2000.0, invoice.message_ids[0].body)
+
+        # If going back to invoice 1500, it should succeed
+        with Form(invoice) as inv, inv.invoice_line_ids.edit(0) as inv_line:
+            inv_line.price_unit = 1500.0
+        invoice.action_post()
+        self.assertEqual(invoice.state, "posted")

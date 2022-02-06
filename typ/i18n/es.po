@@ -103,6 +103,12 @@ msgid ""
 msgstr ""
 
 #. module: typ
+#: model:ir.model.fields,field_description:typ.field_res_partner__res_warehouse_count
+#: model:ir.model.fields,field_description:typ.field_res_users__res_warehouse_count
+msgid "# Warehouse Configurations"
+msgstr "# Configuraciones de almacén"
+
+#. module: typ
 #: model_terms:ir.ui.view,arch_db:typ.my_invoices
 msgid "#Credit Note"
 msgstr ""
@@ -2103,7 +2109,7 @@ msgstr "Opciones de configuración"
 #. module: typ
 #: model:ir.model.fields,help:typ.field_res_partner__res_warehouse_ids
 #: model:ir.model.fields,help:typ.field_res_users__res_warehouse_ids
-msgid "Configurate salesman and credit limit to each warehouse"
+msgid "Configurate salesperson and credit limit to each warehouse."
 msgstr "Configurar vendedor y límite de crédito para cada almacén."
 
 #. module: typ
@@ -4914,6 +4920,11 @@ msgid "Partner Type"
 msgstr "Tipo de Empresa"
 
 #. module: typ
+#: model:ir.model,name:typ.model_res_partner_warehouse
+msgid "Partner Warehouse Configuration"
+msgstr "Configuración de almacén de empresa"
+
+#. module: typ
 #: model:ir.model.fields,help:typ.field_stock_landed_cost_guide__partner_id
 msgid "Partner associated to this guide"
 msgstr "Contacto asociado a esta guía"
@@ -5935,12 +5946,6 @@ msgid "Set the product"
 msgstr "Configurar el producto"
 
 #. module: typ
-#: model:ir.model.fields,help:typ.field_product_stock_warehouse__warehouse_id
-#: model:ir.model.fields,help:typ.field_res_partner_warehouse__warehouse_id
-msgid "Set the warehouse"
-msgstr "Configurar el almacén"
-
-#. module: typ
 #: model_terms:ir.ui.view,arch_db:typ.loyalty
 msgid "Shared Ads"
 msgstr ""
@@ -6329,7 +6334,6 @@ msgstr "Título"
 #: model:ir.model,name:typ.model_report_typ_rack_label_extra_zebra_view
 #: model:ir.model,name:typ.model_report_typ_rack_label_medium_zebra_view
 #: model:ir.model,name:typ.model_report_typ_rack_label_zebra_view
-#: model:ir.model,name:typ.model_res_partner_warehouse
 #: model:ir.model,name:typ.model_stock_manual_transfer
 msgid "TODO: Once talk with the team describe it for v14.0"
 msgstr ""
@@ -6612,14 +6616,6 @@ msgstr ""
 "¡No hay líneas de guía!\n"
 "\n"
 "Por favor, cree líneas de guía antes de validar este documento."
-
-#. module: typ
-#: code:addons/typ/models/res_partner.py:0
-#, python-format
-msgid ""
-"There is more than one configuration for warehouse %s. It must have only one"
-" configuration for each warehouse"
-msgstr "Hay más de una configuración para el almacén %s. debe poseer solo una configuración para cada almacén"
 
 #. module: typ
 #: model_terms:ir.ui.view,arch_db:typ.aboutus
@@ -7592,10 +7588,15 @@ msgid "Warehouse Settings"
 msgstr ""
 
 #. module: typ
+#: model:ir.model.constraint,message:typ.constraint_res_partner_warehouse_partner_warehouse_unic
+msgid "Warehouse configuration must be unique per warehouse and partner."
+msgstr "La configuración de almacén debe ser única por almacén y empresa."
+
+#. module: typ
 #: model:ir.model.fields,field_description:typ.field_res_partner__res_warehouse_ids
 #: model:ir.model.fields,field_description:typ.field_res_users__res_warehouse_ids
-msgid "Warehouse configuration"
-msgstr ""
+msgid "Warehouse configurations"
+msgstr "Configuraciones de almacén"
 
 #. module: typ
 #: model_terms:ir.ui.view,arch_db:typ.view_partner_form

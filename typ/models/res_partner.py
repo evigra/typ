@@ -1,7 +1,5 @@
-import collections
-
 from odoo import _, api, fields, models
-from odoo.exceptions import ValidationError
+from odoo.osv import expression
 
 
 class ResPartner(models.Model):
@@ -101,9 +99,43 @@ class ResPartner(models.Model):
     res_warehouse_ids = fields.One2many(
         comodel_name="res.partner.warehouse",
         inverse_name="partner_id",
-        string="Warehouse configuration",
-        help="Configurate salesman and credit limit to each warehouse",
+        string="Warehouse configurations",
+        help="Configurate salesperson and credit limit to each warehouse.",
     )
+    # Unless credit management, credit limit is not company dependent but warehouse dependent.
+    # The computed value is the sum of credit available in all warehouses and editable only if
+    # there aren't more than one warehouse configured
+    credit_limit = fields.Float(
+        company_dependent=False,
+        store=True,
+        compute="_compute_credit_limit",
+        inverse="_inverse_credit_limit",
+    )
+    res_warehouse_count = fields.Integer(
+        string="# Warehouse Configurations",
+        compute="_compute_res_warehouse_count",
+    )
+
+    @api.depends("res_warehouse_ids.credit_limit")
+    def _compute_credit_limit(self):
+        partner_warehouses = self.env["res.partner.warehouse"].read_group(
+            domain=[("partner_id", "in", self.ids)],
+            fields=["partner_id", "credit_limit"],
+            groupby=["partner_id"],
+        )
+        credits_by_partner = {w["partner_id"][0]: w["credit_limit"] for w in partner_warehouses}
+        for partner in self:
+            partner.credit_limit = credits_by_partner.get(partner.id, 0.0)
+
+    def _inverse_credit_limit(self):
+        partners_single_warehouse = self.filtered(lambda p: len(p.res_warehouse_ids) == 1)
+        for partner in partners_single_warehouse:
+            partner.res_warehouse_ids[0].credit_limit = partner.credit_limit
+
+    @api.depends("res_warehouse_ids")
+    def _compute_res_warehouse_count(self):
+        for partner in self:
+            partner.res_warehouse_count = len(partner.res_warehouse_ids)
 
     def write(self, vals):
         upgradable_before = self.filtered("upgradable")
@@ -121,20 +153,45 @@ class ResPartner(models.Model):
                 partner_ids=[(6, 0, partner.ids)],
             )
 
-    @api.constrains("res_warehouse_ids")
-    def unique_conf_partner_warehouse(self):
-        for res in self:
-            warehouse_ids = [res_wh.warehouse_id for res_wh in res.res_warehouse_ids]
-            dict_values = dict(collections.Counter(warehouse_ids))
-            for key in dict_values.keys():
-                if dict_values[key] > 1:
-                    raise ValidationError(
-                        _(
-                            "There is more than one configuration for warehouse %s. It must have only "
-                            "one configuration for each warehouse",
-                            key.name,
-                        )
-                    )
+    def _get_credit_amount(self):
+        """Consider warehouse when computing credit limit"""
+        warehouse_id = self.env.context.get("credit_limit_warehouse_id")
+        if not warehouse_id:
+            return super()._get_credit_amount()
+        partner = self.commercial_partner_id
+        partner_warehouse = self.env["res.partner.warehouse"].search(
+            [
+                ("partner_id", "=", partner.id),
+                ("warehouse_id", "=", warehouse_id),
+            ],
+            limit=1,
+        )
+        return partner_warehouse.credit_limit
+
+    def _get_total_due(self):
+        """Consider journal when filtering unreconciled journal items to compute due amount"""
+        journal_id = self.env.context.get("credit_limit_journal_id")
+        if not journal_id:
+            return super()._get_total_due()
+        unreconciled_aml_domain = self._fields["unreconciled_aml_ids"].domain.copy()
+        unreconciled_aml_domain += [
+            ("partner_id", "=", self.commercial_partner_id.id),
+            ("journal_id", "=", journal_id),
+        ]
+        unreconciled_amls = self.env["account.move.line"].read_group(
+            domain=unreconciled_aml_domain,
+            fields=["partner_id", "amount_residual"],
+            groupby=["partner_id"],
+        )
+        return unreconciled_amls[0]["amount_residual"] if unreconciled_amls else 0.0
+
+    def _get_so_lines_domain_to_check_credit_limit(self):
+        """Consider warehouse when retrieving sale order lines on which amount for credit will be computed"""
+        domain = super()._get_so_lines_domain_to_check_credit_limit()
+        warehouse_id = self.env.context.get("credit_limit_warehouse_id")
+        if warehouse_id:
+            domain = expression.AND([domain, [("warehouse_id", "=", warehouse_id)]])
+        return domain
 
     @api.model
     def _merge_partner(self, form_data):

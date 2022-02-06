@@ -205,3 +205,15 @@ class AccountMove(models.Model):
             }
         attachment_id = self.env["ir.attachment"].create(values)
         return attachment_id
+
+    def _check_credit_limit(self):
+        """Pass warehouse and journal by context so they're considered when computing credit limit"""
+        wo_credit = self.browse()
+        for invoice in self:
+            ctx = {
+                "credit_limit_warehouse_id": invoice.team_id.default_warehouse_id.id,
+                "credit_limit_journal_id": invoice.journal_id.id,
+            }
+            invoice = invoice.with_context(**ctx)
+            wo_credit |= super(AccountMove, invoice)._check_credit_limit()
+        return wo_credit
