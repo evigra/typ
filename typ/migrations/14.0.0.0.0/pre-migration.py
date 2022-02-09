@@ -1,5 +1,7 @@
 import logging
 
+from psycopg2.extensions import AsIs
+
 from odoo import tools
 
 _logger = logging.getLogger(__name__)
@@ -21,6 +23,7 @@ def migrate(cr, version):
     set_pay_account_cash_journals(cr)
     set_missing_company_stock_locations(cr)
     remove_inconsistent_partner_warehouse(cr)
+    fix_column_names_m2m_partner_pricelists(cr)
 
 
 def rename_extids_typ_modules(cr):
@@ -488,6 +491,8 @@ def set_missing_company_stock_locations(cr):
         """
     )
     location_ids = tuple(x[0] for x in cr.fetchall())
+    if not location_ids:
+        return
     _logger.info("Missing company was set for %d locations", len(location_ids))
     cr.execute(
         """
@@ -564,3 +569,30 @@ def remove_inconsistent_partner_warehouse(cr):
         """
     )
     _logger.info("Removed %d partner warehouse configurations without partner or warehouse", cr.rowcount)
+
+
+def fix_column_names_m2m_partner_pricelists(cr):
+    """Fix column names on partner pricelists m2m table
+
+    Column names are inverted on the relational table created to associate partners with pricelist
+    (many2many field). ``partner_id`` points to pricelists and ``pricelist_id`` points to partners.
+    """
+    # First let's use a proper table name, which also ensures no renaming will be performed
+    # if it was already renamed
+    old_table = "pricelist_section_rel"
+    new_table = "partner_pricelist_rel"
+    if not tools.table_exists(cr, old_table):
+        return
+    cr.execute(
+        "ALTER TABLE %s RENAME TO %s;",
+        [AsIs(old_table), AsIs(new_table)],
+    )
+
+    columns_to_rename = [
+        ("partner_id", "tmp_swap"),
+        ("pricelist_id", "partner_id"),
+        ("tmp_swap", "pricelist_id"),
+    ]
+    for old_column, new_column in columns_to_rename:
+        tools.rename_column(cr, new_table, old_column, new_column)
+    _logger.info("Renamed columns of relational table for partners and pricelists")

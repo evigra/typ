@@ -7,9 +7,9 @@ class ResPartner(models.Model):
 
     pricelist_ids = fields.Many2many(
         "product.pricelist",
-        "pricelist_section_rel",
-        "pricelist_id",
+        "partner_pricelist_rel",
         "partner_id",
+        "pricelist_id",
         string="Pricelist's partner",
         help="Choose the Pricelist that partner can see",
     )
