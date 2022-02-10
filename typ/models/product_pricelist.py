@@ -41,11 +41,12 @@ class ProductPricelist(models.Model):
         result.update(super()._get_partner_pricelist_multi(remaining_partner_ids, company_id))
         return result
 
-    def get_product_price_rule_from_ui(self, product, quantity, partner):
-        self.ensure_one()
-        product = self.env["product.product"].browse(product)
-        partner = self.env["res.partner"].browse(partner)
-        return self._compute_price_rule([(product, quantity, partner)])
+    def _get_nested_pricelists(self):
+        """Get all pricelists related to this one, i.e. nested ones"""
+        related_pricelists = self.with_context(prefetch_fields=False)
+        while related_pricelists.item_ids.base_pricelist_id - related_pricelists:
+            related_pricelists |= related_pricelists.item_ids.base_pricelist_id
+        return related_pricelists
 
     def _query_price_rule_get_items(self):
         """Order pricelist items by sequence also when they're retrieved by SQL"""

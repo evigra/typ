@@ -23,6 +23,7 @@ class TypCase:
         self.fiscal_position_foreign = self.env.ref("l10n_mx.1_account_fiscal_position_foreign")
         self.pricelist = self.env.ref("website_sale.list_benelux")
         self.pricelist_christmas = self.env.ref("website_sale.list_christmas")
+        self.pricelist_meta = self.env.ref("typ.pricelist_meta")
         self.company = self.env.ref("base.main_company")
         self.company_secondary = self.env.ref("stock.res_company_1")
         self.journal_expense = self.env["account.journal"].search([("name", "=", "Expense")], limit=1)
@@ -32,11 +33,12 @@ class TypCase:
         self.warehouse_test2 = self.env.ref("typ.whr_test_02")
         self.orderpoint = self.env.ref("typ.stock_warehouse_orderpoint_1")
         self.route_buy = self.env.ref("purchase_stock.route_warehouse0_buy")
+        self.pos_config = self.env.ref("point_of_sale.pos_config_main")
         self.usd = self.env.ref("base.USD")
         self.mxn = self.env.ref("base.MXN")
         self.today = fields.Date.context_today(self.company)
 
-    def create_sale_order(self, partner=None, team=None, **line_kwargs):
+    def create_sale_order(self, partner=None, team=None, pricelist=None, **line_kwargs):
         if partner is None:
             partner = self.customer
         sale_order = Form(self.env["sale.order"])
@@ -44,6 +46,10 @@ class TypCase:
         sale_order.stocksale = True
         if team is not None:
             sale_order.team_id = team
+        if pricelist is not None:
+            sale_order.pricelist_id = pricelist
+            # Don't change price unless provided, as we presumably want it to be taken from pricelist
+            line_kwargs.setdefault("price", False)
         sale_order = sale_order.save()
         self.create_so_line(sale_order, **line_kwargs)
         return sale_order
@@ -55,7 +61,8 @@ class TypCase:
             with so.order_line.new() as line:
                 line.product_id = product
                 line.product_uom_qty = quantity
-                line.price_unit = price
+                if price is not False:
+                    line.price_unit = price
                 if vendor is not None:
                     line.route_id = self.route_buy
                     line.purchase_partner_id = vendor

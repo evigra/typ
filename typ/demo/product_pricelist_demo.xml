@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+
+    <!-- Create two pricelist that will be nested into a meta one -->
+    <record id="pricelist_nested1" model="product.pricelist">
+        <field name="name">Nested 1</field>
+        <field name="selectable" eval="False" />
+        <field name="sequence" eval="60" />
+    </record>
+    <record id="pricelist_nested1_item1" model="product.pricelist.item">
+        <field name="pricelist_id" ref="pricelist_nested1" />
+        <field name="sequence" eval="1" />
+        <field name="applied_on">0_product_variant</field>
+        <field name="product_id" ref="mrp.product_product_computer_desk" />
+        <field name="compute_price">fixed</field>
+        <field name="fixed_price" eval="150.0" />
+    </record>
+
+    <record id="pricelist_nested2" model="product.pricelist">
+        <field name="name">Nested 2</field>
+        <field name="selectable" eval="False" />
+        <field name="sequence" eval="70" />
+    </record>
+    <record id="pricelist_nested2_item1" model="product.pricelist.item">
+        <field name="pricelist_id" ref="pricelist_nested2" />
+        <field name="sequence" eval="1" />
+        <field name="applied_on">0_product_variant</field>
+        <field name="product_id" ref="product.product_product_16" />
+        <field name="compute_price">fixed</field>
+        <field name="fixed_price" eval="200.0" />
+    </record>
+
+    <!-- The pricelist that contains the nested ones -->
+    <record id="pricelist_meta" model="product.pricelist">
+        <field name="name">Meta</field>
+        <field name="selectable" eval="True" />
+        <field name="sequence" eval="50" />
+        <field name="partner_ids" search="[]" />
+    </record>
+    <record id="pricelist_meta_item1" model="product.pricelist.item">
+        <field name="pricelist_id" ref="pricelist_meta" />
+        <field name="sequence" eval="1" />
+        <field name="compute_price">formula</field>
+        <field name="base">pricelist</field>
+        <field name="base_pricelist_id" ref="pricelist_nested1" />
+    </record>
+    <record id="pricelist_meta_item2" model="product.pricelist.item">
+        <field name="pricelist_id" ref="pricelist_meta" />
+        <field name="sequence" eval="2" />
+        <field name="compute_price">formula</field>
+        <field name="base">pricelist</field>
+        <field name="base_pricelist_id" ref="pricelist_nested2" />
+    </record>
+
+</odoo>

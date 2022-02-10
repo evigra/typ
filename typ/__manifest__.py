@@ -136,6 +136,8 @@
         "demo/stock_demo.xml",
         "demo/crm_team_demo.xml",
         "demo/product_demo.xml",
+        "demo/product_pricelist_demo.xml",
+        "demo/pos_config_demo.xml",
         "demo/res_partner_demo.xml",
         "demo/res_partner_warehouse_demo.xml",
         "demo/res_users_demo.xml",

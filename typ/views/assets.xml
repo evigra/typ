@@ -48,6 +48,10 @@
                 type="text/javascript"
                 src="/typ/static/src/js/tours/lead_from_product_tour.js"
             />
+            <script
+                type="text/javascript"
+                src="/typ/static/src/js/tours/pos_nested_pricelist_tour.js"
+            />
         </xpath>
     </template>
 

@@ -137,10 +137,14 @@
             name="route_ids"
             eval="[(4, ref('purchase_stock.route_warehouse0_buy'))]"
         />
+        <field name="sequence" eval="0" />
     </record>
 
     <record id="mrp.product_product_computer_desk" model="product.product">
         <field name="unspsc_code_id" ref="product_unspsc.unspsc_code_01010101" />
+        <field name="available_in_pos" eval="True" />
+        <field name="pos_categ_id" ref="point_of_sale.pos_category_miscellaneous" />
+        <field name="sequence" eval="0" />
     </record>
 
     <record id="product_product_whead" model="product.product">
@@ -172,6 +176,8 @@
         <field name="type">service</field>
         <field name="default_code">LANDING</field>
         <field name="landed_cost_ok" eval="True" />
+        <field name="available_in_pos" eval="True" />
+        <field name="pos_categ_id" ref="point_of_sale.pos_category_miscellaneous" />
     </record>
 
     <!-- Supplier infos -->

@@ -166,3 +166,21 @@ class TestSale(TypTransactionCase):
             inv_line.price_unit = 1500.0
         invoice.action_post()
         self.assertEqual(invoice.state, "posted")
+
+    def test_06_nested_pricelist(self):
+        """Test that prices are computed correctly for nested pricelists
+
+        Even if the product is not found in the first sub-pricelist, the system should continue looking
+        for the product in the next items.
+        """
+        # The serial product as a price of 150 on the 1st pricelist item's based pricelist
+        sale_order = self.create_sale_order(pricelist=self.pricelist_meta, product=self.product_serial)
+        self.assertEqual(sale_order.order_line.price_unit, 150.0)
+
+        # The demo product as a price of 200 on the 2st pricelist item's based pricelist
+        sale_order = self.create_sale_order(pricelist=self.pricelist_meta)
+        self.assertEqual(sale_order.order_line.price_unit, 200.0)
+
+        # The landing cost product is not on the pricelist, so it should take its sales price (75)
+        sale_order = self.create_sale_order(pricelist=self.pricelist_meta, product=self.product_cost)
+        self.assertEqual(sale_order.order_line.price_unit, 75.0)
