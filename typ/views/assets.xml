@@ -11,28 +11,7 @@
         </xpath>
     </template>
 
-    <template
-        id="assets_frontend"
-        inherit_id="website.assets_frontend"
-        name="Assets Frontend"
-    >
-        <xpath expr="//script[last()]" position="after">
-            <!-- TODO migrate to 14.0 (frontend team)
-            <script type="text/javascript" src="/typ/static/src/js/portal_account.js" />
-            <script
-                type="text/javascript"
-                src="/typ/static/src/js/edit_information.js"
-            />
-            <script type="text/javascript" src="/typ/static/src/js/shipping.js" />
-            <script type="text/javascript" src="/typ/static/src/js/favorites.js" />
-            <script type="text/javascript" src="/typ/static/src/js/share.js" />
-            <script type="text/javascript" src="/typ/static/src/js/cart.js" />
-            <script
-                type="text/javascript"
-                src="/typ/static/src/js/download_catalog.js"
-            />
-            -->
-        </xpath>
+    <template id="assets_frontend" inherit_id="website.assets_frontend">
         <xpath expr="//link[last()]" position="after">
             <link
                 href="/typ/static/src/scss/main.scss"
@@ -55,7 +34,7 @@
         </xpath>
     </template>
 
-    <template id="assets_report_common" inherit_id="web.report_assets_common">
+    <template id="report_assets_common" inherit_id="web.report_assets_common">
         <xpath expr="//link[last()]" position="after">
             <link
                 href="/typ/static/src/scss/report_templates.scss"

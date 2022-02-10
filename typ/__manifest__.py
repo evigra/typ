@@ -122,14 +122,11 @@
         "views/templates.xml",
         # Pages
         "views/pages/about.xml",
-        "views/pages/catalog.xml",
         "views/pages/contactus.xml",
         "views/pages/loyalty.xml",
         "views/pages/organizations.xml",
         "views/pages/product.xml",
         "views/pages/providers.xml",
-        "views/pages/shop.xml",
-        "views/pages/snippets.xml",
     ],
     "demo": [
         "demo/account_journal_demo.xml",

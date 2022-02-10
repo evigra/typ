@@ -8,6 +8,6 @@ export TRAVIS_PYTHON_VERSION="3.8"
 export TRAVIS_REPO_SLUG="Vauxoo/"
 export COUNTRY="MX"
 export CUSTOMER="typ"
-export COVERAGE_MIN=80
+export COVERAGE_MIN=65
 export COVERAGE_PRECISION=2
 export DOCKER_IMAGE_REPO="quay.io/vauxoo/typ"
