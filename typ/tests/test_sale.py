@@ -123,6 +123,24 @@ class TestSale(TypTransactionCase):
         """Test the multi-warehouse credit limit feature for sales"""
         self.env.user.groups_id -= self.group_validate_credit
 
+        # In a warehouse without credit, a warning should be displayed, no matters the price
+        sale_order = self.create_sale_order(price=0)
+        warning_msg = "The customer '%s' has no credit for the warehouse '%s'"
+        with Form(sale_order) as so, self.assertLogs(level="WARNING") as cm:
+            so.warehouse_id = self.warehouse_main
+            self.assertIn(
+                warning_msg % (self.customer.name, self.warehouse_main.name),
+                cm.output[0],
+            )
+
+        # A warning should also be displayed for a partner with no credit in any warehouse
+        with self.assertLogs(level="WARNING") as cm:
+            self.create_sale_order(partner=self.vendor, price=0)
+            self.assertIn(
+                warning_msg % (self.vendor.name, self.warehouse_test1.name),
+                cm.output[0],
+            )
+
         # Global credit limit is 3000, but only 2000 for the current warehouse.
         # If using 2500, it should fail
         sale_order = self.create_sale_order(price=2500)

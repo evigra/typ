@@ -6496,6 +6496,12 @@ msgid ""
 msgstr ""
 
 #. module: typ
+#: code:addons/typ/models/sale_order.py:0
+#, python-format
+msgid "The customer '%s' has no credit for the warehouse '%s'."
+msgstr "El cliente '%s' no tiene crédito para el almacén '%s'."
+
+#. module: typ
 #: model:ir.model.fields,help:typ.field_product_product__wait_time
 msgid ""
 "The delivery time according to the priority and importance of the product is"
@@ -7607,6 +7613,12 @@ msgstr ""
 #: model:ir.model.fields,help:typ.field_stock_landed_cost_guide__warehouse_id
 msgid "Warehouse which this guide belongs to"
 msgstr ""
+
+#. module: typ
+#: code:addons/typ/models/sale_order.py:0
+#, python-format
+msgid "Warning!"
+msgstr "¡Alerta!"
 
 #. module: typ
 #: model_terms:ir.ui.view,arch_db:typ.aboutus
