@@ -30,8 +30,8 @@ odoo.define("typ.LinesWidget", function (require) {
                             total_qty: line.product_uom_qty,
                             total_qty_done: line.qty_done,
                             product_uom_id: line.product_uom_id,
-                            lot_id: line.lot_id,
-                            lot_name: line.lot_name,
+                            lot_id: line.lot_id[1] || "",
+                            lot_name: line.lot_name || "",
                             tag_ids: line.tag_ids,
                         };
                     } else if (line.product_uom_qty > 0 || line.qty_done > 0) {
@@ -39,7 +39,9 @@ odoo.define("typ.LinesWidget", function (require) {
                         group_lines[line_key].line_ids.push(line.id);
                         group_lines[line_key].total_qty += line.product_uom_qty;
                         group_lines[line_key].total_qty_done += line.qty_done;
-                        group_lines[line_key].lot_id = line.lot_id;
+                        if (line.lot_id) {
+                            group_lines[line_key].lot_id += ", " + line.lot_id[1];
+                        }
                         if (line.lot_name) {
                             group_lines[line_key].lot_name += ", " + line.lot_name;
                         }
@@ -83,7 +85,7 @@ odoo.define("typ.LinesWidget", function (require) {
                     `div[data-group-product-id='${$line.data("product-id")}']`
                 );
                 for (const line of product_group_lines.toArray()) {
-                    let line_ids = $(line).data("lines-ids");
+                    let line_ids = $(line).data("line-ids");
                     try {
                         line_ids = line_ids.split(",").map(Number);
                     } catch (err) {
@@ -155,6 +157,30 @@ odoo.define("typ.LinesWidget", function (require) {
             }
 
             return data;
+        },
+
+        /**
+         * @override
+         * This function was overridden to process the edition of grouped lines with product
+         * tracking by serial, if this is the case `is_serial` and `ids` array (containing the ids
+         * of the grouped lines) are send to _onEditLine()
+         */
+        _onClickEditLine: function (ev) {
+            ev.preventDefault();
+            ev.stopPropagation();
+            const is_serial = $(ev.target).parents(".o_barcode_line").data("is-serial");
+            if (!is_serial) {
+                return this._super.apply(this, arguments);
+            }
+            let line_ids = $(ev.target).parents(".o_barcode_line").data("line-ids");
+            if (typeof line_ids === "string") {
+                line_ids = line_ids.split(",");
+                line_ids.forEach(function (id, index, lines) {
+                    lines[index] = parseInt(id, 10);
+                });
+                this.trigger_up("edit_line", {ids: line_ids, is_serial: is_serial});
+            }
+            this.trigger_up("edit_line", {id: line_ids, is_serial: is_serial});
         },
     });
 });

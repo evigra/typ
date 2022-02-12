@@ -19,7 +19,8 @@
                         t-if="show_group_lines"
                         t-att-data-id="(group_lines[g_line].line_products[0].virtual_id || group_lines[g_line].line_products[0].id)"
                         t-att-data-group-product-id="group_lines[g_line].product_id.id"
-                        t-att-data-lines-ids="group_lines[g_line].line_ids"
+                        t-att-data-line-ids="group_lines[g_line].line_ids"
+                        t-att-data-is-serial="group_lines[g_line].product_id.tracking == 'serial'"
                     >
                         <div
                             class="o_barcode_line_details flex-grow-1 flex-column flex-nowrap"
@@ -55,20 +56,20 @@
                                 <i class="fa fa-barcode" />
                                 <span class="o_line_lot_name">
                                     <t
-                                        t-if="group_lines[g_line].lot_name"
+                                        t-if="group_lines[g_line].lot_name and !group_lines[g_line].lot_id"
                                         t-esc="group_lines[g_line].lot_name"
                                     />
                                 </span>
                                 <span class="o_line_lot_id">
                                     <t
-                                        t-if="! group_lines[g_line].lot_name &amp;&amp; group_lines[g_line].lot_id &amp;&amp; group_lines[g_line].lot_id[1]"
-                                        t-esc="group_lines[g_line].lot_id[1]"
+                                        t-if="group_lines[g_line].lot_id"
+                                        t-esc="group_lines[g_line].lot_id"
                                     />
                                 </span>
                             </div>
                         </div>
                         <div
-                            t-if="state != 'done' and state != 'cancel' and (group_lines[g_line].product_id.tracking !== 'serial')"
+                            t-if="state != 'done' and state != 'cancel'"
                             class="o_barcode_line_actions d-flex align-items-center pl-4"
                         >
                             <a class="o_edit text-muted" href="#" title="Edit"><i

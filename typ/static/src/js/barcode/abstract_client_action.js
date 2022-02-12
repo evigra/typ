@@ -1,4 +1,4 @@
-odoo.define("stock_barcode.ClientAction.absa", function (require) {
+odoo.define("stock_barcode.ClientAction.typ", function (require) {
     "use strict";
 
     const ClientAction = require("stock_barcode.ClientAction");
@@ -156,6 +156,40 @@ odoo.define("stock_barcode.ClientAction.absa", function (require) {
                     return _super();
                 }
             );
+        },
+
+        /**
+         * @override
+         * This function was overridden to handle the edition of a grouped line with product tracking by
+         * serial, if this is the case an array with the ids of the grouped lines is send to
+         * _instantiateViewsWidget rather currentId, to check if a grouped line has a product with tracking by
+         * serial use the is_serial attribute on the line (this is set in the xml template). The ids array and
+         * is_serial variable comes from _onClickEditLine() function
+         */
+        _onEditLine: function (ev) {
+            ev.stopPropagation();
+            if (!ev.data.is_serial) {
+                return this._super.apply(this, arguments);
+            }
+            this.linesWidgetState = this.linesWidget.getState();
+            this.linesWidget.destroy();
+            this.headerWidget.toggleDisplayContext("specialized");
+            var self = this;
+            this.mutex.exec(function () {
+                return self._save().then(function () {
+                    const ids = ev.data.ids;
+                    const id = ev.data.id;
+                    if (ids) {
+                        self.ViewsWidget = self._instantiateViewsWidget({}, {ids: ids});
+                    } else if (id) {
+                        self.ViewsWidget = self._instantiateViewsWidget(
+                            {},
+                            {currentId: id, is_serial: true}
+                        );
+                    }
+                    return self.ViewsWidget.appendTo(self.$(".o_content"));
+                });
+            });
         },
     });
 

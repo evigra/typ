@@ -38,6 +38,14 @@
         <xpath expr="." position="inside">
             <script
                 type="text/javascript"
+                src="/typ/static/src/js/barcode/picking_client_action.js"
+            />
+            <script
+                type="text/javascript"
+                src="/typ/static/src/js/barcode/views_widget.js"
+            />
+            <script
+                type="text/javascript"
                 src="/typ/static/src/js/tours/lead_from_product_tour.js"
             />
             <script
