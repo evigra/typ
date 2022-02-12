@@ -152,22 +152,35 @@ class SaleOrder(models.Model):
         """
         return {}
 
-    @api.onchange("partner_invoice_id", "warehouse_id")  # added warehouse_id
+    @api.onchange(
+        "partner_invoice_id",
+        # The next ones are added
+        "warehouse_id",
+        "payment_term_id",
+    )
     def _onchange_partner_invoice_id(self):
         """Display a warning message when the partner has no credit for the current warehouse"""
         res = super()._onchange_partner_invoice_id()
         partner = self.partner_invoice_id.commercial_partner_id
         warehouse = self.warehouse_id
-        if res.get("warning") or not partner or not warehouse or partner.is_strategic:
+        if (
+            res.get("warning")
+            or not partner
+            or not warehouse
+            or partner.is_strategic
+            or not self.payment_term_id._requires_credit()
+        ):
             return res
         credit_limit = partner.with_context(credit_limit_warehouse_id=warehouse.id)._get_credit_limit()
         if credit_limit <= 0.0:
             res["warning"] = {
                 "title": _("Warning!"),
                 "message": _(
-                    "The customer '%s' has no credit for the warehouse '%s'.",
+                    "The customer '%s' has no credit for the warehouse '%s', "
+                    "but the selected payment terms (%s) require credit.",
                     partner.display_name,
                     warehouse.name,
+                    self.payment_term_id.name,
                 ),
             }
         return res

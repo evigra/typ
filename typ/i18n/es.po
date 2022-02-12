@@ -6498,8 +6498,12 @@ msgstr ""
 #. module: typ
 #: code:addons/typ/models/sale_order.py:0
 #, python-format
-msgid "The customer '%s' has no credit for the warehouse '%s'."
-msgstr "El cliente '%s' no tiene crédito para el almacén '%s'."
+msgid ""
+"The customer '%s' has no credit for the warehouse '%s', but the selected "
+"payment terms (%s) require credit."
+msgstr ""
+"El cliente '%s' no tiene crédito para el almacén '%s', pero los plazos de "
+"pago seleccionados (%s) necesitan de crédito."
 
 #. module: typ
 #: model:ir.model.fields,help:typ.field_product_product__wait_time
