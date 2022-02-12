@@ -3640,11 +3640,6 @@ msgid "Is Follower"
 msgstr "Es un seguidor"
 
 #. module: typ
-#: model:ir.model.fields,field_description:typ.field_account_payment_term__is_immediate
-msgid "Is Immediate"
-msgstr "Es inmediato"
-
-#. module: typ
 #: model:ir.model.fields,field_description:typ.field_stock_landed_cost_guide__landed
 msgid "Is Landed Cost validated?"
 msgstr "¿Coste de destino está validado?"
