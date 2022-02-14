@@ -2,16 +2,16 @@
 <odoo>
 
     <record id="stock_manual_transfer_form_view" model="ir.ui.view">
-        <field name="name">Manual Transfer Form View</field>
+        <field name="name">stock.manual_transfer.form</field>
         <field name="model">stock.manual_transfer</field>
         <field name="arch" type="xml">
-            <form string="New Manual Transfer">
+            <form string="Manual Transfer">
                 <header>
                     <field name="picking_ids" invisible="1" />
                     <button
-                        name="make_transfer"
+                        name="action_validate"
                         type="object"
-                        string="Make transfer"
+                        string="Make transfers"
                         states="draft"
                         class="oe_highlight"
                         groups="typ.group_stock_manual_transfer"
@@ -19,77 +19,81 @@
                     <button
                         name="action_view_pickings"
                         type="object"
-                        string="View Pickings"
-                        attrs="{'invisible': ['|',('picking_ids','=',False),('picking_ids','=',[])]}"
+                        string="View Transfers"
+                        attrs="{'invisible': [('picking_ids', '=', [])]}"
                         class="oe_highlight"
                         groups="typ.group_stock_manual_transfer"
                     />
                     <field name="state" widget="statusbar" />
                 </header>
-                <sheet string="Manual Transfer">
+                <sheet>
                     <group>
-                            <h1><field name="name" /></h1>
+                        <h1>
+                            <field name="name" force_save="1" />
+                        </h1>
                     </group>
                     <group col="4">
-                        <field
-                            name="warehouse_id"
-                            options="{'no_create_edit': True}"
-                            attrs="{'readonly': [('state', '=', 'valid')]}"
-                        />
-                        <field
-                            name="date_planned"
-                            attrs="{'readonly': [('state', '=', 'valid')]}"
-                        />
-                        <field
-                            name="route_id"
-                            options="{'no_create_edit': True}"
-                            attrs="{'readonly': [('state', '=', 'valid')]}"
-                        />
+                        <field name="warehouse_id" options="{'no_create': True}" />
+                        <field name="date_planned" />
+                        <field name="route_id" options="{'no_create': True}" />
                     </group>
                     <notebook>
-                        <page string="Transfer Lines">
-                            <field
-                                name="transfer_line"
-                                nolabel="1"
-                                attrs="{'readonly': [('state', '=', 'valid')]}"
-                            />
+                        <page string="Transfer Lines" name="transfer_lines">
+                            <field name="transfer_line_ids" nolabel="1">
+                                <tree editable="bottom">
+                                    <field name="sequence" widget="handle" />
+                                    <field name="product_id" />
+                                    <field name="product_uom_qty" />
+                                    <field
+                                        name="product_uom_id"
+                                        groups="uom.group_uom"
+                                        optional="show"
+                                    />
+                                    <field
+                                        name="product_uom_category_id"
+                                        invisible="1"
+                                    />
+                                </tree>
+                                <form>
+                                    <group>
+                                        <group>
+                                            <field name="product_id" />
+                                            <field name="product_uom_qty" />
+                                            <field
+                                                name="product_uom_id"
+                                                groups="uom.group_uom"
+                                            />
+                                            <field
+                                                name="product_uom_category_id"
+                                                invisible="1"
+                                            />
+                                            <field name="sequence" />
+                                        </group>
+                                    </group>
+                                </form>
+                            </field>
                         </page>
                     </notebook>
                 </sheet>
                  <div class="oe_chatter">
-                    <field
-                        name="message_follower_ids"
-                        widget="mail_followers"
-                        groups="base.group_user"
-                    />
-                    <field name="message_ids" widget="mail_thread" />
+                    <field name="message_follower_ids" />
+                    <field name="activity_ids" />
+                    <field name="message_ids" />
                 </div>
             </form>
         </field>
     </record>
 
     <record id="stock_manual_transfer_tree_view" model="ir.ui.view">
-        <field name="name">Manual Transfer Tree</field>
+        <field name="name">stock.manual_transfer.tree</field>
         <field name="model">stock.manual_transfer</field>
         <field name="arch" type="xml">
-            <tree string="Manual Transfer">
+            <tree>
                 <field name="name" />
                 <field name="warehouse_id" />
                 <field name="date_planned" />
                 <field name="route_id" />
                 <field name="state" />
-            </tree>
-        </field>
-    </record>
-
-    <record id="stock_manual_transfer_line_tree_view" model="ir.ui.view">
-        <field name="name">Manual Transfer Line Tree</field>
-        <field name="model">stock.manual_transfer_line</field>
-        <field name="arch" type="xml">
-            <tree string="Transfer Line" editable="bottom">
-                <field name="product_id" />
-                <field name="product_uom" />
-                <field name="product_uom_qty" />
             </tree>
         </field>
     </record>

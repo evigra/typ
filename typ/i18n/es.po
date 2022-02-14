@@ -1879,6 +1879,11 @@ msgid "Calefactores"
 msgstr ""
 
 #. module: typ
+#: model:res.groups,name:typ.group_stock_manual_transfer
+msgid "Can make manual transfers"
+msgstr "Puede realizar transferencias manuales"
+
+#. module: typ
 #: model_terms:ir.ui.view,arch_db:typ.contact_edit
 #: model_terms:ir.ui.view,arch_db:typ.guide_form_view
 #: model_terms:ir.ui.view,arch_db:typ.portal_my_details
@@ -2170,6 +2175,16 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:typ.loyalty
 msgid "Contractor Development Program"
 msgstr ""
+
+#. module: typ
+#: model:ir.model.fields,help:typ.field_stock_manual_transfer_line__product_uom_category_id
+msgid ""
+"Conversion between Units of Measure can only occur if they belong to the "
+"same category. The conversion will be made based on the ratios."
+msgstr ""
+"La conversión entre las unidades de medidas sólo pueden ocurrir si "
+"pertenecen a la misma categoría. La conversión se basará en los ratios "
+"establecidos."
 
 #. module: typ
 #: model:ir.model.fields,field_description:typ.field_product_stock_warehouse__posx
@@ -4143,8 +4158,8 @@ msgstr "Giro del cliente principal"
 
 #. module: typ
 #: model_terms:ir.ui.view,arch_db:typ.stock_manual_transfer_form_view
-msgid "Make transfer"
-msgstr "Realizar transferencia"
+msgid "Make transfers"
+msgstr "Realizar transferencias"
 
 #. module: typ
 #: model:ir.ui.menu,name:typ.menu_account_reports_management
@@ -4158,9 +4173,9 @@ msgstr ""
 
 #. module: typ
 #: model:ir.actions.act_window,name:typ.stock_manual_transfer_action
+#: model:ir.model,name:typ.model_stock_manual_transfer
 #: model:ir.ui.menu,name:typ.menu_stock_manual_transfer_act
 #: model_terms:ir.ui.view,arch_db:typ.stock_manual_transfer_form_view
-#: model_terms:ir.ui.view,arch_db:typ.stock_manual_transfer_tree_view
 msgid "Manual Transfer"
 msgstr "Transferencia manual"
 
@@ -5126,8 +5141,8 @@ msgstr "Predeterminado"
 
 #. module: typ
 #: model:ir.model.fields,field_description:typ.field_stock_manual_transfer__route_id
-msgid "Preferred Routes"
-msgstr "Rutas preferidas"
+msgid "Preferred Route"
+msgstr "Ruta preferida"
 
 #. module: typ
 #: model_terms:ir.ui.view,arch_db:typ.report_payment_receipt_document
@@ -5302,6 +5317,11 @@ msgstr "Fecha de envío del producto"
 #: model:ir.ui.menu,name:typ.menu_product_type_market_form_action
 msgid "Product types market"
 msgstr ""
+
+#. module: typ
+#: model:ir.model.fields,field_description:typ.field_stock_manual_transfer_line__product_uom_category_id
+msgid "Product's unit of measure category"
+msgstr "Categoría de la unidad de medida del producto"
 
 #. module: typ
 #: model:ir.model.fields.selection,name:typ.selection__stock_landed_cost_lines__segmentation_cost__production_cost
@@ -5927,6 +5947,7 @@ msgstr ""
 
 #. module: typ
 #: model:ir.model.fields,field_description:typ.field_product_pricelist_item__sequence
+#: model:ir.model.fields,field_description:typ.field_stock_manual_transfer_line__sequence
 msgid "Sequence"
 msgstr "Secuencia"
 
@@ -6329,7 +6350,6 @@ msgstr "Título"
 #: model:ir.model,name:typ.model_report_typ_rack_label_extra_zebra_view
 #: model:ir.model,name:typ.model_report_typ_rack_label_medium_zebra_view
 #: model:ir.model,name:typ.model_report_typ_rack_label_zebra_view
-#: model:ir.model,name:typ.model_stock_manual_transfer
 msgid "TODO: Once talk with the team describe it for v14.0"
 msgstr ""
 
@@ -6722,11 +6742,6 @@ msgstr ""
 "entrada."
 
 #. module: typ
-#: model:res.groups,comment:typ.group_stock_manual_transfer
-msgid "This group can make manual transfers"
-msgstr "Este grupo puede generar transferencias manuales"
-
-#. module: typ
 #: model:res.groups,comment:typ.group_res_partner_warehouse_manager
 msgid "This group can register partner warehouse configurations."
 msgstr "Este grupo puede registrar configuraciones de almacén del cliente."
@@ -7067,10 +7082,10 @@ msgid "Transfer Line"
 msgstr Línea de transferencia"
 
 #. module: typ
-#: model:ir.model.fields,field_description:typ.field_stock_manual_transfer__transfer_line
+#: model:ir.model.fields,field_description:typ.field_stock_manual_transfer__transfer_line_ids
 #: model_terms:ir.ui.view,arch_db:typ.stock_manual_transfer_form_view
 msgid "Transfer Lines"
-msgstr "Líneas de trasnferencia"
+msgstr "Líneas de transferencia"
 
 #. module: typ
 #: model:ir.model.fields,field_description:typ.field_stock_manual_transfer_line__transfer_id
@@ -7175,9 +7190,9 @@ msgid "Unit Price"
 msgstr "Precio unitario"
 
 #. module: typ
-#: model:ir.model.fields,field_description:typ.field_stock_manual_transfer_line__product_uom
+#: model:ir.model.fields,field_description:typ.field_stock_manual_transfer_line__product_uom_id
 msgid "Unit of Measure"
-msgstr ""
+msgstr "Unidad de medida"
 
 #. module: typ
 #: model:product.product,uom_name:typ.product_landing_cost
@@ -7331,11 +7346,6 @@ msgstr ""
 " entrada"
 
 #. module: typ
-#: model:res.groups,name:typ.group_stock_manual_transfer
-msgid "Users that can make manual transfers"
-msgstr "Usuarios que pueden generar transferencias manuales"
-
-#. module: typ
 #: model:res.groups,name:typ.res_group_can_not_create_picking
 msgid "Users that can not create picking"
 msgstr "Usuarios que no pueden crear Albaranes"
@@ -7445,7 +7455,6 @@ msgstr "RFC:"
 
 #. module: typ
 #: model:ir.model.fields.selection,name:typ.selection__stock_landed_cost_guide__state__valid
-#: model:ir.model.fields.selection,name:typ.selection__stock_manual_transfer__state__valid
 msgid "Valid"
 msgstr ""
 
@@ -7463,6 +7472,11 @@ msgstr ""
 #: model:res.groups,name:typ.group_validate_landed
 msgid "Validate Landed Costs"
 msgstr "Validar precios de entrega"
+
+#. module: typ
+#: model:ir.model.fields.selection,name:typ.selection__stock_manual_transfer__state__valid
+msgid "Validated"
+msgstr "Validado"
 
 #. module: typ
 #: model:ir.model,name:typ.model_stock_valuation_adjustment_lines
@@ -7512,8 +7526,8 @@ msgstr ""
 
 #. module: typ
 #: model_terms:ir.ui.view,arch_db:typ.stock_manual_transfer_form_view
-msgid "View Pickings"
-msgstr ""
+msgid "View Transfers"
+msgstr "Ver transferencias"
 
 #. module: typ
 #: model_terms:ir.ui.view,arch_db:typ.aboutus
@@ -7741,8 +7755,12 @@ msgstr ""
 #. module: typ
 #: code:addons/typ/models/stock_manual_transfer.py:0
 #, python-format
-msgid "You can not delete a valid transaction! (%s)"
+msgid ""
+"You can not delete a validated transfer.\n"
+"- Record: %s"
 msgstr ""
+"No puede eliminar una transferencia validada.\n"
+"- Registro: %s"
 
 #. module: typ
 #: code:addons/typ/models/sale_order_line.py:0

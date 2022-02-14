@@ -5,5 +5,5 @@ from . import test_partner
 from . import test_pos
 from . import test_purchase
 from . import test_sale
-from . import test_stock_picking
+from . import test_stock
 from . import test_website

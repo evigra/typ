@@ -167,8 +167,7 @@
     </record>
 
     <record id="group_stock_manual_transfer" model="res.groups">
-        <field name="name">Users that can make manual transfers</field>
-        <field name="comment">This group can make manual transfers</field>
+        <field name="name">Can make manual transfers</field>
         <field
             name="users"
             eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]"

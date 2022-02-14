@@ -25,15 +25,20 @@ class StockPicking(models.Model):
         " in order to transfer it to guarantees in process.",
         copy=False,
     )
-    is_warranty = fields.Boolean(help="True if destination is warranty location")
+    is_warranty = fields.Boolean(
+        compute="_compute_is_warranty",
+        store=True,
+        help="True if destination is warranty location",
+    )
     responsible_for_warranty = fields.Many2one("res.users")
     arrival_date_broker = fields.Date(states={"done": [("readonly", True)]}, help="Arrival date at the customs broker")
     input_cb = fields.Char(help="Custom Broker code")
     guide_number = fields.Char(help="Guide number")
 
-    @api.onchange("location_dest_id")
-    def _onchange_location_dest_id(self):
-        self.is_warranty = self.location_dest_id.warranty_location
+    @api.depends("location_dest_id")
+    def _compute_is_warranty(self):
+        for picking in self:
+            picking.is_warranty = picking.location_dest_id.warranty_location
 
     def action_confirm_trafic(self):
         """This fill the invoiced field automatically"""

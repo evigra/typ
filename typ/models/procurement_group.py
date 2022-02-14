@@ -1,9 +1,15 @@
-from odoo import models
+from odoo import fields, models
 from odoo.osv import expression
 
 
 class ProcurementGroup(models.Model):
     _inherit = "procurement.group"
+
+    picking_ids = fields.One2many(
+        "stock.picking",
+        "group_id",
+        string="Transfers",
+    )
 
     def _get_orderpoint_domain(self, company_id=False):
         domain = super()._get_orderpoint_domain(company_id)

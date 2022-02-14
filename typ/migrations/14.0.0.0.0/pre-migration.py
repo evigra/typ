@@ -2,7 +2,7 @@ import logging
 
 from psycopg2.extensions import AsIs
 
-from odoo import tools
+from odoo import fields, tools
 
 _logger = logging.getLogger(__name__)
 
@@ -13,7 +13,7 @@ def migrate(cr, version):
     remove_uncertified_data(cr)
     use_native_hr_marital_cohabitant(cr)
     sanitize_employee_blood_types(cr)
-    rename_field_so_is_special(cr)
+    rename_fields(cr)
     deactivate_default_filters(cr)
     set_account_type_internal_group(cr)
     set_missing_company_stock_moves_lines(cr)
@@ -24,6 +24,9 @@ def migrate(cr, version):
     set_missing_company_stock_locations(cr)
     remove_inconsistent_partner_warehouse(cr)
     fix_column_names_m2m_partner_pricelists(cr)
+    remove_orphan_manual_transfer_lines(cr)
+    rename_sequence_code_manual_transfer(cr)
+    init_manual_transfer_line_sequence(cr)
 
 
 def rename_extids_typ_modules(cr):
@@ -104,14 +107,17 @@ def sanitize_employee_blood_types(cr):
     _logger.info("Updated %d employees", cr.rowcount)
 
 
-def rename_field_so_is_special(cr):
-    """Rename sale order field "so" -> "is_special"
-
-    The field name "so" doesn't give any useful information and it's not allowed by lints.
-    """
-    if tools.column_exists(cr, "sale_order", "so"):
-        _logger.info("Renaming sale order field `so` -> `is_special`")
-        tools.rename_column(cr, "sale_order", "so", "is_special")
+def rename_fields(cr):
+    """Rename field names so they match good practices and guidelines"""
+    columns_to_rename = [
+        # The field name "so" doesn't give any useful information and it's not allowed by lints
+        ("sale_order", "so", "is_special"),
+        ("stock_manual_transfer_line", "product_uom", "product_uom_id"),
+    ]
+    for table_name, old_column, new_column in columns_to_rename:
+        if tools.column_exists(cr, table_name, old_column):
+            _logger.info("Table `%s`: renaming column `%s` -> `%s`", table_name, old_column, new_column)
+            tools.rename_column(cr, table_name, old_column, new_column)
 
 
 def deactivate_default_filters(cr):
@@ -596,3 +602,65 @@ def fix_column_names_m2m_partner_pricelists(cr):
     for old_column, new_column in columns_to_rename:
         tools.rename_column(cr, new_table, old_column, new_column)
     _logger.info("Renamed columns of relational table for partners and pricelists")
+
+
+def remove_orphan_manual_transfer_lines(cr):
+    """Remove orphan manual transfer lines, i.e. without associated manual transfer"""
+    cr.execute(
+        """
+        DELETE FROM
+            stock_manual_transfer_line
+        WHERE
+            transfer_id IS NULL;
+        """,
+    )
+    _logger.info("Removed %d orphan manual transfer lines", cr.rowcount)
+
+
+def rename_sequence_code_manual_transfer(cr):
+    """Rename sequence code for manual transfers so they match model name"""
+    cr.execute(
+        """
+        UPDATE
+            ir_sequence
+        SET
+            code = 'stock.manual_transfer'
+        WHERE
+            code = 'manual.transfers';
+        """,
+    )
+    _logger.info("Sequence code for manual transfers was fixed on %d sequences", cr.rowcount)
+
+
+def init_manual_transfer_line_sequence(cr):
+    """Initialize field ``sequence`` on manual transfer lines"""
+    table_name = "stock_manual_transfer_line"
+    column_name = "sequence"
+    if tools.column_exists(cr, table_name, column_name):
+        return
+    _logger.info("Initializing sequence field on manual transfer lines")
+    tools.create_column(cr, table_name, column_name, fields.Integer.column_type[1], "Sequence")
+    cr.execute(
+        """
+        WITH sequence_val AS (
+            SELECT
+                id,
+                ROW_NUMBER() OVER(
+                    PARTITION BY
+                        transfer_id
+                    ORDER BY
+                        id
+                ) AS sequence
+            FROM
+                stock_manual_transfer_line
+        )
+        UPDATE
+            stock_manual_transfer_line AS line
+        SET
+            sequence = sequence_val.sequence
+        FROM
+            sequence_val
+        WHERE
+            line.id = sequence_val.id;
+        """,
+    )

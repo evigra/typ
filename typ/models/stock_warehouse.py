@@ -18,6 +18,8 @@ class StockWarehouse(models.Model):
             location_view_extid = warehouse_extid + "_location_view"
             pick_type_in_extid = warehouse_extid + "_pick_type_in"
             pick_type_out_extid = warehouse_extid + "_pick_type_out"
+            route_reception_extid = warehouse_extid + "_route_reception"
+            route_delivery_extid = warehouse_extid + "_route_delivery"
             self.env["ir.model.data"]._update_xmlids(
                 [
                     {
@@ -38,6 +40,16 @@ class StockWarehouse(models.Model):
                     {
                         "xml_id": pick_type_out_extid,
                         "record": warehouse.out_type_id,
+                        "noupdate": True,
+                    },
+                    {
+                        "xml_id": route_reception_extid,
+                        "record": warehouse.reception_route_id,
+                        "noupdate": True,
+                    },
+                    {
+                        "xml_id": route_delivery_extid,
+                        "record": warehouse.delivery_route_id,
                         "noupdate": True,
                     },
                 ],
