@@ -52,4 +52,14 @@
         </xpath>
     </template>
 
+    <template id="point_of_sale_assets" inherit_id="point_of_sale.assets">
+        <xpath expr="." position="inside">
+            <script type="text/javascript" src="/typ/static/src/js/pos/models.js" />
+            <script
+                type="text/javascript"
+                src="/typ/static/src/js/pos/SetPricelistButton.js"
+            />
+        </xpath>
+    </template>
+
 </odoo>
