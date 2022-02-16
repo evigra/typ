@@ -103,12 +103,6 @@ msgid ""
 msgstr ""
 
 #. module: typ
-#: model:ir.model.fields,field_description:typ.field_res_partner__res_warehouse_count
-#: model:ir.model.fields,field_description:typ.field_res_users__res_warehouse_count
-msgid "# Warehouse Configurations"
-msgstr "# Configuraciones de almacén"
-
-#. module: typ
 #: model_terms:ir.ui.view,arch_db:typ.my_invoices
 msgid "#Credit Note"
 msgstr ""

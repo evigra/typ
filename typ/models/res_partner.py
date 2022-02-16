@@ -104,38 +104,28 @@ class ResPartner(models.Model):
     )
     # Unless credit management, credit limit is not company dependent but warehouse dependent.
     # The computed value is the sum of credit available in all warehouses and editable only if
-    # there aren't more than one warehouse configured
+    # there isn't any warehouse configured
     credit_limit = fields.Float(
         company_dependent=False,
         store=True,
         compute="_compute_credit_limit",
-        inverse="_inverse_credit_limit",
-    )
-    res_warehouse_count = fields.Integer(
-        string="# Warehouse Configurations",
-        compute="_compute_res_warehouse_count",
+        readonly=False,
     )
 
     @api.depends("res_warehouse_ids.credit_limit")
     def _compute_credit_limit(self):
-        partner_warehouses = self.env["res.partner.warehouse"].read_group(
-            domain=[("partner_id", "in", self.ids)],
-            fields=["partner_id", "credit_limit"],
-            groupby=["partner_id"],
-        )
-        credits_by_partner = {w["partner_id"][0]: w["credit_limit"] for w in partner_warehouses}
+        if self._origin == self:
+            partner_warehouses = self.env["res.partner.warehouse"].read_group(
+                domain=[("partner_id", "in", self.ids)],
+                fields=["partner_id", "credit_limit"],
+                groupby=["partner_id"],
+            )
+            credits_by_partner = {w["partner_id"][0]: w["credit_limit"] for w in partner_warehouses}
+        else:
+            # If triggered as an onchange, values are not in DB yet, so take them from values being edited
+            credits_by_partner = {p.id: sum(p.res_warehouse_ids.mapped("credit_limit")) for p in self}
         for partner in self:
             partner.credit_limit = credits_by_partner.get(partner.id, 0.0)
-
-    def _inverse_credit_limit(self):
-        partners_single_warehouse = self.filtered(lambda p: len(p.res_warehouse_ids) == 1)
-        for partner in partners_single_warehouse:
-            partner.res_warehouse_ids[0].credit_limit = partner.credit_limit
-
-    @api.depends("res_warehouse_ids")
-    def _compute_res_warehouse_count(self):
-        for partner in self:
-            partner.res_warehouse_count = len(partner.res_warehouse_ids)
 
     def write(self, vals):
         upgradable_before = self.filtered("upgradable")

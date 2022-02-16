@@ -7,21 +7,14 @@
         <field name="inherit_id" ref="base.view_partner_form" />
         <field name="arch" type="xml">
             <xpath expr="//field[@name='credit_limit']" position="attributes">
-                <!-- Make credit limit readonly when there's more than one warehouse (invisible is from original attrs) -->
+                <!-- Make credit limit readonly when there's any warehouse (invisible is from original attrs) -->
                 <attribute name="attrs">{
-                    'readonly': [('res_warehouse_count', '&gt;', 1)],
+                    'readonly': [('res_warehouse_ids', '!=', [])],
                     'invisible': [
                         ('is_company', '=', False),
                         ('parent_id', '!=', False),
                     ],
                 }</attribute>
-            </xpath>
-            <xpath expr="//field[@name='credit_limit']" position="after">
-                <field
-                    name="res_warehouse_count"
-                    invisible="1"
-                    groups="account.group_account_user"
-                />
             </xpath>
             <xpath
                 expr="//group[@name='sale']//field[@name='user_id']"
@@ -53,7 +46,11 @@
                     <field name="pricelist_ids" nolabel="1" />
                 </group>
                 <group string="Warehouse configurations" name="warehouses">
-                    <field name="res_warehouse_ids" nolabel="1">
+                    <field
+                        name="res_warehouse_ids"
+                        nolabel="1"
+                        context="{'default_credit_limit': 0.0 if res_warehouse_ids else credit_limit}"
+                    >
                         <tree editable="bottom">
                             <field name="warehouse_id" />
                             <field name="user_id" />
