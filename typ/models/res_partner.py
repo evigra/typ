@@ -176,12 +176,14 @@ class ResPartner(models.Model):
         return unreconciled_amls[0]["amount_residual"] if unreconciled_amls else 0.0
 
     def _get_so_lines_domain_to_check_credit_limit(self):
-        """Consider warehouse when retrieving sale order lines on which amount for credit will be computed"""
-        domain = super()._get_so_lines_domain_to_check_credit_limit()
-        warehouse_id = self.env.context.get("credit_limit_warehouse_id")
-        if warehouse_id:
-            domain = expression.AND([domain, [("warehouse_id", "=", warehouse_id)]])
-        return domain
+        """Don't consider sales when computing available credit
+
+        Even though we want credit warnings to be shown in sale orders, we don't want sales amount
+        to be considered when computing available credit amount. That's because there are several
+        special cases where sale orders are confirmed but delayed, e.g. special sale orders
+        (the ones that create purchase orders).
+        """
+        return expression.FALSE_DOMAIN
 
     @api.model
     def _merge_partner(self, form_data):
