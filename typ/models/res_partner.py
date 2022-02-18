@@ -185,6 +185,21 @@ class ResPartner(models.Model):
         """
         return expression.FALSE_DOMAIN
 
+    def _has_overdue_to_suspend(self, date=False):
+        """Don't check overdue invoices if current warehouse allows them"""
+        to_check_overdue = self
+        warehouse_id = self.env.context.get("credit_limit_warehouse_id")
+        if warehouse_id:
+            partner_warehouse_allowed_overdue = self.env["res.partner.warehouse"].search(
+                [
+                    ("partner_id", "in", self.ids),
+                    ("warehouse_id", "=", warehouse_id),
+                    ("allow_overdue_invoice", "=", True),
+                ],
+            )
+            to_check_overdue -= partner_warehouse_allowed_overdue.partner_id
+        return super(ResPartner, to_check_overdue)._has_overdue_to_suspend(date)
+
     @api.model
     def _merge_partner(self, form_data):
         """Verify that a partner has the necessary validations to be upgraded to a new category.

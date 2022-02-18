@@ -11,6 +11,7 @@
         <field name="warehouse_id" ref="whr_test_02" />
         <field name="credit_limit" eval="1000.0" />
         <field name="partner_id" ref="base.res_partner_12" />
+        <field name="allow_overdue_invoice" eval="True" />
     </record>
 
 </odoo>
