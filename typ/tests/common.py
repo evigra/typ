@@ -29,6 +29,7 @@ class TypCase:
         self.journal_expense = self.env["account.journal"].search([("name", "=", "Expense")], limit=1)
         self.journal_bills = self.env["account.journal"].search([("name", "=", "Vendor Bills")], limit=1)
         self.journal_guide = self.env.ref("typ.journal_cost_guide")
+        self.payment_term_immediate = self.env.ref("account.account_payment_term_immediate")
         self.warehouse_main = self.env.ref("stock.warehouse0")
         self.warehouse_test1 = self.env.ref("typ.whr_test_01")
         self.warehouse_test2 = self.env.ref("typ.whr_test_02")

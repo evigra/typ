@@ -58,23 +58,6 @@ class AccountMove(models.Model):
         res["guide_line_id"] = line.get("guide_line_id", False)
         return res
 
-    @api.onchange("partner_id")
-    def _onchange_partner_id(self):
-        res = super()._onchange_partner_id()
-
-        # Set the payment term "Immediate payment" if has Pos orders
-        # and the payment term is not immediate
-        if (
-            self.partner_id
-            and self.is_invoice()
-            and self.pos_order_ids
-            and not self.invoice_payment_term_id.is_immediate
-        ):
-            immediate_payment = self.env.ref("account.account_payment_term_immediate")
-            self.invoice_payment_term_id = immediate_payment
-
-        return res
-
     def _post(self, soft=True):
         """Perform some tasks when posting
 

@@ -42,7 +42,12 @@
             />
             <script
                 type="text/javascript"
+                src="/typ/static/src/js/tours/pos_invoice_order.js"
+            />
+            <script
+                type="text/javascript"
                 src="/typ/static/src/js/tours/pos_nested_pricelist_tour.js"
+            />
             />
         </xpath>
     </template>

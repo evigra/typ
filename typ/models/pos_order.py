@@ -11,6 +11,10 @@ class PosOrder(models.Model):
             payment_method = self.payment_ids.filtered(lambda s: s.amount == max_pay)[:1].payment_method_id
             l10n_mx_payment_method = payment_method.l10n_mx_edi_payment_method_id.id
             res["l10n_mx_edi_payment_method_id"] = l10n_mx_payment_method
+
+        # Set the payment term immediate
+        payment_term_immediate = self.env.ref("account.account_payment_term_immediate")
+        res.setdefault("invoice_payment_term_id", payment_term_immediate.id)
         return res
 
     def action_pos_order_invoice(self):

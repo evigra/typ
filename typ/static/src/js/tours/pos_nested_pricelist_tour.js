@@ -6,7 +6,6 @@ odoo.define("typ.pos_nested_pricelist_tour", function (require) {
     var tour = require("web_tour.tour");
 
     startSteps();
-    // ProductScreen.do.clickHomeCategory();
 
     // The table product as a price of 150 on the 1st pricelist item's based pricelist
     var product_name = "Table";
