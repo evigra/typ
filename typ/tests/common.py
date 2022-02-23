@@ -1,4 +1,7 @@
-from odoo import fields
+from contextlib import contextmanager
+from unittest.mock import patch
+
+from odoo import fields, models
 from odoo.tests import Form, HttpCase, TransactionCase
 from odoo.tools.safe_eval import safe_eval
 
@@ -125,12 +128,54 @@ class TypCase:
                     with mv.move_line_ids.new() as line:
                         line.lot_id = self._get_lot_from_name(line, lot_name)
 
-    def _get_lot_from_name(self, line, lot_name):
-        domain_str = line._view["fields"]["lot_id"]["domain"]
-        domain = safe_eval(domain_str, line._values) + [("name", "=", lot_name)]
+    def _get_lot_from_name(self, record_form, lot_name):
+        domain_str = record_form._view["fields"]["lot_id"]["domain"]
+        domain = safe_eval(domain_str, record_form._values) + [("name", "=", lot_name)]
         lot = self.env["stock.production.lot"].search(domain, limit=1)
         self.assertTrue(lot, "lot not found for domain %s" % domain)
         return lot
+
+    def inventory_adjustment(self, product, location=None, quantity=100, lot_name=None):
+        if location is None:
+            location = self.warehouse_test1.lot_stock_id
+        action = product.action_open_quants()
+        quant = Form(self.env["stock.quant"].with_context(action["context"]), view=action["view_id"])
+        quant.inventory_quantity = quantity
+        quant.location_id = location
+        if lot_name:
+            quant.lot_id = self._get_lot_from_name(quant, lot_name)
+        return quant.save()
+
+    def immediate_transfer(self, pickings, active_record=None):
+        if active_record is None:
+            active_record = pickings
+        action = pickings._action_generate_immediate_wizard()
+        ctx = dict(
+            action["context"],
+            button_validate_picking_ids=pickings.ids,
+            active_model=active_record._name,
+            active_id=active_record[:1].id,
+            active_ids=active_record.ids,
+        )
+        immediate_transfer = self.env[action["res_model"]].with_context(ctx).create({})
+        return immediate_transfer.process()
+
+    # Method names for assertion are lower camel case
+    # pylint: disable=invalid-name
+    @contextmanager
+    def assertSearchDomain(self, model_name, expected_domain):
+        original_search = models.BaseModel.search
+        actual_domain = []
+
+        def search(self, args, offset=0, limit=None, order=None, count=False):
+            if not actual_domain and self._name == model_name:
+                actual_domain.extend(args)  # modifying list so outer variable is updated
+            return original_search(self, args, offset, limit, order, count)
+
+        with patch("odoo.models.BaseModel.search", search):
+            yield actual_domain
+
+        self.assertEqual(actual_domain, expected_domain)
 
 
 class TypTransactionCase(TypCase, TransactionCase):

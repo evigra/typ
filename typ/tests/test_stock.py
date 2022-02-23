@@ -1,4 +1,4 @@
-from odoo.exceptions import ValidationError
+from odoo.exceptions import RedirectWarning, ValidationError
 from odoo.tests import Form, tagged
 
 from .common import TypTransactionCase
@@ -148,3 +148,64 @@ class TestStock(TypTransactionCase):
         move_2.quantity_done = 2
         picking_2.move_line_ids.product_uom_qty = 2
         self.assertTrue(picking_2.button_validate())
+
+    def test_03_unreserve_unavailable(self):
+        """Screw reserved quantity on quants on purpose
+
+        A flow of sale and delivery but screwing reserved quantity on quants to check fixing action is triggered
+        only on those quants.
+        """
+        # Make products available
+        quant_product1 = self.inventory_adjustment(product=self.product)
+        quant_product2 = self.inventory_adjustment(product=self.product_serial, lot_name="0000000000003")
+
+        # sell products
+        sale_order = self.create_sale_order(quantity=3)
+        self.create_so_line(sale_order, product=self.product_serial)
+        sale_order.action_confirm()
+        self.assertEqual(sale_order.state, "sale")
+
+        # Product should've been automatically reserved as there's enough stock
+        picking = sale_order.picking_ids
+        self.assertEqual(picking.state, "assigned")
+        self.assertRecordValues(
+            records=picking.move_line_ids,
+            expected_values=[
+                {
+                    "product_id": self.product.id,
+                    "product_uom_qty": 3.0,
+                    "qty_done": 0.0,
+                },
+                {
+                    "product_id": self.product_serial.id,
+                    "product_uom_qty": 1.0,
+                    "qty_done": 0.0,
+                },
+            ],
+        )
+        self.assertEqual(quant_product1.reserved_quantity, 3.0)
+        self.assertEqual(quant_product2.reserved_quantity, 1.0)
+
+        # Screw quants ;)
+        quant_product1.reserved_quantity = 0.0
+        quant_product2.reserved_quantity = 0.0
+
+        # If we try to validate the picking, an error should be raised suggesting the action to fix quants
+        error_msg = "It is not possible to unreserve more products of .* than you have in stock"
+        expected_quants = quant_product1 | quant_product2
+        expected_context = {"search_only_quant_ids": expected_quants.ids}
+        with self.assertRaisesRegex(RedirectWarning, error_msg) as cm:
+            self.immediate_transfer(picking)
+        self.assertEqual(cm.exception.args[3], expected_context)
+
+        # If the active record is the sale order, it should return the same context
+        with self.assertRaisesRegex(RedirectWarning, error_msg) as cm:
+            self.immediate_transfer(picking, active_record=sale_order)
+        self.assertEqual(cm.exception.args[3], expected_context)
+
+        # Run the action to fix quants, only IDs provided in context should be considered
+        action = self.env["ir.actions.server"].with_context(**expected_context).browse(cm.exception.args[1])
+        with self.assertSearchDomain("stock.quant", [("id", "in", expected_quants.ids)]):
+            action.run()
+        self.assertFalse(quant_product1.reserved_quantity)
+        self.assertFalse(quant_product2.reserved_quantity)
