@@ -367,9 +367,9 @@
                             </tr>
                         </tbody>
                     </table>
-                    <div class="row">
-                        <div class="col-xs-4 pull-right">
-                            <table class="table table-condensed">
+                    <div class="row justify-content-end">
+                        <div class="col-4">
+                            <table class="table table-sm">
                                 <tr class="border-black">
                                     <td><strong>Subtotal</strong></td>
                                     <td class="text-right">
@@ -388,7 +388,7 @@
                                         />
                                     </td>
                                 </tr>
-                                <tr class="border-black">
+                                <tr class="border-black o_total">
                                     <td><strong>Total</strong></td>
                                     <td class="text-right">
                                         <span
