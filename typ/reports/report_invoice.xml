@@ -23,7 +23,8 @@
         <xpath expr="//t[@t-call='web.external_layout']" position="attributes">
             <attribute name="t-call">typ.external_layout</attribute>
         </xpath>
-        <xpath expr="//div[hasclass('row')]" position="replace">
+        <xpath expr="//div[hasclass('row')]" position="attributes">
+            <attribute name="t-if">False</attribute>
         </xpath>
         <xpath expr="//h2" position="replace">
             <!-- Global variables -->
@@ -155,7 +156,7 @@
                         class="text-center"
                         t-attf-style="border-bottom-right-radius: 0.4em; border-bottom-left-radius: 0.4em; border: 2px solid #deeff5; padding-top: 0.0em; #{font_size_body}"
                     >
-                        <span t-esc="o.name" />
+                        <span t-field="o.ref" />
                     </div>
                 </div>
                 <div class="col-4" style="padding-right: 0.2em; padding-left: 0.2em;">
@@ -459,17 +460,17 @@
             <div class="row" t-attf-style="#{font_size_body}">
                 <div class="col-12">
                     <span>Amount In Letters</span>
-                </div>
-                <div class="col-12 text-center">
-                    <span t-esc="o._l10n_mx_edi_cfdi_amount_to_text()" />
-                </div>
-                <div class="col-12">
-                    <p
-                        class="text-center"
-                    >Deadline for returns of 15 calendar days from delivery. Product must be presented in original packaging. Warranties: American 1 year parts and 5 years compressor equipment. Asia 1 year parts and compressor equipment. Does not apply to equipment with power failures or burns.</p>
-                    <t t-if="o.narration">
-                        <p><strong>Notes</strong>: <span t-esc="o.narration" /></p>
-                    </t>
+                    <div class="text-center">
+                        <span t-esc="o._l10n_mx_edi_cfdi_amount_to_text()" />
+                    </div>
+                    <div>
+                        <p
+                            class="text-center"
+                        >Deadline for returns of 15 calendar days from delivery. Product must be presented in original packaging. Warranties: American 1 year parts and 5 years compressor equipment. Asia 1 year parts and compressor equipment. Does not apply to equipment with power failures or burns.</p>
+                        <t t-if="o.narration">
+                            <p><strong>Notes</strong>: <span t-esc="o.narration" /></p>
+                        </t>
+                    </div>
                 </div>
             </div>
         </xpath>
@@ -730,79 +731,79 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div>
+                        <div
+                            class="col-6"
+                            style="padding-left: 0.0em; padding-right: 0.2em;"
+                        >
                             <div
-                                class="col-6"
-                                style="padding-left: 0.0em; padding-right: 0.2em;"
+                                class="text-center"
+                                t-attf-style="border-bottom-right-radius: 0.4em; border-bottom-left-radius: 0.4em; border: 2px solid #deeff5; padding-top: 0.0em; #{font_size_body}"
                             >
-                                <div
-                                    class="text-center"
-                                    t-attf-style="border-bottom-right-radius: 0.4em; border-bottom-left-radius: 0.4em; border: 2px solid #deeff5; padding-top: 0.0em; #{font_size_body}"
-                                >
-                                    <span t-esc="o.l10n_mx_edi_origin[3:]" />
-                                </div>
+                                <span t-esc="o.l10n_mx_edi_origin[3:]" />
                             </div>
+                        </div>
+                        <div
+                            class="col-6"
+                            style="padding-left: 0.2em; padding-right: 0.2em;"
+                        >
                             <div
-                                class="col-6"
-                                style="padding-left: 0.2em; padding-right: 0.2em;"
+                                t-if="o.l10n_mx_edi_origin"
+                                class="text-center"
+                                t-attf-style="border-bottom-right-radius: 0.4em; border-bottom-left-radius: 0.4em; border: 2px solid #deeff5; padding-top: 0.0em; #{font_size_body}"
                             >
-                                <div
-                                    class="text-center"
-                                    t-attf-style="border-bottom-right-radius: 0.4em; border-bottom-left-radius: 0.4em; border: 2px solid #deeff5; padding-top: 0.0em; #{font_size_body}"
-                                >
-                                    <t
-                                        t-set="edi_origin"
-                                        t-value="o.l10n_mx_edi_origin[:2]"
-                                    />
-                                    <t t-if="edi_origin == '01'">
-                                        <span>01 Credit note of related documents</span>
-                                    </t>
-                                    <t t-elif="edi_origin == '02'">
-                                        <span>02 Debit note of related documents</span>
-                                    </t>
-                                    <t t-elif="edi_origin == '03'">
-                                        <span
-                                        >03 Return of merchandise on previous invoices or transfers</span>
-                                    </t>
-                                    <t t-elif="edi_origin == '04'">
-                                        <span>04 Replacement of previous CFDI</span>
-                                    </t>
-                                    <t t-elif="edi_origin == '05'">
-                                        <span
-                                        >05 Transfers of goods previously invoiced</span>
-                                    </t>
-                                    <t t-elif="edi_origin == '06'">
-                                        <span
-                                        >06 Invoice generated by previous transfers</span>
-                                    </t>
-                                    <t t-elif="edi_origin == '07'">
-                                        <span>07 CFDI by advance application</span>
-                                    </t>
-                                    <t t-elif="edi_origin == '08'">
-                                        <span
-                                        >08 Invoice generated by partial payments</span>
-                                    </t>
-                                    <t t-elif="edi_origin == '09'">
-                                        <span
-                                        >09 Invoice generated by deferred payments</span>
-                                    </t>
-                                </div>
+                                <t
+                                    t-set="edi_origin"
+                                    t-value="o.l10n_mx_edi_origin[:2]"
+                                />
+                                <t t-if="edi_origin == '01'">
+                                    <span>01 Credit note of related documents</span>
+                                </t>
+                                <t t-elif="edi_origin == '02'">
+                                    <span>02 Debit note of related documents</span>
+                                </t>
+                                <t t-elif="edi_origin == '03'">
+                                    <span
+                                    >03 Return of merchandise on previous invoices or transfers</span>
+                                </t>
+                                <t t-elif="edi_origin == '04'">
+                                    <span>04 Replacement of previous CFDI</span>
+                                </t>
+                                <t t-elif="edi_origin == '05'">
+                                    <span
+                                    >05 Transfers of goods previously invoiced</span>
+                                </t>
+                                <t t-elif="edi_origin == '06'">
+                                    <span
+                                    >06 Invoice generated by previous transfers</span>
+                                </t>
+                                <t t-elif="edi_origin == '07'">
+                                    <span>07 CFDI by advance application</span>
+                                </t>
+                                <t t-elif="edi_origin == '08'">
+                                    <span
+                                    >08 Invoice generated by partial payments</span>
+                                </t>
+                                <t t-elif="edi_origin == '09'">
+                                    <span
+                                    >09 Invoice generated by deferred payments</span>
+                                </t>
                             </div>
                         </div>
                     </div>
                 </t>
+                <br />
                 <div
                     t-if="is_cfdi_signed"
                     class="row img-rounded"
                     id="complement"
                     style="padding-top: 0.5em; border: 2px solid #deeff5;"
                 >
-                        <div class="barcode col-3">
-                            <t
+                    <div class="barcode col-3">
+                        <t
                             t-set="sello"
                             t-value="cfdi_vals.get('sello', 'No identificado')"
                         />
-                            <img
+                        <img
                             alt="Barcode"
                             t-att-src="'/report/barcode/?type=QR&amp;value=%s&amp;width=180&amp;height=180' % quote_plus(
                                 'https://verificacfdi.facturaelectronica.sat.gob.mx/default.aspx?' + keep_query(
@@ -810,76 +811,79 @@
                                 tt='%.*f' % (o.currency_id.decimal_places, o.l10n_mx_edi_cfdi_amount), id=o.l10n_mx_edi_cfdi_uuid)
                                 + '&amp;fe=%s' % quote_plus(sello[-8:], 'utf-8', 'strict', '=/').replace('%2B', '+'))"
                         />
+                    </div>
+                    <div class="complement-details col-9">
+                        <div class="digital-stamp">
+                            <span>Digital stamp of the emitter</span>
                         </div>
-                        <div class="complement-details col-9">
-                            <div class="digital-stamp">
-                                <span>Digital stamp of the emitter</span>
-                            </div>
-                            <div class="digital-stamp-content">
-                                <span t-esc="sello" />
-                            </div>
-                            <div class="digital-stamp">
-                                <span>Digital stamp SAT</span>
-                            </div>
-                            <div class="digital-stamp-content">
-                                <span
+                        <div class="digital-stamp-content">
+                            <span t-esc="sello" />
+                        </div>
+                        <div class="digital-stamp">
+                            <span>Digital stamp SAT</span>
+                        </div>
+                        <div class="digital-stamp-content">
+                            <span
                                 t-esc="cfdi_vals.get('sello_sat', 'No identificado')"
                             />
-                            </div>
-                            <div class="digital-stamp">
-                                <span
+                        </div>
+                        <div class="digital-stamp">
+                            <span
                             >Original chain complement of digital certification SAT</span>
-                            </div>
-                            <div class="digital-stamp-content">
-                                <span class="nowrap" t-esc="cfdi_vals.get('cadena')" />
-                            </div>
-                            <div
+                        </div>
+                        <div class="digital-stamp-content">
+                            <span class="nowrap" t-esc="cfdi_vals.get('cadena')" />
+                        </div>
+                        <div
                             t-if="cfdi_node.Emisor.xpath('cfdi:ExpedidoEn', namespaces=cfdi_node.nsmap)"
                             class="digital-stamp"
                         >
-                                <span>Issued from</span>
-                            </div>
-                            <div
+                            <span>Issued from</span>
+                        </div>
+                        <div
                             t-if="cfdi_node.Emisor.xpath('cfdi:ExpedidoEn', namespaces=cfdi_node.nsmap)"
                             class="digital-stamp-content"
                         >
-                                <span
+                            <span
                                 t-esc="' | '.join([ '%s: %s' % (key, value) for key, value in cfdi_node.Emisor.ExpedidoEn.items()])"
                             />
-                            </div>
-                            <div class="digital-stamp">
-                                <span>Extra Info</span>
-                            </div>
-                            <div class="digital-stamp-content">
-                                <span>Emitter certificate:</span> <span
+                        </div>
+                        <div class="digital-stamp">
+                            <span>Extra Info</span>
+                        </div>
+                        <div class="digital-stamp-content">
+                            <span>Emitter certificate:</span> <span
                                 t-esc="cfdi_vals.get('certificate_number')"
                             />
-                                <span> | SAT Certificate:</span> <span
+                            <span> | SAT Certificate:</span> <span
                                 t-esc="cfdi_vals.get('certificate_sat_number')"
                             />
-                                <span> | Expedition place:</span> <span
+                            <span> | Expedition place:</span> <span
                                 t-esc="cfdi_vals.get('expedition')"
                             />
-                                <span> | Fiscal Regime:</span><span
+                            <span> | Fiscal Regime:</span><span
                                 t-esc="cfdi_vals.get('fiscal_regime')"
                             />
-                                <span> | Emission Date:</span> <span
+                            <span> | Emission Date:</span> <span
                                 t-esc="cfdi_vals.get('emission_date_str')"
                             />
-                                <span> | Certification Date:</span> <span
+                            <span> | Certification Date:</span> <span
                                 t-esc="cfdi_vals.get('stamp_date')"
                             />
-                                <span> | Fiscal Folio:</span> <span
+                            <span> | Fiscal Folio:</span> <span
                                 t-esc="cfdi_vals.get('uuid')"
                             />
-                            </div>
-                            <div class="digital-stamp-content text-center">
-                                <strong
-                            >This document is a printed representation of a CFDI</strong>
-                            </div>
                         </div>
+                        <div class="digital-stamp-content text-center">
+                            <strong
+                            >This document is a printed representation of a CFDI</strong>
+                        </div>
+                    </div>
                 </div>
             </t>
+        </xpath>
+        <xpath expr="//p[@name='comment']" position="attributes">
+            <attribute name="t-if">False</attribute>
         </xpath>
     </template>
     <template id="report_invoice" inherit_id="account.report_invoice">
