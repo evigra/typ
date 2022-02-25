@@ -145,6 +145,7 @@ class TestLandedCost(TypTransactionCase):
 
         # Create a landed cost and attach the guide to it, cost lines should be automatically created
         landed_cost = self.create_landed_cost(guide=guide)
+        self.assertEqual(landed_cost.account_journal_id, self.journal_landed_cost)
         self.assertRecordValues(
             landed_cost.cost_lines,
             [

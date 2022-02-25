@@ -13,4 +13,11 @@
         />
     </record>
 
+    <record id="journal_landed_cost" model="account.journal">
+        <field name="name">Landed Costs</field>
+        <field name="type">general</field>
+        <field name="code">LAND</field>
+        <field name="sequence" eval="20" />
+    </record>
+
 </odoo>

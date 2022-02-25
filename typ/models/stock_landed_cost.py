@@ -36,6 +36,11 @@ class StockLandedCost(models.Model):
     )
     partner_id = fields.Many2one("res.partner", string="Broker", help="Broker of this landed cost")
 
+    def _default_account_journal_id(self):
+        """Take journal configured in salesteam as first choice for default journal"""
+        journal_on_team = self.env.user.sale_team_id.journal_landed_id
+        return journal_on_team or super()._default_account_journal_id()
+
     def _get_lines_from_invoice(self):
         company_currency = self.env.company.currency_id
         lines = []
