@@ -37,6 +37,14 @@
                 t-set="is_cfdi_signed"
                 t-value="bool(o.move_id._get_l10n_mx_edi_signed_edi_document())"
             />
+            <t
+                t-set="font_size_subtitles"
+                t-value="'font-size: %dpx;' % (15 if report_type == 'html' else 12)"
+            />
+            <t
+                t-set="font_size_body"
+                t-value="'font-size: %dpx;' % (12 if report_type == 'html' else 10)"
+            />
             <div class="row">
                 <div class="col-3" style="margin: 0px; padding: 0px;">
                     <img
@@ -46,7 +54,7 @@
                     />
                 </div>
                 <div class="offset-4 col-5 text-right">
-                    <div class="row" style="font-size: 12;">
+                    <div class="row" t-att-style="font_size_subtitles">
                         <div
                             class="col-4 text-center bg-primary-typ"
                             style="border-top-left-radius: 0.4em; padding-top: 0.0em;"
@@ -68,15 +76,15 @@
                             class="col-4 text-center"
                             style="padding-top: 0.0em; border-right: 2px solid #deeff5;"
                         >
-                            <h4 style="color:red;">
+                            <span style="color:red;">
                                 <t>
                                     <strong t-esc="o.name" />
                                 </t>
-                            </h4>
+                            </span>
                         </div>
                         <div
                             class="col-8 text-center"
-                            style="padding-top: 1.0em; font-size: 10;"
+                            t-attf-style="padding-top: 1.0em; #{font_size_body}"
                         >
                             <t t-if="is_cfdi_signed">
                                 <t t-set="date" t-value="cfdi_vals.get('stamp_date')" />
@@ -99,7 +107,7 @@
                     >A signature of this invoice is required, but it is not signed.</h1>
                 </div>
             </t>
-            <div class="row" style="padding-top: 0.5em; font-size: 15;">
+            <div class="row" t-attf-style="padding-top: 0.5em; #{font_size_subtitles}">
                 <div class="col-5" style="padding-left: 0.0em; padding-right: 0.2em;">
                     <div
                         class="text-center bg-primary-typ"
@@ -119,11 +127,11 @@
                 <div class="col-3">
                 </div>
             </div>
-            <div class="row">
+            <div class="row" t-att-style="font_size_body">
                 <div class="col-5" style="padding-left: 0.0em; padding-right: 0.2em;">
                     <div
                         class="text-center"
-                        style="border-bottom-right-radius: 0.4em; border-bottom-left-radius: 0.4em; border: 2px solid #deeff5; padding-top: 0.0em; font-size: 10;"
+                        style="border-bottom-right-radius: 0.4em; border-bottom-left-radius: 0.4em; border: 2px solid #deeff5; padding-top: 0.0em;"
                     >
                         <span
                             t-if="o.invoice_line_ids"
@@ -134,7 +142,7 @@
                 <div class="col-4" style="padding-right: 0.2em; padding-left: 0.2em;">
                     <div
                         class="text-center"
-                        style="border-bottom-right-radius: 0.4em; border-bottom-left-radius: 0.4em; border: 2px solid #deeff5; padding-top: 0.0em; font-size: 10;"
+                        style="border-bottom-right-radius: 0.4em; border-bottom-left-radius: 0.4em; border: 2px solid #deeff5; padding-top: 0.0em;"
                     >
                         <t t-if="is_cfdi_signed">
                             <span t-esc="cfdi_vals.get('fiscal_regime')" />
@@ -144,7 +152,7 @@
                 <div class="col-3">
                 </div>
             </div>
-            <div class="row" style="padding-top: 0.5em; font-size: 15;">
+            <div class="row" t-attf-style="padding-top: 0.5em; #{font_size_subtitles}">
                 <div class="col-4" style="padding-right: 0.2em; padding-left: 0.0em;">
                     <div
                         class="text-center bg-primary-typ"
@@ -170,7 +178,7 @@
                     </div>
                 </div>
             </div>
-            <div class="row" style="font-size: 12;">
+            <div class="row" t-att-style="font_size_body">
                 <div class="col-4" style="padding-right: 0.2em; padding-left: 0.0em;">
                     <div
                         class="text-left"
@@ -303,7 +311,7 @@
                 />
                 <table
                     class="table table-striped"
-                    style="font-size:15px; border-collapse: collapse;"
+                    t-attf-style="#{font_size_body} border-collapse: collapse;"
                 >
                     <thead>
                         <tr>
@@ -348,7 +356,7 @@
             <t t-else="">
                 <table
                     class="table table-striped"
-                    style="font-size:15px; border-collapse: collapse;"
+                    t-attf-style="#{font_size_body} border-collapse: collapse;"
                 >
                     <thead>
                         <tr>
@@ -392,7 +400,7 @@
             </t>
             <div id="total" class="row">
                 <div class="row offset-9 col-3">
-                    <table class="col-12" style="font-size:15px">
+                    <table class="col-12" t-att-style="font_size_body">
                         <tr align="left">
                             <th
                                 class="text-left"
@@ -418,21 +426,21 @@
                     </table>
                 </div>
             </div>
-            <div class="row" style="font-size: 12;">
+            <div class="row" t-att-style="font_size_body">
                 <div class="col-12">
                     <span>Amount In Letters</span>
-                </div>
-                <div class="col-12 text-center">
-                    <span t-esc="o.l10n_mx_edi_amount_to_text()" />
-                </div>
-                <div class="col-12">
-                    <p
-                        class="text-center"
-                    >Deadline for returns of 15 calendar days from delivery. Product must be presented in original packaging. Warranties: American 1 year parts and 5 years compressor equipment. Asia 1 year parts and compressor equipment. Does not apply to equipment with power failures or burns.</p>
+                    <div class="text-center">
+                        <span t-esc="o.l10n_mx_edi_amount_to_text()" />
+                    </div>
+                    <div class="text-center">
+                        <p>
+                            Deadline for returns of 15 calendar days from delivery. Product must be presented in original packaging. Warranties: American 1 year parts and 5 years compressor equipment. Asia 1 year parts and compressor equipment. Does not apply to equipment with power failures or burns.
+                        </p>
+                    </div>
                 </div>
             </div>
             <t t-if="o.l10n_mx_edi_cfdi_uuid">
-                <div class="row" style="padding-top: 0.5em; font-size: 12;">
+                <div class="row" t-attf-style="padding-top: 0.5em; #{font_size_body}">
                     <div
                         class="col-4"
                         style="padding-left: 0.0em; padding-right: 0.2em;"
@@ -467,7 +475,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="row">
+                <div class="row" t-att-style="font_size_body">
                     <div
                         class="col-4"
                         style="padding-left: 0.0em; padding-right: 0.2em;"
@@ -512,7 +520,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="row" style="padding-top: 0.5em; font-size: 12;">
+                <div class="row" t-attf-style="padding-top: 0.5em; #{font_size_body}">
                     <div
                         class="col-4"
                         style="padding-left: 0.0em; padding-right: 0.2em;"
@@ -547,7 +555,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="row">
+                <div class="row" t-att-style="font_size_body">
                     <div
                         class="col-4"
                         style="padding-left: 0.0em; padding-right: 0.2em;"
@@ -593,7 +601,7 @@
                 <div
                     t-if="o.l10n_mx_edi_origin"
                     class="row"
-                    style="padding-top: 0.5em; font-size: 12;"
+                    t-attf-style="padding-top: 0.5em; #{font_size_body}"
                 >
                     <div
                         class="col-6"
