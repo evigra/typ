@@ -32,7 +32,8 @@ class AccountMove(models.Model):
     )
     date_paid = fields.Date(
         "Payment date",
-        copy=False,
+        compute="_compute_amount",
+        store=True,
         help="This date indicates when the invoice was paid",
     )
     supplier_invoice_number = fields.Char(
@@ -154,3 +155,51 @@ class AccountMove(models.Model):
             invoice = invoice.with_context(**ctx)
             wo_credit |= super(AccountMove, invoice)._check_credit_limit()
         return wo_credit
+
+    @api.depends(
+        "line_ids.matched_debit_ids.debit_move_id.move_id.payment_id.is_matched",
+        "line_ids.matched_debit_ids.debit_move_id.move_id.line_ids.amount_residual",
+        "line_ids.matched_debit_ids.debit_move_id.move_id.line_ids.amount_residual_currency",
+        "line_ids.matched_credit_ids.credit_move_id.move_id.payment_id.is_matched",
+        "line_ids.matched_credit_ids.credit_move_id.move_id.line_ids.amount_residual",
+        "line_ids.matched_credit_ids.credit_move_id.move_id.line_ids.amount_residual_currency",
+        "line_ids.debit",
+        "line_ids.credit",
+        "line_ids.currency_id",
+        "line_ids.amount_currency",
+        "line_ids.amount_residual",
+        "line_ids.amount_residual_currency",
+        "line_ids.payment_id.state",
+        "line_ids.full_reconcile_id",
+    )
+    def _compute_amount(self):
+        res = super()._compute_amount()
+        for move in self:
+            if (
+                not move.is_invoice(include_receipts=True)
+                or move.state != "posted"
+                or move.payment_state in ("not_paid", "partial")
+            ):
+                move.date_paid = False
+                continue
+            reconciled_entries = move._get_reconciled_entries()
+            # it's the default order, but if we don't pass a specific order to sorted(), an extra
+            # search will be run, so better use cached values
+            latest_entry = reconciled_entries.sorted(lambda m: (m.date, m.name, m.id), reverse=True)[:1]
+            move.date_paid = latest_entry.date
+        return res
+
+    def _get_reconciled_entries(self):
+        """Retrieve the reconciled entries that pay this invoice
+
+        This is similar to method that retrieves reconciled payments, but considering also
+        journal entries without payment, e.g. PoS payments.
+        """
+        reconciled_lines = self.line_ids.filtered(
+            lambda line: line.account_id.user_type_id.type in ("receivable", "payable")
+        )
+        reconciled_amls = (
+            reconciled_lines.matched_debit_ids.debit_move_id | reconciled_lines.matched_credit_ids.credit_move_id
+        )
+        reconciled_entries = reconciled_amls.move_id
+        return reconciled_entries
