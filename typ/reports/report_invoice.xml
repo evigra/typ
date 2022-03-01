@@ -36,11 +36,11 @@
             />
             <t
                 t-set="font_size_subtitles"
-                t-value="'font-size: %dpx;' % (15 if report_type == 'html' else 16)"
+                t-value="'font-size: %dpx;' % (15 if report_type == 'html' else 12)"
             />
             <t
                 t-set="font_size_body"
-                t-value="'font-size: %dpx;' % (12 if report_type == 'html' else 16)"
+                t-value="'font-size: %dpx;' % (12 if report_type == 'html' else 10)"
             />
             <div class="row">
                 <div class="col-3" style="margin: 0px; padding: 0px;">
@@ -88,11 +88,11 @@
                             class="col-4 text-center"
                             style="padding-top: 0.0em; border-right: 2px solid #deeff5;"
                         >
-                            <h4 style="color:red;">
+                            <span t-attf-style="color:red; #{font_size_subtitles}">
                                 <t>
                                     <strong t-esc="o.name" />
                                 </t>
-                            </h4>
+                            </span>
                         </div>
                         <div
                             class="col-8 text-center"
@@ -150,11 +150,11 @@
                     </div>
                 </div>
             </div>
-            <div class="row">
+            <div class="row" t-att-style="font_size_body">
                 <div class="col-5" style="padding-left: 0.0em; padding-right: 0.2em;">
                     <div
                         class="text-center"
-                        t-attf-style="border-bottom-right-radius: 0.4em; border-bottom-left-radius: 0.4em; border: 2px solid #deeff5; padding-top: 0.0em; #{font_size_body}"
+                        style="border-bottom-right-radius: 0.4em; border-bottom-left-radius: 0.4em; border: 2px solid #deeff5; padding-top: 0.0em;"
                     >
                         <span t-field="o.ref" />
                     </div>
@@ -162,7 +162,7 @@
                 <div class="col-4" style="padding-right: 0.2em; padding-left: 0.2em;">
                     <div
                         class="text-center"
-                        t-attf-style="border-bottom-right-radius: 0.4em; border-bottom-left-radius: 0.4em; border: 2px solid #deeff5; padding-top: 0.0em; #{font_size_body}"
+                        style="border-bottom-right-radius: 0.4em; border-bottom-left-radius: 0.4em; border: 2px solid #deeff5; padding-top: 0.0em;"
                     >
                         <t t-if="is_cfdi_signed">
                             <span t-esc="cfdi_vals.get('fiscal_regime')" />
@@ -316,7 +316,7 @@
         <xpath expr="//table" position="replace">
             <table
                 class="table table-striped"
-                style="font-size:15px; border-collapse: collapse; padding-top: 0.5em;"
+                t-attf-style="#{font_size_body} border-collapse: collapse; padding-top: 0.5em;"
             >
                 <thead>
                     <tr>
@@ -381,7 +381,7 @@
         <xpath expr="//div[hasclass('clearfix')]" position="replace">
             <div id="total" class="row">
                 <div class="row offset-9 col-3">
-                    <table class="col-12" style="font-size:15px">
+                    <table class="col-12" t-att-style="font_size_body">
                         <tr>
                             <th
                                 class="text-left"
@@ -884,6 +884,9 @@
         </xpath>
         <xpath expr="//p[@name='comment']" position="attributes">
             <attribute name="t-if">False</attribute>
+        </xpath>
+        <xpath expr="//p[@name='payment_communication']" position="attributes">
+            <attribute name="t-att-style">font_size_body</attribute>
         </xpath>
     </template>
     <template id="report_invoice" inherit_id="account.report_invoice">
