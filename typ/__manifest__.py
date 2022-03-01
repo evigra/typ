@@ -23,6 +23,7 @@
         "hr_holidays",
         "hr_payroll",
         "l10n_mx_avoid_reversal_entry",
+        "l10n_mx_edi_cancellation",
         "l10n_mx_edi_customs_diot",
         "l10n_mx_edi_hr_expense",
         "l10n_mx_edi_landing",
