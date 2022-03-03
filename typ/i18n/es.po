@@ -2337,6 +2337,11 @@ msgid "Custom Broker code"
 msgstr "Código de agencia aduanal"
 
 #. module: typ
+#: model:ir.model.fields,help:typ.field_stock_move__purchase_partner_id
+msgid "Custom vendor to be used when creating a purchase order."
+msgstr "Proveedor personalizado que se utilizará al crear un pedido de compra."
+
+#. module: typ
 #: model_terms:ir.ui.view,arch_db:typ.loyalty
 msgid "Customer Black"
 msgstr ""
@@ -2629,6 +2634,17 @@ msgid "Divididos Residenciales"
 msgstr ""
 
 #. module: typ
+#: model:ir.model.fields,help:typ.field_res_config_settings__no_auto_scheduler
+msgid ""
+"Do not automatically check reordering rules when a product cannot be "
+"completely reserved, which avoids to have a replenishment document for the "
+"product without having run scheduler."
+msgstr ""
+"No revisar Reglas de abastecimiento cuando un producto no puede ser "
+"completamente reservado, lo que evita tener un documento de reabastecimiento"
+" para el producto sin haber ejecutado el planificador."
+
+#. module: typ
 #: model_terms:ir.ui.view,arch_db:typ.view_invoice_from_guides_form
 msgid "Do you really want to create the invoice?"
 msgstr "¿Realmente desea crear la factura?"
@@ -2647,6 +2663,11 @@ msgstr "Doctorado"
 #: model_terms:ir.ui.view,arch_db:typ.view_employee_form
 msgid "Documents"
 msgstr "Documentos"
+
+#. module: typ
+#: model:ir.model.fields,field_description:typ.field_res_config_settings__no_auto_scheduler
+msgid "Don't auto run scheduler"
+msgstr "No auto ejecutar el planificador"
 
 #. module: typ
 #: model_terms:ir.ui.view,arch_db:typ.my_orders
@@ -7499,6 +7520,7 @@ msgstr "Nota de Crédito del Vendedor"
 
 #. module: typ
 #: model:ir.model.fields,field_description:typ.field_sale_order_line__purchase_partner_id
+#: model:ir.model.fields,field_description:typ.field_stock_move__purchase_partner_id
 msgid "Vendor for purchase"
 msgstr "Proveedor para la compra"
 

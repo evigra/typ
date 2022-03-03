@@ -12,8 +12,10 @@
     </record>
 
     <!-- Stock Location Routes -->
-    <record id="purchase_stock.route_warehouse0_buy" model="stock.location.route">
+    <record id="route_warehouse1_special_so" model="stock.location.route">
+        <field name="name">Special orders: Buy</field>
         <field name="sale_selectable" eval="True" />
+        <field name="sequence" eval="0" />
     </record>
 
     <record id="whr_test_01_route_reception" model="stock.location.route">
@@ -29,15 +31,31 @@
         <field name="location_src_id" ref="stock.stock_location_suppliers" />
         <field name="location_id" ref="whr_test_01_location" />
         <field name="warehouse_id" ref="whr_test_01" />
-        <field name="group_propagation_option">propagate</field>
+        <field name="procure_method">make_to_stock</field>
     </record>
 
-    <!-- Reordering rules -->
-    <record id="stock_warehouse_orderpoint_1" model="stock.warehouse.orderpoint">
-        <field name="warehouse_id" ref="whr_test_01" />
-        <field name="product_id" ref="product.product_product_16" />
+    <record id="pull_rule_warehouse1_buy" model="stock.rule">
+        <field name="name">Warehouse 1: Purchase → Stock</field>
+        <field name="sequence" eval="30" />
+        <field name="action">buy</field>
+        <field name="route_id" ref="route_warehouse1_special_so" />
+        <field name="picking_type_id" ref="whr_test_01_pick_type_in" />
+        <field name="location_src_id" eval="False" />
         <field name="location_id" ref="whr_test_01_location" />
-        <field name="company_id" ref="base.main_company" />
+        <field name="warehouse_id" ref="whr_test_01" />
+        <field name="procure_method">make_to_stock</field>
+    </record>
+
+    <record id="pull_rule_warehouse1_customer" model="stock.rule">
+        <field name="name">Warehouse 1: Stock → Customers</field>
+        <field name="sequence" eval="40" />
+        <field name="action">pull</field>
+        <field name="route_id" ref="route_warehouse1_special_so" />
+        <field name="picking_type_id" ref="whr_test_01_pick_type_out" />
+        <field name="location_src_id" ref="whr_test_01_location" />
+        <field name="location_id" ref="stock.stock_location_customers" />
+        <field name="warehouse_id" ref="whr_test_01" />
+        <field name="procure_method">make_to_order</field>
     </record>
 
     <record id="base.user_demo" model="res.users">

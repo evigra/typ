@@ -129,6 +129,11 @@ class SaleOrderLine(models.Model):
             raise ValidationError(_("You can not modify the sales price of product %s", self.product_id.display_name))
         self.price_unit = new_price
 
+    def _prepare_procurement_values(self, group_id=False):
+        values = super()._prepare_procurement_values(group_id)
+        values["purchase_partner_id"] = self.purchase_partner_id.id
+        return values
+
     def invoice_line_create(self, invoice_id, qty):
         move_model = self.env["stock.move"]
         landed_model = self.env["stock.landed.cost"]
@@ -147,15 +152,3 @@ class SaleOrderLine(models.Model):
                 {"l10n_mx_edi_customs_number": ",".join(list(set(landed.mapped("l10n_mx_edi_customs_number"))))}
             )
         return invoice_lines
-
-    def _action_launch_stock_rule(self, previous_product_uom_qty=False):
-        """Pass the specified vendor by context so it's used when creating purchase orders"""
-        # Group lines vi vendors because some lines could share the same vendor
-        res = True
-        lines_by_vendor = {}
-        for line in self:
-            lines_by_vendor.setdefault(line.purchase_partner_id, []).append(line.id)
-        for vendor, line_ids in lines_by_vendor.items():
-            lines = self.browse(line_ids).with_context(supplierinfo_name=vendor)
-            res = res and super(SaleOrderLine, lines)._action_launch_stock_rule(previous_product_uom_qty)
-        return res

@@ -7,7 +7,7 @@
     "website": "http://www.vauxoo.com",
     "license": "LGPL-3",
     "category": "Installer",
-    "version": "14.0.1.0.0",
+    "version": "14.0.1.0.1",
     "depends": [
         "account_budget",
         "account_payment",

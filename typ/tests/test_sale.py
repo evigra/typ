@@ -88,13 +88,13 @@ class TestSale(TypTransactionCase):
                 {
                     "partner_id": self.vendor.id,
                     "currency_id": self.mxn.id,
-                    "origin": self.orderpoint.name,
+                    "origin": sale_order.name,
                     "picking_type_id": self.warehouse_test1.in_type_id.id,
                 },
                 {
                     "partner_id": self.vendor2.id,
                     "currency_id": self.mxn.id,
-                    "origin": self.orderpoint.name,
+                    "origin": sale_order.name,
                     "picking_type_id": self.warehouse_test1.in_type_id.id,
                 },
             ],
@@ -107,14 +107,14 @@ class TestSale(TypTransactionCase):
                     "product_id": self.product.id,
                     "product_qty": 5.0,
                     "price_unit": 25.0,
-                    "orderpoint_id": self.orderpoint.id,
+                    "orderpoint_id": False,
                 },
                 {
                     "order_id": purchase_orders[1].id,
                     "product_id": self.product.id,
                     "product_qty": 3.0,
                     "price_unit": 20.0,
-                    "orderpoint_id": self.orderpoint.id,
+                    "orderpoint_id": False,
                 },
             ],
         )

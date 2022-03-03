@@ -38,8 +38,7 @@ class TypCase:
         self.warehouse_test1 = self.env.ref("typ.whr_test_01")
         self.warehouse_test2 = self.env.ref("typ.whr_test_02")
         self.location_vendors = self.env.ref("stock.stock_location_suppliers")
-        self.orderpoint = self.env.ref("typ.stock_warehouse_orderpoint_1")
-        self.route_buy = self.env.ref("purchase_stock.route_warehouse0_buy")
+        self.route_special_so = self.env.ref("typ.route_warehouse1_special_so")
         self.route_warehouse1_reception = self.env.ref("typ.whr_test_01_route_reception")
         self.pos_config = self.env.ref("point_of_sale.pos_config_main")
         self.usd = self.env.ref("base.USD")
@@ -72,7 +71,7 @@ class TypCase:
                 if price is not False:
                     line.price_unit = price
                 if vendor is not None:
-                    line.route_id = self.route_buy
+                    line.route_id = self.route_special_so
                     line.purchase_partner_id = vendor
                     self.fill_so_delivery_fields(so)
 
