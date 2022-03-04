@@ -7,7 +7,7 @@
     "website": "http://www.vauxoo.com",
     "license": "LGPL-3",
     "category": "Installer",
-    "version": "14.0.1.0.1",
+    "version": "14.0.1.0.2",
     "depends": [
         "account_budget",
         "account_payment",
@@ -29,12 +29,11 @@
         "l10n_mx_edi_landing",
         "l10n_mx_edi_pos",
         "l10n_mx_edi_purchase_document",
-        "maintenance",
+        "mrp",
         "note",
         "portal_multicurrency_totals",
         "product_supplierinfo_for_customer_sale",
         "project",
-        "purchase_mrp_workorder_quality",
         "sale_credit_management",
         "sale_margin",
         "sale_product_configurator",
@@ -44,6 +43,7 @@
         "stock_picking_show_return",
         # TODO add stock_segmentation_cost_fraction once the following is merged:
         #  https://git.vauxoo.com/vauxoo/stock-psycho-account/-/merge_requests/8
+        "website_blog",
         "website_blog",
         "website_crm_form",
         "website_sale",

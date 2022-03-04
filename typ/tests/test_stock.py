@@ -157,7 +157,7 @@ class TestStock(TypTransactionCase):
         """
         # Make products available
         quant_product1 = self.inventory_adjustment(product=self.product)
-        quant_product2 = self.inventory_adjustment(product=self.product_serial, lot_name="0000000000003")
+        quant_product2 = self.inventory_adjustment(product=self.product_serial, lot_name="SN-00003")
 
         # sell products
         sale_order = self.create_sale_order(quantity=3)

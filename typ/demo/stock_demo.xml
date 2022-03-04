@@ -62,4 +62,12 @@
         <field name="groups_id" eval="[(4, ref('group_stock_manual_transfer'))]" />
     </record>
 
+    <!-- Lot/serial numbers -->
+
+    <record id="product_table_lot1" model="stock.production.lot">
+        <field name="name">SN-00003</field>
+        <field name="product_id" ref="mrp.product_product_computer_desk" />
+        <field name="company_id" ref="base.main_company" />
+    </record>
+
 </odoo>
