@@ -112,7 +112,8 @@
         </div>
         <div class="footer" style="border-top: 1px solid #ccc; padding-top: 10px;">
             <div class="text-center">
-                <span>Phone</span>: <span t-field="company.phone" />
+                <span>Phone</span>:
+                <span t-esc="salesteam.sale_phone or address.phone" />
                 | <span>Email</span>: <span t-field="company.email_purchase" />
                 | <span>Website</span>: <span t-field="company.website" />
                 <br />
@@ -184,7 +185,8 @@
         </div>
         <div class="footer" style="border-top: 1px solid #ccc; padding-top: 10px;">
             <div class="text-center">
-                <span>Phone</span>: <span t-field="company.phone" />
+                <span>Phone</span>:
+                <span t-esc="salesteam.sale_phone or address.phone" />
                 | <span>Email</span>: <span t-field="company.email_purchase" />
                 | <span>Website</span>: <span t-field="company.website" />
                 <br />
