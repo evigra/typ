@@ -1,12 +1,6 @@
-import base64
-import io
 import logging
-import zipfile
 
 from odoo import _, api, fields, models
-
-# from odoo.addons.l10n_mx_edi.tools.run_after_commit import run_after_commit  -> TODO: review on v14.0
-
 
 _logger = logging.getLogger(__name__)
 
@@ -26,7 +20,10 @@ class AccountMove(models.Model):
     )
     # Due date won't be editable, even in draft
     invoice_date_due = fields.Date(states=None)
-    invoice_user_id = fields.Many2one(tracking=True)
+    invoice_user_id = fields.Many2one(
+        readonly=True,
+        states={"draft": [("readonly", False)]},
+    )
     validation_date = fields.Date(
         string="Invoice validation date",
         copy=False,
@@ -52,10 +49,25 @@ class AccountMove(models.Model):
             move = move.with_company(move.journal_id.company_id)
             move.partner_payment_term_id = move.partner_id.property_payment_term_id
 
-    @api.model
-    def line_get_convert(self, line, part):
-        res = super().line_get_convert(line, part)
-        res["guide_line_id"] = line.get("guide_line_id", False)
+    @api.depends(
+        "restrict_mode_hash_table",
+        "state",
+        # This one was added
+        "payment_id",
+    )
+    def _compute_show_reset_to_draft_button(self):
+        """Consider groups and payments to determine if button "Reset to Draft" should be visible
+
+        It works as follows:
+        - If natively not visible, then leave it as it is
+        - If it's a payment, the group "Can cancel payments" must be enabled
+        - Otherwise, the group "Can cancel invoices" must be enabled
+        """
+        res = super()._compute_show_reset_to_draft_button()
+        can_cancel_invoice = self.env.user.has_group("typ.res_group_cancel_invoice")
+        can_cancel_payment = self.env.user.has_group("typ.res_group_button_cancel_payment")
+        for move in self.filtered("show_reset_to_draft_button"):
+            move.show_reset_to_draft_button = can_cancel_payment if move.payment_id else can_cancel_invoice
         return res
 
     def _post(self, soft=True):
@@ -130,64 +142,6 @@ class AccountMove(models.Model):
                 # mails list with some False
                 body="<br>".join(["- " + msg.failure_reason for msg in mail if msg.failure_reason]),
             )
-
-    def my_invoices_zip(self):
-        invoice_xml = self.l10n_mx_edi_retrieve_last_attachment()
-        attachment_id = ""
-        invoice_pdf = self.retrieve_last_invoice()
-
-        attachments_exists = self.retrieve_invoices_zip()
-
-        if attachments_exists:
-            attachment_id = attachments_exists
-        elif invoice_xml is not None and invoice_pdf is not None:
-            attachment_id = self.create_zip(invoice_xml, invoice_pdf)
-        elif invoice_xml is not None and invoice_pdf is None:
-            attachment_id = invoice_xml
-        else:
-            attachment_id = invoice_pdf
-
-        return attachment_id
-
-    def retrieve_invoices(self):
-        domain = [
-            ("res_id", "=", self.id),
-            ("res_model", "=", "account.move"),
-            ("mimetype", "=", "application/pdf"),
-            ("name", "like", "%.pdf"),
-        ]
-        return self.env["ir.attachment"].search(domain)
-
-    def retrieve_last_invoice(self):
-        attachment_ids = self.retrieve_invoices()
-        return attachment_ids and attachment_ids[0] or None
-
-    def retrieve_invoices_zip(self):
-        domain = [
-            ("res_id", "=", self.id),
-            ("mimetype", "=", "application/zip"),
-        ]
-        attachments = self.env["ir.attachment"].search(domain)
-        return attachments
-
-    def create_zip(self, invoice_xml, invoice_pdf):
-        zip_stream = io.BytesIO()
-        with zipfile.ZipFile(zip_stream, "w") as myzip:
-            myzip.writestr(invoice_xml.name, base64.b64decode(invoice_xml.datas))
-            myzip.writestr(invoice_pdf.name, base64.b64decode(invoice_pdf.datas))
-            myzip.close()
-            zip_name = invoice_xml.name.replace(".xml", ".zip")
-            values = {
-                "name": zip_name,
-                "type": "binary",
-                "mimetype": "application/zip",
-                "public": False,
-                "db_datas": base64.b64encode(zip_stream.getvalue()),
-                "res_id": invoice_xml.res_id,
-                "datas_fname": zip_name,
-            }
-        attachment_id = self.env["ir.attachment"].create(values)
-        return attachment_id
 
     def _check_credit_limit(self):
         """Pass warehouse and journal by context so they're considered when computing credit limit"""

@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<odoo noupdate="1">
+<odoo>
 
     <record id="res_group_cancel_invoice" model="res.groups">
-        <field name="name">Users that can cancel a invoice</field>
-        <field name="comment">This group can cancel invoices.</field>
+        <field name="name">Can cancel invoices</field>
         <field
             name="users"
             eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]"
@@ -11,8 +10,7 @@
     </record>
 
     <record id="res_group_button_credit_note" model="res.groups">
-        <field name="name">Users that can see the button add credit note</field>
-        <field name="comment">This group can see the button add credit note.</field>
+        <field name="name">Can add credit notes</field>
         <field
             name="users"
             eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]"
@@ -49,10 +47,7 @@
     </record>
 
     <record id="res_group_button_cancel_payment" model="res.groups">
-        <field name="name">Users who can see the cancel payment button</field>
-        <field
-            name="comment"
-        >This group can see the cancel payment button in accounting.</field>
+        <field name="name">Can cancel payments</field>
         <field
             name="users"
             eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]"
@@ -60,10 +55,7 @@
     </record>
 
     <record id="res_group_analitic_invoice_lines" model="res.groups">
-        <field name="name">Users who can see analytic fields invoice lines</field>
-        <field
-            name="comment"
-        >This group can see analytics fields in invoice lines</field>
+        <field name="name">Can see analytic fields in invoice lines</field>
         <field
             name="users"
             eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]"

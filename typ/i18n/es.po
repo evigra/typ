@@ -1873,9 +1873,29 @@ msgid "Calefactores"
 msgstr ""
 
 #. module: typ
+#: model:res.groups,name:typ.res_group_button_credit_note
+msgid "Can add credit notes"
+msgstr "Puede añadir notas de crédito"
+
+#. module: typ
+#: model:res.groups,name:typ.res_group_cancel_invoice
+msgid "Can cancel invoices"
+msgstr "Puede cancelar facturas"
+
+#. module: typ
+#: model:res.groups,name:typ.res_group_button_cancel_payment
+msgid "Can cancel payments"
+msgstr "Puede cancelar pagos"
+
+#. module: typ
 #: model:res.groups,name:typ.group_stock_manual_transfer
 msgid "Can make manual transfers"
 msgstr "Puede realizar transferencias manuales"
+
+#. module: typ
+#: model:res.groups,name:typ.res_group_analitic_invoice_lines
+msgid "Can see analytic fields in invoice lines"
+msgstr "Puede ver campos analíticos en líneas de factura"
 
 #. module: typ
 #: model_terms:ir.ui.view,arch_db:typ.contact_edit
@@ -6710,11 +6730,6 @@ msgid "This group allow sale order bellow the minimum margin."
 msgstr "Este grupo permite pedidos de venta por debajo del margen mínimo."
 
 #. module: typ
-#: model:res.groups,comment:typ.res_group_cancel_invoice
-msgid "This group can cancel invoices."
-msgstr "Este grupo puede cancelar facturas"
-
-#. module: typ
 #: model:res.groups,comment:typ.group_cancel_picking_with_move_not_in_transit_loc
 msgid ""
 "This group can cancel pickings that have not moves in transit locations"
@@ -6767,11 +6782,6 @@ msgid "This group can reverse transfer in pickings"
 msgstr "Este grupo puede revertir transferencias en albaranes"
 
 #. module: typ
-#: model:res.groups,comment:typ.res_group_analitic_invoice_lines
-msgid "This group can see analytics fields in invoice lines"
-msgstr "Este grupo puede ver campos analíticos en líneas de factura"
-
-#. module: typ
 #: model:res.groups,comment:typ.res_partner_accounting_employee_contact
 msgid "This group can see contact employee, but not see their address"
 msgstr ""
@@ -6821,16 +6831,6 @@ msgstr ""
 #. module: typ
 #: model:res.groups,comment:typ.group_stock_validation_button_inventory
 msgid "This group can see the button Validation in inventory adjustments"
-msgstr ""
-
-#. module: typ
-#: model:res.groups,comment:typ.res_group_button_credit_note
-msgid "This group can see the button add credit note."
-msgstr ""
-
-#. module: typ
-#: model:res.groups,comment:typ.res_group_button_cancel_payment
-msgid "This group can see the cancel payment button in accounting."
 msgstr ""
 
 #. module: typ
@@ -7321,11 +7321,6 @@ msgid "Users than can unreserve"
 msgstr "Usuarios que pueden anular reserva"
 
 #. module: typ
-#: model:res.groups,name:typ.res_group_cancel_invoice
-msgid "Users that can cancel a invoice"
-msgstr ""
-
-#. module: typ
 #: model:res.groups,name:typ.res_group_cancel_picking
 msgid "Users that can cancel a picking"
 msgstr "Usuarios que pueden cancelar un albarán"
@@ -7411,11 +7406,6 @@ msgid "Users that can see the adviser menu in accounting"
 msgstr ""
 
 #. module: typ
-#: model:res.groups,name:typ.res_group_button_credit_note
-msgid "Users that can see the button add credit note"
-msgstr ""
-
-#. module: typ
 #: model:res.groups,name:typ.res_group_margin_sale_order
 msgid "Users that can see the margin of sale"
 msgstr "Usuarios que pueden ver el margen en el pedido de venta"
@@ -7438,16 +7428,6 @@ msgstr ""
 #. module: typ
 #: model:res.groups,name:typ.report_group_manager_view
 msgid "Users who can see all reports"
-msgstr ""
-
-#. module: typ
-#: model:res.groups,name:typ.res_group_analitic_invoice_lines
-msgid "Users who can see analytic fields invoice lines"
-msgstr ""
-
-#. module: typ
-#: model:res.groups,name:typ.res_group_button_cancel_payment
-msgid "Users who can see the cancel payment button"
 msgstr ""
 
 #. module: typ
