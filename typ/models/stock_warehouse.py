@@ -1,8 +1,14 @@
-from odoo import models
+from odoo import fields, models
 
 
 class StockWarehouse(models.Model):
     _inherit = "stock.warehouse"
+
+    is_cedis = fields.Boolean(
+        string="Is CEDIS?",
+        copy=False,
+        help="Indicates wheter this warehouse is a distribution center.",
+    )
 
     def _load_records(self, data_list, update=False):
         """Create external IDs for locations and picking types, for convenience"""

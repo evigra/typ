@@ -3552,6 +3552,20 @@ msgid "Indicate when product ships from supplier's warehouse"
 msgstr "Indica cuándo se envía el producto desde el almacén del proveedor"
 
 #. module: typ
+#: model:ir.model.fields,help:typ.field_stock_picking_type__is_cedis
+msgid ""
+"Indicates wheter this operation tipe is used to receive products to a "
+"distribution center."
+msgstr ""
+"Indica si este tipo de operación se utiliza para recibir productos a un "
+"centro de distribución."
+
+#. module: typ
+#: model:ir.model.fields,help:typ.field_stock_warehouse__is_cedis
+msgid "Indicates wheter this warehouse is a distribution center."
+msgstr "Indica si este almacén es un centro de distribución."
+
+#. module: typ
 #: model:ir.model.fields,field_description:typ.field_hr_employee_report_line__indicator_id
 #: model_terms:ir.ui.view,arch_db:typ.view_hr_employee_indicator_form
 msgid "Indicator"
@@ -3678,6 +3692,11 @@ msgstr "Facturas"
 #: model:ir.model,name:typ.model_invoice_guides
 msgid "Invoices from Guides Wizard"
 msgstr "Asistente para facturas desde guías"
+
+#. module: typ
+#: model:ir.model.fields,field_description:typ.field_stock_warehouse__is_cedis
+msgid "Is CEDIS?"
+msgstr "¿Es CEDIS?"
 
 #. module: typ
 #: model:ir.model.fields,field_description:typ.field_account_payment__is_commission
@@ -5543,6 +5562,11 @@ msgstr "Motivo de baja"
 #: model:stock.picking.type,name:typ.whr_test_02_pick_type_in
 msgid "Receipts"
 msgstr "Recepciones"
+
+#. module: typ
+#: model:ir.model.fields,field_description:typ.field_stock_picking_type__is_cedis
+msgid "Receive to CEDIS?"
+msgstr "¿Recibe a CEDIS?"
 
 #. module: typ
 #: model_terms:ir.ui.view,arch_db:typ.s_banner_sales

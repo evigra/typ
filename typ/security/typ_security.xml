@@ -550,4 +550,38 @@ They can:
             ('crm_team_id', 'in', user.sale_team_ids.ids),
         ]</field>
     </record>
+
+    <record id="rule_warehouse_traffic" model="ir.rule">
+        <field name="name">Access CEDIS warehouses to traffic users</field>
+        <field name="model_id" ref="model_stock_warehouse" />
+        <field name="domain_force">[('is_cedis', '=', True)]</field>
+        <field name="perm_read" eval="True" />
+        <field name="perm_write" eval="False" />
+        <field name="perm_unlink" eval="False" />
+        <field name="perm_create" eval="False" />
+        <field name="groups" eval="[(4, ref('group_traffic'))]" />
+    </record>
+
+    <record id="rule_picking_type_traffic" model="ir.rule">
+        <field name="name">Access CEDIS operation types to traffic users</field>
+        <field name="model_id" ref="model_stock_picking_type" />
+        <field name="domain_force">[('is_cedis', '=', True)]</field>
+        <field name="perm_read" eval="True" />
+        <field name="perm_write" eval="False" />
+        <field name="perm_unlink" eval="False" />
+        <field name="perm_create" eval="False" />
+        <field name="groups" eval="[(4, ref('group_traffic'))]" />
+    </record>
+
+    <record id="rule_picking_traffic" model="ir.rule">
+        <field name="name">Access CEDIS incoming transfers to traffic users</field>
+        <field name="model_id" ref="model_stock_picking" />
+        <field name="domain_force">[('picking_type_id.is_cedis', '=', True)]</field>
+        <field name="perm_read" eval="True" />
+        <field name="perm_write" eval="False" />
+        <field name="perm_unlink" eval="False" />
+        <field name="perm_create" eval="False" />
+        <field name="groups" eval="[(4, ref('group_traffic'))]" />
+    </record>
+
 </odoo>

@@ -9,6 +9,7 @@
     <record id="whr_test_02" model="stock.warehouse">
         <field name="name">Test warehouse 2</field>
         <field name="code">TW2</field>
+        <field name="is_cedis" eval="True" />
     </record>
 
     <!-- Stock Location Routes -->

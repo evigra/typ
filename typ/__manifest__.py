@@ -7,7 +7,7 @@
     "website": "http://www.vauxoo.com",
     "license": "LGPL-3",
     "category": "Installer",
-    "version": "14.0.1.0.3",
+    "version": "14.0.1.0.4",
     "depends": [
         "account_budget",
         "account_payment",
@@ -123,6 +123,7 @@
         "views/stock_picking_views.xml",
         "views/stock_quant_views.xml",
         "views/stock_warehouse_orderpoint_views.xml",
+        "views/stock_warehouse_views.xml",
         "views/templates.xml",
         # Pages
         "views/pages/about.xml",
