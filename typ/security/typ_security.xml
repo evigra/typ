@@ -485,9 +485,10 @@ They can:
         >Limited access to Journal Entry (filtered by sale teams)</field>
         <field name="model_id" ref="model_account_move" />
         <field name="domain_force">[
-            '|', '|',
+            '|', '|', '|',
             ('journal_id', 'in', user.sale_team_ids.journal_team_ids.ids),
             ('journal_id.section_id', '=', False),
+            ('payment_journal_id', 'in', user.sale_team_ids.journal_team_ids.ids),
             (user.share, '=', True),
         ]</field>
     </record>
@@ -497,10 +498,11 @@ They can:
         >Limited access to Journal Item (filtered by sale teams)</field>
         <field name="model_id" ref="model_account_move_line" />
         <field name="domain_force">[
-            '|', '|', '|',
+            '|', '|', '|', '|',
             ('journal_id', '=', False),
             ('journal_id', 'in', user.sale_team_ids.journal_team_ids.ids),
             ('journal_id.section_id', '=', False),
+            ('payment_journal_id', 'in', user.sale_team_ids.journal_team_ids.ids),
             (user.share, '=', True),
         ]</field>
     </record>

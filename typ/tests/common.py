@@ -31,6 +31,7 @@ class TypCase:
         self.company_secondary = self.env.ref("stock.res_company_1")
         self.journal_expense = self.env["account.journal"].search([("name", "=", "Expense")], limit=1)
         self.journal_bills = self.env["account.journal"].search([("name", "=", "Vendor Bills")], limit=1)
+        self.journal_cash = self.env["account.journal"].search([("type", "=", "cash")], limit=1)
         self.journal_guide = self.env.ref("typ.journal_cost_guide")
         self.journal_landed_cost = self.env.ref("typ.journal_landed_cost")
         self.payment_term_immediate = self.env.ref("account.account_payment_term_immediate")
@@ -159,6 +160,19 @@ class TypCase:
         )
         immediate_transfer = self.env[action["res_model"]].with_context(ctx).create({})
         return immediate_transfer.process()
+
+    def pay_invoice(self, invoices_or_amls, amount=None, journal=None):
+        if journal is None:
+            journal = self.journal_cash
+        action = invoices_or_amls.action_register_payment()
+        wizard = Form(self.env[action["res_model"]].with_context(action["context"]))
+        if amount is not None:
+            wizard.amount = amount
+        wizard.journal_id = journal
+        wizard = wizard.save()
+        wizard_res = wizard.action_create_payments()
+        payment = self.env[wizard_res["res_model"]].browse(wizard_res["res_id"])
+        return payment
 
     # Method names for assertion are lower camel case
     # pylint: disable=invalid-name

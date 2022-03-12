@@ -30,6 +30,13 @@ class AccountMove(models.Model):
         readonly=True,
         help="This date indicates when the invoice was validated",
     )
+    payment_journal_id = fields.Many2one(
+        "account.journal",
+        compute="_compute_amount",
+        store=True,
+        index=True,
+        help="Journal of the latest payment registered for this invoice.",
+    )
     date_paid = fields.Date(
         "Payment date",
         compute="_compute_amount",
@@ -178,15 +185,17 @@ class AccountMove(models.Model):
             if (
                 not move.is_invoice(include_receipts=True)
                 or move.state != "posted"
-                or move.payment_state in ("not_paid", "partial")
+                or move.payment_state == "not_paid"
             ):
                 move.date_paid = False
+                move.payment_journal_id = False
                 continue
             reconciled_entries = move._get_reconciled_entries()
             # it's the default order, but if we don't pass a specific order to sorted(), an extra
             # search will be run, so better use cached values
             latest_entry = reconciled_entries.sorted(lambda m: (m.date, m.name, m.id), reverse=True)[:1]
-            move.date_paid = latest_entry.date
+            move.date_paid = False if move.payment_state == "partial" else latest_entry.date
+            move.payment_journal_id = latest_entry.journal_id
         return res
 
     def _get_reconciled_entries(self):

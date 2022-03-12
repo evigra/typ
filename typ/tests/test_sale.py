@@ -183,7 +183,32 @@ class TestSale(TypTransactionCase):
         with Form(invoice) as inv, inv.invoice_line_ids.edit(0) as inv_line:
             inv_line.price_unit = 1500.0
         invoice.action_post()
-        self.assertEqual(invoice.state, "posted")
+        self.assertRecordValues(
+            records=invoice,
+            expected_values=[
+                {
+                    "state": "posted",
+                    "payment_state": "not_paid",
+                    "date_paid": False,
+                    "payment_journal_id": False,
+                    "amount_residual": 1500.0,
+                },
+            ],
+        )
+
+        # Pay the invoice
+        payment = self.pay_invoice(invoice)
+        self.assertRecordValues(
+            records=invoice,
+            expected_values=[
+                {
+                    "payment_state": "in_payment",
+                    "date_paid": payment.date,
+                    "payment_journal_id": self.journal_cash.id,
+                    "amount_residual": 0.0,
+                },
+            ],
+        )
 
     def test_06_nested_pricelist(self):
         """Test that prices are computed correctly for nested pricelists

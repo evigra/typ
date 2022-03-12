@@ -3801,6 +3801,14 @@ msgid "Journal landed cost guide"
 msgstr "Diario de guía de coste en destino"
 
 #. module: typ
+#: model:ir.model.fields,help:typ.field_account_bank_statement_line__payment_journal_id
+#: model:ir.model.fields,help:typ.field_account_move__payment_journal_id
+#: model:ir.model.fields,help:typ.field_account_move_line__payment_journal_id
+#: model:ir.model.fields,help:typ.field_account_payment__payment_journal_id
+msgid "Journal of the latest payment registered for this invoice."
+msgstr "Diario del último pago registrado para esta factura."
+
+#. module: typ
 #: model:ir.model.fields,help:typ.field_stock_landed_cost_guide__journal_id
 msgid "Journal used for this guide"
 msgstr "Diario utilizado para esta guía"
@@ -5007,6 +5015,14 @@ msgstr "Administrador de la configuración de almacén del cliente"
 #: model_terms:ir.ui.view,arch_db:typ.aboutus
 msgid "Passion for the service."
 msgstr "Pasión por el servicio."
+
+#. module: typ
+#: model:ir.model.fields,field_description:typ.field_account_bank_statement_line__payment_journal_id
+#: model:ir.model.fields,field_description:typ.field_account_move__payment_journal_id
+#: model:ir.model.fields,field_description:typ.field_account_move_line__payment_journal_id
+#: model:ir.model.fields,field_description:typ.field_account_payment__payment_journal_id
+msgid "Payment Journal"
+msgstr "Diario de pago"
 
 #. module: typ
 #: model_terms:ir.ui.view,arch_db:typ.personal-info
