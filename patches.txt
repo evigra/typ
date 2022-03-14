@@ -1,2 +1,3 @@
+odoo https://github.com/odoo/odoo/pull/72753.patch
 odoo https://github.com/odoo/odoo/pull/80702.patch
 odoo https://github.com/odoo/odoo/pull/80817.patch
