@@ -8,6 +8,13 @@
         />
     </record>
 
+    <!-- Move orderpoints from Inventory / Configuration / Products -> Inventory / Products,
+         so it's accessible not only for inventory admins but also inventory users
+         -->
+    <record id="stock.menu_reordering_rules_config" model="ir.ui.menu">
+        <field name="parent_id" ref="stock.menu_stock_inventory_control" />
+    </record>
+
     <menuitem
         id="menu_hr_employee_report"
         parent="hr.menu_hr_root"
