@@ -1,4 +1,4 @@
-from odoo import fields, models
+from odoo import api, fields, models
 
 
 class StockWarehouse(models.Model):
@@ -62,3 +62,8 @@ class StockWarehouse(models.Model):
             )
 
         return res
+
+    @api.model
+    def _get_salesteam_record_rules(self):
+        """Avoid access errors when a traffic user confirms a sale order with routes from other warehouses"""
+        return super()._get_salesteam_record_rules() | self.env.ref("typ.rule_warehouse_traffic")
