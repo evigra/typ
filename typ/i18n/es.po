@@ -6630,6 +6630,12 @@ msgstr ""
 "- %s"
 
 #. module: typ
+#: code:addons/typ/models/stock_picking.py:0
+#, python-format
+msgid "The following transfers have been cancelled:"
+msgstr "Las siguientes transferencias han sido canceladas:"
+
+#. module: typ
 #: model_terms:ir.ui.view,arch_db:typ.email_sent
 msgid "The invoice has been sent"
 msgstr "La factura ha sido enviada"
@@ -7000,12 +7006,6 @@ msgstr "Esta transferencia %s no se puede cancelar."
 msgid ""
 "This picking cannot be confirmed because. You have processed more than what "
 "was initially planned"
-msgstr ""
-
-#. module: typ
-#: code:addons/typ/models/stock_picking.py:0
-#, python-format
-msgid "This pickings has been canceled: %s"
 msgstr ""
 
 #. module: typ
