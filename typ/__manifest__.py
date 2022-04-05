@@ -127,6 +127,7 @@
         "views/templates.xml",
         # Pages
         "views/pages/about.xml",
+        "views/pages/account.xml",
         "views/pages/contactus.xml",
         "views/pages/loyalty.xml",
         "views/pages/organizations.xml",

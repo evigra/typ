@@ -1,5 +1,37 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <odoo>
+    <template id="portal_layout" inherit_id="portal.portal_layout">
+        <xpath expr="//div[hasclass('container')]" position='attributes'>
+            <attribute
+                name="class"
+                add="dark-white"
+                remove="container mt16"
+                separator=" "
+            />
+        </xpath>
+
+        <xpath expr="//div[@id='wrap']" position='attributes'>
+            <attribute name="class" add="dark-white mt0" separator=" " />
+        </xpath>
+
+        <xpath expr="//div[@id='wrap']/div" position='attributes'>
+            <attribute name="class" remove="mb64" separator=" " />
+        </xpath>
+
+        <xpath expr="//div[@id='wrap']/div/t/div" position='attributes'>
+            <attribute name="style">display: None;</attribute>
+        </xpath>
+
+        <xpath expr="//div[@id='wrap']/div/t/div" position='before'>
+            <t t-call="typ.my-account-menu" />
+            <div
+                class="col-md-8 col-md-offset-1 col-sm-8 col-sm-offset-0 col-xs-12 col-xs-offset-0"
+            >
+                <t t-call="typ.personal-info" />
+            </div>
+        </xpath>
+    </template>
+
 
     <template id="account_address" name="Account Address">
         <t t-call="typ.portal_layout">
@@ -10,7 +42,7 @@
                 <div
                     class="col-md-12 col-xs-12 col-sm-12 text-center account-content mb24"
                 >
-                        <h5 class="sections">SHIPPING INFORMATION</h5>
+                    <h5 class="sections">SHIPPING INFORMATION</h5>
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="row all_shipping">
@@ -40,6 +72,7 @@
                         />
                         <button
                             class='a-submit btn btn-primary btn-block col-xs-12 mb16'
+                            id="add_address"
                         >
                             Add an address
                         </button>
@@ -55,17 +88,13 @@
     <template id="address_panel" name="Kanban address">
         <div class="col-md-12 col-sm-12 col-xs-12 white-color account-information">
             <form action="" method="POST" class='hide'>
-                        <input
+                <input
                     type="hidden"
                     name="csrf_token"
                     t-att-value="request.csrf_token()"
                 />
-                        <input
-                    type="hidden"
-                    name="partner_id"
-                    t-att-value="contact.id"
-                />
-                        <input type='submit' />
+                <input type="hidden" name="partner_id" t-att-value="contact.id" />
+                <input type='submit' />
             </form>
             <div class="row mt16 mb8 predetermined-btns">
                 <div class="col-md-6 col-xs-6 col-sm-6">
@@ -73,9 +102,11 @@
                         <i
                             t-attf-class="address fa #{'fa-star address-selected' if selected else 'fa-star-o change_address_js'} fa-lg"
                             t-att-data-value="'%d' % contact.id"
-                        ><span
+                        >
+                            <span
                                 t-attf-class="#{'' if selected else 'hidden'}"
-                            >Predetermined</span></i>
+                            >Predetermined</span>
+                        </i>
                     </a>
                 </div>
                 <div
@@ -443,7 +474,10 @@
                             class="col-md-8 col-sm-8 col-xs-12 col-md-offset-2 col-sm-offset-2 col-xs-offset-0 mt32 mb96"
                         >
                                 <div class="col-md-6 col-sm-6">
-                                <button class="btn btn-primary btn-block mb32">
+                                <button
+                                    class="btn btn-primary btn-block mb32"
+                                    id="save-record"
+                                >
                                     Save
                                 </button>
                                 </div>

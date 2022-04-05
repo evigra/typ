@@ -12,13 +12,13 @@ class WebsiteAccount(WebsiteSale):
     @http.route("/delete-address", type="json", auth="user", website=True)
     def delete_address(self, address_id):
         partner = request.env["res.partner"]
-        logued_partner = request.env.user.partner_id
+        logged_partner = request.env.user.partner_id
         shippings = partner.search(
             [
-                ("id", "child_of", logued_partner.commercial_partner_id.ids),
+                ("id", "child_of", logged_partner.commercial_partner_id.ids),
                 "|",
                 ("type", "=", "delivery"),
-                ("id", "=", logued_partner.commercial_partner_id.id),
+                ("id", "=", logged_partner.commercial_partner_id.id),
             ]
         )
         for address in shippings:
@@ -82,7 +82,7 @@ class MyAccount(CustomerPortal):
     @http.route(["/my/contact/edit"], type="http", auth="user", website=True)
     def contact_edit(self, redirect=None, **post):
         partner_obj = request.env["res.partner"].with_context(show_address=1).sudo()
-        logued_partner = request.env.user.partner_id
+        logged_partner = request.env.user.partner_id
         mode = (False, False)
         values = errors = {}
         # -1 When request comes from add user request
@@ -96,10 +96,10 @@ class MyAccount(CustomerPortal):
             if partner_id <= 0:
                 return request.redirect("/my/address")
             partner = partner_obj.browse(partner_id)
-            if partner_id == logued_partner.id:
+            if partner_id == logged_partner.id:
                 mode = ("edit", "billing")
             else:
-                partner_shippings = logued_partner._get_partner_shippings()
+                partner_shippings = logged_partner._get_partner_shippings()
                 if partner_id in partner_shippings.mapped("id"):
                     mode = ("edit", "shipping")
                 else:
@@ -114,7 +114,7 @@ class MyAccount(CustomerPortal):
                 values = post
             else:
                 contact_dict, errors, error_msg = self.values_postprocess(
-                    logued_partner, mode, post, errors, error_msg
+                    logged_partner, mode, post, errors, error_msg
                 )
                 partner_id = self._contact_details_save(mode, contact_dict, post)
                 if not errors:
@@ -132,7 +132,7 @@ class MyAccount(CustomerPortal):
             "checkout": values,
             "country": country,
             "countries": country.get_website_sale_countries(mode=mode[1]),
-            "states": country.get_website_sale_states(mode=mode[1]),
+            "states": country.get_website_sale_states(mode=mode[1]) if country else [],
             "error": errors,
             "active_page": "/my/address",
         }
@@ -198,18 +198,20 @@ class MyAccount(CustomerPortal):
     def _get_mandatory_billing_fields(self):
         return WebsiteAccount()._get_mandatory_billing_fields()
 
-    def values_postprocess(self, logued_partner, mode, values, errors, error_msg):
+    def values_postprocess(self, logged_partner, mode, values, errors, error_msg):
+        values["country_id"] = int(values["country_id"])
+        values["state_id"] = int(values["state_id"])
         new_values = {
-            "customer": True,
+            "customer_rank": 1,
             "team_id": (request.website.salesteam_id and request.website.salesteam_id.id),
         }
-        lang = request.lang if request.lang in request.website.mapped("language_ids.code") else None
+        lang = request.lang.code if request.lang.code in request.website.mapped("language_ids.code") else None
         if lang:
             new_values["lang"] = lang
-        if mode == ("edit", "billing") and logued_partner.type == "contact":
+        if mode == ("edit", "billing") and logged_partner.type == "contact":
             new_values["type"] = "other"
         if mode[1] == "shipping":
-            new_values["parent_id"] = logued_partner.commercial_partner_id.id
+            new_values["parent_id"] = logged_partner.commercial_partner_id.id
             new_values["type"] = "delivery"
         new_values.update(values)
         new_values.pop("partner_id")

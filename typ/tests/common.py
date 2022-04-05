@@ -45,6 +45,8 @@ class TypCase:
         self.usd = self.env.ref("base.USD")
         self.mxn = self.env.ref("base.MXN")
         self.today = fields.Date.context_today(self.company)
+        self.mx_country = self.env.ref("base.mx")
+        self.mx_aguascalientes = self.env.ref("base.state_mx_ags")
 
     def create_sale_order(self, partner=None, team=None, pricelist=None, **line_kwargs):
         if partner is None:
