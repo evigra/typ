@@ -19,6 +19,7 @@ When install this app module, this dependencies will be added:
         * "contacts"
         * "crm_helpdesk"
         * "crm_profiling"
+        * "data_merge"
         * "default_warehouse_from_sale_team"
         * "hr_expense_replenishment_cancel"
         * "hr_expense_replenishment_tax"

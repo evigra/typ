@@ -7,7 +7,7 @@
     "website": "http://www.vauxoo.com",
     "license": "LGPL-3",
     "category": "Installer",
-    "version": "14.0.1.0.6",
+    "version": "14.0.1.0.7",
     "depends": [
         "account_budget",
         "account_payment",
@@ -15,6 +15,7 @@
         "auth_oauth",
         "barcodes_generator_product",
         "base_report_to_printer",
+        "data_merge",
         "default_warehouse_from_sale_team",
         "delivery",
         "fleet",
