@@ -69,6 +69,3 @@ package-lock.json
 
 # docker node_modules
 node_modules/
-
-# jupyterlab
-.ipynb_checkpoints/
