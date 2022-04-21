@@ -67,6 +67,18 @@
                                     />
                                 </span>
                             </div>
+                            <div
+                                t-if="group_lines[g_line].posx || group_lines[g_line].posy || group_lines[g_line].posz"
+                                name="location"
+                            >
+                                <i class="fa fa-fw fa-map-marker" />
+                                <span>
+                                    Location
+                                    <t t-esc="group_lines[g_line].posx or False" />
+                                    <t t-esc="group_lines[g_line].posy or False" />
+                                    <t t-esc="group_lines[g_line].posz or False" />
+                                </span>
+                            </div>
                         </div>
                         <div
                             t-if="state != 'done' and state != 'cancel'"
@@ -103,6 +115,17 @@
             <attribute
                 name="t-attf-style"
             >#{show_group_lines and 'display: none !important' or ' ' }</attribute>
+        </t>
+        <t t-jquery='t[t-as="line"] div.o_barcode_line_details' t-operation="append">
+            <div t-if="line.posx || line.posy || line.posz" name="location">
+                <i class="fa fa-fw fa-map-marker" />
+                <span>
+                    Location
+                    <t t-esc="line.posx or False" />
+                    <t t-esc="line.posy or False" />
+                    <t t-esc="line.posz or False" />
+                </span>
+            </div>
         </t>
     </t>
 </templates>

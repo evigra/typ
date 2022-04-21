@@ -185,3 +185,9 @@ class StockPicking(models.Model):
                     )
 
         return super().button_validate()
+
+    @api.model
+    def _get_move_line_ids_fields_to_read(self):
+        res = super()._get_move_line_ids_fields_to_read()
+        res.extend(["posx", "posy", "posz"])
+        return res

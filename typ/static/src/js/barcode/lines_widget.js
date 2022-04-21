@@ -33,6 +33,9 @@ odoo.define("typ.LinesWidget", function (require) {
                             lot_id: line.lot_id[1] || "",
                             lot_name: line.lot_name || "",
                             tag_ids: line.tag_ids,
+                            posx: line.posx || "",
+                            posy: line.posy || "",
+                            posz: line.posz || "",
                         };
                     } else if (line.product_uom_qty > 0 || line.qty_done > 0) {
                         group_lines[line_key].line_products.push(line);
