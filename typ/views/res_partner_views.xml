@@ -16,6 +16,17 @@
                     ],
                 }</attribute>
             </xpath>
+            <xpath expr="//field[@name='credit_limit']" position="after">
+                <field
+                    name="financial_credit_limit"
+                    attrs="{
+                        'invisible': [
+                            ('is_company', '=', False),
+                            ('parent_id', '!=', False),
+                        ],
+                    }"
+                />
+            </xpath>
             <xpath
                 expr="//group[@name='sale']//field[@name='user_id']"
                 position="after"

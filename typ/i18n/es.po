@@ -3018,6 +3018,12 @@ msgid "Este es el codigo enviado a la zebra"
 msgstr ""
 
 #. module: typ
+#: model:ir.model.fields,help:typ.field_res_partner__financial_credit_limit
+#: model:ir.model.fields,help:typ.field_res_users__financial_credit_limit
+msgid "Estimated credit limit calculated by the financial department."
+msgstr "Límite de crédito estimado calculado por el departamento de finanzas."
+
+#. module: typ
 #: model:ir.model.fields,field_description:typ.field_hr_employee_report_line__evaluation
 msgid "Evaluation"
 msgstr "Evaluación"
@@ -3118,6 +3124,12 @@ msgstr "Soporte al cliente final"
 #: model:ir.model.fields,field_description:typ.field_product_product__final_market
 msgid "Final Market"
 msgstr "Mercado Final"
+
+#. module: typ
+#: model:ir.model.fields,field_description:typ.field_res_partner__financial_credit_limit
+#: model:ir.model.fields,field_description:typ.field_res_users__financial_credit_limit
+msgid "Financial Credit Limit"
+msgstr "Límite de crédito financiero"
 
 #. module: typ
 #: model:ir.model.fields.selection,name:typ.selection__stock_landed_cost_guide_line__freight_type__sales

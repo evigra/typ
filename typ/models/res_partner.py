@@ -111,6 +111,11 @@ class ResPartner(models.Model):
         compute="_compute_credit_limit",
         readonly=False,
     )
+    financial_credit_limit = fields.Float(
+        copy=False,
+        tracking=True,
+        help="Estimated credit limit calculated by the financial department.",
+    )
 
     @api.depends("res_warehouse_ids.credit_limit")
     def _compute_credit_limit(self):
