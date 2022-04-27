@@ -41,3 +41,12 @@ class StockMove(models.Model):
                 }
             )
         return values
+
+    def _action_confirm(self, merge=True, merge_into=False):
+        order_point = self._context.get("from_orderpoint")
+        moves = self.filtered(lambda dat: not dat.group_id and order_point)
+        if moves:
+            group = self.env["procurement.group"].create({})
+            merge = False
+            moves.write({"group_id": group.id})
+        return super()._action_confirm(merge=merge, merge_into=merge_into)
