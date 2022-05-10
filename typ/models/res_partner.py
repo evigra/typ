@@ -168,11 +168,8 @@ class ResPartner(models.Model):
         journal_id = self.env.context.get("credit_limit_journal_id")
         if not journal_id:
             return super()._get_total_due()
-        unreconciled_aml_domain = self._fields["unreconciled_aml_ids"].domain.copy()
-        unreconciled_aml_domain += [
-            ("partner_id", "=", self.commercial_partner_id.id),
-            ("journal_id", "=", journal_id),
-        ]
+        unreconciled_aml_domain = self.commercial_partner_id._get_unreconciled_aml_domain()
+        unreconciled_aml_domain += [("journal_id", "=", journal_id)]
         unreconciled_amls = self.env["account.move.line"].read_group(
             domain=unreconciled_aml_domain,
             fields=["partner_id", "amount_residual"],

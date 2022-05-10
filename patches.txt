@@ -5,3 +5,4 @@ odoo https://github.com/odoo/odoo/pull/80817.patch
 odoo https://github.com/Vauxoo/odoo/pull/437.patch
 odoo https://github.com/Vauxoo/odoo/pull/438.patch
 extra_addons/enterprise https://api.github.com/repos/vauxoo/enterprise/pulls/702
+extra_addons/enterprise https://api.github.com/repos/vauxoo/enterprise/pulls/709
