@@ -1898,6 +1898,11 @@ msgid "Can see analytic fields in invoice lines"
 msgstr "Puede ver campos analíticos en líneas de factura"
 
 #. module: typ
+#: model:res.groups,name:typ.group_website_prices
+msgid "Can see prices in the website"
+msgstr "Puede ver precios en el sitio web"
+
+#. module: typ
 #: model_terms:ir.ui.view,arch_db:typ.contact_edit
 #: model_terms:ir.ui.view,arch_db:typ.guide_form_view
 #: model_terms:ir.ui.view,arch_db:typ.portal_my_details

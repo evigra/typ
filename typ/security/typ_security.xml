@@ -455,6 +455,14 @@ They can:
 - Reset guides to Draft state.</field>
     </record>
 
+    <record id="group_website_prices" model="res.groups">
+        <field name="name">Can see prices in the website</field>
+    </record>
+
+    <record id="base.group_user" model="res.groups">
+        <field name="implied_ids" eval="[(4, ref('group_website_prices'))]" />
+    </record>
+
     <record id="fleet.fleet_rule_vehicle_visibility_user" model="ir.rule">
         <field
             name="domain_force"

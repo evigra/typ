@@ -59,9 +59,9 @@ class WebsiteAccount(WebsiteSale):
 
     @http.route("/shop/products/autocomplete", type="json", auth="public", website=True)
     def products_autocomplete(self, term, options=None, **kwargs):
-        """Hide prices for public users when displaying suggestions for product searches"""
+        """Hide prices for users that can't see website prices when displaying suggestions for product searches"""
         options = options or {}
-        if request.env.user._is_public():
+        if not request.env.user.has_group("typ.group_website_prices"):
             options["display_price"] = False
         return super().products_autocomplete(term, options, **kwargs)
 

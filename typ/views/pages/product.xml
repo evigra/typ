@@ -3,14 +3,14 @@
 
     <template id="product-description" inherit_id="website_sale.product">
         <xpath expr="//t[@t-call='website_sale.product_price']" position="attributes">
-            <attribute name="t-if">user_id != website.user_id</attribute>
+            <attribute name="groups">typ.group_website_prices</attribute>
         </xpath>
         <xpath expr="//a[@id='add_to_cart']" position="attributes">
-            <attribute name="t-if">user_id != website.user_id</attribute>
+            <attribute name="groups">typ.group_website_prices</attribute>
         </xpath>
         <xpath expr="//a[@id='add_to_cart']" position="after">
             <a
-                t-else=""
+                groups="!typ.group_website_prices"
                 role="button"
                 id="request_quotation"
                 class="btn btn-primary btn-lg mt16 d-block d-sm-inline-block"
@@ -21,13 +21,13 @@
 
     <template id="products_item" inherit_id="website_sale.products_item">
         <xpath expr="//div[hasclass('product_price')]" position="attributes">
-            <attribute name="t-if">user_id != website.user_id</attribute>
+            <attribute name="groups">typ.group_website_prices</attribute>
         </xpath>
     </template>
 
     <template id="product_quantity" inherit_id="website_sale.product_quantity">
         <xpath expr="//div[hasclass('css_quantity')]" position="attributes">
-            <attribute name="t-if">user_id != website.user_id</attribute>
+            <attribute name="groups">typ.group_website_prices</attribute>
         </xpath>
     </template>
 
