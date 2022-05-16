@@ -29,6 +29,7 @@
         "l10n_mx_edi_landing",
         "l10n_mx_edi_pos",
         "l10n_mx_edi_purchase_document",
+        "marketing_automation",
         "mrp",
         "note",
         "portal_multicurrency_totals",
@@ -46,6 +47,7 @@
         "website_blog",
         "website_blog",
         "website_crm_form",
+        "website_event",
         "website_sale",
     ],
     "data": [

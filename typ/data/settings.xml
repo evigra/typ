@@ -47,6 +47,10 @@
             ])]"
         />
         <field name="group_multi_website" eval="False" />
+        <!-- # Email Marketing Settings -->
+        <field name="group_mass_mailing_campaign" eval="True" />
+        <!-- # CRM Settings -->
+        <field name="group_use_lead" eval="True" />
     </record>
 
     <function
