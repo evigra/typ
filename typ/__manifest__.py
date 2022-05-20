@@ -29,6 +29,7 @@
         "l10n_mx_edi_landing",
         "l10n_mx_edi_pos",
         "l10n_mx_edi_purchase_document",
+        "l10n_mx_portal",
         "marketing_automation",
         "mrp",
         "note",

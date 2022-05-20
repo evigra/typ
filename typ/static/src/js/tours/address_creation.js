@@ -11,7 +11,7 @@ odoo.define("typ.address_creation_tour", function (require) {
         [
             {
                 content: "Click on button `Add an address`",
-                trigger: "button#add_address",
+                trigger: "a#add_address",
             },
             {
                 content: "Complete name",
@@ -46,6 +46,7 @@ odoo.define("typ.address_creation_tour", function (require) {
             {
                 content: "Complete State",
                 trigger: "select[name=state_id]",
+                timeout: 60000,
                 run: "text Aguascalientes",
             },
             {
@@ -58,8 +59,8 @@ odoo.define("typ.address_creation_tour", function (require) {
                 trigger: "button#save-record",
             },
             {
-                content: "Check if we were redirected to success page",
-                trigger: "#wrap:has(h5:contains('SHIPPING INFORMATION'))",
+                content: "Check if we were redirected to address list",
+                trigger: ".o_portal li:contains('Address')",
             },
         ]
     );

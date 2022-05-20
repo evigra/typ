@@ -131,8 +131,8 @@ class MyAccount(CustomerPortal):
             "mode": mode,
             "checkout": values,
             "country": country,
-            "countries": country.get_website_sale_countries(mode=mode[1]),
-            "states": country.get_website_sale_states(mode=mode[1]) if country else [],
+            "countries": country.get_website_sale_countries(),
+            "states": country.get_website_sale_states() if country else [],
             "error": errors,
             "active_page": "/my/address",
         }

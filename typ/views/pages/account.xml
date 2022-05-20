@@ -1,195 +1,104 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <odoo>
-    <template id="portal_layout" inherit_id="portal.portal_layout">
-        <xpath expr="//div[hasclass('container')]" position='attributes'>
-            <attribute
-                name="class"
-                add="dark-white"
-                remove="container mt16"
-                separator=" "
-            />
-        </xpath>
 
-        <xpath expr="//div[@id='wrap']" position='attributes'>
-            <attribute name="class" add="dark-white mt0" separator=" " />
-        </xpath>
-
-        <xpath expr="//div[@id='wrap']/div" position='attributes'>
-            <attribute name="class" remove="mb64" separator=" " />
-        </xpath>
-
-        <xpath expr="//div[@id='wrap']/div/t/div" position='attributes'>
-            <attribute name="style">display: None;</attribute>
-        </xpath>
-
-        <xpath expr="//div[@id='wrap']/div/t/div" position='before'>
-            <t t-call="typ.my-account-menu" />
-            <div
-                class="col-md-8 col-md-offset-1 col-sm-8 col-sm-offset-0 col-xs-12 col-xs-offset-0"
-            >
-                <t t-call="typ.personal-info" />
-            </div>
+    <template id="portal_address" inherit_id="portal.portal_my_home">
+        <xpath expr="//div[hasclass('o_portal_docs')]" position="inside">
+            <t t-call="portal.portal_docs_entry">
+                <t t-set="title">Address</t>
+                <t t-set="url" t-value="'/my/address'" />
+                <t t-set="placeholder_count" t-value="'quotation_count'" />
+            </t>
         </xpath>
     </template>
 
+    <template id="portal_breadcrumbs" inherit_id="portal.portal_breadcrumbs">
+        <xpath expr="//ol[hasclass('o_portal_submenu')]" position="inside">
+
+                <li
+                t-if="request.httprequest.path == '/my/address'"
+                class="breadcrumb-item ml-1"
+            >Address </li>
+                <li
+                t-if="request.httprequest.path == '/my/contact/edit'"
+                class="breadcrumb-item ml-1"
+            >
+                    <a href="/my/address">Address </a> / Add
+                </li>
+        </xpath>
+    </template>
 
     <template id="account_address" name="Account Address">
-        <t t-call="typ.portal_layout">
-            <t t-call="typ.my-account-menu" />
-            <div
-                class="col-md-8 col-md-offset-1 col-sm-8 col-sm-offset-0 col-xs-12 col-xs-offset-0 o_my_address"
-            >
-                <div
-                    class="col-md-12 col-xs-12 col-sm-12 text-center account-content mb24"
-                >
-                    <h5 class="sections">SHIPPING INFORMATION</h5>
-                </div>
-                <div class="col-xs-12 col-sm-12 col-md-12">
-                    <div class="row all_shipping">
-                        <div class="mt8">
-                            <t t-foreach="shippings" t-as="ship">
-                                <div class="col-xs-12 one_kanban ">
-                                    <t t-call="typ.address_panel">
-                                        <t t-set='contact' t-value="ship" />
-                                        <t
-                                            t-set='selected'
-                                            t-value="order.partner_shipping_id==ship"
-                                        />
-                                    </t>
-                                </div>
-                            </t>
-                        </div>
-                    </div>
-                </div>
-                <div
-                    class="col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2 text-center mt8 mb64 hidden-xs one_kanban"
-                >
-                    <form action="/my/contact/edit" method="post" class=''>
-                        <input
-                            type="hidden"
-                            name="csrf_token"
-                            t-att-value="request.csrf_token()"
-                        />
-                        <button
-                            class='a-submit btn btn-primary btn-block col-xs-12 mb16'
+        <t t-call="portal.portal_layout">
+
+            <t t-if="not shippings">
+                <p>There are currently no shippings for your account.</p>
+            </t>
+
+            <t t-if="shippings" t-call="portal.portal_table">
+                <t t-set="classes">all_shipping</t>
+                <thead>
+                    <tr class="active">
+                        <th>Name #</th>
+                        <th>Email</th>
+                        <th>Phone</th>
+                        <th />
+                    </tr>
+                </thead>
+                <t t-foreach="shippings" t-as="shipping">
+                    <tr>
+                        <td><t t-esc="shipping.name" /></td>
+                        <td><t t-esc="shipping.email" /></td>
+                        <td><t t-esc="shipping.phone" /></td>
+                        <td>
+                            <a
+                                href="#"
+                                class="js_edit_address hidden-xs fa fa-pencil fa-2"
+                                t-att-data-address-id="shipping.id"
+                            />
+
+                            <a
+                                class="pull-right delete_address_js fa fa-trash fa-2"
+                                title="Delete"
+                                href="/delete-address"
+                                t-att-data-address-id="shipping.id"
+                            />
+                        </td>
+
+                    </tr>
+
+                </t>
+                <tr class=''><td colspan="5">
+                    <a
                             id="add_address"
-                        >
-                            Add an address
-                        </button>
-                    </form>
+                            class="btn btn-primary btn-block col"
+                            href="/my/contact/edit"
+                        >Add Address</a>
 
-                </div>
-            </div>
+                    <t t-call="typ.form_edit" />
 
-            <div class="col-md-12 oe_structure" />
+
+
+                    </td></tr>
+            </t>
+
         </t>
     </template>
-
-    <template id="address_panel" name="Kanban address">
-        <div class="col-md-12 col-sm-12 col-xs-12 white-color account-information">
-            <form action="" method="POST" class='hide'>
+    <template id="form_edit" name="Form Edit">
+            <form action="/my/contact/edit" method="POST" class='js_form_edit d-none'>
                 <input
-                    type="hidden"
-                    name="csrf_token"
-                    t-att-value="request.csrf_token()"
-                />
-                <input type="hidden" name="partner_id" t-att-value="contact.id" />
+                type="hidden"
+                name="csrf_token"
+                t-att-value="request.csrf_token()"
+            />
+                <input type="hidden" name="partner_id" />
                 <input type='submit' />
             </form>
-            <div class="row mt16 mb8 predetermined-btns">
-                <div class="col-md-6 col-xs-6 col-sm-6">
-                    <a class="ship-address pull-left" title="Selected Address">
-                        <i
-                            t-attf-class="address fa #{'fa-star address-selected' if selected else 'fa-star-o change_address_js'} fa-lg"
-                            t-att-data-value="'%d' % contact.id"
-                        >
-                            <span
-                                t-attf-class="#{'' if selected else 'hidden'}"
-                            >Predetermined</span>
-                        </i>
-                    </a>
-                </div>
-                <div
-                    t-attf-class=" col-md-6 col-xs-6 col-sm-6 #{'hidden no-delete-address' if selected else 'delete-address'}"
-                    t-att-id="'delete-btn%d' % contact.id"
-                >
-                    <a
-                        class="pull-right delete_address_js"
-                        title="Delete"
-                        href="/delete-address"
-                        t-att-data-address-id="contact.id"
-                    >
-                        <img src="/web/image/theme_typ.delete-icon" alt="Delete item" />
-                    </a>
-                </div>
-            </div>
-            <div class="row">
-                <div
-                    class="col-md-3 col-md-offset-2 col-sm-3 col-sm-offset-1 col-xs-3 col-xs-offset-1 text-right account-field"
-                >
-                    <p>Name:</p>
-                </div>
-                <div class="col-md-6 col-sm-6 col-xs-8 field-content">
-                    <span t-esc="contact.name" />
-                </div>
-            </div>
-            <div class="row mb16">
-                <div
-                    class="col-md-3 col-md-offset-2 col-sm-3 col-sm-offset-1 col-xs-3 col-xs-offset-1 text-right account-field"
-                >
-                    <p>Address:</p>
-                </div>
-                <div class="col-md-6 col-sm-6 col-xs-8 field-content">
-                    <t
-                        t-esc="contact"
-                        t-options="dict(widget='contact', fields=['address'], no_marker=True)"
-                    />
-                </div>
-            </div>
-            <div class="row mb32">
-                <div
-                    class="col-md-3 col-md-offset-2 col-sm-3 col-sm-offset-1 col-xs-3 col-xs-offset-1 text-right account-field"
-                >
-                    <p>Phone:</p>
-                </div>
-                <div class="col-md-6 col-sm-6 col-xs-8 field-content">
-                    <p t-esc="contact.phone" />
-                </div>
-            </div>
-            <div class="row text-center mt32 mb32 hidden-xs">
-                <a class="js_edit_address hidden-xs">Edit information</a>
-            </div>
-        </div>
+
     </template>
 
     <template id="contact_edit" name="Edit Contact">
-        <t t-call="typ.portal_layout">
+        <t t-call="portal.portal_layout">
             <div class="col-md-12 oe_cart">
-
-                <!-- <t t-if="mode == ('new', 'billing')">
-                    <h2 class="sections text-center mb32 mt0">Your Address
-                        <small> or </small>
-                        <a href='/web/login?redirect=/shop/checkout' class='btn btn-primary' style="margin-top: -11px">Log In</a>
-                    </h2>
-                </t>
-
-                <t t-if="mode == ('edit', 'billing')">
-                    <h2 class="sections text-center mb32 mt0">Your Address</h2>
-                </t> -->
-
-                <t t-if="mode[1] == 'shipping'">
-                    <div class="row breadcrumbs-account">
-                        <ol class="breadcrumb o_portal_submenu mb0">
-                            <li><a href="/my/address"> <i
-                                        class="fa fa-chevron-left"
-                                        aria-hidden="true"
-                                    /> Back to shipping information</a></li>
-                        </ol>
-                    </div>
-                    <div class="row">
-                        <h2 class="sections text-center mt8">Shipping Address </h2>
-                    </div>
-                </t>
 
                 <t t-if="error" t-foreach="error.get('error_message', [])" t-as="err">
                     <h4 class="text-danger text-center mt32" t-esc="err" />
@@ -226,7 +135,7 @@
                                     <input
                                         type="text"
                                         name="name"
-                                        class="form-control "
+                                        t-attf-class="form-control #{error.get('name') and 'is-invalid' or ''}"
                                         t-att-value="'name' in checkout and checkout['name']"
                                     />
                                 </div>
@@ -247,13 +156,12 @@
                                         <input
                                             type="email"
                                             name="email"
-                                            class="form-control"
+                                            t-attf-class="form-control #{error.get('email') and 'is-invalid' or ''}"
                                             t-att-value="'email' in checkout and checkout['email']"
                                         />
                                     </div>
                                 </div>
                             </t>
-
                             <div
                                 t-attf-class="form-group #{error.get('phone') and 'has-error' or ''} row"
                                 id="div_phone"
@@ -266,7 +174,7 @@
                                     <input
                                         type="tel"
                                         name="phone"
-                                        class="form-control"
+                                        t-attf-class="form-control #{error.get('phone') and 'is-invalid' or ''}"
                                         t-att-value="'phone' in checkout and checkout['phone']"
                                     />
                                 </div>
@@ -285,7 +193,7 @@
                                         <input
                                             type="text"
                                             name="company_name"
-                                            class="form-control"
+                                            t-attf-class="form-control #{error.get('company_name') and 'is-invalid' or ''}"
                                             t-att-value="'company_name' in checkout and checkout['company_name']"
                                         />
                                     </div>
@@ -301,7 +209,7 @@
                                         <input
                                             type="text"
                                             name="vat"
-                                            class="form-control"
+                                            t-attf-class="form-control #{error.get('vat') and 'is-invalid' or ''}"
                                             t-att-value="'vat' in checkout and checkout['vat']"
                                         />
                                     </div>
@@ -320,7 +228,7 @@
                                     <input
                                         type="text"
                                         name="street"
-                                        class="form-control"
+                                        t-attf-class="form-control #{error.get('street') and 'is-invalid' or ''}"
                                         t-att-value="'street' in checkout and checkout['street']"
                                     />
                                 </div>
@@ -362,7 +270,7 @@
                                         <input
                                             type="text"
                                             name="zip"
-                                            class="form-control"
+                                            t-attf-class="form-control #{error.get('zip') and 'is-invalid' or ''}"
                                             t-att-value="'zip' in checkout and checkout['zip']"
                                         />
                                     </div>
@@ -383,7 +291,7 @@
                                         <input
                                             type="text"
                                             name="zip"
-                                            class="form-control"
+                                            t-attf-class="form-control #{error.get('zip') and 'is-invalid' or ''}"
                                             t-att-value="'zip' in checkout and checkout['zip']"
                                         />
                                     </div>
@@ -457,7 +365,7 @@
                                     <input
                                         type="text"
                                         name="city"
-                                        class="form-control"
+                                        t-attf-class="form-control #{error.get('city') and 'is-invalid' or ''}"
                                         t-att-value="'city' in checkout and checkout['city']"
                                     />
                                 </div>
@@ -473,7 +381,7 @@
                         <div
                             class="col-md-8 col-sm-8 col-xs-12 col-md-offset-2 col-sm-offset-2 col-xs-offset-0 mt32 mb96"
                         >
-                                <div class="col-md-6 col-sm-6">
+                                <div class="col-md-4">
                                 <button
                                     class="btn btn-primary btn-block mb32"
                                     id="save-record"
@@ -481,405 +389,10 @@
                                     Save
                                 </button>
                                 </div>
-                                <div class="col-md-6 col-sm-6">
-                                <a
-                                    href="/my/address"
-                                    class="btn btn-secondary btn-block mb32"
-                                >
-                                    Cancel
-                                </a>
-                                </div>
                         </div>
                     </form>
                 </div>
             </div>
         </t>
     </template>
-
-    <template id="my-account-menu">
-        <div
-            t-attf-class="col-xs-12 white-color account-menu text-center hidden-md hidden-lg hidden-sm my-account-mobile #{'mt32' if request.httprequest.path == '/my/payment_method' else ''}"
-        >
-            <ul class="nav nav-pills nav-mobile list-unstyled ">
-                <li
-                    t-attf-class=" #{'active' if request.httprequest.path == '/my/home' or request.httprequest.path =='/my' else ''}"
-                ><a href="/my/home">Account</a></li>
-                <li
-                    t-attf-class="#{'active' if request.httprequest.path == '/my/payment_method' else ''}"
-                ><a href="/my/payment_method">Payment methods</a></li>
-                <li
-                    t-attf-class=" #{'active' if active_page =='/my/address' else ''}"
-                ><a href="/my/address">Addresses</a></li>
-            </ul>
-        </div>
-        <div class="col-md-3 col-sm-4 hidden-xs">
-            <div class="col-md-12 white-color account-menu mt64 mb48 no-padding-left">
-                <ul class="nav-pills nav-desktop nav-stacked list-unstyled mt32 mb32">
-                    <li
-                        t-attf-class="mb16 #{'active' if request.httprequest.path == '/my/home' or request.httprequest.path =='/my' else ''}"
-                    ><a class="no-padding-top" href="/my/home">Account</a></li>
-                    <li
-                        t-attf-class="mb16 #{'active' if request.httprequest.path =='/my/payment_method' else ''}"
-                    ><a href="/my/payment_method">Payment methods</a></li>
-                    <li
-                        t-attf-class="mb16 #{'active' if request.httprequest.path =='/my/orders' or request.httprequest.path =='/my/quotes' else ''}"
-                    ><a href="/my/orders">Orders</a></li>
-                    <li
-                        t-attf-class="mb16 #{'active' if request.httprequest.path =='/my/invoices' or request.httprequest.path =='/my/credit_notes' else ''}"
-                    ><a href="/my/invoices">Invoices</a></li>
-                    <li
-                        t-attf-class="mb16 payment-complements-li #{'active' if request.httprequest.path =='/my/payment_complements' else ''}"
-                    ><a href="/my/payment_complements">Payment Complements</a></li>
-                    <li
-                        t-attf-class="mb16 #{'active' if active_page =='/my/address' else ''}"
-                    ><a href="/my/address">Addresses</a></li>
-                </ul>
-            </div>
-        </div>
-    </template>
-
-    <template id="order_date" name="Order Date">
-        <span t-esc="time.strftime('%d', order_date)" /><span>/</span>
-            <t t-call="typ.month_name">
-                <t t-set="month" t-value="time.strftime('%m', order_date)" />
-            </t>
-            <span>/</span>
-            <span t-esc="time.strftime('%Y', order_date)" />
-    </template>
-
-    <template id="month_name" name="Month Name">
-        <span t-if="month == '01'">Jan</span>
-        <span t-elif="month == '02'">Feb</span>
-        <span t-elif="month == '03'">Mar</span>
-        <span t-elif="month == '04'">Apr</span>
-        <span t-elif="month == '05'">May</span>
-        <span t-elif="month == '06'">Jun</span>
-        <span t-elif="month == '07'">Jul</span>
-        <span t-elif="month == '08'">Agu</span>
-        <span t-elif="month == '09'">Sep</span>
-        <span t-elif="month == '10'">Oct</span>
-        <span t-elif="month == '11'">Nov</span>
-        <span t-elif="month == '12'">Dic</span>
-    </template>
-
-    <template id="order_by_dates">
-        <t t-foreach="archive_groups" t-as="group">
-            <t t-if="group['date_begin'] == date">
-                <li class="active">
-                    <a t-att-href="default_url" t-ignore="True"><t
-                            t-esc="group['name']"
-                        /></a>
-                </li>
-            </t>
-            <t t-if="group['date_begin'] != date">
-                <li>
-                    <a
-                        t-ignore="True"
-                        t-attf-href="#{default_url}?date_begin=#{group['date_begin']}&amp;date_end=#{group['date_end']}&amp;month=#{group['name']}"
-                    ><t t-esc="group['name']" /></a>
-                </li>
-            </t>
-        </t>
-    </template>
-
-    <template id="sort_by_orders">
-        <div class="col-md-12 col-sm-12 col-lg-12 col-xs-12 mb32 sort-products">
-            <div t-attf-class="mt16 col-md-5 col-sm-5 col-xs-12">
-
-                <t t-set="paid_invoices">Paid</t>
-                <t t-set="unpaid_invoices">Unpaid</t>
-                <t
-                    t-set="filter_invoices"
-                    t-value="[
-                        (paid_invoices, 'paid'),
-                        (unpaid_invoices, 'open'),
-                    ]"
-                />
-               <div
-                    t-if="request.httprequest.path == '/my/invoices' or request.httprequest.path == '/my/credit_notes'"
-                    class="row"
-                >
-                    <!-- invoices filter -->
-                    <span class="mr16 filter">Filter by: </span>
-                    <div class="dropdown btn-group  dropdown_filters">
-                         <a
-                            href="#"
-                            class="dropdown-toggle btn btn-default"
-                            data-toggle="dropdown"
-                        >
-                            <span
-                                class="mr0"
-                                t-if="not invoices_status and not month_filter"
-                            >All</span>
-                            <span
-                                class="mr0"
-                                t-elif="month_filter"
-                                t-esc="month_filter"
-                            />
-                            <span
-                                class="mr0"
-                                t-elif="invoices_status == 'open'"
-                            >Status: <span t-esc="unpaid_invoices" /></span>
-                            <span class="mr0" t-else="">Status: <span
-                                    t-esc="paid_invoices"
-                                /></span>
-                            <i class="fa fa-chevron-down pull-right" />
-                        </a>
-
-                        <ul
-                            class="dropdown-menu multi-level"
-                            role="menu"
-                            aria-labelledby="dropdownMenu"
-                        >
-                            <li>
-                                <a
-                                    t-if="in_view == 'invoices'"
-                                    href="/my/invoices"
-                                >All</a>
-                                <a t-else="" href="/my/credit_notes">All</a>
-                            </li>
-                            <li class="dropdown-submenu">
-                                <a tabindex="-1">Months</a>
-                                <ul class="dropdown-menu">
-                                    <t t-call="typ.order_by_dates" />
-                                </ul>
-                            </li>
-                            <li class="dropdown-submenu">
-                                <a tabindex="-1">Status</a>
-                                <ul class="dropdown-menu">
-                                   <li t-foreach="filter_invoices" t-as="status">
-                                        <a
-                                            t-if="in_view == 'invoices'"
-                                            t-attf-href="/my/invoices?invoices_status={{status[1]}}"
-                                        >
-                                            <span t-raw="status[0]" />
-                                        </a>
-                                        <a
-                                            t-else=""
-                                            t-attf-href="/my/credit_notes?invoices_status={{status[1]}}"
-                                        >
-                                            <span t-raw="status[0]" />
-                                        </a>
-                                    </li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div t-else="" class="row">
-                    <!-- filter for orders and quotes -->
-                    <span class="mr16 filter">Filter by: </span>
-                    <div class="dropdown btn-group  dropdown_filters">
-                        <a
-                            href="#"
-                            class="dropdown-toggle btn btn-default"
-                            data-toggle="dropdown"
-                        >
-                            <span class="mr0" t-if="not month_filter">All</span>
-                            <span class="mr0" t-else="" t-esc="month_filter" />
-                            <i class="fa fa-chevron-down pull-right" />
-                        </a>
-                        <ul class="dropdown-menu" role="menu">
-                            <li>
-                                <a
-                                    t-if="request.httprequest.path =='/my/quotes'"
-                                    href="/my/quotes"
-                                ><span>All</span></a>
-                                <a
-                                    t-if="request.httprequest.path =='/my/orders'"
-                                    href="/my/orders"
-                                ><span>All</span></a>
-                            </li>
-                            <t t-call="typ.order_by_dates" />
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div
-                class="mt16 col-md-5 col-md-offset-2 col-sm-5 col-sm-offset-2 text-right"
-            >
-                <div class="row">
-                    <span class="mr16 filter">See:</span>
-                    <div class="dropdown btn-group  dropdown_filters">
-                        <a
-                            href="#"
-                            class="dropdown-toggle btn btn-default"
-                            data-toggle="dropdown"
-                        >
-                            <span
-                                t-if="request.httprequest.path == '/my/orders'"
-                            >Orders</span>
-                            <span
-                                t-if="request.httprequest.path == '/my/quotes'"
-                            >Quotations</span>
-                            <span
-                                t-if="request.httprequest.path == '/my/invoices'"
-                            >Invoices</span>
-                            <span
-                                t-if="request.httprequest.path == '/my/credit_notes'"
-                            >Credit notes</span>
-                            <i class="fa fa-chevron-down pull-right" />
-                        </a>
-                        <ul class="dropdown-menu" role="menu">
-                            <t
-                                t-if="request.httprequest.path == '/my/invoices' or request.httprequest.path == '/my/credit_notes'"
-                            >
-                                <li>
-                                    <a t-attf-href="/my/invoices?{{ keep_query() }}">
-                                        <span>Invoices</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a
-                                        t-attf-href="/my/credit_notes?{{ keep_query() }}"
-                                    >
-                                        <span>Credit notes</span>
-                                    </a>
-                                </li>
-                            </t>
-                            <t t-else="">
-                                <li>
-                                    <a t-attf-href="/my/quotes?{{ keep_query() }}">
-                                        <span>Quotations</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a t-attf-href="/my/orders?{{ keep_query() }}">
-                                        <span>Orders</span>
-                                    </a>
-                                </li>
-                            </t>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </template>
-
-    <template id="email_sent" name="Email Sent">
-        <t t-call="website.layout">
-            <div id="wrap">
-                <div class="container mb64">
-                    <div class="col-md-8">
-                        <div class="oe_structure">
-                            <h3
-                                class="alert alert-success"
-                            >The invoice has been sent</h3>
-                        </div>
-                    </div>
-                    <div
-                        id="o_my_sidebar"
-                        class="col-md-3 col-md-offset-1 o_my_sidebar"
-                    >
-                        <div class="o_my_details">
-                            <h3 class="page-header">Your Details <a
-                                    href="/my/home"
-                                    class="btn btn-default btn-xs"
-                                >Change</a></h3>
-                            <div
-                                t-field="user.partner_id"
-                                t-options='{"widget": "contact", "fields": ["email", "phone", "address", "name"]}'
-                            />
-                        </div>
-                    </div>
-                    <div class="col-md-12 oe_structure" />
-                </div>
-            </div>
-        </t>
-    </template>
-
-    <template id="personal-info">
-        <div class="col-md-12 col-sm-12 col-xs-12 text-center account-content mb24">
-                <h5 class="sections">ACCOUNT INFORMATION</h5>
-        </div>
-        <div class="col-md-12 col-sm-12 col-xs-12 white-color account-information">
-            <div class="row mt32">
-                <div
-                    class="col-md-3 col-md-offset-2 col-sm-3 col-sm-offset-1 col-xs-3 col-xs-offset-1 text-right account-field"
-                >
-                    <p>Email:</p>
-                </div>
-                <div class="col-md-6 col-sm-6 col-xs-8 mb16 field-content">
-                    <span t-esc="user_id.login" />
-                </div>
-            </div>
-            <div class="row mb32">
-                <div
-                    class="col-md-3 col-md-offset-2 col-sm-3 col-sm-offset-1 col-xs-3 col-xs-offset-1 text-right account-field"
-                >
-                    <p>Password:</p>
-                </div>
-                <div class="col-md-2 col-sm-3 col-xs-8">
-                    <p>**********</p>
-                </div>
-                <div class="col-md-4 col-sm-4 text-right hidden-xs">
-                    <a href="/my/account/reset_password">Reset</a>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-12 col-sm-12 col-xs-12 text-center mt8 mb24">
-                <h5 class="sections">BILLING INFORMATION</h5>
-        </div>
-         <div
-            class="col-md-12 col-sm-12 col-xs-12 white-color mb64 account-information"
-        >
-            <div class="row mt32">
-                <div
-                    class="col-md-3 col-md-offset-2 col-sm-3 col-sm-offset-1 col-xs-3 col-xs-offset-1 text-right account-field"
-                >
-                    <p>Name:</p>
-                </div>
-                <div class="col-md-6 col-sm-6 col-xs-8 field-content">
-                    <span t-esc="user_id.partner_id.name" />
-                </div>
-            </div>
-            <div class="row">
-                <div
-                    class="col-md-3 col-md-offset-2 col-sm-3 col-sm-offset-1 col-xs-3 col-xs-offset-1 text-right account-field"
-                >
-                    <p>RFC:</p>
-                </div>
-                <div class="col-md-6 col-sm-6 col-xs-8 field-content">
-                    <p t-esc="user_id.partner_id.vat" />
-                </div>
-            </div>
-            <div class="row">
-                <div
-                    class="col-md-3 col-md-offset-2 col-sm-3 col-sm-offset-1 col-xs-3 col-xs-offset-1 text-right account-field"
-                >
-                    <p>Email:</p>
-                </div>
-                <div class="col-md-6 col-sm-6 col-xs-8 field-content">
-                    <p t-esc="user_id.login" />
-                </div>
-            </div>
-            <div class="row">
-                <div
-                    class="col-md-3 col-md-offset-2 col-sm-3 col-sm-offset-1 col-xs-3 col-xs-offset-1 text-right account-field mt16"
-                >
-                    <p>Address:</p>
-                </div>
-                <div class="col-md-6 col-sm-6 col-xs-8 field-content">
-                    <p
-                        t-field="user_id.partner_id"
-                        t-options="dict(widget='contact', fields=['address'], no_marker=True)"
-                    />
-                </div>
-            </div>
-            <div class="row mb32">
-                <div
-                    class="col-md-3 col-md-offset-2 col-sm-3 col-sm-offset-1 col-xs-3 col-xs-offset-1 text-right account-field"
-                >
-                    <p>Phone:</p>
-                </div>
-                <div class="col-md-6 col-sm-6 col-xs-8 field-content">
-                    <p t-esc="user_id.partner_id.phone" />
-                </div>
-            </div>
-            <div class="row text-center mt32 mb32 hidden-xs">
-                <a href="/my/account">Edit information</a>
-            </div>
-        </div>
-    </template>
-
 </odoo>

@@ -14,8 +14,8 @@ odoo.define("typ.address_remove_tour", function (require) {
                 trigger: "a.delete_address_js:first",
             },
             {
-                content: "Check if we were redirected to success page",
-                trigger: "#wrap:has(h5:contains('SHIPPING INFORMATION'))",
+                content: "Check if we were redirected to address list",
+                trigger: ".o_portal li:contains('Address')",
             },
         ]
     );

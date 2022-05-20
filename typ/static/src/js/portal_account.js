@@ -1,43 +1,31 @@
 odoo.define("typ.portal_account", function (require) {
     "use strict";
 
-    require("web.dom_ready");
+    var publicWidget = require("web.public.widget");
 
-    const Widget = require("web.Widget");
-
-    const $Edit_information = $(".all_shipping");
-
-    const ajax = require("web.ajax");
-
-    if (!$Edit_information.length) {
-        return $.Deferred().reject("DOM doesn't contain any '.all_shipping' element.");
-    }
-
-    const Edit_information = Widget.extend({
+    publicWidget.registry.TyPortalAccount = publicWidget.Widget.extend({
+        selector: ".all_shipping",
         events: {
-            "click .js_edit_address": function (event) {
-                event.preventDefault();
-                $(event.currentTarget)
-                    .parents("div.account-information")
-                    .find("form.hide")
-                    .attr("action", "/my/contact/edit")
-                    .submit();
-            },
-            // Event to delete the selected address
-            "click .delete_address_js": function (event) {
-                event.preventDefault();
-                console.log($(event.currentTarget).data("address-id"));
-                ajax.jsonRpc("/delete-address", "call", {
-                    address_id: $(event.currentTarget).data("address-id"),
-                }).then(function () {
-                    window.location.reload();
-                });
-            },
+            "click .js_edit_address": "_onClickAddress",
+            "click .delete_address_js": "_onDeleteAddress",
         },
-    });
+        _onClickAddress(event) {
+            event.preventDefault();
+            var address_id = $(event.currentTarget).data("address-id");
+            var $form = this.$el.find(".js_form_edit");
+            $form.find("[name='partner_id']").val(address_id);
 
-    $Edit_information.each(function () {
-        const edit_information = new Edit_information();
-        edit_information.attachTo($(this));
+            $form.submit();
+        },
+        _onDeleteAddress(event) {
+            event.preventDefault();
+            var params = {address_id: $(event.currentTarget).data("address-id")};
+            this._rpc({
+                route: "/delete-address",
+                params,
+            }).then(function () {
+                window.location.reload();
+            });
+        },
     });
 });
