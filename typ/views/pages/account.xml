@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <odoo>
 
-    <template id="portal_address" inherit_id="portal.portal_my_home">
+    <template id="portal_my_home" inherit_id="portal.portal_my_home">
         <xpath expr="//div[hasclass('o_portal_docs')]" position="inside">
             <t t-call="portal.portal_docs_entry">
                 <t t-set="title">Address</t>
@@ -12,7 +12,7 @@
     </template>
 
     <template id="portal_breadcrumbs" inherit_id="portal.portal_breadcrumbs">
-        <xpath expr="//ol[hasclass('o_portal_submenu')]" position="inside">
+        <xpath expr="/ol[starts-with(@t-if,'page_name !=')]" position="inside">
 
                 <li
                 t-if="request.httprequest.path == '/my/address'"
